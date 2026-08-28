@@ -1,4 +1,48 @@
-# Lesson 119: Arrays of records
+# Lesson 119: Why files are needed and how text-file pseudocode works
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Why files are needed and how text-file pseudocode works
+
+### Direct explanation
+
+- Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed. Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required. A file is not merely a larger array.
+- For a text file containing one or more lines, select the mode before processing: READ obtains existing data, WRITE creates or replaces output content, and APPEND adds after existing content. Every opened file must be closed after processing.
+- A complete read algorithm uses OPENFILE for READ, checks NOT EOF before READFILE, processes each line and then CLOSEFILE. WRITEFILE stores a line in a file opened for WRITE or APPEND. Reading after EOF or using WRITE when old content must remain are boundary errors.
+
+### Worked example
+
+**Copy selected lines between text files:** Open Results.txt FOR READ and Pass.txt FOR WRITE. While NOT EOF(Results.txt), READFILE the next Line; if it contains PASS, WRITEFILE it to Pass.txt. Close both files after the loop. Results remain available from storage, while Pass.txt is deliberately created as a new output file.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Why use a file instead of only an array?
+   **Answer:** A file persists after the program ends and can be reloaded in a later run.
+2. Which mode adds without replacing old lines?
+   **Answer:** APPEND.
+3. Why test NOT EOF before READFILE?
+   **Answer:** It prevents an attempt to read beyond the final available line.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Write Cambridge pseudocode to read every line from Input.txt, copy non-blank lines to Output.txt and close both files. Explain why the input data is stored in a file.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| persistent/later-use need for the input file | Do not test EOF after an invalid read or claim that WRITE preserves existing output-file contents. | 1 |
+| opens Input.txt FOR READ |  | 1 |
+| opens Output.txt FOR WRITE |  | 1 |
+| loops WHILE NOT EOF before READFILE |  | 1 |
+| writes only non-blank lines inside a coherent IF |  | 1 |
+| closes both files after the loop |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -46,7 +90,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit suitable structure choice, correct indexing or field access, and a loop that covers the required data without missing or exceeding bounds.
 
-
 ## Student Task
 Students model a small school dataset using arrays, records or arrays of records, then write one operation on it.
 
@@ -81,7 +124,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `access`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-access.jpg`
 
 1. Access pattern
@@ -100,7 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-concept.jpg`
 
 1. Students[5] selects the complete record at array position 5.
@@ -111,7 +154,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `declare`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-declare.jpg`
 
 1. TYPE TStudent
@@ -126,7 +169,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `explorer`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-explorer.jpg`
 
 1. Interactive record explorer
@@ -137,7 +180,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `operations`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-operations.jpg`
 
 1. Search, count and update are alternative record operations, not mandatory consecutive stages.
@@ -149,7 +192,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-pseudocode.jpg`
 
 1. Pseudocode vs Java
@@ -168,7 +211,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `traversal`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-traversal.jpg`
 
 1. Use Index to select each Students record in turn.

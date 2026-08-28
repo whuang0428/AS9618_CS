@@ -107,6 +107,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -130,7 +136,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "7 marks",
-    prompt: "Scores[1:5] stores 42, 67, 55, 81, 49. Trace PassCount after counting scores >= 50.",
+    prompt: "Scores[1:5] stores 42, 67, 55, 81, 49. Complete a trace table for PassCount after counting scores >= 50.",
     answer: "PassCount starts at 0. Index 1, 42 is not >= 50 so PassCount remains 0. Index 2, 67 is >= 50 so PassCount becomes 1. Index 3, 55 is >= 50 so PassCount becomes 2. Index 4, 81 is >= 50 so PassCount becomes 3. Index 5, 49 is not >= 50 so final PassCount is 3.",
     marking: [
       { mark: "M1", text: "initialises PassCount to 0 before tracing the array" },
@@ -370,10 +376,10 @@ function renderExam() {
       <p>${escapeHtml(question.prompt)}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${escapeHtml(question.answer)}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((line) => `<li><strong>${escapeHtml(line.mark)}</strong> ${escapeHtml(line.text)}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

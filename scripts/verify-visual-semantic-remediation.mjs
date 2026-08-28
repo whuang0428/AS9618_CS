@@ -11,7 +11,10 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const baselineCommit = "fb631b27137200bf90e6a29528fc5a461c1b7c9b";
 const ledger = JSON.parse(fs.readFileSync(path.join(root, "audits", "visual-semantic-review-ledger.json"), "utf8"));
 const remediation = JSON.parse(fs.readFileSync(path.join(root, "audits", "visual-semantic-remediation-register.json"), "utf8"));
+const stage5VisualReview = JSON.parse(fs.readFileSync(path.join(root, "audits", "remediation-v2-stage5-visual-review.json"), "utf8"));
+const stage6ImageReview = JSON.parse(fs.readFileSync(path.join(root, "audits", "remediation-v2-stage6-image-review.json"), "utf8"));
 const repairFacts = JSON.parse(fs.readFileSync(path.join(root, "scripts", "stage10-visual-repair-facts.json"), "utf8"));
+const visualDeliveryMap = JSON.parse(fs.readFileSync(path.join(root, "scripts", "remediation-v2-visual-delivery-map.json"), "utf8"));
 const errors = [];
 const assert = (condition, message) => { if (!condition) errors.push(message); };
 const removedKeys = new Set(["033/explanation-loop-img-1", "098/explanation-pseudocode-img-1", "099/explanation-pseudocode-img-1"]);
@@ -67,6 +70,24 @@ const curriculumChangeKeys = new Set([
   "050/explanation-shifts-img-1",
   "137/overview-div-1",
 ]);
+const stage5TechnicalSurfaceKeys = new Set([
+  "121/overview-div-1",
+  "133/overview-div-1",
+]);
+
+function stage10VisualKey(lesson, targetId) {
+  return `${lesson}/explanation-${targetId}-img-1`;
+}
+
+const deliveryKeyToSourceKey = new Map(Object.entries(visualDeliveryMap).map(([sourceKey, delivery]) => {
+  const [sourceLesson, sourceTarget] = sourceKey.split("/");
+  return [stage10VisualKey(delivery.lesson, delivery.targetId), stage10VisualKey(sourceLesson, sourceTarget)];
+}));
+
+function canonicalCurrentRow(record) {
+  const deliveryKey = record.key;
+  return { ...record, deliveryKey, key: deliveryKeyToSourceKey.get(deliveryKey) ?? deliveryKey };
+}
 
 function parseCsv(text) {
   const rows = [];
@@ -126,17 +147,40 @@ const baselineRows = rawBaselineRows
 const currentRows = scanVisualSemanticHashes(
   (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8"),
   (relativePath) => fs.readFileSync(path.join(root, relativePath)),
-).filter((record) => canonicalKeys.has(record.key));
+).map(canonicalCurrentRow).filter((record) => canonicalKeys.has(record.key));
 const baselineByKey = new Map(baselineRows.map((row) => [row.key, row]));
 const currentByKey = new Map(currentRows.map((row) => [row.key, row]));
 const remediationKeys = new Set(remediation.records.map((record) => record.key));
+const stage5VisualKeys = new Set(stage5VisualReview.entries.map(({ key }) => {
+  const [lesson, target] = key.split("/");
+  return stage10VisualKey(lesson, target);
+}));
 const htmlRemediationKeys = new Set(remediation.records.filter((record) => record.visualType === "HTML/CSS").map((record) => record.key));
 const effectiveHash = (record) => htmlRemediationKeys.has(record.key) ? record.sectionHash : record.semanticHash;
+const stage6ImageByAsset = new Map(stage6ImageReview.records.map((record) => [record.relativeAsset, record]));
+const hasFreshStage6PixelApproval = (record) => {
+  const review = stage6ImageByAsset.get(record.asset);
+  return review?.status === "ApprovedCurrentPixels"
+    && review?.pass1?.status === "PassedCurrentPixels"
+    && review?.pass2?.status === "PassedCurrentPixels"
+    && review?.pass1?.assetSha256 === record.assetSha256
+    && review?.pass2?.assetSha256 === record.assetSha256
+    && review?.assetSha256 === record.assetSha256;
+};
 
 assert(new Set(ledger.records.map((record) => record.key)).size === ledger.records.length, "Review ledger keys must be unique.");
 assert(baselineRows.length === ledger.records.length, `Migrated baseline scan count is ${baselineRows.length}, expected ${ledger.records.length}.`);
 assert(currentRows.length === ledger.records.length, `Current legacy-ledger scan count is ${currentRows.length}, expected ${ledger.records.length}.`);
 assert(new Set(remediation.records.map((record) => record.key)).size === remediation.records.length, "Remediation keys must be unique.");
+assert(stage5VisualReview.entries.length === 8 && stage5VisualReview.pending === 0 && stage5VisualReview.disagreements === 0, "Stage 5 critical visual review is incomplete.");
+for (const review of stage5VisualReview.entries) {
+  const current = currentByKey.get(stage10VisualKey(...review.key.split("/")));
+  assert(review.firstPass === "Reviewed" && review.secondPass === "Reviewed" && review.semanticStatus === "Approved", `Stage 5 visual review is incomplete: ${review.key}.`);
+  assert(current?.assetSha256 === review.sha256, `Stage 5 visual review hash is stale: ${review.key}.`);
+}
+assert(stage6ImageReview.sourceApprovalImported === false && stage6ImageReview.oldApprovedRowsUsedForDecision === false, "Stage 6 image evidence improperly imports an old approval.");
+assert(stage6ImageReview.records.length === 783 && stage6ImageReview.pending === 0 && stage6ImageReview.disagreements === 0, "Stage 6 current-pixel review is incomplete.");
+assert(stage6ImageByAsset.size === 783, "Stage 6 current-pixel review has duplicate or missing assets.");
 const pixelRepairRecords = remediation.records.filter((record) => record.visualType === "Stage 10 JPG" && record.generationMethod !== "Source transcript and metadata");
 assert(Object.keys(repairFacts).length === pixelRepairRecords.length, "Stage 10 repair facts and pixel-changing JPG remediations differ in count.");
 
@@ -157,6 +201,7 @@ assert(Object.values(methods).reduce((sum, value) => sum + value, 0) === ledger.
 let changed = 0;
 let unchanged = 0;
 let moved = 0;
+let stage6ReviewedChanges = 0;
 const movedKeys = new Set(keyMigrations.values());
 for (const baseline of baselineRows) {
   const current = currentByKey.get(baseline.key);
@@ -165,18 +210,19 @@ for (const baseline of baselineRows) {
   const didChange = effectiveHash(current) !== effectiveHash(baseline);
   if (movedKeys.has(baseline.key)) {
     moved += 1;
-    assert(current.assetSha256 === baseline.assetSha256, `Moved visual asset bytes changed unexpectedly: ${baseline.key}.`);
-  } else if (remediationKeys.has(baseline.key) || curriculumChangeKeys.has(baseline.key)) {
+    assert(current.assetSha256 === baseline.assetSha256 || hasFreshStage6PixelApproval(current), `Moved visual asset bytes changed without fresh Stage 6 evidence: ${baseline.key}.`);
+  } else if (remediationKeys.has(baseline.key) || curriculumChangeKeys.has(baseline.key) || stage5VisualKeys.has(baseline.key) || stage5TechnicalSurfaceKeys.has(baseline.key)) {
     changed += didChange ? 1 : 0;
     assert(didChange, `Approved visual correction did not change: ${baseline.key}.`);
   } else {
-    unchanged += didChange ? 0 : 1;
-    assert(!didChange, `Unapproved visual drift: ${baseline.key}.`);
+    if (didChange && hasFreshStage6PixelApproval(current)) stage6ReviewedChanges += 1;
+    else unchanged += didChange ? 0 : 1;
+    assert(!didChange || hasFreshStage6PixelApproval(current), `Unapproved visual drift without fresh Stage 6 evidence: ${baseline.key}.`);
   }
 }
 assert(changed > 0, "No approved visual changes were detected.");
 assert(moved === keyMigrations.size, `Moved Stage 10 visuals: ${moved}, expected ${keyMigrations.size}.`);
-assert(changed + moved + unchanged === baselineRows.length, "Changed, moved and unchanged visual counts do not cover the legacy baseline.");
+assert(changed + moved + stage6ReviewedChanges + unchanged === baselineRows.length, "Changed, moved, Stage 6-reviewed and unchanged visual counts do not cover the legacy baseline.");
 
 for (const record of remediation.records) {
   const before = baselineByKey.get(record.key);
@@ -196,7 +242,8 @@ for (const record of remediation.records) {
 const normalize = (value) => String(value).replace(/\s+/g, " ").trim();
 const htmlText = (value) => normalize(String(value).replace(/<[^>]+>/g, " ").replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&quot;", '"').replaceAll("&#39;", "'").replaceAll("&amp;", "&"));
 for (const [key, facts] of Object.entries(repairFacts)) {
-  const [lesson] = key.split("/");
+  const [sourceLesson, target] = key.split("/");
+  const lesson = visualDeliveryMap[key]?.lesson ?? sourceLesson;
   const html = htmlText(fs.readFileSync(path.join(root, `web/lesson-${lesson}/index.html`), "utf8"));
   const markdownPath = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));
   const markdown = normalize(fs.readFileSync(path.join(root, "lessons", markdownPath), "utf8"));

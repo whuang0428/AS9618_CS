@@ -146,11 +146,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Calculate the file size in KiB of a 640 by 480 bitmap image using 24-bit colour depth. Show your working.",
+    prompt: "Calculate the file size in KiB of a 640 by 480 bitmap image using 24-bit colour depth. Demonstrate your working.",
     answer: "640 x 480 x 24 = 7372800 bits. 7372800 / 8 = 921600 bytes. 921600 / 1024 = 900 KiB.",
     marking: [
       { mark: "M1", text: "multiplies width by height to find number of pixels" },
@@ -169,7 +175,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Calculate the file size in MiB of 30 seconds of mono sound sampled at 44 100 Hz with 16-bit sampling resolution. Show your working.",
+    prompt: "Calculate the file size in MiB of 30 seconds of mono sound sampled at 44 100 Hz with 16-bit sampling resolution. Demonstrate your working.",
     answer: "44100 x 30 x 16 = 21168000 bits. 21168000 / 8 = 2646000 bytes. 2646000 / 1024 / 1024 = about 2.52 MiB.",
     marking: [
       { mark: "M1", text: "multiplies sample rate by duration" },
@@ -399,11 +405,9 @@ function renderExamQuestions() {
           <p>${question.prompt}</p>
           <button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button>
           <div class="ms-panel" id="ms${index}">
-            <p><strong>Indicative answer:</strong> ${question.answer}</p>
-            <h4>Cambridge-style mark scheme</h4>
-            <ul>
-              ${question.marking.map((mark) => `<li><strong>${mark.mark}:</strong> ${mark.text}</li>`).join("")}
-            </ul>
+            <p><strong>Answer:</strong> ${question.answer}</p>
+            <h4>Mark scheme</h4>
+            ${renderStudentMarkPoints(question)}
           </div>
         </article>
       `

@@ -127,6 +127,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -209,7 +215,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "7 marks",
-    prompt: "A weak answer to a scenario says: 'Use a loop and output the answer.' Rewrite this into a precise algorithm-design response for a task that inputs marks until -1 and outputs the average of valid marks.",
+    prompt: "A weak answer to a scenario says: 'Use a loop and output the answer.' Write this into a precise algorithm-design response for a task that inputs marks until -1 and outputs the average of valid marks.",
     answer: "Use a condition-controlled WHILE loop because the number of marks is unknown and input stops when -1 is entered. Initialise Total and Count to 0. Input a mark before the loop test. While Mark <> -1, add Mark to Total, increment Count, then input the next Mark. After the loop, if Count > 0, calculate Average <- Total / Count and output Average; otherwise output a suitable message such as 'No valid marks'.",
     marking: [
       { mark: "B1", text: "chooses condition-controlled / WHILE loop" },
@@ -384,10 +390,10 @@ function renderExam() {
       <p>${escapeHtml(question.prompt)}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${escapeHtml(question.answer)}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((line) => `<li><strong>${escapeHtml(line.mark)}</strong> ${escapeHtml(line.text)}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

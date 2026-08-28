@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 022 | Wired and wireless transmission media</title>
+    <title>AS9618 Lesson 022 | Ethernet collisions and CSMA/CD</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Wired and wireless transmission media</h1>
+        <h1>Ethernet collisions and CSMA/CD</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -38,11 +38,14 @@
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 022 | 45 minutes | Paper 1 Section 2</p>
             <h2>A network path uses physical transmission media with different characteristics.</h2>
@@ -63,7 +66,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Cambridge questions often reward comparison. "Wireless is easier" is not enough; explain mobility, interference, range or security.</p>
@@ -74,7 +77,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>The school wants a fast link between two server rooms. Which option is least embarrassing?</h2>
@@ -90,7 +93,7 @@
           </div>
         </section>
 
-        <section class="panel" id="wired" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="wired">
+        <section class="panel" id="wired" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Wired transmission media</h2>
@@ -120,7 +123,7 @@
         </section>
 
         <!-- stage10-explanation:start wired -->
-        <section class="panel explanation-panel" id="explanation-wired" data-explains="wired" data-explanation-kind="mechanism" aria-labelledby="explanation-wired-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="wired">
+        <section class="panel explanation-panel" id="explanation-wired" data-explains="wired" data-explanation-kind="mechanism" aria-labelledby="explanation-wired-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <h2 class="explanation-sr-only" id="explanation-wired-title">Wired transmission media</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-022-wired.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Wired transmission media with a structured visual model." />
@@ -132,8 +135,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end wired -->
-
-        <section class="panel" id="wireless" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="wireless">
+        <section class="panel" id="wireless" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Wireless transmission media</h2>
@@ -169,7 +171,7 @@
         </section>
 
         <!-- stage10-explanation:start wireless -->
-        <section class="panel explanation-panel" id="explanation-wireless" data-explains="wireless" data-explanation-kind="mechanism" aria-labelledby="explanation-wireless-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="wireless">
+        <section class="panel explanation-panel" id="explanation-wireless" data-explains="wireless" data-explanation-kind="mechanism" aria-labelledby="explanation-wireless-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <h2 class="explanation-sr-only" id="explanation-wireless-title">Wireless transmission media</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-022-wireless.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Wireless transmission media with a structured visual model." />
@@ -181,8 +183,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end wireless -->
-
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Compare by factor, not by vibe</h2>
@@ -217,7 +218,7 @@
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by factor, not by vibe</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-022-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by factor, not by vibe with a structured visual model." />
@@ -229,9 +230,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Transmission medium choice helper</h2>
@@ -254,7 +253,7 @@
           <div class="method-box" id="mediumMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -267,7 +266,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -277,7 +276,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the weak transmission-media answer</h2>
@@ -296,7 +295,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -305,65 +304,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Wired and wireless networks with all required transmission media</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A wired network carries signals through a physical cable. It can provide stable, predictable links and avoids radio interference, but installation restricts movement and may require disruptive cabling. A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security. The implications must be tied to a given use, not reduced to 'wired is faster'.</p>
-            <p>Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference. Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.</p>
-            <p>Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Connect a school campus and a remote weather station</h3>
-            <p>Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling between two buildings is impractical, and satellite for the remote station without local cable infrastructure. Each choice follows distance, mobility, interference, bandwidth, latency and cost.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Wired and wireless networks with all required transmission media: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Compare wired and wireless networks for fixed desktops and mobile tablets.</p>
-              <details><summary>Show answer</summary><p>Wired provides a stable physical link for fixed devices; wireless radio supports mobility but may suffer interference, obstacles and shared capacity.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Compare copper cable with fibre-optic cable.</p>
-              <details><summary>Show answer</summary><p>Copper uses electrical signals and may be cheaper; fibre uses light, supports higher bandwidth/longer distance and resists electromagnetic interference.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Distinguish WiFi radio waves, terrestrial microwave and satellite links.</p>
-              <details><summary>Show answer</summary><p>WiFi provides local wireless access; terrestrial microwave is directional and line-of-sight; satellite provides wide/remote coverage but commonly has greater latency.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Choose a medium for a remote location with no cable infrastructure.</p>
-              <details><summary>Show answer</summary><p>Satellite if wide remote coverage is required; justify the latency/cost/weather drawback.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Recommend transmission media for fixed classroom PCs, mobile tablets, an inter-building backbone and a remote field station.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> copper cable for short fixed links with a valid cost/stability reason</li>
-                <li><strong>B1</strong> WiFi/radio waves for mobile devices with an interference/security implication</li>
-                <li><strong>B1</strong> fibre-optic cable for the high-bandwidth/longer inter-building link</li>
-                <li><strong>B1</strong> satellite for remote coverage without cable infrastructure</li>
-                <li><strong>B1</strong> at least one limitation is correctly linked to the chosen medium</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-022">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Medium, signal, trade-off</h2>

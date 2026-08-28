@@ -1,4 +1,79 @@
-# Lesson 080: Tables, records, fields, data types, and constraints
+# Lesson 080: E-R design, normalisation and DBMS features
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** E-R design, normalisation and DBMS features
+
+### Direct explanation
+
+- An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.
+- To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.
+- 1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.
+- Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.
+- A file-based approach can repeat facts in separate files, create inconsistent copies and isolate related data. A Database Management System (DBMS) addresses these file-based limitations by providing data management, including a data dictionary of metadata; data modelling; a logical schema; data integrity; and data security. Security includes backup procedures and access rights assigned to individual users or groups.
+- A developer interface provides tools used to define structures and build database applications, forms or reports. A query processor interprets and checks a query, chooses how to carry it out, accesses the stored data and returns or modifies the specified records while the DBMS applies access and integrity rules.
+
+### Worked example
+
+**Model students joining clubs / Order line data / Run a restricted query:** Draw Student(StudentID, Name) and Club(ClubID, ClubName). Because each student may join many clubs and each club may contain many students, add Membership(StudentID, ClubID, JoinDate) as a linking entity. The completed design has Student 1:M Membership and Club 1:M Membership. ORDER_LINE(OrderID, ProductID, ProductName, Quantity) has composite key OrderID+ProductID. ProductName depends only on ProductID, so split PRODUCT(ProductID, ProductName) and ORDER_LINE(OrderID, ProductID, Quantity) to reach 2NF for that dependency. A developer enters a SELECT statement through the developer interface. The query processor checks the statement and the user's access rights, works out an execution plan, retrieves the permitted rows and returns the result. The data dictionary supplies definitions such as field types, keys and constraints; it does not hold the ordinary user records.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What four kinds of information should an E-R diagram communicate here?
+   **Answer:** Entities, relevant attributes/keys, relationships and cardinality.
+2. What relationship exists between one Customer and many Orders?
+   **Answer:** One-to-many from Customer to Order.
+3. Why add Membership between Student and Club?
+   **Answer:** It resolves the many-to-many relationship into two one-to-many relationships.
+4. Why is matching field spelling not enough to draw a relationship?
+   **Answer:** The scenario/business rule must state or imply that the records are associated.
+5. What does 1NF remove?
+   **Answer:** Repeating groups and non-atomic/multiple values in one field.
+6. What dependency violates 2NF?
+   **Answer:** A non-key attribute depending on only part of a composite key.
+7. What dependency violates 3NF?
+   **Answer:** A non-key attribute depending on another non-key attribute.
+8. What five broad DBMS feature areas are required?
+   **Answer:** Data management including a data dictionary, data modelling, logical schema, data integrity, and data security including backup and access rights.
+9. What does a data dictionary store?
+   **Answer:** Metadata such as table, field, type, key and constraint definitions.
+10. What is the purpose of a developer interface?
+   **Answer:** To provide tools for defining structures or building database applications, forms and reports.
+11. What is the role of the query processor?
+   **Answer:** To interpret/check, plan and carry out database queries or data-maintenance statements.
+12. Which DBMS feature limits users or groups to permitted operations?
+   **Answer:** Access rights within data security.
+
+### Exam-style question and MS
+
+**Question (16 marks):** A clinic stores Patients, Doctors and Appointments. Write an E-R design in words or a labelled diagram and state the two relationship cardinalities. Explain why CUSTOMER(CustomerID, Postcode, Town) may not be in 3NF when each postcode determines one town, and give a 3NF design. A school is introducing a relational DBMS. Explain four DBMS features and the distinct purposes of the developer interface and query processor.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| identifies Patient, Doctor and Appointment as entities | Do not award a collection of unconnected entity boxes as a complete E-R design. Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship. Do not treat the database, data dictionary, developer interface and query processor as interchangeable names. | 1 |
+| gives a suitable identifier/key for each entity |  | 1 |
+| Patient has a one-to-many relationship with Appointment |  | 1 |
+| Doctor has a one-to-many relationship with Appointment |  | 1 |
+| Appointment carries the linking foreign keys / resolves the patient-doctor many-to-many history |  | 1 |
+| attributes and relationship directions are consistent with the scenario |  | 1 |
+| CustomerID determines Postcode and Postcode determines Town |  | 1 |
+| Town is transitively dependent on CustomerID / depends on non-key Postcode |  | 1 |
+| CUSTOMER(CustomerID, Postcode) |  | 1 |
+| POSTCODE(Postcode, Town), with Postcode linked as foreign key |  | 1 |
+| data management/data dictionary stores metadata about structure |  | 1 |
+| data modelling or logical schema represents the database design |  | 1 |
+| integrity rules maintain valid and consistent data |  | 1 |
+| security uses access rights and backup procedures |  | 1 |
+| developer interface supports defining structures or building database applications/forms/reports |  | 1 |
+| query processor interprets/checks and carries out queries or maintenance statements |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +118,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** A strong answer separates Student and Loan/Book data, gives each table a primary key, and uses a foreign key to link records.
 
-
-
 ## Student Task
 Pairs convert a messy club list into relational tables, then mark one field as a primary key and one as a foreign key.
 
@@ -72,45 +145,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Relational terminology, keys and indexing
-
-### Direct explanation
-
-- An entity is a real-world thing about which data is stored and is commonly represented by a table. A table contains records (tuples); each record describes one entity occurrence. A field (attribute) is one named property or column. These paired terms are related but should not be collapsed into one definition.
-- A candidate key is a minimal field or field set that uniquely identifies a record. One candidate key is selected as the primary key. A secondary key is a field used as an additional retrieval or ordering route and need not be unique; it is not another name for an unselected candidate key. A foreign key refers to a key in a related table. An index is a lookup structure built on one or more fields: it can speed retrieval but uses storage and must be maintained after changes.
-
-### Worked example
-
-**Keys for a student table:** In Student(StudentID, Email, TutorGroup), StudentID and Email may be candidate keys if both are unique and minimal; StudentID is selected as primary. TutorGroup can be a secondary key for retrieving all students in one group even though many records share the value. An index on TutorGroup can provide a faster lookup route.
-
-### Targeted practice and answers
-
-1. Distinguish a record/tuple from a field/attribute.
-   **Answer:** A record/tuple is one complete row for an entity occurrence; a field/attribute is one named property or column.
-2. What makes a candidate key minimal?
-   **Answer:** No field can be removed while retaining uniqueness.
-3. Must a secondary key uniquely identify one record?
-   **Answer:** No. It may retrieve a set of records sharing the same value.
-4. Give one benefit and one cost of an index.
-   **Answer:** It can speed lookup/ordering, but uses storage and must be updated when data changes.
-
-### Exam-style question and MS
-
-**Question (6 marks):** For Student(StudentID, Email, TutorGroup), explain the roles of a candidate key, primary key, secondary key and index.
-
-- **B1** candidate key is a minimal unique identifier, such as StudentID or unique Email
-- **B1** primary key is the candidate selected to identify each record
-- **B1** secondary key is an additional retrieval field such as non-unique TutorGroup
-- **B1** secondary key need not be unique
-- **B1** index maps field values to record locations to speed access
-- **B1** index requires storage and update maintenance
-
-**Strict note:** Do not describe a secondary key as an alternate candidate key or require it to be unique.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -118,7 +152,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `checkpoint`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-checkpoint.jpg`
 
 1. Monthly checkpoint
@@ -131,7 +165,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `constraint-tool`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-constraint-tool.jpg`
 
 1. Interactive constraint checker
@@ -143,7 +177,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `constraints`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-constraints.jpg`
 
 1. A constraint limits accepted values to help maintain data integrity. It does not prove the data is true; it helps reject impossible or invalid data.
@@ -156,11 +190,28 @@ Correction prompt: "State the correct term, then explain the relevant process or
 8. Exam sentence:
 9. A constraint improves data integrity by preventing values that do not meet a rule, such as rejecting a mark outside 0 to 100.
 
+### What does a DBMS provide?
+
+- **Explains:** `dbms`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-dbms.jpg`
+
+1. A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data.
+2. Data management stores, organises, retrieves and updates data; maintains metadata in a data dictionary.
+3. Data modelling helps define entities, tables, fields and the logical schema of the database.
+4. Data integrity enforces rules so values are valid and relationships remain consistent.
+5. Data security uses access rights for individuals or groups; supports backup and recovery procedures.
+6. Developer interface provides tools for creating structures, forms, reports or database applications.
+7. Query processor interprets and carries out queries so users can retrieve or change data.
+8. Exam sentence:
+9. The DBMS manages the database by controlling data definition, access, integrity, security and queries; the database is the organised data itself.
+
 ### Designing fields properly
 
 - **Explains:** `fields`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-fields.jpg`
 
 1. Each field should have a name, data type, possible field size and constraints. Good design reduces invalid data at entry.
@@ -173,7 +224,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `terms`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-terms.jpg`
 
 1. A table stores records about one entity. A record is one complete row. A field is one column or attribute.
@@ -192,7 +243,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `type-tool`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-type-tool.jpg`
 
 1. Interactive data type chooser
@@ -203,7 +254,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `types`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-types.jpg`
 
 1. Data type

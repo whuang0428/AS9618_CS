@@ -1,4 +1,4 @@
-# Lesson 088: Validation, verification, security, and backup in databases
+# Lesson 088: Validation, verification, security and backup in databases
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -42,8 +42,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 **Problem:** Design two related tables for students borrowing library books and identify suitable primary and foreign keys.
 
 **Worked answer / marking focus:** A strong answer separates Student and Loan/Book data, gives each table a primary key, and uses a foreign key to link records.
-
-
 
 ## Student Task
 Pairs convert a messy club list into relational tables, then mark one field as a primary key and one as a foreign key.

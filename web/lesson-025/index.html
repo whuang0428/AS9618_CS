@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 025 | Network performance, latency, bandwidth and congestion</title>
+    <title>AS9618 Lesson 025 | Internet connection hardware</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Network performance, latency, bandwidth and congestion</h1>
+        <h1>Internet connection hardware</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -38,11 +38,14 @@
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 025 | 45 minutes | 5-minute quiz</p>
             <h2>"Fast internet" is not one thing. It is several bottlenecks wearing one coat.</h2>
@@ -63,7 +66,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam questions reward exact causes. "The network is slow" is a complaint, not an explanation.</p>
@@ -74,7 +77,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A video call looks sharp but everyone replies two seconds late. Which factor is most suspicious?</h2>
@@ -90,7 +93,7 @@
           </div>
         </section>
 
-        <section class="panel" id="concepts" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concepts">
+        <section class="panel" id="concepts" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Core performance terms</h2>
@@ -120,7 +123,7 @@
         </section>
 
         <!-- stage10-explanation:start concepts -->
-        <section class="panel explanation-panel" id="explanation-concepts" data-explains="concepts" data-explanation-kind="tradeoff" aria-labelledby="explanation-concepts-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concepts">
+        <section class="panel explanation-panel" id="explanation-concepts" data-explains="concepts" data-explanation-kind="tradeoff" aria-labelledby="explanation-concepts-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <h2 class="explanation-sr-only" id="explanation-concepts-title">Core performance terms</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-025-concepts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Core performance terms with a structured visual model." />
@@ -132,8 +135,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end concepts -->
-
-        <section class="panel" id="factors" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="factors">
+        <section class="panel" id="factors" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Factors that affect performance</h2>
@@ -168,7 +170,7 @@
         </section>
 
         <!-- stage10-explanation:start factors -->
-        <section class="panel explanation-panel" id="explanation-factors" data-explains="factors" data-explanation-kind="tradeoff" aria-labelledby="explanation-factors-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="factors">
+        <section class="panel explanation-panel" id="explanation-factors" data-explains="factors" data-explanation-kind="tradeoff" aria-labelledby="explanation-factors-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <h2 class="explanation-sr-only" id="explanation-factors-title">Factors that affect performance</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-025-factors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Factors that affect performance with a structured visual model." />
@@ -180,8 +182,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end factors -->
-
-        <section class="panel" id="calculation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="calculation">
+        <section class="panel" id="calculation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Simple transfer time calculation</h2>
@@ -202,7 +203,7 @@
         </section>
 
         <!-- stage10-explanation:start calculation -->
-        <section class="panel explanation-panel" id="explanation-calculation" data-explains="calculation" data-explanation-kind="mechanism" aria-labelledby="explanation-calculation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="calculation">
+        <section class="panel explanation-panel" id="explanation-calculation" data-explains="calculation" data-explanation-kind="mechanism" aria-labelledby="explanation-calculation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <h2 class="explanation-sr-only" id="explanation-calculation-title">Simple transfer time calculation</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-025-calculation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Simple transfer time calculation with a structured visual model." />
@@ -214,9 +215,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end calculation -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Transfer time estimator</h2>
@@ -248,7 +247,7 @@
           <div class="method-box" id="calcMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -261,7 +260,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -271,7 +270,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the weak performance answer</h2>
@@ -290,7 +289,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -299,59 +298,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Bit streaming, bit rate and broadband</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Bit streaming delivers media progressively so playback can begin before the whole file arrives. Real-time streaming carries a live event with minimal delay; on-demand streaming sends stored content selected by the user.</p>
-            <p>Bit rate is the number of bits transmitted each second. Available broadband speed must normally exceed the media bit rate and absorb variation; otherwise the player buffers, lowers quality or pauses. A buffer stores arriving data temporarily.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: 6 Mbit/s video on 4 Mbit/s link</h3>
-            <p>The stream consumes data faster than the link supplies it. A starting buffer only delays the shortage; sustained playback requires a lower bit rate or faster connection.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Bit streaming, bit rate and broadband: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Why does a streaming player buffer data?</p>
-              <details><summary>Show answer</summary><p>To absorb short variations between arrival and playback rates.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Classify a live sports broadcast.</p>
-              <details><summary>Show answer</summary><p>Real-time streaming.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Classify a selected recorded film.</p>
-              <details><summary>Show answer</summary><p>On-demand streaming.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A video has a bit rate of 8 Mbit/s. Explain why a connection advertised as 8 Mbit/s may still pause during playback.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> video requires about 8 million bits each second</li>
-                <li><strong>B1</strong> actual available speed may be below advertised/maximum speed</li>
-                <li><strong>B1</strong> other traffic, overhead or variation reduces throughput</li>
-                <li><strong>B1</strong> buffer empties when data arrives more slowly than playback consumes it</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Diagnose the bottleneck</h2>

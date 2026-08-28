@@ -79,11 +79,17 @@ const mistakes = [
   { wrong: "I used `i`, `j`, `x`, `y` everywhere in a word problem.", fix: "Use meaningful identifiers such as Student, Mark, Total or PassCount unless short counters are clearly defined." },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "3 marks",
-    prompt: "Convert this Java-like fragment into Cambridge-style pseudocode: `total = total + mark; System.out.println(total);`",
+    prompt: "Write this Java-like fragment in Cambridge-style pseudocode: `total = total + mark; System.out.println(total);`",
     answer: "Total <- Total + Mark\nOUTPUT Total",
     marking: [
       { mark: "M1", text: "uses correct Cambridge-style update Total <- Total + Mark" },
@@ -99,7 +105,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Rewrite this logic as readable Cambridge-style pseudocode: if mark is at least 50 output Pass, otherwise output Resit.",
+    prompt: "Write this logic as readable Cambridge-style pseudocode: if mark is at least 50 output Pass, otherwise output Resit.",
     answer: "IF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
     marking: [
       { mark: "M1", text: "uses IF with condition Mark >= 50 or equivalent" },
@@ -320,10 +326,10 @@ function setupExam() {
       <p>${question.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${question.answer}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

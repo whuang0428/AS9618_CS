@@ -6,7 +6,7 @@
     <title>AS9618 Lesson 138 | Debugging using traces and breakpoints</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -44,11 +44,14 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 138 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
             <h2>A debugger provides evidence about program state and execution flow.</h2>
@@ -71,7 +74,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 may ask students to trace an algorithm, identify a logic error, or explain why breakpoints help debugging.</p>
@@ -82,7 +85,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>The pass mark is 50. Which line is best for a breakpoint?</h2>
@@ -97,7 +100,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the line where the branch decision is made.</div>
         </section>
 
-        <section class="panel" id="purpose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Debugging</p>
             <h2>Debugging locates and corrects faults</h2>
@@ -125,7 +128,7 @@ ENDIF</code></pre>
         </section>
 
         <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <h2 class="explanation-sr-only" id="explanation-purpose-title">Debugging locates and corrects faults</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Debugging locates and corrects faults with a structured visual model." />
@@ -141,8 +144,7 @@ ENDIF</li><li><strong>Lesson fact:</strong> The example is syntactically valid b
           </div>
         </section>
         <!-- stage10-explanation:end purpose -->
-
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Trace table</p>
             <h2>A trace table records values after each important step</h2>
@@ -156,7 +158,7 @@ ENDIF</li><li><strong>Lesson fact:</strong> The example is syntactically valid b
           <div class="callout">The trace shows the actual route through the program. The expected route for 50 should have been Pass.</div>
         </section>
 
-        <section class="panel" id="breakpoint" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="breakpoint">
+        <section class="panel" id="breakpoint" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Breakpoint</p>
             <h2>A breakpoint pauses execution at a chosen line</h2>
@@ -178,7 +180,7 @@ ENDIF</li><li><strong>Lesson fact:</strong> The example is syntactically valid b
         </section>
 
         <!-- stage10-explanation:start breakpoint -->
-        <section class="panel explanation-panel" id="explanation-breakpoint" data-explains="breakpoint" data-explanation-kind="mechanism" aria-labelledby="explanation-breakpoint-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="breakpoint">
+        <section class="panel explanation-panel" id="explanation-breakpoint" data-explains="breakpoint" data-explanation-kind="mechanism" aria-labelledby="explanation-breakpoint-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <h2 class="explanation-sr-only" id="explanation-breakpoint-title">A breakpoint pauses execution at a chosen line</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-breakpoint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A breakpoint pauses execution at a chosen line with a structured visual model." />
@@ -190,8 +192,7 @@ ENDIF</li><li><strong>Lesson fact:</strong> The example is syntactically valid b
           </div>
         </section>
         <!-- stage10-explanation:end breakpoint -->
-
-        <section class="panel" id="watch" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="watch">
+        <section class="panel" id="watch" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Watch variables</p>
             <h2>Watching variables shows state changes while stepping</h2>
@@ -205,7 +206,7 @@ ENDIF</li><li><strong>Lesson fact:</strong> The example is syntactically valid b
         </section>
 
         <!-- stage10-explanation:start watch -->
-        <section class="panel explanation-panel" id="explanation-watch" data-explains="watch" data-explanation-kind="mechanism" aria-labelledby="explanation-watch-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="watch">
+        <section class="panel explanation-panel" id="explanation-watch" data-explains="watch" data-explanation-kind="mechanism" aria-labelledby="explanation-watch-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <h2 class="explanation-sr-only" id="explanation-watch-title">Watching variables shows state changes while stepping</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-watch.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Watching variables shows state changes while stepping with a structured visual model." />
@@ -217,8 +218,7 @@ ENDIF</li><li><strong>Lesson fact:</strong> The example is syntactically valid b
           </div>
         </section>
         <!-- stage10-explanation:end watch -->
-
-        <section class="panel" id="stepping" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stepping">
+        <section class="panel" id="stepping" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Stepping</p>
             <h2>Step through code one instruction at a time</h2>
@@ -236,7 +236,7 @@ ENDIF</li><li><strong>Lesson fact:</strong> The example is syntactically valid b
         </section>
 
         <!-- stage10-explanation:start stepping -->
-        <section class="panel explanation-panel" id="explanation-stepping" data-explains="stepping" data-explanation-kind="mechanism" aria-labelledby="explanation-stepping-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stepping">
+        <section class="panel explanation-panel" id="explanation-stepping" data-explains="stepping" data-explanation-kind="mechanism" aria-labelledby="explanation-stepping-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <h2 class="explanation-sr-only" id="explanation-stepping-title">Step through code one instruction at a time</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-stepping.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Step through code one instruction at a time with a structured visual model." />
@@ -248,8 +248,7 @@ ENDIF</li><li><strong>Lesson fact:</strong> The example is syntactically valid b
           </div>
         </section>
         <!-- stage10-explanation:end stepping -->
-
-        <section class="panel" id="bug" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bug">
+        <section class="panel" id="bug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Fault example</p>
             <h2>Trace the boundary case to expose a logic error</h2>
@@ -274,21 +273,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <!-- stage10-explanation:start bug -->
-        <section class="panel explanation-panel" id="explanation-bug" data-explains="bug" data-explanation-kind="mechanism" aria-labelledby="explanation-bug-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bug">
-          <h2 class="explanation-sr-only" id="explanation-bug-title">Analyse and amend an existing program</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-bug.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Analyse and amend an existing program with a structured visual model." />
-            <figcaption class="explanation-sr-only">Analyse and amend an existing program: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Analyse the existing program's purpose, inputs, outputs, control flow and behaviour that must remain unchanged before editing it.</li><li><strong>Lesson fact:</strong> Amend declarations, initialisation, processing and output coherently to add the requested functionality rather than rewriting unrelated code.</li><li><strong>Lesson fact:</strong> Test the new path and rerun regression tests for the existing path; adding functionality is an enhancement, not merely correcting a fault.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end bug -->
-
-        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+        <section class="panel" id="java" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Java debugging tools help practice, but Cambridge pseudocode remains the exam format</h2>
@@ -317,7 +302,7 @@ if (mark &gt;= 50) {
         </section>
 
         <!-- stage10-explanation:start java -->
-        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <h2 class="explanation-sr-only" id="explanation-java-title">Java debugging tools help practice, but Cambridge pseudocode remains the exam format</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java debugging tools help practice, but Cambridge pseudocode remains the exam format with a structured visual model." />
@@ -329,9 +314,7 @@ if (mark &gt;= 50) {
           </div>
         </section>
         <!-- stage10-explanation:end java -->
-
-
-        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
+        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Interactive trace simulator</p>
             <h2>Run the faulty condition with a chosen mark</h2>
@@ -347,7 +330,7 @@ if (mark &gt;= 50) {
           <div class="trace-output" id="traceOutput" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Breakpoint chooser</p>
             <h2>Select the most useful breakpoint for a suspected fault</h2>
@@ -366,7 +349,7 @@ if (mark &gt;= 50) {
           <div id="breakpointOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Use traces and breakpoints to narrow the fault</h2>
@@ -379,7 +362,7 @@ if (mark &gt;= 50) {
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant checking: answer first, reveal second</h2>
@@ -387,7 +370,7 @@ if (mark &gt;= 50) {
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Debug the debugging plan</h2>
@@ -395,7 +378,7 @@ if (mark &gt;= 50) {
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style wording with expandable MS</h2>
@@ -404,62 +387,7 @@ if (mark &gt;= 50) {
           <div id="examList" class="exam-list"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Analyse and amend an existing program to enhance functionality</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions. Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.</p>
-            <p>Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.</p>
-            <p>Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Add a Merit count without breaking PassCount</h3>
-            <p>The existing program counts marks at least 50 in PassCount. Analysis shows one traversal already reads every mark, so declare and initialise MeritCount, add IF Marks[Index] &gt;= 70 THEN MeritCount &lt;- MeritCount + 1 ENDIF inside the same loop, and output both counters after the loop. Test 49, 50, 69 and 70 to cover unchanged pass behaviour and the new merit boundary.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Analyse and amend an existing program to enhance functionality: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What should be recorded before changing existing code?</p>
-              <details><summary>Show answer</summary><p>Its purpose, inputs, outputs, relevant control/data flow, assumptions and behaviour that must remain unchanged.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Why rerun old tests after adding a feature?</p>
-              <details><summary>Show answer</summary><p>Regression tests check that the amendment has not broken existing behaviour.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> How is an enhancement different from merely correcting a fault?</p>
-              <details><summary>Show answer</summary><p>An enhancement adds or improves required functionality; a correction restores behaviour that was already required.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>An existing program counts PassCount for Marks[1:30] where each mark is at least 50. Analyse where a new MeritCount for marks at least 70 should be added, write the amended declarations, initialisation, loop update and output, and name four boundary-focused test values.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> analysis identifies the existing traversal and output that must remain</li>
-                <li><strong>B1</strong> declares and initialises MeritCount without removing PassCount</li>
-                <li><strong>M1</strong> increments MeritCount inside the existing traversal when mark is at least 70</li>
-                <li><strong>M1</strong> preserves the existing pass condition at 50 and outputs both results after the loop</li>
-                <li><strong>B1</strong> uses 49 and 50 to regression-test the pass boundary</li>
-                <li><strong>B1</strong> uses 69 and 70 to test the new merit boundary</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>

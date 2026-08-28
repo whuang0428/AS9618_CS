@@ -1,5 +1,9 @@
 # Lesson 140: Converting Java habits into Cambridge pseudocode
 
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
+
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
 **Syllabus reference:** Syllabus Section 11
@@ -46,7 +50,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit correct control flow, meaningful identifiers, correct parameter or variable use, and test data that actually exercises the construct.
 
-
 ## Student Task
 Students write Cambridge pseudocode first, then produce a Java support version. They circle every place where Java syntax must not leak into the exam answer.
 
@@ -74,41 +77,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Translate descriptions into Cambridge pseudocode
-
-### Direct explanation
-
-- To translate a flowchart, follow arrows from Start, convert input/output symbols directly, convert diamonds into IF/CASE or loop conditions, and preserve every branch and reconnection. To translate structured English, identify its controlled verbs and indentation before selecting Cambridge constructs.
-- The answer must be Cambridge pseudocode, not Java: use assignment arrow, THEN/ENDIF, FOR...NEXT, WHILE...ENDWHILE or REPEAT...UNTIL as appropriate. Trace both versions with the same data to confirm equivalence.
-
-### Worked example
-
-**Flowchart sum loop:** A flowchart sets Total to 0 and repeats input/add until Value = -1. Pseudocode uses Total <- 0; REPEAT; INPUT Value; IF Value <> -1 THEN Total <- Total + Value; ENDIF; UNTIL Value = -1; OUTPUT Total.
-
-### Targeted practice and answers
-
-1. How is a flowchart decision normally translated?
-   **Answer:** As a selection or loop condition, depending on where arrows reconnect.
-2. What check confirms a translation is equivalent?
-   **Answer:** Dry-run both with the same inputs and compare outputs/control path.
-3. Should Java braces appear in a Cambridge pseudocode answer?
-   **Answer:** No; use Cambridge keywords and terminators.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Translate this structured-English design into Cambridge pseudocode: input five temperatures; count those below zero; output the count.
-
-- **B1** initialises count to 0
-- **M1** uses a five-iteration count-controlled loop with INPUT
-- **M1** tests Temperature < 0 and increments count
-- **A1** outputs count after the loop with coherent Cambridge syntax
-
-**Strict note:** Do not accept Java syntax such as int, braces or System.out as Cambridge pseudocode.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -116,7 +84,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `arrays`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-arrays.jpg`
 
 1. Java support example only
@@ -131,7 +99,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `assignment`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-assignment.jpg`
 
 1. Assignment
@@ -145,7 +113,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `checkpoint`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-checkpoint.jpg`
 
 1. Monthly checkpoint
@@ -160,7 +128,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `io`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-io.jpg`
 
 1. Input and output
@@ -176,7 +144,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `loops`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-loops.jpg`
 
 1. Use FOR when a counter range determines the number of iterations.
@@ -188,7 +156,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `selection`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-selection.jpg`
 
 1. Selection
@@ -206,28 +174,17 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `spotter`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-spotter.jpg`
 
 1. Java spotter
 2. Suspicious answer fragment
 
-### Translate a flowchart or structured English into pseudocode
-
-- **Explains:** `standard`
-- **Explanation type:** process
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-standard.jpg`
-
-1. Follow a flowchart from Start: translate input/output symbols, decisions, branches and loop-back arrows without losing a path.
-2. From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.
-3. Dry-run the source description and pseudocode with the same data; matching paths and outputs confirm equivalence.
-
 ### Use PROCEDURE and FUNCTION instead of Java method wrappers
 
 - **Explains:** `subroutines`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-subroutines.jpg`
 
 1. Subroutines

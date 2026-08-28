@@ -6,10 +6,8 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ## Marking conventions
 
-- **B1**: independent knowledge, identification or explanation point.
-- **M1**: method/process point; award when the stated method is shown.
-- **A1**: accurate answer or conclusion, normally dependent on the relevant method where indicated.
-- **FT**: follow through a candidate's earlier value only where the note explicitly permits it.
+- Each listed answer point is worth 1 mark unless stated otherwise.
+- Follow-through is allowed only where the Guidance explicitly permits it.
 - Text separated by a forward slash gives acceptable alternatives for the same mark, not extra marks.
 - Credit clear equivalent wording unless a specific syllabus term or representation is required.
 - Do not award repeated, self-contradictory or vague statements as separate points.
@@ -56,11 +54,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. It equals 32 because separate BCD nibbles encode digits 3 and 2; whole-byte binary interpretation is a different representation.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. Screen resolution does not change stored image pixels; doubling one image dimension doubles pixel data only when other factors stay fixed.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
@@ -73,23 +71,23 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q1 [4]
 
-- **M1** 320 x 200
-- **M1** multiplies by 8 bits
-- **M1** divides by 8
-- **A1** 64000 bytes
-
-**Guidance:** Allow FT from the candidate's earlier incorrect pixel or bit total only when the subsequent conversion to bytes is correct.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| 320 x 200 | Allow FT from the candidate's earlier incorrect pixel or bit total only when the subsequent conversion to bytes is correct. | 1 |
+| multiplies by 8 bits |  | 1 |
+| divides by 8 |  | 1 |
+| 64000 bytes |  | 1 |
 
 #### Q2 [6]
 
-- **B1** bitmap stores pixels
-- **B1** photograph has complex per-pixel colours/details
-- **B1** vector stores objects/properties/drawing list
-- **B1** logo shapes can be represented geometrically
-- **B1** vector scales without pixelation
-- **B1** recommends bitmap for the photograph and vector for the logo
-
-**Guidance:** Do not accept only file-size claims.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| bitmap stores pixels | Do not accept only file-size claims. | 1 |
+| photograph has complex per-pixel colours/details |  | 1 |
+| vector stores objects/properties/drawing list |  | 1 |
+| logo shapes can be represented geometrically |  | 1 |
+| vector scales without pixelation |  | 1 |
+| recommends bitmap for the photograph and vector for the logo |  | 1 |
 
 ---
 
@@ -135,40 +133,40 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. IP addresses support inter-network routing; MAC addresses identify interfaces for local frame delivery.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. A private cloud is infrastructure dedicated to one organisation; it may be costly and still use access controls.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
 ### Timed Exam Practice [10]
 
 1. Describe CSMA/CD after two stations transmit simultaneously. **[4]**
-2. Recommend star or mesh topology for a hospital network requiring resilience. **[6]**
+2. Suggest star or mesh topology for a hospital network requiring resilience. **[6]**
 
 ### Answer Key / Mark Scheme
 
 #### Q1 [4]
 
-- **B1** collision is detected
-- **B1** transmissions stop/jam indication
-- **B1** random backoff
-- **B1** stations sense and retry
-
-**Guidance:** Do not call this collision avoidance.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| collision is detected | Do not call this collision avoidance. | 1 |
+| transmissions stop/jam indication |  | 1 |
+| random backoff |  | 1 |
+| stations sense and retry |  | 1 |
 
 #### Q2 [6]
 
-- **B1** star uses central switch
-- **B1** single switch can be point of failure
-- **B1** individual star cable failure affects one node
-- **B1** mesh provides alternative paths
-- **B1** mesh costs more cabling/management
-- **B1** recommends mesh for the stated resilience requirement and links this to alternative paths, while acknowledging cost
-
-**Guidance:** No mark for recommendation alone.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| star uses central switch | No mark for recommendation alone. | 1 |
+| single switch can be point of failure |  | 1 |
+| individual star cable failure affects one node |  | 1 |
+| mesh provides alternative paths |  | 1 |
+| mesh costs more cabling/management |  | 1 |
+| recommends mesh for the stated resilience requirement and links this to alternative paths, while acknowledging cost |  | 1 |
 
 ---
 
@@ -214,11 +212,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. A buffer temporarily stores data to manage different producer/consumer rates; it is not a backup.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. Monitoring records/displays readings; control additionally changes an actuator and may use feedback.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
@@ -231,23 +229,23 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q1 [4]
 
-- **B1** SRAM faster
-- **B1** SRAM no refresh
-- **B1** DRAM denser/cheaper
-- **B1** DRAM requires refresh
-
-**Guidance:** Use paired comparisons.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| SRAM faster | Use paired comparisons. | 1 |
+| SRAM no refresh |  | 1 |
+| DRAM denser/cheaper |  | 1 |
+| DRAM requires refresh |  | 1 |
 
 #### Q2 [6]
 
-- **B1** optical disc uses laser/reflection
-- **B1** disc rotates and track is followed
-- **B1** HDD uses magnetic platters
-- **B1** head senses magnetic patterns
-- **B1** HDD actuator positions head / optical drive focuses laser
-- **B1** optical pickup does not contact the disc whereas an HDD head operates very close to the platter
-
-**Guidance:** Do not award generic capacity comparisons only.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| optical disc uses laser/reflection | Do not award generic capacity comparisons only. | 1 |
+| disc rotates and track is followed |  | 1 |
+| HDD uses magnetic platters |  | 1 |
+| head senses magnetic patterns |  | 1 |
+| HDD actuator positions head / optical drive focuses laser |  | 1 |
+| optical pickup does not contact the disc whereas an HDD head operates very close to the platter |  | 1 |
 
 ---
 
@@ -293,11 +291,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. In <label>: <opcode> <operand>, START is an instruction label naming that instruction; a symbolic data address is defined separately with <label>: <data>.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. CMI <address> uses indirect addressing: the operand identifies a location whose contents lead to the value compared with ACC.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
@@ -310,23 +308,23 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q1 [4]
 
-- **B1** LDR loads immediate n into IX
-- **B1** CMI compares ACC with a value obtained through indirect addressing
-- **B1** JPE jumps after a comparison produces True
-- **B1** JPN jumps after a comparison produces False
-
-**Guidance:** Do not accept relative LDR, immediate CMI, equality/zero JPE or negative-status JPN.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| LDR loads immediate n into IX | Do not accept relative LDR, immediate CMI, equality/zero JPE or negative-status JPN. | 1 |
+| CMI compares ACC with a value obtained through indirect addressing |  | 1 |
+| JPE jumps after a comparison produces True |  | 1 |
+| JPN jumps after a comparison produces False |  | 1 |
 
 #### Q2 [6]
 
-- **B1** request raised/detected
-- **B1** current instruction completes
-- **B1** priority/enabled check
-- **B1** state/return address saved
-- **B1** ISR executes
-- **B1** state restored and program resumes
-
-**Guidance:** Do not state the interrupted program starts again.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| request raised/detected | Do not state the interrupted program starts again. | 1 |
+| current instruction completes |  | 1 |
+| priority/enabled check |  | 1 |
+| state/return address saved |  | 1 |
+| ISR executes |  | 1 |
+| state restored and program resumes |  | 1 |
 
 ---
 
@@ -372,11 +370,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. An interpreter normally translates and executes statement by statement without producing a standalone executable.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. It identifies syntax issues while editing; logically valid but incorrect algorithms require testing/debugging.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
@@ -389,23 +387,23 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q1 [4]
 
-- **B1** immediate statement-level feedback
-- **B1** easy testing/debugging
-- **B1** slower repeated execution
-- **B1** requires interpreter/source at run time
-
-**Guidance:** Max two benefits and two drawbacks.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| immediate statement-level feedback | Max two benefits and two drawbacks. | 1 |
+| easy testing/debugging |  | 1 |
+| slower repeated execution |  | 1 |
+| requires interpreter/source at run time |  | 1 |
 
 #### Q2 [6]
 
-- **B1** allocates/protects memory per process
-- **B1** handles virtual memory when required
-- **B1** schedules CPU/process states
-- **B1** supports multitasking/context switching
-- **B1** organises names/directories/locations
-- **B1** controls file access/concurrent writes/permissions
-
-**Guidance:** Credit correctly attributed mechanisms.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| allocates/protects memory per process | Credit correctly attributed mechanisms. | 1 |
+| handles virtual memory when required |  | 1 |
+| schedules CPU/process states |  | 1 |
+| supports multitasking/context switching |  | 1 |
+| organises names/directories/locations |  | 1 |
+| controls file access/concurrent writes/permissions |  | 1 |
 
 ---
 
@@ -451,40 +449,40 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. Encryption protects confidentiality; integrity requires hashing/signatures/checks and accuracy may require validation/verification.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. Presence checks non-blank input; an existence check looks for a matching stored ID.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
 ### Timed Exam Practice [10]
 
 1. Describe one verification method used during data entry and two methods used during data transfer. **[4]**
-2. Recommend three controls for an online banking account and explain the threat reduced by each. **[6]**
+2. Suggest three controls for an online banking account and explain the threat reduced by each. **[6]**
 
 ### Answer Key / Mark Scheme
 
 #### Q1 [4]
 
-- **B1** visual check compares entered data with the source, or double entry compares two independently entered values
-- **B1** byte parity checks an agreed odd/even parity bit and block parity extends checks across rows and columns
-- **B1** checksum is calculated from the data block by the sender and recalculated/compared by the receiver
-- **B1** these methods detect many errors but do not prove truth or automatically correct every error
-
-**Guidance:** Do not substitute a validation check digit for a transfer checksum; byte parity and block parity must be distinguished.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| visual check compares entered data with the source, or double entry compares two independently entered values | Do not substitute a validation check digit for a transfer checksum; byte parity and block parity must be distinguished. | 1 |
+| byte parity checks an agreed odd/even parity bit and block parity extends checks across rows and columns |  | 1 |
+| checksum is calculated from the data block by the sender and recalculated/compared by the receiver |  | 1 |
+| these methods detect many errors but do not prove truth or automatically correct every error |  | 1 |
 
 #### Q2 [6]
 
-- **B1** strong password/MFA control
-- **B1** reduces stolen-password/impersonation risk
-- **B1** encryption/HTTPS control
-- **B1** reduces interception disclosure
-- **B1** access rights/monitoring/firewall/anti-malware control
-- **B1** matching threat consequence explained
-
-**Guidance:** One mark for control and one for matching mechanism per pair.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| strong password/MFA control | One mark for control and one for matching mechanism per pair. | 1 |
+| reduces stolen-password/impersonation risk |  | 1 |
+| encryption/HTTPS control |  | 1 |
+| reduces interception disclosure |  | 1 |
+| access rights/monitoring/firewall/anti-malware control |  | 1 |
+| matching threat consequence explained |  | 1 |
 
 ---
 
@@ -530,11 +528,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. Copyright remains; the owner grants permissions and conditions through a licence.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. Accuracy can vary by group and ethics also involves privacy, transparency, accountability and stakeholder harm.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
@@ -547,23 +545,23 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q1 [4]
 
-- **B1** states a code guides professional decisions or sets expected standards
-- **B1** explains this supports consistent, accountable conduct
-- **B1** states a code protects clients, users or the public interest
-- **B1** explains this promotes trust by requiring competence, integrity or confidentiality
-
-**Guidance:** Award the second mark for each purpose only when its professional or public consequence is explained.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| states a code guides professional decisions or sets expected standards | Award the second mark for each purpose only when its professional or public consequence is explained. | 1 |
+| explains this supports consistent, accountable conduct |  | 1 |
+| states a code protects clients, users or the public interest |  | 1 |
+| explains this promotes trust by requiring competence, integrity or confidentiality |  | 1 |
 
 #### Q2 [6]
 
-- **B1** AI automates matching captured faces to stored biometric templates, giving a speed/attendance-recording benefit
-- **B1** privacy/biometric-data risk
-- **B1** bias/false match consequence
-- **B1** security/access/retention control
-- **B1** alternative or human review/appeal
-- **B1** makes a reasoned recommendation for the school using attendance benefit and biometric privacy or false-match risk
-
-**Guidance:** Do not award a one-sided list or generic AI claim as evaluation.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| AI automates matching captured faces to stored biometric templates, giving a speed/attendance-recording benefit | Do not award a one-sided list or generic AI claim as evaluation. | 1 |
+| privacy/biometric-data risk |  | 1 |
+| bias/false match consequence |  | 1 |
+| security/access/retention control |  | 1 |
+| alternative or human review/appeal |  | 1 |
+| makes a reasoned recommendation for the school using attendance benefit and biometric privacy or false-match risk |  | 1 |
 
 ---
 
@@ -609,11 +607,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. Foreign-key values may repeat; each must match a referenced parent key or valid null.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. GROUP BY forms groups for aggregate calculations; ORDER BY controls result ordering.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
@@ -626,23 +624,23 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q1 [4]
 
-- **B1** composite key is OrderID+ProductID
-- **B1** ProductName depends on ProductID only
-- **B1** this is a partial dependency
-- **B1** split PRODUCT and ORDER_LINE tables
-
-**Guidance:** Keys/relationship must remain recoverable.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| composite key is OrderID+ProductID | Keys/relationship must remain recoverable. | 1 |
+| ProductName depends on ProductID only |  | 1 |
+| this is a partial dependency |  | 1 |
+| split PRODUCT and ORDER_LINE tables |  | 1 |
 
 #### Q2 [6]
 
-- **B1** SELECT DepartmentName, COUNT(*)
-- **B1** FROM Department
-- **B1** INNER JOIN Employee
-- **B1** ON matching DepartmentID keys
-- **B1** GROUP BY DepartmentName
-- **B1** ORDER BY COUNT(*) DESC
-
-**Guidance:** Maximum two tables as required by AS syllabus.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| SELECT DepartmentName, COUNT(*) | Maximum two tables as required by AS syllabus. | 1 |
+| FROM Department |  | 1 |
+| INNER JOIN Employee |  | 1 |
+| ON matching DepartmentID keys |  | 1 |
+| GROUP BY DepartmentName |  | 1 |
+| ORDER BY COUNT(*) DESC |  | 1 |
 
 ---
 
@@ -688,40 +686,40 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. State the mechanism and context: higher bandwidth/low attenuation/interference resistance, therefore suitable for the stated link.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. Explain authentication plus access rights, encryption, audit and backup as separate controls with consequences.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
 ### Timed Exam Practice [10]
 
-1. Improve this answer for four marks: 'Cache makes the CPU faster.' **[4]**
+1. Develop this answer for four marks: 'Cache makes the CPU faster.' **[4]**
 2. A school chooses cloud storage for student records. Discuss benefits, risks and safeguards. **[6]**
 
 ### Answer Key / Mark Scheme
 
 #### Q1 [4]
 
-- **B1** cache stores frequently/recently used data/instructions
-- **B1** located close to/has faster access than RAM
-- **B1** cache hit avoids slower main-memory access
-- **B1** reduces average CPU waiting/access time
-
-**Guidance:** Do not award empty comparative words.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| cache stores frequently/recently used data/instructions | Do not award empty comparative words. | 1 |
+| located close to/has faster access than RAM |  | 1 |
+| cache hit avoids slower main-memory access |  | 1 |
+| reduces average CPU waiting/access time |  | 1 |
 
 #### Q2 [6]
 
-- **B1** remote access/scaling/provider maintenance benefit
-- **B1** availability depends on network/provider
-- **B1** privacy/jurisdiction/unauthorised access risk
-- **B1** encryption/access rights/MFA safeguard
-- **B1** backup/versioning/recovery safeguard
-- **B1** recommends a deployment approach for student records using confidentiality, availability and provider-control evidence
-
-**Guidance:** Discussion requires both sides and context.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| remote access/scaling/provider maintenance benefit | Discussion requires both sides and context. | 1 |
+| availability depends on network/provider |  | 1 |
+| privacy/jurisdiction/unauthorised access risk |  | 1 |
+| encryption/access rights/MFA safeguard |  | 1 |
+| backup/versioning/recovery safeguard |  | 1 |
+| recommends a deployment approach for student records using confidentiality, availability and provider-control evidence |  | 1 |
 
 ---
 
@@ -767,40 +765,40 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. It repeatedly decomposes high-level steps until each is precise enough to implement.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. It uses controlled statements and indentation to express sequence, selection and iteration unambiguously.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
 ### Timed Exam Practice [10]
 
-1. Construct identifier-table entries for a student's name and the count of valid marks entered. **[4]**
-2. Refine 'process quiz results' into a coherent modular algorithm. **[6]**
+1. Complete identifier-table entries for a student's name and the count of valid marks entered. **[4]**
+2. Develop 'process quiz results' into a coherent modular algorithm. **[6]**
 
 ### Answer Key / Mark Scheme
 
 #### Q1 [4]
 
-- **B1** meaningful StudentName or equivalent identifier
-- **B1** STRING type and purpose for the student's name
-- **B1** meaningful Count or ValidMarkCount identifier with INTEGER type
-- **B1** purpose states the number of valid marks entered
-
-**Guidance:** Both entries require meaningful identifiers, suitable scalar types and distinct purposes.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| meaningful StudentName or equivalent identifier | Both entries require meaningful identifiers, suitable scalar types and distinct purposes. | 1 |
+| STRING type and purpose for the student's name |  | 1 |
+| meaningful Count or ValidMarkCount identifier with INTEGER type |  | 1 |
+| purpose states the number of valid marks entered |  | 1 |
 
 #### Q2 [6]
 
-- **B1** input/load results module
-- **B1** validate result range/identity
-- **B1** calculate total/mean
-- **B1** find maximum/minimum or grade
-- **B1** output/store report
-- **B1** substeps have clear order/interfaces and collectively implement parent task
-
-**Guidance:** Do not award unrelated feature lists.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| input/load results module | Do not award unrelated feature lists. | 1 |
+| validate result range/identity |  | 1 |
+| calculate total/mean |  | 1 |
+| find maximum/minimum or grade |  | 1 |
+| output/store report |  | 1 |
+| substeps have clear order/interfaces and collectively implement parent task |  | 1 |
 
 ---
 
@@ -846,11 +844,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. Next indexes define logical order; physical array positions can be non-adjacent.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. A queue is FIFO and removes from the front; newest items join the rear.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
@@ -863,23 +861,23 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q1 [4]
 
-- **B1** overflow when enqueue attempted at full capacity
-- **B1** underflow when dequeue attempted while empty
-- **B1** front/rear/count state detects conditions
-- **B1** invalid operation is rejected/handled
-
-**Guidance:** Do not confuse with numeric overflow.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| overflow when enqueue attempted at full capacity | Do not confuse with numeric overflow. | 1 |
+| underflow when dequeue attempted while empty |  | 1 |
+| front/rear/count state detects conditions |  | 1 |
+| invalid operation is rejected/handled |  | 1 |
 
 #### Q2 [6]
 
-- **B1** stack adds with push and deletes with pop at the top using a stack/top pointer
-- **B1** queue adds at the rear and deletes from the front using enqueue/dequeue in FIFO order
-- **B1** linked-list insertion obtains a free array index and changes Start/Next links
-- **B1** editing changes the selected stored data field without corrupting the stack/queue order or linked-list links
-- **B1** linked-list deletion bypasses the node by changing links and returns the freed index to the free list
-- **B1** array state such as top, front/rear, Start/Next/free list implements the ADT behaviour
-
-**Guidance:** Candidates are not required to write pseudocode for these ADT operations; award accurate conceptual state changes and do not accept shifting every linked-list element as the defining method.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| stack adds with push and deletes with pop at the top using a stack/top pointer | Candidates are not required to write pseudocode for these ADT operations; award accurate conceptual state changes and do not accept shifting every linked-list element as the defining method. | 1 |
+| queue adds at the rear and deletes from the front using enqueue/dequeue in FIFO order |  | 1 |
+| linked-list insertion obtains a free array index and changes Start/Next links |  | 1 |
+| editing changes the selected stored data field without corrupting the stack/queue order or linked-list links |  | 1 |
+| linked-list deletion bypasses the node by changing links and returns the freed index to the free list |  | 1 |
+| array state such as top, front/rear, Start/Next/free list implements the ADT behaviour |  | 1 |
 
 ---
 
@@ -925,11 +923,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. Use AND; with OR nearly every number satisfies at least one comparison.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. A call returns one value on the executed path; use a record/reference parameters or separate functions for multiple outputs.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
@@ -942,23 +940,23 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q1 [4]
 
-- **B1** initialises Count
-- **M1** FOR Index <- 1 TO 20
-- **M1** IF Data[Index] > 0 THEN increments
-- **A1** closes constructs and outputs/returns Count
-
-**Guidance:** Allow equivalent declared bounds only when they cover all 20 elements exactly once.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| initialises Count | Allow equivalent declared bounds only when they cover all 20 elements exactly once. | 1 |
+| FOR Index <- 1 TO 20 |  | 1 |
+| IF Data[Index] > 0 THEN increments |  | 1 |
+| closes constructs and outputs/returns Count |  | 1 |
 
 #### Q2 [6]
 
-- **B1** parameter is named in subprogram header
-- **B1** argument is value/variable supplied by caller
-- **B1** by-value receives a copy
-- **B1** changes to value parameter do not change caller
-- **B1** by-reference aliases caller variable
-- **B1** changes can persist in caller
-
-**Guidance:** Examples must use terminology consistently.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| parameter is named in subprogram header | Examples must use terminology consistently. | 1 |
+| argument is value/variable supplied by caller |  | 1 |
+| by-value receives a copy |  | 1 |
+| changes to value parameter do not change caller |  | 1 |
+| by-reference aliases caller variable |  | 1 |
+| changes can persist in caller |  | 1 |
 
 ---
 
@@ -1004,40 +1002,40 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. A structure chart shows module hierarchy/calls and parameters; a state-transition diagram shows states and event-labelled transitions.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. Boundary values are at or immediately around a limit; abnormal data is invalid/outside the permitted domain.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
 ### Timed Exam Practice [10]
 
-1. Distinguish alpha, beta and acceptance testing. **[4]**
+1. Compare alpha, beta and acceptance testing. **[4]**
 2. Describe a complete test-plan row and explain how it supports regression after corrective maintenance. **[6]**
 
 ### Answer Key / Mark Scheme
 
 #### Q1 [4]
 
-- **B1** alpha performed internally before release
-- **B1** beta performed by selected external users in realistic use
-- **B1** acceptance checks against agreed customer requirements
-- **B1** acceptance decision supports approval/rejection of delivery
-
-**Guidance:** Do not merge beta and acceptance.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| alpha performed internally before release | Do not merge beta and acceptance. | 1 |
+| beta performed by selected external users in realistic use |  | 1 |
+| acceptance checks against agreed customer requirements |  | 1 |
+| acceptance decision supports approval/rejection of delivery |  | 1 |
 
 #### Q2 [6]
 
-- **B1** test ID/purpose
-- **B1** input/test data
-- **B1** expected result
-- **B1** actual result and pass/fail
-- **B1** reruns previous tests after the correction
-- **B1** detects whether existing behaviour was unintentionally broken
-
-**Guidance:** Test data categories alone are not a test plan.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| test ID/purpose | Test data categories alone are not a test plan. | 1 |
+| input/test data |  | 1 |
+| expected result |  | 1 |
+| actual result and pass/fail |  | 1 |
+| reruns previous tests after the correction |  | 1 |
+| detects whether existing behaviour was unintentionally broken |  | 1 |
 
 ---
 
@@ -1083,37 +1081,37 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. Use specified Cambridge terminators such as ENDIF, ENDWHILE, NEXT and ENDFUNCTION.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 2. Efficiency concerns operations/time/storage and clarity; fewer source lines can still perform more work or be incorrect.
-   - **B1** identifies the technical error.
-   - **B1** supplies the accurate correction.
+   - Identifies the technical error. **[1]**
+   - Supplies the accurate correction. **[1]**
 
 </details>
 
 ### Timed Exam Practice [10]
 
 1. Write a function that returns the number of occurrences of Target in Data[1:50]. **[4]**
-2. Design pseudocode to read valid scores until -1, store at most 100, then output the mean. Include two robustness checks. **[6]**
+2. Develop pseudocode to read valid scores until -1, store at most 100, then output the mean. Include two robustness checks. **[6]**
 
 ### Answer Key / Mark Scheme
 
 #### Q1 [4]
 
-- **B1** correct function header/return type
-- **B1** initialises count
-- **M1** loops 1 to 50 and increments on equality
-- **A1** returns count with coherent Cambridge syntax
-
-**Guidance:** Do not accept output in place of a returned value.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| correct function header/return type | Do not accept output in place of a returned value. | 1 |
+| initialises count |  | 1 |
+| loops 1 to 50 and increments on equality |  | 1 |
+| returns count with coherent Cambridge syntax |  | 1 |
 
 #### Q2 [6]
 
-- **B1** initialises count/total
-- **B1** sentinel-controlled input
-- **B1** validates score range while allowing sentinel
-- **B1** checks capacity before storing
-- **B1** updates array/count/total for valid scores
-- **B1** avoids division by zero and outputs mean when count > 0
-
-**Guidance:** Use Cambridge pseudocode. Do not penalise a minor syntax error when the intended control structure remains unambiguous.
+| Answer | Guidance | Marks |
+|---|---|---:|
+| initialises count/total | Use Cambridge pseudocode. Do not penalise a minor syntax error when the intended control structure remains unambiguous. | 1 |
+| sentinel-controlled input |  | 1 |
+| validates score range while allowing sentinel |  | 1 |
+| checks capacity before storing |  | 1 |
+| updates array/count/total for valid scores |  | 1 |
+| avoids division by zero and outputs mean when count > 0 |  | 1 |

@@ -60,11 +60,17 @@ const mistakes = [
   { wrong: "I validated age 11-18 and claimed it proves the user is 15.", fix: "Validation only checks the value follows the rule. It cannot prove the real-world truth of the data." },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "A program inputs a Mark. The mark must be from 0 to 100 inclusive. Name the validation check and write a valid condition.",
+    prompt: "A program inputs a Mark. The mark must be from 0 to 100 inclusive. Identify the validation check and write a valid condition.",
     answer: "Use a range check. The valid condition is Mark >= 0 AND Mark <= 100.",
     marking: [
       { mark: "B1", text: "identifies range check" },
@@ -118,7 +124,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "For each input, name a suitable validation check: surname must not be blank; password at least 8 characters; date in DD/MM/YYYY; barcode final digit detects errors; score 1 to 5.",
+    prompt: "For each input, Identify a suitable validation check: surname must not be blank; password at least 8 characters; date in DD/MM/YYYY; barcode final digit detects errors; score 1 to 5.",
     answer: "Surname: presence check. Password: length check. Date: format check. Barcode final digit: check digit. Score 1 to 5: range check.",
     marking: [
       { mark: "B1", text: "surname identified as presence check" },
@@ -296,10 +302,10 @@ function setupExam() {
       <p>${question.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${question.answer}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

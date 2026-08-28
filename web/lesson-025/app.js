@@ -44,11 +44,17 @@ const practice = [
   { id: "p10", prompt: "What is the actual successful data transfer rate called?", accepted: ["throughput"], answer: "Throughput" },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Distinguish between bandwidth and latency.",
+    prompt: "Compare bandwidth and latency.",
     answer: "Bandwidth is the amount of data that can be transmitted per second, often measured in Mbps or Gbps. Latency is the delay before data starts to arrive or before a response is received, often measured in milliseconds. A connection can have high bandwidth but still have high latency.",
     marking: [
       { mark: "B1", text: "bandwidth is data capacity/rate per second" },
@@ -99,7 +105,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Distinguish real-time bit streaming from on-demand bit streaming and explain why broadband speed must normally exceed the stream bit rate.",
+    prompt: "Compare real-time bit streaming from on-demand bit streaming and explain why broadband speed must normally exceed the stream bit rate.",
     answer: "Real-time bit streaming carries a live event with minimal delay, whereas on-demand bit streaming sends stored content selected by the user. The stream bit rate is the number of bits consumed each second. Available broadband speed must normally exceed that rate and allow for overhead or variation; otherwise the playback buffer eventually empties and playback pauses or quality is reduced.",
     marking: [
       { mark: "B1", text: "real-time streaming carries live content with minimal delay" },
@@ -272,9 +278,9 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
+          <h4>Mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
-          <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

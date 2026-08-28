@@ -1,8 +1,12 @@
 # Lesson 138: Debugging using traces and breakpoints
 
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
+
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
-**Syllabus reference:** Syllabus Section 11
+**Syllabus reference:** Course sequence Section 11; Optional enrichment preview of Section 12.3
 **Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 
@@ -46,7 +50,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit correct control flow, meaningful identifiers, correct parameter or variable use, and test data that actually exercises the construct.
 
-
 ## Student Task
 Students write Cambridge pseudocode first, then produce a Java support version. They circle every place where Java syntax must not leak into the exam answer.
 
@@ -74,44 +77,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Analyse and amend an existing program to enhance functionality
-
-### Direct explanation
-
-- Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions. Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.
-- Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.
-- Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
-
-### Worked example
-
-**Add a Merit count without breaking PassCount:** The existing program counts marks at least 50 in PassCount. Analysis shows one traversal already reads every mark, so declare and initialise MeritCount, add IF Marks[Index] >= 70 THEN MeritCount <- MeritCount + 1 ENDIF inside the same loop, and output both counters after the loop. Test 49, 50, 69 and 70 to cover unchanged pass behaviour and the new merit boundary.
-
-### Targeted practice and answers
-
-1. What should be recorded before changing existing code?
-   **Answer:** Its purpose, inputs, outputs, relevant control/data flow, assumptions and behaviour that must remain unchanged.
-2. Why rerun old tests after adding a feature?
-   **Answer:** Regression tests check that the amendment has not broken existing behaviour.
-3. How is an enhancement different from merely correcting a fault?
-   **Answer:** An enhancement adds or improves required functionality; a correction restores behaviour that was already required.
-
-### Exam-style question and MS
-
-**Question (6 marks):** An existing program counts PassCount for Marks[1:30] where each mark is at least 50. Analyse where a new MeritCount for marks at least 70 should be added, write the amended declarations, initialisation, loop update and output, and name four boundary-focused test values.
-
-- **B1** analysis identifies the existing traversal and output that must remain
-- **B1** declares and initialises MeritCount without removing PassCount
-- **M1** increments MeritCount inside the existing traversal when mark is at least 70
-- **M1** preserves the existing pass condition at 50 and outputs both results after the loop
-- **B1** uses 49 and 50 to regression-test the pass boundary
-- **B1** uses 69 and 70 to test the new merit boundary
-
-**Strict note:** Do not accept a rewrite that removes the existing pass count, changes its boundary, or tests only the new feature.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -119,7 +84,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `breakpoint`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-138-breakpoint.jpg`
 
 1. Breakpoint
@@ -130,22 +95,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 6. What not to do
 7. Do not scatter breakpoints randomly. Random pausing is just procrastination wearing a technical hat.
 
-### Analyse and amend an existing program
-
-- **Explains:** `bug`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-138-bug.jpg`
-
-1. Analyse the existing program's purpose, inputs, outputs, control flow and behaviour that must remain unchanged before editing it.
-2. Amend declarations, initialisation, processing and output coherently to add the requested functionality rather than rewriting unrelated code.
-3. Test the new path and rerun regression tests for the existing path; adding functionality is an enhancement, not merely correcting a fault.
-
 ### Java debugging tools help practice, but Cambridge pseudocode remains the exam format
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-138-java.jpg`
 
 1. Java support only
@@ -165,7 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-138-purpose.jpg`
 
 1. IF Mark > 50 THEN
@@ -180,7 +134,7 @@ ENDIF
 
 - **Explains:** `stepping`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-138-stepping.jpg`
 
 1. Stepping
@@ -193,7 +147,7 @@ ENDIF
 
 - **Explains:** `watch`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-138-watch.jpg`
 
 1. Watch variables

@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 116 | Two-dimensional arrays</title>
+    <title>AS9618 Lesson 116 | Select and write two-dimensional arrays</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Two-dimensional arrays</h1>
+        <h1>Select and write two-dimensional arrays</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,7 +47,96 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Select and write two-dimensional arrays</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A two-dimensional array uses two indexes, normally interpreted as row and column. In DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER, the first range gives 30 valid row indexes and the second gives 4 valid column indexes, for 120 cells.</p>
+            <p>Select 2D when the scenario has two independent position dimensions, such as Student and Test, Row and Column, or Day and Period. A simple list, sequence or one category of positions remains 1D even when it contains many elements.</p>
+            <p>Two-dimensional pseudocode declares both ranges, accesses one cell as Marks[Student, Test] and normally uses nested loops: one loop traverses rows and the inner loop traverses every column for the current row.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Input a student-by-test table</h3>
+            <p>DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER. Use FOR Student &lt;- 1 TO 30 and inside it FOR Test &lt;- 1 TO 4; INPUT Marks[Student, Test]; NEXT Test; NEXT Student. Every one of the 120 cells is visited exactly once.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Do not import Java indexing into Cambridge answers</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Do not import Java indexing into Cambridge answers with a structured visual model." />
+            <figcaption class="explanation-sr-only">Do not import Java indexing into Cambridge answers: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Traverse a 3 by 4 array with nested loops.</li><li><strong>Lesson fact:</strong> Output the current cell inside the inner loop.</li><li><strong>Lesson fact:</strong> A corresponding Java support version must also output every current cell.</li><li><strong>Lesson fact:</strong> The two versions use explicitly stated indexing conventions.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
+
+        <!-- stage10-explanation:start model -->
+        <section class="panel explanation-panel" id="explanation-model" data-explains="model" data-explanation-kind="comparison" aria-labelledby="explanation-model-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
+          <h2 class="explanation-sr-only" id="explanation-model-title">Rows and columns create coordinates</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-model.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Rows and columns create coordinates with a structured visual model." />
+            <figcaption class="explanation-sr-only">Rows and columns create coordinates: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 2D model</li><li><strong>Lesson fact:</strong> Same identifier</li><li><strong>Lesson fact:</strong> The whole grid has one array name.</li><li><strong>Lesson fact:</strong> Two indexes</li><li><strong>Lesson fact:</strong> The first index usually selects the row; the second index selects the column.</li><li><strong>Lesson fact:</strong> Marks[Row, Column]</li><li><strong>Lesson fact:</strong> Same type</li><li><strong>Lesson fact:</strong> Each cell stores the same data type.</li><li><strong>Lesson fact:</strong> ARRAY[1:3, 1:4] OF INTEGER</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end model -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Select and write two-dimensional arrays: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why is a seating grid normally 2D?</p>
+              <details><summary>Show answer</summary><p>Each seat is identified by two independent positions: row and column.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> How many cells are in ARRAY[1:3, 1:4]?</p>
+              <details><summary>Show answer</summary><p>12 cells because 3 row indexes are paired with 4 column indexes.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What is wrong with Marks[Row] for a 2D array?</p>
+              <details><summary>Show answer</summary><p>It supplies only one index and therefore does not identify a column or one complete cell.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Write Cambridge pseudocode to declare a 5 by 7 REAL temperature table and calculate the total of every cell.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>declares ARRAY[1:5, 1:7] OF REAL or equivalent explicit five-by-seven bounds</td><td>Do not reverse the declared bounds in the traversal or access a 2D cell with only one index.</td><td>1</td></tr>
+                  <tr><td>initialises Total</td><td></td><td>1</td></tr>
+                  <tr><td>outer loop covers all five rows</td><td></td><td>1</td></tr>
+                  <tr><td>inner loop covers all seven columns</td><td></td><td>1</td></tr>
+                  <tr><td>adds Temperature[Row, Column] inside the inner loop</td><td></td><td>1</td></tr>
+                  <tr><td>closes both loops and outputs Total after traversal</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 116 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>A two-dimensional array is a spreadsheet with rules.</h2>
@@ -74,7 +163,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 can ask for array declaration, cell access, nested loop traversal and row/column trace values.</p>
@@ -85,7 +174,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which seat is it?</h2>
@@ -100,7 +189,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the representation that keeps row and column separate.</div>
         </section>
 
-        <section class="panel" id="model" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
+        <section class="panel" id="model" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">2D model</p>
             <h2>Rows and columns create coordinates</h2>
@@ -125,21 +214,7 @@
           <div class="callout">Chinese support: row = 行，column = 列，cell = 某一行某一列交叉处的一个值。</div>
         </section>
 
-        <!-- stage10-explanation:start model -->
-        <section class="panel explanation-panel" id="explanation-model" data-explains="model" data-explanation-kind="comparison" aria-labelledby="explanation-model-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
-          <h2 class="explanation-sr-only" id="explanation-model-title">Rows and columns create coordinates</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-model.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Rows and columns create coordinates with a structured visual model." />
-            <figcaption class="explanation-sr-only">Rows and columns create coordinates: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 2D model</li><li><strong>Lesson fact:</strong> Same identifier</li><li><strong>Lesson fact:</strong> The whole grid has one array name.</li><li><strong>Lesson fact:</strong> Two indexes</li><li><strong>Lesson fact:</strong> The first index usually selects the row; the second index selects the column.</li><li><strong>Lesson fact:</strong> Marks[Row, Column]</li><li><strong>Lesson fact:</strong> Same type</li><li><strong>Lesson fact:</strong> Each cell stores the same data type.</li><li><strong>Lesson fact:</strong> ARRAY[1:3, 1:4] OF INTEGER</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end model -->
-
-        <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+        <section class="panel" id="declare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">Declare 2D arrays</p>
             <h2>Two dimensions need two ranges</h2>
@@ -153,7 +228,7 @@
         </section>
 
         <!-- stage10-explanation:start declare -->
-        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <h2 class="explanation-sr-only" id="explanation-declare-title">Two dimensions need two ranges</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two dimensions need two ranges with a structured visual model." />
@@ -165,8 +240,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end declare -->
-
-        <section class="panel" id="access" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
+        <section class="panel" id="access" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">Access and update</p>
             <h2>A cell needs row and column</h2>
@@ -186,7 +260,7 @@
         </section>
 
         <!-- stage10-explanation:start access -->
-        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
+        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <h2 class="explanation-sr-only" id="explanation-access-title">A cell needs row and column</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A cell needs row and column with a structured visual model." />
@@ -198,8 +272,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end access -->
-
-        <section class="panel" id="nested" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="nested">
+        <section class="panel" id="nested" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">Nested loops</p>
             <h2>Outer row loop, inner column loop</h2>
@@ -228,7 +301,7 @@ OUTPUT Total</code></pre>
         </section>
 
         <!-- stage10-explanation:start nested -->
-        <section class="panel explanation-panel" id="explanation-nested" data-explains="nested" data-explanation-kind="mechanism" aria-labelledby="explanation-nested-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="nested">
+        <section class="panel explanation-panel" id="explanation-nested" data-explains="nested" data-explanation-kind="mechanism" aria-labelledby="explanation-nested-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <h2 class="explanation-sr-only" id="explanation-nested-title">Outer row loop, inner column loop</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-nested.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Outer row loop, inner column loop with a structured visual model." />
@@ -240,8 +313,7 @@ OUTPUT Total</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end nested -->
-
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">Trace</p>
             <h2>Trace row and column together</h2>
@@ -270,7 +342,7 @@ OUTPUT Total</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Do not import Java indexing into Cambridge answers</h2>
@@ -300,22 +372,8 @@ for (int row = 0; row &lt; 3; row++) {
           <div class="callout">Paper 2 reminder: if the question states <code>ARRAY[1:3, 1:4]</code>, valid row indexes are 1 to 3 and valid column indexes are 1 to 4.</div>
         </section>
 
-        <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Do not import Java indexing into Cambridge answers</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Do not import Java indexing into Cambridge answers with a structured visual model." />
-            <figcaption class="explanation-sr-only">Do not import Java indexing into Cambridge answers: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Traverse a 3 by 4 array with nested loops.</li><li><strong>Lesson fact:</strong> Output the current cell inside the inner loop.</li><li><strong>Lesson fact:</strong> A corresponding Java support version must also output every current cell.</li><li><strong>Lesson fact:</strong> The two versions use explicitly stated indexing conventions.</li></ol>
 
-          </div>
-        </section>
-        <!-- stage10-explanation:end pseudocode -->
-
-
-        <section class="panel" id="lookup" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
+        <section class="panel" id="lookup" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">Interactive cell lookup</p>
             <h2>Read Marks[Row, Column]</h2>
@@ -345,7 +403,7 @@ for (int row = 0; row &lt; 3; row++) {
         </section>
 
         <!-- stage10-explanation:start lookup -->
-        <section class="panel explanation-panel" id="explanation-lookup" data-explains="lookup" data-explanation-kind="mechanism" aria-labelledby="explanation-lookup-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
+        <section class="panel explanation-panel" id="explanation-lookup" data-explains="lookup" data-explanation-kind="mechanism" aria-labelledby="explanation-lookup-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <h2 class="explanation-sr-only" id="explanation-lookup-title">Read Marks[Row, Column]</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-lookup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read Marks[Row, Column] with a structured visual model." />
@@ -357,8 +415,7 @@ for (int row = 0; row &lt; 3; row++) {
           </div>
         </section>
         <!-- stage10-explanation:end lookup -->
-
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">Interactive loop builder</p>
             <h2>Generate a common 2D array pattern</h2>
@@ -379,7 +436,7 @@ for (int row = 0; row &lt; 3; row++) {
           <div class="trace-output" id="builderResult">Choose a task to generate Cambridge-style pseudocode.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>2D array patterns you can reuse</h2>
@@ -393,7 +450,7 @@ for (int row = 0; row &lt; 3; row++) {
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Ten quick 2D array checks</h2>
@@ -402,7 +459,7 @@ for (int row = 0; row &lt; 3; row++) {
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common 2D array errors</h2>
@@ -410,7 +467,7 @@ for (int row = 0; row &lt; 3; row++) {
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style 2D array questions with expandable MS</h2>
@@ -419,62 +476,7 @@ for (int row = 0; row &lt; 3; row++) {
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Select and write two-dimensional arrays</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A two-dimensional array uses two indexes, normally interpreted as row and column. In DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER, the first range gives 30 valid row indexes and the second gives 4 valid column indexes, for 120 cells.</p>
-            <p>Select 2D when the scenario has two independent position dimensions, such as Student and Test, Row and Column, or Day and Period. A simple list, sequence or one category of positions remains 1D even when it contains many elements.</p>
-            <p>Two-dimensional pseudocode declares both ranges, accesses one cell as Marks[Student, Test] and normally uses nested loops: one loop traverses rows and the inner loop traverses every column for the current row.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Input a student-by-test table</h3>
-            <p>DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER. Use FOR Student &lt;- 1 TO 30 and inside it FOR Test &lt;- 1 TO 4; INPUT Marks[Student, Test]; NEXT Test; NEXT Student. Every one of the 120 cells is visited exactly once.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Select and write two-dimensional arrays: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Why is a seating grid normally 2D?</p>
-              <details><summary>Show answer</summary><p>Each seat is identified by two independent positions: row and column.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How many cells are in ARRAY[1:3, 1:4]?</p>
-              <details><summary>Show answer</summary><p>12 cells because 3 row indexes are paired with 4 column indexes.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What is wrong with Marks[Row] for a 2D array?</p>
-              <details><summary>Show answer</summary><p>It supplies only one index and therefore does not identify a column or one complete cell.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Write Cambridge pseudocode to declare a 5 by 7 REAL temperature table and calculate the total of every cell.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> declares ARRAY[1:5, 1:7] OF REAL or equivalent explicit five-by-seven bounds</li>
-                <li><strong>B1</strong> initialises Total</li>
-                <li><strong>M1</strong> outer loop covers all five rows</li>
-                <li><strong>M1</strong> inner loop covers all seven columns</li>
-                <li><strong>A1</strong> adds Temperature[Row, Column] inside the inner loop</li>
-                <li><strong>B1</strong> closes both loops and outputs Total after traversal</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-116">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Two-dimensional array checklist</h2>

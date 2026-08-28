@@ -1,10 +1,52 @@
-# Lesson 100: Sequence, selection, and iteration
+# Lesson 100: Sequence, selection and iteration
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Sequence, selection and iteration
+
+### Direct explanation
+
+- Sequence executes defined steps once in order. Selection chooses one of two or more paths using a condition. Iteration repeats one or more steps using a count or a condition.
+- A complete algorithm often combines the three constructs: use sequence to initialise and input, iteration to process repeated items, and selection inside the loop when each item needs a decision.
+- Choose the construct from the required behaviour. A known number of repetitions suggests count-controlled iteration; a stopping rule based on data suggests condition-controlled iteration.
+
+### Worked example
+
+**Count five passing marks:** Sequence sets PassCount to 0. A FOR loop iterates through five marks. Inside the loop, selection tests Mark >= 50 and increments PassCount only on the true path. Sequence after the loop outputs PassCount.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which construct executes steps once in a fixed order?
+   **Answer:** Sequence.
+2. Which construct chooses between Pass and Resit?
+   **Answer:** Selection.
+3. Which construct processes ten supplied readings?
+   **Answer:** Iteration, normally a count-controlled loop because the number is known.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Develop a short algorithm that inputs ten marks and outputs how many are passes, labelling where sequence, selection and iteration are used.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| sequence initialises the pass count | Do not award a construct name unless the stated algorithm uses it for the correct behaviour. | 1 |
+| iteration processes exactly ten marks |  | 1 |
+| selection tests each mark against the pass condition |  | 1 |
+| sequence outputs the final count after the loop |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
 **Syllabus reference:** Syllabus Section 9
 **Duration:** 45 minutes
-**Assessment rhythm:** informal questioning
+**Assessment rhythm:** 5-minute quiz, monthly assessment checkpoint
 
 > Java is used only as a supporting implementation language. Cambridge pseudocode remains the exam answer format.
 
@@ -46,7 +88,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Award marks for correct control structure, initialisation, update step and termination. For traces, every changed variable must be shown accurately.
 
-
 ## Student Task
 Students solve the same problem twice: first as numbered English steps, then as Cambridge-style pseudocode. They annotate where selection or iteration appears.
 
@@ -74,42 +115,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Sequence, selection and iteration
-
-### Direct explanation
-
-- Sequence executes defined steps once in order. Selection chooses one of two or more paths using a condition. Iteration repeats one or more steps using a count or a condition.
-- A complete algorithm often combines the three constructs: use sequence to initialise and input, iteration to process repeated items, and selection inside the loop when each item needs a decision.
-- Choose the construct from the required behaviour. A known number of repetitions suggests count-controlled iteration; a stopping rule based on data suggests condition-controlled iteration.
-
-### Worked example
-
-**Count five passing marks:** Sequence sets PassCount to 0. A FOR loop iterates through five marks. Inside the loop, selection tests Mark >= 50 and increments PassCount only on the true path. Sequence after the loop outputs PassCount.
-
-### Targeted practice and answers
-
-1. Which construct executes steps once in a fixed order?
-   **Answer:** Sequence.
-2. Which construct chooses between Pass and Resit?
-   **Answer:** Selection.
-3. Which construct processes ten supplied readings?
-   **Answer:** Iteration, normally a count-controlled loop because the number is known.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Design a short algorithm that inputs ten marks and outputs how many are passes, labelling where sequence, selection and iteration are used.
-
-- **B1** sequence initialises the pass count
-- **B1** iteration processes exactly ten marks
-- **B1** selection tests each mark against the pass condition
-- **B1** sequence outputs the final count after the loop
-
-**Strict note:** Do not award a construct name unless the stated algorithm uses it for the correct behaviour.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -117,7 +122,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `combining`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-combining.jpg`
 
 1. Combining structures
@@ -131,7 +136,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `iteration`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-iteration.jpg`
 
 1. Knowledge explanation
@@ -151,7 +156,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-pseudocode.jpg`
 
 1. Initialise PassCount to zero before processing five marks.
@@ -163,7 +168,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `selection`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-selection.jpg`
 
 1. Knowledge explanation
@@ -177,7 +182,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sequence`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-sequence.jpg`
 
 1. Knowledge explanation

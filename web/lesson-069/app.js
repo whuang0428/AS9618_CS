@@ -154,29 +154,36 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Explain the difference between validation and verification.",
-    answer: "Validation checks that input data follows rules before it is accepted, such as a range, length, type or format rule. Verification checks that data has been entered, copied or transferred accurately compared with a source or a second entry. Validation can reject a mark outside 0 to 75, while verification can compare a typed address with the original form. Neither method proves that the original data is true.",
+    prompt: "Explain the difference between validation and verification and how both methods help protect data integrity.",
+    answer: "Validation checks that input data follows rules before it is accepted, such as a range, length, type or format rule. Verification checks that data has been entered, copied or transferred accurately compared with a source or a second entry. By detecting or preventing many input, copying and transfer errors, both methods reduce the chance that inaccurate or corrupted data are accepted and therefore help protect data integrity. Neither method proves that the original data is true.",
     marking: [
       { mark: "B1", text: "validation checks data against rules/criteria" },
       { mark: "B1", text: "valid validation example, e.g. range/length/type/format/presence" },
       { mark: "B1", text: "verification checks entered/copied/transferred data against source/repeat entry" },
       { mark: "B1", text: "valid verification example, e.g. double entry/visual check/comparison" },
-      { mark: "B1", text: "limitation: neither guarantees truth/correctness of original data" },
+      { mark: "B1", text: "both reduce input/copy/transfer errors and therefore help protect data integrity" },
     ],
     strict: [
       "Do not accept validation and verification as the same process.",
       "Do not award validation mark for only saying 'checks it is correct'.",
       "Allow 'reasonable' for validation only when rule/criteria idea is clear.",
+      "Do not award the integrity mark for merely repeating the word integrity without an error-reduction link.",
     ],
   },
   {
     title: "Question 2",
     marks: "7 marks",
-    prompt: "A school form accepts an age from 3 to 19, a file no larger than 10 MiB, a fixed-format student ID, a required email address and a product code that must already be stored in the product file. Recommend suitable validation checks and distinguish the age rule from the file-size rule.",
+    prompt: "A school form accepts an age from 3 to 19, a file no larger than 10 MiB, a fixed-format student ID, a required email address and a product code that must already be stored in the product file. Suggest suitable validation checks and Compare the age rule from the file-size rule.",
     answer: "Age should use a range check because both a lower bound of 3 and an upper bound of 19 apply. File size should use an upper limit check because there is one maximum of 10 MiB. The student ID can use a length check and a format check for its fixed pattern. The email address can use a presence check so it is not blank and a format check for the required pattern. The product code should use an existence check against the stored product file.",
     marking: [
       { mark: "B1", text: "age linked to a range check" },
@@ -405,9 +412,9 @@ function renderExam() {
       <p>${item.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms${index}">
-        <h4>Cambridge-style mark scheme</h4>
+        <h4>Mark scheme</h4>
         <p><strong>Model answer:</strong> ${item.answer}</p>
-        <ul>${item.marking.map((mark) => `<li><strong>${mark.mark}</strong> ${mark.text}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(item)}
       </div>
     </article>
   `).join("");

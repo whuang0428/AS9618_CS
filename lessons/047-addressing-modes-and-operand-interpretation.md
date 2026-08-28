@@ -1,4 +1,52 @@
-# Lesson 047: Addressing modes and operand interpretation
+# Lesson 047: Addressing modes and address-sensitive instructions
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Addressing modes and address-sensitive instructions
+
+### Direct explanation
+
+- Immediate addressing uses the operand as the value itself. Direct addressing uses the operand as the address of the value. Indirect addressing treats the operand as the address of a location that holds the effective address. Indexed addressing forms an effective address by adding IX to the address operand. Relative addressing forms a target/effective address by adding an offset to the current or next instruction address held in PC.
+- LDI follows the address stored at the operand location; LDX adds IX to the address operand; LDR #n loads the immediate value n into IX. CMI <address> uses indirect addressing: the contents of <address> give the address of the value compared with ACC.
+- After CMP or CMI, JPE <address> jumps when the comparison result is True and JPN <address> jumps when it is False. Relative addressing is a required addressing-mode concept, but LDR is not a relative-load instruction in the Version 2 instruction set.
+
+### Worked example
+
+**Compare five operand interpretations:** With operand 20, immediate uses value 20; direct uses Memory[20]; indirect follows Memory[20] as another address; indexed uses address 20 + IX; relative uses PC plus a signed or stated offset. Separately, if CMI POINTER produces True, JPE MATCH branches to MATCH; a False comparison allows JPN DIFFERENT to branch.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which load follows a pointer in memory?
+   **Answer:** LDI.
+2. Which load combines its operand with IX?
+   **Answer:** LDX.
+3. What does LDR #4 do?
+   **Answer:** It loads 4 into IX; it does not use relative addressing.
+4. When does JPE branch?
+   **Answer:** When the preceding comparison result is True.
+5. How is a relative address formed?
+   **Answer:** By adding an offset to the current or next instruction address represented by PC, according to the stated model.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Compare immediate, direct, indirect, indexed and relative addressing, then state the effects of LDR #n, CMI <address>, JPE <address> and JPN <address>.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| immediate uses operand as value; direct uses operand as address | Do not award relative LDR, immediate CMI, equal/zero JPE or negative-status JPN. | 1 |
+| indirect follows an address stored at the operand address |  | 1 |
+| indexed adds IX to the address operand |  | 1 |
+| relative adds an offset to the PC/current or next instruction address |  | 1 |
+| LDR loads immediate n to IX and CMI compares through indirect addressing |  | 1 |
+| JPE follows True and JPN follows False |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +91,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Award marks for correct sequence: address from PC to MAR, instruction/data via memory and MDR, instruction held in CIR, PC updated as appropriate.
 
-
-
 ## Student Task
 Students annotate a CPU diagram with arrows for one instruction, then explain the path in four precise sentences.
 
@@ -72,48 +118,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Addressing modes and address-sensitive instructions
-
-### Direct explanation
-
-- Immediate addressing uses the operand as the value itself. Direct addressing uses the operand as the address of the value. Indirect addressing treats the operand as the address of a location that holds the effective address. Indexed addressing forms an effective address by adding IX to the address operand. Relative addressing forms a target/effective address by adding an offset to the current or next instruction address held in PC.
-- LDI follows the address stored at the operand location; LDX adds IX to the address operand; LDR #n loads the immediate value n into IX. CMI <address> uses indirect addressing: the contents of <address> give the address of the value compared with ACC.
-- After CMP or CMI, JPE <address> jumps when the comparison result is True and JPN <address> jumps when it is False. Relative addressing is a required addressing-mode concept, but LDR is not a relative-load instruction in the Version 2 instruction set.
-
-### Worked example
-
-**Compare five operand interpretations:** With operand 20, immediate uses value 20; direct uses Memory[20]; indirect follows Memory[20] as another address; indexed uses address 20 + IX; relative uses PC plus a signed or stated offset. Separately, if CMI POINTER produces True, JPE MATCH branches to MATCH; a False comparison allows JPN DIFFERENT to branch.
-
-### Targeted practice and answers
-
-1. Which load follows a pointer in memory?
-   **Answer:** LDI.
-2. Which load combines its operand with IX?
-   **Answer:** LDX.
-3. What does LDR #4 do?
-   **Answer:** It loads 4 into IX; it does not use relative addressing.
-4. When does JPE branch?
-   **Answer:** When the preceding comparison result is True.
-5. How is a relative address formed?
-   **Answer:** By adding an offset to the current or next instruction address represented by PC, according to the stated model.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Distinguish immediate, direct, indirect, indexed and relative addressing, then state the effects of LDR #n, CMI <address>, JPE <address> and JPN <address>.
-
-- **B1** immediate uses operand as value; direct uses operand as address
-- **B1** indirect follows an address stored at the operand address
-- **B1** indexed adds IX to the address operand
-- **B1** relative adds an offset to the PC/current or next instruction address
-- **B1** LDR loads immediate n to IX and CMI compares through indirect addressing
-- **B1** JPE follows True and JPN follows False
-
-**Strict note:** Do not award relative LDR, immediate CMI, equal/zero JPE or negative-status JPN.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -139,7 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-047-concept.jpg`
 
 1. The part of an instruction that supplies data, an address, a register or another reference.
@@ -167,7 +171,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `modes`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-047-modes.jpg`
 
 1. Immediate addressing uses the operand field as the value itself.

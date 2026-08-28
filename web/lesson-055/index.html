@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 055 | Utility software: backup, compression, encryption, defragmentation and antivirus</title>
+    <title>AS9618 Lesson 055 | Assembler, compiler and interpreter choices</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Utility software: backup, compression, encryption, defragmentation and antivirus</h1>
+        <h1>Assembler, compiler and interpreter choices</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,7 +47,90 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Assembler, compiler and interpreter choices</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.</p>
+            <p>Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.</p>
+            <p>A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose tools across development and deployment</h3>
+            <p>During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Choose the required utility by its operation</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the required utility by its operation with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the required utility by its operation: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A disk formatter prepares a storage medium with file-system structures.</li><li><strong>Lesson fact:</strong> A virus checker scans for, quarantines and removes malware.</li><li><strong>Lesson fact:</strong> A disk defragmenter rearranges fragmented file blocks on a magnetic disk.</li><li><strong>Lesson fact:</strong> A disk contents analysis/repair utility examines file-system structures and attempts defined repairs.</li><li><strong>Lesson fact:</strong> Compression reduces file size; backup creates a separate recoverable copy.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Assembler, compiler and interpreter choices: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why is an assembler needed?</p>
+              <details><summary>Show answer</summary><p>It translates assembly-language mnemonics and operands into machine or object code for the target processor.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Give one compiler advantage and its mechanism.</p>
+              <details><summary>Show answer</summary><p>A compiled program can run repeatedly without translating the source each time because translation occurred before execution.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Give one compiler disadvantage.</p>
+              <details><summary>Show answer</summary><p>Compilation must complete before execution and the programmer may need to correct a list of reported errors.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Give one interpreter advantage and one disadvantage.</p>
+              <details><summary>Show answer</summary><p>It provides immediate statement-level feedback, but repeated translation can make execution slower and requires the interpreter/source at run time.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Which translator is required for assembly language?</p>
+              <details><summary>Show answer</summary><p>An assembler.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Compare a compiler and an interpreter using two advantages and two disadvantages, then justify the translator used for an assembly-language routine.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>compiler translates the whole high-level program before execution and produces target/object code</td><td>Do not award vague claims such as 'compiler is faster' or 'interpreter is easier' without the mechanism and scenario.</td><td>1</td></tr>
+                  <tr><td>compiler advantage linked to repeated execution or distribution without source</td><td></td><td>1</td></tr>
+                  <tr><td>compiler disadvantage linked to separate translation or error-list workflow</td><td></td><td>1</td></tr>
+                  <tr><td>interpreter translates/executes statements during execution and gives immediate feedback</td><td></td><td>1</td></tr>
+                  <tr><td>interpreter disadvantage linked to repeated translation, slower execution or run-time dependency</td><td></td><td>1</td></tr>
+                  <tr><td>assembler selected and justified for assembly-language-to-machine/object-code translation</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 055 | 45 minutes | Paper 1 Section 5 | System software</p>
             <h2>Utility software is the toolkit that keeps a system usable, recoverable and safer.</h2>
@@ -74,7 +157,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Cambridge questions often give a scenario. Marks come from matching the utility to the exact problem.</p>
@@ -85,7 +168,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A student deletes their coursework folder five minutes before the deadline. Which utility matters most?</h2>
@@ -102,7 +185,7 @@
           </div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Utility software performs maintenance and support tasks</h2>
@@ -117,7 +200,7 @@
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <h2 class="explanation-sr-only" id="explanation-concept-title">Utility software performs maintenance and support tasks</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Utility software performs maintenance and support tasks with a structured visual model." />
@@ -129,8 +212,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-
-        <section class="panel" id="backup" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="backup">
+        <section class="panel" id="backup" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Backup utilities create copies so data can be restored</h2>
@@ -144,7 +226,7 @@
         </section>
 
         <!-- stage10-explanation:start backup -->
-        <section class="panel explanation-panel" id="explanation-backup" data-explains="backup" data-explanation-kind="mechanism" aria-labelledby="explanation-backup-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="backup">
+        <section class="panel explanation-panel" id="explanation-backup" data-explains="backup" data-explanation-kind="mechanism" aria-labelledby="explanation-backup-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <h2 class="explanation-sr-only" id="explanation-backup-title">Backup utilities create copies so data can be restored</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-backup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Backup utilities create copies so data can be restored with a structured visual model." />
@@ -156,8 +238,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end backup -->
-
-        <section class="panel" id="compression" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compression">
+        <section class="panel" id="compression" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Compression utilities reduce file size</h2>
@@ -171,7 +252,7 @@
         </section>
 
         <!-- stage10-explanation:start compression -->
-        <section class="panel explanation-panel" id="explanation-compression" data-explains="compression" data-explanation-kind="mechanism" aria-labelledby="explanation-compression-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compression">
+        <section class="panel explanation-panel" id="explanation-compression" data-explains="compression" data-explanation-kind="mechanism" aria-labelledby="explanation-compression-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <h2 class="explanation-sr-only" id="explanation-compression-title">Compression utilities reduce file size</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-compression.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compression utilities reduce file size with a structured visual model." />
@@ -183,8 +264,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end compression -->
-
-        <section class="panel" id="encryption" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="encryption">
+        <section class="panel" id="encryption" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Encryption utilities protect confidentiality</h2>
@@ -198,7 +278,7 @@
         </section>
 
         <!-- stage10-explanation:start encryption -->
-        <section class="panel explanation-panel" id="explanation-encryption" data-explains="encryption" data-explanation-kind="mechanism" aria-labelledby="explanation-encryption-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="encryption">
+        <section class="panel explanation-panel" id="explanation-encryption" data-explains="encryption" data-explanation-kind="mechanism" aria-labelledby="explanation-encryption-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <h2 class="explanation-sr-only" id="explanation-encryption-title">Encryption utilities protect confidentiality</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-encryption.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Encryption utilities protect confidentiality with a structured visual model." />
@@ -210,8 +290,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end encryption -->
-
-        <section class="panel" id="defrag" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="defrag">
+        <section class="panel" id="defrag" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Defragmentation rearranges fragmented files on magnetic disks</h2>
@@ -225,7 +304,7 @@
         </section>
 
         <!-- stage10-explanation:start defrag -->
-        <section class="panel explanation-panel" id="explanation-defrag" data-explains="defrag" data-explanation-kind="mechanism" aria-labelledby="explanation-defrag-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="defrag">
+        <section class="panel explanation-panel" id="explanation-defrag" data-explains="defrag" data-explanation-kind="mechanism" aria-labelledby="explanation-defrag-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <h2 class="explanation-sr-only" id="explanation-defrag-title">Defragmentation rearranges fragmented files on magnetic disks</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-defrag.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Defragmentation rearranges fragmented files on magnetic disks with a structured visual model." />
@@ -237,8 +316,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end defrag -->
-
-        <section class="panel" id="antivirus" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="antivirus">
+        <section class="panel" id="antivirus" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Antivirus utilities detect, quarantine and remove malware</h2>
@@ -252,7 +330,7 @@
         </section>
 
         <!-- stage10-explanation:start antivirus -->
-        <section class="panel explanation-panel" id="explanation-antivirus" data-explains="antivirus" data-explanation-kind="mechanism" aria-labelledby="explanation-antivirus-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="antivirus">
+        <section class="panel explanation-panel" id="explanation-antivirus" data-explains="antivirus" data-explanation-kind="mechanism" aria-labelledby="explanation-antivirus-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <h2 class="explanation-sr-only" id="explanation-antivirus-title">Antivirus utilities detect, quarantine and remove malware</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-antivirus.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Antivirus utilities detect, quarantine and remove malware with a structured visual model." />
@@ -264,8 +342,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end antivirus -->
-
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 7</p>
             <h2>Choose the utility by diagnosing the problem</h2>
@@ -304,22 +381,8 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Choose the required utility by its operation</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-055-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the required utility by its operation with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose the required utility by its operation: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A disk formatter prepares a storage medium with file-system structures.</li><li><strong>Lesson fact:</strong> A virus checker scans for, quarantines and removes malware.</li><li><strong>Lesson fact:</strong> A disk defragmenter rearranges fragmented file blocks on a magnetic disk.</li><li><strong>Lesson fact:</strong> A disk contents analysis/repair utility examines file-system structures and attempts defined repairs.</li><li><strong>Lesson fact:</strong> Compression reduces file size; backup creates a separate recoverable copy.</li></ol>
 
-          </div>
-        </section>
-        <!-- stage10-explanation:end compare -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Utility selector</h2>
@@ -344,7 +407,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>From scenario to utility choice</h2>
@@ -359,7 +422,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant-check questions</h2>
@@ -368,7 +431,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the almost-right answers</h2>
@@ -376,7 +439,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
@@ -385,59 +448,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Required utility software</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware. A disk defragmenter rearranges fragmented file blocks on a magnetic disk; it is not a speed treatment for SSDs.</p>
-            <p>A disk contents analysis/repair utility examines file-system structures, reports faults and attempts defined repairs. Compression reduces file size and backup creates a separate recoverable copy. Encryption may be useful additional protection, but it does not replace any of the six named syllabus utilities.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose the utility from the fault</h3>
-            <p>Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size. Choose by the operation required, not by calling every tool 'maintenance'.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Required utility software: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which utility prepares file-system structures on a storage medium?</p>
-              <details><summary>Show answer</summary><p>A disk formatter.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which utility checks file-system structures and attempts repairs?</p>
-              <details><summary>Show answer</summary><p>A disk contents analysis/repair utility.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why is compression not a backup?</p>
-              <details><summary>Show answer</summary><p>Compression reduces size; a backup creates a separate copy that can be restored.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A computer has a new storage medium and another disk reports file-system errors. Name the utility for each task and explain its purpose.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> disk formatter for the new medium</li>
-                <li><strong>B1</strong> formatter creates/prepares file-system structures</li>
-                <li><strong>B1</strong> disk contents analysis/repair utility for the faulty disk</li>
-                <li><strong>B1</strong> it examines structures and reports/attempts repair of faults</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-055">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>The one-line memory map</h2>

@@ -106,16 +106,16 @@
 | 031 | `compare` | `stage10-lesson-031-compare.jpg` | Compare by scenario, not by favourite brand | Semantic review approved |
 | 031 | `media` | `stage10-lesson-031-media.jpg` | Three main storage media | Semantic review approved |
 | 031 | `purpose` | `stage10-lesson-031-purpose.jpg` | What secondary storage does | Semantic review approved |
+| 031 | `sensors` | `stage10-lesson-034-sensors.jpg` | Required sensor types and applications | Human semantic review pending |
 | 031 | `storage-visual` | `stage10-lesson-031-storage-visual.jpg` | Look at the storage mechanism before comparing performance | Semantic review approved |
 | 032 | `answer` | `stage10-lesson-032-answer.jpg` | The answer pattern: choice -> characteristic -> context -> consequence | Semantic review approved |
 | 032 | `criteria` | `stage10-lesson-032-criteria.jpg` | The five core characteristics | Semantic review approved |
+| 032 | `gate-visual` | `stage10-lesson-035-gate-visual.jpg` | Six symbols, six exact output rules | Human semantic review pending |
 | 032 | `tradeoffs` | `stage10-lesson-032-tradeoffs.jpg` | Trade-offs by common storage device | Semantic review approved |
 | 033 | `embedded` | `stage10-lesson-033-embedded.jpg` | What is an embedded system? | Semantic review approved |
 | 033 | `microcontroller` | `stage10-lesson-033-microcontroller.jpg` | Microcontroller vs general-purpose computer | Semantic review approved |
 | 034 | `actuators` | `stage10-lesson-034-actuators.jpg` | Actuators turn output signals into physical action | Semantic review approved |
 | 034 | `control` | `stage10-lesson-034-control.jpg` | Control systems use rules and feedback | Semantic review approved |
-| 034 | `sensors` | `stage10-lesson-034-sensors.jpg` | Required sensor types and applications | Semantic review approved |
-| 035 | `gate-visual` | `stage10-lesson-035-gate-visual.jpg` | Six symbols, six exact output rules | Semantic review approved |
 | 035 | `gates` | `stage10-lesson-035-gates.jpg` | The six gate rules | Semantic review approved |
 | 035 | `signals` | `stage10-lesson-035-signals.jpg` | Logic gates use binary signals | Semantic review approved |
 | 035 | `symbols` | `stage10-lesson-035-symbols.jpg` | Recognise gate symbols and the inversion bubble | Semantic review approved |
@@ -145,6 +145,7 @@
 | 042 | `registers` | `stage10-lesson-042-registers.jpg` | The four fetch-stage names you cannot blur together | Semantic review approved |
 | 043 | `acc-status` | `stage10-lesson-043-acc-status.jpg` | ACC and status register: execute-stage evidence | Semantic review approved |
 | 043 | `main-registers` | `stage10-lesson-043-main-registers.jpg` | The seven named register roles | Semantic review approved |
+| 043 | `processor` | `stage10-lesson-091-processor.jpg` | Registers and buses: the FDE cycle vocabulary | Human semantic review pending |
 | 043 | `purpose` | `stage10-lesson-043-purpose.jpg` | Why registers exist | Semantic review approved |
 | 044 | `concept` | `stage10-lesson-044-concept.jpg` | What a system bus does | Semantic review approved |
 | 044 | `read-write` | `stage10-lesson-044-read-write.jpg` | Read and write traces | Semantic review approved |
@@ -169,16 +170,16 @@
 | 048 | `sources` | `stage10-lesson-048-sources.jpg` | Where interrupts come from | Semantic review approved |
 | 049 | `cache` | `stage10-lesson-049-cache.jpg` | Cache: reduce slow memory access | Semantic review approved |
 | 049 | `clock` | `stage10-lesson-049-clock.jpg` | Clock speed: more cycles per second | Semantic review approved |
-| 049 | `concept` | `stage10-lesson-049-concept.jpg` | Performance factor means a hardware feature that can affect processing speed | Semantic review approved |
+| 049 | `concept` | `stage10-lesson-049-concept.jpg` | The official processor performance factors | Semantic review approved |
 | 049 | `cores` | `stage10-lesson-049-cores.jpg` | Cores: more independent processing units | Semantic review approved |
 | 049 | `limits` | `stage10-lesson-049-limits.jpg` | Performance is limited by bottlenecks | Semantic review approved |
+| 049 | `shifts` | `stage10-lesson-050-shifts.jpg` | Binary shifts: logical, arithmetic, cyclic | Human semantic review pending |
 | 049 | `word` | `stage10-lesson-049-word.jpg` | Word length: bits processed as a unit | Semantic review approved |
 | 050 | `compare` | `stage10-lesson-050-compare.jpg` | Without and with pipelining | Semantic review approved |
 | 050 | `concept` | `stage10-lesson-050-concept.jpg` | Pipelining overlaps instruction-cycle stages | Semantic review approved |
 | 050 | `device-bits` | `stage10-lesson-050-device-bits.jpg` | Monitor and control a device register | Semantic review approved |
 | 050 | `hazards` | `stage10-lesson-050-hazards.jpg` | Pipeline hazards: why faster is not always simpler | Semantic review approved |
 | 050 | `masks` | `stage10-lesson-050-masks.jpg` | Bit masks target selected positions | Semantic review approved |
-| 050 | `shifts` | `stage10-lesson-050-shifts.jpg` | Binary shifts: logical, arithmetic, cyclic | Semantic review approved |
 | 050 | `stalls` | `stage10-lesson-050-stalls.jpg` | Stalls and flushes reduce the ideal gain | Semantic review approved |
 | 050 | `timing` | `stage10-lesson-050-timing.jpg` | Throughput improves, but latency still exists | Semantic review approved |
 | 051 | `clinic` | `stage10-lesson-051-clinic.jpg` | Turn vague into mark-worthy | Semantic review approved |
@@ -202,6 +203,7 @@
 | 054 | `compare` | `stage10-lesson-054-compare.jpg` | Compare interface suitability by scenario | Semantic review approved |
 | 054 | `concept` | `stage10-lesson-054-concept.jpg` | A user interface allows interaction with a computer system | Semantic review approved |
 | 054 | `gui` | `stage10-lesson-054-gui.jpg` | Graphical user interface: visual objects and pointer actions | Semantic review approved |
+| 054 | `libraries` | `stage10-lesson-058-libraries.jpg` | Libraries provide reusable routines and modules | Human semantic review pending |
 | 054 | `menu` | `stage10-lesson-054-menu.jpg` | Menu-driven interface: choose from fixed options | Semantic review approved |
 | 054 | `natural` | `stage10-lesson-054-natural.jpg` | Natural language interface: ordinary language input | Semantic review approved |
 | 055 | `antivirus` | `stage10-lesson-055-antivirus.jpg` | Antivirus utilities detect, quarantine and remove malware | Semantic review approved |
@@ -224,14 +226,12 @@
 | 057 | `syntax` | `stage10-lesson-057-syntax.jpg` | Syntax analysis checks grammar and program structure | Semantic review approved |
 | 058 | `compare` | `stage10-lesson-058-compare.jpg` | Compare the roles without blending them | Semantic review approved |
 | 058 | `concept` | `stage10-lesson-058-concept.jpg` | The post-compilation pathway connects code and prepares execution | Semantic review approved |
-| 058 | `libraries` | `stage10-lesson-058-libraries.jpg` | Libraries provide reusable routines and modules | Semantic review approved |
 | 058 | `linkers` | `stage10-lesson-058-linkers.jpg` | Linkers combine object modules and resolve references | Semantic review approved |
 | 058 | `loaders` | `stage10-lesson-058-loaders.jpg` | Loaders place executable code into memory | Semantic review approved |
 | 058 | `static-dynamic` | `stage10-lesson-058-static-dynamic.jpg` | Static and dynamic linking affect when library code is connected | Semantic review approved |
 | 059 | `compare` | `stage10-lesson-059-compare.jpg` | Compare error types by evidence | Semantic review approved |
 | 059 | `concept` | `stage10-lesson-059-concept.jpg` | Error classification depends on when and how the fault appears | Semantic review approved |
 | 059 | `diagnostics` | `stage10-lesson-059-diagnostics.jpg` | Translation diagnostics help locate and correct errors | Semantic review approved |
-| 059 | `logic` | `stage10-lesson-059-logic.jpg` | Logic errors make the program do the wrong thing | Semantic review approved |
 | 059 | `runtime` | `stage10-lesson-059-runtime.jpg` | Runtime errors occur while the program is executing | Semantic review approved |
 | 059 | `syntax` | `stage10-lesson-059-syntax.jpg` | Syntax errors break the grammar rules of the language | Semantic review approved |
 | 060 | `decision` | `stage10-lesson-060-decision.jpg` | A good translator choice starts with four questions | Semantic review approved |
@@ -246,7 +246,6 @@
 | 062 | `authenticity` | `stage10-lesson-062-authenticity.jpg` | Authenticity checks that identity or data origin is genuine | Semantic review approved |
 | 062 | `availability` | `stage10-lesson-062-availability.jpg` | Availability keeps systems and data accessible when needed | Semantic review approved |
 | 062 | `confidentiality` | `stage10-lesson-062-confidentiality.jpg` | Confidentiality protects data from unauthorised access | Semantic review approved |
-| 062 | `controls` | `stage10-lesson-062-controls.jpg` | One control can support more than one goal, but not every goal | Semantic review approved |
 | 062 | `integrity` | `stage10-lesson-062-integrity.jpg` | Integrity protects data from unauthorised or accidental alteration | Semantic review approved |
 | 062 | `risk-chain` | `stage10-lesson-062-risk-chain.jpg` | Use the risk chain before naming a control | Semantic review approved |
 | 063 | `concept` | `stage10-lesson-063-concept.jpg` | Malware is malicious software; social engineering manipulates people | Semantic review approved |
@@ -271,6 +270,7 @@
 | 065 | `password-tool` | `stage10-lesson-065-password-tool.jpg` | Estimate password quality without collecting real passwords | Semantic review approved |
 | 065 | `passwords` | `stage10-lesson-065-passwords.jpg` | Passwords: cheap, familiar and often ruined by humans | Semantic review approved |
 | 065 | `tokens` | `stage10-lesson-065-tokens.jpg` | Tokens: proof that the user has a specific device or object | Semantic review approved |
+| 066 | `controls` | `stage10-lesson-062-controls.jpg` | One control can support more than one goal, but not every goal | Human semantic review pending |
 | 066 | `core` | `stage10-lesson-066-core.jpg` | Access control decides what authenticated users may do | Semantic review approved |
 | 066 | `least` | `stage10-lesson-066-least.jpg` | Least privilege reduces unnecessary damage | Semantic review approved |
 | 066 | `matrix` | `stage10-lesson-066-matrix.jpg` | A permission matrix makes access decisions visible | Semantic review approved |
@@ -347,17 +347,18 @@
 | 077 | `structure` | `stage10-lesson-077-structure.jpg` | The five-part evaluation answer | Semantic review approved |
 | 078 | `data-info` | `stage10-lesson-078-data-info.jpg` | Data vs information | Semantic review approved |
 | 078 | `database` | `stage10-lesson-078-database.jpg` | What is a database? | Semantic review approved |
-| 078 | `dbms` | `stage10-lesson-078-dbms.jpg` | What does a DBMS provide? | Semantic review approved |
 | 078 | `scenario` | `stage10-lesson-078-scenario.jpg` | Which DBMS feature solves the problem? | Semantic review approved |
 | 078 | `sorter` | `stage10-lesson-078-sorter.jpg` | Is it data, information, database, or DBMS? | Semantic review approved |
 | 078 | `terms` | `stage10-lesson-078-terms.jpg` | Core relational words for this lesson | Semantic review approved |
 | 079 | `anomalies` | `stage10-lesson-079-anomalies.jpg` | Why repeated data causes anomalies | Semantic review approved |
 | 079 | `compare` | `stage10-lesson-079-compare.jpg` | Flat-file vs relational comparison | Semantic review approved |
 | 079 | `flat` | `stage10-lesson-079-flat.jpg` | Flat-file database | Semantic review approved |
+| 079 | `referential` | `stage10-lesson-081-referential.jpg` | Referential integrity | Human semantic review pending |
 | 079 | `relational` | `stage10-lesson-079-relational.jpg` | Relational database | Semantic review approved |
 | 080 | `checkpoint` | `stage10-lesson-080-checkpoint.jpg` | Section 8 basics so far | Semantic review approved |
 | 080 | `constraint-tool` | `stage10-lesson-080-constraint-tool.jpg` | Which rule rejects the bad value? | Semantic review approved |
 | 080 | `constraints` | `stage10-lesson-080-constraints.jpg` | Constraints and validation rules | Semantic review approved |
+| 080 | `dbms` | `stage10-lesson-078-dbms.jpg` | What does a DBMS provide? | Human semantic review pending |
 | 080 | `fields` | `stage10-lesson-080-fields.jpg` | Designing fields properly | Semantic review approved |
 | 080 | `terms` | `stage10-lesson-080-terms.jpg` | Tables, records and fields | Semantic review approved |
 | 080 | `type-tool` | `stage10-lesson-080-type-tool.jpg` | Choose the best data type | Semantic review approved |
@@ -365,7 +366,6 @@
 | 081 | `foreign` | `stage10-lesson-081-foreign.jpg` | Foreign keys link tables | Semantic review approved |
 | 081 | `key-picker` | `stage10-lesson-081-key-picker.jpg` | Choose the best primary key | Semantic review approved |
 | 081 | `primary` | `stage10-lesson-081-primary.jpg` | Primary keys uniquely identify records | Semantic review approved |
-| 081 | `referential` | `stage10-lesson-081-referential.jpg` | Referential integrity | Semantic review approved |
 | 081 | `relationship-tool` | `stage10-lesson-081-relationship-tool.jpg` | Classify the relationship | Semantic review approved |
 | 081 | `relationships` | `stage10-lesson-081-relationships.jpg` | Relationships describe how records connect | Semantic review approved |
 | 082 | `attributes` | `stage10-lesson-082-attributes.jpg` | Attributes describe an entity | Semantic review approved |
@@ -382,9 +382,9 @@
 | 084 | `strings` | `stage10-lesson-084-strings.jpg` | Text values need quotes; numbers usually do not | Semantic review approved |
 | 085 | `aggregates` | `stage10-lesson-085-aggregates.jpg` | Aggregate functions calculate one summary value | Semantic review approved |
 | 085 | `groupby` | `stage10-lesson-085-groupby.jpg` | GROUP BY calculates summaries per group | Semantic review approved |
+| 085 | `join` | `stage10-lesson-086-join.jpg` | Two-table INNER JOIN with ON | Human semantic review pending |
 | 085 | `orderby` | `stage10-lesson-085-orderby.jpg` | ORDER BY sorts output rows | Semantic review approved |
 | 086 | `aliases` | `stage10-lesson-086-aliases.jpg` | Table-qualified names and aliases prevent ambiguity | Semantic review approved |
-| 086 | `join` | `stage10-lesson-086-join.jpg` | Two-table INNER JOIN with ON | Semantic review approved |
 | 086 | `relationships` | `stage10-lesson-086-relationships.jpg` | Related tables use primary keys and foreign keys | Semantic review approved |
 | 087 | `delete` | `stage10-lesson-087-delete.jpg` | DELETE FROM removes records | Semantic review approved |
 | 087 | `dml` | `stage10-lesson-087-dml.jpg` | INSERT, UPDATE and DELETE are data manipulation commands | Semantic review approved |
@@ -406,7 +406,6 @@
 | 091 | `hardware` | `stage10-lesson-091-hardware.jpg` | Choose hardware by matching characteristics to use | Semantic review approved |
 | 091 | `logic` | `stage10-lesson-091-logic.jpg` | How hardware facts become mechanisms | Semantic review approved |
 | 091 | `map` | `stage10-lesson-091-map.jpg` | Sections 3-4 knowledge map | Semantic review approved |
-| 091 | `processor` | `stage10-lesson-091-processor.jpg` | Registers and buses: the FDE cycle vocabulary | Semantic review approved |
 | 092 | `map` | `stage10-lesson-092-map.jpg` | Sections 5-6 knowledge map | Semantic review approved |
 | 092 | `matcher` | `stage10-lesson-092-matcher.jpg` | Choose the best control | Semantic review approved |
 | 092 | `security` | `stage10-lesson-092-security.jpg` | Match the control to the threat | Semantic review approved |
@@ -441,12 +440,13 @@
 | 097 | `rewrite` | `stage10-lesson-097-rewrite.jpg` | Build a corrected answer sentence | Semantic review approved |
 | 097 | `routine` | `stage10-lesson-097-routine.jpg` | How to use the mock after today | Semantic review approved |
 | 097 | `score` | `stage10-lesson-097-score.jpg` | Turn a score into a repair priority | Semantic review approved |
-| 098 | `concept` | `stage10-lesson-098-concept.jpg` | An algorithm is a solution expressed as defined steps | Semantic review approved |
 | 098 | `constraints` | `stage10-lesson-098-constraints.jpg` | Constraints stop algorithms from wandering off | Semantic review approved |
 | 098 | `model` | `stage10-lesson-098-model.jpg` | Use IPOC before choosing a representation | Semantic review approved |
 | 099 | `abstraction` | `stage10-lesson-099-abstraction.jpg` | Abstraction: keep the details that affect the algorithm | Semantic review approved |
+| 099 | `concept` | `stage10-lesson-098-concept.jpg` | An algorithm is a solution expressed as defined steps | Human semantic review pending |
 | 099 | `decomposition` | `stage10-lesson-099-decomposition.jpg` | Decomposition: split the problem into sub-problems | Semantic review approved |
 | 099 | `filter` | `stage10-lesson-099-filter.jpg` | Keep or ignore details | Semantic review approved |
+| 099 | `ipoc` | `stage10-lesson-111-ipoc.jpg` | Turn paragraphs into a design table | Human semantic review pending |
 | 099 | `pattern` | `stage10-lesson-099-pattern.jpg` | Produce an abstract model | Semantic review approved |
 | 099 | `sorter` | `stage10-lesson-099-sorter.jpg` | Classify the design move | Semantic review approved |
 | 100 | `combining` | `stage10-lesson-100-combining.jpg` | Real algorithms usually combine the three structures | Semantic review approved |
@@ -454,12 +454,12 @@
 | 100 | `pseudocode` | `stage10-lesson-100-pseudocode.jpg` | Cambridge pseudocode is the exam form; Java is support only | Semantic review approved |
 | 100 | `selection` | `stage10-lesson-100-selection.jpg` | Selection: choose a path using a condition | Semantic review approved |
 | 100 | `sequence` | `stage10-lesson-100-sequence.jpg` | Sequence: steps run in a fixed order | Semantic review approved |
-| 101 | `equivalence` | `stage10-lesson-101-equivalence.jpg` | A diamond becomes IF...THEN...ELSE | Semantic review approved |
 | 101 | `flowcharts` | `stage10-lesson-101-flowcharts.jpg` | Flowcharts use symbols to show control flow | Semantic review approved |
 | 101 | `notation` | `stage10-lesson-101-notation.jpg` | Readable notation earns marks more easily | Semantic review approved |
 | 101 | `pseudocode` | `stage10-lesson-101-pseudocode.jpg` | Cambridge-style pseudocode uses structured keywords | Semantic review approved |
 | 101 | `structure-tool` | `stage10-lesson-101-structure-tool.jpg` | Match scenario to pseudocode structure | Semantic review approved |
 | 101 | `symbol-tool` | `stage10-lesson-101-symbol-tool.jpg` | Choose the correct flowchart symbol | Semantic review approved |
+| 102 | `analyser` | `stage10-lesson-111-analyser.jpg` | Stepwise refinement turns a high-level algorithm into implementable modules | Human semantic review pending |
 | 102 | `dry-run` | `stage10-lesson-102-dry-run.jpg` | Dry run: execute the algorithm by hand | Semantic review approved |
 | 102 | `loops` | `stage10-lesson-102-loops.jpg` | Loops make trace tables useful and slightly unforgiving | Semantic review approved |
 | 102 | `predictor` | `stage10-lesson-102-predictor.jpg` | Predict the final output | Semantic review approved |
@@ -467,16 +467,15 @@
 | 102 | `trace-table` | `stage10-lesson-102-trace-table.jpg` | A trace table records variables after each change | Semantic review approved |
 | 103 | `checks` | `stage10-lesson-103-checks.jpg` | Match the rule to the risk | Semantic review approved |
 | 103 | `defensive` | `stage10-lesson-103-defensive.jpg` | Reject bad input, then ask again | Semantic review approved |
+| 103 | `equivalence` | `stage10-lesson-101-equivalence.jpg` | A diamond becomes IF...THEN...ELSE | Human semantic review pending |
 | 103 | `pseudocode` | `stage10-lesson-103-pseudocode.jpg` | Use Cambridge-style validation loops in the exam | Semantic review approved |
 | 103 | `tester` | `stage10-lesson-103-tester.jpg` | Test a mark against 0-100 | Semantic review approved |
 | 103 | `validation` | `stage10-lesson-103-validation.jpg` | Validation checks whether input follows a rule | Semantic review approved |
 | 104 | `binary` | `stage10-lesson-104-binary.jpg` | Binary search repeatedly halves a sorted list | Semantic review approved |
 | 104 | `binary-tool` | `stage10-lesson-104-binary-tool.jpg` | Trace binary search on sorted data | Semantic review approved |
 | 104 | `compare` | `stage10-lesson-104-compare.jpg` | Choosing the right search | Semantic review approved |
-| 104 | `linear` | `stage10-lesson-104-linear.jpg` | Linear search checks each item in order | Semantic review approved |
 | 104 | `linear-tool` | `stage10-lesson-104-linear-tool.jpg` | Trace linear search | Semantic review approved |
 | 104 | `pseudocode` | `stage10-lesson-104-pseudocode.jpg` | Cambridge pseudocode is the exam format | Semantic review approved |
-| 105 | `bubble` | `stage10-lesson-105-bubble.jpg` | Why bubble sort repeats adjacent comparisons | Semantic review approved |
 | 105 | `compare` | `stage10-lesson-105-compare.jpg` | Why the sorts move data differently | Semantic review approved |
 | 105 | `insertion` | `stage10-lesson-105-insertion.jpg` | How insertion sort grows a sorted region | Semantic review approved |
 | 105 | `pseudocode` | `stage10-lesson-105-pseudocode.jpg` | Why a trace follows state | Semantic review approved |
@@ -489,7 +488,7 @@
 | 107 | `build` | `stage10-lesson-107-build.jpg` | Some algorithms construct a new string one character at a time | Semantic review approved |
 | 107 | `model` | `stage10-lesson-107-model.jpg` | A string algorithm needs position, character and stopping point | Semantic review approved |
 | 107 | `patterns` | `stage10-lesson-107-patterns.jpg` | Most AS string algorithms are four familiar patterns | Semantic review approved |
-| 107 | `pseudocode` | `stage10-lesson-107-pseudocode.jpg` | Keep exam pseudocode readable and avoid Java indexing leakage | Semantic review approved |
+| 107 | `pseudocode` | `stage10-lesson-107-pseudocode.jpg` | Count vowels with a closed selection | Semantic review approved |
 | 107 | `scanner` | `stage10-lesson-107-scanner.jpg` | Trace character processing | Semantic review approved |
 | 108 | `counting` | `stage10-lesson-108-counting.jpg` | Total visits = outer repetitions x inner repetitions | Semantic review approved |
 | 108 | `model` | `stage10-lesson-108-model.jpg` | Outer loop first, inner loop second | Semantic review approved |
@@ -508,8 +507,6 @@
 | 110 | `notation` | `stage10-lesson-110-notation.jpg` | Use the symbols that make algorithm intent visible | Semantic review approved |
 | 110 | `readability` | `stage10-lesson-110-readability.jpg` | A marker should not need detective training | Semantic review approved |
 | 110 | `structure` | `stage10-lesson-110-structure.jpg` | Every opening should have a visible ending | Semantic review approved |
-| 111 | `analyser` | `stage10-lesson-111-analyser.jpg` | Stepwise refinement turns a high-level algorithm into implementable modules | Semantic review approved |
-| 111 | `ipoc` | `stage10-lesson-111-ipoc.jpg` | Turn paragraphs into a design table | Semantic review approved |
 | 111 | `pseudocode` | `stage10-lesson-111-pseudocode.jpg` | Design in Cambridge pseudocode first; use Java only to support testing | Semantic review approved |
 | 111 | `requirements` | `stage10-lesson-111-requirements.jpg` | Words in the question usually signal a control structure | Semantic review approved |
 | 111 | `structures` | `stage10-lesson-111-structures.jpg` | Pick the structure before writing the pseudocode | Semantic review approved |
@@ -527,7 +524,6 @@
 | 114 | `constants` | `stage10-lesson-114-constants.jpg` | Name fixed values so the algorithm explains itself | Semantic review approved |
 | 114 | `declare` | `stage10-lesson-114-declare.jpg` | Declaration gives a name and a type before use | Semantic review approved |
 | 114 | `model` | `stage10-lesson-114-model.jpg` | Identifiers name storage locations | Semantic review approved |
-| 114 | `pseudocode` | `stage10-lesson-114-pseudocode.jpg` | The symbol changes, the update idea does not | Semantic review approved |
 | 115 | `access` | `stage10-lesson-115-access.jpg` | The index points to exactly one element | Semantic review approved |
 | 115 | `declare` | `stage10-lesson-115-declare.jpg` | Bounds say which indexes are valid | Semantic review approved |
 | 115 | `lookup` | `stage10-lesson-115-lookup.jpg` | Access one element | Semantic review approved |
@@ -541,6 +537,7 @@
 | 116 | `nested` | `stage10-lesson-116-nested.jpg` | Outer row loop, inner column loop | Semantic review approved |
 | 116 | `pseudocode` | `stage10-lesson-116-pseudocode.jpg` | Do not import Java indexing into Cambridge answers | Semantic review approved |
 | 117 | `count` | `stage10-lesson-117-count.jpg` | Increment only when a condition is true | Semantic review approved |
+| 117 | `linear` | `stage10-lesson-104-linear.jpg` | Linear search checks each item in order | Human semantic review pending |
 | 117 | `patterns` | `stage10-lesson-117-patterns.jpg` | Four array algorithm patterns | Semantic review approved |
 | 117 | `pseudocode` | `stage10-lesson-117-pseudocode.jpg` | Same algorithm, different array syntax | Semantic review approved |
 | 117 | `search` | `stage10-lesson-117-search.jpg` | Use a flag to remember whether the target appeared | Semantic review approved |
@@ -549,6 +546,7 @@
 | 117 | `update` | `stage10-lesson-117-update.jpg` | Change selected elements | Semantic review approved |
 | 118 | `access` | `stage10-lesson-118-access.jpg` | Use the field name, not a numeric index | Semantic review approved |
 | 118 | `array-vs-record` | `stage10-lesson-118-array-vs-record.jpg` | Same type and index, or mixed fields and names? | Semantic review approved |
+| 118 | `bubble` | `stage10-lesson-105-bubble.jpg` | Why bubble sort repeats adjacent comparisons | Human semantic review pending |
 | 118 | `concept` | `stage10-lesson-118-concept.jpg` | Composite data groups fields into one type | Semantic review approved |
 | 118 | `declare` | `stage10-lesson-118-declare.jpg` | Define a record, then save and read named fields | Semantic review approved |
 | 118 | `lookup` | `stage10-lesson-118-lookup.jpg` | Read one field from a record | Semantic review approved |
@@ -560,30 +558,30 @@
 | 119 | `operations` | `stage10-lesson-119-operations.jpg` | Search, count and update fields | Semantic review approved |
 | 119 | `pseudocode` | `stage10-lesson-119-pseudocode.jpg` | Same structure, different syntax | Semantic review approved |
 | 119 | `traversal` | `stage10-lesson-119-traversal.jpg` | A loop visits each record; field access uses the loop index | Semantic review approved |
+| 120 | `adt-concept` | `stage10-lesson-122-concept.jpg` | An ADT is data together with permitted operations | Human semantic review pending |
 | 120 | `concept` | `stage10-lesson-120-concept.jpg` | A text file stores characters, usually processed one line at a time | Semantic review approved |
+| 120 | `implementation` | `stage10-lesson-122-implementation.jpg` | Implement stack, queue and linked list using arrays | Human semantic review pending |
 | 120 | `lifecycle` | `stage10-lesson-120-lifecycle.jpg` | Open, process, close | Semantic review approved |
 | 120 | `mode-lab` | `stage10-lesson-120-mode-lab.jpg` | Choose the correct file mode | Semantic review approved |
 | 120 | `modes` | `stage10-lesson-120-modes.jpg` | Choose the mode before touching the file | Semantic review approved |
 | 120 | `pseudocode` | `stage10-lesson-120-pseudocode.jpg` | Cambridge pseudocode is the exam answer format | Semantic review approved |
+| 120 | `queue` | `stage10-lesson-122-queue.jpg` | Why two ends create FIFO | Human semantic review pending |
 | 120 | `read` | `stage10-lesson-120-read.jpg` | Use EOF so the loop stops at the end of the file | Semantic review approved |
 | 120 | `reader` | `stage10-lesson-120-reader.jpg` | Step through a WHILE NOT EOF loop | Semantic review approved |
 | 120 | `records` | `stage10-lesson-120-records.jpg` | A text line often represents one record | Semantic review approved |
+| 120 | `stack` | `stage10-lesson-122-stack.jpg` | Why one open end creates LIFO | Human semantic review pending |
 | 120 | `write` | `stage10-lesson-120-write.jpg` | Write creates a new result; append adds to the existing story | Semantic review approved |
 | 121 | `concept` | `stage10-lesson-121-concept.jpg` | CSV-style means separated fields in a fixed order | Semantic review approved |
 | 121 | `format` | `stage10-lesson-121-format.jpg` | Design the format before writing code | Semantic review approved |
-| 121 | `parse` | `stage10-lesson-121-parse.jpg` | Read the line before splitting it | Semantic review approved |
+| 121 | `parse` | `stage10-lesson-121-parse.jpg` | Use question-supplied CSV functions exactly | Semantic review approved |
 | 121 | `parser` | `stage10-lesson-121-parser.jpg` | Split a line into fields | Semantic review approved |
-| 121 | `pseudocode` | `stage10-lesson-121-pseudocode.jpg` | Java split helps understanding, but Cambridge pseudocode remains the answer format | Semantic review approved |
-| 121 | `types` | `stage10-lesson-121-types.jpg` | CSV fields arrive as text, then become useful values | Semantic review approved |
+| 121 | `pseudocode` | `stage10-lesson-121-pseudocode.jpg` | Question-supplied functions versus Java methods | Semantic review approved |
+| 121 | `types` | `stage10-lesson-121-types.jpg` | Convert CSV text before numeric comparison | Semantic review approved |
 | 121 | `validate` | `stage10-lesson-121-validate.jpg` | A structured file can still contain bad lines | Semantic review approved |
 | 121 | `validator` | `stage10-lesson-121-validator.jpg` | Check field count and mark type | Semantic review approved |
-| 122 | `concept` | `stage10-lesson-122-concept.jpg` | An ADT is data together with permitted operations | Semantic review approved |
 | 122 | `errors` | `stage10-lesson-122-errors.jpg` | Why boundary checks come first | Semantic review approved |
-| 122 | `implementation` | `stage10-lesson-122-implementation.jpg` | Implement stack, queue and linked list using arrays | Semantic review approved |
 | 122 | `operations` | `stage10-lesson-122-operations.jpg` | Why operation names preserve meaning | Semantic review approved |
 | 122 | `pseudocode` | `stage10-lesson-122-pseudocode.jpg` | Why pseudocode must expose state change | Semantic review approved |
-| 122 | `queue` | `stage10-lesson-122-queue.jpg` | Why two ends create FIFO | Semantic review approved |
-| 122 | `stack` | `stage10-lesson-122-stack.jpg` | Why one open end creates LIFO | Semantic review approved |
 | 123 | `adt` | `stage10-lesson-123-adt.jpg` | Use ADTs when the removal rule matters | Semantic review approved |
 | 123 | `array` | `stage10-lesson-123-array.jpg` | Use arrays for many similar values accessed by index | Semantic review approved |
 | 123 | `criteria` | `stage10-lesson-123-criteria.jpg` | Start with the data and operations, not the keyword | Semantic review approved |
@@ -612,24 +610,27 @@
 | 126 | `java` | `stage10-lesson-126-java.jpg` | Same logic, different exam language | Semantic review approved |
 | 126 | `selection` | `stage10-lesson-126-selection.jpg` | Conditions decide the path | Semantic review approved |
 | 126 | `sequence` | `stage10-lesson-126-sequence.jpg` | Order changes meaning | Semantic review approved |
+| 126 | `standard` | `stage10-lesson-140-standard.jpg` | Translate a flowchart or structured English into pseudocode | Human semantic review pending |
 | 126 | `tracer` | `stage10-lesson-126-tracer.jpg` | Run a small loop by hand | Semantic review approved |
-| 127 | `case` | `stage10-lesson-127-case.jpg` | Use CASE for clear values of one expression | Semantic review approved |
 | 127 | `choice` | `stage10-lesson-127-choice.jpg` | Start with the shape of the decision | Semantic review approved |
 | 127 | `if` | `stage10-lesson-127-if.jpg` | Use IF when a Boolean condition decides the route | Semantic review approved |
 | 127 | `java` | `stage10-lesson-127-java.jpg` | Same idea, different syntax | Semantic review approved |
 | 127 | `nested` | `stage10-lesson-127-nested.jpg` | A decision inside another decision | Semantic review approved |
 | 127 | `path` | `stage10-lesson-127-path.jpg` | Trace a nested IF | Semantic review approved |
+| 127 | `pseudocode` | `stage10-lesson-114-pseudocode.jpg` | The symbol changes, the update idea does not | Human semantic review pending |
 | 128 | `arrays` | `stage10-lesson-128-arrays.jpg` | FOR loops are natural for fixed array bounds | Semantic review approved |
 | 128 | `bounds` | `stage10-lesson-128-bounds.jpg` | One wrong bound can miss or invent an iteration | Semantic review approved |
 | 128 | `counter` | `stage10-lesson-128-counter.jpg` | Do not confuse the counter with the running total | Semantic review approved |
-| 128 | `for` | `stage10-lesson-128-for.jpg` | A FOR loop has a counter, a start value and an end value | Semantic review approved |
 | 128 | `java` | `stage10-lesson-128-java.jpg` | Java for loops are useful, but not the exam answer format | Semantic review approved |
+| 129 | `case` | `stage10-lesson-127-case.jpg` | Use CASE for clear values of one expression | Human semantic review pending |
 | 129 | `compare` | `stage10-lesson-129-compare.jpg` | The difference is when the condition is tested | Semantic review approved |
+| 129 | `for` | `stage10-lesson-128-for.jpg` | A FOR loop has a counter, a start value and an end value | Human semantic review pending |
 | 129 | `java` | `stage10-lesson-129-java.jpg` | Java syntax is support, not Cambridge pseudocode | Semantic review approved |
 | 129 | `repeat` | `stage10-lesson-129-repeat.jpg` | Post-condition loop: run once, then check | Semantic review approved |
 | 129 | `sentinel` | `stage10-lesson-129-sentinel.jpg` | A special value can stop the loop | Semantic review approved |
 | 129 | `validation` | `stage10-lesson-129-validation.jpg` | Keep asking until the input is valid | Semantic review approved |
 | 129 | `while` | `stage10-lesson-129-while.jpg` | Pre-condition loop: check before running | Semantic review approved |
+| 130 | `byref-compare` | `stage10-lesson-131-compare.jpg` | Same procedure body, different final result | Human semantic review pending |
 | 130 | `calls` | `stage10-lesson-130-calls.jpg` | Function calls can appear where a value is needed | Semantic review approved |
 | 130 | `compare` | `stage10-lesson-130-compare.jpg` | The mark-winning difference is the returned value | Semantic review approved |
 | 130 | `function` | `stage10-lesson-130-function.jpg` | A function returns a value to the caller | Semantic review approved |
@@ -637,7 +638,6 @@
 | 130 | `parameters` | `stage10-lesson-130-parameters.jpg` | A subprogram interface connects caller and header | Semantic review approved |
 | 130 | `procedure` | `stage10-lesson-130-procedure.jpg` | A procedure performs actions and returns no value | Semantic review approved |
 | 130 | `returner` | `stage10-lesson-130-returner.jpg` | Calculate a function return value | Semantic review approved |
-| 131 | `compare` | `stage10-lesson-131-compare.jpg` | Same procedure body, different final result | Semantic review approved |
 | 131 | `java` | `stage10-lesson-131-java.jpg` | Do not replace Cambridge BYREF with Java syntax | Semantic review approved |
 | 131 | `reference` | `stage10-lesson-131-reference.jpg` | BYREF links the parameter back to the caller's variable | Semantic review approved |
 | 131 | `terms` | `stage10-lesson-131-terms.jpg` | The header names the parameter. The call supplies the argument. | Semantic review approved |
@@ -650,12 +650,13 @@
 | 132 | `local` | `stage10-lesson-132-local.jpg` | Local variables are declared inside a subroutine or block | Semantic review approved |
 | 132 | `scope` | `stage10-lesson-132-scope.jpg` | Scope means where a variable or identifier can be accessed | Semantic review approved |
 | 132 | `shadowing` | `stage10-lesson-132-shadowing.jpg` | A local variable can hide a global variable with the same name | Semantic review approved |
-| 133 | `case` | `stage10-lesson-133-case.jpg` | UCASE and LCASE normalise text before comparison | Semantic review approved |
-| 133 | `concat` | `stage10-lesson-133-concat.jpg` | Concatenation joins strings to form a new string | Semantic review approved |
-| 133 | `java` | `stage10-lesson-133-java.jpg` | Java method syntax is not Cambridge pseudocode | Semantic review approved |
+| 133 | `case` | `stage10-lesson-133-case.jpg` | LCASE and UCASE convert one CHAR | Semantic review approved |
+| 133 | `concat` | `stage10-lesson-133-concat.jpg` | Concatenation joins STRING values | Semantic review approved |
+| 133 | `java` | `stage10-lesson-133-java.jpg` | MID and Java substring use different positions | Semantic review approved |
 | 133 | `lab` | `stage10-lesson-133-lab.jpg` | Test a built-in function | Semantic review approved |
 | 133 | `length` | `stage10-lesson-133-length.jpg` | LENGTH(String) returns the number of characters | Semantic review approved |
 | 133 | `position` | `stage10-lesson-133-position.jpg` | Exam traces must follow the position convention stated or implied | Semantic review approved |
+| 133 | `robust-java` | `stage10-lesson-139-java.jpg` | Java methods can model modularity, but Cambridge pseudocode remains the exam format | Human semantic review pending |
 | 133 | `strings` | `stage10-lesson-133-strings.jpg` | A string is a sequence of characters | Semantic review approved |
 | 133 | `substring` | `stage10-lesson-133-substring.jpg` | Use the string-function definition supplied in the question | Semantic review approved |
 | 134 | `calculator` | `stage10-lesson-134-calculator.jpg` | Compare / , DIV and MOD | Semantic review approved |
@@ -682,7 +683,6 @@
 | 136 | `purpose` | `stage10-lesson-136-purpose.jpg` | Files store data outside the running program | Semantic review approved |
 | 136 | `read` | `stage10-lesson-136-read.jpg` | Read every line using WHILE NOT EOF | Semantic review approved |
 | 136 | `write` | `stage10-lesson-136-write.jpg` | FOR WRITE writes new contents | Semantic review approved |
-| 137 | `boundary` | `stage10-lesson-137-boundary.jpg` | Extreme or boundary data uses valid values at accepted limits | Semantic review approved |
 | 137 | `erroneous` | `stage10-lesson-137-erroneous.jpg` | Abnormal data is invalid data that should be rejected | Semantic review approved |
 | 137 | `java` | `stage10-lesson-137-java.jpg` | Java can help you run examples, but Cambridge pseudocode is the exam answer format | Semantic review approved |
 | 137 | `normal` | `stage10-lesson-137-normal.jpg` | Normal data is valid, typical data inside the allowed range | Semantic review approved |
@@ -690,14 +690,12 @@
 | 137 | `table` | `stage10-lesson-137-table.jpg` | A clear test table turns thinking into marks | Semantic review approved |
 | 137 | `validation` | `stage10-lesson-137-validation.jpg` | Testing checks validation against expected results | Semantic review approved |
 | 138 | `breakpoint` | `stage10-lesson-138-breakpoint.jpg` | A breakpoint pauses execution at a chosen line | Semantic review approved |
-| 138 | `bug` | `stage10-lesson-138-bug.jpg` | Analyse and amend an existing program | Semantic review approved |
 | 138 | `java` | `stage10-lesson-138-java.jpg` | Java debugging tools help practice, but Cambridge pseudocode remains the exam format | Semantic review approved |
 | 138 | `purpose` | `stage10-lesson-138-purpose.jpg` | Debugging locates and corrects faults | Semantic review approved |
 | 138 | `stepping` | `stage10-lesson-138-stepping.jpg` | Step through code one instruction at a time | Semantic review approved |
 | 138 | `watch` | `stage10-lesson-138-watch.jpg` | Watching variables shows state changes while stepping | Semantic review approved |
 | 139 | `checks` | `stage10-lesson-139-checks.jpg` | Pick the check that matches the rule | Semantic review approved |
 | 139 | `integration` | `stage10-lesson-139-integration.jpg` | Validation and modularity support each other | Semantic review approved |
-| 139 | `java` | `stage10-lesson-139-java.jpg` | Java methods can model modularity, but Cambridge pseudocode remains the exam format | Semantic review approved |
 | 139 | `modularity` | `stage10-lesson-139-modularity.jpg` | Modular design splits a solution into smaller named parts | Semantic review approved |
 | 139 | `module-tool` | `stage10-lesson-139-module-tool.jpg` | Choose a module for each responsibility | Semantic review approved |
 | 139 | `parameters` | `stage10-lesson-139-parameters.jpg` | Pass data into a module and return only what is needed | Semantic review approved |
@@ -711,7 +709,6 @@
 | 140 | `loops` | `stage10-lesson-140-loops.jpg` | Choose the loop keyword that matches the logic | Semantic review approved |
 | 140 | `selection` | `stage10-lesson-140-selection.jpg` | Use IF , THEN , ELSE , ENDIF | Semantic review approved |
 | 140 | `spotter` | `stage10-lesson-140-spotter.jpg` | Spot the Java-only syntax in an exam answer | Semantic review approved |
-| 140 | `standard` | `stage10-lesson-140-standard.jpg` | Translate a flowchart or structured English into pseudocode | Semantic review approved |
 | 140 | `subroutines` | `stage10-lesson-140-subroutines.jpg` | Use PROCEDURE and FUNCTION instead of Java method wrappers | Semantic review approved |
 | 141 | `arrays` | `stage10-lesson-141-arrays.jpg` | Arrays need consistent indexing and meaningful loop bounds | Semantic review approved |
 | 141 | `checklist` | `stage10-lesson-141-checklist.jpg` | Use a checklist before calling a fragment finished | Semantic review approved |
@@ -743,8 +740,11 @@
 | 144 | `dictionary-tool` | `stage10-lesson-144-dictionary-tool.jpg` | Inspect a field definition | Semantic review approved |
 | 144 | `interfaces` | `stage10-lesson-144-interfaces.jpg` | Interface designs show how users will enter data and navigate the system | Semantic review approved |
 | 144 | `lifecycle` | `stage10-lesson-144-lifecycle.jpg` | Design documentation supports implementation, testing and maintenance | Semantic review approved |
+| 144 | `logic` | `stage10-lesson-059-logic.jpg` | Logic errors make the program do the wrong thing | Human semantic review pending |
 | 144 | `purpose` | `stage10-lesson-144-purpose.jpg` | Design documents translate requirements into a buildable plan | Semantic review approved |
 | 144 | `traceability` | `stage10-lesson-144-traceability.jpg` | Traceability keeps the design connected to the original need | Semantic review approved |
+| 145 | `boundary` | `stage10-lesson-137-boundary.jpg` | Extreme or boundary data uses valid values at accepted limits | Human semantic review pending |
+| 145 | `bug` | `stage10-lesson-138-bug.jpg` | Analyse and amend an existing program | Human semantic review pending |
 | 145 | `changeover` | `stage10-lesson-145-changeover.jpg` | Test strategy and test plan are different documents | Semantic review approved |
 | 145 | `data-tool` | `stage10-lesson-145-data-tool.jpg` | Classify input for NumberOfStudents, valid range 1 to 30 | Semantic review approved |
 | 145 | `evaluation` | `stage10-lesson-145-evaluation.jpg` | Evaluation uses requirements and measurable success criteria | Semantic review approved |

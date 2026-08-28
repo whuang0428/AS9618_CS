@@ -149,11 +149,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "A student calculated an image file size and wrote only '960000'. Explain how to improve this answer for a Cambridge-style mark scheme.",
+    prompt: "A student calculated an image file size and wrote only '960000'. Explain how to Develop this answer for a Mark scheme.",
     answer: "The student should show the formula width x height x colour depth, substitute the values, state the bit total if relevant, divide by 8 to convert bits to bytes, and include the final unit such as bytes. This makes method marks visible and avoids losing the final mark for missing units.",
     marking: [
       { mark: "B1", text: "states formula or need to show method" },
@@ -170,7 +176,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "A mock answer says: 'A compiler translates code. An interpreter translates code.' Rewrite this as a mark-worthy comparison.",
+    prompt: "A mock answer says: 'A compiler translates code. An interpreter translates code.' Write this as a mark-worthy comparison.",
     answer: "A compiler translates the whole source program into object code before execution, whereas an interpreter translates and executes one statement at a time. A compiled program can run without being translated each time, whereas interpreted code normally needs the interpreter at run time. An interpreter can help debugging because errors are found as statements execute.",
     marking: [
       { mark: "B1", text: "compiler translates whole program/source before execution" },
@@ -187,7 +193,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "A student lost marks by writing: 'Use security to protect records.' Rewrite the answer using three specific controls for a school records system.",
+    prompt: "A student lost marks by writing: 'Use security to protect records.' Write the answer using three specific controls for a school records system.",
     answer: "Authentication such as MFA checks user identity before access, reducing unauthorised logins. Access rights restrict student records to staff who need them, reducing unauthorised viewing or editing. Encryption encodes stored or transmitted records so intercepted or stolen data is unreadable without the correct key.",
     marking: [
       { mark: "B1", text: "names authentication/MFA or another valid control" },
@@ -206,7 +212,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "A student wrote: SELECT * FROM Book GROUP BY Category. The task was to output each Category and the number of books in that category. Correct the SQL and explain the error.",
+    prompt: "A student wrote: SELECT * FROM Book GROUP BY Category. The task was to output each Category and the number of books in that category. Write a corrected version of the SQL and explain the error.",
     answer: "The corrected query is SELECT Category, COUNT(*) FROM Book GROUP BY Category; The original SELECT * is wrong because a grouped summary should output the grouped field and aggregate result, not every field. COUNT(*) counts records in each category, and GROUP BY Category forms one group for each category.",
     marking: [
       { mark: "B1", text: "SELECT Category" },
@@ -224,7 +230,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "7 marks",
-    prompt: "A mock answer says: 'Surveillance cameras are good because they catch criminals.' Rewrite it as a balanced evaluation for public facial recognition.",
+    prompt: "A mock answer says: 'Surveillance cameras are good because they catch criminals.' Write it as a balanced evaluation for public facial recognition.",
     answer: "Public facial recognition may improve safety by helping identify suspects or missing people quickly. However, it can reduce privacy because people may be monitored without meaningful consent, and biometric data could be misused or retained too long. It may also be unfair if recognition accuracy differs between groups. The system is justified only if the purpose is clear, use is transparent, access is restricted, retention is limited and the safety benefit is proportionate to the privacy risk.",
     marking: [
       { mark: "B1", text: "identifies valid benefit such as safety/crime prevention/finding missing people" },
@@ -387,11 +393,9 @@ function renderExamQuestions() {
           <p>${question.prompt}</p>
           <button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button>
           <div class="ms-panel" id="ms${index}">
-            <p><strong>Indicative answer:</strong> ${question.answer}</p>
-            <h4>Cambridge-style mark scheme</h4>
-            <ul>
-              ${question.marking.map((mark) => `<li><strong>${mark.mark}:</strong> ${mark.text}</li>`).join("")}
-            </ul>
+            <p><strong>Answer:</strong> ${question.answer}</p>
+            <h4>Mark scheme</h4>
+            ${renderStudentMarkPoints(question)}
           </div>
         </article>
       `

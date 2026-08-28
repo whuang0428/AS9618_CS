@@ -43,8 +43,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit balanced points: safeguarding and security benefits, privacy concerns, transparency, consent, proportionality and data retention.
 
-
-
 ## Student Task
 Students role-play two stakeholders and prepare one argument each, then write a neutral examiner-style conclusion.
 

@@ -72,11 +72,17 @@ const practice = [
   { id: "p10", prompt: "Name one output device for a checkout desk.", accepted: ["monitor", "display", "screen", "printer", "receipt printer", "speaker"], answer: "Monitor / display / receipt printer" },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "A school wants a computer-based attendance system. Recommend two pieces of hardware and justify each choice.",
+    prompt: "A school wants a computer-based attendance system. Suggest two pieces of hardware and justify each choice.",
     answer: "An RFID/barcode reader can capture student IDs quickly and accurately, reducing queues and typing errors. A networked computer or tablet can send attendance records to the central database so staff can access updated records.",
     marking: [
       { mark: "B1", text: "suitable input device such as RFID/barcode reader named" },
@@ -126,7 +132,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "A remote weather station records environmental data. Recommend suitable hardware and justify your choices.",
+    prompt: "A remote weather station records environmental data. Suggest suitable hardware and justify your choices.",
     answer: "It should use sensors such as temperature, humidity and pressure sensors to capture environmental data automatically. A low-power microcontroller can process readings while using little energy. A durable weatherproof enclosure protects components outdoors. Wireless communication can transmit readings without collecting the device manually.",
     marking: [
       { mark: "B1", text: "suitable environmental sensors named" },
@@ -279,9 +285,9 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
+          <h4>Mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
-          <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

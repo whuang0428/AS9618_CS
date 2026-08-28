@@ -106,6 +106,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -180,7 +186,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "For each scenario, choose a suitable interface and justify it: expert batch file task; public museum kiosk; novice arranging photos.",
+    prompt: "For each scenario, Suggest a suitable interface and justify it: expert batch file task; public museum kiosk; novice arranging photos.",
     answer: "For an expert batch file task, a CLI is suitable because typed commands or scripts can carry out repeated operations efficiently. For a public museum kiosk, a menu-driven interface is suitable because visitors can choose from fixed options without learning commands. For a novice arranging photos, a GUI is suitable because visual objects and pointer/touch actions allow direct manipulation of images. In each case the suitability depends on the user's skill and the task.",
     marking: [
       { mark: "B1", text: "CLI selected for expert batch file task" },
@@ -327,9 +333,9 @@ function renderExamQuestions() {
       <p>${question.prompt}</p>
       <button type="button" class="ms-toggle" data-answer="ms-${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong> ${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((item) => `<li><strong>${item.mark}</strong> ${item.text}</li>`).join("")}</ul>
+        <p><strong>Answer:</strong> ${question.answer}</p>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

@@ -1,10 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { explanations } from "./stage10-explanations-data.mjs";
+import { coreVisualTargetKeys } from "./remediation-v2-core-visuals.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const stylesheet = '    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />';
-const htmlBlock = /\n?\s*<!-- stage10-explanation:start [^ ]+ -->[\s\S]*?<!-- stage10-explanation:end [^ ]+ -->\n?/g;
+const htmlBlock = /\n*[ \t]*<!-- stage10-explanation:start [^ ]+ -->[\s\S]*?<!-- stage10-explanation:end [^ ]+ -->[ \t]*\n*/g;
 const markdownBlock = /\n?<!-- stage10-explanations:start -->[\s\S]*?<!-- stage10-explanations:end -->\n?/g;
 
 function escapeHtml(value) {
@@ -68,7 +69,7 @@ function htmlFor(item) {
   return `
 
         <!-- stage10-explanation:start ${item.targetId} -->
-        <section class="panel explanation-panel" id="${id}" data-explains="${item.targetId}" data-explanation-kind="${item.kind}" aria-labelledby="${id}-title" data-delivery-role="${item.deliveryRole ?? "CORE"}" data-classroom-activity="${item.classroomActivity ?? "TEACH"}" data-delivery-group="${item.targetId}">
+        <section class="panel explanation-panel" id="${id}" data-explains="${item.targetId}" data-explanation-kind="${item.kind}" aria-labelledby="${id}-title" data-delivery-role="${item.deliveryRole ?? "CORE"}" data-classroom-activity="${item.classroomActivity ?? "TEACH"}" data-delivery-group="${item.deliveryGroup ?? item.targetId}">
           <h2 class="explanation-sr-only" id="${id}-title">${escapeHtml(item.title)}</h2>
           <figure class="explanation-infographic">
             <img src="${escapeHtml(item.visual.src)}" width="${item.visual.width}" height="${item.visual.height}" loading="lazy" decoding="async" alt="${escapeHtml(item.visual.alt)}" />
@@ -123,8 +124,9 @@ for (let number = 1; number <= 150; number += 1) {
   const sectionById = new Map(sections.map((section) => [attribute(section.tag, "id"), section]));
   const edits = [];
   for (const item of items) {
-    const target = sectionById.get(item.targetId);
-    if (!target) throw new Error(`Lesson ${lesson}: explanation target ${item.targetId} is missing`);
+    const anchorId = coreVisualTargetKeys.has(`${lesson}/${item.targetId}`) ? "stage2-completion" : item.targetId;
+    const target = sectionById.get(anchorId);
+    if (!target) throw new Error(`Lesson ${lesson}: explanation anchor ${anchorId} for ${item.targetId} is missing`);
     edits.push({ position: target.end, value: htmlFor(item) });
   }
   for (const edit of edits.sort((a, b) => b.position - a.position)) {

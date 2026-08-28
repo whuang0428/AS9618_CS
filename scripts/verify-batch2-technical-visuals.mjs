@@ -6,6 +6,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 import { explanationByKey } from "./stage10-explanations-data.mjs";
+import { visualDeliveryLesson, visualDeliveryTarget } from "./remediation-v2-core-visuals.mjs";
 import { evaluateSemanticCalculation, semanticCalculations } from "./stage10-semantic-calculations.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -58,12 +59,14 @@ for (const bits of [shiftContract.input, ...shiftContract.examples.map((item) =>
 }
 
 for (const key of Object.keys(contract)) {
-  const item = explanationByKey[key];
+  const [sourceLesson, sourceTarget] = key.split("/");
+  const lesson = visualDeliveryLesson(sourceLesson, sourceTarget);
+  const target = visualDeliveryTarget(sourceLesson, sourceTarget);
+  const item = explanationByKey[`${lesson}/${target}`];
   expect(Boolean(item), `${key}: maintained Stage 10 explanation is missing.`);
   if (!item) continue;
   expect(item.deliveryRole === "CORE" && item.classroomActivity === "TEACH", `${key}: repaired visual must remain CORE/TEACH.`);
   expect(item.title === contract[key].title, `${key}: maintained title differs from the rendered contract.`);
-  const lesson = key.split("/")[0];
   const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));
   const markdown = normalize(fs.readFileSync(path.join(root, "lessons", markdownName), "utf8"));
   const html = normalize(fs.readFileSync(path.join(root, `web/lesson-${lesson}/index.html`), "utf8"));

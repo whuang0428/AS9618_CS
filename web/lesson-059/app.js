@@ -106,6 +106,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -179,7 +185,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Classify each error and justify it: missing ENDIF; array index outside the valid range while running; using < instead of <= so the final item is skipped.",
+    prompt: "Identify each error and justify it: missing ENDIF; array index outside the valid range while running; using < instead of <= so the final item is skipped.",
     answer: "A missing ENDIF is a syntax error because the program structure does not follow the grammar rules for the selection statement. An array index outside the valid range while running is a runtime error because the program fails during execution for a particular value or state. Using < instead of <= so the final item is skipped is a logic error because the code may run without crashing, but the algorithm gives the wrong result.",
     marking: [
       { mark: "B1", text: "missing ENDIF classified as syntax error" },
@@ -324,8 +330,8 @@ function renderExam() {
       <div class="ms-panel" id="ms${index}">
         <h4>Indicative answer</h4>
         <p>${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

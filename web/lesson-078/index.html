@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 078 | Data, information, databases and DBMS roles</title>
+    <title>AS9618 Lesson 078 | File-based limitations and relational solutions</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Data, information, databases and DBMS roles</h1>
+        <h1>File-based limitations and relational solutions</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -45,7 +45,72 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>File-based limitations and relational solutions</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A file-based approach stores data in separate application files. The same fact may be repeated in several files or records, causing redundancy and wasted storage. Updating only some copies creates inconsistency; insertion and deletion can also lose or require unrelated facts. Separate files may use incompatible formats, isolate data, duplicate validation/security code and make shared querying, concurrent access, backup and recovery harder to manage.</p>
+            <p>A relational database addresses these limitations by separating entities into linked tables, storing shared facts once, identifying records with keys and enforcing relationships and constraints centrally. A DBMS supplies shared query processing, integrity, security, access rights and backup. These mechanisms reduce particular file-based risks; a relational design is not automatically smaller, simpler or error-free.</p>
+            <p>Relational databases address file-based duplication, inconsistency, isolation and access problems through related tables, keys, constraints and managed queries.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Replace a repeated order file</h3>
+            <p>A flat Order file repeats CustomerName and Address in every order row. Split it into Customer(CustomerID, CustomerName, Address) and Order(OrderID, CustomerID, OrderDate). CustomerID links each order to one stored customer, so an address is updated once instead of in every order row.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>File-based limitations and relational solutions: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why can repeated data create inconsistency?</p>
+              <details><summary>Show answer</summary><p>One copy may be changed while another remains out of date.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What is data isolation in a file-based system?</p>
+              <details><summary>Show answer</summary><p>Related data is kept in separate files or formats, making combined access and queries difficult.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which relational feature connects an order to its customer?</p>
+              <details><summary>Show answer</summary><p>A foreign key in Order referring to the Customer primary key.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why is 'relational databases are always simpler' not a valid benefit?</p>
+              <details><summary>Show answer</summary><p>Linked tables and DBMS administration add complexity; benefits must be tied to a file-based limitation.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>A clinic repeats patient details in separate appointment, billing and treatment files. Explain three file-based limitations and a relational-database feature that addresses each one.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>repeated patient facts cause redundancy or wasted storage</td><td>Do not award a generic claim such as 'relational is better' without a named limitation, mechanism and consequence.</td><td>1</td></tr>
+                  <tr><td>linked tables store a shared patient fact once</td><td></td><td>1</td></tr>
+                  <tr><td>separate copies can become inconsistent after partial updates</td><td></td><td>1</td></tr>
+                  <tr><td>central keys/constraints and one stored fact improve consistency</td><td></td><td>1</td></tr>
+                  <tr><td>isolated files/formats make combined retrieval or control difficult</td><td></td><td>1</td></tr>
+                  <tr><td>DBMS query, integrity, access-right or backup service addresses the named difficulty</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 078 | 45 minutes | Paper 1 Section 8 | Database concepts</p>
             <h2>A database is an organised collection of related data managed through defined structures and controls.</h2>
@@ -74,7 +139,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Section 8 answers need exact vocabulary. "It stores data" is often too thin; the exam asks what structure or DBMS feature solves the problem.</p>
@@ -85,7 +150,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A school has 700 rows of attendance marks. Which item is information?</h2>
@@ -102,7 +167,7 @@
           </div>
         </section>
 
-        <section class="panel" id="data-info" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="data-info">
+        <section class="panel" id="data-info" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Data vs information</h2>
@@ -148,7 +213,7 @@
         </section>
 
         <!-- stage10-explanation:start data-info -->
-        <section class="panel explanation-panel" id="explanation-data-info" data-explains="data-info" data-explanation-kind="comparison" aria-labelledby="explanation-data-info-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="data-info">
+        <section class="panel explanation-panel" id="explanation-data-info" data-explains="data-info" data-explanation-kind="comparison" aria-labelledby="explanation-data-info-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <h2 class="explanation-sr-only" id="explanation-data-info-title">Data vs information</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-078-data-info.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Data vs information with a structured visual model." />
@@ -160,8 +225,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end data-info -->
-
-        <section class="panel" id="database" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="database">
+        <section class="panel" id="database" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>What is a database?</h2>
@@ -191,7 +255,7 @@
         </section>
 
         <!-- stage10-explanation:start database -->
-        <section class="panel explanation-panel" id="explanation-database" data-explains="database" data-explanation-kind="mechanism" aria-labelledby="explanation-database-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="database">
+        <section class="panel explanation-panel" id="explanation-database" data-explains="database" data-explanation-kind="mechanism" aria-labelledby="explanation-database-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <h2 class="explanation-sr-only" id="explanation-database-title">What is a database?</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-078-database.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What is a database? with a structured visual model." />
@@ -203,8 +267,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end database -->
-
-        <section class="panel" id="dbms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dbms">
+        <section class="panel" id="dbms" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>What does a DBMS provide?</h2>
@@ -224,21 +287,7 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start dbms -->
-        <section class="panel explanation-panel" id="explanation-dbms" data-explains="dbms" data-explanation-kind="mechanism" aria-labelledby="explanation-dbms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dbms">
-          <h2 class="explanation-sr-only" id="explanation-dbms-title">What does a DBMS provide?</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-078-dbms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What does a DBMS provide? with a structured visual model." />
-            <figcaption class="explanation-sr-only">What does a DBMS provide?: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data.</li><li><strong>Lesson fact:</strong> Data management stores, organises, retrieves and updates data; maintains metadata in a data dictionary.</li><li><strong>Lesson fact:</strong> Data modelling helps define entities, tables, fields and the logical schema of the database.</li><li><strong>Lesson fact:</strong> Data integrity enforces rules so values are valid and relationships remain consistent.</li><li><strong>Lesson fact:</strong> Data security uses access rights for individuals or groups; supports backup and recovery procedures.</li><li><strong>Lesson fact:</strong> Developer interface provides tools for creating structures, forms, reports or database applications.</li><li><strong>Lesson fact:</strong> Query processor interprets and carries out queries so users can retrieve or change data.</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> The DBMS manages the database by controlling data definition, access, integrity, security and queries; the database is the organised data itself.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end dbms -->
-
-        <section class="panel" id="terms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="terms">
+        <section class="panel" id="terms" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Core relational words for this lesson</h2>
@@ -274,7 +323,7 @@
         </section>
 
         <!-- stage10-explanation:start terms -->
-        <section class="panel explanation-panel" id="explanation-terms" data-explains="terms" data-explanation-kind="mechanism" aria-labelledby="explanation-terms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="terms">
+        <section class="panel explanation-panel" id="explanation-terms" data-explains="terms" data-explanation-kind="mechanism" aria-labelledby="explanation-terms-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <h2 class="explanation-sr-only" id="explanation-terms-title">Core relational words for this lesson</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-078-terms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Core relational words for this lesson with a structured visual model." />
@@ -286,9 +335,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end terms -->
-
-
-        <section class="panel" id="sorter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sorter">
+        <section class="panel" id="sorter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <div class="section-title">
             <p class="eyebrow">Interactive concept sorter</p>
             <h2>Is it data, information, database, or DBMS?</h2>
@@ -311,7 +358,7 @@
         </section>
 
         <!-- stage10-explanation:start sorter -->
-        <section class="panel explanation-panel" id="explanation-sorter" data-explains="sorter" data-explanation-kind="process" aria-labelledby="explanation-sorter-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sorter">
+        <section class="panel explanation-panel" id="explanation-sorter" data-explains="sorter" data-explanation-kind="process" aria-labelledby="explanation-sorter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <h2 class="explanation-sr-only" id="explanation-sorter-title">Is it data, information, database, or DBMS?</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-078-sorter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Is it data, information, database, or DBMS? with a structured visual model." />
@@ -323,8 +370,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end sorter -->
-
-        <section class="panel" id="scenario" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="scenario">
+        <section class="panel" id="scenario" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <div class="section-title">
             <p class="eyebrow">Interactive DBMS selector</p>
             <h2>Which DBMS feature solves the problem?</h2>
@@ -347,7 +393,7 @@
         </section>
 
         <!-- stage10-explanation:start scenario -->
-        <section class="panel explanation-panel" id="explanation-scenario" data-explains="scenario" data-explanation-kind="mechanism" aria-labelledby="explanation-scenario-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="scenario">
+        <section class="panel explanation-panel" id="explanation-scenario" data-explains="scenario" data-explanation-kind="mechanism" aria-labelledby="explanation-scenario-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <h2 class="explanation-sr-only" id="explanation-scenario-title">Which DBMS feature solves the problem?</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-078-scenario.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which DBMS feature solves the problem? with a structured visual model." />
@@ -359,8 +405,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end scenario -->
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Move from messy values to exam-ready wording</h2>
@@ -374,7 +419,7 @@
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short-answer checks</h2>
@@ -383,7 +428,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Repair common database wording errors</h2>
@@ -391,7 +436,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
@@ -400,69 +445,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>DBMS features and practical software tools</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A file-based approach can repeat facts in separate files, create inconsistent copies and isolate related data. A Database Management System (DBMS) addresses these file-based limitations by providing data management, including a data dictionary of metadata; data modelling; a logical schema; data integrity; and data security. Security includes backup procedures and access rights assigned to individual users or groups.</p>
-            <p>A developer interface provides tools used to define structures and build database applications, forms or reports. A query processor interprets and checks a query, chooses how to carry it out, accesses the stored data and returns or modifies the specified records while the DBMS applies access and integrity rules.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Run a restricted query</h3>
-            <p>A developer enters a SELECT statement through the developer interface. The query processor checks the statement and the user's access rights, works out an execution plan, retrieves the permitted rows and returns the result. The data dictionary supplies definitions such as field types, keys and constraints; it does not hold the ordinary user records.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>DBMS features and practical software tools: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What five broad DBMS feature areas are required?</p>
-              <details><summary>Show answer</summary><p>Data management including a data dictionary, data modelling, logical schema, data integrity, and data security including backup and access rights.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What does a data dictionary store?</p>
-              <details><summary>Show answer</summary><p>Metadata such as table, field, type, key and constraint definitions.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What is the purpose of a developer interface?</p>
-              <details><summary>Show answer</summary><p>To provide tools for defining structures or building database applications, forms and reports.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> What is the role of the query processor?</p>
-              <details><summary>Show answer</summary><p>To interpret/check, plan and carry out database queries or data-maintenance statements.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Which DBMS feature limits users or groups to permitted operations?</p>
-              <details><summary>Show answer</summary><p>Access rights within data security.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>A school is introducing a relational DBMS. Explain four DBMS features and the distinct purposes of the developer interface and query processor.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> data management/data dictionary stores metadata about structure</li>
-                <li><strong>B1</strong> data modelling or logical schema represents the database design</li>
-                <li><strong>B1</strong> integrity rules maintain valid and consistent data</li>
-                <li><strong>B1</strong> security uses access rights and backup procedures</li>
-                <li><strong>B1</strong> developer interface supports defining structures or building database applications/forms/reports</li>
-                <li><strong>B1</strong> query processor interprets/checks and carries out queries or maintenance statements</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-078">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Three distinctions to keep clean</h2>

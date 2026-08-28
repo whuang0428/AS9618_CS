@@ -97,6 +97,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -156,7 +162,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "A CPU is about to fetch an instruction stored at memory address 204. The PC contains 204. Trace the fetch stage.",
+    prompt: "A CPU is about to fetch an instruction stored at memory address 204. The PC contains 204. Complete a trace table for the fetch stage.",
     answer: "The value 204 is copied from the PC to the MAR. The address 204 is placed on the address bus. A read signal is sent on the control bus. The instruction stored at address 204 is transferred from memory on the data bus to the MDR. The instruction is copied from the MDR to the CIR. The PC is incremented to point to the next instruction, unless the fetched instruction changes the normal sequence.",
     marking: [
       { mark: "M1", text: "204 copied from PC to MAR" },
@@ -322,9 +328,9 @@ function renderExamQuestions() {
       <p>${question.prompt}</p>
       <button type="button" class="ms-toggle" data-answer="ms-${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong> ${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((item) => `<li><strong>${item.mark}</strong> ${item.text}</li>`).join("")}</ul>
+        <p><strong>Answer:</strong> ${question.answer}</p>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

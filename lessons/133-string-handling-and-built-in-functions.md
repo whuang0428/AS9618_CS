@@ -1,4 +1,57 @@
-# Lesson 133: String handling and built-in functions
+# Lesson 133: Clear and efficient Cambridge pseudocode
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Clear and efficient Cambridge pseudocode
+
+### Direct explanation
+
+- Efficient pseudocode avoids unnecessary repeated work and selects a structure suited to the data and stopping rule. For example, total and count can be updated during one traversal instead of scanning the same array twice when both results are needed.
+- Efficiency does not justify incorrect bounds, hidden assumptions or compressed code that cannot be traced. A strong answer remains clear: initialise once, access only valid data, avoid redundant calculations and use meaningful identifiers and coherent constructs.
+- At AS Level, justify an improvement from the actual algorithm, such as fewer repeated passes or stopping a search once the target is found. Do not claim that shorter text alone proves a more efficient algorithm.
+- Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path. Efficient pseudocode avoids unnecessary repeated work while preserving correctness.
+- An improvement must be justified from the algorithm, such as combining repeated traversals or stopping a search when no later work is required. Fewer written lines alone do not prove efficiency.
+
+### Worked example
+
+**Count passes and total in one traversal / Combine two traversals:** Set Total and PassCount to 0 before one FOR loop through Marks[1:30]. Add each mark to Total and increment PassCount only when the mark is at least 50. Output both values after NEXT Index. This preserves clear control flow while avoiding a second full traversal. One traversal of Marks can update both Total and PassCount. The Cambridge pseudocode remains clear because initialisation, loop bounds, selection and outputs are explicit.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Why is one combined traversal more efficient than two separate full traversals here?
+   **Answer:** The same 30 elements are read once while both required results are updated, avoiding a redundant second pass.
+2. Does fewer lines always mean greater efficiency?
+   **Answer:** No. The control flow and amount of work matter; compressed but repeated or incorrect work is not an improvement.
+3. When may a search stop early?
+   **Answer:** When the target has been found, provided the algorithm no longer needs to inspect later elements for another stated result.
+4. Does shorter code always mean more efficient code?
+   **Answer:** No; the amount of work and correctness matter.
+5. Identify one clarity feature.
+   **Answer:** Meaningful identifiers, indentation or complete constructs.
+
+### Exam-style question and MS
+
+**Question (9 marks):** Write an algorithm that first totals Marks[1:30] and then makes a second pass to count passes, using one clear traversal. Explain the efficiency improvement. Write two full traversals as one clear and efficient Cambridge pseudocode traversal and justify the change.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| initialises Total and PassCount once before the loop | Do not award an efficiency claim based only on fewer written lines; the revised pseudocode must perform less repeated work and remain correct. Do not credit an efficiency claim based only on line count. | 1 |
+| uses one loop over valid indexes 1 to 30 |  | 1 |
+| updates Total and conditionally updates PassCount inside that loop |  | 1 |
+| outputs both results after the loop |  | 1 |
+| explains that the rewrite removes a redundant second traversal without changing the result |  | 1 |
+| clear Cambridge pseudocode |  | 1 |
+| one correct traversal |  | 1 |
+| avoids repeated work |  | 1 |
+| valid efficiency justification |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -50,8 +103,9 @@ Teacher guidance: require the technical term and the explanation, method or appl
 // Cambridge-style pseudocode
 VowelCount ← 0
 FOR Index ← 1 TO LENGTH(Text)
-    Character ← LCASE(MID(Text, Index, 1))
-    IF Character = "a" OR Character = "e" OR Character = "i" OR Character = "o" OR Character = "u" THEN
+    CharacterString ← MID(Text, Index, 1)
+    IF CharacterString = "a" OR CharacterString = "e" OR CharacterString = "i" OR CharacterString = "o" OR CharacterString = "u"
+       OR CharacterString = "A" OR CharacterString = "E" OR CharacterString = "I" OR CharacterString = "O" OR CharacterString = "U" THEN
         VowelCount ← VowelCount + 1
     ENDIF
 NEXT Index
@@ -92,93 +146,49 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Use supplied built-in and library routines
-
-### Direct explanation
-
-- Use built-in functions and library routines exactly as defined. The syllabus states that any function not given in the Cambridge pseudocode guide will be provided, and string manipulation functions will always be given in the question. Students are not expected to memorise one unofficial substring API.
-- Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.
-- A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java's zero-based substring convention unless the question explicitly specifies it.
-
-### Worked example
-
-**Apply a supplied string routine:** A question defines EXTRACT(Text, Start, Count) using positions starting at 1. LENGTH("NETWORK") returns 7; EXTRACT("NETWORK", 4, 2) returns "WO". Code <- EXTRACT(UCASE(Name), 1, 3) nests a supplied library routine inside an expression.
-
-### Targeted practice and answers
-
-1. Will an unfamiliar string manipulation function be supplied?
-   **Answer:** Yes. The syllabus says string manipulation functions will always be given.
-2. What must be checked before tracing EXTRACT?
-   **Answer:** Its supplied parameter order, position/index convention and return definition.
-3. May a returned string be assigned to a variable?
-   **Answer:** Yes; a function return can be used wherever a compatible value is needed.
-
-### Exam-style question and MS
-
-**Question (4 marks):** A question defines TAKE(Text, Start, Count), with positions starting at 1. State LENGTH("ALGORITHM"), state TAKE("ALGORITHM", 3, 4), and write an assignment that converts the extracted text to upper case using supplied routine UCASE.
-
-- **B1** LENGTH result is 9
-- **B1** TAKE result is GORI
-- **M1** uses the supplied Start/Count convention rather than Java indexing
-- **A1** assigns UCASE(TAKE("ALGORITHM", 3, 4)) or equivalent to a variable
-
-**Strict note:** Do not require memorisation of an unstated substring signature or import Java's zero-based indexes.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
-### UCASE and LCASE normalise text before comparison
+### LCASE and UCASE convert one CHAR
 
 - **Explains:** `case`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-case.jpg`
 
-1. Input Answer and normalise it with UCASE before comparison.
-2. If the normalised answer equals Y, output Continue.
+1. Declare Answer as CHAR, input one character and normalise it with UCASE before comparison.
+2. UCASE(Answer) returns CHAR, so compare the result with the CHAR literal 'Y'.
 3. Close the selection with ENDIF.
-4. Case conversion changes letter case but does not remove spaces or correct spelling.
+4. LCASE and UCASE accept CHAR, not STRING; case conversion does not remove spaces or correct spelling.
 
-### Concatenation joins strings to form a new string
+### Concatenation joins STRING values
 
 - **Explains:** `concat`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-concat.jpg`
 
-1. Concatenation
-2. Build a username
-3. FirstName <- "Lin"
-4. Year <- "2029"
-5. Username <- LCASE(FirstName) & Year
-6. OUTPUT Username
-7. LCASE(FirstName) "lin"
-8. Username "lin2029"
-9. Common error treating Year as arithmetic instead of text
+1. Concatenation joins STRING values with the & operator.
+2. FirstName is "Lin" and YearText is "2029"; Username <- FirstName & YearText returns "Lin2029".
+3. Do not pass the STRING FirstName to LCASE; that function accepts CHAR.
 
-### Java method syntax is not Cambridge pseudocode
+### MID and Java substring use different positions
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-java.jpg`
 
-1. Java support only
-2. Cambridge-style pseudocode
-3. Code <- LEFT(UCASE(Name), 3)
-4. Java support example only
-5. String code = name.toUpperCase().substring(0, 3);
-6. Java's substring(0, 3) uses indexes 0 to 2. That is not the same notation as LEFT(Name, 3) .
+1. Cambridge guide example: MID(Name, 1, 3) returns the first three characters as a STRING.
+2. Java support example: name.substring(0, 3) uses start index 0 inclusive and end index 3 exclusive.
+3. LEFT is not listed in the Cambridge pseudocode guide; a question may use it only when the signature and position convention are supplied.
+4. Do not add UCASE around a STRING expression because UCASE accepts CHAR.
 
 ### Test a built-in function
 
 - **Explains:** `lab`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-lab.jpg`
 
 1. Interactive string lab
@@ -190,7 +200,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `length`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-length.jpg`
 
 1. Word <- "ALGORITHM"
@@ -203,7 +213,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `position`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-position.jpg`
 
 1. Positions and indexing
@@ -215,11 +225,28 @@ Correction prompt: "State the correct term, then explain the relevant process or
 7. Common error
 8. Do not import Java's zero-based indexing into a pseudocode trace unless the question explicitly tells you to.
 
+### Java methods can model modularity, but Cambridge pseudocode remains the exam format
+
+- **Explains:** `robust-java`
+- **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-java.jpg`
+
+1. Java support only
+2. Cambridge-style pseudocode
+3. FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
+4. RETURN Mark >= 0 AND Mark <= 100
+5. ENDFUNCTION
+6. Java support example only
+7. static boolean isValidMark(int mark) {
+8. return mark >= 0 && mark <= 100;
+9. Use Java to practise running code, but use Cambridge-style pseudocode when the exam asks for algorithm design.
+
 ### A string is a sequence of characters
 
 - **Explains:** `strings`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-strings.jpg`
 
 1. Cambridge-style assignment

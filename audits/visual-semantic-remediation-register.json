@@ -1148,20 +1148,21 @@
       "beforeContentHash": "3ff9015953d73650f85ebd2156353f48fc73180881b0066a1dac769a1a887407",
       "beforeAssetSha256": "52c21fc76658c730b961a308e632f12efd714c7b8b2b3ad29680584d41da0691",
       "afterContentHash": "",
-      "afterAssetSha256": "10e346902b009f7aa45f256d734ce85511fb65272f937bbf3ae1f46432909a49",
+      "afterAssetSha256": "f4c24a2c4e514e4774bfb09b28a5bd7efee90ddbf65793ef1c22f5395100d90d",
       "pass1": {
         "status": "passed",
-        "evidence": "Lesson-order pass for 069/explanation-checks-img-1: complete 1536x1024 asset checked against 5 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 10e346902b009f7aa45f256d734ce85511fb65272f937bbf3ae1f46432909a49."
+        "evidence": "Stage 6 forward current-pixel review stage6-image-forward-r1; maintained facts, fresh OCR, transcript, alt and current asset SHA-256 f4c24a2c4e514e4774bfb09b28a5bd7efee90ddbf65793ef1c22f5395100d90d passed."
       },
       "pass2": {
         "status": "passed",
-        "evidence": "Reverse-order pass for 069/explanation-checks-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 10e346902b009f7aa45f256d734ce85511fb65272f937bbf3ae1f46432909a49."
+        "evidence": "Stage 6 reverse current-pixel review stage6-image-reverse-r2; independent reverse-order reconciliation of the same current asset SHA-256 f4c24a2c4e514e4774bfb09b28a5bd7efee90ddbf65793ef1c22f5395100d90d passed."
       },
       "reconciliation": "agreed",
       "resolved": true,
-      "generationMethod": "ImageGen",
+      "generationMethod": "Deterministic renderer",
       "beforeSemanticHash": "3ff9015953d73650f85ebd2156353f48fc73180881b0066a1dac769a1a887407",
-      "afterSemanticHash": "40986b8ffbae56b58da17aa4576d00dc06047a80e881060a6504633ef39f8e64"
+      "afterSemanticHash": "f180755442d3cdd68e0d9c54a39ff939037085b5cd64e8b3c5f8aacd29222967",
+      "currentEvidenceSource": "audits/remediation-v2-stage6-image-review.json"
     },
     {
       "key": "069/explanation-verification-img-1",

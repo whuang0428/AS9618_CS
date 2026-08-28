@@ -1,5 +1,9 @@
 # Lesson 037: Building logic circuits from requirements
 
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
+
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
 **Syllabus reference:** Syllabus Section 3
@@ -43,8 +47,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit every input combination and the correct output column. For circuits, the gate sequence must match the expression.
 
-
-
 ## Student Task
 Pairs invent a school rule using AND, OR and NOT, then exchange it with another pair to produce a truth table.
 
@@ -72,43 +74,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often use everyday 'or' instead of logical OR. Correction: OR is true when at least one input is true unless XOR is specified.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Logic-gate symbols, functions and representation conversions
-
-### Direct explanation
-
-- Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR). NOT has one input; each of the other five gates has two inputs for this syllabus. A truth table lists every input combination and the resulting output according to the gate or circuit function.
-- You must be able to construct a logic circuit from a problem statement, logic expression or truth table; construct a truth table from a problem statement, logic circuit or logic expression; and construct a logic expression from a problem statement, logic circuit or truth table. Move through variables and conditions first, then intermediate gate outputs, then the final output so every representation can be checked against the same rows.
-
-### Worked example
-
-**Convert one rule among four representations:** Rule: an alarm sounds when the system is armed and either the door or window is open. Define A, D and W; write Alarm = A AND (D OR W); draw an OR gate for D and W feeding an AND gate with A; then list all eight input combinations and evaluate the intermediate OR column before Alarm.
-
-### Targeted practice and answers
-
-1. What distinguishes the XOR symbol from the OR symbol?
-   **Answer:** XOR has an additional curved line on the input side.
-2. How many inputs does NOT have, and how many do the other specified gates have in this syllabus?
-   **Answer:** NOT has one input; AND, OR, NAND, NOR and XOR each have two inputs.
-3. Name the three possible sources from which a logic circuit may be constructed.
-   **Answer:** A problem statement, a logic expression or a truth table.
-4. How do intermediate columns help convert a circuit into a truth table?
-   **Answer:** Each intermediate column records one gate output, allowing the final result to be calculated and checked row by row.
-
-### Exam-style question and MS
-
-**Question (4 marks):** A truth table gives output 1 only when input A is 1 and input B is 0. Construct a logic expression and describe the corresponding circuit.
-
-- **B1** identifies that B must be inverted
-- **M1** constructs expression Q = A AND NOT B
-- **B1** B is connected to a NOT gate
-- **A1** A and the NOT-gate output are connected to an AND gate whose output is Q
-
-**Strict note:** Do not accept XOR: XOR is also 1 for A=0, B=1, which contradicts the given truth table.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -116,7 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `design`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-037-design.jpg`
 
 1. 1. Name the output Use a clear output such as Alarm, Unlock, Fan or Light.
@@ -129,7 +94,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `diagram`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-037-diagram.jpg`
 
 1. Door Input D
@@ -144,7 +109,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `parse`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-037-parse.jpg`
 
 1. AND means every listed condition must be true; OR means at least one condition is true.

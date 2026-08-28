@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 117 | Array algorithms: traversal, update, search and count</title>
+    <title>AS9618 Lesson 117 | Array model required by search algorithms</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Array algorithms: traversal, update, search and count</h1>
+        <h1>Array model required by search algorithms</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -44,10 +44,85 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Array model required by search algorithms</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.</p>
+            <p>Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.</p>
+            <p>Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.</p>
+            <p>Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Declare the search data before tracing it</h3>
+            <p>DECLARE Names : ARRAY[1:4] OF STRING defines four string elements. For Names = ['Asha', 'Ben', 'Chen', 'Dina'], a one-based linear search compares Names[1], then Names[2], and stops when it finds 'Ben'. Index 0 is invalid because it is below the declared lower bound.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start linear -->
+        <section class="panel explanation-panel" id="explanation-linear" data-explains="linear" data-explanation-kind="mechanism" aria-labelledby="explanation-linear-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linear">
+          <h2 class="explanation-sr-only" id="explanation-linear-title">Linear search checks each item in order</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-linear.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Linear search checks each item in order with a structured visual model." />
+            <figcaption class="explanation-sr-only">Linear search checks each item in order: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> How it works</li><li><strong>Lesson fact:</strong> Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.</li><li><strong>Lesson fact:</strong> When it is suitable</li><li><strong>Lesson fact:</strong> Use it when data is unsorted, the list is small, or simplicity matters more than speed.</li><li><strong>Lesson fact:</strong> Worst case: the target is last or absent, so every item may be checked.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end linear -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Array model required by search algorithms: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What are the lower and upper bounds of ARRAY[1:4]?</p>
+              <details><summary>Show answer</summary><p>The lower bound is 1 and the upper bound is 4.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What does Names[Index] mean?</p>
+              <details><summary>Show answer</summary><p>The single array element selected by the current value of Index.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why must binary search know the current Low and High indexes?</p>
+              <details><summary>Show answer</summary><p>They delimit the remaining sorted portion of the array that may contain the target.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Write declarations for an array called Code that stores 20 STRING values, then state the first and last valid indexes used by a search.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>DECLARE Code : ARRAY[1:20] or another explicit 20-element bound range</td><td>Do not assume zero-based indexing when the declaration gives different bounds.</td><td>1</td></tr>
+                  <tr><td>OF STRING</td><td></td><td>1</td></tr>
+                  <tr><td>first valid index matches the declared lower bound</td><td></td><td>1</td></tr>
+                  <tr><td>last valid index matches the declared upper bound</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 117 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>Arrays become useful when loops do the repetitive work.</h2>
@@ -72,7 +147,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Mark schemes reward matching bounds, indexed access, correct initialisation and placing updates inside the loop.</p>
@@ -83,7 +158,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>What is the algorithm really doing?</h2>
@@ -98,7 +173,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the pattern that increments a counter only when a condition is true.</div>
         </section>
 
-        <section class="panel" id="patterns" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
+        <section class="panel" id="patterns" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Pattern map</p>
             <h2>Four array algorithm patterns</h2>
@@ -114,7 +189,7 @@
         </section>
 
         <!-- stage10-explanation:start patterns -->
-        <section class="panel explanation-panel" id="explanation-patterns" data-explains="patterns" data-explanation-kind="process" aria-labelledby="explanation-patterns-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
+        <section class="panel explanation-panel" id="explanation-patterns" data-explains="patterns" data-explanation-kind="process" aria-labelledby="explanation-patterns-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <h2 class="explanation-sr-only" id="explanation-patterns-title">Four array algorithm patterns</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-patterns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Four array algorithm patterns with a structured visual model." />
@@ -126,8 +201,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end patterns -->
-
-        <section class="panel" id="traversal" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
+        <section class="panel" id="traversal" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Traversal</p>
             <h2>Visit every element once</h2>
@@ -139,7 +213,7 @@ NEXT Index</code></pre>
         </section>
 
         <!-- stage10-explanation:start traversal -->
-        <section class="panel explanation-panel" id="explanation-traversal" data-explains="traversal" data-explanation-kind="mechanism" aria-labelledby="explanation-traversal-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
+        <section class="panel explanation-panel" id="explanation-traversal" data-explains="traversal" data-explanation-kind="mechanism" aria-labelledby="explanation-traversal-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <h2 class="explanation-sr-only" id="explanation-traversal-title">Visit every element once</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-traversal.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Visit every element once with a structured visual model." />
@@ -151,8 +225,7 @@ NEXT Index</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end traversal -->
-
-        <section class="panel" id="update" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="update">
+        <section class="panel" id="update" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Update</p>
             <h2>Change selected elements</h2>
@@ -176,7 +249,7 @@ NEXT Index</code></pre>
         </section>
 
         <!-- stage10-explanation:start update -->
-        <section class="panel explanation-panel" id="explanation-update" data-explains="update" data-explanation-kind="mechanism" aria-labelledby="explanation-update-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="update">
+        <section class="panel explanation-panel" id="explanation-update" data-explains="update" data-explanation-kind="mechanism" aria-labelledby="explanation-update-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <h2 class="explanation-sr-only" id="explanation-update-title">Change selected elements</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-update.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Change selected elements with a structured visual model." />
@@ -192,8 +265,7 @@ NEXT Index</li></ol>
           </div>
         </section>
         <!-- stage10-explanation:end update -->
-
-        <section class="panel" id="search" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="search">
+        <section class="panel" id="search" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Search</p>
             <h2>Use a flag to remember whether the target appeared</h2>
@@ -208,7 +280,7 @@ OUTPUT Found</code></pre>
         </section>
 
         <!-- stage10-explanation:start search -->
-        <section class="panel explanation-panel" id="explanation-search" data-explains="search" data-explanation-kind="mechanism" aria-labelledby="explanation-search-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="search">
+        <section class="panel explanation-panel" id="explanation-search" data-explains="search" data-explanation-kind="mechanism" aria-labelledby="explanation-search-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <h2 class="explanation-sr-only" id="explanation-search-title">Use a flag to remember whether the target appeared</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-search.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a flag to remember whether the target appeared with a structured visual model." />
@@ -220,8 +292,7 @@ OUTPUT Found</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end search -->
-
-        <section class="panel" id="count" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="count">
+        <section class="panel" id="count" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Count</p>
             <h2>Increment only when a condition is true</h2>
@@ -236,7 +307,7 @@ OUTPUT PassCount</code></pre>
         </section>
 
         <!-- stage10-explanation:start count -->
-        <section class="panel explanation-panel" id="explanation-count" data-explains="count" data-explanation-kind="mechanism" aria-labelledby="explanation-count-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="count">
+        <section class="panel explanation-panel" id="explanation-count" data-explains="count" data-explanation-kind="mechanism" aria-labelledby="explanation-count-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <h2 class="explanation-sr-only" id="explanation-count-title">Increment only when a condition is true</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-count.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Increment only when a condition is true with a structured visual model." />
@@ -248,8 +319,7 @@ OUTPUT PassCount</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end count -->
-
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Trace</p>
             <h2>Trace the index, condition and running variable</h2>
@@ -265,7 +335,7 @@ OUTPUT PassCount</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Same algorithm, different array syntax</h2>
@@ -294,7 +364,7 @@ for (int index = 0; index &lt; 5; index++) {
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="process" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="process" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same algorithm, different array syntax</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same algorithm, different array syntax with a structured visual model." />
@@ -306,9 +376,7 @@ for (int index = 0; index &lt; 5; index++) {
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-
-
-        <section class="panel" id="selector" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selector">
+        <section class="panel" id="selector" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Interactive pattern selector</p>
             <h2>Choose a scenario and inspect the matching template</h2>
@@ -330,7 +398,7 @@ for (int index = 0; index &lt; 5; index++) {
         </section>
 
         <!-- stage10-explanation:start selector -->
-        <section class="panel explanation-panel" id="explanation-selector" data-explains="selector" data-explanation-kind="mechanism" aria-labelledby="explanation-selector-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selector">
+        <section class="panel explanation-panel" id="explanation-selector" data-explains="selector" data-explanation-kind="mechanism" aria-labelledby="explanation-selector-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <h2 class="explanation-sr-only" id="explanation-selector-title">Choose a scenario and inspect the matching template</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-selector.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose a scenario and inspect the matching template with a structured visual model." />
@@ -342,8 +410,7 @@ for (int index = 0; index &lt; 5; index++) {
           </div>
         </section>
         <!-- stage10-explanation:end selector -->
-
-        <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="runner">
+        <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Interactive trace runner</p>
             <h2>Run a count algorithm on the sample scores</h2>
@@ -362,7 +429,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="trace-output" id="traceResult">Scores are 42, 67, 55, 81, 49.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Reusable array algorithms</h2>
@@ -376,7 +443,7 @@ for (int index = 0; index &lt; 5; index++) {
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Ten quick algorithm checks</h2>
@@ -385,7 +452,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common array algorithm errors</h2>
@@ -393,7 +460,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style array algorithm questions with expandable MS</h2>
@@ -402,7 +469,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-117">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Array algorithm checklist</h2>

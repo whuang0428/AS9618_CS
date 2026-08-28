@@ -1,10 +1,51 @@
-# Lesson 101: Flowcharts and pseudocode notation
+# Lesson 101: Structured English, flowcharts and pseudocode conversion
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Structured English, flowcharts and pseudocode conversion
+
+### Direct explanation
+
+- Structured English expresses sequence, selection and repetition using controlled natural-language statements and indentation. A flowchart uses standard symbols and arrows; pseudocode uses Cambridge constructs. All three must preserve the same decisions and loop boundaries.
+- Convert by identifying inputs, outputs, conditions and repeated actions before translating notation. Do not translate shapes or sentences word for word while losing control flow.
+
+### Worked example
+
+**Validate a mark:** Structured English: INPUT Mark; WHILE Mark < 0 OR Mark > 100, OUTPUT error and INPUT Mark; ENDWHILE. The flowchart returns from the invalid decision branch to input; pseudocode uses a pre-condition WHILE loop.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which flowchart symbol represents a decision?
+   **Answer:** Diamond.
+2. What must remain identical during conversion?
+   **Answer:** The algorithm's control flow, conditions, inputs and outputs.
+3. Why is indentation useful in structured English?
+   **Answer:** It shows which steps belong inside a selection or loop.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Convert this structured English to pseudocode: input Age; if Age is at least 18 output Adult, otherwise output Minor.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| INPUT Age | Do not accept two independent IF statements if they can produce contradictory paths; the description requires mutually exclusive alternatives. | 1 |
+| IF Age >= 18 THEN |  | 1 |
+| OUTPUT Adult and ELSE OUTPUT Minor |  | 1 |
+| closes with ENDIF / coherent Cambridge syntax |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
 **Syllabus reference:** Syllabus Section 9
 **Duration:** 45 minutes
-**Assessment rhythm:** 5-minute quiz, monthly assessment checkpoint
+**Assessment rhythm:** informal questioning
 
 > Java is used only as a supporting implementation language. Cambridge pseudocode remains the exam answer format.
 
@@ -46,7 +87,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Award marks for correct control structure, initialisation, update step and termination. For traces, every changed variable must be shown accurately.
 
-
 ## Student Task
 Students solve the same problem twice: first as numbered English steps, then as Cambridge-style pseudocode. They annotate where selection or iteration appears.
 
@@ -74,55 +114,8 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Structured English, flowcharts and pseudocode conversion
-
-### Direct explanation
-
-- Structured English expresses sequence, selection and repetition using controlled natural-language statements and indentation. A flowchart uses standard symbols and arrows; pseudocode uses Cambridge constructs. All three must preserve the same decisions and loop boundaries.
-- Convert by identifying inputs, outputs, conditions and repeated actions before translating notation. Do not translate shapes or sentences word for word while losing control flow.
-
-### Worked example
-
-**Validate a mark:** Structured English: INPUT Mark; WHILE Mark < 0 OR Mark > 100, OUTPUT error and INPUT Mark; ENDWHILE. The flowchart returns from the invalid decision branch to input; pseudocode uses a pre-condition WHILE loop.
-
-### Targeted practice and answers
-
-1. Which flowchart symbol represents a decision?
-   **Answer:** Diamond.
-2. What must remain identical during conversion?
-   **Answer:** The algorithm's control flow, conditions, inputs and outputs.
-3. Why is indentation useful in structured English?
-   **Answer:** It shows which steps belong inside a selection or loop.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Convert this structured English to pseudocode: input Age; if Age is at least 18 output Adult, otherwise output Minor.
-
-- **B1** INPUT Age
-- **B1** IF Age >= 18 THEN
-- **B1** OUTPUT Adult and ELSE OUTPUT Minor
-- **B1** closes with ENDIF / coherent Cambridge syntax
-
-**Strict note:** Do not accept two independent IF statements if they can produce contradictory paths; the description requires mutually exclusive alternatives.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
-
-### A diamond becomes IF...THEN...ELSE
-
-- **Explains:** `equivalence`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-equivalence.jpg`
-
-1. A flowchart decision diamond becomes an IF condition in pseudocode.
-2. The labelled Yes and No branches become THEN and ELSE branches.
-3. Close the selection with ENDIF after the two branches rejoin.
-4. Input Age before testing whether it is between 11 and 18 inclusive.
 
 ### Flowcharts use symbols to show control flow
 
@@ -141,7 +134,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `notation`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-notation.jpg`
 
 1. Notation rules
@@ -156,7 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-pseudocode.jpg`
 
 1. Knowledge explanation
@@ -176,7 +169,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `structure-tool`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-structure-tool.jpg`
 
 1. Interactive structure tool
@@ -187,7 +180,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `symbol-tool`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-symbol-tool.jpg`
 
 1. Interactive symbol tool

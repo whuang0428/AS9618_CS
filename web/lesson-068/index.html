@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 068 | Firewalls, proxies, and network monitoring</title>
+    <title>AS9618 Lesson 068 | Firewall protection from a stand-alone PC to a network</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Firewalls, proxies, and network monitoring</h1>
+        <h1>Firewall protection from a stand-alone PC to a network</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,7 +47,72 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Firewall protection from a stand-alone PC to a network</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A firewall filters traffic entering or leaving a computer or network by comparing packet or connection information with configured rules. Rules may use source/destination address, port, protocol or connection state and then allow, block, reject or log the traffic.</p>
+            <p>A host firewall can protect a stand-alone PC; a network firewall can protect a boundary between networks. This satisfies different scales of computer-system protection, but neither placement makes a firewall an anti-virus scanner or guarantees that allowed traffic is harmless.</p>
+            <p>Firewalls restrict risk from unwanted connections and some unauthorised-access routes. They should be combined with accounts/passwords, authentication, access rights, anti-virus, anti-spyware, encryption, patching, user training and monitoring because those controls address different threats.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Protect a home laptop and a school network</h3>
+            <p>The laptop's host firewall blocks unsolicited inbound connections except an explicitly required service. The school's boundary firewall denies unrequested external traffic, permits web traffic under ordered rules and logs repeated blocked attempts. Anti-virus still scans downloaded files, and account/access controls still decide who may use data after traffic is allowed.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Firewall protection from a stand-alone PC to a network: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What information may a firewall rule inspect?</p>
+              <details><summary>Show answer</summary><p>Source/destination address, port, protocol or connection state.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Compare a host firewall from a network firewall.</p>
+              <details><summary>Show answer</summary><p>A host firewall runs on and protects one computer; a network firewall filters traffic at a boundary for multiple connected systems.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Can a firewall replace anti-virus software?</p>
+              <details><summary>Show answer</summary><p>No. A firewall controls traffic; anti-virus scans for detected malicious code.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why may allowed traffic still be dangerous?</p>
+              <details><summary>Show answer</summary><p>A permitted connection can carry phishing content, stolen credentials or malware that the rule does not recognise.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Describe how a firewall can protect both a stand-alone PC and a network, then explain two limitations that require other security measures.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>firewall compares traffic/connection information with configured rules</td><td>Do not claim that a firewall removes viruses, detects every malicious payload or makes a computer system completely secure.</td><td>1</td></tr>
+                  <tr><td>allows/blocks/rejects/logs according to a rule</td><td></td><td>1</td></tr>
+                  <tr><td>host firewall protects one PC</td><td></td><td>1</td></tr>
+                  <tr><td>network firewall protects a network boundary</td><td></td><td>1</td></tr>
+                  <tr><td>allowed traffic or misconfiguration limitation</td><td></td><td>1</td></tr>
+                  <tr><td>matching additional measure such as anti-virus, authentication, access rights or user training</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 068 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
             <h2>Network security is not just one locked door.</h2>
@@ -73,7 +138,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam answers should say what traffic is inspected or logged and what decision is made.</p>
@@ -84,7 +149,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A school blocks outgoing traffic to port 25 except from the mail server. What control is doing the work?</h2>
@@ -101,7 +166,7 @@
           </div>
         </section>
 
-        <section class="panel" id="core" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
+        <section class="panel" id="core" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Network controls sit between traffic and risk</h2>
@@ -116,7 +181,7 @@
         </section>
 
         <!-- stage10-explanation:start core -->
-        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
+        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <h2 class="explanation-sr-only" id="explanation-core-title">Network controls sit between traffic and risk</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Network controls sit between traffic and risk with a structured visual model." />
@@ -128,8 +193,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end core -->
-
-        <section class="panel" id="firewall" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="firewall">
+        <section class="panel" id="firewall" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Firewalls filter traffic using rules</h2>
@@ -143,7 +207,7 @@
         </section>
 
         <!-- stage10-explanation:start firewall -->
-        <section class="panel explanation-panel" id="explanation-firewall" data-explains="firewall" data-explanation-kind="mechanism" aria-labelledby="explanation-firewall-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="firewall">
+        <section class="panel explanation-panel" id="explanation-firewall" data-explains="firewall" data-explanation-kind="mechanism" aria-labelledby="explanation-firewall-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <h2 class="explanation-sr-only" id="explanation-firewall-title">Firewalls filter traffic using rules</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-firewall.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Firewalls filter traffic using rules with a structured visual model." />
@@ -155,8 +219,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end firewall -->
-
-        <section class="panel" id="rules" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rules">
+        <section class="panel" id="rules" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Firewall rules should be specific and ordered</h2>
@@ -191,7 +254,7 @@
         </section>
 
         <!-- stage10-explanation:start rules -->
-        <section class="panel explanation-panel" id="explanation-rules" data-explains="rules" data-explanation-kind="mechanism" aria-labelledby="explanation-rules-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rules">
+        <section class="panel explanation-panel" id="explanation-rules" data-explains="rules" data-explanation-kind="mechanism" aria-labelledby="explanation-rules-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <h2 class="explanation-sr-only" id="explanation-rules-title">Firewall rules should be specific and ordered</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-rules.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Firewall rules should be specific and ordered with a structured visual model." />
@@ -203,8 +266,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end rules -->
-
-        <section class="panel" id="proxy" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="proxy">
+        <section class="panel" id="proxy" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>A proxy acts as an intermediary</h2>
@@ -218,7 +280,7 @@
         </section>
 
         <!-- stage10-explanation:start proxy -->
-        <section class="panel explanation-panel" id="explanation-proxy" data-explains="proxy" data-explanation-kind="mechanism" aria-labelledby="explanation-proxy-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="proxy">
+        <section class="panel explanation-panel" id="explanation-proxy" data-explains="proxy" data-explanation-kind="mechanism" aria-labelledby="explanation-proxy-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <h2 class="explanation-sr-only" id="explanation-proxy-title">A proxy acts as an intermediary</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-proxy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A proxy acts as an intermediary with a structured visual model." />
@@ -230,8 +292,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end proxy -->
-
-        <section class="panel" id="monitoring" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="monitoring">
+        <section class="panel" id="monitoring" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Network monitoring watches for patterns and evidence</h2>
@@ -245,7 +306,7 @@
         </section>
 
         <!-- stage10-explanation:start monitoring -->
-        <section class="panel explanation-panel" id="explanation-monitoring" data-explains="monitoring" data-explanation-kind="mechanism" aria-labelledby="explanation-monitoring-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="monitoring">
+        <section class="panel explanation-panel" id="explanation-monitoring" data-explains="monitoring" data-explanation-kind="mechanism" aria-labelledby="explanation-monitoring-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <h2 class="explanation-sr-only" id="explanation-monitoring-title">Network monitoring watches for patterns and evidence</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-monitoring.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Network monitoring watches for patterns and evidence with a structured visual model." />
@@ -257,8 +318,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end monitoring -->
-
-        <section class="panel" id="limits" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="limits">
+        <section class="panel" id="limits" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Controls reduce risk but have limits</h2>
@@ -272,7 +332,7 @@
         </section>
 
         <!-- stage10-explanation:start limits -->
-        <section class="panel explanation-panel" id="explanation-limits" data-explains="limits" data-explanation-kind="mechanism" aria-labelledby="explanation-limits-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="limits">
+        <section class="panel explanation-panel" id="explanation-limits" data-explains="limits" data-explanation-kind="mechanism" aria-labelledby="explanation-limits-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <h2 class="explanation-sr-only" id="explanation-limits-title">Controls reduce risk but have limits</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-limits.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Controls reduce risk but have limits with a structured visual model." />
@@ -284,9 +344,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end limits -->
-
-
-        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">
+        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Interactive firewall rule checker</p>
             <h2>Allow, block or log?</h2>
@@ -310,7 +368,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="event-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="event-tool">
+        <section class="panel" id="event-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Interactive event classifier</p>
             <h2>Which control is most relevant?</h2>
@@ -332,7 +390,7 @@
         </section>
 
         <!-- stage10-explanation:start event-tool -->
-        <section class="panel explanation-panel" id="explanation-event-tool" data-explains="event-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-event-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="event-tool">
+        <section class="panel explanation-panel" id="explanation-event-tool" data-explains="event-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-event-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <h2 class="explanation-sr-only" id="explanation-event-tool-title">Which control is most relevant?</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-event-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which control is most relevant? with a structured visual model." />
@@ -344,8 +402,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end event-tool -->
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Four model answers with mechanism and limitation</h2>
@@ -359,7 +416,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short answers: name the control and mechanism</h2>
@@ -368,7 +425,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the sentence before it loses marks</h2>
@@ -376,7 +433,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -385,66 +442,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Firewall protection from a stand-alone PC to a network</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A firewall filters traffic entering or leaving a computer or network by comparing packet or connection information with configured rules. Rules may use source/destination address, port, protocol or connection state and then allow, block, reject or log the traffic.</p>
-            <p>A host firewall can protect a stand-alone PC; a network firewall can protect a boundary between networks. This satisfies different scales of computer-system protection, but neither placement makes a firewall an anti-virus scanner or guarantees that allowed traffic is harmless.</p>
-            <p>Firewalls restrict risk from unwanted connections and some unauthorised-access routes. They should be combined with accounts/passwords, authentication, access rights, anti-virus, anti-spyware, encryption, patching, user training and monitoring because those controls address different threats.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Protect a home laptop and a school network</h3>
-            <p>The laptop's host firewall blocks unsolicited inbound connections except an explicitly required service. The school's boundary firewall denies unrequested external traffic, permits web traffic under ordered rules and logs repeated blocked attempts. Anti-virus still scans downloaded files, and account/access controls still decide who may use data after traffic is allowed.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Firewall protection from a stand-alone PC to a network: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What information may a firewall rule inspect?</p>
-              <details><summary>Show answer</summary><p>Source/destination address, port, protocol or connection state.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Distinguish a host firewall from a network firewall.</p>
-              <details><summary>Show answer</summary><p>A host firewall runs on and protects one computer; a network firewall filters traffic at a boundary for multiple connected systems.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Can a firewall replace anti-virus software?</p>
-              <details><summary>Show answer</summary><p>No. A firewall controls traffic; anti-virus scans for detected malicious code.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why may allowed traffic still be dangerous?</p>
-              <details><summary>Show answer</summary><p>A permitted connection can carry phishing content, stolen credentials or malware that the rule does not recognise.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Describe how a firewall can protect both a stand-alone PC and a network, then explain two limitations that require other security measures.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> firewall compares traffic/connection information with configured rules</li>
-                <li><strong>B1</strong> allows/blocks/rejects/logs according to a rule</li>
-                <li><strong>B1</strong> host firewall protects one PC</li>
-                <li><strong>B1</strong> network firewall protects a network boundary</li>
-                <li><strong>B1</strong> allowed traffic or misconfiguration limitation</li>
-                <li><strong>B1</strong> matching additional measure such as anti-virus, authentication, access rights or user training</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-068">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Each control has a different job</h2>

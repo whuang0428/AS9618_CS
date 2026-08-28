@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { sourceFactOverrides } from "./stage10-semantic-source-overrides.mjs";
+import { stage3OptionalBaseLessons } from "./remediation-v2-stage3-sequence-plan.mjs";
+import { coreVisualTargetKeys, visualDeliveryLesson, visualDeliveryTarget } from "./remediation-v2-core-visuals.mjs";
 
 const visualTitleOverrides = Object.freeze({
   "098/concept": "An algorithm is a solution expressed as defined steps",
@@ -8,6 +10,11 @@ const visualTitleOverrides = Object.freeze({
   "010/resolution": "Sampling resolution: bits per sample",
   "034/sensors": "Required sensor types and applications",
   "043/main-registers": "The seven named register roles",
+  "049/concept": "The official processor performance factors",
+  "107/pseudocode": "Count vowels with a closed selection",
+  "121/parse": "Use question-supplied CSV functions exactly",
+  "121/pseudocode": "Question-supplied functions versus Java methods",
+  "121/types": "Convert CSV text before numeric comparison",
   "046/structure": "Instruction labels and symbolic data addresses",
   "046/assembler": "Instruction groups: data movement, I/O, arithmetic, control and compare",
   "050/shifts": "Binary shifts: logical, arithmetic, cyclic",
@@ -22,6 +29,9 @@ const visualTitleOverrides = Object.freeze({
   "122/concept": "An ADT is data together with permitted operations",
   "122/implementation": "Implement stack, queue and linked list using arrays",
   "130/parameters": "A subprogram interface connects caller and header",
+  "133/case": "LCASE and UCASE convert one CHAR",
+  "133/concat": "Concatenation joins STRING values",
+  "133/java": "MID and Java substring use different positions",
   "133/substring": "Use the string-function definition supplied in the question",
   "140/standard": "Translate a flowchart or structured English into pseudocode",
   "138/bug": "Analyse and amend an existing program",
@@ -45,12 +55,28 @@ const deliveryOverrides = Object.freeze({
   "142/agile": Object.freeze({ role: "OPTIONAL", activity: "EXTEND" }),
 });
 
+const stage3OptionalLessonIds = new Set(stage3OptionalBaseLessons.map((lesson) => String(lesson).padStart(3, "0")));
+const additionalOptionalExplanationLessons = new Set(["011", "021", "057"]);
+const deliveryFor = (key, lesson) => {
+  const lessonId = String(lesson).padStart(3, "0");
+  if (coreVisualTargetKeys.has(key)) return { role: "CORE", activity: "TEACH", group: key.split("/")[1] };
+  if (stage3OptionalLessonIds.has(lessonId)) return { role: "OPTIONAL", activity: "EXTEND", group: `remediation-v2-stage3-optional-${lessonId}` };
+  if (additionalOptionalExplanationLessons.has(lessonId)) return { role: "OPTIONAL", activity: "EXTEND", group: `remediation-v2-optional-${lessonId}` };
+  return { ...(deliveryOverrides[key] ?? { role: "CORE", activity: "TEACH" }), group: key.split("/")[1] };
+};
+
 function explanation(lesson, targetId, kind, title, steps, analogy, boundary) {
+  const sourceLesson = lesson;
+  const sourceTargetId = targetId;
+  const sourceKey = `${sourceLesson}/${sourceTargetId}`;
+  lesson = visualDeliveryLesson(sourceLesson, sourceTargetId);
+  targetId = visualDeliveryTarget(sourceLesson, sourceTargetId);
   const key = `${lesson}/${targetId}`;
-  const maintainedTitle = visualTitleOverrides[key] ?? title;
-  const maintainedSteps = sourceFactOverrides[key] ?? steps;
+  const delivery = deliveryFor(key, lesson);
+  const maintainedTitle = visualTitleOverrides[sourceKey] ?? title;
+  const maintainedSteps = sourceFactOverrides[sourceKey] ?? steps;
   const visual = Object.freeze({
-    src: `../assets/diagrams/stage10-infographics/stage10-lesson-${lesson}-${targetId}.jpg`,
+    src: `../assets/diagrams/stage10-infographics/stage10-lesson-${sourceLesson}-${sourceTargetId}.jpg`,
     width: 1536,
     height: 1024,
     alt: `Academic knowledge-point infographic explaining ${maintainedTitle} through a cause-and-effect diagram.`,
@@ -58,6 +84,8 @@ function explanation(lesson, targetId, kind, title, steps, analogy, boundary) {
   });
   return Object.freeze({
     lesson,
+    sourceLesson,
+    sourceTargetId,
     targetId,
     kind,
     title: maintainedTitle,
@@ -65,8 +93,9 @@ function explanation(lesson, targetId, kind, title, steps, analogy, boundary) {
     analogy,
     boundary,
     transcript: Object.freeze(maintainedSteps),
-    deliveryRole: deliveryOverrides[key]?.role ?? "CORE",
-    classroomActivity: deliveryOverrides[key]?.activity ?? "TEACH",
+    deliveryRole: delivery.role,
+    classroomActivity: delivery.activity,
+    deliveryGroup: delivery.group,
     visual,
   });
 }
@@ -135,17 +164,23 @@ export const pilotExplanations = Object.freeze([
 const root = path.resolve(import.meta.dirname, "..");
 const rolloutJobsPath = path.join(import.meta.dirname, "stage10-rollout-jobs.json");
 const rolloutJobs = fs.existsSync(rolloutJobsPath) ? JSON.parse(fs.readFileSync(rolloutJobsPath, "utf8")) : [];
-const pilotKeys = new Set(pilotExplanations.map((item) => `${item.lesson}/${item.targetId}`));
+const pilotKeys = new Set(pilotExplanations.map((item) => `${item.sourceLesson ?? item.lesson}/${item.sourceTargetId ?? item.targetId}`));
 const rolloutExplanations = rolloutJobs
   .filter((job) => !pilotKeys.has(`${job.lesson}/${job.targetId}`))
   .filter((job) => fs.existsSync(path.join(root, "web", "assets", "diagrams", "stage10-infographics", job.filename)))
   .map((job) => {
-    const key = `${job.lesson}/${job.targetId}`;
-    const sourceFacts = sourceFactOverrides[key] ?? job.sourceFacts;
-    const title = visualTitleOverrides[key] ?? job.title;
+    const sourceKey = `${job.lesson}/${job.targetId}`;
+    const lesson = visualDeliveryLesson(job.lesson, job.targetId);
+    const targetId = visualDeliveryTarget(job.lesson, job.targetId);
+    const key = `${lesson}/${targetId}`;
+    const delivery = deliveryFor(key, lesson);
+    const sourceFacts = sourceFactOverrides[sourceKey] ?? job.sourceFacts;
+    const title = visualTitleOverrides[sourceKey] ?? job.title;
     return Object.freeze({
-    lesson: job.lesson,
-    targetId: job.targetId,
+    lesson,
+    sourceLesson: job.lesson,
+    sourceTargetId: job.targetId,
+    targetId,
     kind: job.kind,
     title,
     steps: Object.freeze(sourceFacts.slice(0, 3)),
@@ -153,8 +188,9 @@ const rolloutExplanations = rolloutJobs
     boundary: "",
     transcript: Object.freeze(sourceFacts),
     sourceGrounded: true,
-    deliveryRole: deliveryOverrides[key]?.role ?? "CORE",
-    classroomActivity: deliveryOverrides[key]?.activity ?? "TEACH",
+    deliveryRole: delivery.role,
+    classroomActivity: delivery.activity,
+    deliveryGroup: delivery.group,
     visual: Object.freeze({
       src: `../assets/diagrams/stage10-infographics/${job.filename}`,
       width: 1536,

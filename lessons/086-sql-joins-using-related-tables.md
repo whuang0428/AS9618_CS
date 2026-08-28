@@ -1,4 +1,8 @@
-# Lesson 086: SQL joins using related tables
+# Lesson 086: Two-table INNER JOIN queries
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -39,11 +43,9 @@ Left: English request. Middle: SQL clauses. Right: expected result rows.
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Write an SQL query to show `StudentName` and `DueDate` for current loans using `Student` and `Loan` tables.
+**Problem:** Write an SQL query to show `StudentName` and `BookTitle` for current loans using `Student`, `Loan` and `Book` tables.
 
-**Worked answer / marking focus:** `SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID;` Credit the two requested fields, explicit `INNER JOIN`, and the matching-key condition after `ON`.
-
-
+**Worked answer / marking focus:** Credit a valid join path such as `Student.StudentID = Loan.StudentID` and `Loan.BookID = Book.BookID`, plus only the requested fields in SELECT.
 
 ## Student Task
 Students draw the join path first, then write the SQL. They must circle the foreign keys before writing `SELECT`.
@@ -72,41 +74,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often select every field with `*`. Correction: exam questions usually specify exactly which fields are required.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Two-table INNER JOIN queries
-
-### Direct explanation
-
-- AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.
-- For Student(StudentID, StudentName) and Loan(StudentID, DueDate), SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID returns names only where matching rows exist. Add WHERE for a further row condition, not for the join relationship itself.
-
-### Worked example
-
-**List overdue borrowers:** SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate < '2027-05-01'; uses two tables, one explicit join condition and one separate filter.
-
-### Targeted practice and answers
-
-1. Which clause states how two joined tables match?
-   **Answer:** ON.
-2. How many tables are required at most in the AS syllabus query?
-   **Answer:** Two.
-3. Why qualify Student.StudentID and Loan.StudentID?
-   **Answer:** To identify which table supplies each otherwise identical field name.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Write an INNER JOIN query listing DepartmentName and EmployeeName from Department and Employee, matching their DepartmentID fields.
-
-- **B1** SELECT includes DepartmentName and EmployeeName
-- **B1** FROM Department
-- **B1** INNER JOIN Employee
-- **B1** ON Department.DepartmentID = Employee.DepartmentID
-
-**Strict note:** Do not use a three-table query or replace the required INNER JOIN with comma-style FROM and a WHERE join.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -114,7 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `aliases`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-086-aliases.jpg`
 
 1. If two tables have a field with the same name, write the table name or alias before the field.
@@ -122,23 +89,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Alias Student AS S lets you write S.StudentID .
 4. Exam caution Only use aliases if they make the query clear. Do not hide the join logic.
 
-### Two-table INNER JOIN with ON
-
-- **Explains:** `join`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-086-join.jpg`
-
-1. AS DML questions use at most two tables.
-2. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID uses an explicit two-table join.
-3. ON states the matching key relationship between the tables.
-4. WHERE adds a separate row filter after the join; it does not replace the required INNER JOIN syntax.
-
 ### Related tables use primary keys and foreign keys
 
 - **Explains:** `relationships`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-086-relationships.jpg`
 
 1. A join combines rows when matching key fields refer to the same real-world item.

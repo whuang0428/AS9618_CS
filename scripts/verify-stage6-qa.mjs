@@ -15,6 +15,21 @@ function occurrences(source, token) {
   return source.split(token).length - 1;
 }
 
+function parseCsv(source) {
+  const rows = [];
+  let row = [], cell = "", quoted = false;
+  for (let index = 0; index < source.length; index += 1) {
+    const character = source[index];
+    if (quoted && character === '"' && source[index + 1] === '"') { cell += '"'; index += 1; }
+    else if (character === '"') quoted = !quoted;
+    else if (character === "," && !quoted) { row.push(cell); cell = ""; }
+    else if (character === "\n" && !quoted) { row.push(cell); if (row.some(Boolean)) rows.push(row); row = []; cell = ""; }
+    else if (character !== "\r") cell += character;
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  return rows;
+}
+
 function resolveLocalTarget(htmlPath, reference) {
   const clean = reference.split(/[?#]/, 1)[0];
   if (!clean) return null;
@@ -56,7 +71,7 @@ for (const definition of pageDefinitions) {
   }
 
   if (definition.kind === "lesson") {
-    expect(occurrences(html, '<link rel="stylesheet" href="../stage6-qa.css?v=7" />') === 1,
+    expect(occurrences(html, '<link rel="stylesheet" href="../stage6-qa.css?v=9" />') === 1,
       `${definition.page}: Stage 6 responsive stylesheet link count is not one`);
     expect(!html.includes('class="teaching-cue"'), `${definition.page}: teacher-facing cue is visible`);
     expect(!/<p class="eyebrow">(?:Syllabus coverage audit|Coverage audit)<\/p>/.test(html),
@@ -75,6 +90,8 @@ expect(stage6Css.includes(".lesson-content *"), "Stage 6 stylesheet must keep ne
 expect(stage6Css.includes("overflow-x: auto"), "Stage 6 stylesheet must contain long pseudocode horizontally");
 expect(stage6Css.includes("repeat(auto-fit"), "Stage 6 stylesheet must let reduced guidance grids fill available width");
 expect(stage6Css.includes(".hero > :not(.hero-copy)"), "Stage 6 stylesheet must remove oversized hero-visual minimum heights");
+expect(stage6Css.includes("table.mark-scheme-table") && stage6Css.includes("table-layout: fixed"), "Stage 6 stylesheet must contain real mark-scheme tables on narrow screens");
+expect(stage6Css.includes(".explanation-sr-only") && stage6Css.includes("word-break: break-word"), "Stage 6 stylesheet must wrap long accessible transcript tokens");
 
 const scripts = [
   "web/index.js",
@@ -87,14 +104,12 @@ for (const script of scripts) {
 
 const registerPath = path.join(root, "audits", "stage6-page-review-register.csv");
 expect(fs.existsSync(registerPath), "Stage 6 page review register is missing");
-const registerLines = fs.readFileSync(registerPath, "utf8").trim().split("\n");
-expect(registerLines.shift() === "page,kind,desktop_1440,mobile_390,console,status,content_hash",
-  "Stage 6 register header is invalid");
-expect(registerLines.length === pageDefinitions.length, "Stage 6 register page count is invalid");
-
-const register = new Map(registerLines.map((line) => {
-  const cells = line.split(",");
-  expect(cells.length === 7, `Stage 6 register row is invalid: ${line}`);
+const registerRows = parseCsv(fs.readFileSync(registerPath, "utf8"));
+const header = registerRows.shift();
+expect(header?.join(",") === "page,kind,desktop_1440,mobile_390,console,status,content_hash,reviewer,review_round,evidence,approval_source", "Stage 6 register header is invalid");
+expect(registerRows.length === pageDefinitions.length, "Stage 6 register page count is invalid");
+const register = new Map(registerRows.map((cells) => {
+  expect(cells.length === 11, `Stage 6 register row is invalid: ${cells.join("|")}`);
   return [cells[0], cells];
 }));
 expect(register.size === pageDefinitions.length, "Stage 6 register contains duplicate pages");
@@ -103,12 +118,15 @@ for (const definition of pageDefinitions) {
   const row = register.get(definition.page);
   expect(row, `${definition.page}: missing from Stage 6 register`);
   expect(row[1] === definition.kind, `${definition.page}: incorrect page kind in register`);
-  expect(row[2] === "Pass" && row[3] === "Pass" && row[4] === "Pass" && row[5] === "Approved",
+  expect(row[2] === "Pass" && row[3] === "Pass" && row[4] === "Pass" && row[5] === "ApprovedCurrentBrowser",
     `${definition.page}: Stage 6 approvals are incomplete`);
   expect(row[6] === pageHash(definition), `${definition.page}: reviewed content hash has changed`);
+  expect(row[7] && row[8] === "stage6-browser-r1" && row[9].includes("remediation-v2-stage6-browser-evidence.json") && row[10].includes("no legacy approval imported"), `${definition.page}: independent review metadata is incomplete`);
 }
 
-expect(fs.existsSync(path.join(root, "audits", "stage6-visual-qa-report.md")), "Stage 6 QA report is missing");
+const browserEvidence = JSON.parse(read("audits/remediation-v2-stage6-browser-evidence.json"));
+expect(browserEvidence.sourceApprovalImported === false && browserEvidence.pageCount === 153 && browserEvidence.viewportRecordCount === 306 && browserEvidence.failedRecords === 0, "Fresh Stage 6 browser evidence is incomplete");
+expect(fs.existsSync(path.join(root, "audits", "remediation-v2-stage6-report.md")), "Current Stage 6 QA report is missing");
 expect(read("README.md").includes("node scripts/verify-stage6-qa.mjs"), "README is missing the Stage 6 verifier command");
 
-console.log("Stage 6 QA verification passed: 153 approved pages, 306 viewport reviews, 152 JavaScript files, complete local links and stable reviewed hashes.");
+console.log("Stage 6 QA verification passed: 153 current-hash pages, 306 fresh viewport records, 152 JavaScript files, complete local links and no inherited approvals.");

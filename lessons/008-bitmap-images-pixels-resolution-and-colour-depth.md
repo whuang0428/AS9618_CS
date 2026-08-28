@@ -1,4 +1,45 @@
-# Lesson 008: Bitmap images: pixels, resolution, and colour depth
+# Lesson 008: Bitmap file headers, image resolution and screen resolution
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Bitmap file headers, image resolution and screen resolution
+
+### Direct explanation
+
+- A bitmap file contains pixel data and a file header. The header stores metadata needed to interpret the file, such as its format and image properties; it is not one of the image pixels. When a calculation says to ignore the file header, calculate only width x height x colour depth.
+- Image resolution is the number of pixels stored in the image, commonly width x height. Screen resolution is the number of physical display pixels available on the screen. They are independent: scaling an image on a screen does not create new captured detail.
+
+### Worked example
+
+**100 x 80 bitmap with an ignored header:** The pixel data is 100 x 80 x 8 = 64,000 bits = 8,000 bytes. Because the question says to ignore the file header, no metadata bytes are added to that total.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What is the purpose of a bitmap file header?
+   **Answer:** It stores metadata that tells software how to interpret the file; it is separate from the pixel data.
+2. What does 3840 x 2160 describe for a monitor?
+   **Answer:** Its screen resolution: the number of physical display pixels.
+3. Does a higher screen resolution automatically increase an image file's size?
+   **Answer:** No. File size depends on stored image data, not the screen used to view it.
+
+### Exam-style question and MS
+
+**Question (4 marks):** A 200 by 100 bitmap uses 24-bit colour. Calculate its pixel-data size in bytes, ignoring the file header, and explain what has been excluded.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| 200 x 100 x 24 bits | Do not treat the file header as a pixel or silently add an invented header size. | 1 |
+| 480,000 bits / 60,000 bytes |  | 1 |
+| file header contains metadata used to interpret the bitmap |  | 1 |
+| header data is excluded because the question requests pixel data only |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +84,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** `100 * 80 * 8 = 64 000 bits = 8000 bytes`. Credit dimensions, colour depth and bit-to-byte conversion.
 
-
-
 ## Student Task
 Students change one parameter at a time: width, height and colour depth. They predict which change doubles the file size.
 
@@ -72,41 +111,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Bitmap file headers, image resolution and screen resolution
-
-### Direct explanation
-
-- A bitmap file contains pixel data and a file header. The header stores metadata needed to interpret the file, such as its format and image properties; it is not one of the image pixels. When a calculation says to ignore the file header, calculate only width x height x colour depth.
-- Image resolution is the number of pixels stored in the image, commonly width x height. Screen resolution is the number of physical display pixels available on the screen. They are independent: scaling an image on a screen does not create new captured detail.
-
-### Worked example
-
-**100 x 80 bitmap with an ignored header:** The pixel data is 100 x 80 x 8 = 64,000 bits = 8,000 bytes. Because the question says to ignore the file header, no metadata bytes are added to that total.
-
-### Targeted practice and answers
-
-1. What is the purpose of a bitmap file header?
-   **Answer:** It stores metadata that tells software how to interpret the file; it is separate from the pixel data.
-2. What does 3840 x 2160 describe for a monitor?
-   **Answer:** Its screen resolution: the number of physical display pixels.
-3. Does a higher screen resolution automatically increase an image file's size?
-   **Answer:** No. File size depends on stored image data, not the screen used to view it.
-
-### Exam-style question and MS
-
-**Question (4 marks):** A 200 by 100 bitmap uses 24-bit colour. Calculate its pixel-data size in bytes, ignoring the file header, and explain what has been excluded.
-
-- **M1** 200 x 100 x 24 bits
-- **A1** 480,000 bits / 60,000 bytes
-- **B1** file header contains metadata used to interpret the bitmap
-- **B1** header data is excluded because the question requests pixel data only
-
-**Strict note:** Do not treat the file header as a pixel or silently add an invented header size.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -114,7 +118,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `depth`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-008-depth.jpg`
 
 1. 1-bit colour
@@ -131,7 +135,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `formula`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-008-formula.jpg`
 
 1. file size in bits = width × height × colour depth
@@ -154,7 +158,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `resolution`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-008-resolution.jpg`
 
 1. Pixel dimensions

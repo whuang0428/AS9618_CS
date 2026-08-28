@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 012 | Compression: lossless vs lossy</title>
+    <title>AS9618 Lesson 012 | Compression methods for text, bitmap, vector and sound files</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Compression: lossless vs lossy</h1>
+        <h1>Compression methods for text, bitmap, vector and sound files</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -42,274 +42,11 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 012 | 45 minutes | Informal questioning</p>
-            <h2>Compression makes files smaller, but the method matters.</h2>
-            <p>
-              Compression reduces file size so files take less storage and transfer faster.
-              Lossless compression allows exact reconstruction. Lossy compression permanently
-              removes data, usually aiming to remove data that is less noticeable.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div>
-                <strong>Define</strong>
-                <span>compression, lossless compression and lossy compression</span>
-              </div>
-              <div>
-                <strong>Choose</strong>
-                <span>suitable compression for text, images, sound and backups</span>
-              </div>
-              <div>
-                <strong>Calculate</strong>
-                <span>compressed size, saved space and compression ratio</span>
-              </div>
-            </div>
-          </div>
-          <div class="compress-card" aria-label="Compression focus">
-            <span>AAAAAABBBBCCCCCCCC</span>
-            <p>Repeated data is friendly to compression. Random-looking data may be less cooperative.</p>
-          </div>
-        </section>
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>The wrong compression choice can damage data, waste bandwidth or make a file unusable for its purpose.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Compression does not guarantee a smaller file. Overhead and lack of patterns can limit the benefit.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Which file must use lossless compression?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="photo">Holiday photo for a website</button>
-            <button class="choice-card" type="button" data-hook="backup">Database backup</button>
-            <button class="choice-card" type="button" data-hook="music">Streaming music preview</button>
-            <button class="choice-card" type="button" data-hook="thumbnail">Tiny image thumbnail</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick an answer. The word “must” is doing a lot of work here.
-          </div>
-        </section>
-
-        <section class="panel" id="purpose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Why compress data?</h2>
-          </div>
-          <div class="purpose-grid">
-            <article>
-              <h3>Less storage</h3>
-              <p>Smaller files use less disk or memory space.</p>
-            </article>
-            <article>
-              <h3>Faster transfer</h3>
-              <p>Smaller files need less bandwidth and may download or upload faster.</p>
-            </article>
-            <article>
-              <h3>Trade-off</h3>
-              <p>Compression and decompression may require processing time.</p>
-            </article>
-          </div>
-          <div class="callout">Chinese support: compression = 压缩；decompression = 解压；reconstruct = 还原。</div>
-        </section>
-
-        <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
-          <h2 class="explanation-sr-only" id="explanation-purpose-title">Why compress data?</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-012-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why compress data? with a structured visual model." />
-            <figcaption class="explanation-sr-only">Why compress data?: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Less storage</li><li><strong>Lesson fact:</strong> Smaller files use less disk or memory space.</li><li><strong>Lesson fact:</strong> Faster transfer</li><li><strong>Lesson fact:</strong> Smaller files need less bandwidth and may download or upload faster.</li><li><strong>Lesson fact:</strong> Trade-off</li><li><strong>Lesson fact:</strong> Compression and decompression may require processing time.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end purpose -->
-
-        <section class="panel" id="lossless" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lossless">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Lossless compression: exact reconstruction</h2>
-          </div>
-          <div class="method-grid">
-            <article>
-              <h3>Definition</h3>
-              <p>Lossless compression reduces file size while allowing the original data to be restored exactly.</p>
-            </article>
-            <article>
-              <h3>Suitable uses</h3>
-              <p>Text files, program files, spreadsheets, databases, medical records and backups.</p>
-            </article>
-          </div>
-          <div class="callout warning">If one changed bit could change meaning or break the file, lossless is the safer answer.</div>
-        </section>
-
-        <!-- stage10-explanation:start lossless -->
-        <section class="panel explanation-panel" id="explanation-lossless" data-explains="lossless" data-explanation-kind="mechanism" aria-labelledby="explanation-lossless-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lossless">
-          <h2 class="explanation-sr-only" id="explanation-lossless-title">Lossless compression: exact reconstruction</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-012-lossless.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lossless compression: exact reconstruction with a structured visual model." />
-            <figcaption class="explanation-sr-only">Lossless compression: exact reconstruction: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> Lossless compression reduces file size while allowing the original data to be restored exactly.</li><li><strong>Lesson fact:</strong> Suitable uses</li><li><strong>Lesson fact:</strong> Text files, program files, spreadsheets, databases, medical records and backups.</li><li><strong>Lesson fact:</strong> If one changed bit could change meaning or break the file, lossless is the safer answer.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end lossless -->
-
-        <section class="panel" id="lossy" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lossy">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Lossy compression: smaller, but not exact</h2>
-          </div>
-          <div class="method-grid">
-            <article>
-              <h3>Definition</h3>
-              <p>Lossy compression reduces file size by permanently removing some data.</p>
-            </article>
-            <article>
-              <h3>Suitable uses</h3>
-              <p>Images, video and sound where small quality loss may be acceptable.</p>
-            </article>
-          </div>
-          <div class="callout warning">Lossy is not suitable when exact reconstruction is required.</div>
-        </section>
-
-        <!-- stage10-explanation:start lossy -->
-        <section class="panel explanation-panel" id="explanation-lossy" data-explains="lossy" data-explanation-kind="mechanism" aria-labelledby="explanation-lossy-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lossy">
-          <h2 class="explanation-sr-only" id="explanation-lossy-title">Lossy compression: smaller, but not exact</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-012-lossy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lossy compression: smaller, but not exact with a structured visual model." />
-            <figcaption class="explanation-sr-only">Lossy compression: smaller, but not exact: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> Lossy compression reduces file size by permanently removing some data.</li><li><strong>Lesson fact:</strong> Suitable uses</li><li><strong>Lesson fact:</strong> Images, video and sound where small quality loss may be acceptable.</li><li><strong>Lesson fact:</strong> Lossy is not suitable when exact reconstruction is required.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end lossy -->
-
-        <section class="panel" id="ratio" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ratio">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Compression ratio and saved space</h2>
-          </div>
-          <div class="formula-box">
-            <strong>compression ratio = original size : compressed size</strong>
-            <span>percentage saved = ((original - compressed) ÷ original) × 100</span>
-          </div>
-          <div class="worked-line">Example: `1000 KB → 250 KB` gives ratio `4:1` and `75%` saved.</div>
-        </section>
-
-        <!-- stage10-explanation:start ratio -->
-        <section class="panel explanation-panel" id="explanation-ratio" data-explains="ratio" data-explanation-kind="mechanism" aria-labelledby="explanation-ratio-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ratio">
-          <h2 class="explanation-sr-only" id="explanation-ratio-title">Compression ratio and saved space</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-012-ratio.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compression ratio and saved space with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compression ratio and saved space: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> compression ratio = original size : compressed size</li><li><strong>Lesson fact:</strong> percentage saved = ((original - compressed) ÷ original) × 100</li><li><strong>Lesson fact:</strong> Example: 1000 KB → 250 KB gives ratio 4:1 and 75% saved.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end ratio -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Compression result calculator</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Original size
-              <input id="originalInput" type="number" min="1" value="1000" />
-            </label>
-            <label>
-              Compressed size
-              <input id="compressedInput" type="number" min="1" value="250" />
-            </label>
-            <label>
-              Unit
-              <select id="unitInput">
-                <option value="bytes">bytes</option>
-                <option value="KB" selected>KB</option>
-                <option value="MiB">MiB</option>
-              </select>
-            </label>
-            <button type="button" id="calculateBtn">Calculate</button>
-          </div>
-          <div class="result-box" id="calcResult" aria-live="polite"></div>
-          <div class="method-box" id="calcMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="lossless">Choose lossless</button>
-            <button class="tab" type="button" data-example="lossy">Choose lossy</button>
-            <button class="tab" type="button" data-example="ratio">Calculate ratio</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Correct the compression myth</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">“Lossless compression always gives the smallest possible file.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Lossless keeps exact reconstruction, but the file may not shrink much if there are few patterns or if overhead is high.</p>
-            </article>
-            <article>
-              <p class="wrong">“Lossy compression is fine for database backups because it saves space.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Backups must be restored exactly. Lossy compression permanently removes data, so it is unsuitable.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>
-              Use the buttons under each question to expand the Cambridge-style mark scheme.
-              These are original questions written in Cambridge style, not copied past-paper items.
-            </p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-
-        <!-- stage2-completion:start -->
+<!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
@@ -326,6 +63,20 @@
             <p>Compress repeated spaces in a text log with RLE or a dictionary without changing the characters; compress a flat-colour bitmap logo with pixel-value RLE; store one repeated vector shape once and reference it; use lossless sound compression for an evidential recording, but perceptual lossy coding may suit streamed music when smaller size is worth a controlled quality loss.</p>
           </article>
         </section>
+
+        <!-- stage10-explanation:start lossless -->
+        <section class="panel explanation-panel" id="explanation-lossless" data-explains="lossless" data-explanation-kind="mechanism" aria-labelledby="explanation-lossless-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lossless">
+          <h2 class="explanation-sr-only" id="explanation-lossless-title">Lossless compression: exact reconstruction</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-012-lossless.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lossless compression: exact reconstruction with a structured visual model." />
+            <figcaption class="explanation-sr-only">Lossless compression: exact reconstruction: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> Lossless compression reduces file size while allowing the original data to be restored exactly.</li><li><strong>Lesson fact:</strong> Suitable uses</li><li><strong>Lesson fact:</strong> Text files, program files, spreadsheets, databases, medical records and backups.</li><li><strong>Lesson fact:</strong> If one changed bit could change meaning or break the file, lossless is the safer answer.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lossless -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
@@ -355,20 +106,271 @@
             <p>For each of text, bitmap, vector and sound data, describe one suitable compression method and state whether it preserves the original data exactly.</p>
             <details>
               <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> text: lossless RLE or dictionary/token substitution with exact reconstruction</li>
-                <li><strong>B1</strong> bitmap: RLE for repeated adjacent pixel values, or a valid lossy image method identified as non-exact</li>
-                <li><strong>B1</strong> vector: stores repeated objects/properties once and uses references / removes redundant descriptions, losslessly</li>
-                <li><strong>B1</strong> sound: lossless pattern coding for exact samples or perceptual lossy coding that removes less-audible detail</li>
-                <li><strong>B1</strong> distinguishes exact lossless reconstruction from irreversible lossy removal</li>
-                <li><strong>B1</strong> links at least one method to repetition, fidelity or intended use</li>
-              </ol>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>text: lossless RLE or dictionary/token substitution with exact reconstruction</td><td>Do not award generic 'make the file smaller' statements without a method tied to the named media type.</td><td>1</td></tr>
+                  <tr><td>bitmap: RLE for repeated adjacent pixel values, or a valid lossy image method identified as non-exact</td><td></td><td>1</td></tr>
+                  <tr><td>vector: stores repeated objects/properties once and uses references / removes redundant descriptions, losslessly</td><td></td><td>1</td></tr>
+                  <tr><td>sound: lossless pattern coding for exact samples or perceptual lossy coding that removes less-audible detail</td><td></td><td>1</td></tr>
+                  <tr><td>distinguishes exact lossless reconstruction from irreversible lossy removal</td><td></td><td>1</td></tr>
+                  <tr><td>links at least one method to repetition, fidelity or intended use</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
             </details>
           </article>
         </section>
         <!-- stage2-completion:end -->
 
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 012 | 45 minutes | Informal questioning</p>
+            <h2>Compression makes files smaller, but the method matters.</h2>
+            <p>
+              Compression reduces file size so files take less storage and transfer faster.
+              Lossless compression allows exact reconstruction. Lossy compression permanently
+              removes data, usually aiming to remove data that is less noticeable.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Define</strong>
+                <span>compression, lossless compression and lossy compression</span>
+              </div>
+              <div>
+                <strong>Choose</strong>
+                <span>suitable compression for text, images, sound and backups</span>
+              </div>
+              <div>
+                <strong>Calculate</strong>
+                <span>compressed size, saved space and compression ratio</span>
+              </div>
+            </div>
+          </div>
+          <div class="compress-card" aria-label="Compression focus">
+            <span>AAAAAABBBBCCCCCCCC</span>
+            <p>Repeated data is friendly to compression. Random-looking data may be less cooperative.</p>
+          </div>
+        </section>
+
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>The wrong compression choice can damage data, waste bandwidth or make a file unusable for its purpose.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common error</h3>
+            <p>Compression does not guarantee a smaller file. Overhead and lack of patterns can limit the benefit.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which file must use lossless compression?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="photo">Holiday photo for a website</button>
+            <button class="choice-card" type="button" data-hook="backup">Database backup</button>
+            <button class="choice-card" type="button" data-hook="music">Streaming music preview</button>
+            <button class="choice-card" type="button" data-hook="thumbnail">Tiny image thumbnail</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. The word “must” is doing a lot of work here.
+          </div>
+        </section>
+
+        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Why compress data?</h2>
+          </div>
+          <div class="purpose-grid">
+            <article>
+              <h3>Less storage</h3>
+              <p>Smaller files use less disk or memory space.</p>
+            </article>
+            <article>
+              <h3>Faster transfer</h3>
+              <p>Smaller files need less bandwidth and may download or upload faster.</p>
+            </article>
+            <article>
+              <h3>Trade-off</h3>
+              <p>Compression and decompression may require processing time.</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: compression = 压缩；decompression = 解压；reconstruct = 还原。</div>
+        </section>
+
+        <!-- stage10-explanation:start purpose -->
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">Why compress data?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-012-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why compress data? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Why compress data?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Less storage</li><li><strong>Lesson fact:</strong> Smaller files use less disk or memory space.</li><li><strong>Lesson fact:</strong> Faster transfer</li><li><strong>Lesson fact:</strong> Smaller files need less bandwidth and may download or upload faster.</li><li><strong>Lesson fact:</strong> Trade-off</li><li><strong>Lesson fact:</strong> Compression and decompression may require processing time.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end purpose -->
+        <section class="panel" id="lossless" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Lossless compression: exact reconstruction</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Definition</h3>
+              <p>Lossless compression reduces file size while allowing the original data to be restored exactly.</p>
+            </article>
+            <article>
+              <h3>Suitable uses</h3>
+              <p>Text files, program files, spreadsheets, databases, medical records and backups.</p>
+            </article>
+          </div>
+          <div class="callout warning">If one changed bit could change meaning or break the file, lossless is the safer answer.</div>
+        </section>
+
+        <section class="panel" id="lossy" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Lossy compression: smaller, but not exact</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Definition</h3>
+              <p>Lossy compression reduces file size by permanently removing some data.</p>
+            </article>
+            <article>
+              <h3>Suitable uses</h3>
+              <p>Images, video and sound where small quality loss may be acceptable.</p>
+            </article>
+          </div>
+          <div class="callout warning">Lossy is not suitable when exact reconstruction is required.</div>
+        </section>
+
+        <!-- stage10-explanation:start lossy -->
+        <section class="panel explanation-panel" id="explanation-lossy" data-explains="lossy" data-explanation-kind="mechanism" aria-labelledby="explanation-lossy-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <h2 class="explanation-sr-only" id="explanation-lossy-title">Lossy compression: smaller, but not exact</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-012-lossy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lossy compression: smaller, but not exact with a structured visual model." />
+            <figcaption class="explanation-sr-only">Lossy compression: smaller, but not exact: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> Lossy compression reduces file size by permanently removing some data.</li><li><strong>Lesson fact:</strong> Suitable uses</li><li><strong>Lesson fact:</strong> Images, video and sound where small quality loss may be acceptable.</li><li><strong>Lesson fact:</strong> Lossy is not suitable when exact reconstruction is required.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lossy -->
+        <section class="panel" id="ratio" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Compression ratio and saved space</h2>
+          </div>
+          <div class="formula-box">
+            <strong>compression ratio = original size : compressed size</strong>
+            <span>percentage saved = ((original - compressed) ÷ original) × 100</span>
+          </div>
+          <div class="worked-line">Example: `1000 KB → 250 KB` gives ratio `4:1` and `75%` saved.</div>
+        </section>
+
+        <!-- stage10-explanation:start ratio -->
+        <section class="panel explanation-panel" id="explanation-ratio" data-explains="ratio" data-explanation-kind="mechanism" aria-labelledby="explanation-ratio-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <h2 class="explanation-sr-only" id="explanation-ratio-title">Compression ratio and saved space</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-012-ratio.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compression ratio and saved space with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compression ratio and saved space: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> compression ratio = original size : compressed size</li><li><strong>Lesson fact:</strong> percentage saved = ((original - compressed) ÷ original) × 100</li><li><strong>Lesson fact:</strong> Example: 1000 KB → 250 KB gives ratio 4:1 and 75% saved.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end ratio -->
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Compression result calculator</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Original size
+              <input id="originalInput" type="number" min="1" value="1000" />
+            </label>
+            <label>
+              Compressed size
+              <input id="compressedInput" type="number" min="1" value="250" />
+            </label>
+            <label>
+              Unit
+              <select id="unitInput">
+                <option value="bytes">bytes</option>
+                <option value="KB" selected>KB</option>
+                <option value="MiB">MiB</option>
+              </select>
+            </label>
+            <button type="button" id="calculateBtn">Calculate</button>
+          </div>
+          <div class="result-box" id="calcResult" aria-live="polite"></div>
+          <div class="method-box" id="calcMethod"></div>
+        </section>
+
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="lossless">Choose lossless</button>
+            <button class="tab" type="button" data-example="lossy">Choose lossy</button>
+            <button class="tab" type="button" data-example="ratio">Calculate ratio</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Correct the compression myth</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">“Lossless compression always gives the smallest possible file.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Lossless keeps exact reconstruction, but the file may not shrink much if there are few patterns or if overhead is high.</p>
+            </article>
+            <article>
+              <p class="wrong">“Lossy compression is fine for database backups because it saves space.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Backups must be restored exactly. Lossy compression permanently removes data, so it is unsuitable.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>
+              Use the buttons under each question to expand the Cambridge-style mark scheme.
+              These are original questions written in Cambridge style, not copied past-paper items.
+            </p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-012">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Compression choices depend on purpose</h2>

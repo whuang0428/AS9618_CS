@@ -1,4 +1,55 @@
-# Lesson 144: Design documentation: algorithms, data dictionaries, and interfaces
+# Lesson 144: Expose, locate and correct program errors
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- remediation-v2-optional:start -->
+> **Optional enrichment:** constructing a state-transition diagram. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.
+>
+> **Formal AS prerequisite:** S12.03 only requires understanding the purpose of state-transition diagrams; S12.02 structure-chart construction remains CORE.
+<!-- remediation-v2-optional:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Expose, locate and correct program errors
+
+### Direct explanation
+
+- A syntax error breaks the language grammar and is normally exposed by a translator or an IDE's dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.
+- After an error is exposed, locate the responsible statement and identify the error type before changing it. Correct the cause, not only the observed output, then rerun the failing test and relevant regression tests. Avoid faults by using clear identifiers, modular design, validation, desk checking, peer walkthroughs and a planned set of normal, abnormal and extreme/boundary tests.
+- No single method proves that a program has no remaining faults. Translation can expose syntax faults but not every logic fault; testing can reveal failures for selected cases but cannot demonstrate correctness for every possible input.
+- A runtime error (run-time error) occurs during execution; identify its cause, use runtime diagnostics to locate it and correct the responsible code.
+
+### Worked example
+
+**Correct three different faults:** A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection. Mark > 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark >= 50. Total / Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which method can expose a syntactically valid wrong boundary?
+   **Answer:** A trace, dry run, walkthrough or selected boundary test can expose the wrong result.
+2. Why is a translator insufficient for all logic errors?
+   **Answer:** Logic errors can obey the language grammar, so translation may succeed even though the result is wrong.
+3. What must happen after a correction?
+   **Answer:** Rerun the failing test and relevant regression tests to check the correction and existing behaviour.
+
+### Exam-style question and MS
+
+**Question (6 marks):** For each fault, state its type, one way to expose or locate it, and the correction: a missing ENDIF; IF Mark > 50 when 50 should pass; Average <- Total / Count when Count can be zero.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| missing ENDIF identified as syntax error and translator/dynamic syntax check used | Do not accept changing the expected result to hide a program fault, or claim that successful translation proves the algorithm correct. | 1 |
+| adds the required ENDIF |  | 1 |
+| Mark > 50 identified as logic error and boundary trace/test at 50 used |  | 1 |
+| changes the condition to Mark >= 50 or equivalent |  | 1 |
+| division by zero identified as run-time error/risk and execution/test diagnostics used |  | 1 |
+| guards the division by checking Count or handles the zero case |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -46,7 +97,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit answers that are measurable and scenario-specific. Vague requirements such as 'easy to use' need success criteria to earn strong marks.
 
-
 ## Student Task
 Students turn a vague client request into three testable requirements and one acceptance test.
 
@@ -74,46 +124,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Structure charts and state-transition diagrams
-
-### Direct explanation
-
-- A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.
-- To construct a structure chart, place the controlling module at the top, split the problem into one-responsibility subtasks, connect each caller to its called modules, and label every value passed. To derive equivalent pseudocode, turn each box into a complete PROCEDURE or FUNCTION header with corresponding parameters, add calls in the parent body with matching arguments, and preserve the shown hierarchy.
-- A state-transition diagram documents how an algorithm or system changes between persistent states. Mark the start state; draw each state once; label directed transitions with the triggering event and any condition/action. It is not a flowchart of every processing statement.
-
-### Worked example
-
-**Door controller: two design views:** A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid). Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments. Separately, a state-transition diagram starts at Locked; validCard / unlock leads to Unlocked; timeout / lock returns to Locked.
-
-### Targeted practice and answers
-
-1. What does a box represent in a structure chart?
-   **Answer:** A module, procedure or function.
-2. How are parameters represented and then derived into pseudocode?
-   **Answer:** Labelled arrows show values passed; the same values appear as parameters in the called header and arguments in the caller's call.
-3. What labels a state transition?
-   **Answer:** The triggering event and, where needed, a condition or action.
-4. Why is a state-transition diagram not a flowchart?
-   **Answer:** It records persistent states and event-labelled changes, not every processing step in sequence.
-
-### Exam-style question and MS
-
-**Question (6 marks):** For a login system, construct a structure chart in which Main calls ReadCredentials(UserID, Password) and CheckLogin(UserID, Password, IsValid), then derive equivalent subprogram headers and calls. Also construct a state-transition diagram with start state LoggedOut, valid login to LoggedIn, logout back to LoggedOut and three invalid attempts to Locked.
-
-- **B1** structure chart places Main above the two called modules
-- **B1** parameter arrows label UserID, Password and IsValid coherently
-- **M1** derived pseudocode contains matching complete headers and calls with arguments
-- **B1** state diagram contains LoggedOut, LoggedIn and Locked with a start arrow
-- **B1** valid login and logout transitions are directed correctly
-- **B1** three invalid attempts transition from LoggedOut to Locked
-
-**Strict note:** Do not accept a flowchart as either document; the structure chart requires module hierarchy and parameters, while the state-transition diagram requires states and event-labelled transitions.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -132,7 +142,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `dictionary`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-dictionary.jpg`
 
 1. Data dictionary
@@ -152,7 +162,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `dictionary-tool`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-dictionary-tool.jpg`
 
 1. Data dictionary checker
@@ -162,7 +172,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `interfaces`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-interfaces.jpg`
 
 1. Interface designs
@@ -177,7 +187,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lifecycle`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-lifecycle.jpg`
 
 1. Using design docs later
@@ -187,11 +197,23 @@ Correction prompt: "State the correct term, then explain the relevant process or
 5. Maintenance
 6. Future changes are safer because developers can see existing data rules and processing assumptions.
 
+### Logic errors make the program do the wrong thing
+
+- **Explains:** `logic`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-059-logic.jpg`
+
+1. Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.
+2. Examples Using < instead of <= , wrong formula, wrong loop condition or off-by-one error.
+3. Detection Usually found by testing, tracing or comparing actual output with expected output.
+4. Common error A translator may not detect it because the instructions are legal.
+
 ### Design documents translate requirements into a buildable plan
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-purpose.jpg`
 
 1. Design documentation purpose
@@ -207,7 +229,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `traceability`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-traceability.jpg`
 
 1. Linking requirements to design

@@ -43,8 +43,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit systematic input combinations, intermediate gate outputs and final output. The expression must match the circuit order.
 
-
-
 ## Student Task
 Pairs swap circuits and truth tables; each pair checks whether the other representation matches.
 

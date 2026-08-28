@@ -87,16 +87,22 @@ for (const id of scopedRequirements) {
 }
 
 const lessonChecks = [
-  ["078", ["file-based limitations", "data dictionary", "data modelling", "logical schema", "data integrity", "data security", "backup procedures", "access rights", "developer interface", "query processor"]],
-  ["079", ["redundancy", "inconsistency", "data isolation", "linked tables", "relational database"]],
-  ["080", ["entity", "table", "record", "tuple", "field", "attribute", "candidate key", "primary key", "secondary key", "need not be unique", "foreign key", "index"]],
-  ["081", ["one-to-one", "one-to-many", "many-to-many", "linking table", "referential integrity"]],
-  ["082", ["E-R diagram", "cardinality", "linking entity"]],
-  ["083", ["First Normal Form", "Second Normal Form", "Third Normal Form", "partial dependency", "transitive dependency", "normalised 3NF design"]],
-  ["084", ["industry-standard", "SELECT", "FROM", "WHERE", "operators", "literal values"]],
-  ["085", ["ORDER BY", "GROUP BY", "SUM", "COUNT", "AVG"]],
-  ["086", ["at most two tables", "INNER JOIN", "ON", "WHERE"]],
-  ["087", ["CREATE DATABASE", "CREATE TABLE", "ALTER TABLE", "CHARACTER", "VARCHAR(n)", "BOOLEAN", "INTEGER", "REAL", "DATE", "TIME", "PRIMARY KEY", "FOREIGN KEY", "REFERENCES", "INSERT INTO", "UPDATE", "DELETE FROM"]],
+  ["078", ["file-based limitations", "redundancy", "inconsistency", "data isolation", "linked tables", "relational database"]],
+  ["079", [
+    "entity", "table", "record", "tuple", "field", "attribute", "candidate key", "primary key", "secondary key", "need not be unique", "foreign key", "index",
+    "one-to-one", "one-to-many", "many-to-many", "linking table", "referential integrity",
+  ]],
+  ["080", [
+    "E-R diagram", "cardinality", "linking entity", "1NF", "2NF", "3NF", "partial dependenc", "transitive dependenc", "normalised 3NF design",
+    "data dictionary", "data modelling", "logical schema", "data integrity", "data security", "backup procedures", "access rights", "developer interface", "query processor",
+  ]],
+  ["083", ["industry-standard", "DDL", "DML"]],
+  ["084", ["SELECT", "FROM", "WHERE", "operators", "literal values"]],
+  ["085", [
+    "ORDER BY", "GROUP BY", "SUM", "COUNT", "AVG", "at most two tables", "INNER JOIN", "ON", "WHERE",
+    "CREATE DATABASE", "CREATE TABLE", "ALTER TABLE", "CHARACTER", "VARCHAR", "BOOLEAN", "INTEGER", "REAL", "DATE", "TIME", "PRIMARY KEY", "FOREIGN KEY", "REFERENCES",
+  ]],
+  ["087", ["INSERT", "UPDATE", "DELETE", "WHERE"]],
   ["089", ["candidate, primary, secondary and foreign keys", "1NF, 2NF and 3NF", "developer interface", "query processor", "at most two tables", "INNER JOIN ... ON"]],
 ];
 for (const [lesson, terms] of lessonChecks) {

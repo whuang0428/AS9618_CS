@@ -8,8 +8,8 @@ const scenarios = [
   {
     id: "initials",
     text: "Create a code from the first three letters of a surname.",
-    recommendation: "LEFT(Surname, 3)",
-    reason: "LEFT extracts a fixed number of characters from the start of the string.",
+    recommendation: "MID(Surname, 1, 3)",
+    reason: "MID starts at position 1 and returns three characters as a STRING.",
   },
   {
     id: "extension",
@@ -20,8 +20,8 @@ const scenarios = [
   {
     id: "case",
     text: "Accept y or Y as the same menu response.",
-    recommendation: "UCASE(Response)",
-    reason: "Convert the response to a common case before comparison.",
+    recommendation: "DECLARE Response : CHAR; UCASE(Response)",
+    reason: "UCASE accepts and returns one CHAR, so the menu response must be declared as CHAR.",
   },
 ];
 
@@ -62,29 +62,29 @@ const examples = {
     title: "Example 3: Convert case before comparison",
     problem: "Accept user input y or Y as yes.",
     rows: [
-      ["Input", "Response = \"y\"", "lowercase input"],
-      ["Function", "UCASE(Response)", "returns \"Y\""],
-      ["Comparison", "\"Y\" = \"Y\"", "TRUE"],
+      ["Input", "Response = 'y'", "CHAR input"],
+      ["Function", "UCASE(Response)", "returns 'Y'"],
+      ["Comparison", "'Y' = 'Y'", "TRUE"],
     ],
-    code: "INPUT Response\nResponse <- UCASE(Response)\nIF Response = \"Y\" THEN\n    OUTPUT \"Continue\"\nENDIF",
+    code: "DECLARE Response : CHAR\nINPUT Response\nResponse <- UCASE(Response)\nIF Response = 'Y' THEN\n    OUTPUT \"Continue\"\nENDIF",
     points: [
-      "UCASE returns a string.",
+      "UCASE accepts CHAR and returns CHAR.",
       "Assign the returned value if the converted version is needed later.",
       "Case conversion does not validate meaning by itself.",
     ],
   },
   nested: {
-    title: "Example 4: Nested built-in functions",
-    problem: "Trace LCASE(LEFT(\"NETWORK\", 3)) & \"29\".",
+    title: "Example 4: Extract then concatenate",
+    problem: "Trace MID(\"NETWORK\", 1, 3) & \"29\".",
     rows: [
-      ["Inner call", "LEFT(\"NETWORK\", 3)", "returns \"NET\""],
-      ["Outer call", "LCASE(\"NET\")", "returns \"net\""],
-      ["Concatenate", "\"net\" & \"29\"", "returns \"net29\""],
+      ["Function call", "MID(\"NETWORK\", 1, 3)", "returns \"NET\""],
+      ["Returned type", "STRING", "can be concatenated"],
+      ["Concatenate", "\"NET\" & \"29\"", "returns \"NET29\""],
     ],
-    code: "Code <- LCASE(LEFT(\"NETWORK\", 3)) & \"29\"\nOUTPUT Code",
+    code: "Code <- MID(\"NETWORK\", 1, 3) & \"29\"\nOUTPUT Code",
     points: [
-      "Evaluate inner function calls first.",
-      "Then use their returned values in the outer expression.",
+      "Evaluate MID before concatenation.",
+      "MID returns STRING, which can be used in a STRING expression.",
       "Keep numeric-looking text in quotes if it is being joined as a string.",
     ],
   },
@@ -92,21 +92,21 @@ const examples = {
 
 const practice = [
   { id: "p1", prompt: "What is LENGTH(\"DATA\")?", accepted: ["4"], answer: "4." },
-  { id: "p2", prompt: "What does UCASE(\"exam\") return?", accepted: ["EXAM"], answer: "EXAM." },
-  { id: "p3", prompt: "What does LCASE(\"Code\") return?", accepted: ["code"], answer: "code." },
-  { id: "p4", prompt: "What does LEFT(\"NETWORK\", 3) return?", accepted: ["NET"], answer: "NET." },
+  { id: "p2", prompt: "What does UCASE('e') return?", accepted: ["E"], answer: "The CHAR 'E'." },
+  { id: "p3", prompt: "What does LCASE('C') return?", accepted: ["c"], answer: "The CHAR 'c'." },
+  { id: "p4", prompt: "What does MID(\"NETWORK\", 1, 3) return?", accepted: ["NET"], answer: "NET." },
   { id: "p5", prompt: "What does RIGHT(\"NETWORK\", 4) return?", accepted: ["WORK"], answer: "WORK." },
   { id: "p6", prompt: "Using 1-based positions, what does MID(\"COMPUTER\", 4, 3) return?", accepted: ["PUT"], answer: "PUT." },
   { id: "p7", prompt: "What operator is used in this course to concatenate strings: & or DIV?", accepted: ["&", "ampersand"], answer: "&." },
-  { id: "p8", prompt: "What does LEFT(UCASE(\"ada\"), 2) return?", accepted: ["AD"], answer: "AD." },
+  { id: "p8", prompt: "What does MID(\"ada\", 1, 2) return?", accepted: ["ad"], answer: "ad." },
   { id: "p9", prompt: "Java strings use zero-based indexes. Cambridge-style examples here use positions starting at what number?", accepted: ["1", "one"], answer: "1." },
-  { id: "p10", prompt: "What does LCASE(LEFT(\"NETWORK\", 3)) & \"29\" return?", accepted: ["net29"], answer: "net29." },
+  { id: "p10", prompt: "What does MID(\"NETWORK\", 1, 3) & \"29\" return?", accepted: ["NET29"], answer: "NET29." },
 ];
 
 const mistakes = [
   {
     wrong: "A student writes Java code name.substring(0, 3) as the Cambridge pseudocode answer.",
-    fix: "Use Cambridge-style pseudocode such as LEFT(Name, 3), unless the question specifically asks for Java.",
+    fix: "Use the guide function MID(Name, 1, 3), or follow a different complete function definition supplied by the question.",
   },
   {
     wrong: "A student treats LENGTH(\"A B\") as 2 because there are two letters.",
@@ -117,24 +117,30 @@ const mistakes = [
     fix: "Use the stated convention. With 1-based positions and count 3, start at O and return \"ONI\".",
   },
   {
-    wrong: "A student writes UCASE(Answer) but then compares the old unconverted variable value.",
-    fix: "Assign the returned value, for example Answer <- UCASE(Answer), or compare UCASE(Answer) directly.",
+    wrong: "A student passes the STRING Answer to UCASE.",
+    fix: "UCASE accepts CHAR. Declare Answer as CHAR for a one-character response, assign the returned CHAR, and compare it with a CHAR literal such as 'Y'.",
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "3 marks",
-    prompt: "Trace the output.\n\nWord <- \"NETWORK\"\nPart <- LEFT(Word, 3)\nPart <- LCASE(Part)\nOUTPUT Part",
-    answer: "LEFT(\"NETWORK\", 3) returns \"NET\". LCASE(\"NET\") returns \"net\". The output is net.",
+    prompt: "Complete a trace table for the output. Word <- \"NETWORK\"\nPart <- MID(Word, 1, 3)\nCode <- Part & \"29\"\nOUTPUT Code",
+    answer: "MID(\"NETWORK\", 1, 3) returns \"NET\". Concatenating \"29\" returns \"NET29\". The output is NET29.",
     marking: [
-      { mark: "B1", text: "identifies LEFT(Word, 3) returns NET" },
-      { mark: "M1", text: "applies LCASE to NET" },
-      { mark: "A1", text: "states final output is net" },
+      { mark: "B1", text: "identifies MID(Word, 1, 3) returns NET" },
+      { mark: "M1", text: "concatenates NET with the STRING 29" },
+      { mark: "A1", text: "states final output is NET29" },
     ],
     strict: [
-      "Do not award final output mark for NET.",
+      "Do not award final output mark for NET without the concatenated 29.",
       "Allow quotation marks around returned strings.",
       "Do not accept Java method syntax alone.",
       "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
@@ -162,7 +168,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Using positions starting at 1, trace this pseudocode.\n\nCode <- \"COMPUTER\"\nOUTPUT MID(Code, 4, 3)\nOUTPUT RIGHT(Code, 2)",
+    prompt: "Using positions starting at 1, Complete a trace table for this pseudocode. Code <- \"COMPUTER\"\nOUTPUT MID(Code, 4, 3)\nOUTPUT RIGHT(Code, 2)",
     answer: "MID(\"COMPUTER\", 4, 3) starts at position 4, P, and returns three characters: PUT. RIGHT(\"COMPUTER\", 2) returns ER.",
     marking: [
       { mark: "B1", text: "uses positions starting at 1" },
@@ -181,20 +187,20 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "7 marks",
-    prompt: "Write pseudocode to input Surname and YearGroup, then create UserID from the first three letters of Surname in lower case followed by YearGroup. Output UserID.",
-    answer: "INPUT Surname\nINPUT YearGroup\nUserID <- LCASE(LEFT(Surname, 3)) & YearGroup\nOUTPUT UserID",
+    prompt: "Write pseudocode to input the STRING values Surname and YearGroup, then create UserID from the first three letters of Surname followed by YearGroup. Output UserID.",
+    answer: "INPUT Surname\nINPUT YearGroup\nSurnamePart <- MID(Surname, 1, 3)\nUserID <- SurnamePart & YearGroup\nOUTPUT UserID",
     marking: [
       { mark: "B1", text: "inputs or obtains Surname" },
       { mark: "B1", text: "inputs or obtains YearGroup" },
-      { mark: "M1", text: "uses LEFT(Surname, 3) or equivalent to extract first three letters" },
-      { mark: "A1", text: "converts extracted surname part to lower case" },
+      { mark: "M1", text: "uses MID(Surname, 1, 3) or equivalent guide-supported extraction" },
+      { mark: "A1", text: "uses start position 1 and count 3 to obtain the first three letters" },
       { mark: "M1", text: "concatenates surname part with YearGroup" },
       { mark: "A1", text: "assigns the result to UserID or equivalent" },
       { mark: "B1", text: "outputs UserID" },
     ],
     strict: [
       "Do not award extraction mark for RIGHT(Surname, 3).",
-      "Allow conversion before extraction if the final first three letters are lower case.",
+      "Do not require case conversion because the question does not request it.",
       "Do not accept Java String method calls alone as Cambridge pseudocode.",
     ],
   },
@@ -202,12 +208,12 @@ const examQuestions = [
     title: "Question 5",
     marks: "4 marks",
     prompt: "A candidate writes Part <- Word.substring(0, 3) in a Cambridge pseudocode answer. Explain the problem and give a corrected Cambridge-style expression.",
-    answer: "The problem is that substring(0, 3) is Java-style method syntax and uses zero-based indexes. Cambridge-style pseudocode should use a clear string function such as Part <- LEFT(Word, 3) to get the first three characters.",
+    answer: "The problem is that substring(0, 3) is Java-style method syntax and uses zero-based indexes. The Cambridge guide expression Part <- MID(Word, 1, 3) uses start position 1 and returns three characters.",
     marking: [
       { mark: "B1", text: "identifies substring(0, 3) as Java-style syntax / not Cambridge-style pseudocode" },
       { mark: "M1", text: "explains Java indexes start at 0 or differ from the course pseudocode position convention" },
       { mark: "M1", text: "states the intended result is the first three characters" },
-      { mark: "A1", text: "gives corrected expression using LEFT(Word, 3) or equivalent" },
+      { mark: "A1", text: "gives corrected expression MID(Word, 1, 3) or follows a complete function definition supplied in the question" },
     ],
     strict: [
       "Do not award correction mark for another Java expression.",
@@ -263,7 +269,6 @@ function setupHook() {
 
 function runStringFunction(text, func, start, count) {
   if (func === "length") return String(text.length);
-  if (func === "left") return text.slice(0, count);
   if (func === "right") return count <= text.length ? text.slice(text.length - count) : text;
   if (func === "mid") return text.slice(start - 1, start - 1 + count);
   if (func === "ucase") return text.toUpperCase();
@@ -283,6 +288,10 @@ function setupStringLab() {
       result.textContent = "Enter a non-empty string.";
       return;
     }
+    if ((func === "ucase" || func === "lcase") && text.length !== 1) {
+      result.textContent = "UCASE and LCASE require exactly one CHAR. Enter one character.";
+      return;
+    }
     if (!Number.isInteger(start) || !Number.isInteger(count) || start < 1 || count < 1) {
       result.textContent = "Start and n must be positive integers.";
       return;
@@ -295,11 +304,10 @@ function setupStringLab() {
     const value = runStringFunction(text, func, start, count);
     const call = {
       length: `LENGTH("${text}")`,
-      left: `LEFT("${text}", ${count})`,
       right: `RIGHT("${text}", ${count})`,
       mid: `MID("${text}", ${start}, ${count})`,
-      ucase: `UCASE("${text}")`,
-      lcase: `LCASE("${text}")`,
+      ucase: `UCASE('${text}')`,
+      lcase: `LCASE('${text}')`,
     }[func];
 
     result.innerHTML = `
@@ -437,7 +445,7 @@ function setupExamQuestions() {
             <h4>Indicative answer</h4>
             <pre><code>${escapeHtml(question.answer)}</code></pre>
             <h4>Mark scheme</h4>
-            <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+            ${renderStudentMarkPoints(question)}
           </div>
         </article>
       `,

@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 007 | Character sets: ASCII and Unicode</title>
+    <title>AS9618 Lesson 007 | Character sets and internal binary character data</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Character sets: ASCII, extended ASCII and Unicode</h1>
+        <h1>Character sets and internal binary character data</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -42,7 +42,83 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Character sets and internal binary character data</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A character set defines a collection of characters and assigns a numeric character code to each one. The code is stored internally in binary; the bit pattern is meaningful only when software interprets it using the agreed character set.</p>
+            <p>Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols. Candidates are not expected to memorise particular character codes; a question must provide any code value needed for a conversion.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose a character set for worldwide text</h3>
+            <p>A messaging system containing English, Chinese and Arabic text needs Unicode because its character repertoire is much wider than ASCII or extended ASCII. The chosen Unicode encoding stores the character codes as binary data.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start ascii -->
+        <section class="panel explanation-panel" id="explanation-ascii" data-explains="ascii" data-explanation-kind="mechanism" aria-labelledby="explanation-ascii-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ascii">
+          <h2 class="explanation-sr-only" id="explanation-ascii-title">ASCII and extended ASCII</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-ascii.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining ASCII and extended ASCII with a structured visual model." />
+            <figcaption class="explanation-sr-only">ASCII and extended ASCII: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Standard ASCII</li><li><strong>Lesson fact:</strong> Uses 7 bits, so it can represent 2⁷ = 128 possible codes.</li><li><strong>Lesson fact:</strong> It covers common English letters, digits, punctuation and control characters.</li><li><strong>Lesson fact:</strong> Extended ASCII</li><li><strong>Lesson fact:</strong> Uses 8 bits, so it can represent 2⁸ = 256 possible codes.</li><li><strong>Lesson fact:</strong> It adds extra characters, but still cannot cover the world’s writing systems.</li><li><strong>Lesson fact:</strong> Character</li><li><strong>Lesson fact:</strong> Denary code</li><li><strong>Lesson fact:</strong> 8-bit binary</li><li><strong>Lesson fact:</strong> Exam note</li><li><strong>Lesson fact:</strong> 01000001</li><li><strong>Lesson fact:</strong> Example only; no need to memorise.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end ascii -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Character sets and internal binary character data: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What does a character set assign to each character?</p>
+              <details><summary>Show answer</summary><p>A numeric character code that can be stored in binary.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Compare standard ASCII from extended ASCII.</p>
+              <details><summary>Show answer</summary><p>Standard ASCII uses 7 bits/128 codes; extended ASCII uses 8 bits/256 codes.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is Unicode suitable for multilingual text?</p>
+              <details><summary>Show answer</summary><p>It defines codes for characters from far more languages and symbol systems.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Must candidates memorise particular ASCII codes?</p>
+              <details><summary>Show answer</summary><p>No; any required code value should be provided.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Explain how the character 'A' is represented internally and why Unicode is preferred to ASCII for a multilingual website.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>character set assigns A a numeric code</td><td>Do not accept that changing a font changes the stored character code.</td><td>1</td></tr>
+                  <tr><td>numeric code is stored as a binary bit pattern</td><td></td><td>1</td></tr>
+                  <tr><td>Unicode represents a much wider range of characters/languages</td><td></td><td>1</td></tr>
+                  <tr><td>applies the wider repertoire to the multilingual website</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 007 | 45 minutes | Informal questioning</p>
             <h2>Text is numbers wearing a very convincing disguise.</h2>
@@ -73,7 +149,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Wrong encoding can turn meaningful text into broken symbols, especially across languages and systems.</p>
@@ -84,7 +160,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Can standard ASCII store `你`?</h2>
@@ -100,7 +176,7 @@
           </div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>What a character set actually does</h2>
@@ -129,7 +205,7 @@
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <h2 class="explanation-sr-only" id="explanation-concept-title">What a character set actually does</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What a character set actually does with a structured visual model." />
@@ -141,8 +217,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-
-        <section class="panel" id="ascii" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ascii">
+        <section class="panel" id="ascii" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>ASCII and extended ASCII</h2>
@@ -193,28 +268,14 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start ascii -->
-        <section class="panel explanation-panel" id="explanation-ascii" data-explains="ascii" data-explanation-kind="mechanism" aria-labelledby="explanation-ascii-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ascii">
-          <h2 class="explanation-sr-only" id="explanation-ascii-title">ASCII and extended ASCII</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-ascii.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining ASCII and extended ASCII with a structured visual model." />
-            <figcaption class="explanation-sr-only">ASCII and extended ASCII: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Standard ASCII</li><li><strong>Lesson fact:</strong> Uses 7 bits, so it can represent 2⁷ = 128 possible codes.</li><li><strong>Lesson fact:</strong> It covers common English letters, digits, punctuation and control characters.</li><li><strong>Lesson fact:</strong> Extended ASCII</li><li><strong>Lesson fact:</strong> Uses 8 bits, so it can represent 2⁸ = 256 possible codes.</li><li><strong>Lesson fact:</strong> It adds extra characters, but still cannot cover the world’s writing systems.</li><li><strong>Lesson fact:</strong> Character</li><li><strong>Lesson fact:</strong> Denary code</li><li><strong>Lesson fact:</strong> 8-bit binary</li><li><strong>Lesson fact:</strong> Exam note</li><li><strong>Lesson fact:</strong> 01000001</li><li><strong>Lesson fact:</strong> Example only; no need to memorise.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end ascii -->
-
-        <section id="delivery-06" class="guidance-grid compact" aria-label="ASCII guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ascii">
+        <section id="delivery-06" class="guidance-grid compact" aria-label="ASCII guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <article class="trap-card">
             <h3>Common error</h3>
             <p>Font changes appearance. A character set defines which character a code represents. These are not the same thing.</p>
           </article>
         </section>
 
-        <section class="panel" id="unicode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="unicode">
+        <section class="panel" id="unicode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Unicode: more characters, more global use</h2>
@@ -239,7 +300,7 @@
         </section>
 
         <!-- stage10-explanation:start unicode -->
-        <section class="panel explanation-panel" id="explanation-unicode" data-explains="unicode" data-explanation-kind="mechanism" aria-labelledby="explanation-unicode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="unicode">
+        <section class="panel explanation-panel" id="explanation-unicode" data-explains="unicode" data-explanation-kind="mechanism" aria-labelledby="explanation-unicode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <h2 class="explanation-sr-only" id="explanation-unicode-title">Unicode: more characters, more global use</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-unicode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Unicode: more characters, more global use with a structured visual model." />
@@ -251,8 +312,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end unicode -->
-
-        <section class="panel" id="encoding" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="encoding">
+        <section class="panel" id="encoding" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Character set vs encoding</h2>
@@ -275,7 +335,7 @@
         </section>
 
         <!-- stage10-explanation:start encoding -->
-        <section class="panel explanation-panel" id="explanation-encoding" data-explains="encoding" data-explanation-kind="comparison" aria-labelledby="explanation-encoding-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="encoding">
+        <section class="panel explanation-panel" id="explanation-encoding" data-explains="encoding" data-explanation-kind="comparison" aria-labelledby="explanation-encoding-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <h2 class="explanation-sr-only" id="explanation-encoding-title">Character set vs encoding</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-encoding.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Character set vs encoding with a structured visual model." />
@@ -287,9 +347,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end encoding -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Character inspector</h2>
@@ -306,7 +364,7 @@
           <div class="byte-visual" id="byteVisual" aria-label="Character byte visual"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -319,7 +377,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -329,7 +387,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Correct the almost-right answer</h2>
@@ -348,7 +406,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -360,63 +418,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Character sets and internal binary character data</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A character set defines a collection of characters and assigns a numeric character code to each one. The code is stored internally in binary; the bit pattern is meaningful only when software interprets it using the agreed character set.</p>
-            <p>Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols. Candidates are not expected to memorise particular character codes; a question must provide any code value needed for a conversion.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose a character set for worldwide text</h3>
-            <p>A messaging system containing English, Chinese and Arabic text needs Unicode because its character repertoire is much wider than ASCII or extended ASCII. The chosen Unicode encoding stores the character codes as binary data.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Character sets and internal binary character data: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What does a character set assign to each character?</p>
-              <details><summary>Show answer</summary><p>A numeric character code that can be stored in binary.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Distinguish standard ASCII from extended ASCII.</p>
-              <details><summary>Show answer</summary><p>Standard ASCII uses 7 bits/128 codes; extended ASCII uses 8 bits/256 codes.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why is Unicode suitable for multilingual text?</p>
-              <details><summary>Show answer</summary><p>It defines codes for characters from far more languages and symbol systems.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Must candidates memorise particular ASCII codes?</p>
-              <details><summary>Show answer</summary><p>No; any required code value should be provided.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Explain how the character 'A' is represented internally and why Unicode is preferred to ASCII for a multilingual website.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> character set assigns A a numeric code</li>
-                <li><strong>B1</strong> numeric code is stored as a binary bit pattern</li>
-                <li><strong>B1</strong> Unicode represents a much wider range of characters/languages</li>
-                <li><strong>B1</strong> applies the wider repertoire to the multilingual website</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Text storage needs a rulebook</h2>

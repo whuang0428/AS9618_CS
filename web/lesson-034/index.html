@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 034 | Sensors, actuators and control systems</title>
+    <title>AS9618 Lesson 034 | Logic-gate symbols, functions and representation conversions</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Sensors, actuators and control systems</h1>
+        <h1>Logic-gate symbols, functions and representation conversions</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -38,11 +38,14 @@
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 034 | 45 minutes | Paper 1 Section 3</p>
             <h2>Control systems are where data stops being a spreadsheet and starts moving the world.</h2>
@@ -63,7 +66,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Cambridge-style answers reward sequence. Listing "temperature sensor, fan" is weaker than explaining the rule that connects them.</p>
@@ -74,7 +77,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A greenhouse gets too hot. Does the temperature sensor cool the greenhouse, or does it just report the bad news?</h2>
@@ -90,7 +93,7 @@
           </div>
         </section>
 
-        <section class="panel" id="sensors" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sensors">
+        <section class="panel" id="sensors" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Sensors capture physical data</h2>
@@ -136,21 +139,7 @@
           <div class="callout">Chinese support: sensor = 传感器；physical quantity = 物理量；threshold = 阈值；reading = 读数。</div>
         </section>
 
-        <!-- stage10-explanation:start sensors -->
-        <section class="panel explanation-panel" id="explanation-sensors" data-explains="sensors" data-explanation-kind="mechanism" aria-labelledby="explanation-sensors-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sensors">
-          <h2 class="explanation-sr-only" id="explanation-sensors-title">Required sensor types and applications</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-sensors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Required sensor types and applications with a structured visual model." />
-            <figcaption class="explanation-sr-only">Required sensor types and applications: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A temperature sensor measures temperature and a pressure sensor measures pressure.</li><li><strong>Lesson fact:</strong> An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.</li><li><strong>Lesson fact:</strong> A sound sensor detects sound level or sound waves, for example in a noise monitor.</li><li><strong>Lesson fact:</strong> A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.</li><li><strong>Lesson fact:</strong> Light intensity is supporting context and does not replace the named infra-red or sound sensors.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end sensors -->
-
-        <section class="panel" id="actuators" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="actuators">
+        <section class="panel" id="actuators" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Actuators turn output signals into physical action</h2>
@@ -166,7 +155,7 @@
         </section>
 
         <!-- stage10-explanation:start actuators -->
-        <section class="panel explanation-panel" id="explanation-actuators" data-explains="actuators" data-explanation-kind="mechanism" aria-labelledby="explanation-actuators-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="actuators">
+        <section class="panel explanation-panel" id="explanation-actuators" data-explains="actuators" data-explanation-kind="mechanism" aria-labelledby="explanation-actuators-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <h2 class="explanation-sr-only" id="explanation-actuators-title">Actuators turn output signals into physical action</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-actuators.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Actuators turn output signals into physical action with a structured visual model." />
@@ -178,8 +167,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end actuators -->
-
-        <section class="panel" id="control" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="control">
+        <section class="panel" id="control" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Control systems use rules and feedback</h2>
@@ -250,7 +238,7 @@
         </section>
 
         <!-- stage10-explanation:start control -->
-        <section class="panel explanation-panel" id="explanation-control" data-explains="control" data-explanation-kind="mechanism" aria-labelledby="explanation-control-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="control">
+        <section class="panel explanation-panel" id="explanation-control" data-explains="control" data-explanation-kind="mechanism" aria-labelledby="explanation-control-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <h2 class="explanation-sr-only" id="explanation-control-title">Control systems use rules and feedback</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-control.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Control systems use rules and feedback with a structured visual model." />
@@ -262,9 +250,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end control -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Match the sensor and actuator</h2>
@@ -287,7 +273,7 @@
           <div class="method-box" id="componentMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Writing full control explanations</h2>
@@ -300,7 +286,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -310,7 +296,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the weak control answer</h2>
@@ -329,7 +315,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -338,69 +324,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Monitoring, control, feedback and required sensors</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A monitoring system uses sensors to collect data for recording, display or alerts; it does not necessarily change the environment. A control system uses sensor input and a stored rule or target to send output to an actuator. In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust or stop the output.</p>
-            <p>A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.</p>
-            <p>Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Greenhouse monitoring and control</h3>
-            <p>A monitoring system records and displays temperature readings. A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot. New temperature readings provide feedback, so the fan can stop when the target is reached.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Monitoring, control, feedback and required sensors: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Distinguish monitoring from control.</p>
-              <details><summary>Show answer</summary><p>Monitoring records, displays or reports sensor data; control uses data to change an actuator or system state.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What is feedback in a closed-loop control system?</p>
-              <details><summary>Show answer</summary><p>A new sensor reading after the action, used to adjust or stop the output.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which named sensor detects radiation used by a remote control?</p>
-              <details><summary>Show answer</summary><p>An infra-red sensor.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Which named sensor is suitable for a classroom noise monitor?</p>
-              <details><summary>Show answer</summary><p>A sound sensor.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Why is a sensor not an actuator?</p>
-              <details><summary>Show answer</summary><p>A sensor supplies input about a physical quantity; an actuator produces a physical output action.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>A greenhouse system records temperature and automatically opens a vent when necessary. Distinguish its monitoring and control functions and explain the feedback cycle.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> monitoring records/displays temperature readings</li>
-                <li><strong>B1</strong> control compares a reading with a rule/threshold</li>
-                <li><strong>B1</strong> controller sends output to a vent motor or other actuator</li>
-                <li><strong>B1</strong> new sensor readings provide feedback after the action</li>
-                <li><strong>B1</strong> feedback is used to adjust or stop the actuator</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-034">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Control systems in six exam sentences</h2>

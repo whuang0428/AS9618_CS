@@ -1,4 +1,47 @@
-# Lesson 127: IF, CASE, and nested selection
+# Lesson 127: Complete Cambridge pseudocode statements
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Complete Cambridge pseudocode statements
+
+### Direct explanation
+
+- Section 11.1 requires pseudocode for the declaration and initialisation of constants, declaration of variables, assignment of values, arithmetic or logical expressions entered from the keyboard, and input to or output from the console. These are connected statements, not isolated vocabulary.
+- CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of <- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console.
+- Arithmetic expressions use operators such as +, -, *, /, DIV and MOD. Logical expressions combine comparisons with AND, OR or NOT and produce BOOLEAN results. Use = for comparison and <- for assignment.
+
+### Worked example
+
+**Declare, input, calculate and output:** CONSTANT PassMark = 50 defines and initialises a constant. DECLARE Mark : INTEGER and DECLARE Passed : BOOLEAN declare variables. INPUT Mark obtains keyboard input; Passed <- Mark >= PassMark assigns the result of a logical expression; OUTPUT Mark * 2 and OUTPUT Passed send arithmetic and Boolean results to the console.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What is the difference between = and <-?
+   **Answer:** = compares values; <- assigns the evaluated right-hand value to a variable.
+2. Which statement obtains keyboard input?
+   **Answer:** INPUT followed by the target variable.
+3. What type of result does Mark >= PassMark produce?
+   **Answer:** A BOOLEAN result, TRUE or FALSE.
+
+### Exam-style question and MS
+
+**Question (5 marks):** Write Cambridge pseudocode that defines and initialises constant TaxRate as 0.20, declares Price and Tax as REAL, inputs Price, assigns Price * TaxRate to Tax, and outputs Tax.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| CONSTANT TaxRate = 0.20 | Do not use = for assignment, omit the constant initial value, or replace INPUT/OUTPUT with Java library calls. | 1 |
+| declares Price and Tax as REAL |  | 1 |
+| INPUT Price before the calculation |  | 1 |
+| Tax <- Price * TaxRate |  | 1 |
+| OUTPUT Tax after assignment |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -46,7 +89,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit correct control flow, meaningful identifiers, correct parameter or variable use, and test data that actually exercises the construct.
 
-
 ## Student Task
 Students write Cambridge pseudocode first, then produce a Java support version. They circle every place where Java syntax must not leak into the exam answer.
 
@@ -74,62 +116,14 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Selection structures in Cambridge pseudocode
-
-### Direct explanation
-
-- Use IF...THEN...ELSE...ENDIF when a Boolean condition selects between paths. An ELSE clause supplies the false path. In nested IF statements, every inner and outer IF must be closed and the indentation must show which ELSE belongs to which IF.
-- Use CASE...OF...OTHERWISE...ENDCASE when one expression is compared with several discrete values. CASE is not a replacement for range or compound-condition decisions unless the stated values cover the requirement correctly.
-
-### Worked example
-
-**Nested IF and CASE:** For a grade, an outer IF tests Mark >= 80; its ELSE contains an inner IF testing Mark >= 50; each IF closes with ENDIF. For a menu, CASE Choice OF maps 1, 2 and 3 to actions and OTHERWISE handles every unlisted value before ENDCASE.
-
-### Targeted practice and answers
-
-1. How many ENDIF statements close two nested IF statements?
-   **Answer:** Two: one closes the inner IF and one closes the outer IF.
-2. When is CASE suitable?
-   **Answer:** When one expression has several discrete values that map to separate branches.
-3. What handles an unlisted CASE value?
-   **Answer:** OTHERWISE, followed by ENDCASE for the complete structure.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Write Cambridge pseudocode that inputs Age and Member, outputs Adult member when Age is at least 18 and Member is TRUE, Adult non-member for other adults, and Child otherwise. Then state why nested IF is appropriate.
-
-- **B1** inputs/uses both Age and Member
-- **M1** outer IF tests Age >= 18
-- **M1** inner IF tests Member only on the adult path
-- **A1** three outputs are attached to the correct branches
-- **B1** closes both IF statements coherently
-- **B1** justifies nested selection because the membership decision depends on the age decision
-
-**Strict note:** Do not use CASE for overlapping ranges without a complete mapping or close two IF statements with only one ENDIF.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
-
-### Use CASE for clear values of one expression
-
-- **Explains:** `case`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-case.jpg`
-
-1. CASE compares one expression with several discrete values.
-2. Each listed value has its own action and OTHERWISE handles unlisted values.
-3. Close the complete multi-way selection with ENDCASE.
 
 ### Start with the shape of the decision
 
 - **Explains:** `choice`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-choice.jpg`
 
 1. Choosing IF or CASE
@@ -149,7 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `if`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-if.jpg`
 
 1. IF selection
@@ -168,7 +162,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-java.jpg`
 
 1. Cambridge pseudocode uses CASE...OF, OTHERWISE and ENDCASE.
@@ -179,7 +173,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `nested`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-nested.jpg`
 
 1. Nested selection
@@ -196,9 +190,29 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `path`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-path.jpg`
 
 1. Interactive path tracer
 2. Enter values to trace which branch runs.
+
+### The symbol changes, the update idea does not
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-114-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. CONSTANT PassMark = 50
+4. DECLARE Mark : INTEGER
+5. DECLARE Passed : BOOLEAN
+6. INPUT Mark
+7. Passed <- Mark >= PassMark
+8. Java support only
+9. final int PASS_MARK = 50;
+10. int mark = input.nextInt();
+11. boolean passed = mark >= PASS_MARK;
+12. Paper 2 reminder: use Cambridge-style assignment <- in pseudocode. Java uses = for assignment.
 <!-- stage10-explanations:end -->

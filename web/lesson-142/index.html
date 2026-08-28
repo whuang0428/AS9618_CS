@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 142 | Software development lifecycle models</title>
+    <title>AS9618 Lesson 142 | Lifecycle models, purpose and limitations</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 12</p>
-        <h1>Software development lifecycle models</h1>
+        <h1>Lifecycle models, purpose and limitations</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -48,7 +48,95 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Lifecycle models, purpose and limitations</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Waterfall completes planned stages largely in sequence and supports documentation and traceability, but late change can cause substantial rework. Iterative development builds and reviews repeated versions so evidence can refine later cycles.</p>
+            <p>Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly. It can suit an interactive system with available users, but speed and repeated prototypes can conflict with exhaustive assurance or stable architecture. Agile is related extension context, not a replacement for the named RAD model.</p>
+            <p>A program-development lifecycle gives an organised sequence for analysis, design, implementation, testing and maintenance, with review and documentation linking decisions to evidence.</p>
+            <p>Waterfall supports planned sequential stages and traceability but its limitation is costly late change. Iterative development reviews repeated versions but can need careful scope control. RAD uses rapid prototyping, time-boxing and user involvement; it may be less suitable or unsuitable where exhaustive assurance and stable architecture are required.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose a lifecycle model / Choose a lifecycle model</h3>
+            <p>For a small booking interface with available users and changing requirements, RAD can use a time-boxed prototype and immediate user feedback. For safety-critical stable requirements, waterfall's formal traceability may be more suitable than rapid prototyping. RAD suits a small interface whose users can review frequent prototypes. Waterfall may suit stable, safety-critical requirements where formal traceability matters, although late change remains a limitation.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start rad -->
+        <section class="panel explanation-panel" id="explanation-rad" data-explains="rad" data-explanation-kind="process" aria-labelledby="explanation-rad-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rad">
+          <h2 class="explanation-sr-only" id="explanation-rad-title">Rapid application development (RAD)</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-rad.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Rapid application development (RAD) through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Rapid application development (RAD): mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> RAD builds rapid prototypes inside short time boxes.</li><li><strong>Reason:</strong> Users review prototypes frequently and their feedback changes the next version.</li><li><strong>Result:</strong> RAD can respond quickly, but may not suit work requiring exhaustive assurance and stable architecture.</li></ol>
+
+            <p><strong>Analogy:</strong> A working model is reviewed and revised before the whole product is fixed.</p>
+            <p><strong>Boundary:</strong> RAD is a named syllabus model; Agile is related extension context, not a substitute.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end rad -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Lifecycle models, purpose and limitations: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Identify three defining features of RAD.</p>
+              <details><summary>Show answer</summary><p>Rapid prototyping, time-boxing and frequent user involvement/feedback.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which model proceeds through planned sequential stages?</p>
+              <details><summary>Show answer</summary><p>Waterfall.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why might RAD be unsuitable for a safety-critical system?</p>
+              <details><summary>Show answer</summary><p>Rapid cycles may not provide the exhaustive assurance and traceability required.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> State one waterfall limitation.</p>
+              <details><summary>Show answer</summary><p>Late change can require substantial rework.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Why might RAD be unsuitable for a safety-critical system?</p>
+              <details><summary>Show answer</summary><p>Rapid cycles may not provide the required exhaustive assurance and traceability.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
+            <p>Compare waterfall, iterative and RAD for a system whose users can review frequent prototypes. Compare waterfall, iterative and RAD, including one limitation of each model.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>waterfall uses planned sequential stages and formal documentation</td><td>Do not substitute Agile for RAD or describe all repeated development as the same model. Do not describe all lifecycle models as the same repeated process.</td><td>1</td></tr>
+                  <tr><td>iterative development reviews repeated versions</td><td></td><td>1</td></tr>
+                  <tr><td>RAD uses rapid prototypes/time-boxing</td><td></td><td>1</td></tr>
+                  <tr><td>RAD uses frequent user involvement and is linked to the scenario</td><td></td><td>1</td></tr>
+                  <tr><td>waterfall and limitation</td><td></td><td>1</td></tr>
+                  <tr><td>iterative and limitation</td><td></td><td>1</td></tr>
+                  <tr><td>RAD features</td><td></td><td>1</td></tr>
+                  <tr><td>RAD limitation/less suitable context</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 142 | 45 minutes | Paper 2 Section 12 | informal questioning</p>
             <h2>Lifecycle models organise the activities used to develop and maintain software.</h2>
@@ -73,7 +161,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Section 12 answers often need explanation, not code. The marks come from linking lifecycle activity to project risk.</p>
@@ -84,7 +172,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A client says: “Make a user-friendly booking system.” What should happen first?</h2>
@@ -99,7 +187,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the stage that turns vague wishes into usable requirements.</div>
         </section>
 
-        <section class="panel" id="purpose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Purpose</p>
             <h2>Lifecycle models give structure to a software project</h2>
@@ -112,7 +200,7 @@
         </section>
 
         <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <h2 class="explanation-sr-only" id="explanation-purpose-title">Why a lifecycle reduces uncertainty</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a lifecycle reduces uncertainty through a cause-and-effect diagram." />
@@ -126,8 +214,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end purpose -->
-
-        <section class="panel" id="stages" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stages">
+        <section class="panel" id="stages" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Lifecycle stages</p>
             <h2>Common stages and what each produces</h2>
@@ -143,7 +230,7 @@
         </section>
 
         <!-- stage10-explanation:start stages -->
-        <section class="panel explanation-panel" id="explanation-stages" data-explains="stages" data-explanation-kind="process" aria-labelledby="explanation-stages-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stages">
+        <section class="panel explanation-panel" id="explanation-stages" data-explains="stages" data-explanation-kind="process" aria-labelledby="explanation-stages-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <h2 class="explanation-sr-only" id="explanation-stages-title">How one stage supplies the next</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-stages.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How one stage supplies the next through a cause-and-effect diagram." />
@@ -157,8 +244,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end stages -->
-
-        <section class="panel" id="waterfall" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="waterfall">
+        <section class="panel" id="waterfall" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Waterfall model</p>
             <h2>Waterfall moves through stages in a planned sequence</h2>
@@ -176,7 +262,7 @@
         </section>
 
         <!-- stage10-explanation:start waterfall -->
-        <section class="panel explanation-panel" id="explanation-waterfall" data-explains="waterfall" data-explanation-kind="tradeoff" aria-labelledby="explanation-waterfall-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="waterfall">
+        <section class="panel explanation-panel" id="explanation-waterfall" data-explains="waterfall" data-explanation-kind="tradeoff" aria-labelledby="explanation-waterfall-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <h2 class="explanation-sr-only" id="explanation-waterfall-title">Why sequence helps and resists change</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-waterfall.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why sequence helps and resists change through a cause-and-effect diagram." />
@@ -190,8 +276,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end waterfall -->
-
-        <section class="panel" id="iterative" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="iterative">
+        <section class="panel" id="iterative" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Iterative development</p>
             <h2>Iterative models build, review and refine through cycles</h2>
@@ -203,7 +288,7 @@
         </section>
 
         <!-- stage10-explanation:start iterative -->
-        <section class="panel explanation-panel" id="explanation-iterative" data-explains="iterative" data-explanation-kind="process" aria-labelledby="explanation-iterative-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="iterative">
+        <section class="panel explanation-panel" id="explanation-iterative" data-explains="iterative" data-explanation-kind="process" aria-labelledby="explanation-iterative-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <h2 class="explanation-sr-only" id="explanation-iterative-title">Why repeated cycles expose mistakes</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-iterative.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why repeated cycles expose mistakes through a cause-and-effect diagram." />
@@ -217,8 +302,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end iterative -->
-
-        <section class="panel" id="rad" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rad">
+        <section class="panel" id="rad" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Rapid application development</p>
             <h2>RAD uses rapid prototypes, time boxes and frequent user involvement</h2>
@@ -231,23 +315,7 @@
           <div class="callout">RAD can respond quickly when informed users are available, but may be unsuitable where exhaustive assurance and stable architecture are more important than speed.</div>
         </section>
 
-        <!-- stage10-explanation:start rad -->
-        <section class="panel explanation-panel" id="explanation-rad" data-explains="rad" data-explanation-kind="process" aria-labelledby="explanation-rad-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rad">
-          <h2 class="explanation-sr-only" id="explanation-rad-title">Rapid application development (RAD)</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-rad.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Rapid application development (RAD) through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Rapid application development (RAD): mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> RAD builds rapid prototypes inside short time boxes.</li><li><strong>Reason:</strong> Users review prototypes frequently and their feedback changes the next version.</li><li><strong>Result:</strong> RAD can respond quickly, but may not suit work requiring exhaustive assurance and stable architecture.</li></ol>
-
-            <p><strong>Analogy:</strong> A working model is reviewed and revised before the whole product is fixed.</p>
-            <p><strong>Boundary:</strong> RAD is a named syllabus model; Agile is related extension context, not a substitute.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end rad -->
-
-        <section class="panel" id="agile" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="agile-extension">
+        <section class="panel" id="agile" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Extension: not a replacement for RAD</p>
             <h2>Agile development emphasises short cycles and user feedback</h2>
@@ -260,7 +328,7 @@
         </section>
 
         <!-- stage10-explanation:start agile -->
-        <section class="panel explanation-panel" id="explanation-agile" data-explains="agile" data-explanation-kind="tradeoff" aria-labelledby="explanation-agile-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="agile">
+        <section class="panel explanation-panel" id="explanation-agile" data-explains="agile" data-explanation-kind="tradeoff" aria-labelledby="explanation-agile-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <h2 class="explanation-sr-only" id="explanation-agile-title">Why short feedback cycles support change</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-agile.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why short feedback cycles support change through a cause-and-effect diagram." />
@@ -274,8 +342,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end agile -->
-
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Comparison</p>
             <h2>Choose a lifecycle model using the project requirements</h2>
@@ -289,7 +356,7 @@
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <h2 class="explanation-sr-only" id="explanation-compare-title">How project conditions choose a model</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How project conditions choose a model through a cause-and-effect diagram." />
@@ -303,8 +370,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
-
-        <section class="panel" id="artefacts" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="artefacts">
+        <section class="panel" id="artefacts" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Artefacts</p>
             <h2>Exam answers often mention documents or outputs from stages</h2>
@@ -320,7 +386,7 @@
         </section>
 
         <!-- stage10-explanation:start artefacts -->
-        <section class="panel explanation-panel" id="explanation-artefacts" data-explains="artefacts" data-explanation-kind="mechanism" aria-labelledby="explanation-artefacts-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="artefacts">
+        <section class="panel explanation-panel" id="explanation-artefacts" data-explains="artefacts" data-explanation-kind="mechanism" aria-labelledby="explanation-artefacts-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <h2 class="explanation-sr-only" id="explanation-artefacts-title">Why artefacts make decisions traceable</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-artefacts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why artefacts make decisions traceable through a cause-and-effect diagram." />
@@ -334,9 +400,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end artefacts -->
-
-
-        <section class="panel" id="model-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model-tool">
+        <section class="panel" id="model-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Interactive model selector</p>
             <h2>Choose a project situation and compare model suitability</h2>
@@ -355,7 +419,7 @@
           <div id="modelOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="order-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="order-tool">
+        <section class="panel" id="order-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Stage order checker</p>
             <h2>Spot the stage that should usually happen first</h2>
@@ -374,7 +438,7 @@
           <div id="orderOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Apply the lifecycle to realistic project decisions</h2>
@@ -387,7 +451,7 @@
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant checking: lifecycle terms and consequences</h2>
@@ -395,7 +459,7 @@
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix weak lifecycle explanations</h2>
@@ -403,7 +467,7 @@
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style lifecycle questions with expandable MS</h2>
@@ -412,59 +476,7 @@
           <div id="examList" class="exam-list"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Waterfall, iterative and rapid application development</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Waterfall completes planned stages largely in sequence and supports documentation and traceability, but late change can cause substantial rework. Iterative development builds and reviews repeated versions so evidence can refine later cycles.</p>
-            <p>Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly. It can suit an interactive system with available users, but speed and repeated prototypes can conflict with exhaustive assurance or stable architecture. Agile is related extension context, not a replacement for the named RAD model.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose a lifecycle model</h3>
-            <p>For a small booking interface with available users and changing requirements, RAD can use a time-boxed prototype and immediate user feedback. For safety-critical stable requirements, waterfall's formal traceability may be more suitable than rapid prototyping.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Waterfall, iterative and rapid application development: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Name three defining features of RAD.</p>
-              <details><summary>Show answer</summary><p>Rapid prototyping, time-boxing and frequent user involvement/feedback.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which model proceeds through planned sequential stages?</p>
-              <details><summary>Show answer</summary><p>Waterfall.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why might RAD be unsuitable for a safety-critical system?</p>
-              <details><summary>Show answer</summary><p>Rapid cycles may not provide the exhaustive assurance and traceability required.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Compare waterfall, iterative and RAD for a system whose users can review frequent prototypes.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> waterfall uses planned sequential stages and formal documentation</li>
-                <li><strong>B1</strong> iterative development reviews repeated versions</li>
-                <li><strong>B1</strong> RAD uses rapid prototypes/time-boxing</li>
-                <li><strong>B1</strong> RAD uses frequent user involvement and is linked to the scenario</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-142">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>

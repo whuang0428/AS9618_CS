@@ -4,6 +4,7 @@ import path from "node:path";
 import vm from "node:vm";
 
 import { monthlyAssessments, quizzes, stageReviews } from "./stage3-assessments-data.mjs";
+import { normaliseQuestionPrompt } from "./cie-command-words.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const webRoot = path.join(root, "web");
@@ -77,7 +78,7 @@ export function loadLessonQuestions() {
         sourceKey: directory,
         lesson,
         section: lessonSection(lesson),
-        prompt: question.prompt,
+        prompt: normaliseQuestionPrompt(question.prompt),
         answer: question.answer,
         marks: Number.parseInt(question.marks, 10),
         points: question.marking.map(({ mark, text }) => [mark, text]),
@@ -92,7 +93,7 @@ const assessmentRows = (entries, prefix, type) => entries.flatMap((entry) => ent
   sourceKey: type,
   lesson: entry.lesson,
   section: entry.sections.join(","),
-  prompt: question.prompt,
+  prompt: normaliseQuestionPrompt(question.prompt),
   answer: question.points.map(([, text]) => text).join("; "),
   marks: question.marks,
   points: question.points,

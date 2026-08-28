@@ -1,4 +1,8 @@
-# Lesson 025: Network performance, latency, bandwidth, and congestion
+# Lesson 025: Internet connection hardware
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +47,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Strong answers connect a named component or protocol to a symptom, for example DNS failure prevents name resolution, or HTTPS certificate problems affect secure communication.
 
-
-
 ## Student Task
 Students draw a packet journey for a web request and label where addressing, routing and protocols are used. They then add one bottleneck and explain its effect.
 
@@ -72,41 +74,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Bit streaming, bit rate and broadband
-
-### Direct explanation
-
-- Bit streaming delivers media progressively so playback can begin before the whole file arrives. Real-time streaming carries a live event with minimal delay; on-demand streaming sends stored content selected by the user.
-- Bit rate is the number of bits transmitted each second. Available broadband speed must normally exceed the media bit rate and absorb variation; otherwise the player buffers, lowers quality or pauses. A buffer stores arriving data temporarily.
-
-### Worked example
-
-**6 Mbit/s video on 4 Mbit/s link:** The stream consumes data faster than the link supplies it. A starting buffer only delays the shortage; sustained playback requires a lower bit rate or faster connection.
-
-### Targeted practice and answers
-
-1. Why does a streaming player buffer data?
-   **Answer:** To absorb short variations between arrival and playback rates.
-2. Classify a live sports broadcast.
-   **Answer:** Real-time streaming.
-3. Classify a selected recorded film.
-   **Answer:** On-demand streaming.
-
-### Exam-style question and MS
-
-**Question (4 marks):** A video has a bit rate of 8 Mbit/s. Explain why a connection advertised as 8 Mbit/s may still pause during playback.
-
-- **B1** video requires about 8 million bits each second
-- **B1** actual available speed may be below advertised/maximum speed
-- **B1** other traffic, overhead or variation reduces throughput
-- **B1** buffer empties when data arrives more slowly than playback consumes it
-
-**Strict note:** Do not accept 'bandwidth is slow' without comparing arrival rate with the stream bit rate.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -114,7 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `calculation`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-025-calculation.jpg`
 
 1. Transfer time = file size in bits / bandwidth in bits per second
@@ -129,7 +96,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concepts`
 - **Explanation type:** tradeoff
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-025-concepts.jpg`
 
 1. Bandwidth is the maximum data-transfer capacity per second.
@@ -141,7 +108,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `factors`
 - **Explanation type:** tradeoff
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-025-factors.jpg`
 
 1. Good answers name a factor and explain its effect. "It becomes slower" needs a cause.

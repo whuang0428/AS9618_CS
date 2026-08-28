@@ -106,6 +106,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -185,7 +191,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "For each scenario, choose the most suitable tool and justify it: high-level program for final distribution; assembly-language routine for a processor; beginner testing code statement by statement.",
+    prompt: "For each scenario, Suggest the most suitable tool and justify it: high-level program for final distribution; assembly-language routine for a processor; beginner testing code statement by statement.",
     answer: "For a high-level program for final distribution, a compiler is suitable because it translates the whole program before execution and can produce executable/object code that runs without source code. For an assembly-language routine, an assembler is suitable because it translates assembly mnemonics into machine code. For a beginner testing code statement by statement, an interpreter is suitable because it translates and executes statements during running and can provide immediate feedback near errors.",
     marking: [
       { mark: "B1", text: "compiler selected for final distribution" },
@@ -330,8 +336,8 @@ function renderExam() {
       <div class="ms-panel" id="ms${index}">
         <h4>Indicative answer</h4>
         <p>${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

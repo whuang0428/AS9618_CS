@@ -1,4 +1,53 @@
-# Lesson 074: Intellectual property, copyright, patents, and licensing
+# Lesson 074: Copyright legislation, FSF, OSI and licence permissions
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Copyright legislation, FSF, OSI and licence permissions
+
+### Direct explanation
+
+- Copyright legislation is needed because software can be copied and distributed at very low cost while its creation requires time, skill and investment. It gives the copyright holder legal control over protected expression such as source code and documentation, including copying, distribution and adaptation, so unauthorised use can be challenged and creators can license work and receive revenue. Copyright protects expression rather than every abstract idea, and a limited legal exception is not permission for unrestricted copying.
+- A software licence is the copyright holder's permission to use protected work under stated conditions; paying for or downloading software does not normally transfer ownership. The licence may allow or restrict installation, copying, modification and redistribution. Copyright legislation establishes the rights, while the licence defines which of those acts the user is permitted to perform.
+- The Free Software Foundation (FSF) emphasises freedoms to run, study, modify and share software; source access is necessary for study and modification. The Open Source Initiative (OSI) defines open-source criteria and approves licences that meet them. Free/open-source software can still be sold and remains protected by copyright; users must follow conditions such as preserving notices, attribution or sharing derivative source under compatible terms.
+- The required licence categories include FSF and OSI open-source licences, shareware and commercial software. A justified licence choice links its permissions, restrictions and cost to the stated situation.
+
+### Worked example
+
+**Modify and redistribute a library:** A developer finds source code in a public repository. Copyright still protects the code, so visibility alone is not permission. An OSI-approved licence may allow modification and redistribution, while an FSF-aligned copyleft licence may require a distributed derivative to preserve notices and use compatible terms. The developer must check and follow the exact licence before copying the library into a product.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Why is copyright legislation needed for software?
+   **Answer:** It gives creators enforceable control over copying, distribution and adaptation, supporting permission, revenue and investment despite easy digital copying.
+2. How does a licence differ from copyright ownership?
+   **Answer:** Copyright establishes the owner's rights; a licence grants a user specified permissions without normally transferring ownership.
+3. Which organisation emphasises the freedoms to run, study, modify and share software?
+   **Answer:** Free Software Foundation (FSF).
+4. What is the role of the OSI?
+   **Answer:** It defines open-source criteria and approves licences that meet them.
+5. Can open-source software be sold or remain copyrighted?
+   **Answer:** Yes. Open source concerns licence permissions and conditions, not zero price or absence of copyright.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Explain why copyright legislation is needed for software and how an FSF- or OSI-aligned licence changes what a user may do with protected source code.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| software is easy to copy/distribute while creation requires skill, time or investment | Do not accept that copyright protects every idea, that a paid download transfers copyright, or that open source means public domain. | 1 |
+| copyright gives the holder control over protected expression and restricted acts |  | 1 |
+| licence grants specified permissions without normally transferring ownership |  | 1 |
+| FSF freedom or OSI licence-approval role is stated accurately |  | 1 |
+| source inspection/modification/redistribution permission is linked to the licence |  | 1 |
+| licence conditions such as notices, attribution or compatible redistribution terms remain binding |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +92,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Copyright protects the original expression in the source code; a licence states permitted uses and may prohibit copying or redistribution. A patent protects a qualifying invention or technical process, not every software idea or copied code fragment.
 
-
-
 ## Student Task
 Students classify scenarios involving copying, permitted use and inventions under copyright, licence or patent, then justify the classification without assuming that payment transfers ownership.
 
@@ -72,48 +119,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Copyright legislation, FSF, OSI and licence permissions
-
-### Direct explanation
-
-- Copyright legislation is needed because software can be copied and distributed at very low cost while its creation requires time, skill and investment. It gives the copyright holder legal control over protected expression such as source code and documentation, including copying, distribution and adaptation, so unauthorised use can be challenged and creators can license work and receive revenue. Copyright protects expression rather than every abstract idea, and a limited legal exception is not permission for unrestricted copying.
-- A software licence is the copyright holder's permission to use protected work under stated conditions; paying for or downloading software does not normally transfer ownership. The licence may allow or restrict installation, copying, modification and redistribution. Copyright legislation establishes the rights, while the licence defines which of those acts the user is permitted to perform.
-- The Free Software Foundation (FSF) emphasises freedoms to run, study, modify and share software; source access is necessary for study and modification. The Open Source Initiative (OSI) defines open-source criteria and approves licences that meet them. Free/open-source software can still be sold and remains protected by copyright; users must follow conditions such as preserving notices, attribution or sharing derivative source under compatible terms.
-
-### Worked example
-
-**Modify and redistribute a library:** A developer finds source code in a public repository. Copyright still protects the code, so visibility alone is not permission. An OSI-approved licence may allow modification and redistribution, while an FSF-aligned copyleft licence may require a distributed derivative to preserve notices and use compatible terms. The developer must check and follow the exact licence before copying the library into a product.
-
-### Targeted practice and answers
-
-1. Why is copyright legislation needed for software?
-   **Answer:** It gives creators enforceable control over copying, distribution and adaptation, supporting permission, revenue and investment despite easy digital copying.
-2. How does a licence differ from copyright ownership?
-   **Answer:** Copyright establishes the owner's rights; a licence grants a user specified permissions without normally transferring ownership.
-3. Which organisation emphasises the freedoms to run, study, modify and share software?
-   **Answer:** Free Software Foundation (FSF).
-4. What is the role of the OSI?
-   **Answer:** It defines open-source criteria and approves licences that meet them.
-5. Can open-source software be sold or remain copyrighted?
-   **Answer:** Yes. Open source concerns licence permissions and conditions, not zero price or absence of copyright.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Explain why copyright legislation is needed for software and how an FSF- or OSI-aligned licence changes what a user may do with protected source code.
-
-- **B1** software is easy to copy/distribute while creation requires skill, time or investment
-- **B1** copyright gives the holder control over protected expression and restricted acts
-- **B1** licence grants specified permissions without normally transferring ownership
-- **B1** FSF freedom or OSI licence-approval role is stated accurately
-- **B1** source inspection/modification/redistribution permission is linked to the licence
-- **B1** licence conditions such as notices, attribution or compatible redistribution terms remain binding
-
-**Strict note:** Do not accept that copyright protects every idea, that a paid download transfers copyright, or that open source means public domain.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -121,7 +126,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-074-compare.jpg`
 
 1. Protects / controls
@@ -141,7 +146,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `copyright`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-074-copyright.jpg`
 
 1. Copyright Protects original expression such as source code, documentation, graphics or text.
@@ -153,7 +158,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `ip`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-074-ip.jpg`
 
 1. Copyright protects qualifying expression, not an abstract idea by itself.
@@ -184,7 +189,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `matcher`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-074-matcher.jpg`
 
 1. Interactive licence matcher
@@ -195,7 +200,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `patents`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-074-patents.jpg`
 
 1. Patent A legal right protecting an invention for a limited time, often requiring novelty and inventive step.

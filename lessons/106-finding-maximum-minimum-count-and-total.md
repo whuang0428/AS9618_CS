@@ -1,4 +1,4 @@
-# Lesson 106: Finding maximum, minimum, count, and total
+# Lesson 106: Maximum, minimum, count and total
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2

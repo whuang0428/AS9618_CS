@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 115 | One-dimensional arrays</title>
+    <title>AS9618 Lesson 115 | Array terminology, selection and one-dimensional pseudocode</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>One-dimensional arrays</h1>
+        <h1>Array terminology, selection and one-dimensional pseudocode</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,7 +47,110 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Array terminology, selection and one-dimensional pseudocode</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.</p>
+            <p>Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names. Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests. Do not choose 2D merely because there are many values.</p>
+            <p>One-dimensional array pseudocode must declare explicit bounds and an element type, access elements with one index and use loop bounds that match the declared lower and upper bounds. The number of elements is upper bound - lower bound + 1.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose and declare the dimension</h3>
+            <p>Twenty daily temperatures need one position per day, so DECLARE Temperature : ARRAY[1:20] OF REAL is suitable and valid indexes are 1 to 20. Marks for 30 students in 4 tests need row and column positions, so a 2D array is suitable instead.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge bounds and Java indexes are not the same habit</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge bounds and Java indexes are not the same habit with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cambridge bounds and Java indexes are not the same habit: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> DECLARE Scores : ARRAY[1:5] OF INTEGER</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> INPUT Scores[Index]</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int[] scores = new int[5];</li><li><strong>Lesson fact:</strong> for (int index = 0; index &lt; 5; index++) {</li><li><strong>Lesson fact:</strong> scores[index] = input.nextInt();</li><li><strong>Lesson fact:</strong> Paper 2 reminder: Cambridge pseudocode may use bounds such as ARRAY[1:5] . Do not import Java's zero-based indexing unless the question states it.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
+
+        <!-- stage10-explanation:start model -->
+        <section class="panel explanation-panel" id="explanation-model" data-explains="model" data-explanation-kind="comparison" aria-labelledby="explanation-model-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
+          <h2 class="explanation-sr-only" id="explanation-model-title">A one-dimensional array is a linear collection</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-model.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A one-dimensional array is a linear collection with a structured visual model." />
+            <figcaption class="explanation-sr-only">A one-dimensional array is a linear collection: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Array model</li><li><strong>Lesson fact:</strong> Same identifier</li><li><strong>Lesson fact:</strong> All elements belong to one array name.</li><li><strong>Lesson fact:</strong> Same type</li><li><strong>Lesson fact:</strong> At AS level, an array stores elements of the same data type.</li><li><strong>Lesson fact:</strong> ARRAY[1:5] OF INTEGER</li><li><strong>Lesson fact:</strong> Indexed access</li><li><strong>Lesson fact:</strong> An index selects one element.</li><li><strong>Lesson fact:</strong> Scores[3]</li><li><strong>Lesson fact:</strong> Scores[Index]</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end model -->
+
+        <!-- stage10-explanation:start access -->
+        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
+          <h2 class="explanation-sr-only" id="explanation-access-title">The index points to exactly one element</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The index points to exactly one element with a structured visual model." />
+            <figcaption class="explanation-sr-only">The index points to exactly one element: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Cambridge array declarations state an explicit lower and upper bound.</li><li><strong>Lesson fact:</strong> Valid indexes follow the declared bounds and are not universally zero-based.</li><li><strong>Lesson fact:</strong> Label 0 to n-1 as a chosen zero-based example, or use the lesson's declared bounds consistently.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end access -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Array terminology, selection and one-dimensional pseudocode: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Define index, lower bound and upper bound.</p>
+              <details><summary>Show answer</summary><p>An index selects an element; the lower bound is the first valid index; the upper bound is the last valid index.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Suggest 1D or 2D for twelve monthly rainfall totals.</p>
+              <details><summary>Show answer</summary><p>1D, because one month index selects each total.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Write a declaration for 50 Boolean flags and state the number of elements.</p>
+              <details><summary>Show answer</summary><p>DECLARE Flag : ARRAY[1:50] OF BOOLEAN; there are 50 elements.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Write declarations for a one-dimensional array for 25 REAL measurements, input every element and explain why a two-dimensional array is not required.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>DECLARE Measurements : ARRAY[1:25]</td><td>Do not use index 0 when the declared lower bound is 1, and do not describe bounds as stored element values.</td><td>1</td></tr>
+                  <tr><td>OF REAL</td><td></td><td>1</td></tr>
+                  <tr><td>FOR loop uses the declared lower and upper bounds</td><td></td><td>1</td></tr>
+                  <tr><td>INPUT Measurements[Index] and closes with NEXT Index</td><td></td><td>1</td></tr>
+                  <tr><td>one index identifies each measurement</td><td></td><td>1</td></tr>
+                  <tr><td>there is no row-column relationship requiring a second dimension</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 115 | 45 minutes | Paper 2 Section 10 | 5-minute quiz</p>
             <h2>An array is a row of labelled lockers.</h2>
@@ -75,7 +178,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 often awards marks for correct array declaration, index use, loop bounds and avoiding out-of-range access.</p>
@@ -86,7 +189,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Would you really create 30 score variables?</h2>
@@ -101,7 +204,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that supports indexed access and looping.</div>
         </section>
 
-        <section class="panel" id="model" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
+        <section class="panel" id="model" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Array model</p>
             <h2>A one-dimensional array is a linear collection</h2>
@@ -127,21 +230,7 @@ Scores[Index]</code></pre>
           <div class="callout">Chinese support: array 是一组同类型数据；index 是位置编号；element 是某一个具体格子里的值。</div>
         </section>
 
-        <!-- stage10-explanation:start model -->
-        <section class="panel explanation-panel" id="explanation-model" data-explains="model" data-explanation-kind="comparison" aria-labelledby="explanation-model-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
-          <h2 class="explanation-sr-only" id="explanation-model-title">A one-dimensional array is a linear collection</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-model.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A one-dimensional array is a linear collection with a structured visual model." />
-            <figcaption class="explanation-sr-only">A one-dimensional array is a linear collection: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Array model</li><li><strong>Lesson fact:</strong> Same identifier</li><li><strong>Lesson fact:</strong> All elements belong to one array name.</li><li><strong>Lesson fact:</strong> Same type</li><li><strong>Lesson fact:</strong> At AS level, an array stores elements of the same data type.</li><li><strong>Lesson fact:</strong> ARRAY[1:5] OF INTEGER</li><li><strong>Lesson fact:</strong> Indexed access</li><li><strong>Lesson fact:</strong> An index selects one element.</li><li><strong>Lesson fact:</strong> Scores[3]</li><li><strong>Lesson fact:</strong> Scores[Index]</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end model -->
-
-        <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+        <section class="panel" id="declare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Declare arrays</p>
             <h2>Bounds say which indexes are valid</h2>
@@ -156,7 +245,7 @@ Scores[Index]</code></pre>
         </section>
 
         <!-- stage10-explanation:start declare -->
-        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <h2 class="explanation-sr-only" id="explanation-declare-title">Bounds say which indexes are valid</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bounds say which indexes are valid with a structured visual model." />
@@ -168,8 +257,7 @@ Scores[Index]</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end declare -->
-
-        <section class="panel" id="access" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
+        <section class="panel" id="access" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Access and update</p>
             <h2>The index points to exactly one element</h2>
@@ -188,21 +276,7 @@ Scores[Index]</code></pre>
           </div>
         </section>
 
-        <!-- stage10-explanation:start access -->
-        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
-          <h2 class="explanation-sr-only" id="explanation-access-title">The index points to exactly one element</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The index points to exactly one element with a structured visual model." />
-            <figcaption class="explanation-sr-only">The index points to exactly one element: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Cambridge array declarations state an explicit lower and upper bound.</li><li><strong>Lesson fact:</strong> Valid indexes follow the declared bounds and are not universally zero-based.</li><li><strong>Lesson fact:</strong> Label 0 to n-1 as a chosen zero-based example, or use the lesson's declared bounds consistently.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end access -->
-
-        <section class="panel" id="traversal" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
+        <section class="panel" id="traversal" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Traversal</p>
             <h2>Use a loop to visit every element</h2>
@@ -227,7 +301,7 @@ OUTPUT Total</code></pre>
         </section>
 
         <!-- stage10-explanation:start traversal -->
-        <section class="panel explanation-panel" id="explanation-traversal" data-explains="traversal" data-explanation-kind="mechanism" aria-labelledby="explanation-traversal-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
+        <section class="panel explanation-panel" id="explanation-traversal" data-explains="traversal" data-explanation-kind="mechanism" aria-labelledby="explanation-traversal-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <h2 class="explanation-sr-only" id="explanation-traversal-title">Use a loop to visit every element</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-traversal.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a loop to visit every element with a structured visual model." />
@@ -239,8 +313,7 @@ OUTPUT Total</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end traversal -->
-
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Trace</p>
             <h2>Trace the index and the element value</h2>
@@ -270,7 +343,7 @@ NEXT Index</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Cambridge bounds and Java indexes are not the same habit</h2>
@@ -296,22 +369,8 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="callout">Paper 2 reminder: Cambridge pseudocode may use bounds such as <code>ARRAY[1:5]</code>. Do not import Java's zero-based indexing unless the question states it.</div>
         </section>
 
-        <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge bounds and Java indexes are not the same habit</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge bounds and Java indexes are not the same habit with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cambridge bounds and Java indexes are not the same habit: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> DECLARE Scores : ARRAY[1:5] OF INTEGER</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> INPUT Scores[Index]</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int[] scores = new int[5];</li><li><strong>Lesson fact:</strong> for (int index = 0; index &lt; 5; index++) {</li><li><strong>Lesson fact:</strong> scores[index] = input.nextInt();</li><li><strong>Lesson fact:</strong> Paper 2 reminder: Cambridge pseudocode may use bounds such as ARRAY[1:5] . Do not import Java's zero-based indexing unless the question states it.</li></ol>
 
-          </div>
-        </section>
-        <!-- stage10-explanation:end pseudocode -->
-
-
-        <section class="panel" id="lookup" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
+        <section class="panel" id="lookup" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Interactive index lookup</p>
             <h2>Access one element</h2>
@@ -334,7 +393,7 @@ for (int index = 0; index &lt; 5; index++) {
         </section>
 
         <!-- stage10-explanation:start lookup -->
-        <section class="panel explanation-panel" id="explanation-lookup" data-explains="lookup" data-explanation-kind="mechanism" aria-labelledby="explanation-lookup-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
+        <section class="panel explanation-panel" id="explanation-lookup" data-explains="lookup" data-explanation-kind="mechanism" aria-labelledby="explanation-lookup-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <h2 class="explanation-sr-only" id="explanation-lookup-title">Access one element</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-lookup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Access one element with a structured visual model." />
@@ -346,8 +405,7 @@ for (int index = 0; index &lt; 5; index++) {
           </div>
         </section>
         <!-- stage10-explanation:end lookup -->
-
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Interactive loop builder</p>
             <h2>Generate a common one-dimensional array pattern</h2>
@@ -368,7 +426,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="trace-output" id="builderResult">Choose a task to generate Cambridge-style pseudocode.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Array patterns you can reuse</h2>
@@ -382,7 +440,7 @@ for (int index = 0; index &lt; 5; index++) {
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Ten quick array checks</h2>
@@ -391,7 +449,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common array errors</h2>
@@ -399,7 +457,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style array questions with expandable MS</h2>
@@ -408,62 +466,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Array terminology, selection and one-dimensional pseudocode</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.</p>
-            <p>Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names. Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests. Do not choose 2D merely because there are many values.</p>
-            <p>One-dimensional array pseudocode must declare explicit bounds and an element type, access elements with one index and use loop bounds that match the declared lower and upper bounds. The number of elements is upper bound - lower bound + 1.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose and declare the dimension</h3>
-            <p>Twenty daily temperatures need one position per day, so DECLARE Temperature : ARRAY[1:20] OF REAL is suitable and valid indexes are 1 to 20. Marks for 30 students in 4 tests need row and column positions, so a 2D array is suitable instead.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Array terminology, selection and one-dimensional pseudocode: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Define index, lower bound and upper bound.</p>
-              <details><summary>Show answer</summary><p>An index selects an element; the lower bound is the first valid index; the upper bound is the last valid index.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Choose 1D or 2D for twelve monthly rainfall totals.</p>
-              <details><summary>Show answer</summary><p>1D, because one month index selects each total.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Write a declaration for 50 Boolean flags and state the number of elements.</p>
-              <details><summary>Show answer</summary><p>DECLARE Flag : ARRAY[1:50] OF BOOLEAN; there are 50 elements.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Declare a one-dimensional array for 25 REAL measurements, input every element and explain why a two-dimensional array is not required.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> DECLARE Measurements : ARRAY[1:25]</li>
-                <li><strong>B1</strong> OF REAL</li>
-                <li><strong>M1</strong> FOR loop uses the declared lower and upper bounds</li>
-                <li><strong>A1</strong> INPUT Measurements[Index] and closes with NEXT Index</li>
-                <li><strong>B1</strong> one index identifies each measurement</li>
-                <li><strong>B1</strong> there is no row-column relationship requiring a second dimension</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-115">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>One-dimensional array checklist</h2>

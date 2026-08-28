@@ -3,10 +3,13 @@ import path from "node:path";
 import vm from "node:vm";
 import { commandWords } from "./assessment-filter-utils.mjs";
 import { pageDefinitions, root } from "./stage6-qa-utils.mjs";
+import { optionalEnrichment } from "./remediation-v2-optional-enrichment.mjs";
+import { stage3OptionalBaseLessons } from "./remediation-v2-stage3-sequence-plan.mjs";
 
 const failures = [];
 const expect = (condition, message) => { if (!condition) failures.push(message); };
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8");
+const acceptedCommandMetadata = new Set([...commandWords, "subject-operation"]);
 
 function count(text, marker) {
   return text.split(marker).length - 1;
@@ -60,6 +63,10 @@ expect(Array.isArray(catalog) && catalog.length === 150, "Course catalog must co
 const lessons = pageDefinitions.filter(({ kind }) => kind === "lesson");
 const roles = new Set(["CORE", "OPTIONAL", "AFTER_CLASS"]);
 const activities = new Set(["TEACH", "ASK", "THINK", "PAIR", "PRACTISE", "CHECK", "EXAM", "EXTEND", "HOMEWORK"]);
+const optionalOnlyLessons = new Set([
+  ...optionalEnrichment.filter(({ disposition }) => disposition === "Optional enrichment lesson").map(({ lesson }) => lesson),
+  ...stage3OptionalBaseLessons,
+]);
 let sectionCount = 0;
 
 for (const [index, definition] of lessons.entries()) {
@@ -98,7 +105,7 @@ for (const [index, definition] of lessons.entries()) {
     if (role === "CORE") hasCore = true;
     if (sectionId === "homework" && role === "AFTER_CLASS" && activity === "HOMEWORK") hasHomework = true;
   }
-  expect(hasCore, `${definition.page}: no CORE delivery content`);
+  expect(hasCore || optionalOnlyLessons.has(index + 1), `${definition.page}: no CORE delivery content and no reviewed Optional-only disposition`);
   expect(hasHomework, `${definition.page}: homework is not classified as AFTER_CLASS/HOMEWORK`);
 }
 
@@ -139,7 +146,7 @@ for (const tag of assessmentTags) {
   expect(attr(tag, "data-aos").split(",").every((ao) => /^AO[123]$/.test(ao)), "Assessment AO coverage metadata is invalid");
 }
 for (const tag of questionTags) {
-  expect(commandWords.includes(attr(tag, "data-command")), `Unknown command metadata: ${attr(tag, "data-command")}`);
+  expect(acceptedCommandMetadata.has(attr(tag, "data-command")), `Unknown command metadata: ${attr(tag, "data-command")}`);
   expect(Number.isInteger(Number(attr(tag, "data-marks"))) && Number(attr(tag, "data-marks")) > 0, "Question mark metadata is invalid");
 }
 for (const id of ["paperFilter", "sectionFilter", "aoFilter", "commandFilter", "minMarks", "maxMarks", "resetBtn", "resultCount", "emptyState"]) {

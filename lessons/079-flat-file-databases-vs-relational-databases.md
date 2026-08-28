@@ -1,4 +1,75 @@
-# Lesson 079: Flat-file databases vs relational databases
+# Lesson 079: Relational terminology, keys and relationships
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Relational terminology, keys and relationships
+
+### Direct explanation
+
+- An entity is a real-world thing about which data is stored and is commonly represented by a table. A table contains records (tuples); each record describes one entity occurrence. A field (attribute) is one named property or column. These paired terms are related but should not be collapsed into one definition.
+- A candidate key is a minimal field or field set that uniquely identifies a record. One candidate key is selected as the primary key. A secondary key is a field used as an additional retrieval or ordering route and need not be unique; it is not another name for an unselected candidate key. A foreign key refers to a key in a related table. An index is a lookup structure built on one or more fields: it can speed retrieval but uses storage and must be maintained after changes.
+- Record and tuple are corresponding relational terms for one row; field and attribute are corresponding terms for one column.
+- A foreign key is an attribute in one table that refers to a primary/candidate key in another table. Referential integrity requires every non-null foreign-key value to match an existing referenced key.
+- A one-to-one relationship links one record on each side. A one-to-many relationship links one parent record to many child records. A many-to-many relationship is normally implemented through a linking entity/table that creates two one-to-many relationships. Referential integrity prevents orphan records: insert, update and delete operations may be rejected or handled by a defined cascade/null policy, but must not silently leave an invalid reference.
+- A relational database stores data in tables made of records and fields. A primary key uniquely identifies a record; a foreign key links to a primary key in another table and creates a relationship.
+- Indexing creates an additional lookup structure for one or more fields so matching records can be located more quickly. The index consumes storage and must be updated when indexed data change.
+
+### Worked example
+
+**Keys for a student table / Delete a department / Use keys and an index:** In Student(StudentID, Email, TutorGroup), StudentID and Email may be candidate keys if both are unique and minimal; StudentID is selected as primary. TutorGroup can be a secondary key for retrieving all students in one group even though many records share the value. An index on TutorGroup can provide a faster lookup route. If Employee.DepartmentID refers to Department.DepartmentID, deleting a department with employees would break referential integrity unless deletion is rejected or an authorised cascading policy handles dependent rows. StudentID is the primary key of Student. DepartmentID is a foreign key linking to Department. An index on Surname can speed searches by surname without changing which field is the primary key.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Compare a record/tuple from a field/attribute.
+   **Answer:** A record/tuple is one complete row for an entity occurrence; a field/attribute is one named property or column.
+2. What makes a candidate key minimal?
+   **Answer:** No field can be removed while retaining uniqueness.
+3. Must a secondary key uniquely identify one record?
+   **Answer:** No. It may retrieve a set of records sharing the same value.
+4. Give one benefit and one cost of an index.
+   **Answer:** It can speed lookup/ordering, but uses storage and must be updated when data changes.
+5. Where is the referenced key stored?
+   **Answer:** In the parent/referenced table.
+6. What is an orphan record?
+   **Answer:** A child record whose foreign key has no matching parent key.
+7. How is a many-to-many relationship represented relationally?
+   **Answer:** Use a linking table/entity containing foreign keys to both original entities.
+8. Identify one valid delete response.
+   **Answer:** Reject the delete, cascade it, or set nullable foreign keys to null according to defined rules.
+9. What does a primary key do?
+   **Answer:** Uniquely identifies each record.
+10. What does indexing improve?
+   **Answer:** The speed of locating records by indexed field values.
+
+### Exam-style question and MS
+
+**Question (15 marks):** For Student(StudentID, Email, TutorGroup), explain the roles of a candidate key, primary key, secondary key and index. Explain how a one-to-many relationship between Department and Employee is represented and protected. Explain primary key, foreign key and indexing for a Student table.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| candidate key is a minimal unique identifier, such as StudentID or unique Email | Do not describe a secondary key as an alternate candidate key or require it to be unique. Do not accept that foreign-key values must be unique in the child table. Do not describe an index as a replacement primary key. | 1 |
+| primary key is the candidate selected to identify each record |  | 1 |
+| secondary key is an additional retrieval field such as non-unique TutorGroup |  | 1 |
+| secondary key need not be unique |  | 1 |
+| index maps field values to record locations to speed access |  | 1 |
+| index requires storage and update maintenance |  | 1 |
+| one Department record may relate to many Employee records |  | 1 |
+| DepartmentID is the primary/candidate key in Department |  | 1 |
+| DepartmentID is a foreign key in Employee and may repeat |  | 1 |
+| each non-null foreign-key value must match an existing Department key |  | 1 |
+| referential integrity prevents orphan Employee records |  | 1 |
+| primary key |  | 1 |
+| foreign key/relationship |  | 1 |
+| indexing lookup benefit |  | 1 |
+| storage/update trade-off |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +114,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** A strong answer separates Student and Loan/Book data, gives each table a primary key, and uses a foreign key to link records.
 
-
-
 ## Student Task
 Pairs convert a messy club list into relational tables, then mark one field as a primary key and one as a foreign key.
 
@@ -72,45 +141,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** File-based limitations and relational solutions
-
-### Direct explanation
-
-- A file-based approach stores data in separate application files. The same fact may be repeated in several files or records, causing redundancy and wasted storage. Updating only some copies creates inconsistency; insertion and deletion can also lose or require unrelated facts. Separate files may use incompatible formats, isolate data, duplicate validation/security code and make shared querying, concurrent access, backup and recovery harder to manage.
-- A relational database addresses these limitations by separating entities into linked tables, storing shared facts once, identifying records with keys and enforcing relationships and constraints centrally. A DBMS supplies shared query processing, integrity, security, access rights and backup. These mechanisms reduce particular file-based risks; a relational design is not automatically smaller, simpler or error-free.
-
-### Worked example
-
-**Replace a repeated order file:** A flat Order file repeats CustomerName and Address in every order row. Split it into Customer(CustomerID, CustomerName, Address) and Order(OrderID, CustomerID, OrderDate). CustomerID links each order to one stored customer, so an address is updated once instead of in every order row.
-
-### Targeted practice and answers
-
-1. Why can repeated data create inconsistency?
-   **Answer:** One copy may be changed while another remains out of date.
-2. What is data isolation in a file-based system?
-   **Answer:** Related data is kept in separate files or formats, making combined access and queries difficult.
-3. Which relational feature connects an order to its customer?
-   **Answer:** A foreign key in Order referring to the Customer primary key.
-4. Why is 'relational databases are always simpler' not a valid benefit?
-   **Answer:** Linked tables and DBMS administration add complexity; benefits must be tied to a file-based limitation.
-
-### Exam-style question and MS
-
-**Question (6 marks):** A clinic repeats patient details in separate appointment, billing and treatment files. Explain three file-based limitations and a relational-database feature that addresses each one.
-
-- **B1** repeated patient facts cause redundancy or wasted storage
-- **B1** linked tables store a shared patient fact once
-- **B1** separate copies can become inconsistent after partial updates
-- **B1** central keys/constraints and one stored fact improve consistency
-- **B1** isolated files/formats make combined retrieval or control difficult
-- **B1** DBMS query, integrity, access-right or backup service addresses the named difficulty
-
-**Strict note:** Do not award a generic claim such as 'relational is better' without a named limitation, mechanism and consequence.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -118,7 +148,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `anomalies`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-079-anomalies.jpg`
 
 1. An anomaly is a problem caused when data is inserted, updated or deleted in a structure that stores repeated facts poorly.
@@ -150,7 +180,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `flat`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-079-flat.jpg`
 
 1. A flat-file database stores data in a single table. It is simple, but related data may be repeated in many records.
@@ -162,11 +192,23 @@ Correction prompt: "State the correct term, then explain the relevant process or
 7. Leo Singh
 8. patel@example.com
 
+### Referential integrity
+
+- **Explains:** `referential`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-referential.jpg`
+
+1. Referential integrity means a foreign key value must match an existing primary key value in the referenced table.
+2. Valid Loan.StudentID = S0234 is valid if Student.StudentID = S0234 exists.
+3. Invalid Loan.StudentID = S9999 is invalid if no student with that ID exists.
+4. Why It prevents orphan records, such as a loan assigned to a non-existent student.
+
 ### Relational database
 
 - **Explains:** `relational`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-079-relational.jpg`
 
 1. A relational database stores data in multiple tables that are linked using shared fields. Shared facts can be stored once and referenced where needed.

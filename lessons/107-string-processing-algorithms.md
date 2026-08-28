@@ -25,7 +25,7 @@ Give instructions for making tea but remove one step. Ask where the algorithm fa
 Focus question: Which feature distinguishes **String-processing algorithms** from the most closely related syllabus concept?
 
 ## Guided Explanation
-Define a string as a sequence of zero or more characters, then define the inputs, outputs and stopping condition before writing any pseudocode. For string-processing algorithms, model the algorithm with a trace or dry run. Then improve readability using indentation, meaningful identifiers and Cambridge pseudocode conventions.
+Define the inputs, outputs and stopping condition before writing any pseudocode. For String-processing algorithms, model the algorithm with a trace or dry run. Then improve readability using indentation, meaningful identifiers and Cambridge pseudocode conventions.
 
 Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
@@ -50,8 +50,9 @@ Teacher guidance: require the technical term and the explanation, method or appl
 // Cambridge-style pseudocode
 VowelCount ← 0
 FOR Index ← 1 TO LENGTH(Text)
-    Character ← LCASE(MID(Text, Index, 1))
-    IF Character = "a" OR Character = "e" OR Character = "i" OR Character = "o" OR Character = "u" THEN
+    CharacterString ← MID(Text, Index, 1)
+    IF CharacterString = "a" OR CharacterString = "e" OR CharacterString = "i" OR CharacterString = "o" OR CharacterString = "u"
+       OR CharacterString = "A" OR CharacterString = "E" OR CharacterString = "I" OR CharacterString = "O" OR CharacterString = "U" THEN
         VowelCount ← VowelCount + 1
     ENDIF
 NEXT Index
@@ -152,17 +153,17 @@ Correction prompt: "State the correct term, then explain the relevant process or
 11. character is allowed / not allowed
 12. valid or invalid
 
-### Keep exam pseudocode readable and avoid Java indexing leakage
+### Count vowels with a closed selection
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
 - **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-pseudocode.jpg`
 
-1. Visit each character position in Word and normalise the current character with UCASE.
-2. Increment VowelCount only when the character is A, E, I, O or U.
+1. MID(Word, Index, 1) returns a one-character STRING, so compare it with both upper-case and lower-case vowel strings.
+2. Increment VowelCount only when the current one-character STRING is A, E, I, O, U, a, e, i, o or u.
 3. Close the vowel selection with ENDIF before NEXT Index.
-4. Output VowelCount after the loop.
+4. Do not pass the STRING returned by MID directly to CHAR-only UCASE or LCASE.
 
 ### Trace character processing
 

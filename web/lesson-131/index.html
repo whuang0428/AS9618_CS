@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 131 | Parameters: by value and by reference in pseudocode</title>
+    <title>AS9618 Lesson 131 | Pre-condition, post-condition and loop choice</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>Parameters: by value and by reference</h1>
+        <h1>Pre-condition, post-condition and loop choice</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,7 +47,11 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 131 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
             <h2>Does the subroutine get a copy, or the original?</h2>
@@ -153,7 +157,6 @@ CALL DisplayMessage(Text)</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end terms -->
-
         <section class="panel" id="value" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="value">
           <div class="section-title">
             <p class="eyebrow">Passing by value</p>
@@ -195,7 +198,6 @@ OUTPUT X</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end value -->
-
         <section class="panel" id="reference" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reference">
           <div class="section-title">
             <p class="eyebrow">Passing by reference</p>
@@ -237,7 +239,6 @@ OUTPUT X</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end reference -->
-
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Side-by-side comparison</p>
@@ -251,20 +252,6 @@ OUTPUT X</code></pre>
             <div class="table-row"><div>Typical exam wording</div><div>value is passed to a parameter</div><div>procedure updates the value of the argument</div></div>
           </div>
         </section>
-
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Same procedure body, different final result</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same procedure body, different final result with a structured visual model." />
-            <figcaption class="explanation-sr-only">Same procedure body, different final result: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Side-by-side comparison</li><li><strong>Lesson fact:</strong> By value</li><li><strong>Lesson fact:</strong> By reference</li><li><strong>Lesson fact:</strong> Header clue</li><li><strong>Lesson fact:</strong> Number : INTEGER</li><li><strong>Lesson fact:</strong> BYREF Number : INTEGER</li><li><strong>Lesson fact:</strong> What is passed</li><li><strong>Lesson fact:</strong> a copy of the value</li><li><strong>Lesson fact:</strong> a reference to the caller's variable</li><li><strong>Lesson fact:</strong> Change inside subroutine</li><li><strong>Lesson fact:</strong> affects local parameter only</li><li><strong>Lesson fact:</strong> can affect original variable</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end compare -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
@@ -314,7 +301,6 @@ OUTPUT X</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end use -->
-
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
@@ -351,8 +337,6 @@ static void increase(int score) {
           </div>
         </section>
         <!-- stage10-explanation:end java -->
-
-
         <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
           <div class="section-title">
             <p class="eyebrow">Interactive trace simulator</p>

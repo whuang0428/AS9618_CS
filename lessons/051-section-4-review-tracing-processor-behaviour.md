@@ -1,5 +1,9 @@
 # Lesson 051: Section 4 review: tracing processor behaviour
 
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
+
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
 **Syllabus reference:** Syllabus Section 4
@@ -43,8 +47,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit topic recognition, precise terminology, and explanations that fit the scenario rather than generic memorised lines.
 
-
-
 ## Student Task
 Students complete a timed response, swap scripts, mark with a checklist, and write one improved version.
 
@@ -72,44 +74,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Section 4 semantic checkpoint
-
-### Direct explanation
-
-- Read each instruction by its specified effect: LDR #n loads the immediate value n into IX; CMI <address> compares ACC with a value reached by indirect addressing; JPE <address> jumps after a True comparison; JPN <address> jumps after a False comparison.
-- For bit manipulation, identify the fixed width and bit numbering before tracing. AND tests or clears selected bits, OR sets selected bits, XOR toggles selected bits, and logical, arithmetic and cyclic shifts differ in fill and rotation behaviour.
-
-### Worked example
-
-**Resolve four instruction cards:** Match LDR #4 to IX <- 4, trace CMI POINTER through the address stored at POINTER, send a True comparison to JPE MATCH and a False comparison to JPN DIFFERENT. None of the four names should be decoded by an English guess.
-
-### Targeted practice and answers
-
-1. What does LDR #6 change?
-   **Answer:** It loads the immediate value 6 into IX.
-2. How does CMI <address> obtain the comparison value?
-   **Answer:** It uses indirect addressing: the operand location contains the address of the value compared with ACC.
-3. Which branch follows a True comparison, and which follows a False comparison?
-   **Answer:** JPE follows True; JPN follows False.
-4. Which operation toggles selected device bits?
-   **Answer:** XOR with a mask containing 1 at each bit to toggle.
-
-### Exam-style question and MS
-
-**Question (5 marks):** State the exact effects of LDR #n, CMI <address>, JPE <address> and JPN <address>.
-
-- **B1** LDR loads immediate n into IX
-- **B1** CMI obtains the comparison value by indirect addressing
-- **B1** CMI compares that value with ACC
-- **B1** JPE branches after a True comparison
-- **B1** JPN branches after a False comparison
-
-**Strict note:** Do not infer an instruction effect from the mnemonic letters; use the specified instruction-set semantics.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -117,7 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `clinic`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-051-clinic.jpg`
 
 1. Answer clinic
@@ -129,7 +93,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-051-compare.jpg`
 
 1. MAR vs MDR
@@ -145,7 +109,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `map`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-051-map.jpg`
 
 1. Fetch copies PC to MAR, reads memory into MDR, copies MDR to CIR and increments PC.
@@ -156,7 +120,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `retrieval`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-051-retrieval.jpg`
 
 1. PC holds the address of the next instruction; MAR holds the memory address being accessed.
@@ -169,7 +133,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `timed`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-051-timed.jpg`
 
 1. Timed task

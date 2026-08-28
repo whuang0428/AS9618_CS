@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "remediation": "v2",
+  "stage": 6,
+  "generatedDate": "2026-08-28",
+  "implementationStatus": "Complete",
+  "approvalStatus": "AwaitingUserApproval",
+  "currentReleaseDecision": "BLOCKED",
+  "images": {
+    "expected": 783,
+    "reviewed": 783,
+    "forward": 783,
+    "reverse": 783,
+    "pending": 0,
+    "disagreements": 0,
+    "highRisk": 488,
+    "freshOcr": {
+      "engine": "Apple Vision via scripts/audit-stage10-wording.m",
+      "currentRunImages": 783,
+      "clear": 783
+    }
+  },
+  "visualObjects": {
+    "expected": 969,
+    "reviewed": 969,
+    "raster": 786,
+    "stage10Raster": 783,
+    "highRisk": 919,
+    "pending": 0
+  },
+  "browser": {
+    "pages": 153,
+    "viewportRecords": 306,
+    "failed": 0,
+    "interactions": "Passed except the in-app Browser key-dispatch API did not toggle native controls; native semantic elements and focus return were verified."
+  },
+  "responsiveFixes": [
+    "real Cambridge mark-scheme tables use fixed table layout on narrow screens",
+    "long literal URLs wrap in the mobile text alternative"
+  ],
+  "semanticPixelFixes": [
+    "005/systems negative binary",
+    "008/pixels file header",
+    "034/sensors applications",
+    "069/checks seven named checks",
+    "098/concept defined steps",
+    "099/decomposition modules",
+    "101/equivalence IF condition",
+    "116/pseudocode nested loops"
+  ],
+  "negativeControls": [
+    "remove one image record",
+    "reverse the second-pass order incorrectly",
+    "create a pass disagreement",
+    "import an inherited approval",
+    "reapprove changed pixels without a matching visual review",
+    "remove one visual object",
+    "remove raster alt text",
+    "change a page source hash",
+    "inject horizontal overflow",
+    "inject a console error"
+  ],
+  "openP0P1": [],
+  "unverified": [
+    "Stage 7 independent high-risk review",
+    "two consecutive complete generation chains with zero second-run diff",
+    "release inventory and final release-candidate decision"
+  ]
+}

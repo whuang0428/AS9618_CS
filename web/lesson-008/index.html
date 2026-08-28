@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 008 | Bitmap images, pixels, resolution and colour depth</title>
+    <title>AS9618 Lesson 008 | Bitmap file headers, image resolution and screen resolution</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Bitmap images: pixels, resolution and colour depth</h1>
+        <h1>Bitmap file headers, image resolution and screen resolution</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -42,7 +42,79 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Bitmap file headers, image resolution and screen resolution</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A bitmap file contains pixel data and a file header. The header stores metadata needed to interpret the file, such as its format and image properties; it is not one of the image pixels. When a calculation says to ignore the file header, calculate only width x height x colour depth.</p>
+            <p>Image resolution is the number of pixels stored in the image, commonly width x height. Screen resolution is the number of physical display pixels available on the screen. They are independent: scaling an image on a screen does not create new captured detail.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: 100 x 80 bitmap with an ignored header</h3>
+            <p>The pixel data is 100 x 80 x 8 = 64,000 bits = 8,000 bytes. Because the question says to ignore the file header, no metadata bytes are added to that total.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start pixels -->
+        <section class="panel explanation-panel" id="explanation-pixels" data-explains="pixels" data-explanation-kind="mechanism" aria-labelledby="explanation-pixels-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pixels">
+          <h2 class="explanation-sr-only" id="explanation-pixels-title">Bitmap file header and pixel data</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-pixels.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bitmap file header and pixel data with a structured visual model." />
+            <figcaption class="explanation-sr-only">Bitmap file header and pixel data: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A bitmap file contains a file header and pixel data.</li><li><strong>Lesson fact:</strong> The file header stores metadata needed to interpret the bitmap; it is not an image pixel.</li><li><strong>Lesson fact:</strong> Pixel-data size is width x height x colour depth.</li><li><strong>Lesson fact:</strong> When a question says to ignore the file header, do not add metadata bytes to the pixel-data calculation.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pixels -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Bitmap file headers, image resolution and screen resolution: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What is the purpose of a bitmap file header?</p>
+              <details><summary>Show answer</summary><p>It stores metadata that tells software how to interpret the file; it is separate from the pixel data.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What does 3840 x 2160 describe for a monitor?</p>
+              <details><summary>Show answer</summary><p>Its screen resolution: the number of physical display pixels.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Does a higher screen resolution automatically increase an image file's size?</p>
+              <details><summary>Show answer</summary><p>No. File size depends on stored image data, not the screen used to view it.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>A 200 by 100 bitmap uses 24-bit colour. Calculate its pixel-data size in bytes, ignoring the file header, and explain what has been excluded.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>200 x 100 x 24 bits</td><td>Do not treat the file header as a pixel or silently add an invented header size.</td><td>1</td></tr>
+                  <tr><td>480,000 bits / 60,000 bytes</td><td></td><td>1</td></tr>
+                  <tr><td>file header contains metadata used to interpret the bitmap</td><td></td><td>1</td></tr>
+                  <tr><td>header data is excluded because the question requests pixel data only</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 008 | 45 minutes | Informal questioning</p>
             <h2>A bitmap image is a grid of tiny colour decisions.</h2>
@@ -77,7 +149,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Image quality, storage space and download time are linked through resolution and colour depth.</p>
@@ -88,7 +160,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>What is stored for one pixel?</h2>
@@ -104,7 +176,7 @@
           </div>
         </section>
 
-        <section class="panel" id="pixels" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pixels">
+        <section class="panel" id="pixels" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Bitmap images are pixel grids</h2>
@@ -128,21 +200,7 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start pixels -->
-        <section class="panel explanation-panel" id="explanation-pixels" data-explains="pixels" data-explanation-kind="mechanism" aria-labelledby="explanation-pixels-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pixels">
-          <h2 class="explanation-sr-only" id="explanation-pixels-title">Bitmap file header and pixel data</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-pixels.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bitmap file header and pixel data with a structured visual model." />
-            <figcaption class="explanation-sr-only">Bitmap file header and pixel data: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A bitmap file contains a file header and pixel data.</li><li><strong>Lesson fact:</strong> The file header stores metadata needed to interpret the bitmap; it is not an image pixel.</li><li><strong>Lesson fact:</strong> Pixel-data size is width x height x colour depth.</li><li><strong>Lesson fact:</strong> When a question says to ignore the file header, do not add metadata bytes to the pixel-data calculation.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end pixels -->
-
-        <section class="panel" id="resolution" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="resolution">
+        <section class="panel" id="resolution" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Resolution: width × height</h2>
@@ -164,7 +222,7 @@
         </section>
 
         <!-- stage10-explanation:start resolution -->
-        <section class="panel explanation-panel" id="explanation-resolution" data-explains="resolution" data-explanation-kind="mechanism" aria-labelledby="explanation-resolution-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="resolution">
+        <section class="panel explanation-panel" id="explanation-resolution" data-explains="resolution" data-explanation-kind="mechanism" aria-labelledby="explanation-resolution-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <h2 class="explanation-sr-only" id="explanation-resolution-title">Resolution: width × height</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-resolution.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Resolution: width × height with a structured visual model." />
@@ -176,8 +234,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end resolution -->
-
-        <section class="panel" id="depth" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="depth">
+        <section class="panel" id="depth" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Colour depth: bits per pixel</h2>
@@ -206,7 +263,7 @@
         </section>
 
         <!-- stage10-explanation:start depth -->
-        <section class="panel explanation-panel" id="explanation-depth" data-explains="depth" data-explanation-kind="mechanism" aria-labelledby="explanation-depth-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="depth">
+        <section class="panel explanation-panel" id="explanation-depth" data-explains="depth" data-explanation-kind="mechanism" aria-labelledby="explanation-depth-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <h2 class="explanation-sr-only" id="explanation-depth-title">Colour depth: bits per pixel</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-depth.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Colour depth: bits per pixel with a structured visual model." />
@@ -218,8 +275,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end depth -->
-
-        <section class="panel" id="formula" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formula">
+        <section class="panel" id="formula" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Bitmap file size formula</h2>
@@ -234,7 +290,7 @@
         </section>
 
         <!-- stage10-explanation:start formula -->
-        <section class="panel explanation-panel" id="explanation-formula" data-explains="formula" data-explanation-kind="mechanism" aria-labelledby="explanation-formula-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formula">
+        <section class="panel explanation-panel" id="explanation-formula" data-explains="formula" data-explanation-kind="mechanism" aria-labelledby="explanation-formula-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <h2 class="explanation-sr-only" id="explanation-formula-title">Bitmap file size formula</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-formula.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bitmap file size formula with a structured visual model." />
@@ -246,9 +302,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end formula -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Bitmap file size calculator</h2>
@@ -278,7 +332,7 @@
           <div class="method-box" id="calcMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -291,7 +345,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -301,7 +355,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the file size mistake</h2>
@@ -320,7 +374,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -332,59 +386,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Bitmap file headers, image resolution and screen resolution</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A bitmap file contains pixel data and a file header. The header stores metadata needed to interpret the file, such as its format and image properties; it is not one of the image pixels. When a calculation says to ignore the file header, calculate only width x height x colour depth.</p>
-            <p>Image resolution is the number of pixels stored in the image, commonly width x height. Screen resolution is the number of physical display pixels available on the screen. They are independent: scaling an image on a screen does not create new captured detail.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: 100 x 80 bitmap with an ignored header</h3>
-            <p>The pixel data is 100 x 80 x 8 = 64,000 bits = 8,000 bytes. Because the question says to ignore the file header, no metadata bytes are added to that total.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Bitmap file headers, image resolution and screen resolution: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What is the purpose of a bitmap file header?</p>
-              <details><summary>Show answer</summary><p>It stores metadata that tells software how to interpret the file; it is separate from the pixel data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What does 3840 x 2160 describe for a monitor?</p>
-              <details><summary>Show answer</summary><p>Its screen resolution: the number of physical display pixels.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Does a higher screen resolution automatically increase an image file's size?</p>
-              <details><summary>Show answer</summary><p>No. File size depends on stored image data, not the screen used to view it.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A 200 by 100 bitmap uses 24-bit colour. Calculate its pixel-data size in bytes, ignoring the file header, and explain what has been excluded.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>M1</strong> 200 x 100 x 24 bits</li>
-                <li><strong>A1</strong> 480,000 bits / 60,000 bytes</li>
-                <li><strong>B1</strong> file header contains metadata used to interpret the bitmap</li>
-                <li><strong>B1</strong> header data is excluded because the question requests pixel data only</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Every pixel costs bits</h2>

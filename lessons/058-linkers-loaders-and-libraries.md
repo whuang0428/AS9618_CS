@@ -1,4 +1,14 @@
-# Lesson 058: Linkers, loaders, and libraries
+# Lesson 058: Linkers, loaders and libraries
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- remediation-v2-optional:start -->
+> **Optional enrichment:** linker, loader, static-linking and extended dynamic-linking mechanics. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.
+>
+> **Formal AS prerequisite:** S5.03 program libraries and benefits of dynamically linked library files.
+<!-- remediation-v2-optional:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +53,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Compiler is usually suitable for distribution because it produces object/executable code and can run without source code; interpreter is useful during development for line-by-line diagnostics.
 
-
-
 ## Student Task
 Students receive development and deployment scenarios and choose compiler, interpreter or assembler with one reason and one trade-off.
 
@@ -72,44 +80,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often say interpreters are 'bad compilers'. Correction: they are different translation approaches with different use cases.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Libraries and dynamically linked library files
-
-### Direct explanation
-
-- Software under development is often constructed using existing code from program libraries. A program library is a collection of reusable routines or modules, so a developer can call tested implementations instead of rewriting common mathematical, input/output, graphics or string operations.
-- Benefits to the developer include shorter development time, less duplicated source code, reuse of tested routines and more consistent maintenance. A dynamically linked library (DLL) is connected when a program loads or calls it rather than copying all library code into every executable.
-- DLL files can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.
-
-### Worked example
-
-**Three programs use one graphics DLL:** All three executables call the shared graphics code. One loaded copy may be shared in memory and a security fix can update the DLL once, but replacing it with an incompatible version can break all three programs.
-
-### Targeted practice and answers
-
-1. How do program libraries support software under development?
-   **Answer:** They supply existing reusable routines or modules, avoiding the need to write common code again.
-2. When is a dynamically linked library connected to a program?
-   **Answer:** At load time or run time when required.
-3. Give one storage benefit of dynamic linking.
-   **Answer:** Library code need not be copied into every executable.
-4. Give one DLL risk.
-   **Answer:** A missing/incompatible version can prevent execution or cause faults.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Explain two benefits and one drawback of using a dynamically linked library.
-
-- **B1** shared reusable code / avoids rewriting
-- **B1** smaller executables or reduced duplicate memory/storage
-- **B1** shared library can be updated once
-- **B1** missing/incompatible DLL can stop or alter programs
-
-**Strict note:** Do not accept 'saves space' unless duplication or executable size is explained.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -117,7 +87,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-compare.jpg`
 
 1. Main role
@@ -137,7 +107,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-concept.jpg`
 
 1. Object code Translated output from compilation or assembly, not always a complete executable.
@@ -145,23 +115,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Executable file A program file with required code linked and arranged for execution.
 4. In memory Code and data must be placed into main memory before the CPU can execute it.
 
-### Libraries provide reusable routines and modules
-
-- **Explains:** `libraries`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-libraries.jpg`
-
-1. Purpose Provide pre-written, tested routines that programs can use.
-2. Examples Mathematical functions, input/output routines, graphics or string-handling routines.
-3. Benefits Saves development time, reduces duplication and may improve reliability.
-4. Requirement Calls to library routines must be linked or made available at run time.
-
 ### Linkers combine object modules and resolve references
 
 - **Explains:** `linkers`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-linkers.jpg`
 
 1. Input Object code modules and required library routines or references.
@@ -173,7 +131,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `loaders`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-loaders.jpg`
 
 1. Input An executable program or loadable program image.
@@ -185,7 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `static-dynamic`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-static-dynamic.jpg`
 
 1. Static linking Library code is copied into the executable at link time.

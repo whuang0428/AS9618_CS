@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 016 | Network purposes, LAN, WAN and topologies</title>
+    <title>AS9618 Lesson 016 | Network purpose and client/server models</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css?v=2" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Network purposes, LAN, WAN and topologies</h1>
+        <h1>Network purpose and client/server models</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -41,7 +41,96 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Network purpose and client/server models</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Networking devices allow computers and users to share resources such as files, printers, storage and an internet connection. A network can also support communication, collaboration, central account management, central backup and access to shared services. A benefit must identify what is shared or managed and explain the consequence; 'it is easier' is not enough.</p>
+            <p>A LAN covers a limited geographical area such as one building or site and is normally owned or managed by one organisation. A WAN covers a large geographical area, connects separate LANs or sites and commonly uses telecommunications-provider infrastructure. LAN and WAN describe scope and management, not a guaranteed speed.</p>
+            <p>In a bus topology, devices attach to one shared backbone cable and a transmitted signal travels along that shared medium. In a star topology, every device has a separate link to a central switch and each frame passes through that switch. In a mesh topology, nodes have multiple interconnections so packets may use alternative routes. A hybrid topology combines two or more topology patterns, for example two star segments connected by a backbone.</p>
+            <p>Topology choice must be justified from packet path, failure effect, redundancy, cabling cost, expansion and traffic. A star isolates most individual cable faults but the central switch is a single point of failure; a mesh offers alternative paths but needs more links and management; a bus uses less cable but the shared backbone and shared traffic are weaknesses.</p>
+            <p>In a client-server model, clients request services or resources and one or more servers provide them. Dedicated server roles can include authentication, file storage, web hosting and backup. Central management, consistent access control and central backup are benefits; server cost, specialist administration, dependence on the server and a possible central failure are drawbacks.</p>
+            <p>In a peer-to-peer model, each peer may request and provide resources directly. It can be inexpensive and simple for a small trusted group because no dedicated server is required, but distributed accounts, backups, security and availability become harder to control. A model choice must be justified from number of users, trust, management, availability, cost and the required shared services.</p>
+            <p>A thin client relies mainly on a server for processing and/or storage. A thick client performs more processing locally and normally stores more software or data on the client device. Thin clients simplify central updates and can use lower-specification hardware, but depend heavily on the server and network. Thick clients can continue more work when disconnected, but local installation, security and maintenance are distributed.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose a topology for a two-building clinic / Choose a model and client type for a school examination room</h3>
+            <p>Use a star LAN inside each building so individual devices have independent links to a central switch. Connect the two stars to form a hybrid network. If the inter-building link is safety-critical, add a second path: packets can use the alternative route after one link fails, at extra cost. Use a client-server model so accounts, permissions, exam files and backups are controlled by servers. Thin clients support central software management and reduce local storage, but the school must provide resilient servers and networking because a failure can stop the room. Thick clients would reduce that dependence but distribute software and security maintenance.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Network purpose and client/server models: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> State two concrete benefits of networking school computers.</p>
+              <details><summary>Show answer</summary><p>Shared printers/files/services and central management, backup or communication; each benefit must name its consequence.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Compare a LAN from a WAN using geographical scope and management.</p>
+              <details><summary>Show answer</summary><p>A LAN covers a limited site and is normally managed by one organisation; a WAN connects sites over a large area and often uses provider infrastructure.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Describe the packet or signal path in bus, star, mesh and hybrid topologies.</p>
+              <details><summary>Show answer</summary><p>Bus: shared backbone; star: central switch; mesh: one of several interconnected routes; hybrid: the path follows the combined component topologies.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Suggest star or mesh for a hospital network that prioritises resilience.</p>
+              <details><summary>Show answer</summary><p>Mesh, because alternative packet routes can maintain communication after a link failure; acknowledge the additional links/cost.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> State the roles of a client and server.</p>
+              <details><summary>Show answer</summary><p>A client requests a service or resource; a server provides and manages the service or resource.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> Give one benefit and one drawback of peer-to-peer networking.</p>
+              <details><summary>Show answer</summary><p>Benefit: no dedicated server / low setup cost. Drawback: distributed security, backup and availability are harder to manage.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>7.</strong> Justify client-server for 600 managed school users.</p>
+              <details><summary>Show answer</summary><p>Central accounts, permissions, storage, updates and backup suit many users, despite server cost and availability risk.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>8.</strong> Compare a thin client from a thick client.</p>
+              <details><summary>Show answer</summary><p>A thin client depends mainly on server processing/storage; a thick client performs and stores more locally.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>10 marks</span></div>
+            <p>A college is replacing one shared bus network with star LANs connected into a hybrid topology. Explain two networking benefits and justify the topology change. A call centre is choosing a client-server model with thin clients. Explain two benefits and two drawbacks of this combined choice.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>one developed resource-sharing, communication or central-management benefit</td><td>Do not award generic benefits or a topology name without a path/failure consequence. Do not award 'cheaper' unless the lower client specification or central administration explains why; do not confuse network model with topology.</td><td>1</td></tr>
+                  <tr><td>a second distinct developed networking benefit</td><td></td><td>1</td></tr>
+                  <tr><td>star frames pass through a central switch and an individual cable failure normally affects one device</td><td></td><td>1</td></tr>
+                  <tr><td>hybrid combines topology patterns / connects the star segments</td><td></td><td>1</td></tr>
+                  <tr><td>justification links reliability, expansion, traffic or cost to the college</td><td></td><td>1</td></tr>
+                  <tr><td>centralised accounts/software/update or data management</td><td></td><td>1</td></tr>
+                  <tr><td>lower client hardware/storage requirement</td><td></td><td>1</td></tr>
+                  <tr><td>depends on network/server availability or performance</td><td></td><td>1</td></tr>
+                  <tr><td>server infrastructure, administration or central-failure cost</td><td></td><td>1</td></tr>
+                  <tr><td>develops at least one point in the call-centre context</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 016 | 45 minutes | Paper 1 Section 2</p>
             <h2>A network is not just “Wi-Fi exists”.</h2>
@@ -63,7 +152,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Network questions often look descriptive, but marks come from precise distinctions and scenario-linked consequences.</p>
@@ -74,7 +163,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>The classroom printer is shared by 24 computers. What is the actual network purpose?</h2>
@@ -90,7 +179,7 @@
           </div>
         </section>
 
-        <section class="panel" id="purpose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Why networks are used</h2>
@@ -117,7 +206,7 @@
         </section>
 
         <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <h2 class="explanation-sr-only" id="explanation-purpose-title">How a shared resource becomes useful</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-016-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How a shared resource becomes useful through a cause-and-effect diagram." />
@@ -131,8 +220,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end purpose -->
-
-        <section class="panel" id="lanwan" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lanwan">
+        <section class="panel" id="lanwan" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>LAN vs WAN</h2>
@@ -162,7 +250,7 @@
         </section>
 
         <!-- stage10-explanation:start lanwan -->
-        <section class="panel explanation-panel" id="explanation-lanwan" data-explains="lanwan" data-explanation-kind="comparison" aria-labelledby="explanation-lanwan-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lanwan">
+        <section class="panel explanation-panel" id="explanation-lanwan" data-explains="lanwan" data-explanation-kind="comparison" aria-labelledby="explanation-lanwan-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <h2 class="explanation-sr-only" id="explanation-lanwan-title">Why LAN and WAN management differs</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-016-lanwan.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why LAN and WAN management differs through a cause-and-effect diagram." />
@@ -176,8 +264,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end lanwan -->
-
-        <section class="panel" id="topologies" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="topologies">
+        <section class="panel" id="topologies" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Network topologies</h2>
@@ -264,7 +351,7 @@
         </section>
 
         <!-- stage10-explanation:start topologies -->
-        <section class="panel explanation-panel" id="explanation-topologies" data-explains="topologies" data-explanation-kind="tradeoff" aria-labelledby="explanation-topologies-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="topologies">
+        <section class="panel explanation-panel" id="explanation-topologies" data-explains="topologies" data-explanation-kind="tradeoff" aria-labelledby="explanation-topologies-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <h2 class="explanation-sr-only" id="explanation-topologies-title">Why connection patterns change risk</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-016-topologies.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why connection patterns change risk through a cause-and-effect diagram." />
@@ -278,9 +365,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end topologies -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Topology recommendation helper</h2>
@@ -301,7 +386,7 @@
           <div class="method-box" id="recommendMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -314,7 +399,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -324,7 +409,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the weak network answer</h2>
@@ -343,7 +428,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -352,66 +437,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Networking benefits, LAN/WAN and the four required topologies</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Networking devices allow computers and users to share resources such as files, printers, storage and an internet connection. A network can also support communication, collaboration, central account management, central backup and access to shared services. A benefit must identify what is shared or managed and explain the consequence; 'it is easier' is not enough.</p>
-            <p>A LAN covers a limited geographical area such as one building or site and is normally owned or managed by one organisation. A WAN covers a large geographical area, connects separate LANs or sites and commonly uses telecommunications-provider infrastructure. LAN and WAN describe scope and management, not a guaranteed speed.</p>
-            <p>In a bus topology, devices attach to one shared backbone cable and a transmitted signal travels along that shared medium. In a star topology, every device has a separate link to a central switch and each frame passes through that switch. In a mesh topology, nodes have multiple interconnections so packets may use alternative routes. A hybrid topology combines two or more topology patterns, for example two star segments connected by a backbone.</p>
-            <p>Topology choice must be justified from packet path, failure effect, redundancy, cabling cost, expansion and traffic. A star isolates most individual cable faults but the central switch is a single point of failure; a mesh offers alternative paths but needs more links and management; a bus uses less cable but the shared backbone and shared traffic are weaknesses.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose a topology for a two-building clinic</h3>
-            <p>Use a star LAN inside each building so individual devices have independent links to a central switch. Connect the two stars to form a hybrid network. If the inter-building link is safety-critical, add a second path: packets can use the alternative route after one link fails, at extra cost.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Networking benefits, LAN/WAN and the four required topologies: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> State two concrete benefits of networking school computers.</p>
-              <details><summary>Show answer</summary><p>Shared printers/files/services and central management, backup or communication; each benefit must name its consequence.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Distinguish a LAN from a WAN using geographical scope and management.</p>
-              <details><summary>Show answer</summary><p>A LAN covers a limited site and is normally managed by one organisation; a WAN connects sites over a large area and often uses provider infrastructure.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Describe the packet or signal path in bus, star, mesh and hybrid topologies.</p>
-              <details><summary>Show answer</summary><p>Bus: shared backbone; star: central switch; mesh: one of several interconnected routes; hybrid: the path follows the combined component topologies.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Choose star or mesh for a hospital network that prioritises resilience.</p>
-              <details><summary>Show answer</summary><p>Mesh, because alternative packet routes can maintain communication after a link failure; acknowledge the additional links/cost.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>A college is replacing one shared bus network with star LANs connected into a hybrid topology. Explain two networking benefits and justify the topology change.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> one developed resource-sharing, communication or central-management benefit</li>
-                <li><strong>B1</strong> a second distinct developed networking benefit</li>
-                <li><strong>B1</strong> star frames pass through a central switch and an individual cable failure normally affects one device</li>
-                <li><strong>B1</strong> hybrid combines topology patterns / connects the star segments</li>
-                <li><strong>B1</strong> justification links reliability, expansion, traffic or cost to the college</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-016">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Network answers need a comparison basis</h2>

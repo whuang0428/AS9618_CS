@@ -4,6 +4,7 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 
 import { loadAllQuestions } from "./ms-review-utils.mjs";
+import { visualDeliveryLesson, visualDeliveryTarget } from "./remediation-v2-core-visuals.mjs";
 import { coverageContract } from "./syllabus-coverage-contract.mjs";
 import { evaluateRequirement } from "./syllabus-coverage-evaluator.mjs";
 
@@ -74,12 +75,13 @@ for (const id of scopedRequirements) {
 }
 
 const lessonChecks = [
-  ["059", ["syntax error", "logic error", "run-time error", "exposed", "locate", "correct", "regression"]],
-  ["138", ["analyse", "existing program", "amend", "enhance functionality", "MeritCount", "regression"]],
   ["142", ["waterfall", "iterative", "RAD", "rapid prototyping", "time-box", "user involvement"]],
-  ["144", ["structure chart", "parameters", "derive equivalent pseudocode", "state-transition diagram", "start state", "event-labelled"]],
-  ["145", ["dry run", "walkthrough", "white-box", "black-box", "integration", "alpha", "beta", "acceptance", "stub", "test strategy", "test plan"]],
-  ["146", ["continuing maintenance", "corrective", "adaptive", "perfective", "regression"]],
+  ["143", ["structure chart", "parameters", "derive equivalent pseudocode", "state-transition diagram", "persistent states", "event-driven changes"]],
+  ["144", ["syntax error", "logic error", "run-time error", "exposed", "locate", "correct"]],
+  ["145", [
+    "dry run", "walkthrough", "white-box", "black-box", "integration", "alpha", "beta", "acceptance", "stub", "test strategy", "test plan",
+    "maintenance continues", "corrective", "adaptive", "perfective", "regression", "analyse", "existing program", "amend", "enhances functionality", "MeritCount",
+  ]],
 ];
 for (const [lesson, terms] of lessonChecks) {
   const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));
@@ -131,7 +133,9 @@ for (const key of visualKeys) {
   const semanticRow = semanticRows.find((row) => row.lesson === lesson && row.target_id === targetId);
   expect(semanticRow?.sha256 === visualHash, `${key}: semantic review hash does not match the current image`);
   expect(semanticRow?.pass1 === "Reviewed" && semanticRow?.pass2 === "Reviewed" && semanticRow?.status === "Approved", `${key}: visual lacks two approved semantic review passes`);
-  const targetRow = targetRows.find((row) => row.lesson === lesson && row.target_id === targetId);
+  const deliveryLesson = visualDeliveryLesson(lesson, targetId);
+  const deliveryTarget = visualDeliveryTarget(lesson, targetId);
+  const targetRow = targetRows.find((row) => row.lesson === deliveryLesson && row.target_id === deliveryTarget);
   expect(targetRow?.delivery_role === "CORE" && targetRow?.classroom_activity === "TEACH", `${key}: visual is not CORE/TEACH`);
 }
 includesAll(visualFacts, ["Analyse the existing program", "Amend declarations", "structure chart shows module hierarchy", "Derive pseudocode", "state-transition diagram", "test strategy states", "test plan records"], "Section 12 visual facts");
@@ -158,7 +162,7 @@ for (const [id, pattern] of mutationPatterns) {
 for (const [requirementId, questionIds, pattern] of [
   ["S12.02", ["L144-Q1", "AQ145-Q4"], /structure|parameter|derive|pseudocode/gi],
   ["S12.05", ["L145-Q1", "AR146-Q1", "AQ145-Q5"], /dry run|walkthrough|white-box|black-box|integration|alpha|beta|acceptance|stub|testing/gi],
-  ["S12.09", ["L138-Q1", "AQ145-Q1"], /analyse|analysis|amend|existing|program|enhance/gi],
+  ["S12.09", ["L146-Q5"], /analyse|analysis|amend|existing|program|enhance/gi],
 ]) {
   const mutation = evaluateRequirement(requirements.get(requirementId), {
     questionTransform: (question) => questionIds.includes(question.id) ? {

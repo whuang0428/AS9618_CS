@@ -49,11 +49,17 @@ const practice = [
   { id: "p10", prompt: "What should an exam answer about Binary place value and denary conversion include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "3 marks",
-    prompt: "Convert 10110110₂ to denary. Show your working.",
+    prompt: "Convert 10110110₂ to denary. Demonstrate your working.",
     answer: "Using 128, 64, 32, 16, 8, 4, 2, 1: 10110110₂ = 128 + 32 + 16 + 4 + 2 = 182₁₀.",
     marking: [
       { mark: "M1", text: "shows correct 8-bit place values, e.g. 128, 64, 32, 16, 8, 4, 2, 1" },
@@ -68,7 +74,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Convert 77₁₀ to 8-bit binary. Show your method.",
+    prompt: "Convert 77₁₀ to 8-bit binary. Demonstrate your method.",
     answer: "77 = 64 + 8 + 4 + 1, so the 64, 8, 4 and 1 columns are 1. In eight bits the result is 01001101₂.",
     marking: [
       { mark: "M1", text: "uses 8-bit place values from 128 to 1" },
@@ -330,11 +336,9 @@ function renderExamQuestions() {
         <p class="marks">[${question.marks}]</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="marking" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
-          <p><strong>Expected answer:</strong> ${question.answer}</p>
-          <ul class="ms-list">
-            ${question.marking.map((point) => `<li><b>${point.mark}</b> ${point.text}</li>`).join("")}
-          </ul>
+          <h4>Mark scheme</h4>
+          <p><strong>Answer:</strong> ${question.answer}</p>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

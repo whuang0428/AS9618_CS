@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 113 | Data types and user-defined types</title>
+    <title>AS9618 Lesson 113 | Select and use the official Cambridge data types</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Data types: integer, real, Boolean, char, string, date and user-defined types</h1>
+        <h1>Select and use the official Cambridge data types</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,7 +46,95 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+        <!-- remediation-v2-optional:start -->
+        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
+          <strong>Optional enrichment</strong>
+          <p>user-defined record types before the formal records requirement. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
+          <p><strong>Formal AS prerequisite:</strong> S10.01 official data types; S10.02 records must precede this extension.</p>
+        </aside>
+        <!-- remediation-v2-optional:end -->
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Select and use the official Cambridge data types</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Select a type from the meaning and operations required by the problem. INTEGER stores whole numbers, REAL stores values that may contain a fractional part, CHAR stores one character, STRING stores a sequence of characters, BOOLEAN stores TRUE or FALSE, and DATE stores a calendar date.</p>
+            <p>Cambridge pseudocode uses the type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE. ARRAY and FILE describe structured or persistent data; their declarations also state an element type, bounds or file usage as required by the problem.</p>
+            <p>An identifier that contains digits is not automatically INTEGER. Codes, telephone numbers and identifiers with leading zeroes normally use STRING because arithmetic is not required. Type selection does not replace validation of permitted values.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose types for a booking</h3>
+            <p>Use STRING for BookingCode because it may contain letters or leading zeroes; DATE for VisitDate; INTEGER for TicketCount; REAL for TotalCost; CHAR for a one-letter Zone; BOOLEAN for HasPaid; ARRAY for a fixed indexed set of attendee names; and FILE when bookings must persist between program runs.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">The eight Cambridge pseudocode type names</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The eight Cambridge pseudocode type names with a structured visual model." />
+            <figcaption class="explanation-sr-only">The eight Cambridge pseudocode type names: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Cambridge pseudocode uses INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE for scalar values.</li><li><strong>Lesson fact:</strong> The Version 2 Notes also name ARRAY and FILE among the pseudocode data types.</li><li><strong>Lesson fact:</strong> Select a type from the value's meaning and required operations; numeric-looking identifiers may still require STRING.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Select and use the official Cambridge data types: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Suggest a type for the initial M.</p>
+              <details><summary>Show answer</summary><p>CHAR, because exactly one character is stored.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Suggest a type for 18.75 used in arithmetic.</p>
+              <details><summary>Show answer</summary><p>REAL, because the value has a fractional part.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is 0045A a STRING?</p>
+              <details><summary>Show answer</summary><p>It is an identifier containing a letter and significant leading zeroes, and arithmetic is not required.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Identify the eight type names listed in the syllabus Notes.</p>
+              <details><summary>Show answer</summary><p>INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
+            <p>Select and justify suitable Cambridge types for CustomerName, MiddleInitial, DateJoined, ItemCount, MeanScore, IsActive, twenty marks and data that must remain after the program ends.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>STRING for CustomerName</td><td>Do not select a numeric type merely because an identifier contains digits, and do not use STRING as a generic replacement for DATE, CHAR or numeric values that require their defined operations.</td><td>1</td></tr>
+                  <tr><td>CHAR for MiddleInitial</td><td></td><td>1</td></tr>
+                  <tr><td>DATE for DateJoined</td><td></td><td>1</td></tr>
+                  <tr><td>INTEGER for ItemCount</td><td></td><td>1</td></tr>
+                  <tr><td>REAL for MeanScore</td><td></td><td>1</td></tr>
+                  <tr><td>BOOLEAN for IsActive</td><td></td><td>1</td></tr>
+                  <tr><td>ARRAY with a numeric element type for twenty indexed marks</td><td></td><td>1</td></tr>
+                  <tr><td>FILE for persistent data, with justifications linked to meaning or use</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 113 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>A value without a type is a suitcase without a label.</h2>
@@ -70,7 +158,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 can ask for declarations, suitable data types, and reasons why a type is appropriate for a field.</p>
@@ -81,7 +169,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Is "007" a number or a code?</h2>
@@ -96,7 +184,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the type that stores the characters exactly as entered.</div>
         </section>
 
-        <section class="panel" id="why-types" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="why-types">
+        <section class="panel" id="why-types" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Why data types exist</p>
             <h2>A type controls meaning and valid operations</h2>
@@ -126,7 +214,7 @@ ENDIF</code></pre>
         </section>
 
         <!-- stage10-explanation:start why-types -->
-        <section class="panel explanation-panel" id="explanation-why-types" data-explains="why-types" data-explanation-kind="process" aria-labelledby="explanation-why-types-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="why-types">
+        <section class="panel explanation-panel" id="explanation-why-types" data-explains="why-types" data-explanation-kind="process" aria-labelledby="explanation-why-types-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <h2 class="explanation-sr-only" id="explanation-why-types-title">A type controls meaning and valid operations</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-why-types.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A type controls meaning and valid operations with a structured visual model." />
@@ -138,8 +226,7 @@ ENDIF</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end why-types -->
-
-        <section class="panel" id="built-in" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="built-in">
+        <section class="panel" id="built-in" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Built-in types</p>
             <h2>Core AS-level data types</h2>
@@ -157,7 +244,7 @@ ENDIF</code></pre>
         </section>
 
         <!-- stage10-explanation:start built-in -->
-        <section class="panel explanation-panel" id="explanation-built-in" data-explains="built-in" data-explanation-kind="mechanism" aria-labelledby="explanation-built-in-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="built-in">
+        <section class="panel explanation-panel" id="explanation-built-in" data-explains="built-in" data-explanation-kind="mechanism" aria-labelledby="explanation-built-in-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <h2 class="explanation-sr-only" id="explanation-built-in-title">Core AS-level data types</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-built-in.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Core AS-level data types with a structured visual model." />
@@ -169,8 +256,7 @@ ENDIF</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end built-in -->
-
-        <section class="panel" id="choose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="choose">
+        <section class="panel" id="choose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Choosing types</p>
             <h2>Use the scenario, not the surface appearance</h2>
@@ -188,7 +274,7 @@ ENDIF</code></pre>
         </section>
 
         <!-- stage10-explanation:start choose -->
-        <section class="panel explanation-panel" id="explanation-choose" data-explains="choose" data-explanation-kind="mechanism" aria-labelledby="explanation-choose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="choose">
+        <section class="panel explanation-panel" id="explanation-choose" data-explains="choose" data-explanation-kind="mechanism" aria-labelledby="explanation-choose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <h2 class="explanation-sr-only" id="explanation-choose-title">Use the scenario, not the surface appearance</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-choose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the scenario, not the surface appearance with a structured visual model." />
@@ -200,8 +286,7 @@ ENDIF</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end choose -->
-
-        <section class="panel" id="user-defined" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="user-defined">
+        <section class="panel" id="user-defined" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">User-defined types</p>
             <h2>When built-in types are not descriptive enough</h2>
@@ -228,7 +313,7 @@ ENDTYPE</code></pre>
         </section>
 
         <!-- stage10-explanation:start user-defined -->
-        <section class="panel explanation-panel" id="explanation-user-defined" data-explains="user-defined" data-explanation-kind="mechanism" aria-labelledby="explanation-user-defined-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="user-defined">
+        <section class="panel explanation-panel" id="explanation-user-defined" data-explains="user-defined" data-explanation-kind="mechanism" aria-labelledby="explanation-user-defined-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <h2 class="explanation-sr-only" id="explanation-user-defined-title">When built-in types are not descriptive enough</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-user-defined.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining When built-in types are not descriptive enough with a structured visual model." />
@@ -244,8 +329,7 @@ Declare variables of the record type only after ENDTYPE.</li></ol>
           </div>
         </section>
         <!-- stage10-explanation:end user-defined -->
-
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Same idea, different syntax</h2>
@@ -273,22 +357,8 @@ LocalDate birthDate;</code></pre>
           <div class="callout">Paper 2 reminder: Java syntax supports understanding, but Cambridge-style pseudocode is the expected exam answer format.</div>
         </section>
 
-        <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">The eight Cambridge pseudocode type names</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The eight Cambridge pseudocode type names with a structured visual model." />
-            <figcaption class="explanation-sr-only">The eight Cambridge pseudocode type names: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Cambridge pseudocode uses INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE for scalar values.</li><li><strong>Lesson fact:</strong> The Version 2 Notes also name ARRAY and FILE among the pseudocode data types.</li><li><strong>Lesson fact:</strong> Select a type from the value's meaning and required operations; numeric-looking identifiers may still require STRING.</li></ol>
 
-          </div>
-        </section>
-        <!-- stage10-explanation:end pseudocode -->
-
-
-        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
+        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Interactive type classifier</p>
             <h2>Choose a suitable data type</h2>
@@ -310,7 +380,7 @@ LocalDate birthDate;</code></pre>
           <div class="trace-output" id="typeResult">Choose a field to see the type and reason.</div>
         </section>
 
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Interactive declaration builder</p>
             <h2>Build a Cambridge-style declaration</h2>
@@ -332,7 +402,7 @@ LocalDate birthDate;</code></pre>
           <div class="trace-output" id="builderResult">Choose a purpose to generate a declaration.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Type choices with exam-style reasoning</h2>
@@ -346,7 +416,7 @@ LocalDate birthDate;</code></pre>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Ten type decisions</h2>
@@ -355,7 +425,7 @@ LocalDate birthDate;</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common type-selection errors</h2>
@@ -363,7 +433,7 @@ LocalDate birthDate;</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style data type questions with expandable MS</h2>
@@ -372,68 +442,7 @@ LocalDate birthDate;</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Select and use the official Cambridge data types</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Select a type from the meaning and operations required by the problem. INTEGER stores whole numbers, REAL stores values that may contain a fractional part, CHAR stores one character, STRING stores a sequence of characters, BOOLEAN stores TRUE or FALSE, and DATE stores a calendar date.</p>
-            <p>Cambridge pseudocode uses the type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE. ARRAY and FILE describe structured or persistent data; their declarations also state an element type, bounds or file usage as required by the problem.</p>
-            <p>An identifier that contains digits is not automatically INTEGER. Codes, telephone numbers and identifiers with leading zeroes normally use STRING because arithmetic is not required. Type selection does not replace validation of permitted values.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose types for a booking</h3>
-            <p>Use STRING for BookingCode because it may contain letters or leading zeroes; DATE for VisitDate; INTEGER for TicketCount; REAL for TotalCost; CHAR for a one-letter Zone; BOOLEAN for HasPaid; ARRAY for a fixed indexed set of attendee names; and FILE when bookings must persist between program runs.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Select and use the official Cambridge data types: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Choose a type for the initial M.</p>
-              <details><summary>Show answer</summary><p>CHAR, because exactly one character is stored.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Choose a type for 18.75 used in arithmetic.</p>
-              <details><summary>Show answer</summary><p>REAL, because the value has a fractional part.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why is 0045A a STRING?</p>
-              <details><summary>Show answer</summary><p>It is an identifier containing a letter and significant leading zeroes, and arithmetic is not required.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Name the eight type names listed in the syllabus Notes.</p>
-              <details><summary>Show answer</summary><p>INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
-            <p>Select and justify suitable Cambridge types for CustomerName, MiddleInitial, DateJoined, ItemCount, MeanScore, IsActive, twenty marks and data that must remain after the program ends.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> STRING for CustomerName</li>
-                <li><strong>B1</strong> CHAR for MiddleInitial</li>
-                <li><strong>B1</strong> DATE for DateJoined</li>
-                <li><strong>B1</strong> INTEGER for ItemCount</li>
-                <li><strong>B1</strong> REAL for MeanScore</li>
-                <li><strong>B1</strong> BOOLEAN for IsActive</li>
-                <li><strong>B1</strong> ARRAY with a numeric element type for twenty indexed marks</li>
-                <li><strong>B1</strong> FILE for persistent data, with justifications linked to meaning or use</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-113">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Data type checklist</h2>

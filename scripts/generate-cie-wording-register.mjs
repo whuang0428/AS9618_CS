@@ -4,10 +4,12 @@ import path from "node:path";
 
 import { explanations } from "./stage10-explanations-data.mjs";
 import { loadAllQuestions } from "./ms-review-utils.mjs";
+import { wordingReviewHeaders } from "./remediation-v2-review-gate.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
-const approved = process.argv.includes("--approve");
-const status = approved ? "Approved" : "Pending";
+if (process.argv.length > 2) {
+  throw new Error("Bulk approval is prohibited. The generator only creates Pending records; each approval requires independent evidence.");
+}
 const rows = [];
 
 const hash = (value) => crypto.createHash("sha256").update(String(value)).digest("hex");
@@ -22,21 +24,20 @@ for (let lesson = 1; lesson <= 150; lesson += 1) {
     ["lesson-html", `web/lesson-${id}/index.html`],
   ]) {
     const text = fs.readFileSync(path.join(root, relativePath), "utf8");
-    rows.push([surface, `L${id}`, relativePath, status, hash(text), "CIE register and terminology review"]);
+    rows.push([surface, `L${id}`, relativePath, "Pending", "Unreviewed", "", hash(text), "", "", "", "CIE register and terminology review"]);
   }
 }
 
 for (const question of loadAllQuestions()) {
-  rows.push(["question", question.id, question.sourceKey, status, question.hash, "Command word, scope and mark-scheme review"]);
+  rows.push(["question", question.id, question.sourceKey, "Pending", "Unreviewed", "", question.hash, "", "", "", "Command word, scope and mark-scheme review"]);
 }
 
 for (const item of explanations) {
   const key = `${item.lesson}/${item.targetId}`;
   const text = [item.title, ...(item.transcript ?? item.steps), item.analogy, item.boundary].filter(Boolean).join("\n");
-  rows.push(["infographic", key, item.visual.src, status, hash(text), "Maintained text and visible-image wording review"]);
+  rows.push(["infographic", key, item.visual.src, "Pending", "Unreviewed", "", hash(text), "", "", "", "Maintained text and visible-image wording review"]);
 }
 
-const header = ["surface", "id", "source", "status", "content_hash", "review_note"];
-const output = [header, ...rows].map((row) => row.map(csv).join(",")).join("\n");
+const output = [wordingReviewHeaders, ...rows].map((row) => row.map(csv).join(",")).join("\n");
 fs.writeFileSync(path.join(root, "audits", "cie-wording-review-register.csv"), `${output}\n`);
-console.log(`Generated CIE wording register: ${rows.length} records, status ${status}.`);
+console.log(`Generated CIE wording register: ${rows.length} Pending records; bulk approval disabled.`);

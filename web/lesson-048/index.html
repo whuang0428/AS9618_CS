@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 048 | Interrupts and interrupt service routines</title>
+    <title>AS9618 Lesson 048 | Section 4 semantic checkpoint</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Interrupts and interrupt service routines</h1>
+        <h1>Section 4 semantic checkpoint</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -45,7 +45,70 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Section 4 semantic checkpoint</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Read each instruction by its specified effect: LDR #n loads the immediate value n into IX; CMI &lt;address&gt; compares ACC with a value reached by indirect addressing; JPE &lt;address&gt; jumps after a True comparison; JPN &lt;address&gt; jumps after a False comparison.</p>
+            <p>For bit manipulation, identify the fixed width and bit numbering before tracing. AND tests or clears selected bits, OR sets selected bits, XOR toggles selected bits, and logical, arithmetic and cyclic shifts differ in fill and rotation behaviour.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Resolve four instruction cards</h3>
+            <p>Match LDR #4 to IX &lt;- 4, trace CMI POINTER through the address stored at POINTER, send a True comparison to JPE MATCH and a False comparison to JPN DIFFERENT. None of the four names should be decoded by an English guess.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Section 4 semantic checkpoint: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What does LDR #6 change?</p>
+              <details><summary>Show answer</summary><p>It loads the immediate value 6 into IX.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> How does CMI &lt;address&gt; obtain the comparison value?</p>
+              <details><summary>Show answer</summary><p>It uses indirect addressing: the operand location contains the address of the value compared with ACC.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which branch follows a True comparison, and which follows a False comparison?</p>
+              <details><summary>Show answer</summary><p>JPE follows True; JPN follows False.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Which operation toggles selected device bits?</p>
+              <details><summary>Show answer</summary><p>XOR with a mask containing 1 at each bit to toggle.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>State the exact effects of LDR #n, CMI &lt;address&gt;, JPE &lt;address&gt; and JPN &lt;address&gt;.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>LDR loads immediate n into IX</td><td>Do not infer an instruction effect from the mnemonic letters; use the specified instruction-set semantics.</td><td>1</td></tr>
+                  <tr><td>CMI obtains the comparison value by indirect addressing</td><td></td><td>1</td></tr>
+                  <tr><td>CMI compares that value with ACC</td><td></td><td>1</td></tr>
+                  <tr><td>JPE branches after a True comparison</td><td></td><td>1</td></tr>
+                  <tr><td>JPN branches after a False comparison</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 048 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
             <h2>An interrupt is the CPU's polite emergency bell.</h2>
@@ -72,7 +135,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Section 4 questions often ask for a sequence. Marks are lost when answers say only "the CPU stops and deals with it".</p>
@@ -83,7 +146,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>The keyboard needs attention while a program is running. What should the CPU do?</h2>
@@ -100,7 +163,7 @@
           </div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>What an interrupt is</h2>
@@ -127,7 +190,7 @@
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <h2 class="explanation-sr-only" id="explanation-concept-title">What an interrupt is</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What an interrupt is with a structured visual model." />
@@ -139,8 +202,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-
-        <section class="panel" id="sources" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sources">
+        <section class="panel" id="sources" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Where interrupts come from</h2>
@@ -174,7 +236,7 @@
         </section>
 
         <!-- stage10-explanation:start sources -->
-        <section class="panel explanation-panel" id="explanation-sources" data-explains="sources" data-explanation-kind="mechanism" aria-labelledby="explanation-sources-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sources">
+        <section class="panel explanation-panel" id="explanation-sources" data-explains="sources" data-explanation-kind="mechanism" aria-labelledby="explanation-sources-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <h2 class="explanation-sr-only" id="explanation-sources-title">Where interrupts come from</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-sources.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Where interrupts come from with a structured visual model." />
@@ -186,8 +248,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end sources -->
-
-        <section class="panel" id="cycle" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cycle">
+        <section class="panel" id="cycle" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>The interrupt handling cycle</h2>
@@ -207,7 +268,7 @@
         </section>
 
         <!-- stage10-explanation:start cycle -->
-        <section class="panel explanation-panel" id="explanation-cycle" data-explains="cycle" data-explanation-kind="process" aria-labelledby="explanation-cycle-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cycle">
+        <section class="panel explanation-panel" id="explanation-cycle" data-explains="cycle" data-explanation-kind="process" aria-labelledby="explanation-cycle-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <h2 class="explanation-sr-only" id="explanation-cycle-title">The interrupt handling cycle</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-cycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The interrupt handling cycle with a structured visual model." />
@@ -219,8 +280,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end cycle -->
-
-        <section class="panel" id="priority" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="priority">
+        <section class="panel" id="priority" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Priority and masking</h2>
@@ -255,7 +315,7 @@
         </section>
 
         <!-- stage10-explanation:start priority -->
-        <section class="panel explanation-panel" id="explanation-priority" data-explains="priority" data-explanation-kind="mechanism" aria-labelledby="explanation-priority-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="priority">
+        <section class="panel explanation-panel" id="explanation-priority" data-explains="priority" data-explanation-kind="mechanism" aria-labelledby="explanation-priority-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <h2 class="explanation-sr-only" id="explanation-priority-title">Priority and masking</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-priority.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Priority and masking with a structured visual model." />
@@ -267,8 +327,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end priority -->
-
-        <section class="panel" id="polling" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="polling">
+        <section class="panel" id="polling" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Interrupts versus polling</h2>
@@ -296,7 +355,7 @@
         </section>
 
         <!-- stage10-explanation:start polling -->
-        <section class="panel explanation-panel" id="explanation-polling" data-explains="polling" data-explanation-kind="mechanism" aria-labelledby="explanation-polling-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="polling">
+        <section class="panel explanation-panel" id="explanation-polling" data-explains="polling" data-explanation-kind="mechanism" aria-labelledby="explanation-polling-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <h2 class="explanation-sr-only" id="explanation-polling-title">Interrupts versus polling</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-polling.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Interrupts versus polling with a structured visual model." />
@@ -308,9 +367,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end polling -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Interrupt handling simulator</h2>
@@ -333,7 +390,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Trace the interrupt, not just the device</h2>
@@ -346,7 +403,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
@@ -355,7 +412,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Repair the interrupt explanation</h2>
@@ -363,7 +420,7 @@
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
@@ -372,70 +429,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Interrupt causes, detection and handling</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.</p>
-            <p>For most maskable interrupts, the processor completes the current instruction and checks for pending enabled interrupts at the end of that fetch-execute cycle, before beginning the next instruction. Detection is therefore not the same as stopping halfway through an ordinary instruction.</p>
-            <p>If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Handle a keyboard interrupt</h3>
-            <p>A key press raises an interrupt while the CPU is executing another program. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and continues the original program.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Interrupt causes, detection and handling: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Give two possible causes or applications of interrupts.</p>
-              <details><summary>Show answer</summary><p>For example an I/O device request, timer/scheduler event, hardware fault or software exception.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> When is a normal maskable interrupt detected and accepted?</p>
-              <details><summary>Show answer</summary><p>After the current instruction completes, at the end of the fetch-execute cycle before the next instruction begins, subject to enabled/priority checks.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What is an ISR?</p>
-              <details><summary>Show answer</summary><p>An interrupt service routine: program code that handles a particular interrupt.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why must processor state be saved and restored?</p>
-              <details><summary>Show answer</summary><p>So the interrupted program can resume at the correct instruction with its earlier register and status values.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> List the handling sequence after detection.</p>
-              <details><summary>Show answer</summary><p>Check/accept, save state, locate and execute ISR, restore state, resume program.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Describe one interrupt cause or application, state when it is detected in the fetch-execute cycle, and trace handling through the ISR to resumption.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> valid cause/application such as I/O, timer, fault or exception</li>
-                <li><strong>B1</strong> current instruction completes and interrupt is detected/checked at the cycle boundary</li>
-                <li><strong>B1</strong> priority/enabled status is checked</li>
-                <li><strong>B1</strong> PC/register/status state is saved</li>
-                <li><strong>B1</strong> correct ISR is located and executed</li>
-                <li><strong>B1</strong> state is restored and the interrupted program resumes</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-048">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Interrupts are controlled pauses</h2>

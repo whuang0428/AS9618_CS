@@ -63,7 +63,7 @@ Notes:
 | Monthly checkpoint | 7 | 30 marks; 40 minutes | Lessons 020-140 at 20-lesson intervals |
 | Stage review | 14 | 20 marks: 6 retrieval, 4 correction and 10 timed marks | End of each major syllabus cluster |
 
-All 51 assessments are original Cambridge-style practice. Their answer keys use point-based `B1`, `M1` and `A1` marking, with `FT`, allowable alternatives and non-credit limits only where applicable. They are available in Markdown under `assessments/` and as locally expandable material at `web/assessments/`.
+All 51 assessments are original Cambridge-style practice. Student-facing mark schemes use Answer, Guidance and Marks with one explicit mark per creditworthy point; internal marking metadata is not presented as Cambridge candidate-facing notation. They are available in Markdown under `assessments/` and as locally expandable material at `web/assessments/`.
 
 ## Implementation Notes
 

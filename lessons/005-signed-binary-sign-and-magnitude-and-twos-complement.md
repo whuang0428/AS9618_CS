@@ -1,4 +1,47 @@
-# Lesson 005: Signed binary: sign-and-magnitude and two's complement
+# Lesson 005: Signed representations and binary subtraction
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Signed representations and binary subtraction
+
+### Direct explanation
+
+- One's-complement representation forms a negative integer by inverting every bit of its positive fixed-width value. Two's-complement representation inverts every bit and adds 1. These are binary representations of signed integers, not separate number bases.
+- Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.
+
+### Worked example
+
+**Convert -23 to 8-bit one's complement:** +23 is 00010111. Invert every bit once to obtain 11101000, so -23 is 11101000 in 8-bit one's-complement representation. Do not add 1; that extra step would form two's complement.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Convert -18 to 8-bit one's complement.
+   **Answer:** +18 is 00010010; invert every bit to obtain 11101101.
+2. Calculate 00110110 - 00010100.
+   **Answer:** 00100010, which is 34.
+3. In 8-bit two's complement, calculate 7 - 12.
+   **Answer:** 00000111 + 11110100 = 11111011, which is -5.
+4. Why is a carry beyond bit 8 discarded?
+   **Answer:** The operation has a fixed 8-bit width; the ninth bit lies outside that representation.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Convert -23 to 8-bit one's-complement representation, showing the positive value and the conversion step.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| writes +23 as 00010111 | Do not accept 11101001; adding 1 produces two's complement rather than one's complement. | 1 |
+| inverts every bit exactly once |  | 1 |
+| obtains 11101000 |  | 1 |
+| identifies the result as 8-bit one's complement |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +86,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** `23 = 00010111`; invert -> `11101000`; add 1 -> `11101001`. Credit method and explanation that the leading 1 indicates a negative value in two's complement.
 
-
-
 ## Student Task
 Students convert two positive and two negative values, then explain why sign-and-magnitude and two's complement are not interchangeable.
 
@@ -72,41 +113,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Signed representations and binary subtraction
-
-### Direct explanation
-
-- One's-complement representation forms a negative integer by inverting every bit of its positive fixed-width value. Two's-complement representation inverts every bit and adds 1. These are binary representations of signed integers, not separate number bases.
-- Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.
-
-### Worked example
-
-**8-bit 23 - 9:** 00010111 - 00001001 becomes 00010111 + 11110111 = 1 00001110. Discard the ninth carry: 00001110 is 14.
-
-### Targeted practice and answers
-
-1. Calculate 00110110 - 00010100.
-   **Answer:** 00100010, which is 34.
-2. In 8-bit two's complement, calculate 7 - 12.
-   **Answer:** 00000111 + 11110100 = 11111011, which is -5.
-3. Why is a carry beyond bit 8 discarded?
-   **Answer:** The operation has a fixed 8-bit width; the ninth bit lies outside that representation.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Using 8-bit two's complement, calculate 18 - 27. Show how subtraction is converted to addition.
-
-- **M1** 27 is 00011011 and its two's complement is 11100101
-- **M1** adds 00010010 + 11100101
-- **A1** obtains 11110111
-- **A1** interprets the result as -9
-
-**Strict note:** Do not award the final mark for 247; the result must be interpreted as signed two's complement.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -114,7 +120,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `range`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-005-range.jpg`
 
 1. Sign-and-magnitude uses one sign bit and seven magnitude bits; its range is -127 to +127 and it has two zero patterns.
@@ -140,7 +146,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `twos`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-005-twos.jpg`
 
 1. Write the positive magnitude using exactly 8 bits.

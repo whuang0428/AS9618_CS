@@ -283,6 +283,12 @@ const mistakes = [
   { wrong: "If an eight-bit shift produces eight displayed bits, overflow is impossible.", fix: "Fixed width always displays eight result bits, but an arithmetic left shift overflows when the mathematical signed result is outside -128 to +127." },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -303,7 +309,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Distinguish logical, arithmetic and cyclic right shifts for a fixed-width bit pattern.",
+    prompt: "Compare logical, arithmetic and cyclic right shifts for a fixed-width bit pattern.",
     answer: "A logical right shift inserts zero on the left and discards the outgoing bit. An arithmetic right shift repeats the sign bit. A cyclic right shift rotates the outgoing rightmost bit into the new leftmost position.",
     marking: [
       { mark: "B1", text: "logical right inserts zero on the left" },
@@ -319,7 +325,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "A monitoring system reads status register 10100100. Bit 2 indicates a door-open sensor. Show how an AND mask tests the bit and interpret the result.",
+    prompt: "A monitoring system reads status register 10100100. Bit 2 indicates a door-open sensor. Demonstrate how an AND mask tests the bit and interpret the result.",
     answer: "The monitor uses 10100100 AND 00000100 = 00000100. AND clears unselected positions and preserves bit 2. Because the result is non-zero, the door-open status bit is set.",
     marking: [
       { mark: "B1", text: "chooses AND" },
@@ -506,9 +512,9 @@ function renderExamQuestions() {
       <p>${question.prompt}</p>
       <button type="button" class="ms-toggle" data-answer="ms-${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong> ${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((item) => `<li><strong>${item.mark}</strong> ${item.text}</li>`).join("")}</ul>
+        <p><strong>Answer:</strong> ${question.answer}</p>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

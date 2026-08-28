@@ -46,13 +46,13 @@ expect(!/\b(?:waterfall|iterative|RAD|rapid application)\b/i.test(questionText("
 includesAll(questionText("L142-Q2"), ["waterfall", "iterative", "RAD", "rapid prototyping", "time-boxing"], "L142-Q2");
 
 const arrayRequirement = requirements.get("S10.03");
-expect(arrayRequirement.teachingLessons[0] === 104, "S10.03 must be formally introduced before search and sort at L104");
-expect(arrayRequirement.prerequisites.length === 0, "S10.03 must not depend on the later complete S10.01 type catalogue");
-const l104Markdown = fs.readFileSync(path.join(root, "lessons", "104-linear-search-and-binary-search.md"), "utf8");
-const l104Html = fs.readFileSync(path.join(root, "web", "lesson-104", "index.html"), "utf8");
-includesAll(l104Markdown, ["Array model required by search algorithms", "lower bound", "upper bound", "DECLARE Names : ARRAY[1:4] OF STRING"], "L104 Markdown prerequisite bridge");
-const l104CoreTag = l104Html.match(/<section\b[^>]*id="stage2-completion"[^>]*>/i)?.[0] ?? "";
-expect(/data-delivery-role="CORE"/i.test(l104CoreTag) && /data-classroom-activity="TEACH"/i.test(l104CoreTag), "L104 array prerequisite bridge is not visible CORE/TEACH");
+expect(arrayRequirement.teachingLessons[0] === 115, "S10.03 must be formally introduced with arrays before search and sort at L117");
+expect(arrayRequirement.prerequisites.length === 0, "S10.03 has no additional official prerequisite");
+const l115Markdown = fs.readFileSync(path.join(root, "lessons", "115-one-dimensional-arrays.md"), "utf8");
+const l115Html = fs.readFileSync(path.join(root, "web", "lesson-115", "index.html"), "utf8");
+includesAll(l115Markdown, ["array is a collection", "lower bound", "upper bound", "ARRAY[1:20] OF INTEGER"], "L115 array introduction");
+const l115CoreTag = l115Html.match(/<section\b[^>]*id="stage2-completion"[^>]*>/i)?.[0] ?? "";
+expect(/data-delivery-role="CORE"/i.test(l115CoreTag) && /data-classroom-activity="TEACH"/i.test(l115CoreTag), "L115 array introduction is not visible CORE/TEACH");
 
 const transferRequirement = requirements.get("S4.07");
 expect(transferRequirement.prerequisites.join() === "S4.01", "S4.07 should depend on L041 architecture, not completion of all later register/bus requirements");
@@ -70,13 +70,13 @@ earlyAssessmentMutation.requirements.find(({ id }) => id === "S9.07").assessment
 expect(buildCurriculumSequenceModel(earlyAssessmentMutation).problems.some(({ id }) => id === "AQ100-Q5->S9.07"), "mutation escaped: reintroducing the early Quiz 100 mapping must fail");
 
 const lateArrayMutation = structuredClone(coverageContract);
-lateArrayMutation.requirements.find(({ id }) => id === "S10.03").teachingLessons = [115, 116];
-expect(buildCurriculumSequenceModel(lateArrayMutation).problems.some(({ id }) => id === "S10.03->S10.06"), "mutation escaped: removing the L104 array bridge must fail");
+lateArrayMutation.requirements.find(({ id }) => id === "S10.03").teachingLessons = [118];
+expect(buildCurriculumSequenceModel(lateArrayMutation).problems.some(({ id }) => id === "S10.03->S10.06"), "mutation escaped: moving array terminology after search/sort must fail");
 
 const broadPrerequisiteMutation = structuredClone(coverageContract);
-broadPrerequisiteMutation.requirements.find(({ id }) => id === "S4.07").prerequisites = ["S4.01", "S4.02", "S4.04"];
+broadPrerequisiteMutation.requirements.find(({ id }) => id === "S4.07").prerequisites = ["S4.01", "S4.08"];
 const broadProblems = buildCurriculumSequenceModel(broadPrerequisiteMutation).problems.map(({ id }) => id);
-expect(broadProblems.includes("S4.02->S4.07") && broadProblems.includes("S4.04->S4.07"), "mutation escaped: reintroducing later full-register/full-bus prerequisites must fail");
+expect(broadProblems.includes("S4.08->S4.07"), "mutation escaped: adding a later interrupt prerequisite must fail");
 
 const ledger = JSON.parse(fs.readFileSync(path.join(root, "audits", "repair-batch-3-curriculum-sequence.json"), "utf8"));
 expect(ledger.status === "Resolved" && ledger.records.length === 9, "Batch 3 remediation ledger must resolve exactly nine original blockers");

@@ -1,4 +1,45 @@
-# Lesson 075: Open source, proprietary software, and ownership trade-offs
+# Lesson 075: Shareware and commercial licences
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Shareware and commercial licences
+
+### Direct explanation
+
+- Shareware is distributed for trial or limited use, with payment commonly required for continued, full or unrestricted use. A commercial/proprietary licence grants defined use while normally restricting copying, modification and redistribution.
+- Licence choice must fit the scenario: budget, support, source modification, redistribution, trial period, compatibility and legal obligations are relevant. 'Free to download' does not mean public domain.
+
+### Worked example
+
+**Trial accounting package:** A company tests a limited shareware edition for 30 days, then buys commercial licences for continued use, vendor support and full reporting features.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What commonly changes after a shareware trial?
+   **Answer:** Payment is required or features/time become restricted.
+2. Can a buyer normally redistribute unlimited copies of commercial software?
+   **Answer:** No, unless the licence explicitly permits it.
+3. Give one reason to choose a commercial licence.
+   **Answer:** Vendor support, warranty, specialist features or compatibility, developed for the scenario.
+
+### Exam-style question and MS
+
+**Question (4 marks):** A school needs supported examination software but cannot modify or redistribute it. Justify a commercial licence and state one restriction.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| vendor support/updates appropriate to examination use | Do not award 'commercial is better' without a scenario-linked reason. | 1 |
+| reliability/compatibility/accountability developed |  | 1 |
+| use limited to licensed users/devices |  | 1 |
+| copying/modification/redistribution restricted |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +84,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Open-source licences allow source inspection and specified rights to modify or redistribute, subject to licence conditions; proprietary licences normally restrict those rights. Either model may involve cost and support, and both remain protected by copyright.
 
-
-
 ## Student Task
 Students compare two licence models using permissions, restrictions, support and total cost, then recommend one for a stated school scenario.
 
@@ -72,41 +111,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Shareware and commercial licences
-
-### Direct explanation
-
-- Shareware is distributed for trial or limited use, with payment commonly required for continued, full or unrestricted use. A commercial/proprietary licence grants defined use while normally restricting copying, modification and redistribution.
-- Licence choice must fit the scenario: budget, support, source modification, redistribution, trial period, compatibility and legal obligations are relevant. 'Free to download' does not mean public domain.
-
-### Worked example
-
-**Trial accounting package:** A company tests a limited shareware edition for 30 days, then buys commercial licences for continued use, vendor support and full reporting features.
-
-### Targeted practice and answers
-
-1. What commonly changes after a shareware trial?
-   **Answer:** Payment is required or features/time become restricted.
-2. Can a buyer normally redistribute unlimited copies of commercial software?
-   **Answer:** No, unless the licence explicitly permits it.
-3. Give one reason to choose a commercial licence.
-   **Answer:** Vendor support, warranty, specialist features or compatibility, developed for the scenario.
-
-### Exam-style question and MS
-
-**Question (4 marks):** A school needs supported examination software but cannot modify or redistribute it. Justify a commercial licence and state one restriction.
-
-- **B1** vendor support/updates appropriate to examination use
-- **B1** reliability/compatibility/accountability developed
-- **B1** use limited to licensed users/devices
-- **B1** copying/modification/redistribution restricted
-
-**Strict note:** Do not award 'commercial is better' without a scenario-linked reason.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -114,7 +118,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `advisor`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-advisor.jpg`
 
 1. Interactive software choice advisor
@@ -125,7 +129,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `method`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-method.jpg`
 
 1. 1. Need Identify the user's priority: cost, support, control, reliability, security or compatibility.
@@ -139,7 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `open-source`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-open-source.jpg`
 
 1. Source code available Users can inspect the program code rather than only using compiled software.
@@ -151,7 +155,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `ownership`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-ownership.jpg`
 
 1. Copyright remains Open-source software is still protected; the licence grants permissions.
@@ -163,7 +167,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `proprietary`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-proprietary.jpg`
 
 1. Closed source Source code is usually not available to users.
@@ -175,7 +179,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tradeoffs`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-tradeoffs.jpg`
 
 1. Open source may offer

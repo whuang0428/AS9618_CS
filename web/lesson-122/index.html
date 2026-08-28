@@ -6,7 +6,7 @@
     <title>AS9618 Lesson 122 | Stacks and queues as abstract data types</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -44,11 +44,14 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 122 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>An abstract data type is defined by what you can do with it, not by the box it lives in.</h2>
@@ -82,7 +85,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 can ask for definitions, operation traces, pointer updates, or checks for full and empty structures.</p>
@@ -93,7 +96,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Who leaves first?</h2>
@@ -108,7 +111,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the item that has waited the longest.</div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Concept</p>
             <h2>ADT means behaviour first, implementation second</h2>
@@ -122,23 +125,7 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">An ADT is data together with permitted operations</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-122-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining An ADT is data together with permitted operations through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">An ADT is data together with permitted operations: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> An abstract data type is a collection of data and a set of operations on those data.</li><li><strong>Reason:</strong> Stack, queue and linked list are examples whose permitted operations define their behaviour.</li><li><strong>Result:</strong> The implementation may use arrays and indexes without changing the ADT's observable rules.</li></ol>
-
-            <p><strong>Analogy:</strong> A service counter defines allowed requests without exposing the storeroom layout.</p>
-            <p><strong>Boundary:</strong> Using an array does not automatically make a structure a stack or queue.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end concept -->
-
-        <section class="panel" id="stack" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stack">
+        <section class="panel" id="stack" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Stack</p>
             <h2>Push adds to the top; pop removes from the top</h2>
@@ -150,23 +137,7 @@ POP returns C</code></pre>
           <div class="callout">A stack behaves like a pile of plates: the newest item blocks the older items until it is removed.</div>
         </section>
 
-        <!-- stage10-explanation:start stack -->
-        <section class="panel explanation-panel" id="explanation-stack" data-explains="stack" data-explanation-kind="process" aria-labelledby="explanation-stack-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stack">
-          <h2 class="explanation-sr-only" id="explanation-stack-title">Why one open end creates LIFO</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-122-stack.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why one open end creates LIFO through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why one open end creates LIFO: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Push adds the new item at the top position.</li><li><strong>Reason:</strong> Only the current top item is available to pop.</li><li><strong>Result:</strong> The most recently pushed item therefore leaves first.</li></ol>
-
-            <p><strong>Analogy:</strong> Only the top plate of a pile can be removed safely.</p>
-            <p><strong>Boundary:</strong> Accessing an older item requires removing items above it first.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end stack -->
-
-        <section class="panel" id="queue" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="queue">
+        <section class="panel" id="queue" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Queue</p>
             <h2>Enqueue adds at the rear; dequeue removes from the front</h2>
@@ -178,23 +149,7 @@ DEQUEUE returns A</code></pre>
           <div class="callout">A queue behaves like a waiting line: the earliest item is served first.</div>
         </section>
 
-        <!-- stage10-explanation:start queue -->
-        <section class="panel explanation-panel" id="explanation-queue" data-explains="queue" data-explanation-kind="process" aria-labelledby="explanation-queue-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="queue">
-          <h2 class="explanation-sr-only" id="explanation-queue-title">Why two ends create FIFO</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-122-queue.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why two ends create FIFO through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why two ends create FIFO: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Enqueue adds a new item at the rear.</li><li><strong>Reason:</strong> Dequeue removes the waiting item at the front.</li><li><strong>Result:</strong> Earlier arrivals remain ahead of later arrivals.</li></ol>
-
-            <p><strong>Analogy:</strong> A single orderly waiting line serves the earliest arrival first.</p>
-            <p><strong>Boundary:</strong> A priority queue follows a different removal rule and is not ordinary FIFO.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end queue -->
-
-        <section class="panel" id="operations" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="operations">
+        <section class="panel" id="operations" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Operations</p>
             <h2>Use the operation name that matches the ADT</h2>
@@ -208,7 +163,7 @@ DEQUEUE returns A</code></pre>
         </section>
 
         <!-- stage10-explanation:start operations -->
-        <section class="panel explanation-panel" id="explanation-operations" data-explains="operations" data-explanation-kind="comparison" aria-labelledby="explanation-operations-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="operations">
+        <section class="panel explanation-panel" id="explanation-operations" data-explains="operations" data-explanation-kind="comparison" aria-labelledby="explanation-operations-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <h2 class="explanation-sr-only" id="explanation-operations-title">Why operation names preserve meaning</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-122-operations.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why operation names preserve meaning through a cause-and-effect diagram." />
@@ -222,8 +177,7 @@ DEQUEUE returns A</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end operations -->
-
-        <section class="panel" id="errors" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="errors">
+        <section class="panel" id="errors" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Overflow and underflow</p>
             <h2>Check before doing the operation</h2>
@@ -249,7 +203,7 @@ ENDIF</code></pre>
         </section>
 
         <!-- stage10-explanation:start errors -->
-        <section class="panel explanation-panel" id="explanation-errors" data-explains="errors" data-explanation-kind="tradeoff" aria-labelledby="explanation-errors-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="errors">
+        <section class="panel explanation-panel" id="explanation-errors" data-explains="errors" data-explanation-kind="tradeoff" aria-labelledby="explanation-errors-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <h2 class="explanation-sr-only" id="explanation-errors-title">Why boundary checks come first</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-122-errors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why boundary checks come first through a cause-and-effect diagram." />
@@ -263,8 +217,7 @@ ENDIF</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end errors -->
-
-        <section class="panel" id="implementation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="implementation">
+        <section class="panel" id="implementation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Implementation note</p>
             <h2>An array can store the items, but the ADT rule controls access</h2>
@@ -277,23 +230,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <!-- stage10-explanation:start implementation -->
-        <section class="panel explanation-panel" id="explanation-implementation" data-explains="implementation" data-explanation-kind="mechanism" aria-labelledby="explanation-implementation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="implementation">
-          <h2 class="explanation-sr-only" id="explanation-implementation-title">Implement stack, queue and linked list using arrays</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-122-implementation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Implement stack, queue and linked list using arrays through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Implement stack, queue and linked list using arrays: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.</li><li><strong>Reason:</strong> Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.</li><li><strong>Result:</strong> Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation.</li></ol>
-
-            <p><strong>Analogy:</strong> Markers turn a row of storage boxes into a controlled service structure.</p>
-            <p><strong>Boundary:</strong> Incorrect wrap-around or update order can overwrite live queue data.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end implementation -->
-
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Use Cambridge-style operations in exam answers</h2>
@@ -317,7 +254,7 @@ String item = stack.pop();</code></pre>
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Why pseudocode must expose state change</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-122-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why pseudocode must expose state change through a cause-and-effect diagram." />
@@ -331,9 +268,7 @@ String item = stack.pop();</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-
-
-        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
+        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Interactive simulator</p>
             <h2>Compare stack and queue behaviour</h2>
@@ -361,7 +296,7 @@ String item = stack.pop();</code></pre>
           <div class="trace-output" id="simResult">Capacity is 4. Try the same items in both structures.</div>
         </section>
 
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Interactive trace</p>
             <h2>Step through a mixed operation sequence</h2>
@@ -373,7 +308,7 @@ String item = stack.pop();</code></pre>
           <div class="trace-output" id="traceOutput">Ready: PUSH A, PUSH B, POP, PUSH C, POP.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>ADT traces and checks</h2>
@@ -387,7 +322,7 @@ String item = stack.pop();</code></pre>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Ten quick ADT checks</h2>
@@ -396,7 +331,7 @@ String item = stack.pop();</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common stack and queue errors</h2>
@@ -404,7 +339,7 @@ String item = stack.pop();</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -413,67 +348,7 @@ String item = stack.pop();</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Abstract data types and array-based operations</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.</p>
-            <p>A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.</p>
-            <p>All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.</p>
-            <p>Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node's successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Add, edit and delete without changing the ADT rule</h3>
-            <p>Push D adds D at the stack top and pop deletes the current top. Enqueue D adds at the queue rear and dequeue deletes from the front. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Abstract data types and array-based operations: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Give the official definition of an ADT.</p>
-              <details><summary>Show answer</summary><p>A collection of data and a set of operations on those data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How are stack and queue removal rules different?</p>
-              <details><summary>Show answer</summary><p>Stack removes the most recently added item (LIFO); queue removes the earliest added item (FIFO).</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which state is needed for an array-based linked list?</p>
-              <details><summary>Show answer</summary><p>Data and Next storage, a Start index and normally a free-list index.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Must candidates write pseudocode for stack, queue and linked-list operations?</p>
-              <details><summary>Show answer</summary><p>No. They must be able to add, edit and delete data and describe array implementations, but operation pseudocode is not required by the syllabus.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>For array implementations of a stack, queue and linked list, describe how data is added, edited and deleted while preserving each ADT's rule.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> stack push/pop uses the top position and stack pointer</li>
-                <li><strong>B1</strong> queue enqueue/dequeue uses rear and front in FIFO order</li>
-                <li><strong>B1</strong> linked-list add obtains a free index and changes links</li>
-                <li><strong>B1</strong> edit changes a stored data field without corrupting order or links</li>
-                <li><strong>B1</strong> linked-list delete bypasses the node and returns its index to the free list</li>
-                <li><strong>B1</strong> distinguishes conceptual operations from the non-required task of writing their pseudocode</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-122">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Stack and queue checklist</h2>

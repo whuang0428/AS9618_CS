@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 086 | SQL joins using related tables</title>
+    <title>AS9618 Lesson 086 | Two-table INNER JOIN queries</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>SQL joins using related tables</h1>
+        <h1>Two-table INNER JOIN queries</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -41,11 +41,14 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 086 | 45 minutes | Paper 1 Section 8 | informal questioning</p>
             <h2>A join is the database version of introducing two people who already have the same ID card.</h2>
@@ -67,7 +70,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Cambridge-style mark schemes often credit the correct join condition separately from SELECT and FROM.</p>
@@ -78,7 +81,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which condition correctly links students to their loans?</h2>
@@ -95,7 +98,7 @@
           </div>
         </section>
 
-        <section class="panel" id="relationships" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="relationships">
+        <section class="panel" id="relationships" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Related tables use primary keys and foreign keys</h2>
@@ -124,7 +127,7 @@
         </section>
 
         <!-- stage10-explanation:start relationships -->
-        <section class="panel explanation-panel" id="explanation-relationships" data-explains="relationships" data-explanation-kind="mechanism" aria-labelledby="explanation-relationships-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="relationships">
+        <section class="panel explanation-panel" id="explanation-relationships" data-explains="relationships" data-explanation-kind="mechanism" aria-labelledby="explanation-relationships-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <h2 class="explanation-sr-only" id="explanation-relationships-title">Related tables use primary keys and foreign keys</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-relationships.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Related tables use primary keys and foreign keys with a structured visual model." />
@@ -136,8 +139,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end relationships -->
-
-        <section class="panel" id="join" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="join">
+        <section class="panel" id="join" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Join conditions say which fields match</h2>
@@ -154,21 +156,7 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start join -->
-        <section class="panel explanation-panel" id="explanation-join" data-explains="join" data-explanation-kind="mechanism" aria-labelledby="explanation-join-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="join">
-          <h2 class="explanation-sr-only" id="explanation-join-title">Two-table INNER JOIN with ON</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-join.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two-table INNER JOIN with ON with a structured visual model." />
-            <figcaption class="explanation-sr-only">Two-table INNER JOIN with ON: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> AS DML questions use at most two tables.</li><li><strong>Lesson fact:</strong> SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID uses an explicit two-table join.</li><li><strong>Lesson fact:</strong> ON states the matching key relationship between the tables.</li><li><strong>Lesson fact:</strong> WHERE adds a separate row filter after the join; it does not replace the required INNER JOIN syntax.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end join -->
-
-        <section class="panel" id="aliases" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="aliases">
+        <section class="panel" id="aliases" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Table-qualified names and aliases prevent ambiguity</h2>
@@ -182,7 +170,7 @@
         </section>
 
         <!-- stage10-explanation:start aliases -->
-        <section class="panel explanation-panel" id="explanation-aliases" data-explains="aliases" data-explanation-kind="mechanism" aria-labelledby="explanation-aliases-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="aliases">
+        <section class="panel explanation-panel" id="explanation-aliases" data-explains="aliases" data-explanation-kind="mechanism" aria-labelledby="explanation-aliases-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <h2 class="explanation-sr-only" id="explanation-aliases-title">Table-qualified names and aliases prevent ambiguity</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-aliases.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Table-qualified names and aliases prevent ambiguity with a structured visual model." />
@@ -194,8 +182,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end aliases -->
-
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Trace joined rows from small tables</h2>
@@ -218,7 +205,7 @@
         </section>
 
 
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Interactive join builder</p>
             <h2>Choose the join path for the request</h2>
@@ -240,7 +227,7 @@
           <div class="feedback" id="builderReason">The output will show which relationship path is needed.</div>
         </section>
 
-        <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="runner">
+        <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Interactive result runner</p>
             <h2>Run preset joins against the sample tables</h2>
@@ -261,7 +248,7 @@
           <div class="result-table" id="queryResult">Choose a query to see the joined result.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Build the relationship path first</h2>
@@ -275,7 +262,7 @@
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short quiz and core checks</h2>
@@ -284,7 +271,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Repair weak join logic</h2>
@@ -292,7 +279,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
@@ -301,59 +288,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Two-table INNER JOIN queries</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.</p>
-            <p>For Student(StudentID, StudentName) and Loan(StudentID, DueDate), SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID returns names only where matching rows exist. Add WHERE for a further row condition, not for the join relationship itself.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: List overdue borrowers</h3>
-            <p>SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate &lt; '2027-05-01'; uses two tables, one explicit join condition and one separate filter.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Two-table INNER JOIN queries: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which clause states how two joined tables match?</p>
-              <details><summary>Show answer</summary><p>ON.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How many tables are required at most in the AS syllabus query?</p>
-              <details><summary>Show answer</summary><p>Two.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why qualify Student.StudentID and Loan.StudentID?</p>
-              <details><summary>Show answer</summary><p>To identify which table supplies each otherwise identical field name.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Write an INNER JOIN query listing DepartmentName and EmployeeName from Department and Employee, matching their DepartmentID fields.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> SELECT includes DepartmentName and EmployeeName</li>
-                <li><strong>B1</strong> FROM Department</li>
-                <li><strong>B1</strong> INNER JOIN Employee</li>
-                <li><strong>B1</strong> ON Department.DepartmentID = Employee.DepartmentID</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Join checklist</h2>

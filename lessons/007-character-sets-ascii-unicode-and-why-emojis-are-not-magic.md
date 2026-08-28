@@ -1,4 +1,47 @@
-# Lesson 007: Character sets: ASCII, Unicode and emoji representation
+# Lesson 007: Character sets and internal binary character data
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Character sets and internal binary character data
+
+### Direct explanation
+
+- A character set defines a collection of characters and assigns a numeric character code to each one. The code is stored internally in binary; the bit pattern is meaningful only when software interprets it using the agreed character set.
+- Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols. Candidates are not expected to memorise particular character codes; a question must provide any code value needed for a conversion.
+
+### Worked example
+
+**Choose a character set for worldwide text:** A messaging system containing English, Chinese and Arabic text needs Unicode because its character repertoire is much wider than ASCII or extended ASCII. The chosen Unicode encoding stores the character codes as binary data.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What does a character set assign to each character?
+   **Answer:** A numeric character code that can be stored in binary.
+2. Compare standard ASCII from extended ASCII.
+   **Answer:** Standard ASCII uses 7 bits/128 codes; extended ASCII uses 8 bits/256 codes.
+3. Why is Unicode suitable for multilingual text?
+   **Answer:** It defines codes for characters from far more languages and symbol systems.
+4. Must candidates memorise particular ASCII codes?
+   **Answer:** No; any required code value should be provided.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Explain how the character 'A' is represented internally and why Unicode is preferred to ASCII for a multilingual website.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| character set assigns A a numeric code | Do not accept that changing a font changes the stored character code. | 1 |
+| numeric code is stored as a binary bit pattern |  | 1 |
+| Unicode represents a much wider range of characters/languages |  | 1 |
+| applies the wider repertoire to the multilingual website |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +86,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Unicode provides code points for a much larger repertoire of scripts and symbols, whereas ASCII represents only a small character set. Credit the wider character repertoire; do not claim that every Unicode character always uses the same number of bits.
 
-
-
 ## Student Task
 Students compare the characters available in ASCII with a small set of multilingual and emoji examples, then explain why an agreed encoding is needed to interpret stored bit patterns.
 
@@ -71,43 +112,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
-
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Character sets and internal binary character data
-
-### Direct explanation
-
-- A character set defines a collection of characters and assigns a numeric character code to each one. The code is stored internally in binary; the bit pattern is meaningful only when software interprets it using the agreed character set.
-- Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols. Candidates are not expected to memorise particular character codes; a question must provide any code value needed for a conversion.
-
-### Worked example
-
-**Choose a character set for worldwide text:** A messaging system containing English, Chinese and Arabic text needs Unicode because its character repertoire is much wider than ASCII or extended ASCII. The chosen Unicode encoding stores the character codes as binary data.
-
-### Targeted practice and answers
-
-1. What does a character set assign to each character?
-   **Answer:** A numeric character code that can be stored in binary.
-2. Distinguish standard ASCII from extended ASCII.
-   **Answer:** Standard ASCII uses 7 bits/128 codes; extended ASCII uses 8 bits/256 codes.
-3. Why is Unicode suitable for multilingual text?
-   **Answer:** It defines codes for characters from far more languages and symbol systems.
-4. Must candidates memorise particular ASCII codes?
-   **Answer:** No; any required code value should be provided.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Explain how the character 'A' is represented internally and why Unicode is preferred to ASCII for a multilingual website.
-
-- **B1** character set assigns A a numeric code
-- **B1** numeric code is stored as a binary bit pattern
-- **B1** Unicode represents a much wider range of characters/languages
-- **B1** applies the wider repertoire to the multilingual website
-
-**Strict note:** Do not accept that changing a font changes the stored character code.
-<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
@@ -136,7 +140,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-007-concept.jpg`
 
 1. Character
@@ -151,7 +155,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `encoding`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-007-encoding.jpg`
 
 1. Character set
@@ -166,7 +170,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `unicode`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-007-unicode.jpg`
 
 1. Unicode is designed to represent characters from many languages and symbol systems.

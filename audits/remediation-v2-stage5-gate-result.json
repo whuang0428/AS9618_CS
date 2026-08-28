@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "remediation": "v2",
+  "stage": 5,
+  "generatedDate": "2026-08-28",
+  "implementationStatus": "Complete",
+  "approvalStatus": "AwaitingUserApproval",
+  "currentReleaseDecision": "BLOCKED",
+  "technicalControls": {
+    "status": "Ready",
+    "failures": 0,
+    "lessons": [
+      49,
+      107,
+      121,
+      133
+    ]
+  },
+  "criticalVisuals": {
+    "expected": 8,
+    "reviewed": 8,
+    "pending": 0,
+    "disagreements": 0,
+    "keys": [
+      "049/concept",
+      "107/pseudocode",
+      "121/parse",
+      "121/pseudocode",
+      "121/types",
+      "133/case",
+      "133/concat",
+      "133/java"
+    ]
+  },
+  "targetedQuestionReview": {
+    "changed": 17,
+    "stableIds": 17,
+    "stableMarks": 17,
+    "trials": 68,
+    "failedTrials": 0
+  },
+  "browser": {
+    "desktopLessons": 4,
+    "mobileRecords": 4,
+    "loadedCriticalImages": 8,
+    "consoleWarningsOrErrors": 0
+  },
+  "coverageVisualIntegrity": {
+    "requiredEvidenceRows": 79,
+    "uniqueCorePanels": 74,
+    "relocatedPanels": 28,
+    "semanticGate": "Ready"
+  },
+  "negativeControls": [
+    "remove bus width or substitute word length in the official performance list",
+    "pass MID STRING directly to LCASE/UCASE",
+    "remove supplied SPLIT/STRING_TO_INTEGER signatures or index convention",
+    "call LEFT without a complete supplied signature",
+    "rewrite the field identifier Name as the command word Identify",
+    "use an Optional visual as required CORE evidence or place a required visual before reviewed first use"
+  ],
+  "resolvedStage5Issues": [
+    "RV2-AUDIT-003",
+    "RV2-CONT-001",
+    "RV2-PSEUDO-001",
+    "RV2-PSEUDO-002"
+  ],
+  "openP0P1": [],
+  "unverified": [
+    "Stage 6 full 783-image two-pass census",
+    "Stage 6 969-visual-object and 306-browser-record QA",
+    "Stage 7 independent final/reproducibility gate"
+  ]
+}

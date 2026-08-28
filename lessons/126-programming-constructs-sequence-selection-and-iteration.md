@@ -1,4 +1,45 @@
-# Lesson 126: Programming constructs: sequence, selection, and iteration
+# Lesson 126: Translate descriptions into Cambridge pseudocode
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Translate descriptions into Cambridge pseudocode
+
+### Direct explanation
+
+- To translate a flowchart, follow arrows from Start, convert input/output symbols directly, convert diamonds into IF/CASE or loop conditions, and preserve every branch and reconnection. To translate structured English, identify its controlled verbs and indentation before selecting Cambridge constructs.
+- The answer must be Cambridge pseudocode, not Java: use assignment arrow, THEN/ENDIF, FOR...NEXT, WHILE...ENDWHILE or REPEAT...UNTIL as appropriate. Trace both versions with the same data to confirm equivalence.
+
+### Worked example
+
+**Flowchart sum loop:** A flowchart sets Total to 0 and repeats input/add until Value = -1. Pseudocode uses Total <- 0; REPEAT; INPUT Value; IF Value <> -1 THEN Total <- Total + Value; ENDIF; UNTIL Value = -1; OUTPUT Total.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. How is a flowchart decision normally translated?
+   **Answer:** As a selection or loop condition, depending on where arrows reconnect.
+2. What check confirms a translation is equivalent?
+   **Answer:** Dry-run both with the same inputs and compare outputs/control path.
+3. Should Java braces appear in a Cambridge pseudocode answer?
+   **Answer:** No; use Cambridge keywords and terminators.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Translate this structured-English design into Cambridge pseudocode: input five temperatures; count those below zero; output the count.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| initialises count to 0 | Do not accept Java syntax such as int, braces or System.out as Cambridge pseudocode. | 1 |
+| uses a five-iteration count-controlled loop with INPUT |  | 1 |
+| tests Temperature < 0 and increments count |  | 1 |
+| outputs count after the loop with coherent Cambridge syntax |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -46,7 +87,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit correct control flow, meaningful identifiers, correct parameter or variable use, and test data that actually exercises the construct.
 
-
 ## Student Task
 Students write Cambridge pseudocode first, then produce a Java support version. They circle every place where Java syntax must not leak into the exam answer.
 
@@ -81,7 +121,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `constructs`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-constructs.jpg`
 
 1. Sequence answers what happens next and depends on statement order.
@@ -93,7 +133,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `iteration`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-iteration.jpg`
 
 1. A FOR loop uses a counter range and checks whether the next iteration is within its bounds.
@@ -105,7 +145,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-java.jpg`
 
 1. Cambridge pseudocode uses IF, THEN, ELSE and ENDIF for a two-way selection.
@@ -116,7 +156,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `selection`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-selection.jpg`
 
 1. Use IF for a Boolean condition or range and close it with ENDIF.
@@ -127,7 +167,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sequence`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-sequence.jpg`
 
 1. Sequence
@@ -139,11 +179,22 @@ Correction prompt: "State the correct term, then explain the relevant process or
 7. Wrong order
 8. A sequence is simple, but not optional. Using a value before it has been input is algorithmic optimism, not a method.
 
+### Translate a flowchart or structured English into pseudocode
+
+- **Explains:** `standard`
+- **Explanation type:** process
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-standard.jpg`
+
+1. Follow a flowchart from Start: translate input/output symbols, decisions, branches and loop-back arrows without losing a path.
+2. From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.
+3. Dry-run the source description and pseudocode with the same data; matching paths and outputs confirm equivalence.
+
 ### Run a small loop by hand
 
 - **Explains:** `tracer`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-tracer.jpg`
 
 1. Interactive trace

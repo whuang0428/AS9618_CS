@@ -169,11 +169,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Distinguish between data and information, using an example from a school attendance system.",
+    prompt: "Compare data and information, using an example from a school attendance system.",
     answer: "Data is raw facts or values, such as StudentID, date and attendance mark for each lesson. Information is processed data that has meaning, such as the percentage of students absent on Monday or a list of students with repeated absences.",
     marking: [
       { mark: "B1", text: "data described as raw facts/values" },
@@ -405,11 +411,9 @@ function renderExamQuestions() {
           <p>${question.prompt}</p>
           <button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button>
           <div class="ms-panel" id="ms${index}">
-            <p><strong>Indicative answer:</strong> ${question.answer}</p>
-            <h4>Cambridge-style mark scheme</h4>
-            <ul>
-              ${question.marking.map((mark) => `<li><strong>${mark.mark}:</strong> ${mark.text}</li>`).join("")}
-            </ul>
+            <p><strong>Answer:</strong> ${question.answer}</p>
+            <h4>Mark scheme</h4>
+            ${renderStudentMarkPoints(question)}
           </div>
         </article>
       `

@@ -71,11 +71,17 @@ const practice = [
   { id: "p10", prompt: "A startup rents remote servers instead of buying local hardware. Which service idea is this?", accepted: ["cloud", "cloud infrastructure", "iaas", "infrastructure as a service"], answer: "Cloud infrastructure" },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Distinguish between the internet and an intranet.",
+    prompt: "Compare the internet and an intranet.",
     answer: "The internet is a global public network of interconnected networks. An intranet is a private network used within an organisation and restricted to authorised internal users. Both may use web technologies, but the access scope and control are different.",
     marking: [
       { mark: "B1", text: "internet is global/public/interconnected networks" },
@@ -145,7 +151,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "A regulated organisation is choosing between a public cloud and a private cloud for confidential documents. Compare the two and recommend one.",
+    prompt: "A regulated organisation is choosing between a public cloud and a private cloud for confidential documents. Compare the two and Suggest one.",
     answer: "A public cloud uses provider infrastructure shared between customers. It can scale quickly and reduce the organisation's need to buy and maintain hardware, but gives less direct control and creates provider, privacy and data-location concerns. A private cloud is dedicated to one organisation and can give greater control over configuration, access and data location, but costs more to operate and requires more administration. A private cloud may therefore suit the confidential regulated documents when control requirements outweigh cost, although either choice still needs access controls and backup.",
     marking: [
       { mark: "B1", text: "public cloud uses shared provider infrastructure" },
@@ -279,9 +285,9 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
+          <h4>Mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
-          <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

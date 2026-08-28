@@ -142,6 +142,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -203,7 +209,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "A browser keeps a history of pages so the Back button returns to the most recently visited previous page. Name a suitable ADT and explain the operations used.",
+    prompt: "A browser keeps a history of pages so the Back button returns to the most recently visited previous page. Identify a suitable ADT and explain the operations used.",
     answer: "Use a stack. When a page is visited, push it onto the stack. When Back is selected, pop the most recent page. This works because a stack is LIFO.",
     marking: [
       { mark: "B1", text: "identifies stack as the suitable ADT" },
@@ -408,7 +414,7 @@ function renderExam() {
           <p><strong>Answer:</strong></p>
           <pre><code>${escapeHtml(question.answer)}</code></pre>
           <p><strong>Mark scheme:</strong></p>
-          <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `)

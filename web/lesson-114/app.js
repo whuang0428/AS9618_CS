@@ -106,11 +106,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Declare variables for Total, Count and Average. Then initialise Total and Count to zero using Cambridge-style pseudocode.",
+    prompt: "Write declarations for variables for Total, Count and Average. Then initialise Total and Count to zero using Cambridge-style pseudocode.",
     answer: "DECLARE Total : INTEGER\nDECLARE Count : INTEGER\nDECLARE Average : REAL\n\nTotal <- 0\nCount <- 0",
     marking: [
       { mark: "B1", text: "declares Total with a suitable numeric type" },
@@ -148,7 +154,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Trace the following pseudocode: X <- 4, Y <- 9, X <- X + Y, Y <- X - Y. State final X and Y.",
+    prompt: "Complete a trace table for the following pseudocode: X <- 4, Y <- 9, X <- X + Y, Y <- X - Y. State final X and Y.",
     answer: "After X <- 4, X = 4. After Y <- 9, Y = 9. After X <- X + Y, X = 13 and Y = 9. After Y <- X - Y, Y = 4. Final X = 13 and Y = 4.",
     marking: [
       { mark: "B1", text: "sets X to 4" },
@@ -365,10 +371,10 @@ function renderExam() {
       <p>${escapeHtml(question.prompt)}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${escapeHtml(question.answer)}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((line) => `<li><strong>${escapeHtml(line.mark)}</strong> ${escapeHtml(line.text)}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

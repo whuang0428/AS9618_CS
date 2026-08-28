@@ -1,4 +1,53 @@
-# Lesson 044: System buses: address, data, and control
+# Lesson 044: Interrupt causes, detection and handling
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Interrupt causes, detection and handling
+
+### Direct explanation
+
+- An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.
+- For most maskable interrupts, the processor completes the current instruction and checks for pending enabled interrupts at the end of that fetch-execute cycle, before beginning the next instruction. Detection is therefore not the same as stopping halfway through an ordinary instruction.
+- If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.
+- Interrupts are detected at the specified point in the fetch-execute cycle before the processor saves state and enters the ISR.
+
+### Worked example
+
+**Handle a keyboard interrupt:** A key press raises an interrupt while the CPU is executing another program. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and continues the original program.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Give two possible causes or applications of interrupts.
+   **Answer:** For example an I/O device request, timer/scheduler event, hardware fault or software exception.
+2. When is a normal maskable interrupt detected and accepted?
+   **Answer:** After the current instruction completes, at the end of the fetch-execute cycle before the next instruction begins, subject to enabled/priority checks.
+3. What is an ISR?
+   **Answer:** An interrupt service routine: program code that handles a particular interrupt.
+4. Why must processor state be saved and restored?
+   **Answer:** So the interrupted program can resume at the correct instruction with its earlier register and status values.
+5. List the handling sequence after detection.
+   **Answer:** Check/accept, save state, locate and execute ISR, restore state, resume program.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Describe one interrupt cause or application, state when it is detected in the fetch-execute cycle, and trace handling through the ISR to resumption.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| valid cause/application such as I/O, timer, fault or exception | Do not accept that every interrupt stops an instruction halfway through, that the ISR is the signal, or that the whole interrupted program restarts. | 1 |
+| current instruction completes and interrupt is detected/checked at the cycle boundary |  | 1 |
+| priority/enabled status is checked |  | 1 |
+| PC/register/status state is saved |  | 1 |
+| correct ISR is located and executed |  | 1 |
+| state is restored and the interrupted program resumes |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +92,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Award marks for correct sequence: address from PC to MAR, instruction/data via memory and MDR, instruction held in CIR, PC updated as appropriate.
 
-
-
 ## Student Task
 Students annotate a CPU diagram with arrows for one instruction, then explain the path in four precise sentences.
 
@@ -72,48 +119,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** System buses and peripheral ports
-
-### Direct explanation
-
-- The address bus carries the address of the memory or I/O location being accessed and is normally directed from the processor. The data bus carries data and instructions in either direction. The control bus carries control and timing signals in both directions overall, including read/write signals from the CPU and interrupt or status signals toward it.
-- A memory read uses all three buses: the CPU places the required address on the address bus, sends a read signal on the control bus, and memory returns the requested data or instruction on the data bus. A bus transfers signals; it does not permanently store them.
-- USB is a general serial interface carrying digital data and often power for peripherals. HDMI carries digital video and audio. VGA carries analogue video and does not carry audio in the standard VGA signal. Port choice must match the peripheral and signal rather than rely on a claim that one connector is always best.
-
-### Worked example
-
-**Read memory, then connect a display:** To read address 240, the CPU puts 240 on the address bus and read on the control bus; memory returns the contents on the data bus. To connect the computer to a modern TV with one digital audio/video cable, choose HDMI. A keyboard or removable drive commonly uses USB, while a legacy analogue display may use VGA.
-
-### Targeted practice and answers
-
-1. Which bus carries an address, which carries a value, and which carries read/write signals?
-   **Answer:** Address bus; data bus; control bus.
-2. Trace a memory read using the three buses.
-   **Answer:** Address on address bus, read signal on control bus, requested data/instruction from memory on data bus.
-3. Which port commonly carries both digital video and audio?
-   **Answer:** HDMI.
-4. Which named port carries analogue video?
-   **Answer:** VGA.
-5. Give one USB use or facility.
-   **Answer:** A digital peripheral connection such as keyboard/storage, often also supplying electrical power.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Describe a memory read using the address, data and control buses, then choose USB, HDMI or VGA for one stated peripheral connection.
-
-- **B1** address bus carries the required memory/I/O address
-- **B1** control bus carries the read signal
-- **B1** data bus returns the requested data/instruction
-- **B1** USB matched to a suitable digital peripheral/data/power use
-- **B1** HDMI matched to digital video and audio
-- **B1** VGA matched to analogue video without standard audio
-
-**Strict note:** Do not swap the address and data buses or claim that VGA normally carries digital audio.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -121,7 +126,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-044-concept.jpg`
 
 1. Communication pathway
@@ -137,7 +142,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `read-write`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-044-read-write.jpg`
 
 1. Memory read
@@ -157,7 +162,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `three-buses`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-044-three-buses.jpg`
 
 1. The address bus carries the address of the location being accessed and is normally directed from the CPU.

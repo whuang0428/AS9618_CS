@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 118 | Records and composite data</title>
+    <title>AS9618 Lesson 118 | Write linear-search and bubble-sort algorithms</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Records and composite data</h1>
+        <h1>Write linear-search and bubble-sort algorithms</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,7 +47,100 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Write linear-search and bubble-sort algorithms</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Linear search examines array elements in index order until the target is found or all populated elements have been checked. A complete algorithm initialises its index and found state, keeps every access within the declared bounds, compares the current element and advances only when another element remains to be checked.</p>
+            <p>Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.</p>
+            <p>A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Two complete array algorithms</h3>
+            <p>A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count. A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start declare -->
+        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+          <h2 class="explanation-sr-only" id="explanation-declare-title">Define a record, then save and read named fields</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Define a record, then save and read named fields with a structured visual model." />
+            <figcaption class="explanation-sr-only">Define a record, then save and read named fields: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A record groups related named fields of different data types under one identifier.</li><li><strong>Lesson fact:</strong> Define the record between TYPE and ENDTYPE, then declare a variable of that record type.</li><li><strong>Lesson fact:</strong> Student1.Mark &lt;- 75 saves a field value; OUTPUT Student1.Mark reads that named field.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end declare -->
+
+        <!-- stage10-explanation:start bubble -->
+        <section class="panel explanation-panel" id="explanation-bubble" data-explains="bubble" data-explanation-kind="process" aria-labelledby="explanation-bubble-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bubble">
+          <h2 class="explanation-sr-only" id="explanation-bubble-title">Why bubble sort repeats adjacent comparisons</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-bubble.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why bubble sort repeats adjacent comparisons through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why bubble sort repeats adjacent comparisons: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Bubble sort compares adjacent items and swaps an inverted pair.</li><li><strong>Reason:</strong> For [1, 4, 2, 5, 8], pass 2 makes one swap: 4 and 2.</li><li><strong>Result:</strong> The resulting list is [1, 2, 4, 5, 8], and the next pass makes zero swaps.</li></ol>
+
+            <p><strong>Analogy:</strong> Repeatedly exchange adjacent books until the largest reaches the shelf end.</p>
+            <p><strong>Boundary:</strong> One pass does not generally sort the entire list.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end bubble -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Write linear-search and bubble-sort algorithms: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> When must a linear search stop?</p>
+              <details><summary>Show answer</summary><p>When the target has been found or every populated element within the declared bounds has been checked.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What comparison is made by an ascending bubble sort?</p>
+              <details><summary>Show answer</summary><p>Compare adjacent elements and swap when the left element is greater than the right element.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What does a no-swap pass prove?</p>
+              <details><summary>Show answer</summary><p>No adjacent pair is out of ascending order, so the array is sorted and the algorithm may stop.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
+            <p>Write Cambridge pseudocode for a linear search of Name[1:20] and an ascending bubble sort of Score[1:20].</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>linear search initialises Found and Index</td><td>Do not award only a trace or a description; both requested algorithms must be written and must not access Index + 1 beyond the upper bound.</td><td>1</td></tr>
+                  <tr><td>linear search loops within indexes 1 to 20 until found or exhausted</td><td></td><td>1</td></tr>
+                  <tr><td>linear search compares Name[Index] with the target and records a match</td><td></td><td>1</td></tr>
+                  <tr><td>bubble sort uses repeated passes</td><td></td><td>1</td></tr>
+                  <tr><td>compares adjacent Score[Index] and Score[Index + 1] within valid bounds</td><td></td><td>1</td></tr>
+                  <tr><td>uses Temp or an equivalent safe three-step swap</td><td></td><td>1</td></tr>
+                  <tr><td>reduces the unsorted range or uses a valid no-swap stopping condition</td><td></td><td>1</td></tr>
+                  <tr><td>all constructs close coherently in Cambridge pseudocode</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 118 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>A record keeps related facts together without pretending they are the same type.</h2>
@@ -75,7 +168,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 can ask students to define a record type, declare a record variable, and access fields correctly.</p>
@@ -86,7 +179,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>What should hold one student's details?</h2>
@@ -101,7 +194,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that can group different fields with different types.</div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Concept</p>
             <h2>Composite data groups fields into one type</h2>
@@ -117,7 +210,7 @@
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <h2 class="explanation-sr-only" id="explanation-concept-title">Composite data groups fields into one type</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Composite data groups fields into one type with a structured visual model." />
@@ -129,8 +222,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-
-        <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+        <section class="panel" id="declare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Declare records</p>
             <h2>Define the type, then declare variables that use it</h2>
@@ -155,21 +247,7 @@ Student1.Mark &lt;- 72</code></pre>
           </div>
         </section>
 
-        <!-- stage10-explanation:start declare -->
-        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
-          <h2 class="explanation-sr-only" id="explanation-declare-title">Define a record, then save and read named fields</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Define a record, then save and read named fields with a structured visual model." />
-            <figcaption class="explanation-sr-only">Define a record, then save and read named fields: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A record groups related named fields of different data types under one identifier.</li><li><strong>Lesson fact:</strong> Define the record between TYPE and ENDTYPE, then declare a variable of that record type.</li><li><strong>Lesson fact:</strong> Student1.Mark &lt;- 75 saves a field value; OUTPUT Student1.Mark reads that named field.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end declare -->
-
-        <section class="panel" id="access" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
+        <section class="panel" id="access" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Access and update</p>
             <h2>Use the field name, not a numeric index</h2>
@@ -183,7 +261,7 @@ Student1.Mark &lt;- 72</code></pre>
         </section>
 
         <!-- stage10-explanation:start access -->
-        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
+        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <h2 class="explanation-sr-only" id="explanation-access-title">Use the field name, not a numeric index</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the field name, not a numeric index with a structured visual model." />
@@ -195,8 +273,7 @@ Student1.Mark &lt;- 72</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end access -->
-
-        <section class="panel" id="array-vs-record" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="array-vs-record">
+        <section class="panel" id="array-vs-record" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Array vs record</p>
             <h2>Same type and index, or mixed fields and names?</h2>
@@ -210,7 +287,7 @@ Student1.Mark &lt;- 72</code></pre>
         </section>
 
         <!-- stage10-explanation:start array-vs-record -->
-        <section class="panel explanation-panel" id="explanation-array-vs-record" data-explains="array-vs-record" data-explanation-kind="comparison" aria-labelledby="explanation-array-vs-record-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="array-vs-record">
+        <section class="panel explanation-panel" id="explanation-array-vs-record" data-explains="array-vs-record" data-explanation-kind="comparison" aria-labelledby="explanation-array-vs-record-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <h2 class="explanation-sr-only" id="explanation-array-vs-record-title">Same type and index, or mixed fields and names?</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-array-vs-record.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same type and index, or mixed fields and names? with a structured visual model." />
@@ -222,8 +299,7 @@ Student1.Mark &lt;- 72</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end array-vs-record -->
-
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Trace</p>
             <h2>Trace the field that changes</h2>
@@ -236,7 +312,7 @@ Student1.Mark &lt;- 72</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Same modelling idea, different syntax</h2>
@@ -269,7 +345,7 @@ book1.available = true;</code></pre>
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same modelling idea, different syntax</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same modelling idea, different syntax with a structured visual model." />
@@ -285,9 +361,7 @@ This declaration belongs after ENDTYPE.</li></ol>
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-
-
-        <section class="panel" id="lookup" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
+        <section class="panel" id="lookup" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Interactive field lookup</p>
             <h2>Read one field from a record</h2>
@@ -308,7 +382,7 @@ This declaration belongs after ENDTYPE.</li></ol>
         </section>
 
         <!-- stage10-explanation:start lookup -->
-        <section class="panel explanation-panel" id="explanation-lookup" data-explains="lookup" data-explanation-kind="mechanism" aria-labelledby="explanation-lookup-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
+        <section class="panel explanation-panel" id="explanation-lookup" data-explains="lookup" data-explanation-kind="mechanism" aria-labelledby="explanation-lookup-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <h2 class="explanation-sr-only" id="explanation-lookup-title">Read one field from a record</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-lookup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read one field from a record with a structured visual model." />
@@ -320,8 +394,7 @@ This declaration belongs after ENDTYPE.</li></ol>
           </div>
         </section>
         <!-- stage10-explanation:end lookup -->
-
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Interactive type builder</p>
             <h2>Generate a record declaration</h2>
@@ -341,7 +414,7 @@ This declaration belongs after ENDTYPE.</li></ol>
           <div class="trace-output" id="builderResult">Choose a scenario to generate Cambridge-style pseudocode.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Record modelling patterns</h2>
@@ -355,7 +428,7 @@ This declaration belongs after ENDTYPE.</li></ol>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Ten quick record checks</h2>
@@ -364,7 +437,7 @@ This declaration belongs after ENDTYPE.</li></ol>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common record errors</h2>
@@ -372,7 +445,7 @@ This declaration belongs after ENDTYPE.</li></ol>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style record questions with expandable MS</h2>
@@ -381,62 +454,7 @@ This declaration belongs after ENDTYPE.</li></ol>
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Define, read and save record data</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A record structure groups a set of related fields, which may have different data types, under one identifier. Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.</p>
-            <p>Define a Cambridge record type with TYPE, field declarations and ENDTYPE. Declare record variables only after the type definition is complete. A complete definition states every field name and its type.</p>
-            <p>Read data from a record by selecting a named field, for example OUTPUT Student1.Mark or CurrentMark &lt;- Student1.Mark. Save data to the record by assigning to a named field, for example Student1.Mark &lt;- 75. Reading or saving one field does not replace unrelated fields.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Define and use one student record</h3>
-            <p>TYPE TStudent declares Name : STRING, DateOfBirth : DATE, Mark : INTEGER and Enrolled : BOOLEAN, then closes with ENDTYPE. DECLARE Student1 : TStudent creates one record. Student1.Mark &lt;- 75 saves a value to the Mark field; OUTPUT Student1.Mark reads that field.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Define, read and save record data: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Why can a record contain both STRING and DATE fields?</p>
-              <details><summary>Show answer</summary><p>Record fields may have different data types but belong to one entity under one identifier.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which statement saves a mark of 80?</p>
-              <details><summary>Show answer</summary><p>Student1.Mark &lt;- 80.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which expression reads the stored name?</p>
-              <details><summary>Show answer</summary><p>Student1.Name, for example OUTPUT Student1.Name.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Define TProduct with Code, Description, Price and InStock fields, declare Product1, save values to Price and InStock, then read both fields.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> opens TYPE TProduct and declares suitable named fields</li>
-                <li><strong>B1</strong> uses suitable STRING, REAL and BOOLEAN field types</li>
-                <li><strong>B1</strong> closes the definition with ENDTYPE</li>
-                <li><strong>B1</strong> declares Product1 : TProduct after ENDTYPE</li>
-                <li><strong>B1</strong> assigns/saves values through Product1.Price and Product1.InStock</li>
-                <li><strong>B1</strong> reads/outputs the two named fields without replacing other data</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-118">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Record checklist</h2>

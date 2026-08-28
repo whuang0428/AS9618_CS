@@ -1,4 +1,49 @@
-# Lesson 028: Input devices and data capture
+# Lesson 028: Embedded systems: purpose, benefits and drawbacks
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Embedded systems: purpose, benefits and drawbacks
+
+### Direct explanation
+
+- An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.
+- Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.
+- An embedded system can have a benefit such as efficient dedicated operation and a drawback such as limited flexibility; both must be applied to the device.
+
+### Worked example
+
+**Washing-machine controller:** A dedicated microcontroller can read sensors and control the motor and valves with low power use and predictable timing. Its limited interface is acceptable for wash programs, but it cannot readily run unrelated applications, and a controller failure can prevent the whole machine from operating.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What two features define an embedded system?
+   **Answer:** It is built into a larger device and performs a dedicated task or closely related set of tasks.
+2. Give one benefit of an embedded controller and explain its consequence.
+   **Answer:** For example, low power use reduces energy or battery demand for the device.
+3. Give one drawback of an embedded controller and explain its consequence.
+   **Answer:** For example, limited resources make it difficult to add unrelated functions or run general-purpose software.
+4. Why can failure of an embedded controller be serious?
+   **Answer:** The larger device may lose the function controlled by that computer or stop operating.
+
+### Exam-style question and MS
+
+**Question (5 marks):** A battery-powered medical monitor uses an embedded controller. Explain two benefits and two drawbacks of this design in context.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| benefit such as low power, compact size or predictable automatic operation | Do not award bare adjectives such as 'small' or 'cheap' without a device-specific consequence. | 1 |
+| first benefit linked to battery life, portability or continuous monitoring |  | 1 |
+| drawback such as limited resources/upgrading/interface or controller dependence |  | 1 |
+| first drawback linked to limited new functions or device failure |  | 1 |
+| second distinct benefit or drawback correctly developed |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +88,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Award marks for matching device characteristics to the scenario, such as fast input, reliable storage, or suitable output feedback.
 
-
-
 ## Student Task
 Teams design a hardware set-up for a specific user: librarian, weather station, exam office or delivery driver. They must reject one tempting but unsuitable device.
 
@@ -72,41 +115,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Microphone, touchscreen and VR headset operation
-
-### Direct explanation
-
-- A microphone diaphragm vibrates with sound; a transducer converts the movement into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in an electric field and calculates touch coordinates.
-- A VR headset displays a separate view to each eye and uses motion/orientation sensors to update the viewpoint. Low-latency tracking is needed so the displayed scene follows head movement.
-
-### Worked example
-
-**Turn head in VR:** Gyroscope/accelerometer readings report orientation; the processor calculates a new camera view; displays present updated left/right images, creating stereoscopic depth.
-
-### Targeted practice and answers
-
-1. What converts a microphone's analogue signal into digital samples?
-   **Answer:** An analogue-to-digital converter (ADC).
-2. What does a capacitive touchscreen detect?
-   **Answer:** A change in capacitance/electric field at a touch location.
-3. Why does a VR headset track head movement?
-   **Answer:** To update the displayed viewpoint to match the user's orientation.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Describe how a microphone captures sound for storage in a computer.
-
-- **B1** sound waves vibrate a diaphragm
-- **B1** transducer converts vibration to an analogue electrical signal
-- **B1** ADC samples/measures the signal
-- **B1** sample values are encoded/stored as binary
-
-**Strict note:** Do not accept that the microphone directly records binary without an analogue signal and conversion stage.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -114,7 +122,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `automatic`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-028-automatic.jpg`
 
 1. Manual input
@@ -132,7 +140,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `capture`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-028-capture.jpg`
 
 1. 1. Capture The device captures data from a user, document, object or environment.
@@ -143,7 +151,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `devices`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-028-devices.jpg`
 
 1. Captures

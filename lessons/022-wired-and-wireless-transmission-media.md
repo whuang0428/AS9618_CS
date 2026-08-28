@@ -1,4 +1,8 @@
-# Lesson 022: Wired and wireless transmission media
+# Lesson 022: Ethernet collisions and CSMA/CD
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +47,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Strong answers connect a named component or protocol to a symptom, for example DNS failure prevents name resolution, or HTTPS certificate problems affect secure communication.
 
-
-
 ## Student Task
 Students draw a packet journey for a web request and label where addressing, routing and protocols are used. They then add one bottleneck and explain its effect.
 
@@ -72,45 +74,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Wired and wireless networks with all required transmission media
-
-### Direct explanation
-
-- A wired network carries signals through a physical cable. It can provide stable, predictable links and avoids radio interference, but installation restricts movement and may require disruptive cabling. A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security. The implications must be tied to a given use, not reduced to 'wired is faster'.
-- Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference. Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.
-- Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.
-
-### Worked example
-
-**Connect a school campus and a remote weather station:** Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling between two buildings is impractical, and satellite for the remote station without local cable infrastructure. Each choice follows distance, mobility, interference, bandwidth, latency and cost.
-
-### Targeted practice and answers
-
-1. Compare wired and wireless networks for fixed desktops and mobile tablets.
-   **Answer:** Wired provides a stable physical link for fixed devices; wireless radio supports mobility but may suffer interference, obstacles and shared capacity.
-2. Compare copper cable with fibre-optic cable.
-   **Answer:** Copper uses electrical signals and may be cheaper; fibre uses light, supports higher bandwidth/longer distance and resists electromagnetic interference.
-3. Distinguish WiFi radio waves, terrestrial microwave and satellite links.
-   **Answer:** WiFi provides local wireless access; terrestrial microwave is directional and line-of-sight; satellite provides wide/remote coverage but commonly has greater latency.
-4. Choose a medium for a remote location with no cable infrastructure.
-   **Answer:** Satellite if wide remote coverage is required; justify the latency/cost/weather drawback.
-
-### Exam-style question and MS
-
-**Question (5 marks):** Recommend transmission media for fixed classroom PCs, mobile tablets, an inter-building backbone and a remote field station.
-
-- **B1** copper cable for short fixed links with a valid cost/stability reason
-- **B1** WiFi/radio waves for mobile devices with an interference/security implication
-- **B1** fibre-optic cable for the high-bandwidth/longer inter-building link
-- **B1** satellite for remote coverage without cable infrastructure
-- **B1** at least one limitation is correctly linked to the chosen medium
-
-**Strict note:** Do not accept unqualified 'wireless is less secure' or 'fibre is faster'; require a mechanism or scenario consequence.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -118,7 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-022-compare.jpg`
 
 1. Wired networks
@@ -138,7 +101,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `wired`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-022-wired.jpg`
 
 1. Wired media carry signals through a physical cable. They are usually suitable for fixed devices and controlled environments.
@@ -157,7 +120,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `wireless`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-022-wireless.jpg`
 
 1. Wireless media transmit through the air or space. They support mobility, but the signal can be affected by distance, obstacles and interference.

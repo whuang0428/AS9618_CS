@@ -173,6 +173,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -193,7 +199,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Trace the output from this pseudocode, assuming the Count inside the procedure is local.\n\nCount <- 10\n\nPROCEDURE ShowCount()\n    Count <- 3\n    OUTPUT Count\nENDPROCEDURE\n\nCALL ShowCount()\nOUTPUT Count",
+    prompt: "Complete a trace table for the output from this pseudocode, assuming the Count inside the procedure is local. Count <- 10 PROCEDURE ShowCount() Count <- 3 OUTPUT Count\nENDPROCEDURE CALL ShowCount()\nOUTPUT Count",
     answer: "The first output is 3 from the local Count inside ShowCount. The second output is 10 from the global Count in the main program.",
     marking: [
       { mark: "B1", text: "states first output is 3" },
@@ -463,7 +469,7 @@ function setupExamQuestions() {
             <h4>Indicative answer</h4>
             <pre><code>${escapeHtml(question.answer)}</code></pre>
             <h4>Mark scheme</h4>
-            <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+            ${renderStudentMarkPoints(question)}
           </div>
         </article>
       `,

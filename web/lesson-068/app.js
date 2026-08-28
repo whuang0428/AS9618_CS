@@ -120,6 +120,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -196,7 +202,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A school wants to block unsuitable websites, reduce repeated downloads and detect unusual traffic spikes. Recommend suitable controls.",
+    prompt: "A school wants to block unsuitable websites, reduce repeated downloads and detect unusual traffic spikes. Suggest suitable controls.",
     answer: "A proxy server can block unsuitable websites by checking requested URLs or categories against the school's policy. The proxy can also cache frequently downloaded resources so repeated downloads use less bandwidth and load faster. Network monitoring can detect unusual traffic spikes by observing traffic volume and comparing it with normal behaviour or thresholds. Alerts and logs can help staff investigate the source and take action.",
     marking: [
       { mark: "B1", text: "proxy recommended for blocking unsuitable websites" },
@@ -356,9 +362,9 @@ function renderExam() {
       <p>${item.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms${index}">
-        <h4>Cambridge-style mark scheme</h4>
+        <h4>Mark scheme</h4>
         <p><strong>Model answer:</strong> ${item.answer}</p>
-        <ul>${item.marking.map((mark) => `<li><strong>${mark.mark}</strong> ${mark.text}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(item)}
       </div>
     </article>
   `).join("");

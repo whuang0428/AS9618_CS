@@ -1,4 +1,46 @@
-# Lesson 004: Binary addition, carries, and overflow
+# Lesson 004: Binary addition and fixed-width overflow
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Binary addition and fixed-width overflow
+
+### Direct explanation
+
+- Perform binary addition from the least-significant bit, carrying left when a column total is 2 or 3. Positive and negative integers must be interpreted using the stated representation and fixed bit width.
+- Overflow occurs when the mathematical result is outside the range representable in the available bits. For unsigned 8-bit addition, a carry beyond bit 7 shows that the true result is greater than 255. For signed arithmetic, compare the result with the signed representable range rather than treating every carry as overflow.
+- Binary subtraction applies to each positive or negative binary integer as well as binary addition; use the stated fixed width and signed representation when interpreting the result.
+
+### Worked example
+
+**Add two unsigned 8-bit integers:** 11110000 + 00110000 = 1 00100000. The true result is 288, which is outside the unsigned 8-bit range 0 to 255, so the stored eight-bit result cannot represent the mathematical answer and overflow occurs.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Calculate the sum of 00110101 and 00010110.
+   **Answer:** 01001011; the result is 75 and no unsigned overflow occurs.
+2. Why does 01111111 + 00000001 not overflow as unsigned 8-bit arithmetic?
+   **Answer:** The result 10000000 is 128, which remains inside 0 to 255.
+3. What is the general overflow test?
+   **Answer:** The mathematical result lies outside the range representable by the fixed-width binary representation.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Calculate the sum of 11001010 and 01110101 as unsigned 8-bit integers and explain the overflow.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| correct binary addition and carry method | Do not infer unsigned overflow only from the leftmost stored bit being 1. | 1 |
+| 1 00111111 / stored result 00111111 |  | 1 |
+| true result needs a ninth bit / exceeds 255 |  | 1 |
+| therefore unsigned 8-bit overflow occurs |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +85,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit correct carries and the 9th carry-out. Unsigned overflow must be explained as the result exceeding the unsigned 8-bit range 0 to 255, not just 'there is a carry'.
 
-
-
 ## Student Task
 Pairs solve two additions: one that fits in 8 bits and one that overflows. They annotate every carry.
 
@@ -71,41 +111,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
-
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Binary addition and fixed-width overflow
-
-### Direct explanation
-
-- Perform binary addition from the least-significant bit, carrying left when a column total is 2 or 3. Positive and negative integers must be interpreted using the stated representation and fixed bit width.
-- Overflow occurs when the mathematical result is outside the range representable in the available bits. For unsigned 8-bit addition, a carry beyond bit 7 shows that the true result is greater than 255. For signed arithmetic, compare the result with the signed representable range rather than treating every carry as overflow.
-
-### Worked example
-
-**Add two unsigned 8-bit integers:** 11110000 + 00110000 = 1 00100000. The true result is 288, which is outside the unsigned 8-bit range 0 to 255, so the stored eight-bit result cannot represent the mathematical answer and overflow occurs.
-
-### Targeted practice and answers
-
-1. Add 00110101 and 00010110.
-   **Answer:** 01001011; the result is 75 and no unsigned overflow occurs.
-2. Why does 01111111 + 00000001 not overflow as unsigned 8-bit arithmetic?
-   **Answer:** The result 10000000 is 128, which remains inside 0 to 255.
-3. What is the general overflow test?
-   **Answer:** The mathematical result lies outside the range representable by the fixed-width binary representation.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Add 11001010 and 01110101 as unsigned 8-bit integers and explain the overflow.
-
-- **M1** correct binary addition and carry method
-- **A1** 1 00111111 / stored result 00111111
-- **B1** true result needs a ninth bit / exceeds 255
-- **B1** therefore unsigned 8-bit overflow occurs
-
-**Strict note:** Do not infer unsigned overflow only from the leftmost stored bit being 1.
-<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
@@ -143,7 +148,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `rules`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-004-rules.jpg`
 
 1. A full-adder truth table has eight A, B and carry-in combinations.

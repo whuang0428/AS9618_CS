@@ -1,4 +1,8 @@
-# Lesson 081: Primary keys, foreign keys, and relationships
+# Lesson 081: First, second and third normal form
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +47,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** `StudentID` is primary key in Student; `LoanID` is primary key in Loan; `StudentID` in Loan is a foreign key referencing Student.
 
-
-
 ## Student Task
 Students design a two-table system for sports equipment loans and label each key.
 
@@ -72,44 +74,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Relationships, foreign keys and referential integrity
-
-### Direct explanation
-
-- A foreign key is an attribute in one table that refers to a primary/candidate key in another table. Referential integrity requires every non-null foreign-key value to match an existing referenced key.
-- A one-to-one relationship links one record on each side. A one-to-many relationship links one parent record to many child records. A many-to-many relationship is normally implemented through a linking entity/table that creates two one-to-many relationships. Referential integrity prevents orphan records: insert, update and delete operations may be rejected or handled by a defined cascade/null policy, but must not silently leave an invalid reference.
-
-### Worked example
-
-**Delete a department:** If Employee.DepartmentID refers to Department.DepartmentID, deleting a department with employees would break referential integrity unless deletion is rejected or an authorised cascading policy handles dependent rows.
-
-### Targeted practice and answers
-
-1. Where is the referenced key stored?
-   **Answer:** In the parent/referenced table.
-2. What is an orphan record?
-   **Answer:** A child record whose foreign key has no matching parent key.
-3. How is a many-to-many relationship represented relationally?
-   **Answer:** Use a linking table/entity containing foreign keys to both original entities.
-4. Name one valid delete response.
-   **Answer:** Reject the delete, cascade it, or set nullable foreign keys to null according to defined rules.
-
-### Exam-style question and MS
-
-**Question (5 marks):** Explain how a one-to-many relationship between Department and Employee is represented and protected.
-
-- **B1** one Department record may relate to many Employee records
-- **B1** DepartmentID is the primary/candidate key in Department
-- **B1** DepartmentID is a foreign key in Employee and may repeat
-- **B1** each non-null foreign-key value must match an existing Department key
-- **B1** referential integrity prevents orphan Employee records
-
-**Strict note:** Do not accept that foreign-key values must be unique in the child table.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -117,7 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `foreign`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-foreign.jpg`
 
 1. A foreign key is a field in one table that references the primary key in another table. It creates a link between related records.
@@ -135,7 +99,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `key-picker`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-key-picker.jpg`
 
 1. Interactive key picker
@@ -146,30 +110,18 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `primary`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-primary.jpg`
 
 1. A primary key uniquely identifies each row and cannot be null.
 2. Candidate keys are minimal sets of attributes that can uniquely identify a row.
 3. Stability is a desirable design property when choosing a primary key, not a formal defining constraint of every primary key.
 
-### Referential integrity
-
-- **Explains:** `referential`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-referential.jpg`
-
-1. Referential integrity means a foreign key value must match an existing primary key value in the referenced table.
-2. Valid Loan.StudentID = S0234 is valid if Student.StudentID = S0234 exists.
-3. Invalid Loan.StudentID = S9999 is invalid if no student with that ID exists.
-4. Why It prevents orphan records, such as a loan assigned to a non-existent student.
-
 ### Classify the relationship
 
 - **Explains:** `relationship-tool`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-relationship-tool.jpg`
 
 1. Interactive relationship classifier
@@ -181,7 +133,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `relationships`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-relationships.jpg`
 
 1. A relationship describes how records in one table are associated with records in another table.

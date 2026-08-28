@@ -2,6 +2,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { explanations } from "./stage10-explanations-data.mjs";
+import { coreVisualTargetKeys } from "./remediation-v2-core-visuals.mjs";
 import { evaluateSemanticCalculation, semanticCalculations } from "./stage10-semantic-calculations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
@@ -139,14 +140,16 @@ for (let number = 1; number <= 150; number += 1) {
 
   for (const item of lessonItems) {
     const explanationId = `explanation-${item.targetId}`;
-    const targetIndex = sectionIds.indexOf(item.targetId);
+    const anchorId = coreVisualTargetKeys.has(`${lesson}/${item.targetId}`) ? "stage2-completion" : item.targetId;
+    const targetIndex = sectionIds.indexOf(anchorId);
     const explanationIndex = sectionIds.indexOf(explanationId);
-    expect(targetIndex >= 0, `Lesson ${lesson}: target ${item.targetId} is missing`);
-    expect(explanationIndex === targetIndex + 1, `Lesson ${lesson}: ${explanationId} must immediately follow its target section`);
+    expect(targetIndex >= 0, `Lesson ${lesson}: explanation anchor ${anchorId} for ${item.targetId} is missing`);
+    if (anchorId === "stage2-completion") expect(explanationIndex > targetIndex, `Lesson ${lesson}: ${explanationId} must follow the CORE teaching section`);
+    else expect(explanationIndex === targetIndex + 1, `Lesson ${lesson}: ${explanationId} must immediately follow its target section`);
     const startTag = html.match(new RegExp(`<section class="panel explanation-panel" id="${explanationId}"[^>]*>`))?.[0] ?? "";
     expect(startTag.includes(`data-explains="${item.targetId}"`), `Lesson ${lesson}: ${explanationId} data-explains mismatch`);
     expect(startTag.includes(`data-explanation-kind="${item.kind}"`), `Lesson ${lesson}: ${explanationId} explanation kind mismatch`);
-    expect(startTag.includes(`data-delivery-group="${item.targetId}"`), `Lesson ${lesson}: ${explanationId} delivery group mismatch`);
+    expect(startTag.includes(`data-delivery-group="${item.deliveryGroup ?? item.targetId}"`), `Lesson ${lesson}: ${explanationId} delivery group mismatch`);
     expect(startTag.includes(`data-delivery-role="${item.deliveryRole}"`), `Lesson ${lesson}: ${explanationId} delivery role mismatch`);
     expect(startTag.includes(`data-classroom-activity="${item.classroomActivity}"`), `Lesson ${lesson}: ${explanationId} classroom activity mismatch`);
     expect(html.includes(`id="${explanationId}-title">${item.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;")}</h2>`), `Lesson ${lesson}: ${explanationId} title mismatch`);
@@ -176,8 +179,10 @@ const targetHeader = targetRows.shift();
 const targetLessonIndex = targetHeader.indexOf("lesson");
 const targetStatusIndex = targetHeader.indexOf("status");
 expect(new Set(targetRows.map((row) => row[targetLessonIndex])).size === 150, "Stage 10 target register must cover all 150 lessons");
-expect(targetRows.length === explanations.length, "Stage 10 target register count mismatch");
-expect(targetRows.filter((row) => row[targetStatusIndex] === "Implemented").length === explanations.length, "Stage 10 target register implemented count mismatch");
+const implementedTargetRows = targetRows.filter((row) => row[targetStatusIndex] === "Implemented");
+expect(implementedTargetRows.length === explanations.length, "Stage 10 target register implemented count mismatch");
+const implementedTargetKeys = new Set(implementedTargetRows.map((row) => `${row[targetLessonIndex]}/${row[targetHeader.indexOf("target_id")]}`));
+for (const item of explanations) expect(implementedTargetKeys.has(`${item.lesson}/${item.targetId}`), `${item.lesson}/${item.targetId}: implemented target-register row is missing`);
 
 const visualRows = parseCsv(read("audits/stage10-concept-visual-register.csv"));
 const visualHeader = visualRows.shift();
@@ -204,10 +209,11 @@ const registeredAssets = new Set(semanticRows.map((row) => row[semanticIndex.ass
 for (const asset of currentAssets) expect(registeredAssets.has(asset), `${asset}: current Stage 10 asset is missing from the semantic register`);
 
 const semanticByKey = new Map();
+const explanationBySemanticKey = new Map(explanations.map((item) => [`${item.sourceLesson ?? item.lesson}/${item.sourceTargetId ?? item.targetId}`, item]));
 for (const row of semanticRows) {
   const key = `${row[semanticIndex.lesson]}/${row[semanticIndex.target_id]}`;
   semanticByKey.set(key, row);
-  const item = explanations.find((candidate) => `${candidate.lesson}/${candidate.targetId}` === key);
+  const item = explanationBySemanticKey.get(key);
   expect(Boolean(item), `${key}: semantic review row has no maintained explanation`);
   const expectedAsset = item ? path.basename(item.visual.src) : "";
   expect(row[semanticIndex.asset] === expectedAsset, `${key}: semantic review asset path mismatch`);

@@ -1,5 +1,11 @@
 # Lesson 011: Sound file size calculations
 
+<!-- remediation-v2-optional:start -->
+> **Optional enrichment:** sound-file-size calculations. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.
+>
+> **Formal AS prerequisite:** S1.10 sound sampling, sampling rate, sampling resolution, accuracy and file-size effects.
+<!-- remediation-v2-optional:end -->
+
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
 **Syllabus reference:** Syllabus Section 1
@@ -39,14 +45,12 @@ Left: physical media idea. Middle: formula or encoding table. Right: quality/sto
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Calculate the size of a 10-second mono sound clip sampled at 8000 Hz with 16-bit sampling resolution.
+**Problem:** Calculate the size of a 10-second mono sound clip sampled at 8000 Hz with 16-bit sample resolution.
 
-**Worked answer / marking focus:** `8000 * 16 * 10 = 1 280 000 bits = 160 000 bytes`. Credit sample rate, sampling resolution and duration.
-
-
+**Worked answer / marking focus:** `8000 * 16 * 10 = 1 280 000 bits = 160 000 bytes`. Credit sample rate, sample resolution and duration.
 
 ## Student Task
-Students compare two clips and decide whether reducing sample rate or sampling resolution is the better compromise.
+Students compare two clips and decide whether reducing sample rate or sample resolution is the better compromise.
 
 ## Mini-Quiz
 1. State one precise definition from this lesson.
@@ -79,7 +83,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `channels`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-011-channels.jpg`
 
 1. One channel of audio. Use channel factor 1.
@@ -91,7 +95,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `formula`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-011-formula.jpg`
 
 1. size in bits = sampling rate × sampling resolution × duration × channels
@@ -106,7 +110,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tradeoffs`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-011-tradeoffs.jpg`
 
 1. Higher sampling rate
@@ -122,7 +126,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `units`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-011-units.jpg`
 
 1. The formula gives bits first.

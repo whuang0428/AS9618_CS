@@ -6,7 +6,7 @@
     <title>AS9618 Lesson 050 | Bit manipulation: masks and binary shifts</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css?v=2" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -115,7 +115,6 @@
           </div>
         </section>
         <!-- stage10-explanation:end masks -->
-
         <section class="panel" id="shifts" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shifts">
           <div class="section-title"><p class="eyebrow">Knowledge point 2</p><h2>Logical, arithmetic and cyclic shifts have different fill rules</h2></div>
           <div class="timing-grid">
@@ -127,22 +126,6 @@
           <div class="callout">Eight-bit examples: 10110010 logical right → 01011001; arithmetic right → 11011001; cyclic right → 01011001. For 00110011 cyclic right → 10011001 because the discarded 1 returns at the left.</div>
           <div class="callout"><strong>Instruction forms:</strong> <code>LSL #n</code> shifts all bits in ACC logically left by <em>n</em> places and fills from the right with zeros. <code>LSR #n</code> shifts all bits in ACC logically right by <em>n</em> places and fills from the left with zeros. Bits shifted beyond the fixed width are discarded.</div>
         </section>
-
-        <!-- stage10-explanation:start shifts -->
-        <section class="panel explanation-panel" id="explanation-shifts" data-explains="shifts" data-explanation-kind="comparison" aria-labelledby="explanation-shifts-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shifts">
-          <h2 class="explanation-sr-only" id="explanation-shifts-title">Binary shifts: logical, arithmetic, cyclic</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-shifts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Binary shifts: logical, arithmetic, cyclic through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Binary shifts: logical, arithmetic, cyclic: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Every shown input and stored result contains exactly eight bits.</li><li><strong>Reason:</strong> Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.</li><li><strong>Result:</strong> Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.</li><li><strong>Additional fact:</strong> Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.</li><li><strong>Additional fact:</strong> Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label.</li></ol>
-
-            <p><strong>Analogy:</strong> Three conveyor rules move the same row but handle the end position differently.</p>
-            <p><strong>Boundary:</strong> State the fixed width, direction and shift type before calculating.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end shifts -->
 
         <section class="panel" id="device-bits" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="device-bits">
           <div class="section-title"><p class="eyebrow">Knowledge point 3</p><h2>Bit fields monitor and control a device</h2></div>
@@ -167,7 +150,6 @@
           </div>
         </section>
         <!-- stage10-explanation:end device-bits -->
-
         <section class="panel" id="core-practice" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core-practice">
           <div class="section-title"><p class="eyebrow">Core practice</p><h2>Calculate, then explain the bit effect</h2></div>
           <ol class="practice-list">
@@ -221,7 +203,6 @@
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-
         <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pipeline-extension">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -266,7 +247,6 @@
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
-
         <section class="panel" id="timing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pipeline-extension">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -297,7 +277,6 @@
           </div>
         </section>
         <!-- stage10-explanation:end timing -->
-
         <section class="panel" id="hazards" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pipeline-extension">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -340,7 +319,6 @@
           </div>
         </section>
         <!-- stage10-explanation:end hazards -->
-
         <section class="panel" id="stalls" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pipeline-extension">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
@@ -379,8 +357,6 @@
           </div>
         </section>
         <!-- stage10-explanation:end stalls -->
-
-
         <section class="panel interactive" id="tool" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="bit-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>

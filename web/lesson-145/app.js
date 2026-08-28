@@ -106,6 +106,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -129,7 +135,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Produce a test strategy for NumberOfStudents, valid from 1 to 30, then give one complete test-plan row.",
+    prompt: "Write a test strategy for NumberOfStudents, valid from 1 to 30, then give one complete test-plan row.",
     answer: "The strategy states that black-box tests will check the range requirement, white-box tests will cover both accepted and rejected paths, integration tests will check the form with the booking module, and the tester is responsible before user acceptance. Example plan row: T03; purpose upper accepted limit; data 30; expected accepted; actual accepted; Pass.",
     marking: [
       { mark: "B1", text: "strategy names suitable methods/levels such as black-box, white-box and integration" },
@@ -167,7 +173,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "Classify each maintenance request as corrective, adaptive or perfective: fixing a crash when saving; changing term dates for a new timetable; making search results display faster.",
+    prompt: "Identify each maintenance request as corrective, adaptive or perfective: fixing a crash when saving; changing term dates for a new timetable; making search results display faster.",
     answer: "Fixing a crash when saving is corrective maintenance because it fixes a fault. Changing term dates for a new timetable is adaptive maintenance because the system is being changed for a new environment or rule. Making search results display faster is perfective maintenance because it improves performance rather than fixing a fault.",
     marking: [
       { mark: "B1", text: "classifies crash fix as corrective" },
@@ -366,9 +372,7 @@ function setupExam() {
         <h4>Indicative answer</h4>
         <p>${escapeHtml(item.answer)}</p>
         <h4>Mark scheme</h4>
-        <ul>
-          ${item.marking.map((mark) => `<li><strong>${escapeHtml(mark.mark)}</strong> ${escapeHtml(mark.text)}</li>`).join("")}
-        </ul>
+        ${renderStudentMarkPoints(item)}
       </div>
     </article>
   `).join("");

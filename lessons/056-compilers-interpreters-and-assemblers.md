@@ -1,4 +1,53 @@
-# Lesson 056: Compilers, interpreters, and assemblers
+# Lesson 056: Java translation and required IDE features
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Java translation and required IDE features
+
+### Direct explanation
+
+- Java in console mode is partly compiled and partly interpreted: the Java compiler translates source code into platform-independent bytecode, then a Java Virtual Machine (JVM) interprets that bytecode and may just-in-time compile parts for the host processor. Bytecode is not universal processor machine code.
+- For coding, an IDE can provide context-sensitive prompts. For initial error detection it can perform dynamic syntax checks. For presentation it can prettyprint code and expand or collapse code blocks. These features help create and navigate source code but do not prove that its algorithm is correct.
+- For debugging, an IDE can provide single stepping, breakpoints, inspection of variables and expressions, and a report window for diagnostic or output information. Single stepping executes one statement at a time; a breakpoint pauses at a chosen point; variable/expression inspection exposes changing values.
+- IDE presentation features include prettyprint and expand/collapse code blocks; expand/collapse changes the displayed view, not program execution.
+
+### Worked example
+
+**Trace Java and locate a loop fault:** First the Java compiler produces bytecode; the JVM then interprets the bytecode or JIT-compiles parts for the host. In the IDE, a breakpoint pauses before the faulty loop, single stepping advances one statement at a time, the variable/expression view exposes Index, and the report window records diagnostics. Dynamic syntax checking can flag malformed syntax but not a syntactically valid wrong boundary.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What does a Java compiler normally produce?
+   **Answer:** Bytecode.
+2. Why is Java described as partly compiled and partly interpreted?
+   **Answer:** Source is compiled to bytecode, then a JVM interprets the bytecode and may JIT-compile parts for the host.
+3. Which IDE feature pauses at a chosen line, and which advances one statement?
+   **Answer:** A breakpoint pauses; single stepping advances one statement at a time.
+4. Identify the two required presentation features.
+   **Answer:** Prettyprint and expand/collapse code blocks.
+5. What can a variables/expressions view and report window show?
+   **Answer:** Current or evaluated values, plus diagnostic/output information in the report window.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Explain why Java is partly compiled and partly interpreted, then describe four IDE features from coding, initial error detection, presentation and debugging.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| Java source is compiled to bytecode | Do not accept that Java source becomes one universal machine-code file or that IDE syntax checking proves logical correctness. | 1 |
+| JVM interprets bytecode and may JIT-compile parts for the host |  | 1 |
+| context-sensitive prompts or dynamic syntax checking described accurately |  | 1 |
+| prettyprint or expand/collapse code blocks described accurately |  | 1 |
+| single stepping or breakpoint described accurately |  | 1 |
+| variable/expression inspection or report window described accurately |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +92,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Interpreter is useful for development due to line-by-line error feedback; compiler is suitable for distribution because object/executable code can run without source code.
 
-
-
 ## Student Task
 Students sort scenarios into compiler, interpreter and assembler, then write one trade-off for each.
 
@@ -72,48 +119,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often say interpreters are 'bad compilers'. Correction: they are different translation approaches with different use cases.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Assembler, compiler and interpreter choices
-
-### Direct explanation
-
-- An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.
-- Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.
-- A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.
-
-### Worked example
-
-**Choose tools across development and deployment:** During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.
-
-### Targeted practice and answers
-
-1. Why is an assembler needed?
-   **Answer:** It translates assembly-language mnemonics and operands into machine or object code for the target processor.
-2. Give one compiler advantage and its mechanism.
-   **Answer:** A compiled program can run repeatedly without translating the source each time because translation occurred before execution.
-3. Give one compiler disadvantage.
-   **Answer:** Compilation must complete before execution and the programmer may need to correct a list of reported errors.
-4. Give one interpreter advantage and one disadvantage.
-   **Answer:** It provides immediate statement-level feedback, but repeated translation can make execution slower and requires the interpreter/source at run time.
-5. Which translator is required for assembly language?
-   **Answer:** An assembler.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Compare a compiler and an interpreter using two advantages and two disadvantages, then justify the translator used for an assembly-language routine.
-
-- **B1** compiler translates the whole high-level program before execution and produces target/object code
-- **B1** compiler advantage linked to repeated execution or distribution without source
-- **B1** compiler disadvantage linked to separate translation or error-list workflow
-- **B1** interpreter translates/executes statements during execution and gives immediate feedback
-- **B1** interpreter disadvantage linked to repeated translation, slower execution or run-time dependency
-- **B1** assembler selected and justified for assembly-language-to-machine/object-code translation
-
-**Strict note:** Do not award vague claims such as 'compiler is faster' or 'interpreter is easier' without the mechanism and scenario.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -121,7 +126,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `assembler`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-assembler.jpg`
 
 1. An assembler translates assembly-language mnemonics into machine code or an object-code module.
@@ -133,7 +138,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-compare.jpg`
 
 1. A compiler translates a whole high-level program before execution and produces target or object code; a linked executable can run repeatedly without the source.
@@ -146,7 +151,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compiler`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-compiler.jpg`
 
 1. Input High-level language source code.
@@ -158,7 +163,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-concept.jpg`
 
 1. A compiler translates high-level source into target machine or object code.
@@ -170,7 +175,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `interpreter`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-interpreter.jpg`
 
 1. Input High-level language source code.

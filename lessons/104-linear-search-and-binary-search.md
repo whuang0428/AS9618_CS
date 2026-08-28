@@ -1,5 +1,9 @@
 # Lesson 104: Linear search and binary search
 
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
+
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
 **Syllabus reference:** Syllabus Section 9
@@ -99,42 +103,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Array model required by search algorithms
-
-### Direct explanation
-
-- Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.
-- Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.
-- Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.
-
-### Worked example
-
-**Declare the search data before tracing it:** DECLARE Names : ARRAY[1:4] OF STRING defines four string elements. For Names = ['Asha', 'Ben', 'Chen', 'Dina'], a one-based linear search compares Names[1], then Names[2], and stops when it finds 'Ben'. Index 0 is invalid because it is below the declared lower bound.
-
-### Targeted practice and answers
-
-1. What are the lower and upper bounds of ARRAY[1:4]?
-   **Answer:** The lower bound is 1 and the upper bound is 4.
-2. What does Names[Index] mean?
-   **Answer:** The single array element selected by the current value of Index.
-3. Why must binary search know the current Low and High indexes?
-   **Answer:** They delimit the remaining sorted portion of the array that may contain the target.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Declare an array called Code that stores 20 STRING values, then state the first and last valid indexes used by a search.
-
-- **B1** DECLARE Code : ARRAY[1:20] or another explicit 20-element bound range
-- **B1** OF STRING
-- **B1** first valid index matches the declared lower bound
-- **B1** last valid index matches the declared upper bound
-
-**Strict note:** Do not assume zero-based indexing when the declaration gives different bounds.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -142,7 +110,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `binary`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-binary.jpg`
 
 1. Binary search requires sorted data and repeatedly narrows the search interval.
@@ -154,7 +122,7 @@ This produces an integer array index.
 
 - **Explains:** `binary-tool`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-binary-tool.jpg`
 
 1. Interactive binary trace
@@ -165,7 +133,7 @@ This produces an integer array index.
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-compare.jpg`
 
 1. Comparison
@@ -181,25 +149,11 @@ This produces an integer array index.
 11. checks far fewer items for large sorted lists
 12. Exam phrase
 
-### Linear search checks each item in order
-
-- **Explains:** `linear`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-linear.jpg`
-
-1. Knowledge explanation
-2. How it works
-3. Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.
-4. When it is suitable
-5. Use it when data is unsorted, the list is small, or simplicity matters more than speed.
-6. Worst case: the target is last or absent, so every item may be checked.
-
 ### Trace linear search
 
 - **Explains:** `linear-tool`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-linear-tool.jpg`
 
 1. Interactive linear trace
@@ -210,7 +164,7 @@ This produces an integer array index.
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-pseudocode.jpg`
 
 1. Initialise Found to FALSE and Index to the first valid position.

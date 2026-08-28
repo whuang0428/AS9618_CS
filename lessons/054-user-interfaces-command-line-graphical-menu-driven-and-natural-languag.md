@@ -1,4 +1,55 @@
-# Lesson 054: User interfaces: command line, graphical, menu-driven, and natural language
+# Lesson 054: Libraries and dynamically linked library files
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- remediation-v2-optional:start -->
+> **Optional enrichment:** command-line, graphical, menu-driven and natural-language user-interface taxonomy. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.
+>
+> **Formal AS prerequisite:** S5.01 operating-system purpose and management roles.
+<!-- remediation-v2-optional:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Libraries and dynamically linked library files
+
+### Direct explanation
+
+- Software under development is often constructed using existing code from program libraries. A program library is a collection of reusable routines or modules, so a developer can call tested implementations instead of rewriting common mathematical, input/output, graphics or string operations.
+- Benefits to the developer include shorter development time, less duplicated source code, reuse of tested routines and more consistent maintenance. A dynamically linked library (DLL) is connected when a program loads or calls it rather than copying all library code into every executable.
+- DLL files can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.
+- A developer benefit of a program library is reuse of existing tested routines, which can reduce development time and duplicated code.
+
+### Worked example
+
+**Three programs use one graphics DLL:** All three executables call the shared graphics code. One loaded copy may be shared in memory and a security fix can update the DLL once, but replacing it with an incompatible version can break all three programs.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. How do program libraries support software under development?
+   **Answer:** They supply existing reusable routines or modules, avoiding the need to write common code again.
+2. When is a dynamically linked library connected to a program?
+   **Answer:** At load time or run time when required.
+3. Give one storage benefit of dynamic linking.
+   **Answer:** Library code need not be copied into every executable.
+4. Give one DLL risk.
+   **Answer:** A missing/incompatible version can prevent execution or cause faults.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Explain two benefits and one drawback of using a dynamically linked library.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| shared reusable code / avoids rewriting | Do not accept 'saves space' unless duplication or executable size is explained. | 1 |
+| smaller executables or reduced duplicate memory/storage |  | 1 |
+| shared library can be updated once |  | 1 |
+| missing/incompatible DLL can stop or alter programs |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +94,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** A command-line interface suits the administrator because precise commands can be entered quickly and automated, while a menu-driven or graphical interface suits the visitor because visible choices reduce the need to remember commands. Credit suitability linked to each user and task.
 
-
-
 ## Student Task
 Students match command-line, graphical, menu-driven and natural-language interfaces to users and tasks, then justify one advantage and one limitation in context.
 
@@ -79,7 +128,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cli`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-cli.jpg`
 
 1. How it works The user types commands and parameters at a prompt.
@@ -91,7 +140,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-compare.jpg`
 
 1. Scenario
@@ -111,7 +160,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-concept.jpg`
 
 1. User interface The method by which a user communicates with a computer system.
@@ -123,7 +172,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `gui`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-gui.jpg`
 
 1. How it works Uses windows, icons, menus and a pointer/touch input.
@@ -131,11 +180,23 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Limitations Can use more memory/processing power; repetitive actions may be slower than commands.
 4. Good fit General desktop use, creative work, browsing files and visual tasks.
 
+### Libraries provide reusable routines and modules
+
+- **Explains:** `libraries`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-libraries.jpg`
+
+1. Purpose Provide pre-written, tested routines that programs can use.
+2. Examples Mathematical functions, input/output routines, graphics or string-handling routines.
+3. Benefits Saves development time, reduces duplication and may improve reliability.
+4. Requirement Calls to library routines must be linked or made available at run time.
+
 ### Menu-driven interface: choose from fixed options
 
 - **Explains:** `menu`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-menu.jpg`
 
 1. How it works The user selects from displayed options, often step by step.
@@ -147,7 +208,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `natural`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-natural.jpg`
 
 1. How it works The user speaks or types instructions in ordinary human language.

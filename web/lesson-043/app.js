@@ -97,6 +97,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -174,7 +180,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Distinguish general-purpose from special-purpose registers, then state the roles of ACC, PC, MAR, MDR and IX.",
+    prompt: "Compare general-purpose from special-purpose registers, then state the roles of ACC, PC, MAR, MDR and IX.",
     answer: "A general-purpose register can hold values for varied operations, whereas a special-purpose register has a defined processor role. ACC holds intermediate or final ALU results. PC holds the address of the next instruction. MAR holds the address currently accessed. MDR holds data or an instruction transferred to or from memory. IX holds an offset used to form an indexed effective address.",
     marking: [
       { mark: "B1", text: "general-purpose register can hold values for varied operations; special-purpose register has a defined role" },
@@ -321,9 +327,9 @@ function renderExamQuestions() {
       <p>${question.prompt}</p>
       <button type="button" class="ms-toggle" data-answer="ms-${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong> ${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((item) => `<li><strong>${item.mark}</strong> ${item.text}</li>`).join("")}</ul>
+        <p><strong>Answer:</strong> ${question.answer}</p>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

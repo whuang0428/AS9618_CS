@@ -1,4 +1,55 @@
-# Lesson 018: Packet switching, routing, and packet structure
+# Lesson 018: Packet transmission between two hosts in each required topology
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- remediation-v2-optional:start -->
+> **Optional enrichment:** general packet switching, routing and packet structure beyond packet paths for the named topologies. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.
+>
+> **Formal AS prerequisite:** S2.04 bus, star, mesh and hybrid topologies.
+<!-- remediation-v2-optional:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Packet transmission between two hosts in each required topology
+
+### Direct explanation
+
+- To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.
+- Topology justification must connect the packet path to the scenario: central-device failure, backbone failure, individual cable failure, congestion, expansion, redundancy and cabling cost are consequences of the structure.
+- To justify a topology, link the packet path, dependence on central hardware, alternative routes and failure behaviour to the given situation.
+
+### Worked example
+
+**Send a patient record across a hybrid hospital network:** The source sends the frame to its ward switch as in a star. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. How is a transmission carried between two hosts in a bus topology?
+   **Answer:** The signal travels along the shared backbone and the attached hosts inspect it.
+2. Where does a frame pass in a star network?
+   **Answer:** Through the central switch.
+3. Why can a mesh continue after one link fails?
+   **Answer:** Packets may use an alternative link or route.
+4. Describe one possible packet path through a hybrid made from two stars.
+   **Answer:** Source to its switch, across the link between star segments, then through the destination switch to the receiving host.
+
+### Exam-style question and MS
+
+**Question (5 marks):** Compare how a packet travels between two hosts in a star topology and a mesh topology, then justify one topology for a fault-sensitive system.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| star packet/frame passes through a central switch | Do not accept 'mesh is better' without a packet-path or failure consequence. | 1 |
+| mesh provides multiple interconnected paths / possible routes |  | 1 |
+| star switch is a single point of failure |  | 1 |
+| mesh can use an alternative route when a link fails |  | 1 |
+| choice is justified from the stated fault-sensitivity and a path consequence |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +94,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit destination/source address, sequence number, checksum or payload length. Out-of-order arrival occurs because packets can take different routes.
 
-
-
 ## Student Task
 Students act as routers passing numbered packet cards through different routes, then reconstruct the message using sequence numbers.
 
@@ -72,44 +121,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Packet transmission between two hosts in each required topology
-
-### Direct explanation
-
-- To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.
-- Topology justification must connect the packet path to the scenario: central-device failure, backbone failure, individual cable failure, congestion, expansion, redundancy and cabling cost are consequences of the structure.
-
-### Worked example
-
-**Send a patient record across a hybrid hospital network:** The source sends the frame to its ward switch as in a star. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.
-
-### Targeted practice and answers
-
-1. How is a transmission carried between two hosts in a bus topology?
-   **Answer:** The signal travels along the shared backbone and the attached hosts inspect it.
-2. Where does a frame pass in a star network?
-   **Answer:** Through the central switch.
-3. Why can a mesh continue after one link fails?
-   **Answer:** Packets may use an alternative link or route.
-4. Describe one possible packet path through a hybrid made from two stars.
-   **Answer:** Source to its switch, across the link between star segments, then through the destination switch to the receiving host.
-
-### Exam-style question and MS
-
-**Question (5 marks):** Compare how a packet travels between two hosts in a star topology and a mesh topology, then justify one topology for a fault-sensitive system.
-
-- **B1** star packet/frame passes through a central switch
-- **B1** mesh provides multiple interconnected paths / possible routes
-- **B1** star switch is a single point of failure
-- **B1** mesh can use an alternative route when a link fails
-- **B1** choice is justified from the stated fault-sensitivity and a path consequence
-
-**Strict note:** Do not accept 'mesh is better' without a packet-path or failure consequence.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -117,7 +128,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `packet-journey`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-018-packet-journey.jpg`
 
 1. Visual explanation
@@ -133,7 +144,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `routing`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-018-routing.jpg`
 
 1. Router decision Routers forward packets based on destination address and routing information.
@@ -145,7 +156,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `structure`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-018-structure.jpg`
 
 1. Source address, destination address, sequence number, protocol/control data.
@@ -158,7 +169,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `switching`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-018-switching.jpg`
 
 1. A message or file is divided into smaller packets before transmission.

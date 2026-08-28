@@ -6,7 +6,7 @@
     <title>AS9618 Lesson 059 | Error types: syntax, logic, runtime and translation diagnostics</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -42,11 +42,21 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+        <!-- remediation-v2-optional:start -->
+        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
+          <strong>Optional enrichment</strong>
+          <p>early Section 12 error-classification treatment inside Section 5. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
+          <p><strong>Formal AS prerequisite:</strong> S12.01 lifecycle before S12.04 fault exposure, location and correction.</p>
+        </aside>
+        <!-- remediation-v2-optional:end -->
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 059 | 45 minutes | Paper 1 Section 5 | System software</p>
             <h2>Not all errors are equal. Some stop translation, some crash at run time, and some smile while giving the wrong answer.</h2>
@@ -71,7 +81,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam answers need a category plus a reason. "There is an error" is not a diagnosis.</p>
@@ -82,7 +92,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A program calculates a bill, runs without crashing, but charges everyone double. What type of error is most likely?</h2>
@@ -99,7 +109,7 @@
           </div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Error classification depends on when and how the fault appears</h2>
@@ -114,7 +124,7 @@
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <h2 class="explanation-sr-only" id="explanation-concept-title">Error classification depends on when and how the fault appears</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Error classification depends on when and how the fault appears with a structured visual model." />
@@ -126,8 +136,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-
-        <section class="panel" id="syntax" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="syntax">
+        <section class="panel" id="syntax" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Syntax errors break the grammar rules of the language</h2>
@@ -141,7 +150,7 @@
         </section>
 
         <!-- stage10-explanation:start syntax -->
-        <section class="panel explanation-panel" id="explanation-syntax" data-explains="syntax" data-explanation-kind="mechanism" aria-labelledby="explanation-syntax-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="syntax">
+        <section class="panel explanation-panel" id="explanation-syntax" data-explains="syntax" data-explanation-kind="mechanism" aria-labelledby="explanation-syntax-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <h2 class="explanation-sr-only" id="explanation-syntax-title">Syntax errors break the grammar rules of the language</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-syntax.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Syntax errors break the grammar rules of the language with a structured visual model." />
@@ -153,8 +162,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end syntax -->
-
-        <section class="panel" id="logic" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="logic">
+        <section class="panel" id="logic" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Logic errors make the program do the wrong thing</h2>
@@ -167,21 +175,7 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start logic -->
-        <section class="panel explanation-panel" id="explanation-logic" data-explains="logic" data-explanation-kind="mechanism" aria-labelledby="explanation-logic-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="logic">
-          <h2 class="explanation-sr-only" id="explanation-logic-title">Logic errors make the program do the wrong thing</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-logic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Logic errors make the program do the wrong thing with a structured visual model." />
-            <figcaption class="explanation-sr-only">Logic errors make the program do the wrong thing: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.</li><li><strong>Lesson fact:</strong> Examples Using &lt; instead of &lt;= , wrong formula, wrong loop condition or off-by-one error.</li><li><strong>Lesson fact:</strong> Detection Usually found by testing, tracing or comparing actual output with expected output.</li><li><strong>Lesson fact:</strong> Common error A translator may not detect it because the instructions are legal.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end logic -->
-
-        <section class="panel" id="runtime" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="runtime">
+        <section class="panel" id="runtime" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Runtime errors occur while the program is executing</h2>
@@ -195,7 +189,7 @@
         </section>
 
         <!-- stage10-explanation:start runtime -->
-        <section class="panel explanation-panel" id="explanation-runtime" data-explains="runtime" data-explanation-kind="mechanism" aria-labelledby="explanation-runtime-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="runtime">
+        <section class="panel explanation-panel" id="explanation-runtime" data-explains="runtime" data-explanation-kind="mechanism" aria-labelledby="explanation-runtime-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <h2 class="explanation-sr-only" id="explanation-runtime-title">Runtime errors occur while the program is executing</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-runtime.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Runtime errors occur while the program is executing with a structured visual model." />
@@ -207,8 +201,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end runtime -->
-
-        <section class="panel" id="diagnostics" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="diagnostics">
+        <section class="panel" id="diagnostics" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Translation diagnostics help locate and correct errors</h2>
@@ -222,7 +215,7 @@
         </section>
 
         <!-- stage10-explanation:start diagnostics -->
-        <section class="panel explanation-panel" id="explanation-diagnostics" data-explains="diagnostics" data-explanation-kind="mechanism" aria-labelledby="explanation-diagnostics-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="diagnostics">
+        <section class="panel explanation-panel" id="explanation-diagnostics" data-explains="diagnostics" data-explanation-kind="mechanism" aria-labelledby="explanation-diagnostics-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <h2 class="explanation-sr-only" id="explanation-diagnostics-title">Translation diagnostics help locate and correct errors</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-diagnostics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Translation diagnostics help locate and correct errors with a structured visual model." />
@@ -234,8 +227,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end diagnostics -->
-
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Compare error types by evidence</h2>
@@ -269,7 +261,7 @@
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <h2 class="explanation-sr-only" id="explanation-compare-title">Compare error types by evidence</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare error types by evidence with a structured visual model." />
@@ -281,9 +273,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Error diagnosis tool</h2>
@@ -308,7 +298,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Diagnose from code behaviour</h2>
@@ -322,7 +312,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant-check questions</h2>
@@ -331,7 +321,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the almost-right answers</h2>
@@ -339,7 +329,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
@@ -348,62 +338,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Expose, locate and correct program errors</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A syntax error breaks the language grammar and is normally exposed by a translator or an IDE's dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.</p>
-            <p>After an error is exposed, locate the responsible statement and identify the error type before changing it. Correct the cause, not only the observed output, then rerun the failing test and relevant regression tests. Avoid faults by using clear identifiers, modular design, validation, desk checking, peer walkthroughs and a planned set of normal, abnormal and extreme/boundary tests.</p>
-            <p>No single method proves that a program has no remaining faults. Translation can expose syntax faults but not every logic fault; testing can reveal failures for selected cases but cannot demonstrate correctness for every possible input.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Correct three different faults</h3>
-            <p>A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection. Mark &gt; 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark &gt;= 50. Total / Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Expose, locate and correct program errors: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which method can expose a syntactically valid wrong boundary?</p>
-              <details><summary>Show answer</summary><p>A trace, dry run, walkthrough or selected boundary test can expose the wrong result.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Why is a translator insufficient for all logic errors?</p>
-              <details><summary>Show answer</summary><p>Logic errors can obey the language grammar, so translation may succeed even though the result is wrong.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What must happen after a correction?</p>
-              <details><summary>Show answer</summary><p>Rerun the failing test and relevant regression tests to check the correction and existing behaviour.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>For each fault, state its type, one way to expose or locate it, and the correction: a missing ENDIF; IF Mark &gt; 50 when 50 should pass; Average &lt;- Total / Count when Count can be zero.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> missing ENDIF identified as syntax error and translator/dynamic syntax check used</li>
-                <li><strong>A1</strong> adds the required ENDIF</li>
-                <li><strong>B1</strong> Mark &gt; 50 identified as logic error and boundary trace/test at 50 used</li>
-                <li><strong>A1</strong> changes the condition to Mark &gt;= 50 or equivalent</li>
-                <li><strong>B1</strong> division by zero identified as run-time error/risk and execution/test diagnostics used</li>
-                <li><strong>A1</strong> guards the division by checking Count or handles the zero case</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-059">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Error diagnosis memory map</h2>

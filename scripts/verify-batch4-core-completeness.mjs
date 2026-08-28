@@ -39,13 +39,12 @@ const l137Markdown = read("lessons/137-testing-with-normal-boundary-and-erroneou
 const l137Html = read("web/lesson-137/index.html");
 const l137App = read("web/lesson-137/app.js");
 const courseCatalog = read("web/course-catalog.js");
-includesAll(l137Markdown, ["Syllabus Section 12.3", "normal", "abnormal", "extreme/boundary"], "L137 Markdown identity and categories");
-includesAll(l137Html, ["Paper 2 Section 12.3", "normal", "abnormal", "extreme/boundary", "Show answer"], "L137 visible teaching");
-expect(!l137Html.includes("Paper 2 Section 11"), "L137 still exposes the obsolete Section 11 identity");
+includesAll(l137Markdown, ["Course sequence Section 11", "Optional enrichment preview of Section 12.3", "normal", "abnormal", "extreme/boundary"], "L137 Markdown identity and categories");
+includesAll(l137Html, ["Paper 2 Section 11", "Optional enrichment preview of Section 12.3", "normal", "abnormal", "extreme/boundary", "Show answer"], "L137 visible teaching");
 expect(!/testing proves whether the check works/i.test(l137Html), "L137 still claims finite testing proves the validation rule works");
 expect(!/which values prove/i.test(l137Html), "L137 still says selected test values prove the validation rule works");
 expect(!/\["(?:0|100)",\s*"Boundary"/.test(l137App), "L137 dynamic examples still display Boundary as a replacement category");
-expect(/"id": "137"[\s\S]{0,260}"section": "Section 12\.3"/.test(courseCatalog), "L137 toolbar/catalogue identity is not Section 12.3");
+expect(/"id": "137"[\s\S]{0,260}"section": "Section 11"/.test(courseCatalog), "L137 toolbar/catalogue identity is not Section 11");
 
 const forbiddenReplacement = /normal[,/ ]+(?:boundary|extreme)[,/ ]+erroneous/gi;
 for (const relativePath of [
@@ -82,14 +81,14 @@ for (let lesson = 1; lesson <= 150; lesson += 1) {
 }
 
 const processorMutation = evaluateRequirement(requirements.get("S4.05"), {
-  lessonTransform: ({ lesson, markdown, html }) => lesson === 49
+  lessonTransform: ({ lesson, markdown, html }) => lesson === 42
     ? { markdown: markdown.replaceAll(/processor type/gi, "processor category"), html: html.replaceAll(/processor type/gi, "processor category") }
     : { markdown, html },
 });
 expect(processorMutation.messages.some((message) => message.includes("processor type")), "mutation escaped: deleting processor type must fail S4.05");
 
 const securityMutation = evaluateRequirement(requirements.get("S5.01"), {
-  lessonTransform: ({ lesson, markdown, html }) => lesson === 53
+  lessonTransform: ({ lesson, markdown, html }) => lesson === 52
     ? { markdown: markdown.replaceAll(/security management/gi, "account checks"), html: html.replaceAll(/security management/gi, "account checks") }
     : { markdown, html },
 });

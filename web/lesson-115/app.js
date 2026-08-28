@@ -110,11 +110,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Declare a one-dimensional array called Scores to store 20 integer marks. Then write pseudocode to input all the marks.",
+    prompt: "Write declarations for a one-dimensional array called Scores to store 20 integer marks. Then write pseudocode to input all the marks.",
     answer: "DECLARE Scores : ARRAY[1:20] OF INTEGER\n\nFOR Index <- 1 TO 20\n    INPUT Scores[Index]\nNEXT Index",
     marking: [
       { mark: "B1", text: "uses identifier Scores" },
@@ -133,7 +139,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "7 marks",
-    prompt: "An array Scores[1:5] stores 42, 67, 55, 81, 49. Trace the total produced by a loop from Index <- 1 TO 5 that adds Scores[Index] to Total.",
+    prompt: "An array Scores[1:5] stores 42, 67, 55, 81, 49. Complete a trace table for the total produced by a loop from Index <- 1 TO 5 that adds Scores[Index] to Total.",
     answer: "Total starts at 0. Index 1 adds 42 so Total = 42. Index 2 adds 67 so Total = 109. Index 3 adds 55 so Total = 164. Index 4 adds 81 so Total = 245. Index 5 adds 49 so Total = 294.",
     marking: [
       { mark: "B1", text: "initialises or states Total starts at 0" },
@@ -364,10 +370,10 @@ function renderExam() {
       <p>${escapeHtml(question.prompt)}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${escapeHtml(question.answer)}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((line) => `<li><strong>${escapeHtml(line.mark)}</strong> ${escapeHtml(line.text)}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

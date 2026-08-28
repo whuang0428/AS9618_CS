@@ -27,6 +27,10 @@ function validate(candidate) {
     if (question.lesson >= 98 && row.assessmentObjectives?.some((ao) => ao === "AO1")) problems.push(`${question.id}: Paper 2 cannot carry AO1`);
     if (row.paper !== (question.lesson <= 97 ? "Paper 1" : "Paper 2")) problems.push(`${question.id}: paper identity is wrong`);
     if (!row.rationale || !row.classificationMethod) problems.push(`${question.id}: classification evidence is incomplete`);
+    if (!/^S(?:[1-9]|1[0-2])\.\d{2}$/.test(row.primaryRequirement ?? "")) problems.push(`${question.id}: primary syllabus requirement is missing`);
+    if (row.marks !== question.marks) problems.push(`${question.id}: contract marks are stale`);
+    if (!row.allowedAnswerBoundary?.includes("one mark")) problems.push(`${question.id}: allowed-answer boundary is missing`);
+    if (!/^remediation-v2-stage(?:4|5-r6)$/.test(row.reviewRound ?? "")) problems.push(`${question.id}: current Stage 4/5 review round is missing`);
   }
   return problems;
 }

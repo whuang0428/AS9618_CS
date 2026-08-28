@@ -1,4 +1,65 @@
-# Lesson 019: Protocols and layered communication
+# Lesson 019: Cloud, wired and wireless networking
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- remediation-v2-optional:start -->
+> **Optional enrichment:** general protocol rules and layered communication. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.
+>
+> **Formal AS prerequisite:** S2.11 Ethernet and CSMA/CD.
+<!-- remediation-v2-optional:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Cloud, wired and wireless networking
+
+### Direct explanation
+
+- Cloud computing provides storage, processing or software as a service using remote shared infrastructure reached through a network. A public cloud is offered over shared provider infrastructure; a private cloud is restricted to one organisation.
+- A public cloud may scale quickly and reduce local hardware management: these are possible benefits. A private cloud is dedicated to one organisation and can give greater control over access and configuration. Each benefit or drawback must link availability, control, cost or security to the stated scenario.
+- A wired network carries signals through a physical cable. It can provide stable, predictable links and avoids radio interference, but installation restricts movement and may require disruptive cabling. A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security. The implications must be tied to a given use, not reduced to 'wired is faster'.
+- Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference. Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.
+- Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.
+
+### Worked example
+
+**Choose a cloud model / Connect a school campus and a remote weather station:** A school storing non-sensitive public resources may use a public cloud for scalable access. A hospital may choose a private cloud for tighter organisational control of patient-data access. Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling between two buildings is impractical, and satellite for the remote station without local cable infrastructure. Each choice follows distance, mobility, interference, bandwidth, latency and cost.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Compare public from private cloud.
+   **Answer:** Public cloud uses shared provider infrastructure; private cloud is dedicated or restricted to one organisation.
+2. State one cloud-computing service.
+   **Answer:** Remote storage, processing or hosted software.
+3. Compare wired and wireless networks for fixed desktops and mobile tablets.
+   **Answer:** Wired provides a stable physical link for fixed devices; wireless radio supports mobility but may suffer interference, obstacles and shared capacity.
+4. Compare copper cable with fibre-optic cable.
+   **Answer:** Copper uses electrical signals and may be cheaper; fibre uses light, supports higher bandwidth/longer distance and resists electromagnetic interference.
+5. Compare WiFi radio waves, terrestrial microwave and satellite links.
+   **Answer:** WiFi provides local wireless access; terrestrial microwave is directional and line-of-sight; satellite provides wide/remote coverage but commonly has greater latency.
+6. Suggest a medium for a remote location with no cable infrastructure.
+   **Answer:** Satellite if wide remote coverage is required; justify the latency/cost/weather drawback.
+
+### Exam-style question and MS
+
+**Question (9 marks):** Compare public and private cloud for a medical organisation. Suggest transmission media for fixed classroom PCs, mobile tablets, an inter-building backbone and a remote field station.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| public cloud characteristic | Do not equate cloud computing with the internet itself. Do not accept unqualified 'wireless is less secure' or 'fibre is faster'; require a mechanism or scenario consequence. | 1 |
+| private cloud characteristic |  | 1 |
+| scenario-linked comparison |  | 1 |
+| justified choice |  | 1 |
+| copper cable for short fixed links with a valid cost/stability reason |  | 1 |
+| WiFi/radio waves for mobile devices with an interference/security implication |  | 1 |
+| fibre-optic cable for the high-bandwidth/longer inter-building link |  | 1 |
+| satellite for remote coverage without cable infrastructure |  | 1 |
+| at least one limitation is correctly linked to the chosen medium |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +104,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Strong answers connect a named component or protocol to a symptom, for example DNS failure prevents name resolution, or HTTPS certificate problems affect secure communication.
 
-
-
 ## Student Task
 Students draw a packet journey for a web request and label where addressing, routing and protocols are used. They then add one bottleneck and explain its effect.
 
@@ -72,41 +131,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Ethernet collisions and CSMA/CD
-
-### Direct explanation
-
-- CSMA/CD means Carrier Sense Multiple Access with Collision Detection. A station listens to the shared medium; if idle it transmits, while continuing to detect a collision.
-- After a collision, stations stop transmitting, send/recognise a jam signal, wait for different random backoff periods and retry. The random delay reduces the chance of another simultaneous attempt.
-
-### Worked example
-
-**Two stations sense an idle cable:** Both may begin before either signal reaches the other. They detect the collision, stop, wait different random periods and the station whose timer expires first retries.
-
-### Targeted practice and answers
-
-1. What is sensed before Ethernet transmission?
-   **Answer:** Whether the shared carrier/medium is idle.
-2. What happens immediately after a collision is detected?
-   **Answer:** Transmission stops and a retry is scheduled after a random backoff.
-3. Why must the delay be random?
-   **Answer:** Different delays reduce repeated simultaneous retransmission.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Describe how CSMA/CD handles two devices attempting to transmit on a shared Ethernet medium.
-
-- **B1** each device listens/senses the carrier before transmitting
-- **B1** transmits when the medium is idle
-- **B1** detects a collision and stops transmission
-- **B1** waits a random/backoff time before retrying
-
-**Strict note:** Do not accept collision avoidance: CSMA/CD detects and responds to a collision after transmission has begun.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -114,7 +138,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `layers`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-019-layers.jpg`
 
 1. Application layer idea What the user or application wants to do, such as send a web request.
@@ -128,7 +152,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `protocols`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-019-protocols.jpg`
 
 1. Definition
@@ -144,7 +168,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `rules`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-019-rules.jpg`
 
 1. Protocols define rules for data format, addressing, timing, error handling, flow control and connection management.

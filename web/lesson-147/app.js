@@ -89,11 +89,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Trace an algorithm that adds scores greater than 50 from the list 40, 65, 50, 80. State the final value of Total and explain which scores were included.",
+    prompt: "Complete a trace table for an algorithm that adds scores greater than 50 from the list 40, 65, 50, 80. State the final value of Total and explain which scores were included.",
     answer: "Total starts at 0. Score 40 is not greater than 50, so Total remains 0. Score 65 is included, so Total becomes 65. Score 50 is not greater than 50, so Total remains 65. Score 80 is included, so Total becomes 145. Final Total is 145.",
     marking: [
       { mark: "M1", text: "initialises or recognises Total starts at 0" },
@@ -113,7 +119,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Choose suitable data structures for undo history, printer jobs and student records. Justify each choice.",
+    prompt: "Suggest suitable data structures for undo history, printer jobs and student records. Justify each choice.",
     answer: "Undo history should use a stack because the most recent action is undone first. Printer jobs should use a queue because the first job submitted should be printed first. Student records should use records because each student has related fields of different data types, such as name, ID and mark.",
     marking: [
       { mark: "B1", text: "chooses stack for undo history" },
@@ -359,9 +365,7 @@ function setupExam() {
         <h4>Indicative answer</h4>
         <p>${escapeHtml(item.answer)}</p>
         <h4>Mark scheme</h4>
-        <ul>
-          ${item.marking.map((mark) => `<li><strong>${escapeHtml(mark.mark)}</strong> ${escapeHtml(mark.text)}</li>`).join("")}
-        </ul>
+        ${renderStudentMarkPoints(item)}
       </div>
     </article>
   `).join("");

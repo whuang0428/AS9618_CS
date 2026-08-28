@@ -46,7 +46,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit suitable structure choice, correct indexing or field access, and a loop that covers the required data without missing or exceeding bounds.
 
-
 ## Student Task
 Students model a small school dataset using arrays, records or arrays of records, then write one operation on it.
 

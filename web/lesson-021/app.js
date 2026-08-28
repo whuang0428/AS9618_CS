@@ -71,6 +71,12 @@ const practice = [
   { id: "p10", prompt: "What does the S in HTTPS indicate in exam context?", accepted: ["secure", "security"], answer: "Secure" },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -93,7 +99,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Match FTP, SMTP, POP3 and IMAP to their email/file-transfer contexts, then distinguish sending email from receiving or accessing email.",
+    prompt: "Draw lines to match FTP, SMTP, POP3 and IMAP to their email/file-transfer contexts, then Compare sending email from receiving or accessing email.",
     answer: "FTP is used for file transfer between a client and server. SMTP is used to send email. POP3 is used to download email from a mail server to a client. IMAP is used to access and synchronise email stored on a mail server across multiple devices.",
     marking: [
       { mark: "B1", text: "FTP matched to file transfer" },
@@ -281,9 +287,9 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
+          <h4>Mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
-          <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

@@ -3,8 +3,9 @@
   "source": "scripts/syllabus-coverage-contract.json",
   "status": "Ready",
   "nodeCount": 121,
-  "edgeCount": 82,
-  "assessmentEvidenceCount": 257,
+  "edgeCount": 81,
+  "officialOrderEdgeCount": 109,
+  "assessmentEvidenceCount": 230,
   "nodes": [
     {
       "id": "S1.01",
@@ -53,8 +54,7 @@
       "id": "S1.05",
       "section": 1,
       "teachingLessons": [
-        4,
-        5
+        4
       ],
       "firstTeachingLesson": 4,
       "riskLevel": "High"
@@ -63,10 +63,9 @@
       "id": "S1.06",
       "section": 1,
       "teachingLessons": [
-        3,
         6
       ],
-      "firstTeachingLesson": 3,
+      "firstTeachingLesson": 6,
       "riskLevel": "Low"
     },
     {
@@ -100,8 +99,7 @@
       "id": "S1.10",
       "section": 1,
       "teachingLessons": [
-        10,
-        11
+        10
       ],
       "firstTeachingLesson": 10,
       "riskLevel": "High"
@@ -110,8 +108,7 @@
       "id": "S1.11",
       "section": 1,
       "teachingLessons": [
-        12,
-        13
+        12
       ],
       "firstTeachingLesson": 12,
       "riskLevel": "High"
@@ -129,86 +126,40 @@
       "id": "S2.02",
       "section": 2,
       "teachingLessons": [
-        17
-      ],
-      "firstTeachingLesson": 17,
-      "riskLevel": "Medium"
-    },
-    {
-      "id": "S2.03",
-      "section": 2,
-      "teachingLessons": [
-        17
-      ],
-      "firstTeachingLesson": 17,
-      "riskLevel": "Low"
-    },
-    {
-      "id": "S2.04",
-      "section": 2,
-      "teachingLessons": [
         16
       ],
       "firstTeachingLesson": 16,
       "riskLevel": "Medium"
     },
     {
+      "id": "S2.03",
+      "section": 2,
+      "teachingLessons": [
+        16
+      ],
+      "firstTeachingLesson": 16,
+      "riskLevel": "Low"
+    },
+    {
+      "id": "S2.04",
+      "section": 2,
+      "teachingLessons": [
+        17
+      ],
+      "firstTeachingLesson": 17,
+      "riskLevel": "Medium"
+    },
+    {
       "id": "S2.05",
       "section": 2,
       "teachingLessons": [
-        16,
         18
       ],
-      "firstTeachingLesson": 16,
+      "firstTeachingLesson": 18,
       "riskLevel": "Medium"
     },
     {
       "id": "S2.06",
-      "section": 2,
-      "teachingLessons": [
-        24
-      ],
-      "firstTeachingLesson": 24,
-      "riskLevel": "Medium"
-    },
-    {
-      "id": "S2.07",
-      "section": 2,
-      "teachingLessons": [
-        22
-      ],
-      "firstTeachingLesson": 22,
-      "riskLevel": "Medium"
-    },
-    {
-      "id": "S2.08",
-      "section": 2,
-      "teachingLessons": [
-        22
-      ],
-      "firstTeachingLesson": 22,
-      "riskLevel": "Medium"
-    },
-    {
-      "id": "S2.09",
-      "section": 2,
-      "teachingLessons": [
-        23
-      ],
-      "firstTeachingLesson": 23,
-      "riskLevel": "Medium"
-    },
-    {
-      "id": "S2.10",
-      "section": 2,
-      "teachingLessons": [
-        23
-      ],
-      "firstTeachingLesson": 23,
-      "riskLevel": "Medium"
-    },
-    {
-      "id": "S2.11",
       "section": 2,
       "teachingLessons": [
         19
@@ -217,30 +168,75 @@
       "riskLevel": "Medium"
     },
     {
+      "id": "S2.07",
+      "section": 2,
+      "teachingLessons": [
+        19
+      ],
+      "firstTeachingLesson": 19,
+      "riskLevel": "Medium"
+    },
+    {
+      "id": "S2.08",
+      "section": 2,
+      "teachingLessons": [
+        19
+      ],
+      "firstTeachingLesson": 19,
+      "riskLevel": "Medium"
+    },
+    {
+      "id": "S2.09",
+      "section": 2,
+      "teachingLessons": [
+        20
+      ],
+      "firstTeachingLesson": 20,
+      "riskLevel": "Medium"
+    },
+    {
+      "id": "S2.10",
+      "section": 2,
+      "teachingLessons": [
+        20
+      ],
+      "firstTeachingLesson": 20,
+      "riskLevel": "Medium"
+    },
+    {
+      "id": "S2.11",
+      "section": 2,
+      "teachingLessons": [
+        20
+      ],
+      "firstTeachingLesson": 20,
+      "riskLevel": "Medium"
+    },
+    {
       "id": "S2.12",
       "section": 2,
       "teachingLessons": [
-        25
+        20
       ],
-      "firstTeachingLesson": 25,
+      "firstTeachingLesson": 20,
       "riskLevel": "Medium"
     },
     {
       "id": "S2.13",
       "section": 2,
       "teachingLessons": [
-        24
+        20
       ],
-      "firstTeachingLesson": 24,
+      "firstTeachingLesson": 20,
       "riskLevel": "Low"
     },
     {
       "id": "S2.14",
       "section": 2,
       "teachingLessons": [
-        23
+        20
       ],
-      "firstTeachingLesson": 23,
+      "firstTeachingLesson": 20,
       "riskLevel": "Medium"
     },
     {
@@ -274,29 +270,28 @@
       "id": "S3.02",
       "section": 3,
       "teachingLessons": [
-        33
+        28
       ],
-      "firstTeachingLesson": 33,
+      "firstTeachingLesson": 28,
       "riskLevel": "Medium"
     },
     {
       "id": "S3.03",
       "section": 3,
       "teachingLessons": [
-        28,
         29,
-        31
+        30
       ],
-      "firstTeachingLesson": 28,
+      "firstTeachingLesson": 29,
       "riskLevel": "Medium"
     },
     {
       "id": "S3.04",
       "section": 3,
       "teachingLessons": [
-        29
+        30
       ],
-      "firstTeachingLesson": 29,
+      "firstTeachingLesson": 30,
       "riskLevel": "Low"
     },
     {
@@ -330,29 +325,27 @@
       "id": "S3.08",
       "section": 3,
       "teachingLessons": [
-        34
+        31
       ],
-      "firstTeachingLesson": 34,
+      "firstTeachingLesson": 31,
       "riskLevel": "Medium"
     },
     {
       "id": "S3.09",
       "section": 3,
       "teachingLessons": [
-        34
+        31
       ],
-      "firstTeachingLesson": 34,
+      "firstTeachingLesson": 31,
       "riskLevel": "Medium"
     },
     {
       "id": "S3.10",
       "section": 3,
       "teachingLessons": [
-        35,
-        36,
-        37
+        32
       ],
-      "firstTeachingLesson": 35,
+      "firstTeachingLesson": 32,
       "riskLevel": "High"
     },
     {
@@ -368,9 +361,9 @@
       "id": "S4.02",
       "section": 4,
       "teachingLessons": [
-        43
+        41
       ],
-      "firstTeachingLesson": 43,
+      "firstTeachingLesson": 41,
       "riskLevel": "High"
     },
     {
@@ -386,47 +379,45 @@
       "id": "S4.04",
       "section": 4,
       "teachingLessons": [
-        44
+        42
       ],
-      "firstTeachingLesson": 44,
+      "firstTeachingLesson": 42,
       "riskLevel": "Low"
     },
     {
       "id": "S4.05",
       "section": 4,
       "teachingLessons": [
-        49,
-        44
+        42
       ],
-      "firstTeachingLesson": 44,
+      "firstTeachingLesson": 42,
       "riskLevel": "High"
     },
     {
       "id": "S4.06",
       "section": 4,
       "teachingLessons": [
-        44
+        42
       ],
-      "firstTeachingLesson": 44,
+      "firstTeachingLesson": 42,
       "riskLevel": "Low"
     },
     {
       "id": "S4.07",
       "section": 4,
       "teachingLessons": [
-        42,
         43
       ],
-      "firstTeachingLesson": 42,
+      "firstTeachingLesson": 43,
       "riskLevel": "High"
     },
     {
       "id": "S4.08",
       "section": 4,
       "teachingLessons": [
-        48
+        44
       ],
-      "firstTeachingLesson": 48,
+      "firstTeachingLesson": 44,
       "riskLevel": "Low"
     },
     {
@@ -470,7 +461,8 @@
       "section": 4,
       "teachingLessons": [
         46,
-        47
+        47,
+        48
       ],
       "firstTeachingLesson": 46,
       "riskLevel": "High"
@@ -488,17 +480,16 @@
       "id": "S4.15",
       "section": 4,
       "teachingLessons": [
-        50
+        49
       ],
-      "firstTeachingLesson": 50,
+      "firstTeachingLesson": 49,
       "riskLevel": "High"
     },
     {
       "id": "S5.01",
       "section": 5,
       "teachingLessons": [
-        52,
-        53
+        52
       ],
       "firstTeachingLesson": 52,
       "riskLevel": "High"
@@ -507,22 +498,40 @@
       "id": "S5.02",
       "section": 5,
       "teachingLessons": [
-        55
+        53
       ],
-      "firstTeachingLesson": 55,
+      "firstTeachingLesson": 53,
       "riskLevel": "Low"
     },
     {
       "id": "S5.03",
       "section": 5,
       "teachingLessons": [
-        58
+        54
       ],
-      "firstTeachingLesson": 58,
+      "firstTeachingLesson": 54,
       "riskLevel": "High"
     },
     {
       "id": "S5.04",
+      "section": 5,
+      "teachingLessons": [
+        55
+      ],
+      "firstTeachingLesson": 55,
+      "riskLevel": "Low"
+    },
+    {
+      "id": "S5.05",
+      "section": 5,
+      "teachingLessons": [
+        55
+      ],
+      "firstTeachingLesson": 55,
+      "riskLevel": "Medium"
+    },
+    {
+      "id": "S5.06",
       "section": 5,
       "teachingLessons": [
         56
@@ -531,31 +540,12 @@
       "riskLevel": "Low"
     },
     {
-      "id": "S5.05",
-      "section": 5,
-      "teachingLessons": [
-        56,
-        60
-      ],
-      "firstTeachingLesson": 56,
-      "riskLevel": "Medium"
-    },
-    {
-      "id": "S5.06",
-      "section": 5,
-      "teachingLessons": [
-        60
-      ],
-      "firstTeachingLesson": 60,
-      "riskLevel": "Low"
-    },
-    {
       "id": "S5.07",
       "section": 5,
       "teachingLessons": [
-        60
+        56
       ],
-      "firstTeachingLesson": 60,
+      "firstTeachingLesson": 56,
       "riskLevel": "Low"
     },
     {
@@ -641,7 +631,8 @@
       "id": "S7.01",
       "section": 7,
       "teachingLessons": [
-        72
+        72,
+        77
       ],
       "firstTeachingLesson": 72,
       "riskLevel": "Medium"
@@ -650,7 +641,8 @@
       "id": "S7.02",
       "section": 7,
       "teachingLessons": [
-        72
+        72,
+        77
       ],
       "firstTeachingLesson": 72,
       "riskLevel": "Medium"
@@ -660,7 +652,7 @@
       "section": 7,
       "teachingLessons": [
         72,
-        73
+        77
       ],
       "firstTeachingLesson": 72,
       "riskLevel": "High"
@@ -669,7 +661,8 @@
       "id": "S7.04",
       "section": 7,
       "teachingLessons": [
-        74
+        74,
+        77
       ],
       "firstTeachingLesson": 74,
       "riskLevel": "Medium"
@@ -679,7 +672,8 @@
       "section": 7,
       "teachingLessons": [
         74,
-        75
+        75,
+        77
       ],
       "firstTeachingLesson": 74,
       "riskLevel": "High"
@@ -688,7 +682,8 @@
       "id": "S7.06",
       "section": 7,
       "teachingLessons": [
-        76
+        76,
+        77
       ],
       "firstTeachingLesson": 76,
       "riskLevel": "High"
@@ -698,7 +693,7 @@
       "section": 8,
       "teachingLessons": [
         78,
-        79
+        89
       ],
       "firstTeachingLesson": 78,
       "riskLevel": "High"
@@ -707,62 +702,68 @@
       "id": "S8.02",
       "section": 8,
       "teachingLessons": [
-        80,
-        81
+        79,
+        89
       ],
-      "firstTeachingLesson": 80,
+      "firstTeachingLesson": 79,
       "riskLevel": "High"
     },
     {
       "id": "S8.03",
       "section": 8,
       "teachingLessons": [
-        82
+        80,
+        89
       ],
-      "firstTeachingLesson": 82,
+      "firstTeachingLesson": 80,
       "riskLevel": "Medium"
     },
     {
       "id": "S8.04",
       "section": 8,
       "teachingLessons": [
-        83
+        80,
+        89
       ],
-      "firstTeachingLesson": 83,
+      "firstTeachingLesson": 80,
       "riskLevel": "High"
     },
     {
       "id": "S8.05",
       "section": 8,
       "teachingLessons": [
-        78
+        80,
+        89
       ],
-      "firstTeachingLesson": 78,
+      "firstTeachingLesson": 80,
       "riskLevel": "High"
     },
     {
       "id": "S8.06",
       "section": 8,
       "teachingLessons": [
-        78
+        80,
+        89
       ],
-      "firstTeachingLesson": 78,
+      "firstTeachingLesson": 80,
       "riskLevel": "High"
     },
     {
       "id": "S8.07",
       "section": 8,
       "teachingLessons": [
-        87
+        83,
+        89
       ],
-      "firstTeachingLesson": 87,
+      "firstTeachingLesson": 83,
       "riskLevel": "High"
     },
     {
       "id": "S8.08",
       "section": 8,
       "teachingLessons": [
-        84
+        84,
+        89
       ],
       "firstTeachingLesson": 84,
       "riskLevel": "High"
@@ -771,27 +772,28 @@
       "id": "S8.09",
       "section": 8,
       "teachingLessons": [
-        87
+        85,
+        89
       ],
-      "firstTeachingLesson": 87,
+      "firstTeachingLesson": 85,
       "riskLevel": "Medium"
     },
     {
       "id": "S8.10",
       "section": 8,
       "teachingLessons": [
-        84,
         85,
-        86
+        89
       ],
-      "firstTeachingLesson": 84,
+      "firstTeachingLesson": 85,
       "riskLevel": "High"
     },
     {
       "id": "S8.11",
       "section": 8,
       "teachingLessons": [
-        87
+        87,
+        89
       ],
       "firstTeachingLesson": 87,
       "riskLevel": "Low"
@@ -800,54 +802,60 @@
       "id": "S9.01",
       "section": 9,
       "teachingLessons": [
-        99
+        98,
+        112
       ],
-      "firstTeachingLesson": 99,
+      "firstTeachingLesson": 98,
       "riskLevel": "Medium"
     },
     {
       "id": "S9.02",
       "section": 9,
       "teachingLessons": [
-        99,
-        111
+        98,
+        102,
+        112
       ],
-      "firstTeachingLesson": 99,
+      "firstTeachingLesson": 98,
       "riskLevel": "Medium"
     },
     {
       "id": "S9.03",
       "section": 9,
       "teachingLessons": [
-        98
+        99,
+        112
       ],
-      "firstTeachingLesson": 98,
+      "firstTeachingLesson": 99,
       "riskLevel": "High"
     },
     {
       "id": "S9.04",
       "section": 9,
       "teachingLessons": [
-        98
+        99,
+        112
       ],
-      "firstTeachingLesson": 98,
+      "firstTeachingLesson": 99,
       "riskLevel": "Medium"
     },
     {
       "id": "S9.05",
       "section": 9,
       "teachingLessons": [
-        98,
-        111
+        99,
+        102,
+        112
       ],
-      "firstTeachingLesson": 98,
+      "firstTeachingLesson": 99,
       "riskLevel": "High"
     },
     {
       "id": "S9.06",
       "section": 9,
       "teachingLessons": [
-        100
+        100,
+        112
       ],
       "firstTeachingLesson": 100,
       "riskLevel": "Medium"
@@ -856,7 +864,8 @@
       "id": "S9.07",
       "section": 9,
       "teachingLessons": [
-        101
+        101,
+        112
       ],
       "firstTeachingLesson": 101,
       "riskLevel": "High"
@@ -865,28 +874,27 @@
       "id": "S9.08",
       "section": 9,
       "teachingLessons": [
-        111
+        102,
+        112
       ],
-      "firstTeachingLesson": 111,
+      "firstTeachingLesson": 102,
       "riskLevel": "High"
     },
     {
       "id": "S9.09",
       "section": 9,
       "teachingLessons": [
-        101,
-        102
+        103,
+        112
       ],
-      "firstTeachingLesson": 101,
+      "firstTeachingLesson": 103,
       "riskLevel": "High"
     },
     {
       "id": "S10.01",
       "section": 10,
       "teachingLessons": [
-        113,
-        114,
-        124
+        113
       ],
       "firstTeachingLesson": 113,
       "riskLevel": "High"
@@ -895,21 +903,19 @@
       "id": "S10.02",
       "section": 10,
       "teachingLessons": [
-        118,
-        119
+        114
       ],
-      "firstTeachingLesson": 118,
+      "firstTeachingLesson": 114,
       "riskLevel": "High"
     },
     {
       "id": "S10.03",
       "section": 10,
       "teachingLessons": [
-        104,
         115,
-        116
+        117
       ],
-      "firstTeachingLesson": 104,
+      "firstTeachingLesson": 115,
       "riskLevel": "High"
     },
     {
@@ -927,9 +933,7 @@
       "section": 10,
       "teachingLessons": [
         115,
-        116,
-        117,
-        124
+        116
       ],
       "firstTeachingLesson": 115,
       "riskLevel": "High"
@@ -938,99 +942,93 @@
       "id": "S10.06",
       "section": 10,
       "teachingLessons": [
-        104,
-        105
+        117,
+        118
       ],
-      "firstTeachingLesson": 104,
+      "firstTeachingLesson": 117,
       "riskLevel": "High"
     },
     {
       "id": "S10.07",
       "section": 10,
       "teachingLessons": [
-        120,
-        121,
-        136
+        119
       ],
-      "firstTeachingLesson": 120,
+      "firstTeachingLesson": 119,
       "riskLevel": "High"
     },
     {
       "id": "S10.08",
       "section": 10,
       "teachingLessons": [
-        122,
-        123
+        120
       ],
-      "firstTeachingLesson": 122,
+      "firstTeachingLesson": 120,
       "riskLevel": "High"
     },
     {
       "id": "S10.09",
       "section": 10,
       "teachingLessons": [
-        122,
-        123
+        120,
+        121
       ],
-      "firstTeachingLesson": 122,
+      "firstTeachingLesson": 120,
       "riskLevel": "High"
     },
     {
       "id": "S10.10",
       "section": 10,
       "teachingLessons": [
-        122,
-        123
+        120,
+        121
       ],
-      "firstTeachingLesson": 122,
+      "firstTeachingLesson": 120,
       "riskLevel": "High"
     },
     {
       "id": "S11.01",
       "section": 11,
       "teachingLessons": [
-        140
+        126
       ],
-      "firstTeachingLesson": 140,
+      "firstTeachingLesson": 126,
       "riskLevel": "High"
     },
     {
       "id": "S11.02",
       "section": 11,
       "teachingLessons": [
-        114
+        127
       ],
-      "firstTeachingLesson": 114,
+      "firstTeachingLesson": 127,
       "riskLevel": "High"
     },
     {
       "id": "S11.03",
       "section": 11,
       "teachingLessons": [
-        133
+        128
       ],
-      "firstTeachingLesson": 133,
+      "firstTeachingLesson": 128,
       "riskLevel": "High"
     },
     {
       "id": "S11.04",
       "section": 11,
       "teachingLessons": [
-        127,
-        128,
         129
       ],
-      "firstTeachingLesson": 127,
+      "firstTeachingLesson": 129,
       "riskLevel": "High"
     },
     {
       "id": "S11.05",
       "section": 11,
       "teachingLessons": [
-        128,
         129
       ],
-      "firstTeachingLesson": 128,
+      "firstTeachingLesson": 129,
       "riskLevel": "High"
     },
     {
@@ -1064,21 +1062,16 @@
       "id": "S11.09",
       "section": 11,
       "teachingLessons": [
-        109,
-        110,
-        139,
-        140,
-        141
+        133
       ],
-      "firstTeachingLesson": 109,
+      "firstTeachingLesson": 133,
       "riskLevel": "High"
     },
     {
       "id": "S12.01",
       "section": 12,
       "teachingLessons": [
-        142,
-        143
+        142
       ],
       "firstTeachingLesson": 142,
       "riskLevel": "High"
@@ -1087,27 +1080,27 @@
       "id": "S12.02",
       "section": 12,
       "teachingLessons": [
-        144
+        143
       ],
-      "firstTeachingLesson": 144,
+      "firstTeachingLesson": 143,
       "riskLevel": "High"
     },
     {
       "id": "S12.03",
       "section": 12,
       "teachingLessons": [
-        144
+        143
       ],
-      "firstTeachingLesson": 144,
+      "firstTeachingLesson": 143,
       "riskLevel": "Medium"
     },
     {
       "id": "S12.04",
       "section": 12,
       "teachingLessons": [
-        59
+        144
       ],
-      "firstTeachingLesson": 59,
+      "firstTeachingLesson": 144,
       "riskLevel": "High"
     },
     {
@@ -1132,17 +1125,16 @@
       "id": "S12.07",
       "section": 12,
       "teachingLessons": [
-        137
+        145
       ],
-      "firstTeachingLesson": 137,
+      "firstTeachingLesson": 145,
       "riskLevel": "High"
     },
     {
       "id": "S12.08",
       "section": 12,
       "teachingLessons": [
-        145,
-        146
+        145
       ],
       "firstTeachingLesson": 145,
       "riskLevel": "Low"
@@ -1151,9 +1143,9 @@
       "id": "S12.09",
       "section": 12,
       "teachingLessons": [
-        138
+        145
       ],
-      "firstTeachingLesson": 138,
+      "firstTeachingLesson": 145,
       "riskLevel": "High"
     }
   ],
@@ -1180,7 +1172,7 @@
       "prerequisite": "S1.02",
       "dependent": "S1.06",
       "prerequisiteFirstLesson": 2,
-      "dependentFirstLesson": 3
+      "dependentFirstLesson": 6
     },
     {
       "prerequisite": "S1.01",
@@ -1215,20 +1207,20 @@
     {
       "prerequisite": "S2.02",
       "dependent": "S2.03",
-      "prerequisiteFirstLesson": 17,
-      "dependentFirstLesson": 17
+      "prerequisiteFirstLesson": 16,
+      "dependentFirstLesson": 16
     },
     {
       "prerequisite": "S2.04",
       "dependent": "S2.05",
-      "prerequisiteFirstLesson": 16,
-      "dependentFirstLesson": 16
+      "prerequisiteFirstLesson": 17,
+      "dependentFirstLesson": 18
     },
     {
       "prerequisite": "S2.01",
       "dependent": "S2.11",
       "prerequisiteFirstLesson": 16,
-      "dependentFirstLesson": 19
+      "dependentFirstLesson": 20
     },
     {
       "prerequisite": "S2.15",
@@ -1240,7 +1232,7 @@
       "prerequisite": "S3.01",
       "dependent": "S3.03",
       "prerequisiteFirstLesson": 27,
-      "dependentFirstLesson": 28
+      "dependentFirstLesson": 29
     },
     {
       "prerequisite": "S3.05",
@@ -1257,38 +1249,38 @@
     {
       "prerequisite": "S3.08",
       "dependent": "S3.09",
-      "prerequisiteFirstLesson": 34,
-      "dependentFirstLesson": 34
+      "prerequisiteFirstLesson": 31,
+      "dependentFirstLesson": 31
     },
     {
       "prerequisite": "S1.02",
       "dependent": "S3.10",
       "prerequisiteFirstLesson": 2,
-      "dependentFirstLesson": 35
+      "dependentFirstLesson": 32
     },
     {
       "prerequisite": "S4.01",
       "dependent": "S4.02",
       "prerequisiteFirstLesson": 41,
-      "dependentFirstLesson": 43
+      "dependentFirstLesson": 41
     },
     {
       "prerequisite": "S4.01",
       "dependent": "S4.04",
       "prerequisiteFirstLesson": 41,
-      "dependentFirstLesson": 44
+      "dependentFirstLesson": 42
     },
     {
       "prerequisite": "S4.01",
       "dependent": "S4.07",
       "prerequisiteFirstLesson": 41,
-      "dependentFirstLesson": 42
+      "dependentFirstLesson": 43
     },
     {
       "prerequisite": "S4.07",
       "dependent": "S4.08",
-      "prerequisiteFirstLesson": 42,
-      "dependentFirstLesson": 48
+      "prerequisiteFirstLesson": 43,
+      "dependentFirstLesson": 44
     },
     {
       "prerequisite": "S4.01",
@@ -1330,37 +1322,31 @@
       "prerequisite": "S1.02",
       "dependent": "S4.15",
       "prerequisiteFirstLesson": 2,
-      "dependentFirstLesson": 50
+      "dependentFirstLesson": 49
     },
     {
       "prerequisite": "S5.01",
       "dependent": "S5.02",
       "prerequisiteFirstLesson": 52,
-      "dependentFirstLesson": 55
-    },
-    {
-      "prerequisite": "S5.04",
-      "dependent": "S5.03",
-      "prerequisiteFirstLesson": 56,
-      "dependentFirstLesson": 58
+      "dependentFirstLesson": 53
     },
     {
       "prerequisite": "S5.04",
       "dependent": "S5.05",
-      "prerequisiteFirstLesson": 56,
-      "dependentFirstLesson": 56
+      "prerequisiteFirstLesson": 55,
+      "dependentFirstLesson": 55
     },
     {
       "prerequisite": "S5.04",
       "dependent": "S5.06",
-      "prerequisiteFirstLesson": 56,
-      "dependentFirstLesson": 60
+      "prerequisiteFirstLesson": 55,
+      "dependentFirstLesson": 56
     },
     {
       "prerequisite": "S5.04",
       "dependent": "S5.07",
-      "prerequisiteFirstLesson": 56,
-      "dependentFirstLesson": 60
+      "prerequisiteFirstLesson": 55,
+      "dependentFirstLesson": 56
     },
     {
       "prerequisite": "S6.02",
@@ -1408,55 +1394,55 @@
       "prerequisite": "S8.01",
       "dependent": "S8.02",
       "prerequisiteFirstLesson": 78,
-      "dependentFirstLesson": 80
+      "dependentFirstLesson": 79
     },
     {
       "prerequisite": "S8.02",
       "dependent": "S8.03",
-      "prerequisiteFirstLesson": 80,
-      "dependentFirstLesson": 82
+      "prerequisiteFirstLesson": 79,
+      "dependentFirstLesson": 80
     },
     {
       "prerequisite": "S8.02",
       "dependent": "S8.04",
-      "prerequisiteFirstLesson": 80,
-      "dependentFirstLesson": 83
+      "prerequisiteFirstLesson": 79,
+      "dependentFirstLesson": 80
     },
     {
       "prerequisite": "S8.01",
       "dependent": "S8.05",
       "prerequisiteFirstLesson": 78,
-      "dependentFirstLesson": 78
+      "dependentFirstLesson": 80
     },
     {
       "prerequisite": "S8.05",
       "dependent": "S8.06",
-      "prerequisiteFirstLesson": 78,
-      "dependentFirstLesson": 78
+      "prerequisiteFirstLesson": 80,
+      "dependentFirstLesson": 80
     },
     {
       "prerequisite": "S8.02",
       "dependent": "S8.08",
-      "prerequisiteFirstLesson": 80,
+      "prerequisiteFirstLesson": 79,
       "dependentFirstLesson": 84
     },
     {
       "prerequisite": "S8.08",
       "dependent": "S8.09",
       "prerequisiteFirstLesson": 84,
-      "dependentFirstLesson": 87
+      "dependentFirstLesson": 85
     },
     {
       "prerequisite": "S8.02",
       "dependent": "S8.10",
-      "prerequisiteFirstLesson": 80,
-      "dependentFirstLesson": 84
+      "prerequisiteFirstLesson": 79,
+      "dependentFirstLesson": 85
     },
     {
       "prerequisite": "S8.08",
       "dependent": "S8.10",
       "prerequisiteFirstLesson": 84,
-      "dependentFirstLesson": 84
+      "dependentFirstLesson": 85
     },
     {
       "prerequisite": "S8.08",
@@ -1467,31 +1453,31 @@
     {
       "prerequisite": "S9.01",
       "dependent": "S9.02",
+      "prerequisiteFirstLesson": 98,
+      "dependentFirstLesson": 98
+    },
+    {
+      "prerequisite": "S9.03",
+      "dependent": "S9.05",
+      "prerequisiteFirstLesson": 99,
+      "dependentFirstLesson": 99
+    },
+    {
+      "prerequisite": "S9.04",
+      "dependent": "S9.05",
       "prerequisiteFirstLesson": 99,
       "dependentFirstLesson": 99
     },
     {
       "prerequisite": "S9.03",
-      "dependent": "S9.05",
-      "prerequisiteFirstLesson": 98,
-      "dependentFirstLesson": 98
-    },
-    {
-      "prerequisite": "S9.04",
-      "dependent": "S9.05",
-      "prerequisiteFirstLesson": 98,
-      "dependentFirstLesson": 98
-    },
-    {
-      "prerequisite": "S9.03",
       "dependent": "S9.06",
-      "prerequisiteFirstLesson": 98,
+      "prerequisiteFirstLesson": 99,
       "dependentFirstLesson": 100
     },
     {
       "prerequisite": "S9.03",
       "dependent": "S9.07",
-      "prerequisiteFirstLesson": 98,
+      "prerequisiteFirstLesson": 99,
       "dependentFirstLesson": 101
     },
     {
@@ -1503,103 +1489,103 @@
     {
       "prerequisite": "S9.02",
       "dependent": "S9.08",
-      "prerequisiteFirstLesson": 99,
-      "dependentFirstLesson": 111
+      "prerequisiteFirstLesson": 98,
+      "dependentFirstLesson": 102
     },
     {
       "prerequisite": "S9.03",
       "dependent": "S9.08",
-      "prerequisiteFirstLesson": 98,
-      "dependentFirstLesson": 111
+      "prerequisiteFirstLesson": 99,
+      "dependentFirstLesson": 102
     },
     {
       "prerequisite": "S9.06",
       "dependent": "S9.09",
       "prerequisiteFirstLesson": 100,
-      "dependentFirstLesson": 101
+      "dependentFirstLesson": 103
     },
     {
       "prerequisite": "S10.01",
       "dependent": "S10.02",
       "prerequisiteFirstLesson": 113,
-      "dependentFirstLesson": 118
+      "dependentFirstLesson": 114
     },
     {
       "prerequisite": "S10.03",
       "dependent": "S10.04",
-      "prerequisiteFirstLesson": 104,
+      "prerequisiteFirstLesson": 115,
       "dependentFirstLesson": 115
     },
     {
       "prerequisite": "S10.03",
       "dependent": "S10.05",
-      "prerequisiteFirstLesson": 104,
+      "prerequisiteFirstLesson": 115,
       "dependentFirstLesson": 115
     },
     {
       "prerequisite": "S10.03",
       "dependent": "S10.06",
-      "prerequisiteFirstLesson": 104,
-      "dependentFirstLesson": 104
+      "prerequisiteFirstLesson": 115,
+      "dependentFirstLesson": 117
     },
     {
       "prerequisite": "S10.01",
       "dependent": "S10.07",
       "prerequisiteFirstLesson": 113,
-      "dependentFirstLesson": 120
+      "dependentFirstLesson": 119
     },
     {
       "prerequisite": "S10.08",
       "dependent": "S10.09",
-      "prerequisiteFirstLesson": 122,
-      "dependentFirstLesson": 122
+      "prerequisiteFirstLesson": 120,
+      "dependentFirstLesson": 120
     },
     {
       "prerequisite": "S10.03",
       "dependent": "S10.10",
-      "prerequisiteFirstLesson": 104,
-      "dependentFirstLesson": 122
+      "prerequisiteFirstLesson": 115,
+      "dependentFirstLesson": 120
     },
     {
       "prerequisite": "S10.09",
       "dependent": "S10.10",
-      "prerequisiteFirstLesson": 122,
-      "dependentFirstLesson": 122
+      "prerequisiteFirstLesson": 120,
+      "dependentFirstLesson": 120
     },
     {
       "prerequisite": "S9.07",
       "dependent": "S11.01",
       "prerequisiteFirstLesson": 101,
-      "dependentFirstLesson": 140
+      "dependentFirstLesson": 126
     },
     {
       "prerequisite": "S10.01",
       "dependent": "S11.02",
       "prerequisiteFirstLesson": 113,
-      "dependentFirstLesson": 114
+      "dependentFirstLesson": 127
     },
     {
       "prerequisite": "S9.06",
       "dependent": "S11.02",
       "prerequisiteFirstLesson": 100,
-      "dependentFirstLesson": 114
+      "dependentFirstLesson": 127
     },
     {
       "prerequisite": "S9.06",
       "dependent": "S11.04",
       "prerequisiteFirstLesson": 100,
-      "dependentFirstLesson": 127
+      "dependentFirstLesson": 129
     },
     {
       "prerequisite": "S11.04",
       "dependent": "S11.05",
-      "prerequisiteFirstLesson": 127,
-      "dependentFirstLesson": 128
+      "prerequisiteFirstLesson": 129,
+      "dependentFirstLesson": 129
     },
     {
       "prerequisite": "S11.02",
       "dependent": "S11.07",
-      "prerequisiteFirstLesson": 114,
+      "prerequisiteFirstLesson": 127,
       "dependentFirstLesson": 130
     },
     {
@@ -1618,18 +1604,18 @@
       "prerequisite": "S11.06",
       "dependent": "S12.02",
       "prerequisiteFirstLesson": 130,
-      "dependentFirstLesson": 144
+      "dependentFirstLesson": 143
     },
     {
       "prerequisite": "S9.07",
       "dependent": "S12.03",
       "prerequisiteFirstLesson": 101,
-      "dependentFirstLesson": 144
+      "dependentFirstLesson": 143
     },
     {
       "prerequisite": "S12.04",
       "dependent": "S12.05",
-      "prerequisiteFirstLesson": 59,
+      "prerequisiteFirstLesson": 144,
       "dependentFirstLesson": 145
     },
     {
@@ -1647,8 +1633,664 @@
     {
       "prerequisite": "S12.04",
       "dependent": "S12.09",
-      "prerequisiteFirstLesson": 59,
-      "dependentFirstLesson": 138
+      "prerequisiteFirstLesson": 144,
+      "dependentFirstLesson": 145
+    }
+  ],
+  "officialOrderEdges": [
+    {
+      "prerequisite": "S1.01",
+      "dependent": "S1.02",
+      "prerequisiteFirstLesson": 1,
+      "dependentFirstLesson": 2
+    },
+    {
+      "prerequisite": "S1.02",
+      "dependent": "S1.03",
+      "prerequisiteFirstLesson": 2,
+      "dependentFirstLesson": 2
+    },
+    {
+      "prerequisite": "S1.03",
+      "dependent": "S1.04",
+      "prerequisiteFirstLesson": 2,
+      "dependentFirstLesson": 4
+    },
+    {
+      "prerequisite": "S1.04",
+      "dependent": "S1.05",
+      "prerequisiteFirstLesson": 4,
+      "dependentFirstLesson": 4
+    },
+    {
+      "prerequisite": "S1.05",
+      "dependent": "S1.06",
+      "prerequisiteFirstLesson": 4,
+      "dependentFirstLesson": 6
+    },
+    {
+      "prerequisite": "S1.06",
+      "dependent": "S1.07",
+      "prerequisiteFirstLesson": 6,
+      "dependentFirstLesson": 7
+    },
+    {
+      "prerequisite": "S1.07",
+      "dependent": "S1.08",
+      "prerequisiteFirstLesson": 7,
+      "dependentFirstLesson": 8
+    },
+    {
+      "prerequisite": "S1.08",
+      "dependent": "S1.09",
+      "prerequisiteFirstLesson": 8,
+      "dependentFirstLesson": 9
+    },
+    {
+      "prerequisite": "S1.09",
+      "dependent": "S1.10",
+      "prerequisiteFirstLesson": 9,
+      "dependentFirstLesson": 10
+    },
+    {
+      "prerequisite": "S1.10",
+      "dependent": "S1.11",
+      "prerequisiteFirstLesson": 10,
+      "dependentFirstLesson": 12
+    },
+    {
+      "prerequisite": "S2.01",
+      "dependent": "S2.02",
+      "prerequisiteFirstLesson": 16,
+      "dependentFirstLesson": 16
+    },
+    {
+      "prerequisite": "S2.02",
+      "dependent": "S2.03",
+      "prerequisiteFirstLesson": 16,
+      "dependentFirstLesson": 16
+    },
+    {
+      "prerequisite": "S2.03",
+      "dependent": "S2.04",
+      "prerequisiteFirstLesson": 16,
+      "dependentFirstLesson": 17
+    },
+    {
+      "prerequisite": "S2.04",
+      "dependent": "S2.05",
+      "prerequisiteFirstLesson": 17,
+      "dependentFirstLesson": 18
+    },
+    {
+      "prerequisite": "S2.05",
+      "dependent": "S2.06",
+      "prerequisiteFirstLesson": 18,
+      "dependentFirstLesson": 19
+    },
+    {
+      "prerequisite": "S2.06",
+      "dependent": "S2.07",
+      "prerequisiteFirstLesson": 19,
+      "dependentFirstLesson": 19
+    },
+    {
+      "prerequisite": "S2.07",
+      "dependent": "S2.08",
+      "prerequisiteFirstLesson": 19,
+      "dependentFirstLesson": 19
+    },
+    {
+      "prerequisite": "S2.08",
+      "dependent": "S2.09",
+      "prerequisiteFirstLesson": 19,
+      "dependentFirstLesson": 20
+    },
+    {
+      "prerequisite": "S2.09",
+      "dependent": "S2.10",
+      "prerequisiteFirstLesson": 20,
+      "dependentFirstLesson": 20
+    },
+    {
+      "prerequisite": "S2.10",
+      "dependent": "S2.11",
+      "prerequisiteFirstLesson": 20,
+      "dependentFirstLesson": 20
+    },
+    {
+      "prerequisite": "S2.11",
+      "dependent": "S2.12",
+      "prerequisiteFirstLesson": 20,
+      "dependentFirstLesson": 20
+    },
+    {
+      "prerequisite": "S2.12",
+      "dependent": "S2.13",
+      "prerequisiteFirstLesson": 20,
+      "dependentFirstLesson": 20
+    },
+    {
+      "prerequisite": "S2.13",
+      "dependent": "S2.14",
+      "prerequisiteFirstLesson": 20,
+      "dependentFirstLesson": 20
+    },
+    {
+      "prerequisite": "S2.14",
+      "dependent": "S2.15",
+      "prerequisiteFirstLesson": 20,
+      "dependentFirstLesson": 20
+    },
+    {
+      "prerequisite": "S2.15",
+      "dependent": "S2.16",
+      "prerequisiteFirstLesson": 20,
+      "dependentFirstLesson": 20
+    },
+    {
+      "prerequisite": "S3.01",
+      "dependent": "S3.02",
+      "prerequisiteFirstLesson": 27,
+      "dependentFirstLesson": 28
+    },
+    {
+      "prerequisite": "S3.02",
+      "dependent": "S3.03",
+      "prerequisiteFirstLesson": 28,
+      "dependentFirstLesson": 29
+    },
+    {
+      "prerequisite": "S3.03",
+      "dependent": "S3.04",
+      "prerequisiteFirstLesson": 29,
+      "dependentFirstLesson": 30
+    },
+    {
+      "prerequisite": "S3.04",
+      "dependent": "S3.05",
+      "prerequisiteFirstLesson": 30,
+      "dependentFirstLesson": 30
+    },
+    {
+      "prerequisite": "S3.05",
+      "dependent": "S3.06",
+      "prerequisiteFirstLesson": 30,
+      "dependentFirstLesson": 30
+    },
+    {
+      "prerequisite": "S3.06",
+      "dependent": "S3.07",
+      "prerequisiteFirstLesson": 30,
+      "dependentFirstLesson": 30
+    },
+    {
+      "prerequisite": "S3.07",
+      "dependent": "S3.08",
+      "prerequisiteFirstLesson": 30,
+      "dependentFirstLesson": 31
+    },
+    {
+      "prerequisite": "S3.08",
+      "dependent": "S3.09",
+      "prerequisiteFirstLesson": 31,
+      "dependentFirstLesson": 31
+    },
+    {
+      "prerequisite": "S3.09",
+      "dependent": "S3.10",
+      "prerequisiteFirstLesson": 31,
+      "dependentFirstLesson": 32
+    },
+    {
+      "prerequisite": "S4.01",
+      "dependent": "S4.02",
+      "prerequisiteFirstLesson": 41,
+      "dependentFirstLesson": 41
+    },
+    {
+      "prerequisite": "S4.02",
+      "dependent": "S4.03",
+      "prerequisiteFirstLesson": 41,
+      "dependentFirstLesson": 41
+    },
+    {
+      "prerequisite": "S4.03",
+      "dependent": "S4.04",
+      "prerequisiteFirstLesson": 41,
+      "dependentFirstLesson": 42
+    },
+    {
+      "prerequisite": "S4.04",
+      "dependent": "S4.05",
+      "prerequisiteFirstLesson": 42,
+      "dependentFirstLesson": 42
+    },
+    {
+      "prerequisite": "S4.05",
+      "dependent": "S4.06",
+      "prerequisiteFirstLesson": 42,
+      "dependentFirstLesson": 42
+    },
+    {
+      "prerequisite": "S4.06",
+      "dependent": "S4.07",
+      "prerequisiteFirstLesson": 42,
+      "dependentFirstLesson": 43
+    },
+    {
+      "prerequisite": "S4.07",
+      "dependent": "S4.08",
+      "prerequisiteFirstLesson": 43,
+      "dependentFirstLesson": 44
+    },
+    {
+      "prerequisite": "S4.08",
+      "dependent": "S4.09",
+      "prerequisiteFirstLesson": 44,
+      "dependentFirstLesson": 45
+    },
+    {
+      "prerequisite": "S4.09",
+      "dependent": "S4.10",
+      "prerequisiteFirstLesson": 45,
+      "dependentFirstLesson": 46
+    },
+    {
+      "prerequisite": "S4.10",
+      "dependent": "S4.11",
+      "prerequisiteFirstLesson": 46,
+      "dependentFirstLesson": 46
+    },
+    {
+      "prerequisite": "S4.11",
+      "dependent": "S4.12",
+      "prerequisiteFirstLesson": 46,
+      "dependentFirstLesson": 46
+    },
+    {
+      "prerequisite": "S4.12",
+      "dependent": "S4.13",
+      "prerequisiteFirstLesson": 46,
+      "dependentFirstLesson": 46
+    },
+    {
+      "prerequisite": "S4.13",
+      "dependent": "S4.14",
+      "prerequisiteFirstLesson": 46,
+      "dependentFirstLesson": 47
+    },
+    {
+      "prerequisite": "S4.14",
+      "dependent": "S4.15",
+      "prerequisiteFirstLesson": 47,
+      "dependentFirstLesson": 49
+    },
+    {
+      "prerequisite": "S5.01",
+      "dependent": "S5.02",
+      "prerequisiteFirstLesson": 52,
+      "dependentFirstLesson": 53
+    },
+    {
+      "prerequisite": "S5.02",
+      "dependent": "S5.03",
+      "prerequisiteFirstLesson": 53,
+      "dependentFirstLesson": 54
+    },
+    {
+      "prerequisite": "S5.03",
+      "dependent": "S5.04",
+      "prerequisiteFirstLesson": 54,
+      "dependentFirstLesson": 55
+    },
+    {
+      "prerequisite": "S5.04",
+      "dependent": "S5.05",
+      "prerequisiteFirstLesson": 55,
+      "dependentFirstLesson": 55
+    },
+    {
+      "prerequisite": "S5.05",
+      "dependent": "S5.06",
+      "prerequisiteFirstLesson": 55,
+      "dependentFirstLesson": 56
+    },
+    {
+      "prerequisite": "S5.06",
+      "dependent": "S5.07",
+      "prerequisiteFirstLesson": 56,
+      "dependentFirstLesson": 56
+    },
+    {
+      "prerequisite": "S6.01",
+      "dependent": "S6.02",
+      "prerequisiteFirstLesson": 62,
+      "dependentFirstLesson": 62
+    },
+    {
+      "prerequisite": "S6.02",
+      "dependent": "S6.03",
+      "prerequisiteFirstLesson": 62,
+      "dependentFirstLesson": 63
+    },
+    {
+      "prerequisite": "S6.03",
+      "dependent": "S6.04",
+      "prerequisiteFirstLesson": 63,
+      "dependentFirstLesson": 63
+    },
+    {
+      "prerequisite": "S6.04",
+      "dependent": "S6.05",
+      "prerequisiteFirstLesson": 63,
+      "dependentFirstLesson": 64
+    },
+    {
+      "prerequisite": "S6.05",
+      "dependent": "S6.06",
+      "prerequisiteFirstLesson": 64,
+      "dependentFirstLesson": 66
+    },
+    {
+      "prerequisite": "S6.06",
+      "dependent": "S6.07",
+      "prerequisiteFirstLesson": 66,
+      "dependentFirstLesson": 69
+    },
+    {
+      "prerequisite": "S6.07",
+      "dependent": "S6.08",
+      "prerequisiteFirstLesson": 69,
+      "dependentFirstLesson": 69
+    },
+    {
+      "prerequisite": "S7.01",
+      "dependent": "S7.02",
+      "prerequisiteFirstLesson": 72,
+      "dependentFirstLesson": 72
+    },
+    {
+      "prerequisite": "S7.02",
+      "dependent": "S7.03",
+      "prerequisiteFirstLesson": 72,
+      "dependentFirstLesson": 72
+    },
+    {
+      "prerequisite": "S7.03",
+      "dependent": "S7.04",
+      "prerequisiteFirstLesson": 72,
+      "dependentFirstLesson": 74
+    },
+    {
+      "prerequisite": "S7.04",
+      "dependent": "S7.05",
+      "prerequisiteFirstLesson": 74,
+      "dependentFirstLesson": 74
+    },
+    {
+      "prerequisite": "S7.05",
+      "dependent": "S7.06",
+      "prerequisiteFirstLesson": 74,
+      "dependentFirstLesson": 76
+    },
+    {
+      "prerequisite": "S8.01",
+      "dependent": "S8.02",
+      "prerequisiteFirstLesson": 78,
+      "dependentFirstLesson": 79
+    },
+    {
+      "prerequisite": "S8.02",
+      "dependent": "S8.03",
+      "prerequisiteFirstLesson": 79,
+      "dependentFirstLesson": 80
+    },
+    {
+      "prerequisite": "S8.03",
+      "dependent": "S8.04",
+      "prerequisiteFirstLesson": 80,
+      "dependentFirstLesson": 80
+    },
+    {
+      "prerequisite": "S8.04",
+      "dependent": "S8.05",
+      "prerequisiteFirstLesson": 80,
+      "dependentFirstLesson": 80
+    },
+    {
+      "prerequisite": "S8.05",
+      "dependent": "S8.06",
+      "prerequisiteFirstLesson": 80,
+      "dependentFirstLesson": 80
+    },
+    {
+      "prerequisite": "S8.06",
+      "dependent": "S8.07",
+      "prerequisiteFirstLesson": 80,
+      "dependentFirstLesson": 83
+    },
+    {
+      "prerequisite": "S8.07",
+      "dependent": "S8.08",
+      "prerequisiteFirstLesson": 83,
+      "dependentFirstLesson": 84
+    },
+    {
+      "prerequisite": "S8.08",
+      "dependent": "S8.09",
+      "prerequisiteFirstLesson": 84,
+      "dependentFirstLesson": 85
+    },
+    {
+      "prerequisite": "S8.09",
+      "dependent": "S8.10",
+      "prerequisiteFirstLesson": 85,
+      "dependentFirstLesson": 85
+    },
+    {
+      "prerequisite": "S8.10",
+      "dependent": "S8.11",
+      "prerequisiteFirstLesson": 85,
+      "dependentFirstLesson": 87
+    },
+    {
+      "prerequisite": "S9.01",
+      "dependent": "S9.02",
+      "prerequisiteFirstLesson": 98,
+      "dependentFirstLesson": 98
+    },
+    {
+      "prerequisite": "S9.02",
+      "dependent": "S9.03",
+      "prerequisiteFirstLesson": 98,
+      "dependentFirstLesson": 99
+    },
+    {
+      "prerequisite": "S9.03",
+      "dependent": "S9.04",
+      "prerequisiteFirstLesson": 99,
+      "dependentFirstLesson": 99
+    },
+    {
+      "prerequisite": "S9.04",
+      "dependent": "S9.05",
+      "prerequisiteFirstLesson": 99,
+      "dependentFirstLesson": 99
+    },
+    {
+      "prerequisite": "S9.05",
+      "dependent": "S9.06",
+      "prerequisiteFirstLesson": 99,
+      "dependentFirstLesson": 100
+    },
+    {
+      "prerequisite": "S9.06",
+      "dependent": "S9.07",
+      "prerequisiteFirstLesson": 100,
+      "dependentFirstLesson": 101
+    },
+    {
+      "prerequisite": "S9.07",
+      "dependent": "S9.08",
+      "prerequisiteFirstLesson": 101,
+      "dependentFirstLesson": 102
+    },
+    {
+      "prerequisite": "S9.08",
+      "dependent": "S9.09",
+      "prerequisiteFirstLesson": 102,
+      "dependentFirstLesson": 103
+    },
+    {
+      "prerequisite": "S10.01",
+      "dependent": "S10.02",
+      "prerequisiteFirstLesson": 113,
+      "dependentFirstLesson": 114
+    },
+    {
+      "prerequisite": "S10.02",
+      "dependent": "S10.03",
+      "prerequisiteFirstLesson": 114,
+      "dependentFirstLesson": 115
+    },
+    {
+      "prerequisite": "S10.03",
+      "dependent": "S10.04",
+      "prerequisiteFirstLesson": 115,
+      "dependentFirstLesson": 115
+    },
+    {
+      "prerequisite": "S10.04",
+      "dependent": "S10.05",
+      "prerequisiteFirstLesson": 115,
+      "dependentFirstLesson": 115
+    },
+    {
+      "prerequisite": "S10.05",
+      "dependent": "S10.06",
+      "prerequisiteFirstLesson": 115,
+      "dependentFirstLesson": 117
+    },
+    {
+      "prerequisite": "S10.06",
+      "dependent": "S10.07",
+      "prerequisiteFirstLesson": 117,
+      "dependentFirstLesson": 119
+    },
+    {
+      "prerequisite": "S10.07",
+      "dependent": "S10.08",
+      "prerequisiteFirstLesson": 119,
+      "dependentFirstLesson": 120
+    },
+    {
+      "prerequisite": "S10.08",
+      "dependent": "S10.09",
+      "prerequisiteFirstLesson": 120,
+      "dependentFirstLesson": 120
+    },
+    {
+      "prerequisite": "S10.09",
+      "dependent": "S10.10",
+      "prerequisiteFirstLesson": 120,
+      "dependentFirstLesson": 120
+    },
+    {
+      "prerequisite": "S11.01",
+      "dependent": "S11.02",
+      "prerequisiteFirstLesson": 126,
+      "dependentFirstLesson": 127
+    },
+    {
+      "prerequisite": "S11.02",
+      "dependent": "S11.03",
+      "prerequisiteFirstLesson": 127,
+      "dependentFirstLesson": 128
+    },
+    {
+      "prerequisite": "S11.03",
+      "dependent": "S11.04",
+      "prerequisiteFirstLesson": 128,
+      "dependentFirstLesson": 129
+    },
+    {
+      "prerequisite": "S11.04",
+      "dependent": "S11.05",
+      "prerequisiteFirstLesson": 129,
+      "dependentFirstLesson": 129
+    },
+    {
+      "prerequisite": "S11.05",
+      "dependent": "S11.06",
+      "prerequisiteFirstLesson": 129,
+      "dependentFirstLesson": 130
+    },
+    {
+      "prerequisite": "S11.06",
+      "dependent": "S11.07",
+      "prerequisiteFirstLesson": 130,
+      "dependentFirstLesson": 130
+    },
+    {
+      "prerequisite": "S11.07",
+      "dependent": "S11.08",
+      "prerequisiteFirstLesson": 130,
+      "dependentFirstLesson": 130
+    },
+    {
+      "prerequisite": "S11.08",
+      "dependent": "S11.09",
+      "prerequisiteFirstLesson": 130,
+      "dependentFirstLesson": 133
+    },
+    {
+      "prerequisite": "S12.01",
+      "dependent": "S12.02",
+      "prerequisiteFirstLesson": 142,
+      "dependentFirstLesson": 143
+    },
+    {
+      "prerequisite": "S12.02",
+      "dependent": "S12.03",
+      "prerequisiteFirstLesson": 143,
+      "dependentFirstLesson": 143
+    },
+    {
+      "prerequisite": "S12.03",
+      "dependent": "S12.04",
+      "prerequisiteFirstLesson": 143,
+      "dependentFirstLesson": 144
+    },
+    {
+      "prerequisite": "S12.04",
+      "dependent": "S12.05",
+      "prerequisiteFirstLesson": 144,
+      "dependentFirstLesson": 145
+    },
+    {
+      "prerequisite": "S12.05",
+      "dependent": "S12.06",
+      "prerequisiteFirstLesson": 145,
+      "dependentFirstLesson": 145
+    },
+    {
+      "prerequisite": "S12.06",
+      "dependent": "S12.07",
+      "prerequisiteFirstLesson": 145,
+      "dependentFirstLesson": 145
+    },
+    {
+      "prerequisite": "S12.07",
+      "dependent": "S12.08",
+      "prerequisiteFirstLesson": 145,
+      "dependentFirstLesson": 145
+    },
+    {
+      "prerequisite": "S12.08",
+      "dependent": "S12.09",
+      "prerequisiteFirstLesson": 145,
+      "dependentFirstLesson": 145
     }
   ],
   "assessmentFirstUses": [
@@ -1703,15 +2345,15 @@
     },
     {
       "requirement": "S1.03",
-      "questionId": "L005-Q2",
-      "assessmentLesson": 5,
+      "questionId": "AQ010-Q1",
+      "assessmentLesson": 10,
       "firstTeachingLesson": 2,
       "beforeTeaching": false
     },
     {
       "requirement": "S1.03",
-      "questionId": "AQ010-Q1",
-      "assessmentLesson": 10,
+      "questionId": "L005-Q1",
+      "assessmentLesson": 5,
       "firstTeachingLesson": 2,
       "beforeTeaching": false
     },
@@ -1738,13 +2380,6 @@
     },
     {
       "requirement": "S1.05",
-      "questionId": "L004-Q2",
-      "assessmentLesson": 4,
-      "firstTeachingLesson": 4,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S1.05",
       "questionId": "AQ005-Q4",
       "assessmentLesson": 5,
       "firstTeachingLesson": 4,
@@ -1754,7 +2389,7 @@
       "requirement": "S1.06",
       "questionId": "AQ010-Q1",
       "assessmentLesson": 10,
-      "firstTeachingLesson": 3,
+      "firstTeachingLesson": 6,
       "beforeTeaching": false
     },
     {
@@ -1838,20 +2473,13 @@
       "requirement": "S2.02",
       "questionId": "L017-Q3",
       "assessmentLesson": 17,
-      "firstTeachingLesson": 17,
+      "firstTeachingLesson": 16,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.03",
       "questionId": "AQ020-Q2",
       "assessmentLesson": 20,
-      "firstTeachingLesson": 17,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S2.04",
-      "questionId": "L016-Q3",
-      "assessmentLesson": 16,
       "firstTeachingLesson": 16,
       "beforeTeaching": false
     },
@@ -1859,146 +2487,118 @@
       "requirement": "S2.04",
       "questionId": "AR026-Q2",
       "assessmentLesson": 26,
-      "firstTeachingLesson": 16,
+      "firstTeachingLesson": 17,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.05",
       "questionId": "AQ020-Q3",
       "assessmentLesson": 20,
-      "firstTeachingLesson": 16,
+      "firstTeachingLesson": 18,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.05",
       "questionId": "AR026-Q2",
       "assessmentLesson": 26,
-      "firstTeachingLesson": 16,
+      "firstTeachingLesson": 18,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.06",
       "questionId": "L024-Q5",
       "assessmentLesson": 24,
-      "firstTeachingLesson": 24,
+      "firstTeachingLesson": 19,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.07",
       "questionId": "L022-Q2",
       "assessmentLesson": 22,
-      "firstTeachingLesson": 22,
+      "firstTeachingLesson": 19,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.08",
       "questionId": "L022-Q5",
       "assessmentLesson": 22,
-      "firstTeachingLesson": 22,
+      "firstTeachingLesson": 19,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.08",
       "questionId": "AQ025-Q2",
       "assessmentLesson": 25,
-      "firstTeachingLesson": 22,
+      "firstTeachingLesson": 19,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.09",
       "questionId": "L023-Q3",
       "assessmentLesson": 23,
-      "firstTeachingLesson": 23,
+      "firstTeachingLesson": 20,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.10",
       "questionId": "L023-Q2",
       "assessmentLesson": 23,
-      "firstTeachingLesson": 23,
+      "firstTeachingLesson": 20,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.10",
       "questionId": "AQ025-Q3",
       "assessmentLesson": 25,
-      "firstTeachingLesson": 23,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S2.11",
-      "questionId": "AQ020-Q4",
-      "assessmentLesson": 20,
-      "firstTeachingLesson": 19,
+      "firstTeachingLesson": 20,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.11",
       "questionId": "AR026-Q1",
       "assessmentLesson": 26,
-      "firstTeachingLesson": 19,
+      "firstTeachingLesson": 20,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.12",
       "questionId": "L025-Q4",
       "assessmentLesson": 25,
-      "firstTeachingLesson": 25,
+      "firstTeachingLesson": 20,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.12",
       "questionId": "AQ025-Q5",
       "assessmentLesson": 25,
-      "firstTeachingLesson": 25,
+      "firstTeachingLesson": 20,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.13",
       "questionId": "AQ025-Q4",
       "assessmentLesson": 25,
-      "firstTeachingLesson": 24,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S2.14",
-      "questionId": "L023-Q4",
-      "assessmentLesson": 23,
-      "firstTeachingLesson": 23,
+      "firstTeachingLesson": 20,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.14",
       "questionId": "AQ025-Q1",
       "assessmentLesson": 25,
-      "firstTeachingLesson": 23,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S2.15",
-      "questionId": "L020-Q2",
-      "assessmentLesson": 20,
       "firstTeachingLesson": 20,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.15",
-      "questionId": "AQ020-Q5",
-      "assessmentLesson": 20,
+      "questionId": "L026-Q4",
+      "assessmentLesson": 26,
       "firstTeachingLesson": 20,
       "beforeTeaching": false
     },
     {
       "requirement": "S2.16",
-      "questionId": "L020-Q1",
-      "assessmentLesson": 20,
-      "firstTeachingLesson": 20,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S2.16",
-      "questionId": "L020-Q4",
-      "assessmentLesson": 20,
+      "questionId": "L026-Q5",
+      "assessmentLesson": 26,
       "firstTeachingLesson": 20,
       "beforeTeaching": false
     },
@@ -2027,20 +2627,13 @@
       "requirement": "S3.02",
       "questionId": "L033-Q4",
       "assessmentLesson": 33,
-      "firstTeachingLesson": 33,
+      "firstTeachingLesson": 28,
       "beforeTeaching": false
     },
     {
       "requirement": "S3.02",
       "questionId": "AQ035-Q3",
       "assessmentLesson": 35,
-      "firstTeachingLesson": 33,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S3.03",
-      "questionId": "L028-Q5",
-      "assessmentLesson": 28,
       "firstTeachingLesson": 28,
       "beforeTeaching": false
     },
@@ -2048,34 +2641,27 @@
       "requirement": "S3.03",
       "questionId": "L029-Q2",
       "assessmentLesson": 29,
-      "firstTeachingLesson": 28,
+      "firstTeachingLesson": 29,
       "beforeTeaching": false
     },
     {
       "requirement": "S3.03",
       "questionId": "L031-Q4",
       "assessmentLesson": 31,
-      "firstTeachingLesson": 28,
+      "firstTeachingLesson": 29,
       "beforeTeaching": false
     },
     {
       "requirement": "S3.03",
       "questionId": "AQ030-Q2",
       "assessmentLesson": 30,
-      "firstTeachingLesson": 28,
+      "firstTeachingLesson": 29,
       "beforeTeaching": false
     },
     {
       "requirement": "S3.03",
       "questionId": "AQ035-Q1",
       "assessmentLesson": 35,
-      "firstTeachingLesson": 28,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S3.04",
-      "questionId": "L029-Q1",
-      "assessmentLesson": 29,
       "firstTeachingLesson": 29,
       "beforeTeaching": false
     },
@@ -2083,20 +2669,13 @@
       "requirement": "S3.04",
       "questionId": "AQ030-Q3",
       "assessmentLesson": 30,
-      "firstTeachingLesson": 29,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S3.05",
-      "questionId": "L030-Q1",
-      "assessmentLesson": 30,
       "firstTeachingLesson": 30,
       "beforeTeaching": false
     },
     {
-      "requirement": "S3.06",
-      "questionId": "AQ030-Q5",
-      "assessmentLesson": 30,
+      "requirement": "S3.05",
+      "questionId": "L040-Q4",
+      "assessmentLesson": 40,
       "firstTeachingLesson": 30,
       "beforeTeaching": false
     },
@@ -2109,8 +2688,8 @@
     },
     {
       "requirement": "S3.07",
-      "questionId": "L030-Q4",
-      "assessmentLesson": 30,
+      "questionId": "L040-Q5",
+      "assessmentLesson": 40,
       "firstTeachingLesson": 30,
       "beforeTeaching": false
     },
@@ -2118,49 +2697,49 @@
       "requirement": "S3.08",
       "questionId": "L034-Q1",
       "assessmentLesson": 34,
-      "firstTeachingLesson": 34,
+      "firstTeachingLesson": 31,
       "beforeTeaching": false
     },
     {
       "requirement": "S3.08",
       "questionId": "AQ040-Q5",
       "assessmentLesson": 40,
-      "firstTeachingLesson": 34,
+      "firstTeachingLesson": 31,
       "beforeTeaching": false
     },
     {
       "requirement": "S3.09",
       "questionId": "AQ035-Q4",
       "assessmentLesson": 35,
-      "firstTeachingLesson": 34,
+      "firstTeachingLesson": 31,
       "beforeTeaching": false
     },
     {
       "requirement": "S3.10",
       "questionId": "L035-Q2",
       "assessmentLesson": 35,
-      "firstTeachingLesson": 35,
+      "firstTeachingLesson": 32,
       "beforeTeaching": false
     },
     {
       "requirement": "S3.10",
       "questionId": "L036-Q2",
       "assessmentLesson": 36,
-      "firstTeachingLesson": 35,
+      "firstTeachingLesson": 32,
       "beforeTeaching": false
     },
     {
       "requirement": "S3.10",
       "questionId": "L037-Q2",
       "assessmentLesson": 37,
-      "firstTeachingLesson": 35,
+      "firstTeachingLesson": 32,
       "beforeTeaching": false
     },
     {
       "requirement": "S3.10",
       "questionId": "AQ040-Q2",
       "assessmentLesson": 40,
-      "firstTeachingLesson": 35,
+      "firstTeachingLesson": 32,
       "beforeTeaching": false
     },
     {
@@ -2181,14 +2760,14 @@
       "requirement": "S4.02",
       "questionId": "L043-Q5",
       "assessmentLesson": 43,
-      "firstTeachingLesson": 43,
+      "firstTeachingLesson": 41,
       "beforeTeaching": false
     },
     {
       "requirement": "S4.02",
       "questionId": "AQ045-Q2",
       "assessmentLesson": 45,
-      "firstTeachingLesson": 43,
+      "firstTeachingLesson": 41,
       "beforeTeaching": false
     },
     {
@@ -2202,34 +2781,27 @@
       "requirement": "S4.04",
       "questionId": "L044-Q2",
       "assessmentLesson": 44,
-      "firstTeachingLesson": 44,
+      "firstTeachingLesson": 42,
       "beforeTeaching": false
     },
     {
       "requirement": "S4.05",
       "questionId": "L049-Q5",
       "assessmentLesson": 49,
-      "firstTeachingLesson": 44,
+      "firstTeachingLesson": 42,
       "beforeTeaching": false
     },
     {
       "requirement": "S4.05",
       "questionId": "AQ045-Q5",
       "assessmentLesson": 45,
-      "firstTeachingLesson": 44,
+      "firstTeachingLesson": 42,
       "beforeTeaching": false
     },
     {
       "requirement": "S4.06",
       "questionId": "AQ045-Q4",
       "assessmentLesson": 45,
-      "firstTeachingLesson": 44,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S4.07",
-      "questionId": "L042-Q1",
-      "assessmentLesson": 42,
       "firstTeachingLesson": 42,
       "beforeTeaching": false
     },
@@ -2237,14 +2809,14 @@
       "requirement": "S4.07",
       "questionId": "AQ045-Q2",
       "assessmentLesson": 45,
-      "firstTeachingLesson": 42,
+      "firstTeachingLesson": 43,
       "beforeTeaching": false
     },
     {
       "requirement": "S4.08",
       "questionId": "L048-Q1",
       "assessmentLesson": 48,
-      "firstTeachingLesson": 48,
+      "firstTeachingLesson": 44,
       "beforeTeaching": false
     },
     {
@@ -2335,28 +2907,28 @@
       "requirement": "S4.15",
       "questionId": "AQ050-Q4",
       "assessmentLesson": 50,
-      "firstTeachingLesson": 50,
+      "firstTeachingLesson": 49,
       "beforeTeaching": false
     },
     {
       "requirement": "S4.15",
       "questionId": "AQ050-Q5",
       "assessmentLesson": 50,
-      "firstTeachingLesson": 50,
+      "firstTeachingLesson": 49,
       "beforeTeaching": false
     },
     {
       "requirement": "S4.15",
       "questionId": "L050-Q1",
       "assessmentLesson": 50,
-      "firstTeachingLesson": 50,
+      "firstTeachingLesson": 49,
       "beforeTeaching": false
     },
     {
       "requirement": "S4.15",
       "questionId": "L050-Q3",
       "assessmentLesson": 50,
-      "firstTeachingLesson": 50,
+      "firstTeachingLesson": 49,
       "beforeTeaching": false
     },
     {
@@ -2377,77 +2949,77 @@
       "requirement": "S5.02",
       "questionId": "AQ055-Q5",
       "assessmentLesson": 55,
-      "firstTeachingLesson": 55,
+      "firstTeachingLesson": 53,
       "beforeTeaching": false
     },
     {
       "requirement": "S5.03",
       "questionId": "L058-Q3",
       "assessmentLesson": 58,
-      "firstTeachingLesson": 58,
+      "firstTeachingLesson": 54,
       "beforeTeaching": false
     },
     {
       "requirement": "S5.03",
       "questionId": "AQ060-Q3",
       "assessmentLesson": 60,
-      "firstTeachingLesson": 58,
+      "firstTeachingLesson": 54,
       "beforeTeaching": false
     },
     {
       "requirement": "S5.04",
       "questionId": "L056-Q5",
       "assessmentLesson": 56,
-      "firstTeachingLesson": 56,
+      "firstTeachingLesson": 55,
       "beforeTeaching": false
     },
     {
       "requirement": "S5.05",
       "questionId": "L056-Q4",
       "assessmentLesson": 56,
-      "firstTeachingLesson": 56,
+      "firstTeachingLesson": 55,
       "beforeTeaching": false
     },
     {
       "requirement": "S5.05",
       "questionId": "AR061-Q1",
       "assessmentLesson": 61,
-      "firstTeachingLesson": 56,
+      "firstTeachingLesson": 55,
       "beforeTeaching": false
     },
     {
       "requirement": "S5.06",
       "questionId": "L060-Q4",
       "assessmentLesson": 60,
-      "firstTeachingLesson": 60,
+      "firstTeachingLesson": 56,
       "beforeTeaching": false
     },
     {
       "requirement": "S5.06",
       "questionId": "AQ060-Q5",
       "assessmentLesson": 60,
-      "firstTeachingLesson": 60,
+      "firstTeachingLesson": 56,
       "beforeTeaching": false
     },
     {
       "requirement": "S5.07",
       "questionId": "L060-Q4",
       "assessmentLesson": 60,
-      "firstTeachingLesson": 60,
+      "firstTeachingLesson": 56,
       "beforeTeaching": false
     },
     {
       "requirement": "S5.07",
       "questionId": "AQ060-Q2",
       "assessmentLesson": 60,
-      "firstTeachingLesson": 60,
+      "firstTeachingLesson": 56,
       "beforeTeaching": false
     },
     {
       "requirement": "S5.07",
       "questionId": "AM060-Q4",
       "assessmentLesson": 60,
-      "firstTeachingLesson": 60,
+      "firstTeachingLesson": 56,
       "beforeTeaching": false
     },
     {
@@ -2560,6 +3132,13 @@
       "questionId": "AQ070-Q2",
       "assessmentLesson": 70,
       "firstTeachingLesson": 66,
+      "beforeTeaching": false
+    },
+    {
+      "requirement": "S6.07",
+      "questionId": "L069-Q1",
+      "assessmentLesson": 69,
+      "firstTeachingLesson": 69,
       "beforeTeaching": false
     },
     {
@@ -2748,91 +3327,77 @@
       "requirement": "S8.02",
       "questionId": "AQ080-Q5",
       "assessmentLesson": 80,
-      "firstTeachingLesson": 80,
+      "firstTeachingLesson": 79,
       "beforeTeaching": false
     },
     {
       "requirement": "S8.02",
       "questionId": "AQ085-Q1",
       "assessmentLesson": 85,
-      "firstTeachingLesson": 80,
+      "firstTeachingLesson": 79,
       "beforeTeaching": false
     },
     {
       "requirement": "S8.02",
       "questionId": "L081-Q5",
       "assessmentLesson": 81,
-      "firstTeachingLesson": 80,
+      "firstTeachingLesson": 79,
       "beforeTeaching": false
     },
     {
       "requirement": "S8.03",
       "questionId": "L082-Q3",
       "assessmentLesson": 82,
-      "firstTeachingLesson": 82,
+      "firstTeachingLesson": 80,
       "beforeTeaching": false
     },
     {
       "requirement": "S8.03",
       "questionId": "AQ085-Q2",
       "assessmentLesson": 85,
-      "firstTeachingLesson": 82,
+      "firstTeachingLesson": 80,
       "beforeTeaching": false
     },
     {
       "requirement": "S8.04",
       "questionId": "L083-Q3",
       "assessmentLesson": 83,
-      "firstTeachingLesson": 83,
+      "firstTeachingLesson": 80,
       "beforeTeaching": false
     },
     {
       "requirement": "S8.04",
       "questionId": "AQ085-Q3",
       "assessmentLesson": 85,
-      "firstTeachingLesson": 83,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S8.05",
-      "questionId": "L078-Q4",
-      "assessmentLesson": 78,
-      "firstTeachingLesson": 78,
+      "firstTeachingLesson": 80,
       "beforeTeaching": false
     },
     {
       "requirement": "S8.05",
       "questionId": "AM100-Q4",
       "assessmentLesson": 100,
-      "firstTeachingLesson": 78,
+      "firstTeachingLesson": 80,
       "beforeTeaching": false
     },
     {
       "requirement": "S8.06",
-      "questionId": "L078-Q3",
-      "assessmentLesson": 78,
-      "firstTeachingLesson": 78,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S8.06",
-      "questionId": "AQ080-Q3",
-      "assessmentLesson": 80,
-      "firstTeachingLesson": 78,
+      "questionId": "L089-Q4",
+      "assessmentLesson": 89,
+      "firstTeachingLesson": 80,
       "beforeTeaching": false
     },
     {
       "requirement": "S8.07",
       "questionId": "AQ090-Q2",
       "assessmentLesson": 90,
-      "firstTeachingLesson": 87,
+      "firstTeachingLesson": 83,
       "beforeTeaching": false
     },
     {
       "requirement": "S8.07",
       "questionId": "L087-Q1",
       "assessmentLesson": 87,
-      "firstTeachingLesson": 87,
+      "firstTeachingLesson": 83,
       "beforeTeaching": false
     },
     {
@@ -2853,21 +3418,14 @@
       "requirement": "S8.09",
       "questionId": "AQ090-Q2",
       "assessmentLesson": 90,
-      "firstTeachingLesson": 87,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S8.10",
-      "questionId": "AQ085-Q5",
-      "assessmentLesson": 85,
-      "firstTeachingLesson": 84,
+      "firstTeachingLesson": 85,
       "beforeTeaching": false
     },
     {
       "requirement": "S8.10",
       "questionId": "AR089-Q2",
       "assessmentLesson": 89,
-      "firstTeachingLesson": 84,
+      "firstTeachingLesson": 85,
       "beforeTeaching": false
     },
     {
@@ -2895,27 +3453,20 @@
       "requirement": "S9.01",
       "questionId": "AQ100-Q4",
       "assessmentLesson": 100,
-      "firstTeachingLesson": 99,
+      "firstTeachingLesson": 98,
       "beforeTeaching": false
     },
     {
       "requirement": "S9.02",
       "questionId": "L099-Q3",
       "assessmentLesson": 99,
-      "firstTeachingLesson": 99,
+      "firstTeachingLesson": 98,
       "beforeTeaching": false
     },
     {
       "requirement": "S9.02",
       "questionId": "AR112-Q2",
       "assessmentLesson": 112,
-      "firstTeachingLesson": 99,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S9.03",
-      "questionId": "L098-Q5",
-      "assessmentLesson": 98,
       "firstTeachingLesson": 98,
       "beforeTeaching": false
     },
@@ -2923,35 +3474,35 @@
       "requirement": "S9.03",
       "questionId": "AQ100-Q3",
       "assessmentLesson": 100,
-      "firstTeachingLesson": 98,
+      "firstTeachingLesson": 99,
       "beforeTeaching": false
     },
     {
       "requirement": "S9.04",
       "questionId": "AQ100-Q3",
       "assessmentLesson": 100,
-      "firstTeachingLesson": 98,
+      "firstTeachingLesson": 99,
       "beforeTeaching": false
     },
     {
       "requirement": "S9.04",
       "questionId": "AR112-Q1",
       "assessmentLesson": 112,
-      "firstTeachingLesson": 98,
+      "firstTeachingLesson": 99,
       "beforeTeaching": false
     },
     {
       "requirement": "S9.05",
       "questionId": "AM100-Q3",
       "assessmentLesson": 100,
-      "firstTeachingLesson": 98,
+      "firstTeachingLesson": 99,
       "beforeTeaching": false
     },
     {
       "requirement": "S9.05",
       "questionId": "L111-Q3",
       "assessmentLesson": 111,
-      "firstTeachingLesson": 98,
+      "firstTeachingLesson": 99,
       "beforeTeaching": false
     },
     {
@@ -2986,28 +3537,21 @@
       "requirement": "S9.08",
       "questionId": "AR112-Q2",
       "assessmentLesson": 112,
-      "firstTeachingLesson": 111,
+      "firstTeachingLesson": 102,
       "beforeTeaching": false
     },
     {
       "requirement": "S9.08",
       "questionId": "AQ150-Q1",
       "assessmentLesson": 150,
-      "firstTeachingLesson": 111,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S9.09",
-      "questionId": "L101-Q2",
-      "assessmentLesson": 101,
-      "firstTeachingLesson": 101,
+      "firstTeachingLesson": 102,
       "beforeTeaching": false
     },
     {
       "requirement": "S9.09",
       "questionId": "AQ105-Q3",
       "assessmentLesson": 105,
-      "firstTeachingLesson": 101,
+      "firstTeachingLesson": 103,
       "beforeTeaching": false
     },
     {
@@ -3035,28 +3579,28 @@
       "requirement": "S10.02",
       "questionId": "L118-Q1",
       "assessmentLesson": 118,
-      "firstTeachingLesson": 118,
+      "firstTeachingLesson": 114,
       "beforeTeaching": false
     },
     {
       "requirement": "S10.02",
       "questionId": "AQ120-Q3",
       "assessmentLesson": 120,
-      "firstTeachingLesson": 118,
+      "firstTeachingLesson": 114,
       "beforeTeaching": false
     },
     {
       "requirement": "S10.03",
       "questionId": "AQ115-Q5",
       "assessmentLesson": 115,
-      "firstTeachingLesson": 104,
+      "firstTeachingLesson": 115,
       "beforeTeaching": false
     },
     {
       "requirement": "S10.03",
       "questionId": "L115-Q3",
       "assessmentLesson": 115,
-      "firstTeachingLesson": 104,
+      "firstTeachingLesson": 115,
       "beforeTeaching": false
     },
     {
@@ -3089,191 +3633,142 @@
     },
     {
       "requirement": "S10.06",
-      "questionId": "L104-Q4",
-      "assessmentLesson": 104,
-      "firstTeachingLesson": 104,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S10.06",
       "questionId": "AM120-Q2",
       "assessmentLesson": 120,
-      "firstTeachingLesson": 104,
+      "firstTeachingLesson": 117,
       "beforeTeaching": false
     },
     {
       "requirement": "S10.07",
       "questionId": "L120-Q1",
       "assessmentLesson": 120,
-      "firstTeachingLesson": 120,
+      "firstTeachingLesson": 119,
       "beforeTeaching": false
     },
     {
       "requirement": "S10.07",
       "questionId": "AM120-Q4",
       "assessmentLesson": 120,
-      "firstTeachingLesson": 120,
+      "firstTeachingLesson": 119,
       "beforeTeaching": false
     },
     {
       "requirement": "S10.08",
       "questionId": "L122-Q1",
       "assessmentLesson": 122,
-      "firstTeachingLesson": 122,
+      "firstTeachingLesson": 120,
       "beforeTeaching": false
     },
     {
       "requirement": "S10.08",
       "questionId": "AR125-Q2",
       "assessmentLesson": 125,
-      "firstTeachingLesson": 122,
+      "firstTeachingLesson": 120,
       "beforeTeaching": false
     },
     {
       "requirement": "S10.09",
       "questionId": "AQ125-Q2",
       "assessmentLesson": 125,
-      "firstTeachingLesson": 122,
+      "firstTeachingLesson": 120,
       "beforeTeaching": false
     },
     {
       "requirement": "S10.09",
       "questionId": "AQ125-Q3",
       "assessmentLesson": 125,
-      "firstTeachingLesson": 122,
+      "firstTeachingLesson": 120,
       "beforeTeaching": false
     },
     {
       "requirement": "S10.09",
       "questionId": "AQ125-Q4",
       "assessmentLesson": 125,
-      "firstTeachingLesson": 122,
+      "firstTeachingLesson": 120,
       "beforeTeaching": false
     },
     {
       "requirement": "S10.09",
       "questionId": "L122-Q1",
       "assessmentLesson": 122,
-      "firstTeachingLesson": 122,
+      "firstTeachingLesson": 120,
       "beforeTeaching": false
     },
     {
       "requirement": "S10.10",
       "questionId": "AR125-Q2",
       "assessmentLesson": 125,
-      "firstTeachingLesson": 122,
+      "firstTeachingLesson": 120,
       "beforeTeaching": false
     },
     {
       "requirement": "S10.10",
       "questionId": "AQ125-Q3",
       "assessmentLesson": 125,
-      "firstTeachingLesson": 122,
+      "firstTeachingLesson": 120,
       "beforeTeaching": false
     },
     {
       "requirement": "S11.01",
       "questionId": "L140-Q1",
       "assessmentLesson": 140,
-      "firstTeachingLesson": 140,
+      "firstTeachingLesson": 126,
       "beforeTeaching": false
     },
     {
       "requirement": "S11.01",
       "questionId": "AQ140-Q5",
       "assessmentLesson": 140,
-      "firstTeachingLesson": 140,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S11.02",
-      "questionId": "L114-Q5",
-      "assessmentLesson": 114,
-      "firstTeachingLesson": 114,
+      "firstTeachingLesson": 126,
       "beforeTeaching": false
     },
     {
       "requirement": "S11.02",
       "questionId": "AQ135-Q5",
       "assessmentLesson": 135,
-      "firstTeachingLesson": 114,
+      "firstTeachingLesson": 127,
       "beforeTeaching": false
     },
     {
       "requirement": "S11.03",
       "questionId": "L133-Q2",
       "assessmentLesson": 133,
-      "firstTeachingLesson": 133,
+      "firstTeachingLesson": 128,
       "beforeTeaching": false
     },
     {
       "requirement": "S11.03",
       "questionId": "AQ135-Q3",
       "assessmentLesson": 135,
-      "firstTeachingLesson": 133,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S11.04",
-      "questionId": "L127-Q1",
-      "assessmentLesson": 127,
-      "firstTeachingLesson": 127,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S11.04",
-      "questionId": "L127-Q2",
-      "assessmentLesson": 127,
-      "firstTeachingLesson": 127,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S11.04",
-      "questionId": "L128-Q1",
-      "assessmentLesson": 128,
-      "firstTeachingLesson": 127,
+      "firstTeachingLesson": 128,
       "beforeTeaching": false
     },
     {
       "requirement": "S11.04",
       "questionId": "L129-Q1",
       "assessmentLesson": 129,
-      "firstTeachingLesson": 127,
+      "firstTeachingLesson": 129,
       "beforeTeaching": false
     },
     {
       "requirement": "S11.04",
       "questionId": "L129-Q2",
       "assessmentLesson": 129,
-      "firstTeachingLesson": 127,
+      "firstTeachingLesson": 129,
       "beforeTeaching": false
     },
     {
       "requirement": "S11.04",
       "questionId": "AQ130-Q2",
       "assessmentLesson": 130,
-      "firstTeachingLesson": 127,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S11.05",
-      "questionId": "L128-Q4",
-      "assessmentLesson": 128,
-      "firstTeachingLesson": 128,
+      "firstTeachingLesson": 129,
       "beforeTeaching": false
     },
     {
       "requirement": "S11.05",
       "questionId": "AQ130-Q4",
       "assessmentLesson": 130,
-      "firstTeachingLesson": 128,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S11.06",
-      "questionId": "L131-Q2",
-      "assessmentLesson": 131,
-      "firstTeachingLesson": 130,
+      "firstTeachingLesson": 129,
       "beforeTeaching": false
     },
     {
@@ -3285,22 +3780,8 @@
     },
     {
       "requirement": "S11.07",
-      "questionId": "L130-Q3",
-      "assessmentLesson": 130,
-      "firstTeachingLesson": 130,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S11.07",
-      "questionId": "AQ130-Q5",
-      "assessmentLesson": 130,
-      "firstTeachingLesson": 130,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S11.08",
-      "questionId": "AQ130-Q5",
-      "assessmentLesson": 130,
+      "questionId": "L141-Q5",
+      "assessmentLesson": 141,
       "firstTeachingLesson": 130,
       "beforeTeaching": false
     },
@@ -3315,14 +3796,7 @@
       "requirement": "S11.09",
       "questionId": "L139-Q2",
       "assessmentLesson": 139,
-      "firstTeachingLesson": 109,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S11.09",
-      "questionId": "AQ130-Q3",
-      "assessmentLesson": 130,
-      "firstTeachingLesson": 109,
+      "firstTeachingLesson": 133,
       "beforeTeaching": false
     },
     {
@@ -3343,42 +3817,35 @@
       "requirement": "S12.02",
       "questionId": "L144-Q1",
       "assessmentLesson": 144,
-      "firstTeachingLesson": 144,
+      "firstTeachingLesson": 143,
       "beforeTeaching": false
     },
     {
       "requirement": "S12.02",
       "questionId": "AQ145-Q4",
       "assessmentLesson": 145,
-      "firstTeachingLesson": 144,
+      "firstTeachingLesson": 143,
       "beforeTeaching": false
     },
     {
       "requirement": "S12.03",
       "questionId": "L144-Q1",
       "assessmentLesson": 144,
-      "firstTeachingLesson": 144,
+      "firstTeachingLesson": 143,
       "beforeTeaching": false
     },
     {
       "requirement": "S12.03",
       "questionId": "AQ145-Q4",
       "assessmentLesson": 145,
-      "firstTeachingLesson": 144,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S12.04",
-      "questionId": "L059-Q1",
-      "assessmentLesson": 59,
-      "firstTeachingLesson": 59,
+      "firstTeachingLesson": 143,
       "beforeTeaching": false
     },
     {
       "requirement": "S12.04",
       "questionId": "AQ150-Q5",
       "assessmentLesson": 150,
-      "firstTeachingLesson": 59,
+      "firstTeachingLesson": 144,
       "beforeTeaching": false
     },
     {
@@ -3418,37 +3885,23 @@
     },
     {
       "requirement": "S12.07",
-      "questionId": "AM140-Q3",
-      "assessmentLesson": 140,
-      "firstTeachingLesson": 137,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S12.07",
-      "questionId": "L137-Q1",
-      "assessmentLesson": 137,
-      "firstTeachingLesson": 137,
+      "questionId": "L147-Q3",
+      "assessmentLesson": 147,
+      "firstTeachingLesson": 145,
       "beforeTeaching": false
     },
     {
       "requirement": "S12.08",
-      "questionId": "L145-Q4",
-      "assessmentLesson": 145,
+      "questionId": "L146-Q4",
+      "assessmentLesson": 146,
       "firstTeachingLesson": 145,
       "beforeTeaching": false
     },
     {
       "requirement": "S12.09",
-      "questionId": "L138-Q1",
-      "assessmentLesson": 138,
-      "firstTeachingLesson": 138,
-      "beforeTeaching": false
-    },
-    {
-      "requirement": "S12.09",
-      "questionId": "AQ145-Q1",
-      "assessmentLesson": 145,
-      "firstTeachingLesson": 138,
+      "questionId": "L146-Q5",
+      "assessmentLesson": 146,
+      "firstTeachingLesson": 145,
       "beforeTeaching": false
     }
   ],

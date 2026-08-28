@@ -1,4 +1,10 @@
-# Lesson 021: HTTP, HTTPS, FTP, SMTP, POP3, and IMAP in context
+# Lesson 021: LAN hardware and the router
+
+<!-- remediation-v2-optional:start -->
+> **Optional enrichment:** HTTP, HTTPS, FTP, SMTP, POP3 and IMAP. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.
+>
+> **Formal AS prerequisite:** S2.13 WWW versus internet and S2.16 URL/DNS.
+<!-- remediation-v2-optional:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +49,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** HTTP: webpage; HTTPS: secure webpage; FTP: file transfer; SMTP: sending email; POP3: downloading email; IMAP: synchronised email access. Credit context, not just expansion of abbreviations.
 
-
-
 ## Student Task
 Students write a protocol diary for a student submitting homework by email and downloading a file from a school server.
 
@@ -79,7 +83,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `email`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-021-email.jpg`
 
 1. Used to send email from a client to a mail server and between mail servers.
@@ -92,7 +96,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `file`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-021-file.jpg`
 
 1. FTP: File Transfer Protocol
@@ -103,7 +107,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `web`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-021-web.jpg`
 
 1. Protocol

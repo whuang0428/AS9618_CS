@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 084 | SQL SELECT, FROM, WHERE</title>
+    <title>AS9618 Lesson 084 | Read and write SQL statements by their semantics</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>SQL SELECT, FROM, WHERE</h1>
+        <h1>Read and write SQL statements by their semantics</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -45,7 +45,84 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Read and write SQL statements by their semantics</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML. To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition. Keywords, field names, table names, operators, literal values and punctuation have different roles.</p>
+            <p>A valid answer must preserve the requested semantics, not merely contain familiar keywords. Text and date values are normally quoted in this course's standard SQL style; numeric and Boolean values are not quoted. Clause order, comparison operators and requested output fields determine which records and columns appear.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Interpret a query</h3>
+            <p>SELECT Title, DueDate FROM Loan WHERE Returned = FALSE; reads records from Loan, keeps only records whose Returned field is false, and outputs Title and DueDate. It does not update the table and it does not output every field.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start clauses -->
+        <section class="panel explanation-panel" id="explanation-clauses" data-explains="clauses" data-explanation-kind="mechanism" aria-labelledby="explanation-clauses-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="clauses">
+          <h2 class="explanation-sr-only" id="explanation-clauses-title">The three foundation clauses</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-084-clauses.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The three foundation clauses with a structured visual model." />
+            <figcaption class="explanation-sr-only">The three foundation clauses: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> SELECT Names the fields to output, such as Title, DueDate .</li><li><strong>Lesson fact:</strong> FROM Names the table to use, such as Loan .</li><li><strong>Lesson fact:</strong> WHERE Filters records using a condition, such as Returned = FALSE .</li><li><strong>Lesson fact:</strong> Thinking order:</li><li><strong>Lesson fact:</strong> What fields do I need? Which table contains them? Which records should be included?</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end clauses -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Read and write SQL statements by their semantics: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What does SELECT control?</p>
+              <details><summary>Show answer</summary><p>The fields or expressions shown in the result.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What does FROM control?</p>
+              <details><summary>Show answer</summary><p>The table supplying the records.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What does WHERE control?</p>
+              <details><summary>Show answer</summary><p>Which records satisfy the filter condition.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why is SELECT * not equivalent to SELECT Title?</p>
+              <details><summary>Show answer</summary><p>The asterisk outputs all fields; SELECT Title outputs only the requested field.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Explain the effect of SELECT StudentID, Name FROM Student WHERE TutorGroup = '12A'; and identify one change that would alter its result.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>reads records from Student</td><td>Do not award a clause-name list unless its effect on this statement is explained.</td><td>1</td></tr>
+                  <tr><td>filters to TutorGroup 12A</td><td></td><td>1</td></tr>
+                  <tr><td>outputs StudentID and Name only</td><td></td><td>1</td></tr>
+                  <tr><td>identifies a valid semantic change such as field list, condition, operator or literal</td><td></td><td>1</td></tr>
+                  <tr><td>explains how the named change alters rows or columns returned</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 084 | 45 minutes | Paper 1 Section 8 | SQL basics</p>
             <h2>SQL is how you ask a database a precise question. "Show me stuff" is not a query; it is a cry for help.</h2>
@@ -68,7 +145,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>SQL questions are often marked with one point per clause or condition. A missing field or wrong table can lose easy marks.</p>
@@ -79,7 +156,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Find all overdue books without scrolling like a detective in a low-budget movie.</h2>
@@ -96,7 +173,7 @@
           </div>
         </section>
 
-        <section class="panel" id="clauses" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="clauses">
+        <section class="panel" id="clauses" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>The three foundation clauses</h2>
@@ -112,21 +189,7 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start clauses -->
-        <section class="panel explanation-panel" id="explanation-clauses" data-explains="clauses" data-explanation-kind="mechanism" aria-labelledby="explanation-clauses-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="clauses">
-          <h2 class="explanation-sr-only" id="explanation-clauses-title">The three foundation clauses</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-084-clauses.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The three foundation clauses with a structured visual model." />
-            <figcaption class="explanation-sr-only">The three foundation clauses: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> SELECT Names the fields to output, such as Title, DueDate .</li><li><strong>Lesson fact:</strong> FROM Names the table to use, such as Loan .</li><li><strong>Lesson fact:</strong> WHERE Filters records using a condition, such as Returned = FALSE .</li><li><strong>Lesson fact:</strong> Thinking order:</li><li><strong>Lesson fact:</strong> What fields do I need? Which table contains them? Which records should be included?</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end clauses -->
-
-        <section class="panel" id="conditions" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="conditions">
+        <section class="panel" id="conditions" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>WHERE conditions and comparison operators</h2>
@@ -162,7 +225,7 @@
         </section>
 
         <!-- stage10-explanation:start conditions -->
-        <section class="panel explanation-panel" id="explanation-conditions" data-explains="conditions" data-explanation-kind="mechanism" aria-labelledby="explanation-conditions-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="conditions">
+        <section class="panel explanation-panel" id="explanation-conditions" data-explains="conditions" data-explanation-kind="mechanism" aria-labelledby="explanation-conditions-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <h2 class="explanation-sr-only" id="explanation-conditions-title">WHERE conditions and comparison operators</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-084-conditions.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining WHERE conditions and comparison operators with a structured visual model." />
@@ -174,8 +237,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end conditions -->
-
-        <section class="panel" id="strings" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="strings">
+        <section class="panel" id="strings" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Text values need quotes; numbers usually do not</h2>
@@ -190,7 +252,7 @@
         </section>
 
         <!-- stage10-explanation:start strings -->
-        <section class="panel explanation-panel" id="explanation-strings" data-explains="strings" data-explanation-kind="mechanism" aria-labelledby="explanation-strings-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="strings">
+        <section class="panel explanation-panel" id="explanation-strings" data-explains="strings" data-explanation-kind="mechanism" aria-labelledby="explanation-strings-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <h2 class="explanation-sr-only" id="explanation-strings-title">Text values need quotes; numbers usually do not</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-084-strings.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Text values need quotes; numbers usually do not with a structured visual model." />
@@ -202,8 +264,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end strings -->
-
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Trace a query against rows</h2>
@@ -231,7 +292,7 @@
         </section>
 
 
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <div class="section-title">
             <p class="eyebrow">Interactive clause builder</p>
             <h2>Translate English to SQL parts</h2>
@@ -253,7 +314,7 @@
           <div class="feedback" id="builderReason">The output will identify SELECT fields, FROM table and WHERE condition.</div>
         </section>
 
-        <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="runner">
+        <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <div class="section-title">
             <p class="eyebrow">Interactive query runner</p>
             <h2>Run a safe preset query against the Loan table</h2>
@@ -274,7 +335,7 @@
           <div class="result-table" id="queryResult">Choose a query to see matching rows.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>From English to SQL</h2>
@@ -288,7 +349,7 @@
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short-answer checks</h2>
@@ -297,7 +358,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Repair common SQL errors</h2>
@@ -305,7 +366,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
@@ -314,64 +375,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Read and write SQL statements by their semantics</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML. To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition. Keywords, field names, table names, operators, literal values and punctuation have different roles.</p>
-            <p>A valid answer must preserve the requested semantics, not merely contain familiar keywords. Text and date values are normally quoted in this course's standard SQL style; numeric and Boolean values are not quoted. Clause order, comparison operators and requested output fields determine which records and columns appear.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Interpret a query</h3>
-            <p>SELECT Title, DueDate FROM Loan WHERE Returned = FALSE; reads records from Loan, keeps only records whose Returned field is false, and outputs Title and DueDate. It does not update the table and it does not output every field.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Read and write SQL statements by their semantics: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What does SELECT control?</p>
-              <details><summary>Show answer</summary><p>The fields or expressions shown in the result.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What does FROM control?</p>
-              <details><summary>Show answer</summary><p>The table supplying the records.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What does WHERE control?</p>
-              <details><summary>Show answer</summary><p>Which records satisfy the filter condition.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is SELECT * not equivalent to SELECT Title?</p>
-              <details><summary>Show answer</summary><p>The asterisk outputs all fields; SELECT Title outputs only the requested field.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Explain the effect of SELECT StudentID, Name FROM Student WHERE TutorGroup = '12A'; and identify one change that would alter its result.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> reads records from Student</li>
-                <li><strong>B1</strong> filters to TutorGroup 12A</li>
-                <li><strong>B1</strong> outputs StudentID and Name only</li>
-                <li><strong>B1</strong> identifies a valid semantic change such as field list, condition, operator or literal</li>
-                <li><strong>B1</strong> explains how the named change alters rows or columns returned</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Basic SQL checklist</h2>

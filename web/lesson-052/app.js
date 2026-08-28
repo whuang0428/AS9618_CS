@@ -109,6 +109,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -183,7 +189,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "8 marks",
-    prompt: "Classify each item as operating system, utility software, language translator or application software: backup software, assembler, word processor, memory manager. Give a reason for each.",
+    prompt: "Identify each item as operating system, utility software, language translator or application software: backup software, assembler, word processor, memory manager. Give a reason for each.",
     answer: "Backup software is utility software because it creates copies of data so files can be recovered after loss or corruption. An assembler is a language translator because it converts assembly language mnemonics into machine code. A word processor is application software because it helps the user produce documents. A memory manager is part of, or a function of, an operating system because it allocates and manages memory resources.",
     marking: [
       { mark: "B1", text: "backup software classified as utility software" },
@@ -332,9 +338,9 @@ function renderExamQuestions() {
       <p>${question.prompt}</p>
       <button type="button" class="ms-toggle" data-answer="ms-${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong> ${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((item) => `<li><strong>${item.mark}</strong> ${item.text}</li>`).join("")}</ul>
+        <p><strong>Answer:</strong> ${question.answer}</p>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

@@ -1,4 +1,14 @@
-# Lesson 059: Error types: syntax, logic, runtime, and translation diagnostics
+# Lesson 059: Error types: syntax, logic, runtime and translation diagnostics
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- remediation-v2-optional:start -->
+> **Optional enrichment:** early Section 12 error-classification treatment inside Section 5. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.
+>
+> **Formal AS prerequisite:** S12.01 lifecycle before S12.04 fault exposure, location and correction.
+<!-- remediation-v2-optional:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +53,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Missing bracket: syntax error; division by zero during execution: runtime error; wrong average with successful execution: logic error. Credit classification plus the stage or effect that distinguishes each type.
 
-
-
 ## Student Task
 Students classify short faults as syntax, logic or runtime errors and state whether a translator diagnostic, test result or runtime failure would reveal each one.
 
@@ -72,44 +80,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often call every program an operating system. Correction: an OS manages resources and provides services; an app performs user tasks.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Expose, locate and correct program errors
-
-### Direct explanation
-
-- A syntax error breaks the language grammar and is normally exposed by a translator or an IDE's dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.
-- After an error is exposed, locate the responsible statement and identify the error type before changing it. Correct the cause, not only the observed output, then rerun the failing test and relevant regression tests. Avoid faults by using clear identifiers, modular design, validation, desk checking, peer walkthroughs and a planned set of normal, abnormal and extreme/boundary tests.
-- No single method proves that a program has no remaining faults. Translation can expose syntax faults but not every logic fault; testing can reveal failures for selected cases but cannot demonstrate correctness for every possible input.
-
-### Worked example
-
-**Correct three different faults:** A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection. Mark > 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark >= 50. Total / Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division.
-
-### Targeted practice and answers
-
-1. Which method can expose a syntactically valid wrong boundary?
-   **Answer:** A trace, dry run, walkthrough or selected boundary test can expose the wrong result.
-2. Why is a translator insufficient for all logic errors?
-   **Answer:** Logic errors can obey the language grammar, so translation may succeed even though the result is wrong.
-3. What must happen after a correction?
-   **Answer:** Rerun the failing test and relevant regression tests to check the correction and existing behaviour.
-
-### Exam-style question and MS
-
-**Question (6 marks):** For each fault, state its type, one way to expose or locate it, and the correction: a missing ENDIF; IF Mark > 50 when 50 should pass; Average <- Total / Count when Count can be zero.
-
-- **B1** missing ENDIF identified as syntax error and translator/dynamic syntax check used
-- **A1** adds the required ENDIF
-- **B1** Mark > 50 identified as logic error and boundary trace/test at 50 used
-- **A1** changes the condition to Mark >= 50 or equivalent
-- **B1** division by zero identified as run-time error/risk and execution/test diagnostics used
-- **A1** guards the division by checking Count or handles the zero case
-
-**Strict note:** Do not accept changing the expected result to hide a program fault, or claim that successful translation proves the algorithm correct.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -117,7 +87,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-059-compare.jpg`
 
 1. Error type
@@ -137,7 +107,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-059-concept.jpg`
 
 1. Before execution Syntax and translation errors may stop a program from being translated or run.
@@ -149,7 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `diagnostics`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-059-diagnostics.jpg`
 
 1. Compiler May report a list of errors after attempting translation.
@@ -157,23 +127,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Useful details Error type, line number, token, expected symbol or explanation of the fault.
 4. Limitation The reported line may be near the cause, not always the exact cause.
 
-### Logic errors make the program do the wrong thing
-
-- **Explains:** `logic`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-059-logic.jpg`
-
-1. Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.
-2. Examples Using < instead of <= , wrong formula, wrong loop condition or off-by-one error.
-3. Detection Usually found by testing, tracing or comparing actual output with expected output.
-4. Common error A translator may not detect it because the instructions are legal.
-
 ### Runtime errors occur while the program is executing
 
 - **Explains:** `runtime`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-059-runtime.jpg`
 
 1. Meaning The program starts running but fails because of an event or invalid operation during execution.
@@ -185,7 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `syntax`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-059-syntax.jpg`
 
 1. Meaning The code structure does not follow the language grammar.

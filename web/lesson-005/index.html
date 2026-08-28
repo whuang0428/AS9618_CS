@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 005 | Signed binary representations</title>
+    <title>AS9618 Lesson 005 | Signed representations and binary subtraction</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Signed binary: sign-and-magnitude, one’s complement and two’s complement</h1>
+        <h1>Signed representations and binary subtraction</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -41,7 +41,83 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Signed representations and binary subtraction</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>One's-complement representation forms a negative integer by inverting every bit of its positive fixed-width value. Two's-complement representation inverts every bit and adds 1. These are binary representations of signed integers, not separate number bases.</p>
+            <p>Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Convert -23 to 8-bit one's complement</h3>
+            <p>+23 is 00010111. Invert every bit once to obtain 11101000, so -23 is 11101000 in 8-bit one's-complement representation. Do not add 1; that extra step would form two's complement.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start systems -->
+        <section class="panel explanation-panel" id="explanation-systems" data-explains="systems" data-explanation-kind="mechanism" aria-labelledby="explanation-systems-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="systems">
+          <h2 class="explanation-sr-only" id="explanation-systems-title">Three ways to represent negative binary values</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-systems.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Three ways to represent negative binary values with a structured visual model." />
+            <figcaption class="explanation-sr-only">Three ways to represent negative binary values: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Positive 23 in 8 bits is 00010111.</li><li><strong>Lesson fact:</strong> The 8-bit sign-and-magnitude representation of -23 is 10010111.</li><li><strong>Lesson fact:</strong> The 8-bit one's-complement representation of -23 is 11101000.</li><li><strong>Lesson fact:</strong> The 8-bit two's-complement representation of -23 is 11101001.</li><li><strong>Lesson fact:</strong> Every input, intermediate state and result must contain exactly 8 bits.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end systems -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Signed representations and binary subtraction: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Convert -18 to 8-bit one's complement.</p>
+              <details><summary>Show answer</summary><p>+18 is 00010010; invert every bit to obtain 11101101.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Calculate 00110110 - 00010100.</p>
+              <details><summary>Show answer</summary><p>00100010, which is 34.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> In 8-bit two's complement, calculate 7 - 12.</p>
+              <details><summary>Show answer</summary><p>00000111 + 11110100 = 11111011, which is -5.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why is a carry beyond bit 8 discarded?</p>
+              <details><summary>Show answer</summary><p>The operation has a fixed 8-bit width; the ninth bit lies outside that representation.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Convert -23 to 8-bit one's-complement representation, showing the positive value and the conversion step.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>writes +23 as 00010111</td><td>Do not accept 11101001; adding 1 produces two's complement rather than one's complement.</td><td>1</td></tr>
+                  <tr><td>inverts every bit exactly once</td><td></td><td>1</td></tr>
+                  <tr><td>obtains 11101000</td><td></td><td>1</td></tr>
+                  <tr><td>identifies the result as 8-bit one's complement</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 005 | 45 minutes | Informal questioning</p>
             <h2>A leading 1 does not always mean the same thing.</h2>
@@ -71,7 +147,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>The same bit pattern can represent different values under unsigned and signed schemes.</p>
@@ -82,7 +158,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>What does `11101001₂` represent?</h2>
@@ -98,7 +174,7 @@
           </div>
         </section>
 
-        <section class="panel" id="systems" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="systems">
+        <section class="panel" id="systems" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Three ways to represent negative binary values</h2>
@@ -122,28 +198,14 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start systems -->
-        <section class="panel explanation-panel" id="explanation-systems" data-explains="systems" data-explanation-kind="mechanism" aria-labelledby="explanation-systems-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="systems">
-          <h2 class="explanation-sr-only" id="explanation-systems-title">Three ways to represent negative binary values</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-systems.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Three ways to represent negative binary values with a structured visual model." />
-            <figcaption class="explanation-sr-only">Three ways to represent negative binary values: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Positive 23 in 8 bits is 00010111.</li><li><strong>Lesson fact:</strong> The 8-bit sign-and-magnitude representation of -23 is 10010111.</li><li><strong>Lesson fact:</strong> The 8-bit one's-complement representation of -23 is 11101000.</li><li><strong>Lesson fact:</strong> The 8-bit two's-complement representation of -23 is 11101001.</li><li><strong>Lesson fact:</strong> Every input, intermediate state and result must contain exactly 8 bits.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end systems -->
-
-        <section id="delivery-05" class="guidance-grid compact" aria-label="Representation guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="systems">
+        <section id="delivery-05" class="guidance-grid compact" aria-label="Representation guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <article class="trap-card">
             <h3>Common error</h3>
             <p>Sign-and-magnitude, one’s complement and two’s complement do not interpret the same 8 bits in the same way.</p>
           </article>
         </section>
 
-        <section class="panel" id="twos" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="twos">
+        <section class="panel" id="twos" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Two’s complement method</h2>
@@ -172,7 +234,7 @@
         </section>
 
         <!-- stage10-explanation:start twos -->
-        <section class="panel explanation-panel" id="explanation-twos" data-explains="twos" data-explanation-kind="mechanism" aria-labelledby="explanation-twos-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="twos">
+        <section class="panel explanation-panel" id="explanation-twos" data-explains="twos" data-explanation-kind="mechanism" aria-labelledby="explanation-twos-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <h2 class="explanation-sr-only" id="explanation-twos-title">Two’s complement method</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-twos.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two’s complement method with a structured visual model." />
@@ -184,8 +246,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end twos -->
-
-        <section class="panel" id="range" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="range">
+        <section class="panel" id="range" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>8-bit signed ranges and zero</h2>
@@ -210,7 +271,7 @@
         </section>
 
         <!-- stage10-explanation:start range -->
-        <section class="panel explanation-panel" id="explanation-range" data-explains="range" data-explanation-kind="mechanism" aria-labelledby="explanation-range-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="range">
+        <section class="panel explanation-panel" id="explanation-range" data-explains="range" data-explanation-kind="mechanism" aria-labelledby="explanation-range-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <h2 class="explanation-sr-only" id="explanation-range-title">8-bit signed ranges and zero</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-range.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 8-bit signed ranges and zero with a structured visual model." />
@@ -222,8 +283,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end range -->
-
-        <section class="panel interactive" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="converter">
+        <section class="panel interactive" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>8-bit two’s complement converter</h2>
@@ -247,7 +307,7 @@
           <div class="bit-visual" id="bitVisual" aria-label="Two's complement bit visual"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -260,7 +320,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -270,7 +330,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section id="delivery-11" class="panel mistake-panel" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="delivery-11">
+        <section id="delivery-11" class="panel mistake-panel" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <div class="section-title">
             <p class="eyebrow">Debug the mistakes</p>
             <h2>Identify and correct the error</h2>
@@ -291,7 +351,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <div class="section-title">
             <p class="eyebrow">Past-paper style</p>
             <h2>Original exam-style questions</h2>
@@ -303,59 +363,7 @@
           </p>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Signed representations and binary subtraction</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>One's-complement representation forms a negative integer by inverting every bit of its positive fixed-width value. Two's-complement representation inverts every bit and adds 1. These are binary representations of signed integers, not separate number bases.</p>
-            <p>Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: 8-bit 23 - 9</h3>
-            <p>00010111 - 00001001 becomes 00010111 + 11110111 = 1 00001110. Discard the ninth carry: 00001110 is 14.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Signed representations and binary subtraction: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Calculate 00110110 - 00010100.</p>
-              <details><summary>Show answer</summary><p>00100010, which is 34.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> In 8-bit two's complement, calculate 7 - 12.</p>
-              <details><summary>Show answer</summary><p>00000111 + 11110100 = 11111011, which is -5.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why is a carry beyond bit 8 discarded?</p>
-              <details><summary>Show answer</summary><p>The operation has a fixed 8-bit width; the ninth bit lies outside that representation.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Using 8-bit two's complement, calculate 18 - 27. Show how subtraction is converted to addition.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>M1</strong> 27 is 00011011 and its two's complement is 11100101</li>
-                <li><strong>M1</strong> adds 00010010 + 11100101</li>
-                <li><strong>A1</strong> obtains 11110111</li>
-                <li><strong>A1</strong> interprets the result as -9</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Summary of required knowledge</h2>
@@ -384,7 +392,7 @@
           </ol>
         </section>
 
-        <section id="delivery-15" class="panel homework-support" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
+        <section id="delivery-15" class="panel homework-support" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
           <div class="section-title">
             <p class="eyebrow">Homework support</p>
             <h2>Check only after attempting</h2>

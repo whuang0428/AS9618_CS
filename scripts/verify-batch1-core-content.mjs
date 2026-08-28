@@ -12,6 +12,13 @@ function read(relativePath) {
   return fs.readFileSync(path.join(root, relativePath), "utf8");
 }
 
+function lessonMarkdown(lesson) {
+  const prefix = `${String(lesson).padStart(3, "0")}-`;
+  const matches = fs.readdirSync(path.join(root, "lessons")).filter((name) => name.startsWith(prefix) && name.endsWith(".md"));
+  if (matches.length !== 1) throw new Error(`Lesson ${lesson}: expected one current Markdown file, found ${matches.length}`);
+  return read(`lessons/${matches[0]}`);
+}
+
 function check(condition, message) {
   if (!condition) failures.push(message);
 }
@@ -42,12 +49,12 @@ includesAll(compressionMd, compressionTerms, "L012 Markdown");
 includesAll(stage2Core(compressionHtml), compressionTerms, "L012 CORE HTML");
 includesAll(questionText("L012-Q5"), ["text", "bitmap", "vector", "sound", "RLE", "dictionary", "perceptual"], "L012-Q5");
 
-const cycleMd = read("lessons/042-the-fetch-decode-execute-cycle.md");
-const cycleHtml = read("web/lesson-042/index.html");
+const cycleMd = read("lessons/043-registers-pc-cir-mar-mdr-acc-and-status-register.md");
+const cycleHtml = read("web/lesson-043/index.html");
 const transfers = ["MAR <- PC", "MDR <- Memory[MAR]", "CIR <- MDR", "PC <- PC + 1", "ACC <- ACC + MDR"];
-includesAll(cycleMd, transfers, "L042 Markdown");
-includesAll(stage2Core(cycleHtml), transfers, "L042 CORE HTML");
-includesAll(questionText("L042-Q1"), transfers.slice(0, 4), "L042-Q1");
+includesAll(cycleMd, transfers, "L043 Markdown");
+includesAll(stage2Core(cycleHtml), transfers, "L043 CORE HTML");
+includesAll(questionText("AQ045-Q2"), ["MAR <- PC", "CIR <- MDR"], "AQ045-Q2");
 
 const assemblyMd = read("lessons/046-assembly-language-basics-and-mnemonics.md");
 const assemblyHtml = read("web/lesson-046/index.html");
@@ -70,7 +77,7 @@ for (const [label, pattern] of [
   ["negative JPN", /\bJPN\s+(?:is|means)\s+negative\b/i],
 ]) check(!pattern.test(semanticSources), `forbidden old assembly meaning remains: ${label}`);
 
-const bitMd = read("lessons/050-bit-manipulation-masks-and-binary-shifts.md");
+const bitMd = lessonMarkdown(50);
 const bitHtml = read("web/lesson-050/index.html");
 includesAll(bitMd, ["AND mask", "OR mask", "XOR mask", "LSL #n", "LSR #n", "logical", "arithmetic", "cyclic", "monitoring", "control"], "L050 Markdown");
 includesAll(bitHtml, ["LSL #n", "LSR #n", "AND mask", "OR mask", "XOR mask", "logical", "arithmetic", "cyclic"], "L050 HTML");

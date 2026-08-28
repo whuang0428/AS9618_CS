@@ -172,11 +172,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Trace the final value output by this pseudocode. Explain why.\n\nPROCEDURE AddTwo(Number : INTEGER)\n    Number <- Number + 2\nENDPROCEDURE\n\nX <- 10\nCALL AddTwo(X)\nOUTPUT X",
+    prompt: "Complete a trace table for the final value output by this pseudocode. Explain why. PROCEDURE AddTwo(Number : INTEGER) Number <- Number + 2\nENDPROCEDURE X <- 10\nCALL AddTwo(X)\nOUTPUT X",
     answer: "The output is 10. Number is passed by value because BYREF is not used, so AddTwo changes only a local copy of X.",
     marking: [
       { mark: "B1", text: "states that the final output/value of X is 10" },
@@ -193,7 +199,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Trace the final value output by this pseudocode. Explain why.\n\nPROCEDURE AddTwo(BYREF Number : INTEGER)\n    Number <- Number + 2\nENDPROCEDURE\n\nX <- 10\nCALL AddTwo(X)\nOUTPUT X",
+    prompt: "Complete a trace table for the final value output by this pseudocode. Explain why. PROCEDURE AddTwo(BYREF Number : INTEGER) Number <- Number + 2\nENDPROCEDURE X <- 10\nCALL AddTwo(X)\nOUTPUT X",
     answer: "The output is 12. Number is passed by reference using BYREF, so Number is linked to X and the assignment updates the caller variable.",
     marking: [
       { mark: "B1", text: "states that the final output/value of X is 12" },
@@ -249,7 +255,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "A student writes this procedure and says it resets Count in the main algorithm. Identify the error and correct it.\n\nPROCEDURE Reset(Count : INTEGER)\n    Count <- 0\nENDPROCEDURE",
+    prompt: "A student writes this procedure and says it resets Count in the main algorithm. Identify the error and correct it. PROCEDURE Reset(Count : INTEGER) Count <- 0\nENDPROCEDURE",
     answer: "The error is that Count is passed by value, so only a local copy is set to 0. The header should use BYREF: PROCEDURE Reset(BYREF Count : INTEGER).",
     marking: [
       { mark: "B1", text: "identifies that Count is currently passed by value / no BYREF is used" },
@@ -465,7 +471,7 @@ function setupExamQuestions() {
             <h4>Indicative answer</h4>
             <pre><code>${escapeHtml(question.answer)}</code></pre>
             <h4>Mark scheme</h4>
-            <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+            ${renderStudentMarkPoints(question)}
           </div>
         </article>
       `,

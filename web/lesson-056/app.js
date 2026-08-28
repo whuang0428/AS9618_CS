@@ -106,6 +106,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -181,7 +187,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "For each scenario, name the most suitable translator and justify it: distributing a finished game; testing a beginner's program interactively; translating assembly language.",
+    prompt: "For each scenario, Identify the most suitable translator and justify it: distributing a finished game; testing a beginner's program interactively; translating assembly language.",
     answer: "For distributing a finished game, a compiler is suitable because it can produce executable/object code and users do not need the source code. For testing a beginner's program interactively, an interpreter is suitable because it translates and executes statements one at a time, helping locate errors during development. For translating assembly language, an assembler is suitable because it converts assembly mnemonics into machine code for the processor.",
     marking: [
       { mark: "B1", text: "compiler selected for distributing finished game" },
@@ -325,8 +331,8 @@ function renderExam() {
       <div class="ms-panel" id="ms${index}">
         <h4>Indicative answer</h4>
         <p>${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

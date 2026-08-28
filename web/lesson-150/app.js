@@ -101,11 +101,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "A student answered: 'Use a stack because it stores data.' Explain why this answer loses marks and rewrite it for a scenario where recent edits must be undone first.",
+    prompt: "A student answered: 'Use a stack because it stores data.' Explain why this answer loses marks and Write it for a scenario where recent edits must be undone first.",
     answer: "The answer loses marks because 'stores data' is a generic reason and does not explain why a stack is suitable. A stronger answer is: use a stack because the most recent edit must be undone first, so the access pattern is last-in, first-out.",
     marking: [
       { mark: "B1", text: "identifies the original answer is too vague/generic" },
@@ -160,7 +166,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "A student wrote: 'The system is successful because users like it.' Rewrite this as an evaluation answer using success criteria and evidence.",
+    prompt: "A student wrote: 'The system is successful because users like it.' Write this as an evaluation answer using success criteria and evidence.",
     answer: "The system meets the usability success criterion if trial evidence shows at least 90% of users completed the task in under 2 minutes. If the evidence is 94%, the criterion is met because 94% is above the 90% target. A limitation is that feedback from the remaining users could still be used for perfective maintenance.",
     marking: [
       { mark: "B1", text: "identifies or uses a measurable success criterion" },
@@ -359,9 +365,7 @@ function setupExam() {
         <h4>Indicative answer</h4>
         <p>${escapeHtml(item.answer)}</p>
         <h4>Mark scheme</h4>
-        <ul>
-          ${item.marking.map((mark) => `<li><strong>${escapeHtml(mark.mark)}</strong> ${escapeHtml(mark.text)}</li>`).join("")}
-        </ul>
+        ${renderStudentMarkPoints(item)}
       </div>
     </article>
   `).join("");

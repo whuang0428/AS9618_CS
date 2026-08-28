@@ -1,4 +1,47 @@
-# Lesson 117: Array algorithms: traversal, update, search, and count
+# Lesson 117: Array model required by search algorithms
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Array model required by search algorithms
+
+### Direct explanation
+
+- Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.
+- Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.
+- Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.
+- Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.
+
+### Worked example
+
+**Declare the search data before tracing it:** DECLARE Names : ARRAY[1:4] OF STRING defines four string elements. For Names = ['Asha', 'Ben', 'Chen', 'Dina'], a one-based linear search compares Names[1], then Names[2], and stops when it finds 'Ben'. Index 0 is invalid because it is below the declared lower bound.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What are the lower and upper bounds of ARRAY[1:4]?
+   **Answer:** The lower bound is 1 and the upper bound is 4.
+2. What does Names[Index] mean?
+   **Answer:** The single array element selected by the current value of Index.
+3. Why must binary search know the current Low and High indexes?
+   **Answer:** They delimit the remaining sorted portion of the array that may contain the target.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Write declarations for an array called Code that stores 20 STRING values, then state the first and last valid indexes used by a search.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| DECLARE Code : ARRAY[1:20] or another explicit 20-element bound range | Do not assume zero-based indexing when the declaration gives different bounds. | 1 |
+| OF STRING |  | 1 |
+| first valid index matches the declared lower bound |  | 1 |
+| last valid index matches the declared upper bound |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -106,7 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `count`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-count.jpg`
 
 1. Initialise PassCount to zero before traversing five scores.
@@ -114,11 +157,25 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Close the selection with ENDIF before NEXT Index.
 4. Output PassCount after the loop.
 
+### Linear search checks each item in order
+
+- **Explains:** `linear`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-linear.jpg`
+
+1. Knowledge explanation
+2. How it works
+3. Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.
+4. When it is suitable
+5. Use it when data is unsorted, the list is small, or simplicity matters more than speed.
+6. Worst case: the target is last or absent, so every item may be checked.
+
 ### Four array algorithm patterns
 
 - **Explains:** `patterns`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-patterns.jpg`
 
 1. Pattern map
@@ -138,7 +195,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-pseudocode.jpg`
 
 1. Both pseudocode and Java versions visit five score positions.
@@ -150,7 +207,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `search`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-search.jpg`
 
 1. Initialise Found to FALSE before traversing the names.
@@ -162,7 +219,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `selector`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-selector.jpg`
 
 1. Interactive pattern selector
@@ -173,7 +230,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `traversal`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-traversal.jpg`
 
 1. Traversal
@@ -186,7 +243,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `update`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-update.jpg`
 
 1. Traverse the array with a FOR loop so Index is defined for every access.

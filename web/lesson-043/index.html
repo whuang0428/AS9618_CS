@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 043 | Registers: PC, CIR, MAR, MDR, ACC, IX and status register</title>
+    <title>AS9618 Lesson 043 | Register-transfer notation for the fetch-decode-execute cycle</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Registers: PC, CIR, MAR, MDR, ACC, IX and status register</h1>
+        <h1>Register-transfer notation for the fetch-decode-execute cycle</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -43,7 +43,101 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Register-transfer notation for the fetch-decode-execute cycle</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Register-transfer notation describes a data transfer or register update. The arrow &lt;- means 'is loaded with' or 'receives'; it is not an equality sign. Memory[MAR] means the contents of the memory location whose address is currently held in MAR.</p>
+            <p>A coherent fetch sequence is MAR &lt;- PC; MDR &lt;- Memory[MAR]; CIR &lt;- MDR; and PC &lt;- PC + 1 at an appropriate point before the next fetch. The control unit then decodes the opcode and operand in CIR and sends control signals for execution.</p>
+            <p>During execution, notation such as ACC &lt;- ACC + MDR records an arithmetic result in ACC, while Memory[MAR] &lt;- MDR records a memory write. Read every statement from right to left: obtain the source value, then replace the destination contents.</p>
+            <p>The exact timing of PC increment may vary between coherent processor descriptions, but MAR must receive the current instruction address before that address is replaced. Register-transfer notation describes movement and updates; it does not imply that two registers permanently contain the same value.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Trace one instruction fetch</h3>
+            <p>Start with PC = 120 and Memory[120] = LDD 500. MAR &lt;- PC puts 120 in MAR. MDR &lt;- Memory[MAR] puts LDD 500 in MDR. CIR &lt;- MDR copies the instruction into CIR. PC &lt;- PC + 1 makes PC 121, ready to address the next instruction. The control unit then decodes LDD and executes it.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start processor -->
+        <section class="panel explanation-panel" id="explanation-processor" data-explains="processor" data-explanation-kind="synthesis" aria-labelledby="explanation-processor-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="processor">
+          <h2 class="explanation-sr-only" id="explanation-processor-title">Registers and buses: the FDE cycle vocabulary</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-091-processor.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Registers and buses: the FDE cycle vocabulary with a structured visual model." />
+            <figcaption class="explanation-sr-only">Registers and buses: the FDE cycle vocabulary: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Processor review</li><li><strong>Lesson fact:</strong> PC Stores the address of the next instruction to be fetched.</li><li><strong>Lesson fact:</strong> MAR / MDR MAR stores an address; MDR stores data/instruction being transferred.</li><li><strong>Lesson fact:</strong> CIR / ACC CIR stores current instruction; ACC stores intermediate arithmetic/logic results.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end processor -->
+
+        <!-- stage10-explanation:start acc-status -->
+        <section class="panel explanation-panel" id="explanation-acc-status" data-explains="acc-status" data-explanation-kind="process" aria-labelledby="explanation-acc-status-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="acc-status">
+          <h2 class="explanation-sr-only" id="explanation-acc-status-title">ACC and status register: execute-stage evidence</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-acc-status.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining ACC and status register: execute-stage evidence with a structured visual model." />
+            <figcaption class="explanation-sr-only">ACC and status register: execute-stage evidence: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Accumulator (ACC)</li><li><strong>Lesson fact:</strong> The accumulator commonly holds intermediate results from the ALU. For example, after adding two values, the result may be stored in the ACC.</li><li><strong>Lesson fact:</strong> Status register</li><li><strong>Lesson fact:</strong> The status register holds flags that describe the outcome of an operation or the processor state.</li><li><strong>Lesson fact:</strong> Zero flag</li><li><strong>Lesson fact:</strong> Can be set when an operation result is zero. Useful after comparisons or subtraction.</li><li><strong>Lesson fact:</strong> Carry / overflow flags</li><li><strong>Lesson fact:</strong> Can indicate a carry out or arithmetic overflow. Exact flag names vary by architecture, but the exam idea is that flags record result conditions.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> The status register does not store the calculation result itself. It stores flags about the result.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end acc-status -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Register-transfer notation for the fetch-decode-execute cycle: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What does MAR &lt;- PC mean?</p>
+              <details><summary>Show answer</summary><p>Copy the address currently in PC into MAR; PC is not changed by that transfer.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What does MDR &lt;- Memory[MAR] mean?</p>
+              <details><summary>Show answer</summary><p>Read the contents of the memory location addressed by MAR into MDR.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is CIR &lt;- MDR needed during fetch?</p>
+              <details><summary>Show answer</summary><p>It places the fetched instruction in CIR so the control unit can decode its opcode and operand.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Write register-transfer notation for adding the value in MDR to ACC.</p>
+              <details><summary>Show answer</summary><p>ACC &lt;- ACC + MDR.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Using register-transfer notation, describe the fetch of one instruction and explain the meaning of Memory[MAR].</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>MAR &lt;- PC</td><td>Do not accept PC &lt;- MAR as the first transfer or treat Memory[MAR] as the address value itself.</td><td>1</td></tr>
+                  <tr><td>MDR &lt;- Memory[MAR]</td><td></td><td>1</td></tr>
+                  <tr><td>CIR &lt;- MDR</td><td></td><td>1</td></tr>
+                  <tr><td>PC &lt;- PC + 1 at a coherent point</td><td></td><td>1</td></tr>
+                  <tr><td>Memory[MAR] means the contents at the memory address held in MAR</td><td></td><td>1</td></tr>
+                  <tr><td>CIR is decoded and control signals initiate execution</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 043 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
             <h2>Registers are tiny, fast, and annoyingly specific.</h2>
@@ -71,7 +165,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Register questions are usually definition marks plus application marks. A vague answer loses both.</p>
@@ -82,7 +176,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which register is holding the address, and which is holding the actual thing?</h2>
@@ -99,7 +193,7 @@
           </div>
         </section>
 
-        <section class="panel" id="purpose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Why registers exist</h2>
@@ -126,7 +220,7 @@
         </section>
 
         <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <h2 class="explanation-sr-only" id="explanation-purpose-title">Why registers exist</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why registers exist with a structured visual model." />
@@ -138,8 +232,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end purpose -->
-
-        <section class="panel" id="main-registers" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="main-registers">
+        <section class="panel" id="main-registers" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>The six register roles</h2>
@@ -191,7 +284,7 @@
         </section>
 
         <!-- stage10-explanation:start main-registers -->
-        <section class="panel explanation-panel" id="explanation-main-registers" data-explains="main-registers" data-explanation-kind="mechanism" aria-labelledby="explanation-main-registers-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="main-registers">
+        <section class="panel explanation-panel" id="explanation-main-registers" data-explains="main-registers" data-explanation-kind="mechanism" aria-labelledby="explanation-main-registers-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <h2 class="explanation-sr-only" id="explanation-main-registers-title">The seven named register roles</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-main-registers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The seven named register roles with a structured visual model." />
@@ -203,8 +296,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end main-registers -->
-
-        <section class="panel" id="acc-status" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="acc-status">
+        <section class="panel" id="acc-status" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>ACC and status register: execute-stage evidence</h2>
@@ -233,22 +325,8 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start acc-status -->
-        <section class="panel explanation-panel" id="explanation-acc-status" data-explains="acc-status" data-explanation-kind="process" aria-labelledby="explanation-acc-status-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="acc-status">
-          <h2 class="explanation-sr-only" id="explanation-acc-status-title">ACC and status register: execute-stage evidence</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-acc-status.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining ACC and status register: execute-stage evidence with a structured visual model." />
-            <figcaption class="explanation-sr-only">ACC and status register: execute-stage evidence: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Accumulator (ACC)</li><li><strong>Lesson fact:</strong> The accumulator commonly holds intermediate results from the ALU. For example, after adding two values, the result may be stored in the ACC.</li><li><strong>Lesson fact:</strong> Status register</li><li><strong>Lesson fact:</strong> The status register holds flags that describe the outcome of an operation or the processor state.</li><li><strong>Lesson fact:</strong> Zero flag</li><li><strong>Lesson fact:</strong> Can be set when an operation result is zero. Useful after comparisons or subtraction.</li><li><strong>Lesson fact:</strong> Carry / overflow flags</li><li><strong>Lesson fact:</strong> Can indicate a carry out or arithmetic overflow. Exact flag names vary by architecture, but the exam idea is that flags record result conditions.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> The status register does not store the calculation result itself. It stores flags about the result.</li></ol>
 
-          </div>
-        </section>
-        <!-- stage10-explanation:end acc-status -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Register role mapper</h2>
@@ -273,7 +351,7 @@
           <div class="reject-box" id="mapTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Use the register when it does work</h2>
@@ -286,7 +364,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
@@ -295,7 +373,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Repair the register role</h2>
@@ -303,7 +381,7 @@
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
@@ -312,70 +390,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>General-purpose and special-purpose registers</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.</p>
-            <p>PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.</p>
-            <p>ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Follow registers through fetch and indexed execute</h3>
-            <p>PC = 300 is copied to MAR; the instruction read from memory enters MDR and then CIR. If that instruction is LDX 500 while IX = 3, the effective address is 503 and the value at that address is loaded into ACC. A resulting condition can update a flag in the status register.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>General-purpose and special-purpose registers: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Distinguish a general-purpose register from a special-purpose register.</p>
-              <details><summary>Show answer</summary><p>A general-purpose register can hold values for varied operations; a special-purpose register has a defined processor role.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> State the roles of PC, MAR, MDR and CIR.</p>
-              <details><summary>Show answer</summary><p>PC holds the next-instruction address; MAR the accessed address; MDR transferred data/instruction; CIR the current instruction.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> State the roles of ACC, IX and the status register.</p>
-              <details><summary>Show answer</summary><p>ACC holds ALU results; IX an indexed-address offset; the status register holds flags about results or CPU state.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Which general-purpose working register is assumed in Cambridge assembly questions?</p>
-              <details><summary>Show answer</summary><p>The accumulator, ACC.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Base 120 plus IX 7 gives which indexed effective address?</p>
-              <details><summary>Show answer</summary><p>127.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Distinguish general-purpose and special-purpose registers, then state the roles of PC, MAR, MDR, CIR, ACC, IX and the status register.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> general-purpose register can hold values for varied operations; special-purpose register has a defined role</li>
-                <li><strong>B1</strong> PC next-instruction address and CIR current instruction</li>
-                <li><strong>B1</strong> MAR accessed address and MDR transferred data/instruction</li>
-                <li><strong>B1</strong> ACC intermediate/final ALU result</li>
-                <li><strong>B1</strong> IX offset used in indexed addressing</li>
-                <li><strong>B1</strong> status register stores flags about a result or processor state</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-043">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>One line per register</h2>

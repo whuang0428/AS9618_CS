@@ -1,4 +1,8 @@
-# Lesson 146: Section 12 review: software development case study
+# Lesson 146: Maintenance and enhancement after delivery
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -46,7 +50,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit topic recognition, precise terminology, and explanations that fit the scenario rather than generic memorised lines.
 
-
 ## Student Task
 Students complete a timed response, swap scripts, mark with a checklist, and write one improved version.
 
@@ -74,44 +77,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Continuing maintenance after delivery
-
-### Direct explanation
-
-- Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.
-- Classify the reason for the change, not the code edited. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search and a clearer result display.
-- Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.
-
-### Worked example
-
-**Three changes to one booking system:** Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive. Adding a wait-list search and making results faster is perfective. Each change is traced to a request and followed by targeted and regression tests.
-
-### Targeted practice and answers
-
-1. Why does maintenance continue after acceptance?
-   **Answer:** Faults, environmental changes and requested improvements continue after delivery.
-2. Which type changes software for a new external rule?
-   **Answer:** Adaptive maintenance.
-3. Which type adds useful functionality or improves performance?
-   **Answer:** Perfective maintenance.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Classify and justify these changes: fix a save crash; support a new operating-system API; add an export feature. For one change, state the impact-analysis and regression evidence required.
-
-- **B1** save-crash fix classified as corrective with fault reason
-- **B1** new operating-system API classified as adaptive with environment reason
-- **B1** new export feature classified as perfective with enhancement reason
-- **B1** identifies affected interfaces/modules or behaviour before amendment
-- **B1** tests the changed path
-- **B1** reruns relevant existing tests to detect regression
-
-**Strict note:** Do not classify every post-release change as adaptive or describe perfective maintenance as fault correction only.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -119,7 +84,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `analysis`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-146-analysis.jpg`
 
 1. Analysis review
@@ -139,7 +104,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `answer-tool`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-146-answer-tool.jpg`
 
 1. Answer improver
@@ -149,7 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `case`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-146-case.jpg`
 
 1. Case study
@@ -162,7 +127,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `case-tool`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-146-case-tool.jpg`
 
 1. Interactive case tool
@@ -172,7 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `commands`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-146-commands.jpg`
 
 1. Explain sets out reasons or relationships and says why or how.
@@ -183,7 +148,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `design`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-146-design.jpg`
 
 1. Design review
@@ -199,7 +164,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `evaluation`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-146-evaluation.jpg`
 
 1. Maintenance and evaluation review
@@ -216,7 +181,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lifecycle`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-146-lifecycle.jpg`
 
 1. The syllabus names analysis, design, coding, testing and maintenance as the program development lifecycle stages.
@@ -227,7 +192,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `testing`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-146-testing.jpg`
 
 1. Normal data is valid and typical; boundary data is at an accepted limit; abnormal data violates the stated validation rule.

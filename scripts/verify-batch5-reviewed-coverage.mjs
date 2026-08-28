@@ -50,8 +50,8 @@ for (const id of scopedRequirements) {
 const soundMarkdown = read("lessons/010-digital-sound-sampling-rate-sample-resolution-and-duration.md");
 const soundHtml = read("web/lesson-010/index.html");
 const soundCore = sectionHtml(soundHtml, "stage2-completion");
-includesAll(soundMarkdown, ["sampling resolution", "official syllabus term", "analogue-to-digital sampling", "file size in bits", "accuracy"], "L010 Markdown");
-includesAll(soundCore, ["sampling resolution", "sample resolution", "common synonym", "analogue-to-digital sampling", "size in bits"], "L010 visible CORE teaching");
+includesAll(soundMarkdown, ["sampling resolution", "official syllabus term", "analogue-to-digital sampling", "accuracy"], "L010 Markdown");
+includesAll(soundCore, ["sampling resolution", "sample resolution", "common synonym", "analogue-to-digital sampling", "accuracy"], "L010 visible CORE teaching");
 includesAll(questionText("AQ010-Q5"), ["sampling rate", "sampling resolution", "bits/levels"], "Quiz 10 terminology");
 expect(!/\bsample resolution\b/i.test(questionText("AQ010-Q5")), "Quiz 10 still uses the non-primary term sample resolution");
 

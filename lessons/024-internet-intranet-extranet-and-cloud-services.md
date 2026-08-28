@@ -1,4 +1,8 @@
-# Lesson 024: Internet, intranet, extranet, and cloud services
+# Lesson 024: The internet and the World Wide Web
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +47,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Strong answers connect a named component or protocol to a symptom, for example DNS failure prevents name resolution, or HTTPS certificate problems affect secure communication.
 
-
-
 ## Student Task
 Students draw a packet journey for a web request and label where addressing, routing and protocols are used. They then add one bottleneck and explain its effect.
 
@@ -72,41 +74,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Public/private cloud and WWW/internet distinction
-
-### Direct explanation
-
-- The internet is the global network infrastructure and protocols connecting networks. The World Wide Web is one service using that infrastructure: linked web resources accessed using browsers and HTTP/HTTPS.
-- A public cloud offers shared provider infrastructure to customers; a private cloud is dedicated to one organisation. Public cloud can scale with lower capital cost but gives less direct control; private cloud offers more control/customisation but costs more to operate.
-
-### Worked example
-
-**Company document system:** A small company may choose public cloud storage for rapid scaling and outsourced maintenance. A regulated organisation may choose a private cloud for control over configuration and data location, accepting higher cost.
-
-### Targeted practice and answers
-
-1. Is email part of the WWW?
-   **Answer:** No. It uses the internet but is a separate internet service.
-2. Who uses the infrastructure in a private cloud?
-   **Answer:** One organisation.
-3. Give one public-cloud drawback.
-   **Answer:** Less direct control, provider dependence, privacy/location concerns or internet dependence.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Distinguish the internet from the World Wide Web, then explain one benefit of a private cloud for an organisation.
-
-- **B1** internet is the network infrastructure / interconnected networks
-- **B1** WWW is a service of linked web resources using the internet
-- **B1** private cloud infrastructure is dedicated to one organisation
-- **B1** greater control/security configuration/customisation developed
-
-**Strict note:** Do not accept 'the internet is WiFi' or 'the WWW is the internet'.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -114,7 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cloud`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-024-cloud.jpg`
 
 1. Cloud services provide storage, software or computing resources from remote servers over a network. The user does not need to own all the local infrastructure.
@@ -134,7 +101,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-024-compare.jpg`
 
 1. Access / control
@@ -154,7 +121,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `networks`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-024-networks.jpg`
 
 1. These terms describe access scope and purpose. Distinguish these terms by access scope and purpose.

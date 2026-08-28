@@ -67,11 +67,17 @@ const practice = [
   { id: "p10", prompt: "For an exam explanation, what should follow a correct keyword?", accepted: ["explanation", "reason", "consequence", "reason and consequence"], answer: "A reason/explanation and a consequence linked to the scenario" },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "A bitmap image is 300 pixels wide and 200 pixels high. It uses 16-bit colour depth. Calculate the file size in bytes. Show your working.",
+    prompt: "A bitmap image is 300 pixels wide and 200 pixels high. It uses 16-bit colour depth. Calculate the file size in bytes. Demonstrate your working.",
     answer: "300 x 200 x 16 = 960 000 bits. 960 000 / 8 = 120 000 bytes.",
     marking: [
       { mark: "M1", text: "uses width x height x colour depth" },
@@ -104,7 +110,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "3 marks",
-    prompt: "Convert the unsigned binary number 10110101 to denary. Show your working.",
+    prompt: "Convert the unsigned binary number 10110101 to denary. Demonstrate your working.",
     answer: "128 + 32 + 16 + 4 + 1 = 181.",
     marking: [
       { mark: "M1", text: "uses 8-bit place values correctly" },
@@ -315,9 +321,9 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
+          <h4>Mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
-          <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

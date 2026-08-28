@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 082 | Entity-relationship modelling</title>
+    <title>AS9618 Lesson 082 | DBMS features and practical software tools</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Entity-relationship modelling</h1>
+        <h1>DBMS features and practical software tools</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -41,11 +41,14 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 082 | 45 minutes | Paper 1 Section 8 | ER modelling</p>
             <h2>An ER model is a map before the database is built. Tables without a map are just furniture in the dark.</h2>
@@ -77,7 +80,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>ER modelling questions reward careful reading. A small word like "many" or "optional" can change the relationship.</p>
@@ -88,7 +91,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A library stores students, books and loans. Which one is most likely a relationship event?</h2>
@@ -105,7 +108,7 @@
           </div>
         </section>
 
-        <section class="panel" id="entities" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="entities">
+        <section class="panel" id="entities" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Entities are things the database stores data about</h2>
@@ -121,7 +124,7 @@
         </section>
 
         <!-- stage10-explanation:start entities -->
-        <section class="panel explanation-panel" id="explanation-entities" data-explains="entities" data-explanation-kind="mechanism" aria-labelledby="explanation-entities-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="entities">
+        <section class="panel explanation-panel" id="explanation-entities" data-explains="entities" data-explanation-kind="mechanism" aria-labelledby="explanation-entities-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <h2 class="explanation-sr-only" id="explanation-entities-title">Entities are things the database stores data about</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-entities.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Entities are things the database stores data about with a structured visual model." />
@@ -133,8 +136,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end entities -->
-
-        <section class="panel" id="attributes" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="attributes">
+        <section class="panel" id="attributes" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Attributes describe an entity</h2>
@@ -165,7 +167,7 @@
         </section>
 
         <!-- stage10-explanation:start attributes -->
-        <section class="panel explanation-panel" id="explanation-attributes" data-explains="attributes" data-explanation-kind="mechanism" aria-labelledby="explanation-attributes-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="attributes">
+        <section class="panel explanation-panel" id="explanation-attributes" data-explains="attributes" data-explanation-kind="mechanism" aria-labelledby="explanation-attributes-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <h2 class="explanation-sr-only" id="explanation-attributes-title">Attributes describe an entity</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-attributes.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Attributes describe an entity with a structured visual model." />
@@ -177,8 +179,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end attributes -->
-
-        <section class="panel" id="cardinality" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cardinality">
+        <section class="panel" id="cardinality" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Cardinality describes how many records may be linked</h2>
@@ -197,7 +198,7 @@
         </section>
 
         <!-- stage10-explanation:start cardinality -->
-        <section class="panel explanation-panel" id="explanation-cardinality" data-explains="cardinality" data-explanation-kind="mechanism" aria-labelledby="explanation-cardinality-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cardinality">
+        <section class="panel explanation-panel" id="explanation-cardinality" data-explains="cardinality" data-explanation-kind="mechanism" aria-labelledby="explanation-cardinality-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <h2 class="explanation-sr-only" id="explanation-cardinality-title">Cardinality describes how many records may be linked</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-cardinality.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cardinality describes how many records may be linked with a structured visual model." />
@@ -209,8 +210,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end cardinality -->
-
-        <section class="panel" id="participation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="participation">
+        <section class="panel" id="participation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Optional and mandatory participation</h2>
@@ -225,7 +225,7 @@
         </section>
 
         <!-- stage10-explanation:start participation -->
-        <section class="panel explanation-panel" id="explanation-participation" data-explains="participation" data-explanation-kind="mechanism" aria-labelledby="explanation-participation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="participation">
+        <section class="panel explanation-panel" id="explanation-participation" data-explains="participation" data-explanation-kind="mechanism" aria-labelledby="explanation-participation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <h2 class="explanation-sr-only" id="explanation-participation-title">Optional and mandatory participation</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-participation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Optional and mandatory participation with a structured visual model." />
@@ -237,9 +237,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end participation -->
-
-
-        <section class="panel" id="parser" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parser">
+        <section class="panel" id="parser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Interactive scenario parser</p>
             <h2>Identify entities and attributes</h2>
@@ -262,7 +260,7 @@
         </section>
 
         <!-- stage10-explanation:start parser -->
-        <section class="panel explanation-panel" id="explanation-parser" data-explains="parser" data-explanation-kind="mechanism" aria-labelledby="explanation-parser-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parser">
+        <section class="panel explanation-panel" id="explanation-parser" data-explains="parser" data-explanation-kind="mechanism" aria-labelledby="explanation-parser-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <h2 class="explanation-sr-only" id="explanation-parser-title">Identify entities and attributes</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-parser.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Identify entities and attributes with a structured visual model." />
@@ -274,8 +272,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end parser -->
-
-        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="checker">
+        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Interactive cardinality checker</p>
             <h2>Choose the relationship type</h2>
@@ -297,7 +294,7 @@
           <div class="feedback" id="cardinalityReason">Look for "one", "many", "must" and "may".</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Turn words into an ER model</h2>
@@ -311,7 +308,7 @@
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short-answer checks</h2>
@@ -320,7 +317,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Repair weak ER modelling decisions</h2>
@@ -328,7 +325,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
@@ -337,65 +334,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Document a design with an E-R diagram</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.</p>
-            <p>To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Model students joining clubs</h3>
-            <p>Draw Student(StudentID, Name) and Club(ClubID, ClubName). Because each student may join many clubs and each club may contain many students, add Membership(StudentID, ClubID, JoinDate) as a linking entity. The completed design has Student 1:M Membership and Club 1:M Membership.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Document a design with an E-R diagram: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What four kinds of information should an E-R diagram communicate here?</p>
-              <details><summary>Show answer</summary><p>Entities, relevant attributes/keys, relationships and cardinality.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What relationship exists between one Customer and many Orders?</p>
-              <details><summary>Show answer</summary><p>One-to-many from Customer to Order.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why add Membership between Student and Club?</p>
-              <details><summary>Show answer</summary><p>It resolves the many-to-many relationship into two one-to-many relationships.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is matching field spelling not enough to draw a relationship?</p>
-              <details><summary>Show answer</summary><p>The scenario/business rule must state or imply that the records are associated.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>A clinic stores Patients, Doctors and Appointments. Produce an E-R design in words or a labelled diagram and state the two relationship cardinalities.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> identifies Patient, Doctor and Appointment as entities</li>
-                <li><strong>B1</strong> gives a suitable identifier/key for each entity</li>
-                <li><strong>B1</strong> Patient has a one-to-many relationship with Appointment</li>
-                <li><strong>B1</strong> Doctor has a one-to-many relationship with Appointment</li>
-                <li><strong>B1</strong> Appointment carries the linking foreign keys / resolves the patient-doctor many-to-many history</li>
-                <li><strong>B1</strong> attributes and relationship directions are consistent with the scenario</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-082">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>ER modelling checklist</h2>

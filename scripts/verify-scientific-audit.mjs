@@ -1,6 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 
+import { evaluateCurrentDecision } from "./remediation-v2-decision-gate.mjs";
+import { evaluateRemediationV2SemanticGate } from "./remediation-v2-semantic-gate.mjs";
+
 const root = path.resolve(import.meta.dirname, "..");
 const audits = path.join(root, "audits");
 const read = (name) => fs.readFileSync(path.join(audits, name), "utf8");
@@ -101,7 +104,7 @@ for (const [file, count] of finalExpected) {
 }
 
 const finalDefects = JSON.parse(read("scientific-final-defects.json"));
-if (finalDefects.releaseDecision !== "APPROVED") throw new Error("Final scientific audit is not APPROVED");
+if (finalDefects.releaseDecision !== "APPROVED") throw new Error("Historical final scientific snapshot is not internally consistent");
 if (finalDefects.defects.length !== defects.defects.length || finalDefects.defects.some((entry) => entry.status !== "Resolved" || !entry.closureEvidence?.length)) throw new Error("Final scientific defect reconciliation is incomplete");
 if (Object.values(finalDefects.unresolved).some((count) => count !== 0)) throw new Error("Final scientific audit contains an unresolved count");
 const finalReport = read("scientific-final-audit-report.md");
@@ -109,4 +112,11 @@ for (const phrase of ["**Decision:** APPROVED", "## Passed", "## Failed", "None.
   if (!finalReport.includes(phrase)) throw new Error(`Final report missing ${phrase}`);
 }
 
-console.log(`Scientific final closure verified: ${finalExpected.size} matrices, ${finalDefects.defects.length} resolved defects, decision APPROVED.`);
+console.log(`Historical scientific final snapshot verified: ${finalExpected.size} matrices, ${finalDefects.defects.length} resolved defects; its APPROVED label is not current.`);
+
+const currentDecision = JSON.parse(read("remediation-v2-current-decision.json"));
+const currentDefects = JSON.parse(read("remediation-v2-defects.json"));
+const semanticGate = evaluateRemediationV2SemanticGate();
+const decisionEvaluation = evaluateCurrentDecision(currentDecision, currentDefects, semanticGate);
+if (decisionEvaluation.problems.length) throw new Error(`Current decision is invalid: ${decisionEvaluation.problems.join("; ")}`);
+console.log(`Sole current release decision: ${currentDecision.currentReleaseDecision} (Stage ${currentDecision.currentStage.number} ${currentDecision.currentStage.approvalStatus}).`);

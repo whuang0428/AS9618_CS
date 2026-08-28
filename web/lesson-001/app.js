@@ -88,11 +88,17 @@ const practice = [
   { id: "p10", prompt: "What should an exam answer about Bits, bytes, nibbles and storage units include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "3 marks",
-    prompt: "A storage block has a size of 16 KiB. Calculate the number of bits used to store the block. Show your working.",
+    prompt: "A storage block has a size of 16 KiB. Calculate the number of bits used to store the block. Demonstrate your working.",
     answer: "16 KiB = 16 x 1024 = 16 384 bytes. 16 384 x 8 = 131 072 bits.",
     marking: [
       { mark: "M1", text: "uses 1 KiB = 1024 bytes, e.g. 16 x 1024 or 16,384 bytes" },
@@ -323,11 +329,9 @@ function renderExamQuestions() {
       <p class="marks">[${question.marks}]</p>
       <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
       <div class="marking" id="${msId}">
-        <h4>Cambridge-style mark scheme</h4>
-        <p><strong>Expected answer:</strong> ${question.answer}</p>
-        <ul class="ms-list">
-          ${question.marking.map((point) => `<li><b>${point.mark}</b> ${point.text}</li>`).join("")}
-        </ul>
+        <h4>Mark scheme</h4>
+        <p><strong>Answer:</strong> ${question.answer}</p>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `;

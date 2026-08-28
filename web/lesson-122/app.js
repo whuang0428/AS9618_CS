@@ -95,6 +95,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -118,7 +124,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Trace the stack operations PUSH A, PUSH B, PUSH C, POP, PUSH D, POP. State the values returned by POP and the final stack contents from bottom to top.",
+    prompt: "Complete a trace table for the stack operations PUSH A, PUSH B, PUSH C, POP, PUSH D, POP. State the values returned by POP and the final stack contents from bottom to top.",
     answer: "After PUSH A, PUSH B, PUSH C the stack is A, B, C with C at the top. The first POP returns C, leaving A, B. PUSH D gives A, B, D. The second POP returns D. Final stack contents from bottom to top are A, B.",
     marking: [
       { mark: "M1", text: "shows A, B, C after three pushes with C on top" },
@@ -137,7 +143,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Trace the queue operations ENQUEUE A, ENQUEUE B, ENQUEUE C, DEQUEUE, ENQUEUE D, DEQUEUE. State the values returned by DEQUEUE and the final queue from front to rear.",
+    prompt: "Complete a trace table for the queue operations ENQUEUE A, ENQUEUE B, ENQUEUE C, DEQUEUE, ENQUEUE D, DEQUEUE. State the values returned by DEQUEUE and the final queue from front to rear.",
     answer: "After ENQUEUE A, B, C the queue is A, B, C with A at the front. The first DEQUEUE returns A, leaving B, C. ENQUEUE D adds D at the rear, giving B, C, D. The second DEQUEUE returns B. Final queue from front to rear is C, D.",
     marking: [
       { mark: "M1", text: "shows A, B, C after three enqueues with A at front" },
@@ -416,7 +422,7 @@ function renderExam() {
           <p><strong>Answer:</strong></p>
           <pre><code>${escapeHtml(question.answer)}</code></pre>
           <p><strong>Mark scheme:</strong></p>
-          <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `)

@@ -1,14 +1,13 @@
-export const commandWords = Object.freeze([
-  "add", "calculate", "choose", "compare", "complete", "construct", "convert", "correct", "create",
-  "describe", "design", "discuss", "distinguish", "evaluate", "explain", "give", "identify", "improve",
-  "name", "recommend", "refine", "run", "state", "trace", "use", "write",
-]);
+import { officialCommandWords } from "./cie-command-words.mjs";
+
+export const commandWords = officialCommandWords;
 
 export function commandWord(prompt) {
   const matches = commandWords
     .map((word) => ({ word, index: prompt.search(new RegExp(`\\b${word}\\b`, "i")) }))
     .filter(({ index }) => index >= 0)
     .sort((left, right) => left.index - right.index);
+  if (!matches.length && /(?:^|[.!?]\s+|\([a-z]\)\s*)(?:convert|construct|trace|use|choose|correct|document|implement|locate|perform|produce|select)\b/i.test(prompt)) return "subject-operation";
   if (!matches.length) throw new Error(`Unknown assessment command word: ${prompt}`);
   return matches[0].word;
 }

@@ -1,4 +1,4 @@
-# Lesson 015: Section 1 review: representation calculations under exam timing
+# Lesson 015: Section 1 review under exam timing
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -42,8 +42,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 **Problem:** Answer a mixed Cambridge-style question, then annotate which words in the answer earn marks.
 
 **Worked answer / marking focus:** Credit topic recognition, precise terminology, and explanations that fit the scenario rather than generic memorised lines.
-
-
 
 ## Student Task
 Students complete a timed response, swap scripts, mark with a checklist, and write one improved version.

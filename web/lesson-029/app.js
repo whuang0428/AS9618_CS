@@ -71,6 +71,12 @@ const practice = [
   { id: "p10", prompt: "In an exam answer, should an output choice be linked to the scenario?", accepted: ["yes", "linked", "justify", "justified"], answer: "Yes" },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -145,7 +151,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "4 marks",
-    prompt: "A school hall presentation must be seen and heard by 200 people. Recommend suitable output devices and explain your choices.",
+    prompt: "A school hall presentation must be seen and heard by 200 people. Suggest suitable output devices and explain your choices.",
     answer: "A projector or large display is suitable because it shows visual output large enough for the audience to see. Speakers are suitable because they output sound at enough volume for the hall. The choices fit the large audience and presentation context better than a small monitor or headphones.",
     marking: [
       { mark: "B1", text: "suitable visual output such as projector/large display" },
@@ -282,9 +288,9 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
+          <h4>Mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
-          <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

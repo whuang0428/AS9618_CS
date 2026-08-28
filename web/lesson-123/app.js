@@ -104,11 +104,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "A program stores 50 rainfall readings, all REAL values, and calculates the average. Choose a suitable data structure and justify your choice.",
+    prompt: "A program stores 50 rainfall readings, all REAL values, and calculates the average. Suggest a suitable data structure and justify your choice.",
     answer: "An array of REAL values is suitable, for example DECLARE Rainfall : ARRAY[1:50] OF REAL. There are many values of the same data type, and each value can be accessed using an index. The program can traverse the array with a loop to total the readings and calculate the average.",
     marking: [
       { mark: "B1", text: "chooses an array" },
@@ -126,7 +132,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "A library stores 1000 books. Each book has ISBN, Title, Author and NumberOfPages. Choose a suitable structure and explain why it is more suitable than four separate arrays.",
+    prompt: "A library stores 1000 books. Each book has ISBN, Title, Author and NumberOfPages. Suggest a suitable structure and explain why it is more suitable than four separate arrays.",
     answer: "An array of records is suitable. A record type can store the fields for one book, with field names such as ISBN, Title, Author and NumberOfPages. An array can then store 1000 book records. This keeps related fields for the same book together and avoids errors where separate arrays become unsynchronised.",
     marking: [
       { mark: "B1", text: "chooses array of records" },
@@ -145,7 +151,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "4 marks",
-    prompt: "A program needs to keep a log of all login events so that the data can be read next week. Choose a suitable data structure and justify the file mode used when adding one new event.",
+    prompt: "A program needs to keep a log of all login events so that the data can be read next week. Suggest a suitable data structure and justify the file mode used when adding one new event.",
     answer: "A text or CSV file is suitable because the login events must persist after the program finishes and be available next week. When adding one new event, the file should be opened FOR APPEND so the new event is added to the end without deleting existing log entries.",
     marking: [
       { mark: "B1", text: "chooses text file / CSV file" },
@@ -162,7 +168,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "A text editor stores actions so that the most recent action can be undone first. Choose a suitable abstract data type and explain the operations used.",
+    prompt: "A text editor stores actions so that the most recent action can be undone first. Suggest a suitable abstract data type and explain the operations used.",
     answer: "A stack is suitable because undo requires LIFO behaviour: the last action added is the first action removed. Each new action is pushed onto the stack. When the user selects undo, the program pops the top action and reverses it. The stack should be checked for underflow before popping.",
     marking: [
       { mark: "B1", text: "chooses stack" },
@@ -180,7 +186,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A print server stores print jobs and processes them in the order they arrive. Choose a suitable abstract data type and explain why a stack would be unsuitable.",
+    prompt: "A print server stores print jobs and processes them in the order they arrive. Suggest a suitable abstract data type and explain why a stack would be unsuitable.",
     answer: "A queue is suitable because print jobs should be processed in FIFO order: the first job submitted should be printed first. New jobs are enqueued at the rear and jobs are dequeued from the front. A stack would be unsuitable because it uses LIFO order, so the most recent job could be printed before earlier jobs, which would not match the arrival-order requirement.",
     marking: [
       { mark: "B1", text: "chooses queue" },
@@ -367,7 +373,7 @@ function renderExam() {
           <p><strong>Answer:</strong></p>
           <pre><code>${escapeHtml(question.answer)}</code></pre>
           <p><strong>Mark scheme:</strong></p>
-          <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `)

@@ -46,7 +46,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit correct control flow, meaningful identifiers, correct parameter or variable use, and test data that actually exercises the construct.
 
-
 ## Student Task
 Students write Cambridge pseudocode first, then produce a Java support version. They circle every place where Java syntax must not leak into the exam answer.
 
@@ -108,23 +107,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 2. Close the valid branch with ENDIF before the false return.
 3. Close the reusable function with ENDFUNCTION.
 4. Call the function instead of repeating the validation condition.
-
-### Java methods can model modularity, but Cambridge pseudocode remains the exam format
-
-- **Explains:** `java`
-- **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-java.jpg`
-
-1. Java support only
-2. Cambridge-style pseudocode
-3. FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
-4. RETURN Mark >= 0 AND Mark <= 100
-5. ENDFUNCTION
-6. Java support example only
-7. static boolean isValidMark(int mark) {
-8. return mark >= 0 && mark <= 100;
-9. Use Java to practise running code, but use Cambridge-style pseudocode when the exam asks for algorithm design.
 
 ### Modular design splits a solution into smaller named parts
 

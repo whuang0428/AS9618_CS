@@ -71,11 +71,17 @@ const practice = [
   { id: "p10", prompt: "What phrase means price for each unit of storage?", accepted: ["cost per gb", "cost per gigabyte", "cost per unit", "cost per unit of storage"], answer: "Cost per GB / cost per unit of storage" },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "A laptop is carried between home and school every day. Recommend a suitable storage device and justify your answer using storage characteristics.",
+    prompt: "A laptop is carried between home and school every day. Suggest a suitable storage device and justify your answer using storage characteristics.",
     answer: "An SSD is suitable because it has fast read/write access, so the laptop can start and load applications quickly. It has no moving parts, so it is more durable than an HDD when the laptop is carried and may be knocked. It is also compact and uses relatively low power, which suits a portable device.",
     marking: [
       { mark: "B1", text: "suitable device named, e.g. SSD" },
@@ -145,7 +151,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A media department needs one storage solution for active video editing and another for long-term archive. Recommend both and justify the trade-off.",
+    prompt: "A media department needs one storage solution for active video editing and another for long-term archive. Suggest both and justify the trade-off.",
     answer: "For active editing, an SSD is suitable because fast read/write access helps load, preview and save large video files quickly. It is also durable because it has no moving parts. For long-term archive, a high-capacity HDD or magnetic tape may be suitable because it offers more capacity at lower cost per GB. The trade-off is that active work needs speed, while archive storage prioritises capacity and cost because it is accessed less often.",
     marking: [
       { mark: "B1", text: "suitable active editing storage, e.g. SSD" },
@@ -284,9 +290,9 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
+          <h4>Mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
-          <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

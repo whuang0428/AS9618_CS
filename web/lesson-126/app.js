@@ -112,6 +112,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -155,7 +161,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Trace this pseudocode and state the final output: Total <- 0; FOR Count <- 1 TO 4; Total <- Total + Count; NEXT Count; OUTPUT Total.",
+    prompt: "Complete a trace table for this pseudocode and state the final output: Total <- 0; FOR Count <- 1 TO 4; Total <- Total + Count; NEXT Count; OUTPUT Total.",
     answer: "The values of Total after each iteration are 1, 3, 6 and 10. The final output is 10.",
     marking: [
       { mark: "M1", text: "initialises Total to 0 before tracing" },
@@ -384,7 +390,7 @@ function renderExam() {
           <p><strong>Answer:</strong></p>
           <pre><code>${escapeHtml(question.answer)}</code></pre>
           <p><strong>Mark scheme:</strong></p>
-          <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `)

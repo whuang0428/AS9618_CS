@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 049 | Performance factors: cores, cache, clock speed and word length</title>
+    <title>AS9618 Lesson 049 | Bit manipulation with masks and shifts</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Performance factors: cores, cache, clock speed and word length</h1>
+        <h1>Bit manipulation with masks and shifts</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,33 +46,110 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Bit manipulation with masks and shifts</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A bitwise AND mask can test or clear selected bits; an OR mask can set selected bits; an XOR mask can toggle selected bits. These operations are used to monitor and control individual flags without changing unrelated bits.</p>
+            <p>LSL is a logical left shift and LSR is a logical right shift. Distinguish logical shifts from arithmetic shifts and cyclic shifts: a logical shift inserts zero, an arithmetic right shift preserves the sign bit, and a cyclic shift wraps the bit that leaves one end back to the other.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Test, set, clear and toggle one flag</h3>
+            <p>For Status = 10110100, an AND mask tests a selected bit, an OR mask sets it, an AND mask with a zero at that position clears it, and an XOR mask toggles it. LSL moves bits left; LSR moves them right and fills with zero.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start shifts -->
+        <section class="panel explanation-panel" id="explanation-shifts" data-explains="shifts" data-explanation-kind="comparison" aria-labelledby="explanation-shifts-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shifts">
+          <h2 class="explanation-sr-only" id="explanation-shifts-title">Binary shifts: logical, arithmetic, cyclic</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-shifts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Binary shifts: logical, arithmetic, cyclic through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Binary shifts: logical, arithmetic, cyclic: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Every shown input and stored result contains exactly eight bits.</li><li><strong>Reason:</strong> Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.</li><li><strong>Result:</strong> Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.</li><li><strong>Additional fact:</strong> Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.</li><li><strong>Additional fact:</strong> Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label.</li></ol>
+
+            <p><strong>Analogy:</strong> Three conveyor rules move the same row but handle the end position differently.</p>
+            <p><strong>Boundary:</strong> State the fixed width, direction and shift type before calculating.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end shifts -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Bit manipulation with masks and shifts: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which mask operation sets selected bits?</p>
+              <details><summary>Show answer</summary><p>Bitwise OR.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which operation toggles selected bits?</p>
+              <details><summary>Show answer</summary><p>Bitwise XOR.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What is inserted by a logical shift?</p>
+              <details><summary>Show answer</summary><p>Zero bits.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Explain how AND, OR and XOR masks test, clear, set and toggle control flags, then apply one LSL and one LSR.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>AND test/clear</td><td>Do not treat logical, arithmetic and cyclic shifts as identical.</td><td>1</td></tr>
+                  <tr><td>OR set</td><td></td><td>1</td></tr>
+                  <tr><td>XOR toggle</td><td></td><td>1</td></tr>
+                  <tr><td>correct LSL</td><td></td><td>1</td></tr>
+                  <tr><td>correct LSR</td><td></td><td>1</td></tr>
+                  <tr><td>monitor/control context</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 049 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
             <h2>Processor performance depends on several interacting factors.</h2>
             <p>
-              Processor performance depends on several interacting factors. Clock
-              speed, number of cores, cache size and word length can improve performance,
-              but only when the workload and software can actually benefit from them.
+              The official factors are processor type and number of cores, bus width,
+              clock speed and cache memory. Each can contribute to performance, but
+              only when the architecture, memory system, workload and software can benefit.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Explain</strong><span>how clock speed, cores, cache and word length affect performance</span></div>
+              <div><strong>Explain</strong><span>how processor type, cores, bus width, clock speed and cache affect performance</span></div>
               <div><strong>Judge</strong><span>when a factor may not improve performance</span></div>
               <div><strong>Write</strong><span>Cambridge-style cause-and-consequence answers</span></div>
             </div>
           </div>
           <div class="performance-card" aria-label="Performance factors sketch">
             <div class="perf-stack">
-              <span>Clock speed: cycles per second</span>
+              <span>Processor type: architecture and execution design</span>
               <span>Cores: parallel execution</span>
+              <span>Bus width: bits transferred per transfer</span>
+              <span>Clock speed: cycles per second</span>
               <span>Cache: faster repeated access</span>
-              <span>Word length: bits processed at once</span>
             </div>
             <p>Performance is a team sport. One superstar part can still meet a bottleneck.</p>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam answers must explain mechanism and limitation. Vague phrases like "better performance" are usually not enough.</p>
@@ -83,7 +160,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A laptop has twice as many cores. Will every program run twice as fast?</h2>
@@ -93,54 +170,57 @@
             <button class="choice-card" type="button" data-hook="depends">Not always: the program must be able to use the extra cores</button>
             <button class="choice-card" type="button" data-hook="yes">Yes: twice the cores always means twice the speed</button>
             <button class="choice-card" type="button" data-hook="cache">Only if cache is removed</button>
-            <button class="choice-card" type="button" data-hook="word">Only if word length becomes 1 bit</button>
+            <button class="choice-card" type="button" data-hook="bus">Only if the data bus is removed</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
             Choose one. Performance answers need a cause, a consequence and a sensible condition.
           </div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
-            <h2>Performance factor means a hardware feature that can affect processing speed</h2>
+            <h2>Processor type and number of cores, bus width, clock speed and cache memory</h2>
           </div>
           <div class="concept-grid">
+            <article>
+              <strong>Processor type</strong>
+              <span>Architecture and execution design affect how much useful work is completed for a workload.</span>
+            </article>
+            <article>
+              <strong>Number of cores</strong>
+              <span>Processing units that can execute instructions independently, allowing parallel work.</span>
+            </article>
+            <article>
+              <strong>Bus width</strong>
+              <span>A wider data bus can transfer more bits in one transfer when the rest of the system can use them.</span>
+            </article>
             <article>
               <strong>Clock speed</strong>
               <span>How many clock cycles the CPU can perform per second, commonly measured in Hz/GHz.</span>
             </article>
             <article>
-              <strong>Cores</strong>
-              <span>Processing units that can execute instructions independently, allowing parallel work.</span>
-            </article>
-            <article>
-              <strong>Cache</strong>
-              <span>Small, fast memory close to the CPU storing frequently or recently used data/instructions.</span>
-            </article>
-            <article>
-              <strong>Word length</strong>
-              <span>The number of bits the CPU can process as a unit in one operation/register word.</span>
+              <strong>Cache memory</strong>
+              <span>Small, fast memory storing frequently or recently used data and instructions close to the CPU.</span>
             </article>
           </div>
-          <div class="callout">Chinese support: clock speed = 时钟频率；core = 核心；cache = 高速缓存；word length = 字长；bottleneck = 瓶颈。</div>
+          <div class="callout">Chinese support: processor type = 处理器类型；core = 核心；bus width = 总线宽度；clock speed = 时钟频率；cache = 高速缓存。</div>
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">Performance factor means a hardware feature that can affect processing speed</h2>
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">The official processor performance factors</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Performance factor means a hardware feature that can affect processing speed with a structured visual model." />
-            <figcaption class="explanation-sr-only">Performance factor means a hardware feature that can affect processing speed: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The official processor performance factors with a structured visual model." />
+            <figcaption class="explanation-sr-only">The official processor performance factors: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Clock speed</li><li><strong>Lesson fact:</strong> How many clock cycles the CPU can perform per second, commonly measured in Hz/GHz.</li><li><strong>Lesson fact:</strong> Processing units that can execute instructions independently, allowing parallel work.</li><li><strong>Lesson fact:</strong> Small, fast memory close to the CPU storing frequently or recently used data/instructions.</li><li><strong>Lesson fact:</strong> Word length</li><li><strong>Lesson fact:</strong> The number of bits the CPU can process as a unit in one operation/register word.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> The official performance factors are processor type and number of cores, bus width, clock speed and cache memory.</li><li><strong>Lesson fact:</strong> Processor type affects how much useful work can be completed for a workload, while more cores help only when work can run in parallel.</li><li><strong>Lesson fact:</strong> A wider bus transfers more bits per transfer; a higher clock speed provides more cycles per second; cache reduces slower main-memory accesses when required data or instructions are present.</li><li><strong>Lesson fact:</strong> No single factor guarantees that one computer will be faster for every program.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-
-        <section class="panel" id="clock" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="clock">
+        <section class="panel" id="clock" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Clock speed: more cycles per second</h2>
@@ -162,7 +242,7 @@
         </section>
 
         <!-- stage10-explanation:start clock -->
-        <section class="panel explanation-panel" id="explanation-clock" data-explains="clock" data-explanation-kind="process" aria-labelledby="explanation-clock-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="clock">
+        <section class="panel explanation-panel" id="explanation-clock" data-explains="clock" data-explanation-kind="process" aria-labelledby="explanation-clock-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <h2 class="explanation-sr-only" id="explanation-clock-title">Clock speed: more cycles per second</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-clock.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Clock speed: more cycles per second with a structured visual model." />
@@ -174,8 +254,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end clock -->
-
-        <section class="panel" id="cores" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cores">
+        <section class="panel" id="cores" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Cores: more independent processing units</h2>
@@ -201,7 +280,7 @@
         </section>
 
         <!-- stage10-explanation:start cores -->
-        <section class="panel explanation-panel" id="explanation-cores" data-explains="cores" data-explanation-kind="process" aria-labelledby="explanation-cores-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cores">
+        <section class="panel explanation-panel" id="explanation-cores" data-explains="cores" data-explanation-kind="process" aria-labelledby="explanation-cores-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <h2 class="explanation-sr-only" id="explanation-cores-title">Cores: more independent processing units</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-cores.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cores: more independent processing units with a structured visual model." />
@@ -213,8 +292,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end cores -->
-
-        <section class="panel" id="cache" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cache">
+        <section class="panel" id="cache" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Cache: reduce slow memory access</h2>
@@ -232,7 +310,7 @@
         </section>
 
         <!-- stage10-explanation:start cache -->
-        <section class="panel explanation-panel" id="explanation-cache" data-explains="cache" data-explanation-kind="mechanism" aria-labelledby="explanation-cache-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cache">
+        <section class="panel explanation-panel" id="explanation-cache" data-explains="cache" data-explanation-kind="mechanism" aria-labelledby="explanation-cache-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <h2 class="explanation-sr-only" id="explanation-cache-title">Cache: reduce slow memory access</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-cache.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cache: reduce slow memory access with a structured visual model." />
@@ -244,10 +322,9 @@
           </div>
         </section>
         <!-- stage10-explanation:end cache -->
-
-        <section class="panel" id="word" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="word">
+        <section class="panel" id="word" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
+            <p class="eyebrow">Optional enrichment — not part of this syllabus performance-factor list</p>
             <h2>Word length: bits processed as a unit</h2>
           </div>
           <div class="word-table" role="table" aria-label="Word length effects">
@@ -280,7 +357,7 @@
         </section>
 
         <!-- stage10-explanation:start word -->
-        <section class="panel explanation-panel" id="explanation-word" data-explains="word" data-explanation-kind="process" aria-labelledby="explanation-word-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="word">
+        <section class="panel explanation-panel" id="explanation-word" data-explains="word" data-explanation-kind="process" aria-labelledby="explanation-word-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <h2 class="explanation-sr-only" id="explanation-word-title">Word length: bits processed as a unit</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-word.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Word length: bits processed as a unit with a structured visual model." />
@@ -292,8 +369,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end word -->
-
-        <section class="panel" id="limits" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="limits">
+        <section class="panel" id="limits" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Performance is limited by bottlenecks</h2>
@@ -307,7 +383,7 @@
         </section>
 
         <!-- stage10-explanation:start limits -->
-        <section class="panel explanation-panel" id="explanation-limits" data-explains="limits" data-explanation-kind="tradeoff" aria-labelledby="explanation-limits-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="limits">
+        <section class="panel explanation-panel" id="explanation-limits" data-explains="limits" data-explanation-kind="tradeoff" aria-labelledby="explanation-limits-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <h2 class="explanation-sr-only" id="explanation-limits-title">Performance is limited by bottlenecks</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-limits.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Performance is limited by bottlenecks with a structured visual model." />
@@ -319,9 +395,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end limits -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Performance factor selector</h2>
@@ -345,7 +419,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Explain the factor and the condition</h2>
@@ -359,7 +433,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
@@ -368,7 +442,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the performance claim</h2>
@@ -376,7 +450,7 @@
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
@@ -385,66 +459,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Complete processor performance factors</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Processor performance depends on processor type, number of cores, bus width, clock speed and cache memory. Processor type means the processor architecture and instruction-set design, including how much useful work its execution units can perform for a particular instruction or workload; a clock-rate comparison alone is therefore not sufficient.</p>
-            <p>More cores can execute independent threads concurrently when software exposes parallel work. Wider data buses can transfer more bits per transfer, while address-bus width affects the address space. Higher clock speed provides more clock cycles per second, and cache reduces waiting when frequently used instructions or data are found close to the CPU.</p>
-            <p>No factor guarantees that every program runs faster. Performance must be justified for the stated workload, because software parallelism, instruction-set compatibility, cache behaviour, memory traffic, heat and other bottlenecks can limit the benefit.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Compare two processors for two workloads</h3>
-            <p>Processor A has four faster general-purpose cores and a larger cache; Processor B has eight specialised cores but a lower clock speed. A lightly threaded office program may favour A's processor type, clock behaviour and cache, while a parallel workload written for B's processor type may use more cores. Bus width and memory traffic must also be considered before reaching a conclusion.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Complete processor performance factors: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What does processor type mean as a performance factor?</p>
-              <details><summary>Show answer</summary><p>The processor architecture/instruction-set and execution design, which determines what work it can perform per instruction or for a particular workload.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Why do more cores not always improve one program?</p>
-              <details><summary>Show answer</summary><p>The program must contain independent threads or tasks that can run in parallel.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> How can bus width affect performance?</p>
-              <details><summary>Show answer</summary><p>A wider data bus can transfer more bits per transfer; address-bus width affects the address space rather than directly guaranteeing speed.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why can cache improve performance?</p>
-              <details><summary>Show answer</summary><p>A cache hit supplies frequently used data or instructions faster than main memory, reducing CPU waiting.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Two computers have different processor types. Explain how processor type, number of cores, bus width, clock speed and cache can affect their performance for a stated workload.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> processor type linked to architecture/instruction-set/execution design and workload</li>
-                <li><strong>B1</strong> cores linked to available parallel threads/tasks</li>
-                <li><strong>B1</strong> bus width linked accurately to bits transferred or address space</li>
-                <li><strong>B1</strong> clock speed linked to cycles per second</li>
-                <li><strong>B1</strong> cache linked to reducing slower main-memory access</li>
-                <li><strong>B1</strong> conclusion recognises workload and bottlenecks rather than claiming one factor guarantees speed</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Explain performance with conditions</h2>
@@ -465,7 +480,7 @@
             <h2>Turn vague performance claims into mark-worthy explanations</h2>
           </div>
           <ol class="homework-list">
-            <li>Define clock speed, cache, core and word length in one sentence each.</li>
+            <li>Define processor type, number of cores, bus width, clock speed and cache memory in one sentence each.</li>
             <li>Write a 4-mark answer explaining why more cores may not speed up a single-threaded program.</li>
             <li>Explain how cache can improve performance when a program repeatedly accesses the same data.</li>
             <li>Correct this sentence: "A 4 GHz CPU is always faster than a 3 GHz CPU."</li>

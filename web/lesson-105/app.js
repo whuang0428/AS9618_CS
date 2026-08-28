@@ -111,11 +111,17 @@ const mistakes = [
   { wrong: "In insertion sort I ignored the sorted left section.", fix: "Insertion sort inserts each next item into the correct position in the already sorted left part." },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Show the first pass of bubble sort in ascending order on [5, 1, 4, 2].",
+    prompt: "Demonstrate the first pass of bubble sort in ascending order on [5, 1, 4, 2].",
     answer: "Compare 5 and 1, swap -> [1, 5, 4, 2]. Compare 5 and 4, swap -> [1, 4, 5, 2]. Compare 5 and 2, swap -> [1, 4, 2, 5].",
     marking: [
       { mark: "B1", text: "compares first adjacent pair 5 and 1" },
@@ -133,7 +139,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Trace insertion sort on [5, 1, 4, 2] by showing the list after each insertion.",
+    prompt: "Complete a trace table for insertion sort on [5, 1, 4, 2] by showing the list after each insertion.",
     answer: "Treat [5] as sorted. Insert 1 before 5 -> [1, 5, 4, 2]. Insert 4 between 1 and 5 -> [1, 4, 5, 2]. Insert 2 between 1 and 4 -> [1, 2, 4, 5].",
     marking: [
       { mark: "B1", text: "states first item / left section is initially sorted" },
@@ -353,10 +359,10 @@ function setupExam() {
       <p>${question.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${question.answer}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

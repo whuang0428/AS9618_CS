@@ -1,4 +1,50 @@
-# Lesson 067: Encryption, hashing, and digital certificates
+# Lesson 067: Digital signatures and encryption
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Digital signatures and encryption
+
+### Direct explanation
+
+- A sender hashes the message and encrypts the hash with the sender's private key to form a digital signature. The receiver uses the sender's public key to recover/verify the signed hash and independently hashes the received message.
+- Matching hashes provide evidence of integrity and origin/authenticity; a valid signature does not keep the message confidential. Certificates help bind a public key to an identity.
+- Encryption is a separate security measure: it transforms readable plaintext into ciphertext and requires the correct key for decryption. A message may be signed for integrity/authenticity, encrypted for confidentiality, or both; neither mechanism should be credited for a property it does not provide.
+
+### Worked example
+
+**Verify and protect a signed update:** The publisher signs a hash of the update with its private key. The device uses the publisher's public key, independently hashes the received update and compares the values; a mismatch rejects the update. If the update must also remain confidential in transit, it is separately encrypted for an authorised recipient.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which key creates a sender's digital signature?
+   **Answer:** The sender's private key.
+2. What does the receiver compare?
+   **Answer:** The verified signed hash with a newly calculated message hash.
+3. Does a digital signature encrypt the whole message for confidentiality?
+   **Answer:** No. The content requires separate encryption if confidentiality is needed.
+4. What property does message encryption provide?
+   **Answer:** Confidentiality: ciphertext should be unreadable without the correct key.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Describe how a digital signature is created and checked, then explain why separate encryption may also be required.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| sender creates a hash of the message | Do not award confidentiality as the purpose of a signature or integrity/authenticity as an automatic result of encryption alone. | 1 |
+| hash is signed/encrypted using sender's private key |  | 1 |
+| receiver uses sender's public key and hashes received message |  | 1 |
+| matching hashes provide integrity and sender-authenticity evidence |  | 1 |
+| separate encryption converts message plaintext to ciphertext |  | 1 |
+| confidentiality requires the correct decryption key |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +89,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Hash stored passwords; encrypt payment data in transit; use a digital certificate to support authentication of the website and secure HTTPS communication.
 
-
-
 ## Student Task
 Students create a three-column table: protection method, what it protects, what it does not protect.
 
@@ -72,46 +116,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Digital signatures and encryption
-
-### Direct explanation
-
-- A sender hashes the message and encrypts the hash with the sender's private key to form a digital signature. The receiver uses the sender's public key to recover/verify the signed hash and independently hashes the received message.
-- Matching hashes provide evidence of integrity and origin/authenticity; a valid signature does not keep the message confidential. Certificates help bind a public key to an identity.
-- Encryption is a separate security measure: it transforms readable plaintext into ciphertext and requires the correct key for decryption. A message may be signed for integrity/authenticity, encrypted for confidentiality, or both; neither mechanism should be credited for a property it does not provide.
-
-### Worked example
-
-**Verify and protect a signed update:** The publisher signs a hash of the update with its private key. The device uses the publisher's public key, independently hashes the received update and compares the values; a mismatch rejects the update. If the update must also remain confidential in transit, it is separately encrypted for an authorised recipient.
-
-### Targeted practice and answers
-
-1. Which key creates a sender's digital signature?
-   **Answer:** The sender's private key.
-2. What does the receiver compare?
-   **Answer:** The verified signed hash with a newly calculated message hash.
-3. Does a digital signature encrypt the whole message for confidentiality?
-   **Answer:** No. The content requires separate encryption if confidentiality is needed.
-4. What property does message encryption provide?
-   **Answer:** Confidentiality: ciphertext should be unreadable without the correct key.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Describe how a digital signature is created and checked, then explain why separate encryption may also be required.
-
-- **B1** sender creates a hash of the message
-- **B1** hash is signed/encrypted using sender's private key
-- **B1** receiver uses sender's public key and hashes received message
-- **B1** matching hashes provide integrity and sender-authenticity evidence
-- **B1** separate encryption converts message plaintext to ciphertext
-- **B1** confidentiality requires the correct decryption key
-
-**Strict note:** Do not award confidentiality as the purpose of a signature or integrity/authenticity as an automatic result of encryption alone.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -119,7 +123,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `certificates`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-067-certificates.jpg`
 
 1. A certificate contains an identity and its public key.
@@ -132,7 +136,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** tradeoff
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-067-compare.jpg`
 
 1. First identify confidentiality, integrity, authentication or several needs.
@@ -145,7 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `core`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-067-core.jpg`
 
 1. Encryption hides readable content from unauthorised viewers.
@@ -158,7 +162,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `encryption`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-067-encryption.jpg`
 
 1. An algorithm combines plaintext with a key.
@@ -171,7 +175,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `hashing`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-067-hashing.jpg`
 
 1. A hash function maps input data to a fixed-length digest.
@@ -184,7 +188,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `https`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-067-https.jpg`
 
 1. The server presents its certificate and public-key information.
@@ -197,7 +201,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `keys`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-067-keys.jpg`
 
 1. A symmetric key can both encrypt and decrypt shared data.

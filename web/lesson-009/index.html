@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 009 | Image file size calculations and metadata</title>
+    <title>AS9618 Lesson 009 | Vector graphics and drawing lists</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Image file size calculations and metadata</h1>
+        <h1>Vector graphics and drawing lists</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -41,7 +41,66 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Vector graphics and drawing lists</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Vector encoding stores a graphic as a drawing list of drawing objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.</p>
+            <p>Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.</p>
+            <p>For a given application, justify bitmap or vector storage by connecting the image content and required editing or scaling to the chosen representation.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Store a red circle</h3>
+            <p>A drawing-list entry could record object = circle, centre = (80, 60), radius = 20, fill = red and outline = black. Enlarging it changes the geometry before redrawing, not a grid of stored pixels.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Vector graphics and drawing lists: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Identify two properties stored for a vector object.</p>
+              <details><summary>Show answer</summary><p>Any two of coordinates, dimensions, fill, line colour or line thickness.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Suggest vector or bitmap for a company logo that must appear on a pen and a billboard.</p>
+              <details><summary>Show answer</summary><p>Vector, because geometric objects can be scaled without pixelation.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is bitmap normally better for a photograph?</p>
+              <details><summary>Show answer</summary><p>A photograph contains complex per-pixel colour and texture that is inefficient to describe as drawing objects.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>A designer creates a simple icon from circles and rectangles. Explain how it is stored as a vector graphic and give one advantage over a bitmap when resized.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>stored as a drawing list / list of objects</td><td>Do not accept 'vector has better quality' unless scalability or object-based storage is explained.</td><td>1</td></tr>
+                  <tr><td>stores object properties such as coordinates/dimensions/colour</td><td></td><td>1</td></tr>
+                  <tr><td>software redraws objects from the descriptions</td><td></td><td>1</td></tr>
+                  <tr><td>can be resized without pixelation / loss of shape quality</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 009 | 45 minutes | Informal questioning</p>
             <h2>Show each stage of the calculation and include the required units.</h2>
@@ -71,7 +130,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Most wrong answers in this topic come from a correct formula followed by a careless unit or metadata decision.</p>
@@ -82,7 +141,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A file is 64 000 bits. Is that 64 000 bytes?</h2>
@@ -98,7 +157,7 @@
           </div>
         </section>
 
-        <section class="panel" id="chain" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="chain">
+        <section class="panel" id="chain" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>The calculation chain</h2>
@@ -125,7 +184,7 @@
         </section>
 
         <!-- stage10-explanation:start chain -->
-        <section class="panel explanation-panel" id="explanation-chain" data-explains="chain" data-explanation-kind="mechanism" aria-labelledby="explanation-chain-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="chain">
+        <section class="panel explanation-panel" id="explanation-chain" data-explains="chain" data-explanation-kind="mechanism" aria-labelledby="explanation-chain-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <h2 class="explanation-sr-only" id="explanation-chain-title">The calculation chain</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-009-chain.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The calculation chain with a structured visual model." />
@@ -137,8 +196,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end chain -->
-
-        <section class="panel" id="metadata" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="metadata">
+        <section class="panel" id="metadata" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Metadata is data about the image, not the pixels themselves</h2>
@@ -161,7 +219,7 @@
         </section>
 
         <!-- stage10-explanation:start metadata -->
-        <section class="panel explanation-panel" id="explanation-metadata" data-explains="metadata" data-explanation-kind="mechanism" aria-labelledby="explanation-metadata-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="metadata">
+        <section class="panel explanation-panel" id="explanation-metadata" data-explains="metadata" data-explanation-kind="mechanism" aria-labelledby="explanation-metadata-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <h2 class="explanation-sr-only" id="explanation-metadata-title">Metadata is data about the image, not the pixels themselves</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-009-metadata.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Metadata is data about the image, not the pixels themselves with a structured visual model." />
@@ -173,8 +231,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end metadata -->
-
-        <section class="panel" id="units" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="units">
+        <section class="panel" id="units" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Units: do not trip at the finish line</h2>
@@ -197,7 +254,7 @@
         </section>
 
         <!-- stage10-explanation:start units -->
-        <section class="panel explanation-panel" id="explanation-units" data-explains="units" data-explanation-kind="mechanism" aria-labelledby="explanation-units-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="units">
+        <section class="panel explanation-panel" id="explanation-units" data-explains="units" data-explanation-kind="mechanism" aria-labelledby="explanation-units-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <h2 class="explanation-sr-only" id="explanation-units-title">Units: do not trip at the finish line</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-009-units.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Units: do not trip at the finish line with a structured visual model." />
@@ -209,9 +266,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end units -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Image size calculator with metadata</h2>
@@ -249,7 +304,7 @@
           <div class="method-box" id="calcMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -262,7 +317,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -272,7 +327,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Catch the common wording error</h2>
@@ -291,7 +346,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -303,59 +358,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Vector graphics and drawing lists</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Vector encoding stores a graphic as a drawing list of drawing objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.</p>
-            <p>Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Store a red circle</h3>
-            <p>A drawing-list entry could record object = circle, centre = (80, 60), radius = 20, fill = red and outline = black. Enlarging it changes the geometry before redrawing, not a grid of stored pixels.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Vector graphics and drawing lists: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Name two properties stored for a vector object.</p>
-              <details><summary>Show answer</summary><p>Any two of coordinates, dimensions, fill, line colour or line thickness.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Choose vector or bitmap for a company logo that must appear on a pen and a billboard.</p>
-              <details><summary>Show answer</summary><p>Vector, because geometric objects can be scaled without pixelation.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why is bitmap normally better for a photograph?</p>
-              <details><summary>Show answer</summary><p>A photograph contains complex per-pixel colour and texture that is inefficient to describe as drawing objects.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A designer creates a simple icon from circles and rectangles. Explain how it is stored as a vector graphic and give one advantage over a bitmap when resized.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> stored as a drawing list / list of objects</li>
-                <li><strong>B1</strong> stores object properties such as coordinates/dimensions/colour</li>
-                <li><strong>B1</strong> software redraws objects from the descriptions</li>
-                <li><strong>B1</strong> can be resized without pixelation / loss of shape quality</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Read the wording before the calculator</h2>

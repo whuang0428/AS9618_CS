@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 1,
+  "remediation": "v2",
+  "sourceBaseline": "audits/remediation-v2-stage0-baseline.json",
+  "decisionContribution": "BLOCKED",
+  "blockingSummary": "Stage 7 final gate is Ready. Current conclusion is RELEASE_CANDIDATE; commit, push and publication remain separately unauthorised.",
+  "stageStatus": {
+    "stage": 7,
+    "status": "Complete"
+  },
+  "stageApprovals": [
+    {
+      "stage": 0,
+      "status": "ApprovedForProgression",
+      "recordedDate": "2026-08-28",
+      "releaseDecision": false
+    },
+    {
+      "stage": 1,
+      "status": "ApprovedForProgression",
+      "recordedDate": "2026-08-28",
+      "releaseDecision": false
+    },
+    {
+      "stage": 2,
+      "status": "ApprovedForProgression",
+      "recordedDate": "2026-08-28",
+      "releaseDecision": false
+    },
+    {
+      "stage": 3,
+      "status": "ApprovedForProgression",
+      "recordedDate": "2026-08-28",
+      "releaseDecision": false
+    },
+    {
+      "stage": 4,
+      "phase": "AuditIntegrityRepair",
+      "status": "ApprovedForProgression",
+      "recordedDate": "2026-08-28",
+      "releaseDecision": false
+    },
+    {
+      "stage": 5,
+      "status": "ApprovedForProgression",
+      "recordedDate": "2026-08-28",
+      "releaseDecision": false
+    },
+    {
+      "stage": 6,
+      "status": "ApprovedForProgression",
+      "recordedDate": "2026-08-28",
+      "releaseDecision": false
+    }
+  ],
+  "legacyReportsPolicy": {
+    "classification": "HistoricalEvidenceOnly",
+    "excludedFromCurrentDecision": [
+      "audits/scientific-audit-report.md",
+      "audits/scientific-final-audit-report.md",
+      "audits/scientific-defects.json",
+      "audits/scientific-final-defects.json"
+    ]
+  },
+  "issues": [
+    {
+      "id": "RV2-GATE-001",
+      "category": "Approval gate",
+      "severity": "P0",
+      "locations": [
+        "scripts/generate-cie-wording-register.mjs:9",
+        "scripts/verify-cie-wording.mjs:57"
+      ],
+      "problem": "A command-line flag can stamp all wording records Approved; the verifier then checks status and hashes rather than independent semantic evidence.",
+      "acceptanceTarget": "Stage 1 must prohibit bulk semantic approval and require reviewer, round, evidence, official basis and current hash per disposition.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "scripts/generate-cie-wording-register.mjs rejects every command-line approval option",
+        "scripts/remediation-v2-review-gate.mjs requires independent status, evidence location, current hash, reviewer, round and page-specific official basis"
+      ]
+    },
+    {
+      "id": "RV2-GATE-002",
+      "category": "Release decision",
+      "severity": "P0",
+      "locations": [
+        "scripts/verify-scientific-audit.mjs:61",
+        "scripts/verify-scientific-audit.mjs:104"
+      ],
+      "problem": "One verifier validates both a historical BLOCKED report and an APPROVED final report without exposing one unambiguous current decision.",
+      "acceptanceTarget": "Stage 1 must define one current decision source and treat all earlier reports as history only.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "audits/remediation-v2-current-decision.json is the sole current release-decision artifact",
+        "scripts/verify-scientific-audit.mjs classifies both earlier scientific reports as historical evidence"
+      ]
+    },
+    {
+      "id": "RV2-COV-001",
+      "category": "Official contract",
+      "severity": "P0",
+      "locations": [
+        "scripts/syllabus-coverage-contract.json:970",
+        "syllabus-audit.md:37"
+      ],
+      "problem": "S1.08, S1.10 and S1.11 contain notes copied from unrelated security, validation and lifecycle requirements.",
+      "acceptanceTarget": "Stage 2 must restore the exact adjacent official Notes for every AS requirement.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "scripts/syllabus-official-as-mapping.mjs maps all 121 logical requirements to verbatim candidate statements and adjacent Notes on pages 14-31",
+        "scripts/verify-syllabus-coverage.mjs validates each mapping, review round and content hash; S1.08/S1.10/S1.11 no longer contain unrelated Notes"
+      ]
+    },
+    {
+      "id": "RV2-COV-002",
+      "category": "Coverage",
+      "severity": "P1",
+      "locations": [
+        "scripts/syllabus-coverage-contract.json:345",
+        "lessons/005-signed-binary-sign-and-magnitude-and-twos-complement.md:75"
+      ],
+      "problem": "S1.03 can pass without direct one's-complement conversion practice or assessment evidence.",
+      "acceptanceTarget": "Stage 2 must require CORE teaching, worked conversion, practice and one directly mapped question for one's complement.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "L005 CORE teaching now includes a worked 8-bit one's-complement conversion and direct targeted practice",
+        "L005-Q1 is a stable four-mark direct one's-complement conversion and S1.03 maps it explicitly"
+      ]
+    },
+    {
+      "id": "RV2-SCOPE-001",
+      "category": "Official scope",
+      "severity": "P1",
+      "locations": [
+        "scripts/syllabus-coverage-contract.json:1176",
+        "scripts/syllabus-coverage-contract.json:13538",
+        "scripts/syllabus-coverage-contract.json:13856"
+      ],
+      "problem": "The contract overstates sound file-size calculation, construction of state-transition diagrams and production of test strategies/plans as compulsory official requirements.",
+      "acceptanceTarget": "Stage 2 must use the official requirement boundary and separate course enrichment from compulsory evidence.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "S1.10 removes compulsory sound-file-size calculation; S12.03 removes construction; S12.06 removes production",
+        "L011, L144 construction practice and L145 production practice are retained only as labelled Optional enrichment"
+      ]
+    },
+    {
+      "id": "RV2-SCOPE-002",
+      "category": "Enrichment classification",
+      "severity": "P1",
+      "locations": [
+        "lessons/006-binary-fractions-and-precision-limits.md:1",
+        "lessons/011-sound-file-size-calculations.md:1",
+        "lessons/113-data-types-integer-real-boolean-char-string-date-and-user-defined-types.md:1"
+      ],
+      "problem": "Out-of-scope or wrong-section material is presented as AS CORE and contributes to formal section pacing.",
+      "acceptanceTarget": "Stage 2 must retain it only as labelled Optional enrichment and exclude it from coverage, first-use and compulsory assessment evidence.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "scripts/remediation-v2-optional-enrichment.mjs records 13 lesson dispositions with formal AS prerequisites and exclusion policy",
+        "Markdown and HTML show visible Optional enrichment notices; listed HTML sections are OPTIONAL/EXTEND and excluded by the coverage evaluator"
+      ]
+    },
+    {
+      "id": "RV2-SEQ-001",
+      "category": "Curriculum order",
+      "severity": "P1",
+      "locations": [
+        "course-map.md:34",
+        "scripts/syllabus-coverage-contract.json:11134",
+        "scripts/syllabus-coverage-contract.json:13962"
+      ],
+      "problem": "CORE first use does not follow official order in Sections 2, 4, 9, 10, 11 and 12.",
+      "acceptanceTarget": "Stage 3 must make every compulsory first use and prerequisite monotonic in official order while preserving lesson IDs and URLs.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "121/121 official requirements now have reviewed Stage 3 first-use evidence; 109 official adjacent-order edges and 81 prerequisite edges pass",
+        "963-question sequence register records 520 formal and 443 Optional enrichment questions with zero before-CORE violations"
+      ]
+    },
+    {
+      "id": "RV2-ID-001",
+      "category": "Lesson identity",
+      "severity": "P1",
+      "locations": [
+        "lessons/104-linear-search-and-binary-search.md:5",
+        "lessons/114-constants-variables-and-assignment.md:5",
+        "lessons/137-testing-with-normal-boundary-and-erroneous-data.md:5",
+        "lessons/138-debugging-using-traces-and-breakpoints.md:5"
+      ],
+      "problem": "Lesson headers, course-map ranges and requirement mappings disagree about the owning syllabus section.",
+      "acceptanceTarget": "Stage 3 must make all 150 lesson identities agree across Markdown, HTML, catalogue, course map, contract and assessment mapping.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "All 150 stable lesson IDs and URLs are preserved; Markdown titles, HTML h1, course catalogue, paper and section ranges reconcile",
+        "L137 no longer claims Section 12 ownership inside the Section 11 lesson range; L137/L138 legacy bodies are Optional enrichment"
+      ]
+    },
+    {
+      "id": "RV2-WORD-001",
+      "category": "CIE wording",
+      "severity": "P1",
+      "locations": [
+        "scripts/verify-cie-wording.mjs:59",
+        "assessments/quizzes.md:94"
+      ],
+      "problem": "The recognised-word regex is broader than the official command-word table and can approve unsupported wording without syllabus-specific evidence.",
+      "acceptanceTarget": "Stage 4 must derive the primary table from the official glossary and explicitly source any syllabus-operation exception.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "scripts/cie-command-words.mjs fixes the main table to the 27 entries on syllabus pages 41-42 and fail-closes subject-operation exceptions by requirement ID",
+        "963/963 current-hash question records include primary requirement, AO, marks, answer boundary and four passed trial cases"
+      ]
+    },
+    {
+      "id": "RV2-MS-001",
+      "category": "Mark scheme presentation",
+      "severity": "P1",
+      "locations": [
+        "course-map.md:66",
+        "scripts/generate-assessments.mjs:179"
+      ],
+      "problem": "Student-facing B1/M1/A1 codes are presented as Cambridge-style conventions although public specimen mark schemes use Answer, Guidance, Marks and point-based credit.",
+      "acceptanceTarget": "Stage 4 must use official-style student display while preserving stable question IDs, marks and optional hidden internal metadata.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "All lesson renderers and the Assessment Bank now present Answer, Guidance and Marks with one mark per independent point",
+        "B1/M1/A1 remain only as non-rendered internal data; student Markdown and generated assessment HTML contain no exposed codes"
+      ]
+    },
+    {
+      "id": "RV2-CONT-001",
+      "category": "Processor content and visual",
+      "severity": "P0",
+      "locations": [
+        "lessons/049-performance-factors-cores-cache-clock-speed-and-word-length.md:145",
+        "web/assets/diagrams/stage10-infographics/stage10-lesson-049-concept.jpg"
+      ],
+      "problem": "The core visual omits processor type and bus width and substitutes word length for the official performance-factor list.",
+      "acceptanceTarget": "Stage 5 must align title, hero, teaching, assessment, transcript and pixels with the official five-factor list.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "L049 topic heading, teaching, assessment, maintained transcript and deterministic concept image use processor type and number of cores, bus width, clock speed and cache memory",
+        "The word-length discussion remains visibly labelled Optional enrichment and is excluded from the official performance-factor list"
+      ]
+    },
+    {
+      "id": "RV2-PSEUDO-001",
+      "category": "Pseudocode typing",
+      "severity": "P0",
+      "locations": [
+        "lessons/107-string-processing-algorithms.md:155",
+        "lessons/133-string-handling-and-built-in-functions.md:49",
+        "web/assets/diagrams/stage10-infographics/stage10-lesson-133-java.jpg"
+      ],
+      "problem": "LCASE/UCASE are used with STRING expressions, guide-external indexing is presented as Cambridge pseudocode, and LEFT is used without a supplied signature.",
+      "acceptanceTarget": "Stage 5 must enforce guide-compatible CHAR/STRING types or declare every question-provided function with a complete signature and convention.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "L107/L133 keep MID results as STRING and reserve LCASE/UCASE for declared CHAR values with single-quoted literals",
+        "LEFT is identified as guide-external and is not called without a complete question-supplied signature"
+      ]
+    },
+    {
+      "id": "RV2-PSEUDO-002",
+      "category": "Provided functions",
+      "severity": "P0",
+      "locations": [
+        "lessons/121-csv-style-structured-text-files.md:128",
+        "web/assets/diagrams/stage10-infographics/stage10-lesson-121-parse.jpg"
+      ],
+      "problem": "SPLIT and STRING_TO_INTEGER are labelled Cambridge-style pseudocode without being defined as question-provided routines.",
+      "acceptanceTarget": "Stage 5 must supply typed signatures and indexing rules before use or replace the examples with guide-supported expressions.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "L121 defines SPLIT, STRING_TO_INTEGER, IS_NUMERIC and FIELD_COUNT with complete typed signatures before use",
+        "The supplied SPLIT array starts at index 1; parameter order and return types are explicit in teaching, questions, transcript and pixels"
+      ]
+    },
+    {
+      "id": "RV2-AUDIT-001",
+      "category": "Independent official-source completeness",
+      "severity": "P0",
+      "locations": [
+        "audits/remediation-v2-official-as-source-inventory.json",
+        "scripts/remediation-v2-audit-integrity-gate.mjs",
+        "scripts/syllabus-coverage-contract.json"
+      ],
+      "problem": "The former 121-row mapping and contract could omit the same official statement and still prove each other consistent. The independent PDF extraction now exposes unmapped official units and incorrect page locators.",
+      "acceptanceTarget": "Every claim-bearing source unit from the locked PDF must have an explicit contract owner, every contract claim must be fully present in its bound source units, page locators must be exact, and all 121 mappings must receive a new independent review status.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "360 locked official source atoms reconcile bidirectionally with zero unmapped, phantom, partial-claim or page-locator failures",
+        "P22 bitwise/label rows and P24 validation/verification integrity wording now have explicit contract ownership"
+      ]
+    },
+    {
+      "id": "RV2-AUDIT-002",
+      "category": "Rendered first-teaching integrity",
+      "severity": "P0",
+      "locations": [
+        "web/lesson-009/index.html:48",
+        "web/lesson-009/index.html:311",
+        "scripts/apply-stage2-repairs.mjs:170",
+        "scripts/remediation-v2-audit-integrity-gate.mjs"
+      ],
+      "problem": "Presence-only coverage allowed Optional legacy teaching to precede and bury formal CORE content. L009 is the confirmed vector false positive, and the same generated structure affects many first-use lessons.",
+      "acceptanceTarget": "The first substantive teaching block must be CORE, no Optional/after-class block may precede later CORE, CORE may not be buried, and every first-teaching section must contain every declared concept group in source and rendered output.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "83/83 CORE teaching pages place substantive CORE before Optional content; all 70 unique first-use pages are owned by declared requirements",
+        "All declared first-teaching concept groups pass, including vector, representations, devices, security, licensing, algorithms and ADT scope"
+      ]
+    },
+    {
+      "id": "RV2-AUDIT-003",
+      "category": "Coverage gate / visual evidence",
+      "severity": "P1",
+      "locations": [
+        "scripts/syllabus-coverage-evaluator.mjs",
+        "scripts/stage10-explanations-data.mjs",
+        "scripts/syllabus-coverage-contract.json"
+      ],
+      "problem": "The coverage gate trusted Stage 10 target-register delivery metadata without reconciling the actual lesson DOM, so required visual evidence could remain Optional or appear before reviewed first use while the gate reported Complete.",
+      "acceptanceTarget": "Required visuals must be CORE/TEACH in both register and DOM, appear no earlier than reviewed first use, remain on a page with a CORE teaching anchor, and fail active mutations when any invariant is broken.",
+      "confidence": "High",
+      "status": "Resolved",
+      "closureEvidence": [
+        "Required visual evidence now checks the contract mapping, target register and actual DOM section role/activity together; Optional evidence cannot satisfy CORE coverage",
+        "74 unique required visual panels are anchored after reviewed CORE teaching, with 28 source panels relocated so none precedes first use or depends on an Optional-only page"
+      ]
+    }
+  ]
+}

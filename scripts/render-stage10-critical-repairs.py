@@ -33,6 +33,7 @@ ACCENT = [BLUE, GREEN, ORANGE]
 REPAIR_FACTS_PATH = ROOT / "scripts/stage10-visual-repair-facts.json"
 TARGET_REGISTER_PATH = ROOT / "audits/stage10-explanation-target-register.csv"
 TECHNICAL_VISUAL_CONTRACT_PATH = ROOT / "scripts/stage10-technical-visual-contract.json"
+VISUAL_DELIVERY_MAP_PATH = ROOT / "scripts/remediation-v2-visual-delivery-map.json"
 
 
 def font(size: int, bold: bool = False, mono: bool = False) -> ImageFont.FreeTypeFont:
@@ -122,6 +123,19 @@ def draw_card(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], index: 
 
 
 SPECS = {
+    "049/concept": {
+        "title": "The official processor performance factors",
+        "subtitle": "Use the complete syllabus list and explain each effect; do not substitute a different factor.",
+        "headingSize": 25,
+        "bodySize": 23,
+        "noteSize": 18,
+        "cards": [
+            ("PROCESSOR TYPE + CORES", "Processor type affects architecture and the useful work completed for a workload. More cores can execute independent threads in parallel when software can divide the work.", None, "Factor 1: processor type and number of cores"),
+            ("BUS WIDTH", "A wider data bus can transfer more bits in one transfer. The effect depends on the data path, memory system and workload; width alone does not guarantee faster execution.", None, "Factor 2: bus width"),
+            ("CLOCK SPEED + CACHE", "Higher clock speed provides more cycles per second. Cache can reduce waiting for main memory when required data or instructions are found there.", None, "Factors 3 and 4: clock speed and cache memory"),
+        ],
+        "footer": "Official list: processor type and number of cores; bus width; clock speed; cache memory. No single factor guarantees faster performance.",
+    },
     "004/method": {
         "title": "8-bit addition method",
         "subtitle": "Use the carry-out beyond the eighth bit to test unsigned overflow.",
@@ -143,14 +157,14 @@ SPECS = {
         "footer": "Exam check: state the dedicated task and the larger device before adding a design characteristic.",
     },
     "098/concept": {
-        "title": "Plan the problem before choosing notation",
+        "title": "An algorithm is a solution expressed as defined steps",
         "subtitle": "A precise algorithm plan answers four questions.",
         "cards": [
             ("INPUT", "What data is supplied? Name each required value and any stated type or range.", None, "Do not invent missing data."),
             ("PROCESS + OUTPUT", "What transformation is required? What exact result must be displayed, returned or stored?", None, "The process must produce the output."),
             ("CONSTRAINTS", "What limits, quantity requirements or assumptions affect the plan?", None, "Record the source requirement."),
         ],
-        "footer": "Completeness check: every statement in the problem should map to an input, process, output, constraint or assumption.",
+        "footer": "Defined steps must be unambiguous; every requirement maps to an input, process, output, constraint or assumption.",
     },
     "098/model": {
         "title": "Use IPOC before choosing a representation",
@@ -180,7 +194,7 @@ SPECS = {
             ("CHECK + CALCULATE", "Separate rule checking from calculations when they have different inputs or reasons to change.", None, "Avoid one vague ‘ProcessData’ block."),
             ("PRODUCE RESULT", "Create the required output and confirm that all sub-problems connect into one complete solution.", None, "No requirement may be omitted."),
         ],
-        "footer": "Good decomposition reduces ambiguity: responsibilities are distinct, connected and collectively complete.",
+        "footer": "Program modules have distinct responsibilities, clear inputs, processing and outputs, and connect into one solution.",
     },
     "099/abstraction": {
         "title": "Abstraction: keep details that affect the result",
@@ -213,14 +227,50 @@ SPECS = {
         "footer": "Positive to negative: write the fixed-width value → invert every bit → add 1.",
     },
     "005/systems": {
-        "title": "Three 8-bit representations of −23",
+        "title": "Three ways to represent negative binary values",
         "subtitle": "Start from the same positive 8-bit value: +23 = 00010111.",
         "cards": [
             ("SIGN-AND-MAGNITUDE", "Keep the seven magnitude bits for 23 and change only the sign bit to 1.", "positive   00010111\nnegative   10010111", "Exactly 8 bits: sign + 7-bit magnitude"),
             ("ONE’S COMPLEMENT", "Invert every bit of the positive 8-bit value.", "positive   00010111\ninvert     11101000", "11101000 represents −23"),
             ("TWO’S COMPLEMENT", "Invert every bit, then add 1.", "positive   00010111\ninvert     11101000\n+                 1\n──────────────────\nresult     11101001", "11101001 represents −23"),
         ],
-        "footer": "Width check: every input, intermediate state and result contains exactly 8 bits.",
+        "footer": "Negative binary: every input, intermediate state and result contains exactly 8 bits.",
+    },
+    "008/pixels": {
+        "title": "Bitmap file header and pixel data",
+        "subtitle": "A bitmap file contains a file header followed by the stored pixel data.",
+        "cards": [
+            ("FILE HEADER", "The file header stores metadata needed to interpret the bitmap, such as dimensions, colour depth, format and compression information. It is not an image pixel.", None, "Metadata describes the bitmap."),
+            ("PIXEL DATA", "Pixel data stores the colour value for each pixel. Pixel-data size is width × height × colour depth.", None, "Calculate pixels separately from metadata."),
+            ("QUESTION BOUNDARY", "When a question says to ignore the file header, do not add metadata bytes to the pixel-data calculation.", None, "Use only values the question supplies."),
+        ],
+        "footer": "File header = metadata; pixel data = stored colour values. Keep the two parts distinct.",
+    },
+    "034/sensors": {
+        "title": "Required sensor types and applications",
+        "subtitle": "Name the measurement, give a valid application, then link input to processor and actuator.",
+        "headingSize": 25,
+        "bodySize": 23,
+        "noteSize": 18,
+        "cards": [
+            ("TEMPERATURE + PRESSURE", "A temperature sensor measures temperature, for example in greenhouse heating. A pressure sensor measures pressure, for example in industrial pipe safety.", None, "Two different measurements and applications."),
+            ("INFRA-RED + SOUND", "An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver. A sound sensor detects sound level or sound waves, for example in a noise monitor.", None, "Do not replace these named sensors."),
+            ("CONTROL LINK", "The sensor supplies input data. The processor applies the control rule. An actuator performs the physical output, such as a heater, valve, floodlight or alarm.", None, "Input → processing → output."),
+        ],
+        "footer": "Required applications must match temperature, pressure, infra-red or sound sensing.",
+    },
+    "069/checks": {
+        "title": "The seven required validation checks",
+        "subtitle": "Range, format, length, presence, existence, limit and check digit are distinct methods.",
+        "headingSize": 24,
+        "bodySize": 22,
+        "noteSize": 18,
+        "cards": [
+            ("RANGE • FORMAT • LENGTH", "Range check: both lower and upper bounds.\nFormat check: required pattern.\nLength check: required number of characters.", None, "Test the stated rule exactly."),
+            ("PRESENCE • EXISTENCE", "Presence check: required field is not blank.\nExistence check: value occurs in a specified stored lookup or file.", None, "Present is not the same as stored and valid."),
+            ("LIMIT • CHECK DIGIT", "Limit check: one stated upper or lower limit.\nCheck digit: calculated from other digits and compared to detect entry or scanning errors.", None, "Validation does not prove truth."),
+        ],
+        "footer": "Range check • Format check • Length check • Presence check • Existence check • Limit check • Check digit.",
     },
     "005/range": {
         "title": "8-bit signed ranges and zero",
@@ -399,7 +449,7 @@ SPECS.update({
         "PSEUDOCODE",
         "INPUT Age\nIF Age >= 11 AND Age <= 18 THEN\n    OUTPUT \"Valid\"\nELSE\n    OUTPUT \"Invalid\"\nENDIF",
         "The diamond condition becomes IF. Its Yes and No arrows become THEN and ELSE. ENDIF is the rejoin point.",
-        "A flowchart branch is not equivalent to an unclosed IF structure.",
+        "The flowchart diamond becomes an IF condition; a branch is not equivalent to an unclosed IF structure.",
     ),
     "102/pseudocode": code_repair(
         "Same summation in pseudocode and Java",
@@ -451,16 +501,20 @@ SPECS.update({
         "A failing mark still contributes to Total but does not increment PassCount.",
         "Close the IF with ENDIF before NEXT Index closes the surrounding FOR loop.",
     ),
-    "107/pseudocode": code_repair(
-        "Count vowels with a closed selection",
-        "Test one character per iteration and increment only for a vowel.",
-        "CAMBRIDGE PSEUDOCODE",
-        "VowelCount <- 0\nFOR Index <- 1 TO LENGTH(Word)\n    Character <- UCASE(Word[Index])\n    IF Character = \"A\" OR\n       Character = \"E\" OR\n       Character = \"I\" OR\n       Character = \"O\" OR\n       Character = \"U\" THEN\n        VowelCount <- VowelCount + 1\n    ENDIF\nNEXT Index\nOUTPUT VowelCount",
-        "TRACE: CODE",
-        "C  no change\nO  0 → 1\nD  no change\nE  1 → 2\n\nFinal output: 2",
-        "UCASE makes lower-case input comparable. ENDIF closes the conditional increment.",
-        "ENDIF belongs before NEXT Index because the decision is nested inside the loop.",
-    ),
+    "107/pseudocode": {
+        "title": "Count vowels with a closed selection",
+        "subtitle": "MID returns STRING; compare the one-character result with STRING literals.",
+        "headingSize": 25,
+        "bodySize": 22,
+        "codeSize": 17,
+        "noteSize": 18,
+        "cards": [
+            ("PSEUDOCODE", "", "VowelCount <- 0\nFOR Index <- 1 TO LENGTH(Word)\n    Character <- MID(Word, Index, 1)\n    IF Character = \"A\" OR\n       Character = \"a\" OR\n       Character = \"E\" OR\n       Character = \"e\" OR\n       Character = \"I\" OR\n       Character = \"i\" OR\n       Character = \"O\" OR\n       Character = \"o\" OR\n       Character = \"U\" OR\n       Character = \"u\" THEN\n        VowelCount <- VowelCount + 1\n    ENDIF\nNEXT Index\nOUTPUT VowelCount", "MID(..., 1) returns STRING."),
+            ("TRACE", "", "C  no change\no  0 -> 1\nd  no change\ne  1 -> 2\n\nFinal output: 2", "Compare both letter cases."),
+            ("TYPE CHECK", "The comparisons use one-character STRING literals because MID returns STRING. ENDIF closes the selection before NEXT Index.", None, "Do not call CHAR-only UCASE or LCASE."),
+        ],
+        "footer": "MID returns STRING. UCASE and LCASE accept CHAR, so do not pass MID's result to them.",
+    },
     "108/pseudocode": code_repair(
         "Nested loops must perform the same body",
         "Both forms calculate and output all 3 × 4 products.",
@@ -527,6 +581,7 @@ for technical_key, technical_spec in TECHNICAL_VISUAL_CONTRACT.items():
 def current_repair_specs() -> dict[str, dict]:
     """Build deterministic three-card specs from the maintained repair facts."""
     facts_by_key = json.loads(REPAIR_FACTS_PATH.read_text(encoding="utf-8"))
+    delivery_map = json.loads(VISUAL_DELIVERY_MAP_PATH.read_text(encoding="utf-8"))
     with TARGET_REGISTER_PATH.open(encoding="utf-8", newline="") as handle:
         targets = {
             f"{row['lesson']}/{row['target_id']}": row
@@ -541,6 +596,12 @@ def current_repair_specs() -> dict[str, dict]:
         "synthesis": ("CORE FACT", "RELATIONSHIP", "EXAM CHECK"),
     }
     title_overrides = {
+        # These titles are part of the reviewed deterministic asset contract.
+        # The target register title is editorial metadata and may be regenerated;
+        # it must not silently change already-approved pixels.
+        "016/topologies": "Network topologies",
+        "030/cache-vm": "Cache and virtual memory affect performance in opposite directions",
+        "105/bubble": "Bubble sort: compare adjacent items and swap if needed",
         "074/ip": "What intellectual property can protect",
         "083/normal-forms": "From 1NF to 3NF",
         "111/analyser": "Stepwise refinement: from task to modules",
@@ -562,14 +623,17 @@ def current_repair_specs() -> dict[str, dict]:
     footer_overrides = {
         "083/normal-forms": "Check in order: atomic values and no repeating groups -> no partial dependency -> no transitive dependency.",
         "111/analyser": "Preserve the parent purpose at every level; all refined modules must still form one complete solution.",
+        "069/checks": "Range check • Format check • Length check • Presence check • Existence check • Limit check • Check digit.",
     }
     specs: dict[str, dict] = {}
     for key, facts in facts_by_key.items():
-        if key not in targets:
-            raise ValueError(f"Repair target is missing from the target register: {key}")
+        delivered = delivery_map.get(key)
+        target_key = f"{delivered['lesson']}/{delivered['targetId']}" if delivered else key
+        if target_key not in targets:
+            raise ValueError(f"Repair target is missing from the target register: {key} -> {target_key}")
         if len(facts) < 3:
             raise ValueError(f"Repair target needs at least three facts: {key}")
-        target = targets[key]
+        target = targets[target_key]
         kind = target["target_type"]
         labels = headings.get(kind, headings["synthesis"])
         groups = [facts[:1], facts[1:2], facts[2:]]
@@ -733,7 +797,7 @@ SPECS.update({
         "JAVA SUPPORT ONLY",
         "int[][] marks = new int[3][4];\nfor (int row = 0; row < 3; row++) {\n    for (int column = 0;\n         column < 4; column++) {\n        System.out.println(\n            marks[row][column]);\n    }\n}",
         "Three rows × four columns means the output statement executes 12 times in both versions.",
-        "An empty Java loop body is not equivalent to the pseudocode traversal.",
+        "Nested loops traverse the array; an empty Java loop body is not equivalent to the pseudocode traversal.",
     ),
     "117/count": code_repair(
         "Increment only when the condition is true",
@@ -795,15 +859,43 @@ SPECS.update({
         "When EOF is TRUE, the WHILE condition fails; control skips READFILE and closes the file.",
         "Safe order: check NOT EOF → read → process → repeat.",
     ),
+    "121/parse": {
+        "title": "Use question-supplied CSV functions exactly",
+        "subtitle": "The question must define guide-external functions before they are used.",
+        "headingSize": 23,
+        "bodySize": 21,
+        "codeSize": 18,
+        "noteSize": 17,
+        "cards": [
+            ("SIGNATURES", "The question states that the returned Fields array starts at index 1.", "FUNCTION SPLIT(Line : STRING,\n    Delimiter : CHAR)\n    RETURNS ARRAY OF STRING\n\nFUNCTION STRING_TO_INTEGER(\n    Value : STRING)\n    RETURNS INTEGER", "Parameter order and return types are explicit."),
+            ("READ + SPLIT", "Read one complete line before parsing its fields.", "READFILE \"Scores.csv\", Line\nFields <- SPLIT(Line, ',')", "SPLIT receives STRING then CHAR."),
+            ("ASSIGN + CONVERT", "The supplied array convention makes the first field Fields[1].", "StudentID <- Fields[1]\nName <- Fields[2]\nMark <- STRING_TO_INTEGER(\n    Fields[3])", "Mark receives INTEGER."),
+        ],
+        "footer": "A guide-external function is usable only because this example supplies its complete signature and array-index convention first.",
+    },
+    "121/pseudocode": {
+        "title": "Question-supplied functions versus Java methods",
+        "subtitle": "The signatures, syntax and indexes are different.",
+        "headingSize": 23,
+        "bodySize": 21,
+        "codeSize": 18,
+        "noteSize": 17,
+        "cards": [
+            ("SUPPLIED", "Fields starts at index 1.", "FUNCTION SPLIT(Line : STRING,\n    Delimiter : CHAR)\n    RETURNS ARRAY OF STRING\nFUNCTION STRING_TO_INTEGER(\n    Value : STRING)\n    RETURNS INTEGER", "Question-provided functions."),
+            ("USE", "Follow the stated parameter order and return types.", "Fields <- SPLIT(Line, ',')\nMark <- STRING_TO_INTEGER(\n    Fields[3])", "Fields[3] is the third field."),
+            ("JAVA ONLY", "Java arrays start at index 0 in this example.", "String[] fields =\n    line.split(\",\");\nint mark =\n    Integer.parseInt(fields[2]);", "Do not copy Java syntax."),
+        ],
+        "footer": "Use the supplied definitions; do not invent a standard SPLIT or STRING_TO_INTEGER signature.",
+    },
     "121/types": code_repair(
         "Convert CSV text before numeric comparison",
-        "Both snippets are closed; only the second compares numeric values.",
-        "INCORRECT TYPE",
-        "// Fields[3] is still STRING\nIF Fields[3] > \"70\" THEN\n    OUTPUT Name\nENDIF",
-        "CORRECT PATTERN",
+        "The question supplies the conversion signature before the example uses it.",
+        "SUPPLIED FUNCTION",
+        "FUNCTION STRING_TO_INTEGER(\n    Value : STRING)\n    RETURNS INTEGER",
+        "USE RETURNED INTEGER",
         "Mark <- STRING_TO_INTEGER(Fields[3])\nIF Mark > 70 THEN\n    OUTPUT Name\nENDIF",
-        "Text comparison follows character order. Numeric comparison follows magnitude, so conversion must happen first.",
-        "ENDIF fixes structure; conversion fixes meaning. Both are required.",
+        "STRING_TO_INTEGER is question-provided; it returns INTEGER, so Mark can be compared numerically.",
+        "Do not present this conversion as a standard function from the Cambridge pseudocode guide.",
     ),
     "126/constructs": {
         "title": "Three core control-flow constructs",
@@ -895,16 +987,44 @@ SPECS.update({
         "The same identifier refers to two different storage locations in the two scopes.",
         "Without DECLARE Score inside the procedure, the example does not demonstrate local shadowing.",
     ),
-    "133/case": code_repair(
-        "Normalise letter case before comparison",
-        "UCASE makes y and Y comparable; ENDIF closes the decision.",
-        "CAMBRIDGE PSEUDOCODE",
-        "INPUT Answer\nAnswer <- UCASE(Answer)\nIF Answer = \"Y\" THEN\n    OUTPUT \"Continue\"\nENDIF",
-        "TRACE",
-        "Input \"y\"\n    ↓ UCASE\nAnswer becomes \"Y\"\n    ↓ comparison true\nOutput \"Continue\"",
-        "Case conversion changes letter case only; it does not remove spaces or correct spelling.",
-        "Normalise first, compare second, close the selection with ENDIF.",
-    ),
+    "133/case": {
+        "title": "LCASE and UCASE convert one CHAR",
+        "subtitle": "Declare and compare CHAR values with single-quoted literals.",
+        "headingSize": 25,
+        "bodySize": 22,
+        "codeSize": 20,
+        "noteSize": 18,
+        "cards": [
+            ("CODE", "", "DECLARE Answer : CHAR\nINPUT Answer\nAnswer <- UCASE(Answer)\nIF Answer = 'Y' THEN\n    OUTPUT \"Continue\"\nENDIF", "Answer is CHAR."),
+            ("TRACE", "", "Input 'y'\n    -> UCASE(CHAR)\nAnswer becomes 'Y'\n    -> comparison true\nOutput \"Continue\"", "UCASE returns CHAR."),
+            ("TYPE CHECK", "UCASE accepts CHAR and returns CHAR. It does not accept a STRING expression.", None, "CHAR uses single quotes."),
+        ],
+        "footer": "CHAR uses single quotes; STRING output uses double quotes. LCASE and UCASE accept CHAR only.",
+    },
+    "133/concat": {
+        "title": "Concatenation joins STRING values",
+        "subtitle": "The & operator joins strings; it does not require a CHAR-only case-conversion call.",
+        "cards": [
+            ("DECLARE STRINGS", "Both variables contain STRING values.", "FirstName <- \"Lin\"\nYearText <- \"2029\"", "Quotes keep 2029 as text."),
+            ("CONCATENATE", "Join the two existing STRING values.", "Username <- FirstName & YearText\nOUTPUT Username", "The result is \"Lin2029\"."),
+            ("TYPE CHECK", "LCASE and UCASE accept one CHAR, not an entire STRING such as FirstName.", None, "Do not pass FirstName to LCASE."),
+        ],
+        "footer": "Use & for STRING concatenation. Apply LCASE or UCASE only when the argument and return value are CHAR.",
+    },
+    "133/java": {
+        "title": "MID and Java substring use different positions",
+        "subtitle": "MID is in the Cambridge guide; LEFT is not. Follow the notation required by the question.",
+        "headingSize": 24,
+        "bodySize": 22,
+        "codeSize": 20,
+        "noteSize": 18,
+        "cards": [
+            ("CAMBRIDGE GUIDE", "MID uses a start position and a character count.", "Code <- MID(Name, 1, 3)", "Returns the first three characters as STRING."),
+            ("JAVA SUPPORT ONLY", "substring uses start index inclusive and end index exclusive.", "String code =\n    name.substring(0, 3);", "Indexes 0, 1 and 2 are returned."),
+            ("BOUNDARY", "LEFT is not listed in the pseudocode guide. It may be used only when a question supplies its full signature and position convention.", None, "UCASE also cannot receive STRING."),
+        ],
+        "footer": "Cambridge: MID(Name, 1, 3). Java support: name.substring(0, 3). Do not combine guide-external LEFT with CHAR-only UCASE.",
+    },
     "139/integration": code_repair(
         "Validation and modularity support each other",
         "Write the rule once in a complete function and call it where needed.",

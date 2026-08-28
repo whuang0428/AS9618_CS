@@ -1,4 +1,51 @@
-# Lesson 043: Registers: PC, CIR, MAR, MDR, ACC, IX, and status register
+# Lesson 043: Register-transfer notation for the fetch-decode-execute cycle
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Register-transfer notation for the fetch-decode-execute cycle
+
+### Direct explanation
+
+- Register-transfer notation describes a data transfer or register update. The arrow <- means 'is loaded with' or 'receives'; it is not an equality sign. Memory[MAR] means the contents of the memory location whose address is currently held in MAR.
+- A coherent fetch sequence is MAR <- PC; MDR <- Memory[MAR]; CIR <- MDR; and PC <- PC + 1 at an appropriate point before the next fetch. The control unit then decodes the opcode and operand in CIR and sends control signals for execution.
+- During execution, notation such as ACC <- ACC + MDR records an arithmetic result in ACC, while Memory[MAR] <- MDR records a memory write. Read every statement from right to left: obtain the source value, then replace the destination contents.
+- The exact timing of PC increment may vary between coherent processor descriptions, but MAR must receive the current instruction address before that address is replaced. Register-transfer notation describes movement and updates; it does not imply that two registers permanently contain the same value.
+
+### Worked example
+
+**Trace one instruction fetch:** Start with PC = 120 and Memory[120] = LDD 500. MAR <- PC puts 120 in MAR. MDR <- Memory[MAR] puts LDD 500 in MDR. CIR <- MDR copies the instruction into CIR. PC <- PC + 1 makes PC 121, ready to address the next instruction. The control unit then decodes LDD and executes it.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What does MAR <- PC mean?
+   **Answer:** Copy the address currently in PC into MAR; PC is not changed by that transfer.
+2. What does MDR <- Memory[MAR] mean?
+   **Answer:** Read the contents of the memory location addressed by MAR into MDR.
+3. Why is CIR <- MDR needed during fetch?
+   **Answer:** It places the fetched instruction in CIR so the control unit can decode its opcode and operand.
+4. Write register-transfer notation for adding the value in MDR to ACC.
+   **Answer:** ACC <- ACC + MDR.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Using register-transfer notation, describe the fetch of one instruction and explain the meaning of Memory[MAR].
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| MAR <- PC | Do not accept PC <- MAR as the first transfer or treat Memory[MAR] as the address value itself. | 1 |
+| MDR <- Memory[MAR] |  | 1 |
+| CIR <- MDR |  | 1 |
+| PC <- PC + 1 at a coherent point |  | 1 |
+| Memory[MAR] means the contents at the memory address held in MAR |  | 1 |
+| CIR is decoded and control signals initiate execution |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +90,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Award marks for correct sequence: address from PC to MAR, instruction/data via memory and MDR, instruction held in CIR, PC updated as appropriate.
 
-
-
 ## Student Task
 Students annotate a CPU diagram with arrows for one instruction, then explain the path in four precise sentences.
 
@@ -72,48 +117,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** General-purpose and special-purpose registers
-
-### Direct explanation
-
-- A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.
-- PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.
-- ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.
-
-### Worked example
-
-**Follow registers through fetch and indexed execute:** PC = 300 is copied to MAR; the instruction read from memory enters MDR and then CIR. If that instruction is LDX 500 while IX = 3, the effective address is 503 and the value at that address is loaded into ACC. A resulting condition can update a flag in the status register.
-
-### Targeted practice and answers
-
-1. Distinguish a general-purpose register from a special-purpose register.
-   **Answer:** A general-purpose register can hold values for varied operations; a special-purpose register has a defined processor role.
-2. State the roles of PC, MAR, MDR and CIR.
-   **Answer:** PC holds the next-instruction address; MAR the accessed address; MDR transferred data/instruction; CIR the current instruction.
-3. State the roles of ACC, IX and the status register.
-   **Answer:** ACC holds ALU results; IX an indexed-address offset; the status register holds flags about results or CPU state.
-4. Which general-purpose working register is assumed in Cambridge assembly questions?
-   **Answer:** The accumulator, ACC.
-5. Base 120 plus IX 7 gives which indexed effective address?
-   **Answer:** 127.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Distinguish general-purpose and special-purpose registers, then state the roles of PC, MAR, MDR, CIR, ACC, IX and the status register.
-
-- **B1** general-purpose register can hold values for varied operations; special-purpose register has a defined role
-- **B1** PC next-instruction address and CIR current instruction
-- **B1** MAR accessed address and MDR transferred data/instruction
-- **B1** ACC intermediate/final ALU result
-- **B1** IX offset used in indexed addressing
-- **B1** status register stores flags about a result or processor state
-
-**Strict note:** Do not swap MAR with MDR, PC with CIR, or claim that the status register stores the calculation result.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -139,7 +142,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `main-registers`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-043-main-registers.jpg`
 
 1. PC holds the address of the next instruction to be fetched.
@@ -152,11 +155,23 @@ Correction prompt: "State the correct term, then explain the relevant process or
 8. A general-purpose register can hold varied working values; a special-purpose register has a defined processor role.
 9. Cambridge assembly questions assume ACC is the available general-purpose working register.
 
+### Registers and buses: the FDE cycle vocabulary
+
+- **Explains:** `processor`
+- **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-091-processor.jpg`
+
+1. Processor review
+2. PC Stores the address of the next instruction to be fetched.
+3. MAR / MDR MAR stores an address; MDR stores data/instruction being transferred.
+4. CIR / ACC CIR stores current instruction; ACC stores intermediate arithmetic/logic results.
+
 ### Why registers exist
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-043-purpose.jpg`
 
 1. Inside the CPU

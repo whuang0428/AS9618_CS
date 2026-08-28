@@ -95,6 +95,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -173,20 +179,19 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Give three checks you should perform when reviewing a complete Section 11 pseudocode fragment.",
-    answer: "Check that counters and totals are initialised before use so their values are defined. Check that loop bounds and array indexes match the declaration so every valid element is processed without an out-of-range access. Check that selections, loops, files and subroutines are closed correctly so the intended control flow is unambiguous.",
+    prompt: "Write a function IsPass(Mark : INTEGER) that returns a BOOLEAN, and show the returned value used in an IF expression. Explain how this differs from a procedure.",
+    answer: "FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN returns Mark >= 50. The caller can use IF IsPass(Score) THEN ... ENDIF because the function call returns a BOOLEAN value in an expression. A procedure performs a named action and is called as a statement rather than supplying a return value to the expression.",
     marking: [
-      { mark: "B1", text: "checks that counters/totals/variables are initialised before use" },
-      { mark: "B1", text: "explains initialisation gives each variable a defined starting value" },
-      { mark: "B1", text: "checks loop bounds and array indexes against the declaration" },
-      { mark: "B1", text: "explains this processes all valid elements without out-of-range access" },
-      { mark: "B1", text: "checks constructs are closed correctly, e.g. ENDIF, NEXT, CLOSEFILE or subroutine ending" },
-      { mark: "B1", text: "explains correct closure preserves the intended control flow or file operation" },
+      { mark: "B1", text: "complete function header with INTEGER parameter" },
+      { mark: "B1", text: "declares BOOLEAN return type" },
+      { mark: "B1", text: "returns the pass comparison" },
+      { mark: "M1", text: "uses IsPass(Score) in an IF expression" },
+      { mark: "B1", text: "procedure described as named action/call" },
+      { mark: "B1", text: "distinguishes procedure from function return value" },
     ],
     strict: [
-      "Accept any three relevant checks; award the second mark for each only when its purpose or consequence is explained.",
-      "Allow trace table as a review check if linked to variable values.",
-      "Do not award vague 'check it works' without saying what is checked.",
+      "Do not credit OUTPUT as the function return.",
+      "Require the returned BOOLEAN to be used in an expression.",
     ],
   },
 ];
@@ -347,7 +352,7 @@ function setupExam() {
         <h4>Answer</h4>
         <pre><code>${escapeHtml(question.answer)}</code></pre>
         <h4>Mark scheme</h4>
-        <ul>${question.marking.map((row) => `<li><strong>${escapeHtml(row.mark)}</strong> ${escapeHtml(row.text)}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

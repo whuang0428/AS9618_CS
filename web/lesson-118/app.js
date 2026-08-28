@@ -109,11 +109,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Define a record type TStudent with fields Name, DateOfBirth, Mark and Enrolled. Choose suitable data types.",
+    prompt: "Define a record type TStudent with fields Name, DateOfBirth, Mark and Enrolled. Suggest suitable data types.",
     answer: "TYPE TStudent\n    DECLARE Name : STRING\n    DECLARE DateOfBirth : DATE\n    DECLARE Mark : INTEGER\n    DECLARE Enrolled : BOOLEAN\nENDTYPE",
     marking: [
       { mark: "B1", text: "uses a record/type definition for TStudent" },
@@ -132,7 +138,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Declare a variable Student1 of type TStudent. Assign Ali to the Name field and 72 to the Mark field, then output the Mark field.",
+    prompt: "Write declarations for a variable Student1 of type TStudent. Assign Ali to the Name field and 72 to the Mark field, then output the Mark field.",
     answer: "DECLARE Student1 : TStudent\nStudent1.Name <- \"Ali\"\nStudent1.Mark <- 72\nOUTPUT Student1.Mark",
     marking: [
       { mark: "B1", text: "declares Student1 as TStudent" },
@@ -359,10 +365,10 @@ function renderExam() {
       <p>${escapeHtml(question.prompt)}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${escapeHtml(question.answer)}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((line) => `<li><strong>${escapeHtml(line.mark)}</strong> ${escapeHtml(line.text)}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

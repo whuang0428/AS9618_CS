@@ -6,7 +6,7 @@
     <title>AS9618 Lesson 057 | Compilation stages: lexical analysis to object code</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -45,7 +45,15 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-optional:start -->
+        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
+          <strong>Optional enrichment</strong>
+          <p>compiler phases from lexical analysis through optimisation and code generation. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
+          <p><strong>Formal AS prerequisite:</strong> S5.04-S5.05 purposes of translators and compiler/interpreter comparison.</p>
+        </aside>
+        <!-- remediation-v2-optional:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 057 | 45 minutes | Paper 1 Section 5 | System software</p>
             <h2>A compiler is not one giant button. It is a careful sequence of checks and transformations.</h2>
@@ -74,7 +82,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam questions often ask students to name a stage and describe its role. Stage names alone rarely earn full marks.</p>
@@ -85,7 +93,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>What happens first when a compiler reads <code>total = price + tax</code>?</h2>
@@ -102,7 +110,7 @@
           </div>
         </section>
 
-        <section class="panel" id="pipeline" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pipeline">
+        <section class="panel" id="pipeline" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>The compilation pipeline transforms source code into object code</h2>
@@ -117,7 +125,7 @@
         </section>
 
         <!-- stage10-explanation:start pipeline -->
-        <section class="panel explanation-panel" id="explanation-pipeline" data-explains="pipeline" data-explanation-kind="mechanism" aria-labelledby="explanation-pipeline-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pipeline">
+        <section class="panel explanation-panel" id="explanation-pipeline" data-explains="pipeline" data-explanation-kind="mechanism" aria-labelledby="explanation-pipeline-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <h2 class="explanation-sr-only" id="explanation-pipeline-title">The compilation pipeline transforms source code into object code</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-pipeline.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The compilation pipeline transforms source code into object code with a structured visual model." />
@@ -129,8 +137,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end pipeline -->
-
-        <section class="panel" id="lexical" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lexical">
+        <section class="panel" id="lexical" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Lexical analysis converts character streams into tokens</h2>
@@ -144,7 +151,7 @@
         </section>
 
         <!-- stage10-explanation:start lexical -->
-        <section class="panel explanation-panel" id="explanation-lexical" data-explains="lexical" data-explanation-kind="mechanism" aria-labelledby="explanation-lexical-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lexical">
+        <section class="panel explanation-panel" id="explanation-lexical" data-explains="lexical" data-explanation-kind="mechanism" aria-labelledby="explanation-lexical-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <h2 class="explanation-sr-only" id="explanation-lexical-title">Lexical analysis converts character streams into tokens</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-lexical.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lexical analysis converts character streams into tokens with a structured visual model." />
@@ -156,8 +163,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end lexical -->
-
-        <section class="panel" id="syntax" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="syntax">
+        <section class="panel" id="syntax" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Syntax analysis checks grammar and program structure</h2>
@@ -171,7 +177,7 @@
         </section>
 
         <!-- stage10-explanation:start syntax -->
-        <section class="panel explanation-panel" id="explanation-syntax" data-explains="syntax" data-explanation-kind="mechanism" aria-labelledby="explanation-syntax-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="syntax">
+        <section class="panel explanation-panel" id="explanation-syntax" data-explains="syntax" data-explanation-kind="mechanism" aria-labelledby="explanation-syntax-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <h2 class="explanation-sr-only" id="explanation-syntax-title">Syntax analysis checks grammar and program structure</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-syntax.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Syntax analysis checks grammar and program structure with a structured visual model." />
@@ -183,8 +189,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end syntax -->
-
-        <section class="panel" id="semantic" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="semantic">
+        <section class="panel" id="semantic" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Semantic analysis checks meaning and context</h2>
@@ -198,7 +203,7 @@
         </section>
 
         <!-- stage10-explanation:start semantic -->
-        <section class="panel explanation-panel" id="explanation-semantic" data-explains="semantic" data-explanation-kind="mechanism" aria-labelledby="explanation-semantic-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="semantic">
+        <section class="panel explanation-panel" id="explanation-semantic" data-explains="semantic" data-explanation-kind="mechanism" aria-labelledby="explanation-semantic-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <h2 class="explanation-sr-only" id="explanation-semantic-title">Semantic analysis checks meaning and context</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-semantic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Semantic analysis checks meaning and context with a structured visual model." />
@@ -210,8 +215,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end semantic -->
-
-        <section class="panel" id="generation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="generation">
+        <section class="panel" id="generation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Code generation produces object code</h2>
@@ -225,7 +229,7 @@
         </section>
 
         <!-- stage10-explanation:start generation -->
-        <section class="panel explanation-panel" id="explanation-generation" data-explains="generation" data-explanation-kind="mechanism" aria-labelledby="explanation-generation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="generation">
+        <section class="panel explanation-panel" id="explanation-generation" data-explains="generation" data-explanation-kind="mechanism" aria-labelledby="explanation-generation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <h2 class="explanation-sr-only" id="explanation-generation-title">Code generation produces object code</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-generation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Code generation produces object code with a structured visual model." />
@@ -237,8 +241,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end generation -->
-
-        <section class="panel" id="optimisation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="optimisation">
+        <section class="panel" id="optimisation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Optimisation improves code without changing what it does</h2>
@@ -252,7 +255,7 @@
         </section>
 
         <!-- stage10-explanation:start optimisation -->
-        <section class="panel explanation-panel" id="explanation-optimisation" data-explains="optimisation" data-explanation-kind="mechanism" aria-labelledby="explanation-optimisation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="optimisation">
+        <section class="panel explanation-panel" id="explanation-optimisation" data-explains="optimisation" data-explanation-kind="mechanism" aria-labelledby="explanation-optimisation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <h2 class="explanation-sr-only" id="explanation-optimisation-title">Optimisation improves code without changing what it does</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-optimisation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Optimisation improves code without changing what it does with a structured visual model." />
@@ -264,8 +267,6 @@
           </div>
         </section>
         <!-- stage10-explanation:end optimisation -->
-
-
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
@@ -291,7 +292,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Track one line through compiler stages</h2>
@@ -305,7 +306,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant-check questions</h2>
@@ -314,7 +315,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the almost-right answers</h2>
@@ -322,7 +323,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
@@ -331,7 +332,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-057">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Compilation memory map</h2>

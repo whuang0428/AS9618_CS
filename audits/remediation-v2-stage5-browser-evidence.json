@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "stage": 5,
+  "generatedDate": "2026-08-28",
+  "method": "Codex in-app Browser against the local generated site",
+  "baseUrl": "http://127.0.0.1:8765",
+  "sourceSha256": {
+    "049": "22d705eb605c7f96d5a3dc5e36870ef90d9c67bd6ab53e1bb4c4065fd41986a1",
+    "107": "04fcbcdda5e0e250c9d1ef796d0d5f118b86db418629eb37d99870c51866061a",
+    "121": "e43f56724420f4c3a3f68d09127df4c8fd2149586ded2909b23a32e0bd3f10b1",
+    "133": "113e944fc109c8edf48394af242c6fd56c23a6ee0f67056d7db2dff11e18f3c8"
+  },
+  "desktop": {
+    "viewport": "1440x900",
+    "lessons": ["049", "107", "121", "133"],
+    "horizontalOverflowFailures": 0,
+    "answerExpansionFailures": 0,
+    "requiredPhraseFailures": 0
+  },
+  "mobile": {
+    "viewport": "390x844",
+    "lessons": ["049", "107", "121", "133"],
+    "records": 4,
+    "horizontalOverflowFailures": 0,
+    "answerExpansionFailures": 0,
+    "accessibleTranscriptFallback": "At 390px the raster figure is replaced by the complete maintained text alternative."
+  },
+  "criticalImages": {
+    "expected": 8,
+    "loaded": 8,
+    "naturalDimensions": "1536x1024",
+    "failures": 0,
+    "assets": [
+      "stage10-lesson-049-concept.jpg",
+      "stage10-lesson-107-pseudocode.jpg",
+      "stage10-lesson-121-parse.jpg",
+      "stage10-lesson-121-pseudocode.jpg",
+      "stage10-lesson-121-types.jpg",
+      "stage10-lesson-133-case.jpg",
+      "stage10-lesson-133-concat.jpg",
+      "stage10-lesson-133-java.jpg"
+    ]
+  },
+  "interactions": {
+    "answerDetailsExpanded": 8,
+    "l133InvalidCharInput": "UCASE and LCASE require exactly one CHAR. Enter one character.",
+    "l133ValidCharInput": "Function call: UCASE('a'); Returned value: A",
+    "status": "Passed"
+  },
+  "consoleWarningsOrErrors": 0,
+  "scopeBoundary": "Targeted Stage 5 browser evidence only. The 153-page desktop/mobile matrix remains unverified until Stage 6."
+}

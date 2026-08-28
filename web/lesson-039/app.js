@@ -72,6 +72,12 @@ const practice = [
   { id: "p10", prompt: "Complete the chain: risk -> mitigation -> ____.", accepted: ["consequence"], answer: "Consequence" },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -146,7 +152,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "A factory uses barcode scanners in a dusty environment. Recommend hardware or maintenance measures and justify them.",
+    prompt: "A factory uses barcode scanners in a dusty environment. Suggest hardware or maintenance measures and justify them.",
     answer: "An industrial-rated barcode scanner with sealed casing is suitable because dust can interfere with scanning and damage moving or exposed parts. Regular cleaning or dust filters reduce build-up, helping maintain accuracy. A robust cable or reliable wireless connection reduces failure from vibration or repeated handling.",
     marking: [
       { mark: "B1", text: "industrial/dust-resistant/sealed scanner named" },
@@ -282,9 +288,9 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
+          <h4>Mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
-          <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

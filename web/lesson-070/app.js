@@ -120,6 +120,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -195,7 +201,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A company is attacked by ransomware. Recommend backup and recovery measures.",
+    prompt: "A company is attacked by ransomware. Suggest backup and recovery measures.",
     answer: "The company should keep isolated or offsite backups so ransomware cannot encrypt every backup copy. Backups should be frequent enough to meet the acceptable data loss, and several versions should be retained so the company can restore a clean copy from before the infection. The restore process should be tested. The disaster recovery plan should isolate infected systems, restore data to clean systems, verify the restored data and communicate with users.",
     marking: [
       { mark: "B1", text: "isolated/offline/offsite backup recommended" },
@@ -355,9 +361,9 @@ function renderExam() {
       <p>${item.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms${index}">
-        <h4>Cambridge-style mark scheme</h4>
+        <h4>Mark scheme</h4>
         <p><strong>Model answer:</strong> ${item.answer}</p>
-        <ul>${item.marking.map((mark) => `<li><strong>${mark.mark}</strong> ${mark.text}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(item)}
       </div>
     </article>
   `).join("");

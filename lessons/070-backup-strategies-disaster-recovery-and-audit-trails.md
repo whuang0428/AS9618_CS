@@ -43,8 +43,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Good answers pair the control with the risk: access rights limit unauthorised viewing, hashing protects stored passwords, backups support recovery.
 
-
-
 ## Student Task
 Groups create a risk-control table for a school database, online shop or hospital system. They must include one human weakness, not only technical attacks.
 

@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 028 | Input devices and data capture</title>
+    <title>AS9618 Lesson 028 | Embedded systems: purpose, benefits and drawbacks</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Input devices and data capture</h1>
+        <h1>Embedded systems: purpose, benefits and drawbacks</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -42,7 +42,71 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Embedded systems: purpose, benefits and drawbacks</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.</p>
+            <p>Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.</p>
+            <p>An embedded system can have a benefit such as efficient dedicated operation and a drawback such as limited flexibility; both must be applied to the device.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Washing-machine controller</h3>
+            <p>A dedicated microcontroller can read sensors and control the motor and valves with low power use and predictable timing. Its limited interface is acceptable for wash programs, but it cannot readily run unrelated applications, and a controller failure can prevent the whole machine from operating.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Embedded systems: purpose, benefits and drawbacks: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What two features define an embedded system?</p>
+              <details><summary>Show answer</summary><p>It is built into a larger device and performs a dedicated task or closely related set of tasks.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Give one benefit of an embedded controller and explain its consequence.</p>
+              <details><summary>Show answer</summary><p>For example, low power use reduces energy or battery demand for the device.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Give one drawback of an embedded controller and explain its consequence.</p>
+              <details><summary>Show answer</summary><p>For example, limited resources make it difficult to add unrelated functions or run general-purpose software.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why can failure of an embedded controller be serious?</p>
+              <details><summary>Show answer</summary><p>The larger device may lose the function controlled by that computer or stop operating.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>A battery-powered medical monitor uses an embedded controller. Explain two benefits and two drawbacks of this design in context.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>benefit such as low power, compact size or predictable automatic operation</td><td>Do not award bare adjectives such as 'small' or 'cheap' without a device-specific consequence.</td><td>1</td></tr>
+                  <tr><td>first benefit linked to battery life, portability or continuous monitoring</td><td></td><td>1</td></tr>
+                  <tr><td>drawback such as limited resources/upgrading/interface or controller dependence</td><td></td><td>1</td></tr>
+                  <tr><td>first drawback linked to limited new functions or device failure</td><td></td><td>1</td></tr>
+                  <tr><td>second distinct benefit or drawback correctly developed</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 028 | 45 minutes | Paper 1 Section 3</p>
             <h2>Input is where the computer first meets the messy real world.</h2>
@@ -63,7 +127,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Cambridge-style hardware questions reward suitability. "Keyboard" may be true; "keyboard because staff must type short codes occasionally" earns the mark.</p>
@@ -74,7 +138,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A supermarket checkout scans an item, weighs fruit, accepts a typed discount code and reads a loyalty card. Which inputs are being captured?</h2>
@@ -90,7 +154,7 @@
           </div>
         </section>
 
-        <section class="panel" id="capture" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="capture">
+        <section class="panel" id="capture" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>What input devices do</h2>
@@ -104,7 +168,7 @@
         </section>
 
         <!-- stage10-explanation:start capture -->
-        <section class="panel explanation-panel" id="explanation-capture" data-explains="capture" data-explanation-kind="mechanism" aria-labelledby="explanation-capture-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="capture">
+        <section class="panel explanation-panel" id="explanation-capture" data-explains="capture" data-explanation-kind="mechanism" aria-labelledby="explanation-capture-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <h2 class="explanation-sr-only" id="explanation-capture-title">What input devices do</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-capture.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What input devices do with a structured visual model." />
@@ -116,8 +180,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end capture -->
-
-        <section class="panel" id="devices" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="devices">
+        <section class="panel" id="devices" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Common input devices and what they capture</h2>
@@ -163,7 +226,7 @@
         </section>
 
         <!-- stage10-explanation:start devices -->
-        <section class="panel explanation-panel" id="explanation-devices" data-explains="devices" data-explanation-kind="mechanism" aria-labelledby="explanation-devices-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="devices">
+        <section class="panel explanation-panel" id="explanation-devices" data-explains="devices" data-explanation-kind="mechanism" aria-labelledby="explanation-devices-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <h2 class="explanation-sr-only" id="explanation-devices-title">Common input devices and what they capture</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-devices.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common input devices and what they capture with a structured visual model." />
@@ -175,8 +238,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end devices -->
-
-        <section class="panel" id="automatic" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="automatic">
+        <section class="panel" id="automatic" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Manual input vs automatic data capture</h2>
@@ -206,7 +268,7 @@
         </section>
 
         <!-- stage10-explanation:start automatic -->
-        <section class="panel explanation-panel" id="explanation-automatic" data-explains="automatic" data-explanation-kind="comparison" aria-labelledby="explanation-automatic-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="automatic">
+        <section class="panel explanation-panel" id="explanation-automatic" data-explains="automatic" data-explanation-kind="comparison" aria-labelledby="explanation-automatic-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <h2 class="explanation-sr-only" id="explanation-automatic-title">Manual input vs automatic data capture</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-automatic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Manual input vs automatic data capture with a structured visual model." />
@@ -218,9 +280,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end automatic -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Choose the input device</h2>
@@ -243,7 +303,7 @@
           <div class="method-box" id="componentMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>From device name to exam-worthy justification</h2>
@@ -256,7 +316,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -266,7 +326,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the weak input answer</h2>
@@ -285,7 +345,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -294,59 +354,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Microphone, touchscreen and VR headset operation</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A microphone diaphragm vibrates with sound; a transducer converts the movement into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in an electric field and calculates touch coordinates.</p>
-            <p>A VR headset displays a separate view to each eye and uses motion/orientation sensors to update the viewpoint. Low-latency tracking is needed so the displayed scene follows head movement.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Turn head in VR</h3>
-            <p>Gyroscope/accelerometer readings report orientation; the processor calculates a new camera view; displays present updated left/right images, creating stereoscopic depth.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Microphone, touchscreen and VR headset operation: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What converts a microphone's analogue signal into digital samples?</p>
-              <details><summary>Show answer</summary><p>An analogue-to-digital converter (ADC).</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What does a capacitive touchscreen detect?</p>
-              <details><summary>Show answer</summary><p>A change in capacitance/electric field at a touch location.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why does a VR headset track head movement?</p>
-              <details><summary>Show answer</summary><p>To update the displayed viewpoint to match the user's orientation.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Describe how a microphone captures sound for storage in a computer.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> sound waves vibrate a diaphragm</li>
-                <li><strong>B1</strong> transducer converts vibration to an analogue electrical signal</li>
-                <li><strong>B1</strong> ADC samples/measures the signal</li>
-                <li><strong>B1</strong> sample values are encoded/stored as binary</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Input device answers need a mechanism</h2>

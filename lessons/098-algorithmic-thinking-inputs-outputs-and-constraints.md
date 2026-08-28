@@ -1,4 +1,48 @@
-# Lesson 098: Algorithmic thinking: inputs, outputs, and constraints
+# Lesson 098: Abstraction and decomposition into program modules
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Abstraction and decomposition into program modules
+
+### Direct explanation
+
+- Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.
+- Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.
+- Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.
+
+### Worked example
+
+**Model and decompose a car-park charge:** Keep entry time, exit time and tariff; omit car colour because it cannot change the charge. Express the solution as modules InputTimes, CalculateDuration, CalculateCharge and OutputCharge. CalculateCharge can become a function returning the charge, while OutputCharge can become a procedure that displays it.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What must an abstract model contain?
+   **Answer:** The essential details and relationships/processes needed to solve the problem.
+2. What does decomposition produce here?
+   **Answer:** Smaller sub-problems expressed as connected program modules with clear responsibilities.
+3. Compare a procedure module from a function module at this design stage.
+   **Answer:** A procedure performs an action; a function returns a value to its caller.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Write an abstract model for a school meal bill, then decompose it into named program modules and identify one likely procedure and one likely function.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| retains meal choice, quantity and price as essential details | Do not award only a list of omitted details, vague Part1/Part2 labels or modules that do not collectively solve the problem. | 1 |
+| states the calculation and total output in the abstract model |  | 1 |
+| excludes a justified irrelevant detail such as tray colour |  | 1 |
+| expresses the problem as connected modules with distinct responsibilities |  | 1 |
+| identifies a suitable procedure module that performs an action |  | 1 |
+| identifies a suitable function module that returns a value |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -6,18 +50,18 @@
 **Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 
-> This lesson plans algorithms in natural language. Control structures, notation and tracing are introduced in Lessons 100-102.
+> Java is used only as a supporting implementation language. Cambridge pseudocode remains the exam answer format.
 
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Apply the algorithmic technique involved in **Algorithmic thinking: inputs, outputs, and constraints**.
-2. Build an IPOC plan using clear natural-language processing steps.
-3. Check that the plan represents every stated requirement and supported assumption.
+1. Identify inputs, processing, outputs, constraints and assumptions in a problem statement.
+2. Build a complete IPOC plan using ordered natural-language steps.
+3. Check that every stated requirement is represented before choosing notation.
 
 ## Key Vocabulary
 English first, Chinese support:
 
-- algorithm 算法, input 输入, process 处理, output 输出, constraint 约束, assumption 假设
+- algorithm 算法, decomposition 分解, trace table 跟踪表, pseudocode 伪代码
 
 ## Warm-Up Hook
 Give instructions for making tea but remove one step. Ask where the algorithm fails. The kettle is not being difficult; the instructions are.
@@ -25,7 +69,7 @@ Give instructions for making tea but remove one step. Ask where the algorithm fa
 Focus question: Which feature distinguishes **Algorithmic thinking: inputs, outputs, and constraints** from the most closely related syllabus concept?
 
 ## Guided Explanation
-Define inputs, outputs, constraints and assumptions before choosing a representation. Write the required processing in ordered natural-language steps, then check every requirement against the plan.
+Define inputs, outputs, constraints and assumptions before choosing a representation. Write required processing in ordered natural-language steps, then check every requirement against the plan.
 
 Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
@@ -46,13 +90,12 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Inputs are five numeric values; output is Average; exactly five values are supplied; processing adds all five values and divides the total by 5.
 
-
 ## Student Task
 Students create IPOC plans for two problems and highlight the source requirement supporting each entry.
 
 ## Mini-Quiz
 1. State one precise definition from this lesson.
-2. Apply IPOC to one short scenario.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
 3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
@@ -66,73 +109,22 @@ Complete this sentence in English:
 ## Marking Notes
 Award credit for:
 - Accurate terminology from Syllabus Section 9.
-- A complete IPOC plan or example that matches the topic.
+- A method, diagram, trace or example that matches the topic.
 - Clear explanation of why the answer matters in the scenario.
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
+Misconception: Students often choose notation before defining the output. Correction: complete the IPOC meaning first.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
-
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Algorithms, IPO solutions and identifier tables
-
-### Direct explanation
-
-- An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
-- Before writing pseudocode, identify the input data, the processing that transforms it and the required output. This input-process-output design must describe a complete solution rather than three unrelated lists.
-- Choose meaningful identifier names that describe each value's role. An identifier table records at least the identifier name, data type and purpose; its entries must match the pseudocode solution.
-
-### Worked example
-
-**Define and plan a ticket algorithm:** Problem: input TicketCount and TicketPrice, then output TotalCost. The algorithm is the defined sequence INPUT TicketCount; INPUT TicketPrice; TotalCost <- TicketCount * TicketPrice; OUTPUT TotalCost. The identifier table records TicketCount: INTEGER, number requested; TicketPrice: REAL, price of one ticket; TotalCost: REAL, calculated cost.
-
-### Targeted practice and answers
-
-1. What is an algorithm?
-   **Answer:** A solution to a problem expressed as a sequence of defined steps.
-2. State the input, process and output for rectangle area.
-   **Answer:** Inputs Length and Width; process multiply Length by Width; output Area.
-3. Improve identifier x for the number of absent students and state its type.
-   **Answer:** AbsentCount or NumberAbsent, with type INTEGER.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Construct an identifier table and an input-process-output pseudocode solution that inputs a student's name and three marks, then outputs the calculated mean.
-
-- **B1** meaningful STRING identifier and purpose for the student's name
-- **B1** three clearly identified numeric mark inputs or a clearly bounded mark collection
-- **B1** meaningful REAL identifier and purpose for the mean
-- **B1** pseudocode inputs the required values
-- **B1** processing calculates the total and mean in a defined sequence
-- **B1** outputs the calculated mean and matches the identifier table
-
-**Strict note:** Do not award an identifier list without types and purposes, or IPO headings without a complete sequence of defined steps.
-<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
-
-### An algorithm is a solution expressed as defined steps
-
-- **Explains:** `concept`
-- **Explanation type:** process
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-098-concept.jpg`
-
-1. An algorithm is a solution to a problem expressed as a sequence of defined steps.
-2. Each step must be unambiguous, ordered where order matters and capable of being carried out.
-3. Identify what data is supplied, state the required transformation and state the exact result.
-4. Record limits, quantity requirements and supported assumptions.
-5. Check that every requirement maps to an input, process, output, constraint or assumption.
 
 ### Constraints stop algorithms from wandering off
 
 - **Explains:** `constraints`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-098-constraints.jpg`
 
 1. A range of 0 to 100 requires both limits to be checked.
@@ -144,7 +136,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `model`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-098-model.jpg`
 
 1. List each input and record its type or range when the problem supplies them.

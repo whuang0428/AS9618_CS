@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "remediation": "v2",
+  "stage": 7,
+  "records": [
+    {
+      "id": "RV2-GATE-001",
+      "severity": "P0",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-remediation-v2-audit-integrity.mjs"
+    },
+    {
+      "id": "RV2-GATE-002",
+      "severity": "P0",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-scientific-audit.mjs"
+    },
+    {
+      "id": "RV2-COV-001",
+      "severity": "P0",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-syllabus-coverage.mjs"
+    },
+    {
+      "id": "RV2-COV-002",
+      "severity": "P1",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-batch6-section1-foundations.mjs"
+    },
+    {
+      "id": "RV2-SCOPE-001",
+      "severity": "P1",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-stage2.mjs"
+    },
+    {
+      "id": "RV2-SCOPE-002",
+      "severity": "P1",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-stage2.mjs"
+    },
+    {
+      "id": "RV2-SEQ-001",
+      "severity": "P1",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-curriculum-sequence.mjs"
+    },
+    {
+      "id": "RV2-ID-001",
+      "severity": "P1",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-remediation-v2-stage3.mjs"
+    },
+    {
+      "id": "RV2-WORD-001",
+      "severity": "P1",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-cie-wording.mjs"
+    },
+    {
+      "id": "RV2-MS-001",
+      "severity": "P1",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-stage5-mark-schemes.mjs"
+    },
+    {
+      "id": "RV2-CONT-001",
+      "severity": "P0",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-remediation-v2-stage5.mjs"
+    },
+    {
+      "id": "RV2-PSEUDO-001",
+      "severity": "P0",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-remediation-v2-stage5.mjs"
+    },
+    {
+      "id": "RV2-PSEUDO-002",
+      "severity": "P0",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-remediation-v2-stage5.mjs"
+    },
+    {
+      "id": "RV2-AUDIT-001",
+      "severity": "P0",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-remediation-v2-audit-integrity.mjs"
+    },
+    {
+      "id": "RV2-AUDIT-002",
+      "severity": "P0",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-remediation-v2-audit-integrity.mjs"
+    },
+    {
+      "id": "RV2-AUDIT-003",
+      "severity": "P1",
+      "disposition": "RevalidatedCurrentSource",
+      "currentStatus": "Resolved",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "command": "node scripts/verify-syllabus-coverage.mjs"
+    }
+  ]
+}

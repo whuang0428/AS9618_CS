@@ -1,12 +1,13 @@
 import fs from "node:fs";
 import path from "node:path";
 import { monthlyAssessments, quizzes, stageReviews } from "./stage3-assessments-data.mjs";
+import { normaliseQuestionPrompt } from "./cie-command-words.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const failures = [];
 const check = (condition, message) => { if (!condition) failures.push(message); };
 const sum = (questions) => questions.reduce((total, question) => total + question.marks, 0);
-const allQuestions = [...quizzes, ...monthlyAssessments, ...stageReviews].flatMap((entry) => entry.questions);
+const allQuestions = [...quizzes, ...monthlyAssessments, ...stageReviews].flatMap((entry) => entry.questions).map((question) => ({ ...question, prompt: normaliseQuestionPrompt(question.prompt) }));
 const escapeHtml = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 const coveredSections = new Set();
 for (const entry of [...quizzes, ...monthlyAssessments, ...stageReviews]) {
@@ -101,28 +102,30 @@ for (const text of [quizMd, monthlyMd, reviewMd]) {
 }
 
 const promptCorpus = allQuestions.map((question) => question.prompt).join(" ").toLowerCase();
-for (const command of ["state", "describe", "explain", "calculate", "write", "compare", "distinguish", "justify", "evaluate", "convert", "trace", "construct", "design", "recommend"]) {
+for (const command of ["state", "describe", "explain", "calculate", "write", "compare", "justify", "evaluate", "suggest", "develop"]) {
   check(promptCorpus.includes(command), `Command-word variety missing: ${command}`);
 }
 
 for (const entry of quizzes) {
   for (const question of entry.questions) {
-    check(quizMd.includes(question.prompt), `Quiz Markdown is missing L${question.sourceLesson} question text`);
-    check(web.includes(escapeHtml(question.prompt)), `Assessment webpage is missing L${question.sourceLesson} quiz text`);
-    for (const [code, point] of question.points) {
-      check(quizMd.includes(`**${code}** ${point}`), `Quiz Markdown is missing an MS point for L${question.sourceLesson}`);
-      check(web.includes(`<strong>${code}</strong> ${escapeHtml(point)}`), `Assessment webpage is missing an MS point for L${question.sourceLesson}`);
+    const prompt = normaliseQuestionPrompt(question.prompt);
+    check(quizMd.includes(prompt), `Quiz Markdown is missing L${question.sourceLesson} question text`);
+    check(web.includes(escapeHtml(prompt)), `Assessment webpage is missing L${question.sourceLesson} quiz text`);
+    for (const [, point] of question.points) {
+      check(quizMd.includes(`| ${point.replaceAll("|", "\\|")} |`), `Quiz Markdown is missing an MS point for L${question.sourceLesson}`);
+      check(web.includes(`<td>${escapeHtml(point)}</td>`), `Assessment webpage is missing an MS point for L${question.sourceLesson}`);
     }
   }
 }
 for (const [entries, markdown, label] of [[monthlyAssessments, monthlyMd, "monthly"], [stageReviews, reviewMd, "review"]]) {
   for (const entry of entries) {
     for (const question of entry.questions) {
-      check(markdown.includes(question.prompt), `${label} Markdown is missing a question at L${entry.lesson}`);
-      check(web.includes(escapeHtml(question.prompt)), `${label} webpage is missing a question at L${entry.lesson}`);
-      for (const [code, point] of question.points) {
-        check(markdown.includes(`**${code}** ${point}`), `${label} Markdown is missing an MS point at L${entry.lesson}`);
-        check(web.includes(`<strong>${code}</strong> ${escapeHtml(point)}`), `${label} webpage is missing an MS point at L${entry.lesson}`);
+      const prompt = normaliseQuestionPrompt(question.prompt);
+      check(markdown.includes(prompt), `${label} Markdown is missing a question at L${entry.lesson}`);
+      check(web.includes(escapeHtml(prompt)), `${label} webpage is missing a question at L${entry.lesson}`);
+      for (const [, point] of question.points) {
+        check(markdown.includes(`| ${point.replaceAll("|", "\\|")} |`), `${label} Markdown is missing an MS point at L${entry.lesson}`);
+        check(web.includes(`<td>${escapeHtml(point)}</td>`), `${label} webpage is missing an MS point at L${entry.lesson}`);
       }
     }
   }

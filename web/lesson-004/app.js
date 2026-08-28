@@ -44,11 +44,17 @@ const practice = [
   { id: "p10", prompt: "What should an exam answer about Binary addition, carries and overflow include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "2 marks",
-    prompt: "Add 00110101₂ and 00010110₂ using 8-bit binary addition. Show the result.",
+    prompt: "Calculate the sum of 00110101₂ and 00010110₂ using 8-bit binary addition. Demonstrate the result.",
     answer: "Align all eight bits and add with carries: 00110101₂ + 00010110₂ = 01001011₂. The denary check is 53 + 22 = 75.",
     marking: [
       { mark: "M1", text: "shows a correct binary addition method, including carries" },
@@ -62,7 +68,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "Add 11110000₂ and 00010000₂. State whether overflow occurs.",
+    prompt: "Calculate the sum of 11110000₂ and 00010000₂. State whether overflow occurs.",
     answer: "11110000₂ + 00010000₂ = 1 00000000₂. The stored 8-bit result is 00000000₂ with carry-out 1, so unsigned overflow occurs.",
     marking: [
       { mark: "M1", text: "adds the binary values to produce a carry-out beyond bit 7" },
@@ -96,7 +102,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Add 11001010₂ and 01110101₂ using unsigned 8-bit binary addition and identify unsigned overflow.",
+    prompt: "Calculate the sum of 11001010₂ and 01110101₂ using unsigned 8-bit binary addition and identify unsigned overflow.",
     answer: "11001010₂ + 01110101₂ = 1 00111111₂. The stored 8-bit result is 00111111₂ with carry-out 1, so unsigned overflow occurs.",
     marking: [
       { mark: "M1", text: "shows a correct carry process / carry row" },
@@ -304,11 +310,9 @@ function renderExamQuestions() {
         <p class="marks">[${question.marks}]</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="marking" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
-          <p><strong>Expected answer:</strong> ${question.answer}</p>
-          <ul class="ms-list">
-            ${question.marking.map((point) => `<li><b>${point.mark}</b> ${point.text}</li>`).join("")}
-          </ul>
+          <h4>Mark scheme</h4>
+          <p><strong>Answer:</strong> ${question.answer}</p>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

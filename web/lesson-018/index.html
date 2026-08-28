@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 018 | Packet switching, routing and packet structure</title>
+    <title>AS9618 Lesson 018 | Packet transmission between two hosts in each required topology</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../student-visuals.css?v=1" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -18,7 +18,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Packet switching, routing and packet structure</h1>
+        <h1>Packet transmission between two hosts in each required topology</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -43,7 +43,78 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+        <!-- remediation-v2-optional:start -->
+        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
+          <strong>Optional enrichment</strong>
+          <p>general packet switching, routing and packet structure beyond packet paths for the named topologies. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
+          <p><strong>Formal AS prerequisite:</strong> S2.04 bus, star, mesh and hybrid topologies.</p>
+        </aside>
+        <!-- remediation-v2-optional:end -->
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Packet transmission between two hosts in each required topology</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.</p>
+            <p>Topology justification must connect the packet path to the scenario: central-device failure, backbone failure, individual cable failure, congestion, expansion, redundancy and cabling cost are consequences of the structure.</p>
+            <p>To justify a topology, link the packet path, dependence on central hardware, alternative routes and failure behaviour to the given situation.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Send a patient record across a hybrid hospital network</h3>
+            <p>The source sends the frame to its ward switch as in a star. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Packet transmission between two hosts in each required topology: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> How is a transmission carried between two hosts in a bus topology?</p>
+              <details><summary>Show answer</summary><p>The signal travels along the shared backbone and the attached hosts inspect it.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Where does a frame pass in a star network?</p>
+              <details><summary>Show answer</summary><p>Through the central switch.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why can a mesh continue after one link fails?</p>
+              <details><summary>Show answer</summary><p>Packets may use an alternative link or route.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Describe one possible packet path through a hybrid made from two stars.</p>
+              <details><summary>Show answer</summary><p>Source to its switch, across the link between star segments, then through the destination switch to the receiving host.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Compare how a packet travels between two hosts in a star topology and a mesh topology, then justify one topology for a fault-sensitive system.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>star packet/frame passes through a central switch</td><td>Do not accept 'mesh is better' without a packet-path or failure consequence.</td><td>1</td></tr>
+                  <tr><td>mesh provides multiple interconnected paths / possible routes</td><td></td><td>1</td></tr>
+                  <tr><td>star switch is a single point of failure</td><td></td><td>1</td></tr>
+                  <tr><td>mesh can use an alternative route when a link fails</td><td></td><td>1</td></tr>
+                  <tr><td>choice is justified from the stated fault-sensitivity and a path consequence</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 018 | 45 minutes | Paper 1 Section 2</p>
             <h2>The internet does not send your file as one heroic lump.</h2>
@@ -64,7 +135,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Network explanation marks often come from naming the metadata and explaining exactly what it is used for.</p>
@@ -75,7 +146,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A 30 MB video is sent across a network. Why split it into packets?</h2>
@@ -91,7 +162,7 @@
           </div>
         </section>
 
-        <section class="panel" id="switching" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="switching">
+        <section class="panel" id="switching" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Packet switching</h2>
@@ -118,7 +189,7 @@
         </section>
 
         <!-- stage10-explanation:start switching -->
-        <section class="panel explanation-panel" id="explanation-switching" data-explains="switching" data-explanation-kind="mechanism" aria-labelledby="explanation-switching-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="switching">
+        <section class="panel explanation-panel" id="explanation-switching" data-explains="switching" data-explanation-kind="mechanism" aria-labelledby="explanation-switching-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <h2 class="explanation-sr-only" id="explanation-switching-title">Packet switching</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-switching.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Packet switching with a structured visual model." />
@@ -130,8 +201,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end switching -->
-
-        <section class="panel" id="structure" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure">
+        <section class="panel" id="structure" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Packet structure</h2>
@@ -157,7 +227,7 @@
         </section>
 
         <!-- stage10-explanation:start structure -->
-        <section class="panel explanation-panel" id="explanation-structure" data-explains="structure" data-explanation-kind="mechanism" aria-labelledby="explanation-structure-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure">
+        <section class="panel explanation-panel" id="explanation-structure" data-explains="structure" data-explanation-kind="mechanism" aria-labelledby="explanation-structure-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <h2 class="explanation-sr-only" id="explanation-structure-title">Packet structure</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-structure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Packet structure with a structured visual model." />
@@ -169,8 +239,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end structure -->
-
-        <section class="panel" id="routing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="routing">
+        <section class="panel" id="routing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Routing and arrival</h2>
@@ -184,7 +253,7 @@
         </section>
 
         <!-- stage10-explanation:start routing -->
-        <section class="panel explanation-panel" id="explanation-routing" data-explains="routing" data-explanation-kind="mechanism" aria-labelledby="explanation-routing-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="routing">
+        <section class="panel explanation-panel" id="explanation-routing" data-explains="routing" data-explanation-kind="mechanism" aria-labelledby="explanation-routing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <h2 class="explanation-sr-only" id="explanation-routing-title">Routing and arrival</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-routing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Routing and arrival with a structured visual model." />
@@ -196,8 +265,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end routing -->
-
-        <section class="panel visual-explainer" id="packet-journey" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="packet-journey">
+        <section class="panel visual-explainer" id="packet-journey" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Visual explanation</p>
             <h2>One message, several routes, one reassembled result</h2>
@@ -256,7 +324,7 @@
         </section>
 
         <!-- stage10-explanation:start packet-journey -->
-        <section class="panel explanation-panel" id="explanation-packet-journey" data-explains="packet-journey" data-explanation-kind="mechanism" aria-labelledby="explanation-packet-journey-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="packet-journey">
+        <section class="panel explanation-panel" id="explanation-packet-journey" data-explains="packet-journey" data-explanation-kind="mechanism" aria-labelledby="explanation-packet-journey-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <h2 class="explanation-sr-only" id="explanation-packet-journey-title">One message, several routes, one reassembled result</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-packet-journey.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One message, several routes, one reassembled result with a structured visual model." />
@@ -268,9 +336,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end packet-journey -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Packet route simulator</h2>
@@ -292,7 +358,7 @@
           <div class="method-box" id="routeMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -305,7 +371,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -315,7 +381,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the weak packet answer</h2>
@@ -334,7 +400,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -343,64 +409,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Packet transmission between two hosts in each required topology</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.</p>
-            <p>Topology justification must connect the packet path to the scenario: central-device failure, backbone failure, individual cable failure, congestion, expansion, redundancy and cabling cost are consequences of the structure.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Send a patient record across a hybrid hospital network</h3>
-            <p>The source sends the frame to its ward switch as in a star. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Packet transmission between two hosts in each required topology: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> How is a transmission carried between two hosts in a bus topology?</p>
-              <details><summary>Show answer</summary><p>The signal travels along the shared backbone and the attached hosts inspect it.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Where does a frame pass in a star network?</p>
-              <details><summary>Show answer</summary><p>Through the central switch.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why can a mesh continue after one link fails?</p>
-              <details><summary>Show answer</summary><p>Packets may use an alternative link or route.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Describe one possible packet path through a hybrid made from two stars.</p>
-              <details><summary>Show answer</summary><p>Source to its switch, across the link between star segments, then through the destination switch to the receiving host.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Compare how a packet travels between two hosts in a star topology and a mesh topology, then justify one topology for a fault-sensitive system.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> star packet/frame passes through a central switch</li>
-                <li><strong>B1</strong> mesh provides multiple interconnected paths / possible routes</li>
-                <li><strong>B1</strong> star switch is a single point of failure</li>
-                <li><strong>B1</strong> mesh can use an alternative route when a link fails</li>
-                <li><strong>B1</strong> choice is justified from the stated fault-sensitivity and a path consequence</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-018">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Packets need labels, order and checks</h2>

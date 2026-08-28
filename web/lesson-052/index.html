@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 052 | System software overview: operating systems, utility software and translators</title>
+    <title>AS9618 Lesson 052 | Why an operating system is required and what it manages</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>System software overview: operating systems, utility software and translators</h1>
+        <h1>Why an operating system is required and what it manages</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -42,10 +42,90 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Why an operating system is required and what it manages</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>An operating system is required to provide a controlled interface between applications, users and hardware, and to coordinate shared resources. Without it, each application would need its own incompatible routines for processor time, memory, files, security and devices.</p>
+            <p>Process management schedules CPU time and tracks running processes. Memory management allocates and protects RAM. File management organises files, folders, metadata and file operations. Security management authenticates users and enforces permissions or access rights.</p>
+            <p>Hardware management coordinates devices through drivers, interrupts, buffers and queues. These roles cooperate: security management decides whether a request is authorised, while file or hardware management performs the permitted operation. Antivirus remains a utility and must not replace the OS security-management role.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Open a protected file and print it</h3>
+            <p>The OS authenticates the user and security management checks access rights. File management locates and opens the file; memory management allocates RAM; process management schedules the application; hardware management uses a printer driver, buffer and queue to send permitted output to the printer.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start os -->
+        <section class="panel explanation-panel" id="explanation-os" data-explains="os" data-explanation-kind="mechanism" aria-labelledby="explanation-os-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="os">
+          <h2 class="explanation-sr-only" id="explanation-os-title">Operating system: the main coordinator</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-os.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Operating system: the main coordinator with a structured visual model." />
+            <figcaption class="explanation-sr-only">Operating system: the main coordinator: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> User interface Provides a way for users to interact with the computer, such as GUI or command line.</li><li><strong>Lesson fact:</strong> Resource management Allocates and controls hardware resources such as processor time, memory and devices.</li><li><strong>Lesson fact:</strong> File services Provides file organisation, storage access and permission support.</li><li><strong>Lesson fact:</strong> Application services Provides services and APIs that application software can use.</li><li><strong>Lesson fact:</strong> Boundary</li><li><strong>Lesson fact:</strong> Detailed process, memory, file and device management are developed in Lesson 053. Here the OS is introduced as the main system coordinator.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end os -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Why an operating system is required and what it manages: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which OS role authenticates a user and enforces access rights?</p>
+              <details><summary>Show answer</summary><p>Security management.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which role allocates RAM to a running process?</p>
+              <details><summary>Show answer</summary><p>Memory management.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which role uses drivers, buffers and queues?</p>
+              <details><summary>Show answer</summary><p>Hardware management/device management.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why is an operating system required?</p>
+              <details><summary>Show answer</summary><p>It provides a controlled interface and coordinates shared hardware and software resources for applications and users.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Explain why an operating system is required and describe its process, memory, file, security and hardware management roles.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>required interface/control layer between applications, users and hardware</td><td>Do not substitute antivirus utility software for OS security management, and do not treat stored files as RAM.</td><td>1</td></tr>
+                  <tr><td>process management schedules CPU time or tracks processes</td><td></td><td>1</td></tr>
+                  <tr><td>memory management allocates/protects RAM</td><td></td><td>1</td></tr>
+                  <tr><td>file management organises stored files and operations</td><td></td><td>1</td></tr>
+                  <tr><td>security management authenticates users or enforces permissions/access rights</td><td></td><td>1</td></tr>
+                  <tr><td>hardware management uses drivers/interrupts/buffers/queues to coordinate devices</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 052 | 45 minutes | Paper 1 Section 5 | System software</p>
             <h2>System software keeps the computer useful before the apps arrive.</h2>
@@ -72,7 +152,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Section 5 answers often fail because students name software but do not state the service it provides.</p>
@@ -83,7 +163,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A user writes `PRINT("Hello")`. The CPU wants machine code. Who translates?</h2>
@@ -100,7 +180,7 @@
           </div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>System software supports the running and maintenance of the computer</h2>
@@ -127,7 +207,7 @@
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <h2 class="explanation-sr-only" id="explanation-concept-title">System software supports the running and maintenance of the computer</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining System software supports the running and maintenance of the computer with a structured visual model." />
@@ -139,8 +219,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-
-        <section class="panel" id="categories" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="categories">
+        <section class="panel" id="categories" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>System software versus application software</h2>
@@ -168,7 +247,7 @@
         </section>
 
         <!-- stage10-explanation:start categories -->
-        <section class="panel explanation-panel" id="explanation-categories" data-explains="categories" data-explanation-kind="mechanism" aria-labelledby="explanation-categories-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="categories">
+        <section class="panel explanation-panel" id="explanation-categories" data-explains="categories" data-explanation-kind="mechanism" aria-labelledby="explanation-categories-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <h2 class="explanation-sr-only" id="explanation-categories-title">System software versus application software</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-categories.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining System software versus application software with a structured visual model." />
@@ -180,8 +259,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end categories -->
-
-        <section class="panel" id="os" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="os">
+        <section class="panel" id="os" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Operating system: the main coordinator</h2>
@@ -198,21 +276,7 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start os -->
-        <section class="panel explanation-panel" id="explanation-os" data-explains="os" data-explanation-kind="mechanism" aria-labelledby="explanation-os-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="os">
-          <h2 class="explanation-sr-only" id="explanation-os-title">Operating system: the main coordinator</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-os.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Operating system: the main coordinator with a structured visual model." />
-            <figcaption class="explanation-sr-only">Operating system: the main coordinator: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> User interface Provides a way for users to interact with the computer, such as GUI or command line.</li><li><strong>Lesson fact:</strong> Resource management Allocates and controls hardware resources such as processor time, memory and devices.</li><li><strong>Lesson fact:</strong> File services Provides file organisation, storage access and permission support.</li><li><strong>Lesson fact:</strong> Application services Provides services and APIs that application software can use.</li><li><strong>Lesson fact:</strong> Boundary</li><li><strong>Lesson fact:</strong> Detailed process, memory, file and device management are developed in Lesson 053. Here the OS is introduced as the main system coordinator.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end os -->
-
-        <section class="panel" id="utility" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="utility">
+        <section class="panel" id="utility" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Utility software: maintenance and protection tools</h2>
@@ -247,7 +311,7 @@
         </section>
 
         <!-- stage10-explanation:start utility -->
-        <section class="panel explanation-panel" id="explanation-utility" data-explains="utility" data-explanation-kind="mechanism" aria-labelledby="explanation-utility-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="utility">
+        <section class="panel explanation-panel" id="explanation-utility" data-explains="utility" data-explanation-kind="mechanism" aria-labelledby="explanation-utility-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <h2 class="explanation-sr-only" id="explanation-utility-title">Utility software: maintenance and protection tools</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-utility.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Utility software: maintenance and protection tools with a structured visual model." />
@@ -259,8 +323,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end utility -->
-
-        <section class="panel" id="translators" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="translators">
+        <section class="panel" id="translators" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Language translators: source code to executable behaviour</h2>
@@ -286,7 +349,7 @@
         </section>
 
         <!-- stage10-explanation:start translators -->
-        <section class="panel explanation-panel" id="explanation-translators" data-explains="translators" data-explanation-kind="mechanism" aria-labelledby="explanation-translators-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="translators">
+        <section class="panel explanation-panel" id="explanation-translators" data-explains="translators" data-explanation-kind="mechanism" aria-labelledby="explanation-translators-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <h2 class="explanation-sr-only" id="explanation-translators-title">Language translators: source code to executable behaviour</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-translators.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Language translators: source code to executable behaviour with a structured visual model." />
@@ -298,8 +361,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end translators -->
-
-        <section class="panel" id="pathway" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pathway">
+        <section class="panel" id="pathway" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Translation pathway</h2>
@@ -313,7 +375,7 @@
         </section>
 
         <!-- stage10-explanation:start pathway -->
-        <section class="panel explanation-panel" id="explanation-pathway" data-explains="pathway" data-explanation-kind="mechanism" aria-labelledby="explanation-pathway-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pathway">
+        <section class="panel explanation-panel" id="explanation-pathway" data-explains="pathway" data-explanation-kind="mechanism" aria-labelledby="explanation-pathway-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <h2 class="explanation-sr-only" id="explanation-pathway-title">Translation pathway</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-pathway.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Translation pathway with a structured visual model." />
@@ -325,9 +387,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end pathway -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>System software classifier</h2>
@@ -352,7 +412,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Choose the category, then justify it</h2>
@@ -366,7 +426,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
@@ -375,7 +435,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the system software confusion</h2>
@@ -383,7 +443,7 @@
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
@@ -392,7 +452,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>System software supports the system</h2>

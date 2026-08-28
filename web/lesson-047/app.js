@@ -99,6 +99,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -120,7 +126,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Given memory[20] = 70 and memory[70] = 999, trace the instruction LOAD (20) using indirect addressing.",
+    prompt: "Given memory[20] = 70 and memory[70] = 999, Complete a trace table for the instruction LOAD (20) using indirect addressing.",
     answer: "In indirect addressing, the operand 20 is used as the address of a memory location that contains another address. The CPU reads memory[20] and obtains 70. This 70 is the effective address. The CPU then reads memory[70] and obtains 999, so 999 is the value loaded.",
     marking: [
       { mark: "B1", text: "recognises indirect addressing uses operand as pointer address" },
@@ -177,7 +183,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "Distinguish immediate, direct, indirect, indexed and relative addressing.",
+    prompt: "Compare immediate, direct, indirect, indexed and relative addressing.",
     answer: "Immediate addressing uses the operand as the value. Direct addressing uses it as the address of the value. Indirect addressing follows an address stored at the operand address. Indexed addressing adds IX to a base/address operand. Relative addressing adds an offset to the current or next instruction address held in PC.",
     marking: [
       { mark: "B1", text: "immediate addressing treats operand as the value" },
@@ -323,9 +329,9 @@ function renderExamQuestions() {
       <p>${question.prompt}</p>
       <button type="button" class="ms-toggle" data-answer="ms-${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong> ${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((item) => `<li><strong>${item.mark}</strong> ${item.text}</li>`).join("")}</ul>
+        <p><strong>Answer:</strong> ${question.answer}</p>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

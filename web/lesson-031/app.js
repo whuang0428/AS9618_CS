@@ -71,6 +71,12 @@ const practice = [
   { id: "p10", prompt: "Is cache a secondary storage medium? Answer yes or no.", accepted: ["no"], answer: "No" },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -146,7 +152,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "A video editor needs storage for a large library of raw footage and a separate drive for active editing work. Recommend suitable storage for each and justify your choices.",
+    prompt: "A video editor needs storage for a large library of raw footage and a separate drive for active editing work. Suggest suitable storage for each and justify your choices.",
     answer: "A high-capacity HDD may be suitable for the raw footage library because it offers large capacity at lower cost per GB. An SSD is suitable for active editing work because it has faster access speeds, which helps load and write video files during editing. The answer depends on balancing capacity and cost for archive storage against speed for current work.",
     marking: [
       { mark: "B1", text: "suitable high-capacity storage for library, e.g. HDD" },
@@ -284,9 +290,9 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
+          <h4>Mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
-          <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

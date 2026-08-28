@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 010 | Digital sound: sampling rate, sampling resolution and duration</title>
+    <title>AS9618 Lesson 010 | Sound sampling, sampling resolution, accuracy and storage</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Digital sound: sampling rate, sampling resolution and duration</h1>
+        <h1>Sound sampling, sampling resolution, accuracy and storage</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -43,7 +43,94 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Sound sampling, sampling resolution, accuracy and storage</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>An analogue sound wave varies continuously. Analogue-to-digital sampling measures its amplitude at regular time intervals, quantises each measurement to one permitted level and stores the resulting sample value as a binary number. The sequence of binary sample values is the digital representation of the sound.</p>
+            <p>Sampling rate is the number of samples taken per second, measured in hertz (Hz). Sampling resolution is the number of bits used for each sample and therefore controls how many amplitude levels are available. 'Sample resolution' is a common synonym, but sampling resolution is the official syllabus term.</p>
+            <p>Increasing sampling rate stores more measurements each second, which can improve time accuracy and increases file size. Increasing sampling resolution stores more bits for each sample, which gives more amplitude levels, can improve amplitude accuracy and increases file size. The syllabus requires these effects, not a sound-file-size calculation formula.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Compare two recordings</h3>
+            <p>Recording A uses 8000 samples per second at 8-bit sampling resolution. Recording B uses 16000 samples per second at 16-bit sampling resolution. B records amplitude twice as often and has more amplitude levels, so it can represent the original sound more accurately, but it stores more data and therefore has a larger file size for the same duration and channels.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start sampling -->
+        <section class="panel explanation-panel" id="explanation-sampling" data-explains="sampling" data-explanation-kind="mechanism" aria-labelledby="explanation-sampling-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sampling">
+          <h2 class="explanation-sr-only" id="explanation-sampling-title">Sampling turns an analogue wave into digital values</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-010-sampling.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sampling turns an analogue wave into digital values with a structured visual model." />
+            <figcaption class="explanation-sr-only">Sampling turns an analogue wave into digital values: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Analogue sound</li><li><strong>Lesson fact:</strong> A continuous wave. The pressure changes smoothly over time.</li><li><strong>Lesson fact:</strong> A measurement of the wave amplitude at one moment in time.</li><li><strong>Lesson fact:</strong> Digital sound</li><li><strong>Lesson fact:</strong> A sequence of sample values stored as binary numbers.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end sampling -->
+
+        <!-- stage10-explanation:start resolution -->
+        <section class="panel explanation-panel" id="explanation-resolution" data-explains="resolution" data-explanation-kind="mechanism" aria-labelledby="explanation-resolution-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="resolution">
+          <h2 class="explanation-sr-only" id="explanation-resolution-title">Sampling resolution: bits per sample</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-010-resolution.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sampling resolution: bits per sample with a structured visual model." />
+            <figcaption class="explanation-sr-only">Sampling resolution: bits per sample: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Sampling resolution is the official syllabus term; sample resolution is a common synonym.</li><li><strong>Lesson fact:</strong> An 8-bit sampling resolution provides 2^8 = 256 possible amplitude levels.</li><li><strong>Lesson fact:</strong> A 16-bit sampling resolution provides 2^16 = 65,536 possible amplitude levels.</li><li><strong>Lesson fact:</strong> More bits per sample can represent amplitude more precisely, but use more storage.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end resolution -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Sound sampling, sampling resolution, accuracy and storage: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What is the official term for the number of bits used to store each sound sample?</p>
+              <details><summary>Show answer</summary><p>Sampling resolution; sample resolution is a common synonym.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> How does a higher sampling rate affect the stored data?</p>
+              <details><summary>Show answer</summary><p>It stores more measurements each second, which can improve time accuracy and increases file size.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> How does a higher sampling resolution affect the stored data?</p>
+              <details><summary>Show answer</summary><p>It provides more possible amplitude levels, which can improve amplitude accuracy and increases file size.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Explain how increasing (i) sampling rate and (ii) sampling resolution can affect the accuracy and file size of a digital sound recording.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>higher sampling rate means more samples are stored each second</td><td>Do not interchange sampling rate and sampling resolution; rate controls measurements per second, while resolution controls bits/levels per measurement.</td><td>1</td></tr>
+                  <tr><td>higher sampling rate can improve time accuracy and increases file size</td><td></td><td>1</td></tr>
+                  <tr><td>higher sampling resolution means more bits/amplitude levels per sample</td><td></td><td>1</td></tr>
+                  <tr><td>higher sampling resolution can improve amplitude accuracy and increases file size</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 010 | 45 minutes | 5-minute quiz</p>
             <h2>Sound becomes data when we measure it again and again.</h2>
@@ -82,7 +169,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Better sound quality usually needs more samples or more bits per sample, so file size increases.</p>
@@ -93,7 +180,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which change stores more measurements every second?</h2>
@@ -109,7 +196,7 @@
           </div>
         </section>
 
-        <section class="panel" id="sampling" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sampling">
+        <section class="panel" id="sampling" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Sampling turns an analogue wave into digital values</h2>
@@ -131,21 +218,7 @@
           <div class="callout">Chinese support: sampling = 采样；sample = 样本/采样值；amplitude = 振幅。</div>
         </section>
 
-        <!-- stage10-explanation:start sampling -->
-        <section class="panel explanation-panel" id="explanation-sampling" data-explains="sampling" data-explanation-kind="mechanism" aria-labelledby="explanation-sampling-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sampling">
-          <h2 class="explanation-sr-only" id="explanation-sampling-title">Sampling turns an analogue wave into digital values</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-010-sampling.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sampling turns an analogue wave into digital values with a structured visual model." />
-            <figcaption class="explanation-sr-only">Sampling turns an analogue wave into digital values: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Analogue sound</li><li><strong>Lesson fact:</strong> A continuous wave. The pressure changes smoothly over time.</li><li><strong>Lesson fact:</strong> A measurement of the wave amplitude at one moment in time.</li><li><strong>Lesson fact:</strong> Digital sound</li><li><strong>Lesson fact:</strong> A sequence of sample values stored as binary numbers.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end sampling -->
-
-        <section class="panel" id="rate" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rate">
+        <section class="panel" id="rate" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Sampling rate: samples per second</h2>
@@ -166,7 +239,7 @@
         </section>
 
         <!-- stage10-explanation:start rate -->
-        <section class="panel explanation-panel" id="explanation-rate" data-explains="rate" data-explanation-kind="mechanism" aria-labelledby="explanation-rate-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rate">
+        <section class="panel explanation-panel" id="explanation-rate" data-explains="rate" data-explanation-kind="mechanism" aria-labelledby="explanation-rate-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <h2 class="explanation-sr-only" id="explanation-rate-title">Sampling rate: samples per second</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-010-rate.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sampling rate: samples per second with a structured visual model." />
@@ -178,8 +251,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end rate -->
-
-        <section class="panel" id="resolution" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="resolution">
+        <section class="panel" id="resolution" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Sampling resolution: bits per sample</h2>
@@ -200,21 +272,7 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start resolution -->
-        <section class="panel explanation-panel" id="explanation-resolution" data-explains="resolution" data-explanation-kind="mechanism" aria-labelledby="explanation-resolution-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="resolution">
-          <h2 class="explanation-sr-only" id="explanation-resolution-title">Sampling resolution: bits per sample</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-010-resolution.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sampling resolution: bits per sample with a structured visual model." />
-            <figcaption class="explanation-sr-only">Sampling resolution: bits per sample: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Sampling resolution is the official syllabus term; sample resolution is a common synonym.</li><li><strong>Lesson fact:</strong> An 8-bit sampling resolution provides 2^8 = 256 possible amplitude levels.</li><li><strong>Lesson fact:</strong> A 16-bit sampling resolution provides 2^16 = 65,536 possible amplitude levels.</li><li><strong>Lesson fact:</strong> More bits per sample can represent amplitude more precisely, but use more storage.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end resolution -->
-
-        <section class="panel" id="duration" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="duration">
+        <section class="panel" id="duration" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Duration: how long the sound lasts</h2>
@@ -232,7 +290,7 @@
         </section>
 
         <!-- stage10-explanation:start duration -->
-        <section class="panel explanation-panel" id="explanation-duration" data-explains="duration" data-explanation-kind="mechanism" aria-labelledby="explanation-duration-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="duration">
+        <section class="panel explanation-panel" id="explanation-duration" data-explains="duration" data-explanation-kind="mechanism" aria-labelledby="explanation-duration-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <h2 class="explanation-sr-only" id="explanation-duration-title">Duration: how long the sound lasts</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-010-duration.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Duration: how long the sound lasts with a structured visual model." />
@@ -244,8 +302,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end duration -->
-
-        <section class="panel" id="formula" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formula">
+        <section class="panel" id="formula" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Basic mono sound file size formula</h2>
@@ -258,7 +315,7 @@
         </section>
 
         <!-- stage10-explanation:start formula -->
-        <section class="panel explanation-panel" id="explanation-formula" data-explains="formula" data-explanation-kind="mechanism" aria-labelledby="explanation-formula-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formula">
+        <section class="panel explanation-panel" id="explanation-formula" data-explains="formula" data-explanation-kind="mechanism" aria-labelledby="explanation-formula-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <h2 class="explanation-sr-only" id="explanation-formula-title">Basic mono sound file size formula</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-010-formula.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Basic mono sound file size formula with a structured visual model." />
@@ -270,9 +327,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end formula -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Mono sound size calculator</h2>
@@ -300,7 +355,7 @@
           <div class="method-box" id="calcMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -313,7 +368,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -323,7 +378,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the sound calculation</h2>
@@ -342,7 +397,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -354,60 +409,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Sound sampling, sampling resolution and file size</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An analogue sound wave varies continuously. Analogue-to-digital sampling measures its amplitude at regular time intervals, quantises each measurement to one permitted level and stores the resulting sample value as a binary number. The sequence of binary sample values is the digital representation of the sound.</p>
-            <p>Sampling rate is the number of samples taken per second, measured in hertz (Hz). Sampling resolution is the number of bits used for each sample and therefore controls how many amplitude levels are available. 'Sample resolution' is a common synonym, but sampling resolution is the official syllabus term.</p>
-            <p>For uncompressed sound, file size in bits = sampling rate x sampling resolution x duration x number of channels. Increasing sampling rate can represent changes over time more accurately; increasing sampling resolution can represent amplitude more accurately. Either increase also makes the file larger when the other factors stay constant.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Calculate and interpret one recording</h3>
-            <p>A 10-second mono recording sampled at 8000 Hz with 16-bit sampling resolution uses 8000 x 16 x 10 x 1 = 1,280,000 bits = 160,000 bytes. Doubling only the sampling resolution to 32 bits doubles the file size and provides more possible amplitude levels; it does not take more samples per second.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Sound sampling, sampling resolution and file size: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What is the official term for the number of bits used to store each sound sample?</p>
-              <details><summary>Show answer</summary><p>Sampling resolution; sample resolution is a common synonym.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How does a higher sampling rate affect the stored data?</p>
-              <details><summary>Show answer</summary><p>It stores more measurements each second, which can improve time accuracy and increases file size.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> How does a higher sampling resolution affect the stored data?</p>
-              <details><summary>Show answer</summary><p>It provides more possible amplitude levels, which can improve amplitude accuracy and increases file size.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A 5-second stereo recording is sampled at 12,000 Hz using 8-bit sampling resolution. Calculate its uncompressed size in bytes and explain one accuracy/storage trade-off.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>M1</strong> uses 12,000 x 8 x 5 x 2 bits</li>
-                <li><strong>A1</strong> obtains 960,000 bits / 120,000 bytes</li>
-                <li><strong>B1</strong> higher sampling rate gives more measurements per second or higher sampling resolution gives more amplitude levels</li>
-                <li><strong>B1</strong> the stated increase improves the relevant accuracy but increases file size</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Sound file size has three levers today</h2>

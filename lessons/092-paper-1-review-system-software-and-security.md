@@ -43,8 +43,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit topic recognition, precise terminology, and explanations that fit the scenario rather than generic memorised lines.
 
-
-
 ## Student Task
 Students complete a timed response, swap scripts, mark with a checklist, and write one improved version.
 

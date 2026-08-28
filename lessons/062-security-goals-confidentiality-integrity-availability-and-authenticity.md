@@ -1,4 +1,49 @@
-# Lesson 062: Security goals: confidentiality, integrity, availability, and authenticity
+# Lesson 062: Security, privacy and data integrity
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Security, privacy and data integrity
+
+### Direct explanation
+
+- Data security is protection against unauthorised access, loss or damage. Privacy concerns appropriate collection, use and disclosure of personal data. Integrity means data remains accurate, complete and unaltered except by authorised processes.
+- The concepts overlap but are not synonyms: encrypted inaccurate data may be secure but lack integrity; authorised publication may preserve integrity while violating privacy.
+- Both data security and computer-system security are necessary. Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable; protecting only the device is insufficient if copied data is disclosed, altered or lost.
+
+### Worked example
+
+**Medical records on a compromised computer system:** Encryption restricts unauthorised reading of the record data. Access rights restrict who may view or alter it. Anti-virus and a firewall help protect the computer system that stores and processes the records. If malware controls the system, it may steal decrypted data, alter records or stop authorised access even though the stored file was encrypted.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which concept is damaged when data is altered incorrectly?
+   **Answer:** Integrity.
+2. Which concept concerns how personal data is collected and disclosed?
+   **Answer:** Privacy.
+3. Can data be secure but inaccurate?
+   **Answer:** Yes; access protection does not guarantee correctness.
+4. Why must the computer system also be protected?
+   **Answer:** A compromised or unavailable system can expose, alter, delete or prevent access to the data it processes, even when a stored file has a separate protection such as encryption.
+
+### Exam-style question and MS
+
+**Question (5 marks):** Compare data security, privacy and integrity, then explain why both data and its computer system require security.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| security protects against unauthorised access/loss/damage | Do not accept repeated versions of 'keeping data safe' or the claim that file encryption alone secures the computer system. | 1 |
+| privacy controls appropriate personal-data use/disclosure |  | 1 |
+| integrity concerns accuracy/completeness/authorised change |  | 1 |
+| computer-system compromise can expose/alter/destroy data or prevent authorised access |  | 1 |
+| data-specific and system controls are both required / one does not replace the other |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +88,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Good answers pair the control with the risk: access rights limit unauthorised viewing, hashing protects stored passwords, backups support recovery.
 
-
-
 ## Student Task
 Groups create a risk-control table for a school database, online shop or hospital system. They must include one human weakness, not only technical attacks.
 
@@ -72,45 +115,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Security, privacy and data integrity
-
-### Direct explanation
-
-- Data security is protection against unauthorised access, loss or damage. Privacy concerns appropriate collection, use and disclosure of personal data. Integrity means data remains accurate, complete and unaltered except by authorised processes.
-- The concepts overlap but are not synonyms: encrypted inaccurate data may be secure but lack integrity; authorised publication may preserve integrity while violating privacy.
-- Both data security and computer-system security are necessary. Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable; protecting only the device is insufficient if copied data is disclosed, altered or lost.
-
-### Worked example
-
-**Medical records on a compromised computer system:** Encryption restricts unauthorised reading of the record data. Access rights restrict who may view or alter it. Anti-virus and a firewall help protect the computer system that stores and processes the records. If malware controls the system, it may steal decrypted data, alter records or stop authorised access even though the stored file was encrypted.
-
-### Targeted practice and answers
-
-1. Which concept is damaged when data is altered incorrectly?
-   **Answer:** Integrity.
-2. Which concept concerns how personal data is collected and disclosed?
-   **Answer:** Privacy.
-3. Can data be secure but inaccurate?
-   **Answer:** Yes; access protection does not guarantee correctness.
-4. Why must the computer system also be protected?
-   **Answer:** A compromised or unavailable system can expose, alter, delete or prevent access to the data it processes, even when a stored file has a separate protection such as encryption.
-
-### Exam-style question and MS
-
-**Question (5 marks):** Distinguish data security, privacy and integrity, then explain why both data and its computer system require security.
-
-- **B1** security protects against unauthorised access/loss/damage
-- **B1** privacy controls appropriate personal-data use/disclosure
-- **B1** integrity concerns accuracy/completeness/authorised change
-- **B1** computer-system compromise can expose/alter/destroy data or prevent authorised access
-- **B1** data-specific and system controls are both required / one does not replace the other
-
-**Strict note:** Do not accept repeated versions of 'keeping data safe' or the claim that file encryption alone secures the computer system.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -118,7 +122,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `authenticity`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-authenticity.jpg`
 
 1. Goal Users, devices, messages or files should be verified as genuine.
@@ -130,7 +134,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `availability`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-availability.jpg`
 
 1. Goal Authorised users should be able to access data and services when required.
@@ -142,7 +146,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `confidentiality`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-confidentiality.jpg`
 
 1. Goal Only authorised users should be able to view or access the data.
@@ -150,23 +154,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Controls Access rights, authentication, encryption and least privilege can support confidentiality.
 4. Exam wording Say who is prevented from reading what, and why they are unauthorised.
 
-### One control can support more than one goal, but not every goal
-
-- **Explains:** `controls`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-controls.jpg`
-
-1. Encryption makes data unreadable without the correct key and supports confidentiality.
-2. Access rights prevent unauthorised viewing and prevent unauthorised alteration; they support confidentiality and integrity but do not detect whether data changed.
-3. Backups allow recovery after data loss or corruption and support availability.
-4. Hash/checksum comparison can detect whether data changed and supports integrity, but it does not prevent unauthorised alteration.
-
 ### Integrity protects data from unauthorised or accidental alteration
 
 - **Explains:** `integrity`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-integrity.jpg`
 
 1. Goal Data should remain accurate, complete and unaltered unless changed by an authorised process.
@@ -179,7 +171,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `risk-chain`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-risk-chain.jpg`
 
 1. Asset Something valuable that needs protection, such as exam marks, passwords or customer records.

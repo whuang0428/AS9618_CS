@@ -106,6 +106,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -127,7 +133,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "A school stores exam marks on a networked computer system. Explain why both the data and the computer system need security, then recommend one control for each.",
+    prompt: "A school stores exam marks on a networked computer system. Explain why both the data and the computer system need security, then Suggest one control for each.",
     answer: "The mark data needs security because unauthorised viewing would breach confidentiality and unauthorised or accidental alteration would damage integrity. The computer system also needs security because malware, stolen accounts or an unavailable server could expose, alter, delete or prevent access to the data it processes. Access rights or encryption can protect the data. Updated anti-virus, a firewall or strong authentication can reduce a matching computer-system risk. Protecting only one layer leaves the other attack route open.",
     marking: [
       { mark: "B1", text: "data-security need linked to unauthorised viewing/disclosure or confidentiality" },
@@ -180,7 +186,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Classify each scenario by the main security goal and justify it: customer records are read by an unauthorised employee; stock values are altered incorrectly; a website is offline during a sale.",
+    prompt: "Identify each scenario by the main security goal and justify it: customer records are read by an unauthorised employee; stock values are altered incorrectly; a website is offline during a sale.",
     answer: "Customer records read by an unauthorised employee is a confidentiality issue because private data is accessed by someone who should not view it. Stock values altered incorrectly is an integrity issue because the accuracy and correctness of the data has been damaged. A website offline during a sale is an availability issue because authorised customers or staff cannot access the service when required.",
     marking: [
       { mark: "B1", text: "unauthorised reading classified as confidentiality" },
@@ -325,8 +331,8 @@ function renderExam() {
       <div class="ms-panel" id="ms${index}">
         <h4>Indicative answer</h4>
         <p>${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

@@ -97,6 +97,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -136,7 +142,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "A simplified CPU uses 4 opcode bits followed by 8 operand bits. Opcode 0011 means ADD. Decode 0011 01011010.",
+    prompt: "A simplified CPU uses 4 opcode bits followed by 8 operand bits. Opcode 0011 means ADD. Give the decoded form of 0011 01011010.",
     answer: "The opcode is the first 4 bits, 0011, which means ADD. The operand is the last 8 bits, 01011010. Converting the operand gives 64 + 16 + 8 + 2 = 90. Therefore the instruction means ADD using the value/address represented by 90, depending on the instruction format.",
     marking: [
       { mark: "M1", text: "splits instruction into 0011 and 01011010" },
@@ -327,9 +333,9 @@ function renderExamQuestions() {
       <p>${question.prompt}</p>
       <button type="button" class="ms-toggle" data-answer="ms-${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong> ${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((item) => `<li><strong>${item.mark}</strong> ${item.text}</li>`).join("")}</ul>
+        <p><strong>Answer:</strong> ${question.answer}</p>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

@@ -1,4 +1,8 @@
-# Lesson 033: Embedded systems and microcontrollers
+# Lesson 033: Monitoring, control, feedback and required sensors
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -7,9 +11,9 @@
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Define an embedded system and identify its dedicated purpose inside a larger device.
-2. Explain how a microcontroller can integrate CPU, memory and input/output interfaces.
-3. Compare embedded systems with general-purpose computers using interface and design priorities.
+1. Identify the sensor, processor and output components involved in **Embedded systems and microcontrollers**.
+2. Describe the sequence from input data to a control action.
+3. Apply the control process to a stated scenario and explain its limitation.
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -17,12 +21,12 @@ English first, Chinese support:
 - input 输入, output 输出, storage 存储, logic gate 逻辑门, embedded system 嵌入式系统
 
 ## Warm-Up Hook
-Ask why a washing machine uses a dedicated embedded computer rather than a general-purpose laptop. Lead students to purpose, integration, interface and reliability.
+Ask how a washing machine detects the current conditions and decides when to change its operation. Lead students to sensors, data input, processing and actuators.
 
 Focus question: Which feature distinguishes **Embedded systems and microcontrollers** from the most closely related syllabus concept?
 
 ## Guided Explanation
-Define an embedded system by its dedicated role inside a larger device. Compare a microcontroller with a general-purpose computer and link low cost, low power, limited interface and reliability to the device requirements.
+Build a control loop: sensor reads a physical quantity, processor compares it with a rule, actuator changes the environment, then the sensor reads again. Keep the loop visible and ask where errors could enter.
 
 Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
@@ -34,19 +38,17 @@ Suggested timing:
 - 38-45 min: mini-quiz and exit ticket.
 
 ## Board Plan / Teacher Talk Track
-Left: dedicated purpose. Middle: microcontroller components. Right: embedded versus general-purpose design priorities.
+Left: physical condition. Middle: sensor -> processor -> actuator loop. Right: error and safety checks.
 
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
 **Problem:** Design a control system for a greenhouse fan using temperature readings.
 
-**Worked answer / marking focus:** A complete answer states the dedicated purpose, position inside a larger device and at least one relevant design priority.
-
-
+**Worked answer / marking focus:** A complete answer names the sensor, decision condition, actuator, and feedback loop. Extra credit for validation or safety limits.
 
 ## Student Task
-Students compare a microwave oven, router and laptop, then justify which are embedded systems using purpose, interface and hardware integration.
+Students write a three-step control rule for traffic lights, greenhouse fans or automatic doors, then identify the sensor and actuator.
 
 ## Mini-Quiz
 1. State one precise definition from this lesson.
@@ -69,46 +71,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often define an embedded system only as a small computer. Correction: its dedicated role inside a larger device is the defining distinction.
+Misconception: Students often say the sensor 'does the action'. Correction: sensors detect; actuators act.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
-
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Embedded systems: purpose, benefits and drawbacks
-
-### Direct explanation
-
-- An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.
-- Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.
-
-### Worked example
-
-**Washing-machine controller:** A dedicated microcontroller can read sensors and control the motor and valves with low power use and predictable timing. Its limited interface is acceptable for wash programs, but it cannot readily run unrelated applications, and a controller failure can prevent the whole machine from operating.
-
-### Targeted practice and answers
-
-1. What two features define an embedded system?
-   **Answer:** It is built into a larger device and performs a dedicated task or closely related set of tasks.
-2. Give one benefit of an embedded controller and explain its consequence.
-   **Answer:** For example, low power use reduces energy or battery demand for the device.
-3. Give one drawback of an embedded controller and explain its consequence.
-   **Answer:** For example, limited resources make it difficult to add unrelated functions or run general-purpose software.
-4. Why can failure of an embedded controller be serious?
-   **Answer:** The larger device may lose the function controlled by that computer or stop operating.
-
-### Exam-style question and MS
-
-**Question (5 marks):** A battery-powered medical monitor uses an embedded controller. Explain two benefits and two drawbacks of this design in context.
-
-- **B1** benefit such as low power, compact size or predictable automatic operation
-- **B1** first benefit linked to battery life, portability or continuous monitoring
-- **B1** drawback such as limited resources/upgrading/interface or controller dependence
-- **B1** first drawback linked to limited new functions or device failure
-- **B1** second distinct benefit or drawback correctly developed
-
-**Strict note:** Do not award bare adjectives such as 'small' or 'cheap' without a device-specific consequence.
-<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
@@ -117,7 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `embedded`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-033-embedded.jpg`
 
 1. An embedded system is designed to perform a specific task or closely related set of tasks.
@@ -130,7 +94,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `microcontroller`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-033-microcontroller.jpg`
 
 1. Microcontroller / embedded system

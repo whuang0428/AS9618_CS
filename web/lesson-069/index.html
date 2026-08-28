@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 069 | Data validation and verification</title>
+    <title>AS9618 Lesson 069 | Complete validation and verification methods</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Data validation and verification</h1>
+        <h1>Complete validation and verification methods</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,7 +47,117 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Complete validation and verification methods</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Validation checks whether data is reasonable and follows rules: range, format, length, presence, existence, limit and check digit. It cannot prove truth. A range check applies both a lower and an upper bound, such as 0 to 75. A limit check applies one stated upper or lower limit, such as file size no greater than 10 MiB or temperature at least -20 degrees Celsius.</p>
+            <p>A format check tests a required pattern; a length check tests the number of characters; a presence check rejects a blank required field; an existence check confirms a value is stored in a specified lookup file; and a check digit is calculated from the other digits and compared. Verification checks whether data was copied accurately, using visual checking or double entry.</p>
+            <p>Error detection includes parity: a parity byte checks one group and block parity adds row/column checks; a checksum is calculated from a data block and compared after transmission. These detect many errors but do not correct every error.</p>
+            <p>During transfer, a parity check can be applied to a byte or a block, while a checksum provides a separate calculated verification value.</p>
+            <p>Data validation and data verification help protect data integrity by detecting or preventing many input, copying and transfer errors before inaccurate or corrupted data are accepted. They reduce these risks but do not prove that the original source is true or replace access control and backup.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Validate input, then verify a transferred record</h3>
+            <p>A 10 MiB maximum uses an upper limit check because it has one permitted limit; a mark from 0 to 75 uses a range check because it has both lower and upper bounds. A product code uses presence, length, format, existence and check-digit rules. During entry, visual checking or double entry compares values. During transfer, byte parity detects many single-bit errors, block parity adds row/column evidence and a checksum is recalculated from the received data block.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start verification -->
+        <section class="panel explanation-panel" id="explanation-verification" data-explains="verification" data-explanation-kind="mechanism" aria-labelledby="explanation-verification-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="verification">
+          <h2 class="explanation-sr-only" id="explanation-verification-title">Verification checks accuracy against the source</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-verification.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Verification checks accuracy against the source with a structured visual model." />
+            <figcaption class="explanation-sr-only">Verification checks accuracy against the source: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> During data entry, visual checking compares entered data with its source and double entry compares two independently entered values.</li><li><strong>Lesson fact:</strong> During transfer, a parity check on a byte tests the agreed odd or even parity; block parity applies parity across rows and columns of a data block.</li><li><strong>Lesson fact:</strong> For a checksum, the sender calculates and transmits a value for the data block; the receiver recalculates and compares it.</li><li><strong>Lesson fact:</strong> These methods detect many errors but do not prove truth or automatically correct every error.</li><li><strong>Lesson fact:</strong> A validation check digit belongs to an identifier; a transfer checksum belongs to a transmitted data block.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end verification -->
+
+        <!-- stage10-explanation:start checks -->
+        <section class="panel explanation-panel" id="explanation-checks" data-explains="checks" data-explanation-kind="mechanism" aria-labelledby="explanation-checks-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checks">
+          <h2 class="explanation-sr-only" id="explanation-checks-title">Common validation checks</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-checks.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common validation checks with a structured visual model." />
+            <figcaption class="explanation-sr-only">Common validation checks: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> The seven required validation methods are range, format, length, presence, existence, limit and check digit.</li><li><strong>Lesson fact:</strong> A range check applies both a lower and an upper bound; a limit check applies one stated upper or lower limit.</li><li><strong>Lesson fact:</strong> An existence check confirms that a value is present in a specified stored lookup or file.</li><li><strong>Lesson fact:</strong> A check digit is calculated from the other digits and compared to detect many entry or scanning errors.</li><li><strong>Lesson fact:</strong> Validation checks rules and reasonableness; it does not prove that data is true.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end checks -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Complete validation and verification methods: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> How do validation and verification help protect data integrity?</p>
+              <details><summary>Show answer</summary><p>They detect or prevent many input, copying and transfer errors, reducing the chance that inaccurate or corrupted data are accepted; they do not prove that the source is true.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which check enforces a file size of no more than 10 MiB?</p>
+              <details><summary>Show answer</summary><p>An upper limit check.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> How does a range check differ from a limit check?</p>
+              <details><summary>Show answer</summary><p>A range check applies both lower and upper bounds; a limit check applies one stated upper or lower limit.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Which check confirms a foreign code is already stored in a lookup file?</p>
+              <details><summary>Show answer</summary><p>Existence check.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Draw lines to match each rule to its validation check: AA1234 follows two letters then four digits; a code has exactly six characters; a required name is not blank; a barcode includes a digit calculated from the other digits.</p>
+              <details><summary>Show answer</summary><p>Format check; length check; presence check; check digit, respectively.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> How does double-entry verification work?</p>
+              <details><summary>Show answer</summary><p>Data is entered twice and the two entries are compared.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>7.</strong> Compare byte parity from block parity.</p>
+              <details><summary>Show answer</summary><p>Byte parity checks the agreed odd/even parity for one byte; block parity applies parity across rows and columns of a block and can locate many single-bit errors.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>8.</strong> What happens to a checksum at the receiver?</p>
+              <details><summary>Show answer</summary><p>It is recalculated and compared with the transmitted checksum.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Describe one verification method used during data entry and two methods used during data transfer.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>visual check against source or double entry with comparison</td><td>Do not substitute validation checks for verification, merge byte and block parity into one unexplained word, or claim that detection automatically corrects an error.</td><td>1</td></tr>
+                  <tr><td>byte parity uses an agreed odd/even parity bit and checks it at the receiver</td><td></td><td>1</td></tr>
+                  <tr><td>block parity checks rows and columns / can locate many single-bit errors</td><td></td><td>1</td></tr>
+                  <tr><td>checksum is recalculated from received block and compared</td><td></td><td>1</td></tr>
+                  <tr><td>methods detect many errors but do not prove truth or automatically correct every error</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 069 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
             <h2>Validation asks "is it sensible?" Verification asks "was it copied correctly?"</h2>
@@ -73,7 +183,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Marks are often lost when candidates say validation makes data correct. It only checks against a rule.</p>
@@ -84,7 +194,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A form rejects an age of 302 because the allowed range is 0 to 120. What is happening?</h2>
@@ -101,7 +211,7 @@
           </div>
         </section>
 
-        <section class="panel" id="core" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
+        <section class="panel" id="core" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Validation and verification protect data quality in different ways</h2>
@@ -116,7 +226,7 @@
         </section>
 
         <!-- stage10-explanation:start core -->
-        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
+        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <h2 class="explanation-sr-only" id="explanation-core-title">Validation and verification protect data quality in different ways</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation and verification protect data quality in different ways with a structured visual model." />
@@ -128,8 +238,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end core -->
-
-        <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
+        <section class="panel" id="validation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Validation checks whether data obeys a rule</h2>
@@ -143,7 +252,7 @@
         </section>
 
         <!-- stage10-explanation:start validation -->
-        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
+        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <h2 class="explanation-sr-only" id="explanation-validation-title">Validation checks whether data obeys a rule</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation checks whether data obeys a rule with a structured visual model." />
@@ -155,8 +264,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end validation -->
-
-        <section class="panel" id="checks" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checks">
+        <section class="panel" id="checks" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Common validation checks</h2>
@@ -200,21 +308,7 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start checks -->
-        <section class="panel explanation-panel" id="explanation-checks" data-explains="checks" data-explanation-kind="mechanism" aria-labelledby="explanation-checks-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checks">
-          <h2 class="explanation-sr-only" id="explanation-checks-title">Common validation checks</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-checks.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common validation checks with a structured visual model." />
-            <figcaption class="explanation-sr-only">Common validation checks: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> The seven required validation methods are range, format, length, presence, existence, limit and check digit.</li><li><strong>Lesson fact:</strong> A range check applies both a lower and an upper bound; a limit check applies one stated upper or lower limit.</li><li><strong>Lesson fact:</strong> An existence check confirms that a value is present in a specified stored lookup or file.</li><li><strong>Lesson fact:</strong> A check digit is calculated from the other digits and compared to detect many entry or scanning errors.</li><li><strong>Lesson fact:</strong> Validation checks rules and reasonableness; it does not prove that data is true.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end checks -->
-
-        <section class="panel" id="verification" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="verification">
+        <section class="panel" id="verification" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Verification checks accuracy against the source</h2>
@@ -227,21 +321,7 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start verification -->
-        <section class="panel explanation-panel" id="explanation-verification" data-explains="verification" data-explanation-kind="mechanism" aria-labelledby="explanation-verification-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="verification">
-          <h2 class="explanation-sr-only" id="explanation-verification-title">Verification checks accuracy against the source</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-verification.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Verification checks accuracy against the source with a structured visual model." />
-            <figcaption class="explanation-sr-only">Verification checks accuracy against the source: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> During data entry, visual checking compares entered data with its source and double entry compares two independently entered values.</li><li><strong>Lesson fact:</strong> During transfer, a parity check on a byte tests the agreed odd or even parity; block parity applies parity across rows and columns of a data block.</li><li><strong>Lesson fact:</strong> For a checksum, the sender calculates and transmits a value for the data block; the receiver recalculates and compares it.</li><li><strong>Lesson fact:</strong> These methods detect many errors but do not prove truth or automatically correct every error.</li><li><strong>Lesson fact:</strong> A validation check digit belongs to an identifier; a transfer checksum belongs to a transmitted data block.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end verification -->
-
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Validation and verification are partners, not synonyms</h2>
@@ -271,7 +351,7 @@
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <h2 class="explanation-sr-only" id="explanation-compare-title">Validation and verification are partners, not synonyms</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation and verification are partners, not synonyms with a structured visual model." />
@@ -283,8 +363,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
-
-        <section class="panel" id="limits" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="limits">
+        <section class="panel" id="limits" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Neither method guarantees truth</h2>
@@ -298,7 +377,7 @@
         </section>
 
         <!-- stage10-explanation:start limits -->
-        <section class="panel explanation-panel" id="explanation-limits" data-explains="limits" data-explanation-kind="mechanism" aria-labelledby="explanation-limits-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="limits">
+        <section class="panel explanation-panel" id="explanation-limits" data-explains="limits" data-explanation-kind="mechanism" aria-labelledby="explanation-limits-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <h2 class="explanation-sr-only" id="explanation-limits-title">Neither method guarantees truth</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-limits.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Neither method guarantees truth with a structured visual model." />
@@ -310,9 +389,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end limits -->
-
-
-        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">
+        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Interactive validation rule tester</p>
             <h2>Try common validation checks</h2>
@@ -342,7 +419,7 @@
           <div class="method-box" id="checkReason"></div>
         </section>
 
-        <section class="panel" id="verify-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="verify-tool">
+        <section class="panel" id="verify-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Interactive verification selector</p>
             <h2>Which verification method fits?</h2>
@@ -366,7 +443,7 @@
         </section>
 
         <!-- stage10-explanation:start verify-tool -->
-        <section class="panel explanation-panel" id="explanation-verify-tool" data-explains="verify-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-verify-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="verify-tool">
+        <section class="panel explanation-panel" id="explanation-verify-tool" data-explains="verify-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-verify-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <h2 class="explanation-sr-only" id="explanation-verify-tool-title">Which verification method fits?</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-verify-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which verification method fits? with a structured visual model." />
@@ -378,8 +455,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end verify-tool -->
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Four model answers showing what is detected</h2>
@@ -393,7 +469,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short answers: name the method and its limitation</h2>
@@ -402,7 +478,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the sentence before it loses marks</h2>
@@ -410,7 +486,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -419,77 +495,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Complete validation and verification methods</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Validation checks whether data is reasonable and follows rules: range, format, length, presence, existence, limit and check digit. It cannot prove truth. A range check applies both a lower and an upper bound, such as 0 to 75. A limit check applies one stated upper or lower limit, such as file size no greater than 10 MiB or temperature at least -20 degrees Celsius.</p>
-            <p>A format check tests a required pattern; a length check tests the number of characters; a presence check rejects a blank required field; an existence check confirms a value is stored in a specified lookup file; and a check digit is calculated from the other digits and compared. Verification checks whether data was copied accurately, using visual checking or double entry.</p>
-            <p>Error detection includes parity: a parity byte checks one group and block parity adds row/column checks; a checksum is calculated from a data block and compared after transmission. These detect many errors but do not correct every error.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Validate input, then verify a transferred record</h3>
-            <p>A 10 MiB maximum uses an upper limit check because it has one permitted limit; a mark from 0 to 75 uses a range check because it has both lower and upper bounds. A product code uses presence, length, format, existence and check-digit rules. During entry, visual checking or double entry compares values. During transfer, byte parity detects many single-bit errors, block parity adds row/column evidence and a checksum is recalculated from the received data block.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Complete validation and verification methods: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which check enforces a file size of no more than 10 MiB?</p>
-              <details><summary>Show answer</summary><p>An upper limit check.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How does a range check differ from a limit check?</p>
-              <details><summary>Show answer</summary><p>A range check applies both lower and upper bounds; a limit check applies one stated upper or lower limit.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which check confirms a foreign code is already stored in a lookup file?</p>
-              <details><summary>Show answer</summary><p>Existence check.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Match each rule to its validation check: AA1234 follows two letters then four digits; a code has exactly six characters; a required name is not blank; a barcode includes a digit calculated from the other digits.</p>
-              <details><summary>Show answer</summary><p>Format check; length check; presence check; check digit, respectively.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> How does double-entry verification work?</p>
-              <details><summary>Show answer</summary><p>Data is entered twice and the two entries are compared.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> Distinguish byte parity from block parity.</p>
-              <details><summary>Show answer</summary><p>Byte parity checks the agreed odd/even parity for one byte; block parity applies parity across rows and columns of a block and can locate many single-bit errors.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> What happens to a checksum at the receiver?</p>
-              <details><summary>Show answer</summary><p>It is recalculated and compared with the transmitted checksum.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Describe one verification method used during data entry and two methods used during data transfer.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> visual check against source or double entry with comparison</li>
-                <li><strong>B1</strong> byte parity uses an agreed odd/even parity bit and checks it at the receiver</li>
-                <li><strong>B1</strong> block parity checks rows and columns / can locate many single-bit errors</li>
-                <li><strong>B1</strong> checksum is recalculated from received block and compared</li>
-                <li><strong>B1</strong> methods detect many errors but do not prove truth or automatically correct every error</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>The difference is small in wording and large in marks</h2>

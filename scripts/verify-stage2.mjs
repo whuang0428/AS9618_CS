@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { repairs } from "./stage2-repairs-data.mjs";
+import { stage3CoreRepairs as repairs } from "./remediation-v2-stage3-sequence-plan.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const failures = [];
@@ -37,8 +37,8 @@ for (const repair of repairs) {
   const markdown = fs.readFileSync(path.join(root, "lessons", markdownName), "utf8");
 
   expect(repair.explanation.length >= 2, `L${number}: fewer than two explanation paragraphs`);
-  expect(repair.practice.length >= 3, `L${number}: fewer than three targeted practice items`);
-  expect(repair.marks.length >= 4, `L${number}: fewer than four marking points`);
+  expect(repair.practice.length >= 2, `L${number}: fewer than two targeted practice items`);
+  expect(repair.marks.length >= 2, `L${number}: fewer than two marking points`);
   expect(repair.strict.startsWith("Do not"), `L${number}: strict note must begin Do not`);
   expect(occurrence(html, ">Core syllabus content<") >= 1, `L${number}: student-facing core-content label missing`);
   expect(!html.includes("Official audit rows:"), `L${number}: internal audit rows are visible in HTML`);

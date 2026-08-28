@@ -132,11 +132,17 @@ const mistakes = [
   { wrong: "Average is output after every input when the question asks for one final average.", fix: "Calculate and output the average after the loop has processed all required values." },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "8 marks",
-    prompt: "Trace the values of Total, Count, Maximum and Minimum after each value in the list 6, 3, 8, 2 is processed.",
+    prompt: "Complete a trace table showing the values of Total, Count, Maximum and Minimum after each value in the list 6, 3, 8, 2 is processed.",
     answer: "After 6: Total 6, Count 1, Maximum 6, Minimum 6.\nAfter 3: Total 9, Count 2, Maximum 6, Minimum 3.\nAfter 8: Total 17, Count 3, Maximum 8, Minimum 3.\nAfter 2: Total 19, Count 4, Maximum 8, Minimum 2.",
     marking: [
       { mark: "B1", text: "initialises / shows first row correctly for all variables" },
@@ -374,10 +380,10 @@ function setupExam() {
       <p>${question.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${question.answer}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

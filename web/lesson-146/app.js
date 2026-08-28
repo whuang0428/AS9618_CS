@@ -101,6 +101,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -124,15 +130,15 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "For an activity with capacity 20, create suitable test cases for the reservation rule.",
+    prompt: "For an activity with capacity 20, Develop suitable test cases for the reservation rule.",
     answer: "Normal test: reserve when 12 places are taken, expected accepted. Boundary valid test: reserve the 20th place, expected accepted. Boundary invalid test: attempt the 21st reservation, expected rejected or added to waiting list according to the rule. Abnormal test: enter a non-numeric capacity such as 'many', expected rejected with an error message.",
     marking: [
-      { mark: "M1", text: "selects a normal valid test case" },
-      { mark: "A1", text: "normal case has correct expected result" },
-      { mark: "M1", text: "selects the valid boundary case at capacity 20" },
-      { mark: "A1", text: "valid boundary case has correct expected result" },
-      { mark: "M1", text: "selects an invalid boundary or abnormal case" },
-      { mark: "A1", text: "invalid or abnormal case has correct expected result" },
+      { mark: "B1", text: "selects a normal valid test case" },
+      { mark: "B1", text: "normal case has correct expected result" },
+      { mark: "B1", text: "selects the valid boundary case at capacity 20" },
+      { mark: "B1", text: "valid boundary case has correct expected result" },
+      { mark: "B1", text: "selects an invalid boundary or abnormal case" },
+      { mark: "B1", text: "invalid or abnormal case has correct expected result" },
     ],
     strict: [
       "Test data alone is insufficient for full credit; expected result is required.",
@@ -162,7 +168,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "After release, the school asks for three changes: fix a cancellation fault, support a new timetable structure, and make activity search faster. Classify each maintenance type and justify your answer.",
+    prompt: "After release, the school asks for three changes: fix a cancellation fault, support a new timetable structure, and make activity search faster. Identify each maintenance type and justify your answer.",
     answer: "Fixing a cancellation fault is corrective maintenance because it fixes an error. Supporting a new timetable structure is adaptive maintenance because the system is changed for a new environment or rule. Making activity search faster is perfective maintenance because it improves performance after release.",
     marking: [
       { mark: "B1", text: "classifies cancellation fault fix as corrective" },
@@ -181,20 +187,18 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Evaluation evidence shows that 92% of students completed sign-up in under 2 minutes. The success criterion was 90%. Explain the evaluation judgement and one possible follow-up action.",
-    answer: "The criterion is met because 92% is higher than the 90% target. This evidence suggests the system is successful for sign-up speed. However, 8% of students did not meet the target, so the school could review user feedback or logs for those cases. A perfective maintenance change, such as clearer activity filters, may improve the remaining cases.",
+    prompt: "An existing program counts marks of 50 or more. Analyse where to amend the program so it also counts merits of 70 or more, while preserving the existing result.",
+    answer: "Analyse the existing declarations, initialisation, traversal, pass condition and outputs. Add and initialise MeritCount, then amend the existing traversal with a separate test Mark >= 70 and increment MeritCount. Keep the pass test Mark >= 50 unchanged, output both counts, and run boundary and regression tests such as 49, 50, 69 and 70.",
     marking: [
-      { mark: "B1", text: "compares 92% with the 90% target" },
-      { mark: "B1", text: "states the criterion is met" },
-      { mark: "B1", text: "uses evidence to support an evaluation judgement" },
-      { mark: "B1", text: "recognises remaining users or limitations" },
-      { mark: "B1", text: "suggests a valid follow-up action such as feedback/log review" },
-      { mark: "B1", text: "links follow-up to maintenance or improvement" },
+      { mark: "B1", text: "analyses existing traversal and behaviour to preserve" },
+      { mark: "B1", text: "declares and initialises MeritCount" },
+      { mark: "B1", text: "amends existing loop with Mark >= 70" },
+      { mark: "B1", text: "preserves Mark >= 50 pass behaviour" },
+      { mark: "B1", text: "outputs both counts" },
+      { mark: "B1", text: "uses boundary/regression tests around 50 and 70" },
     ],
     strict: [
-      "Do not award comparison mark if the candidate ignores the 90% criterion.",
-      "Allow equivalent wording such as 'success criterion has been achieved'.",
-      "Do not accept 'users liked it' unless linked to evidence.",
+      "Do not credit a rewrite that removes or changes the existing pass count.",
     ],
   },
 ];
@@ -362,9 +366,7 @@ function setupExam() {
         <h4>Indicative answer</h4>
         <p>${escapeHtml(item.answer)}</p>
         <h4>Mark scheme</h4>
-        <ul>
-          ${item.marking.map((mark) => `<li><strong>${escapeHtml(mark.mark)}</strong> ${escapeHtml(mark.text)}</li>`).join("")}
-        </ul>
+        ${renderStudentMarkPoints(item)}
       </div>
     </article>
   `).join("");

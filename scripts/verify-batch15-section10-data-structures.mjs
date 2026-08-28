@@ -4,6 +4,7 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 
 import { loadAllQuestions } from "./ms-review-utils.mjs";
+import { visualDeliveryLesson, visualDeliveryTarget } from "./remediation-v2-core-visuals.mjs";
 import { coverageContract } from "./syllabus-coverage-contract.mjs";
 import { evaluateRequirement } from "./syllabus-coverage-evaluator.mjs";
 
@@ -74,14 +75,14 @@ for (const id of scopedRequirements) {
 }
 
 const lessonChecks = [
-  ["105", ["linear search", "bubble sort", "REPEAT", "swaps", "ARRAY"]],
   ["113", ["INTEGER", "REAL", "CHAR", "STRING", "BOOLEAN", "DATE", "ARRAY", "FILE"]],
+  ["114", ["different data types", "one identifier", "TYPE", "ENDTYPE", "Student1.Mark", "save", "read"]],
   ["115", ["index", "lower bound", "upper bound", "one-dimensional", "two-dimensional", "DECLARE"]],
   ["116", ["two-dimensional array", "DECLARE", "FOR", "row", "column"]],
-  ["118", ["different data types", "one identifier", "TYPE", "ENDTYPE", "Student1.Mark", "save", "read"]],
-  ["120", ["persistent", "OPENFILE", "READFILE", "WRITEFILE", "EOF", "CLOSEFILE"]],
-  ["122", ["collection of data and a set of operations", "stack", "queue", "linked list", "add", "edit", "delete", "array", "not required to write pseudocode"]],
-  ["123", ["LIFO", "FIFO", "linked list", "justify"]],
+  ["118", ["linear search", "bubble sort", "REPEAT", "swaps", "ARRAY"]],
+  ["119", ["persistent", "OPENFILE", "READFILE", "WRITEFILE", "EOF", "CLOSEFILE"]],
+  ["120", ["collection of data and a set of operations", "stack", "queue", "linked list", "add", "edit", "delete", "array", "does not require pseudocode"]],
+  ["121", ["LIFO", "FIFO", "linked list", "justify"]],
   ["125", ["Section 10", "record", "array", "file", "stack", "queue"]],
 ];
 for (const [lesson, terms] of lessonChecks) {
@@ -126,7 +127,9 @@ for (const key of visualKeys) {
   const semanticRow = semanticRows.find((row) => row.lesson === lesson && row.target_id === targetId);
   expect(semanticRow?.sha256 === visualHash, `${key}: semantic review hash does not match the current image`);
   expect(semanticRow?.pass1 === "Reviewed" && semanticRow?.pass2 === "Reviewed" && semanticRow?.status === "Approved", `${key}: visual lacks two approved semantic review passes`);
-  const targetRow = targetRows.find((row) => row.lesson === lesson && row.target_id === targetId);
+  const deliveryLesson = visualDeliveryLesson(lesson, targetId);
+  const deliveryTarget = visualDeliveryTarget(lesson, targetId);
+  const targetRow = targetRows.find((row) => row.lesson === deliveryLesson && row.target_id === deliveryTarget);
   expect(targetRow?.delivery_role === "CORE" && targetRow?.classroom_activity === "TEACH", `${key}: visual is not CORE/TEACH`);
 }
 includesAll(visualFacts, ["ARRAY and FILE", "TYPE and ENDTYPE", "collection of data and a set of operations", "not required to write pseudocode"], "Section 10 visual facts");

@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 112 | Section 9 review: from scenario to pseudocode</title>
+    <title>AS9618 Lesson 112 | Section 9 required-content checkpoint</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
-        <h1>Section 9 review: from scenario to pseudocode</h1>
+        <h1>Section 9 required-content checkpoint</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,350 +46,11 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 112 | 45 minutes | Paper 2 Section 9 | stage review</p>
-            <h2>Read the scenario. Find the pattern. Write the marks.</h2>
-            <p>
-              Section 9 questions rarely say, "Please use a sentinel-controlled loop with a running total." They
-              describe a situation and expect you to recognise the algorithm hiding inside it. This review lesson
-              connects decomposition, IPOC, trace tables, searches, sorts, loops and Cambridge pseudocode conventions.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Diagnose</strong><span>identify the likely Section 9 topic from command words and scenario clues</span></div>
-              <div><strong>Design</strong><span>convert requirements into IPOC, variables, control structures and pseudocode</span></div>
-              <div><strong>Upgrade</strong><span>rewrite vague answers into mark-worthy answers with strict Cambridge wording</span></div>
-            </div>
-          </div>
-          <div class="scenario-visual" aria-label="Review visual">
-            <div class="review-card">
-              <strong>Scenario</strong>
-              <span>Input values until -1. Ignore the sentinel. Output count, total and average.</span>
-            </div>
-            <div class="flow-strip">
-              <span>IPOC</span><span>Pattern</span><span>Pseudocode</span><span>Trace</span><span>MS</span>
-            </div>
-            <div class="review-card">
-              <strong>Answer shape</strong>
-              <span>Initialise -> input before test -> WHILE valid -> update -> input next -> output after loop</span>
-            </div>
-            <p>If the paragraph feels long, it is probably trying to hide a short algorithm.</p>
-          </div>
-        </section>
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Section 9 rewards mechanism. A correct label may start an answer, but marks usually come from how the algorithm works.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>"Use a loop" is not enough. Name the loop type and connect it to wording such as exactly, until, while or for each.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Which toolbox should you open?</h2>
-            <p>A question says: "The list is already sorted. Find whether a target value is present using as few comparisons as possible."</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="linear">Linear search</button>
-            <button class="choice-card" type="button" data-hook="binary">Binary search</button>
-            <button class="choice-card" type="button" data-hook="bubble">Bubble sort</button>
-            <button class="choice-card" type="button" data-hook="average">Running average</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the algorithm pattern signalled by "sorted" and "few comparisons".</div>
-        </section>
-
-        <section class="panel" id="retrieval" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="retrieval">
-          <div class="section-title">
-            <p class="eyebrow">Retrieval map</p>
-            <h2>Section 9 in one page</h2>
-            <p>Chinese support: 复习不是重新抄笔记，而是快速识别题目在考哪一种算法思维。</p>
-          </div>
-          <div class="data-table retrieval-table" role="table" aria-label="Section 9 review map">
-            <div class="table-row table-head" role="row"><div>Topic</div><div>Signal words</div><div>Expected mechanism</div><div>Typical marking error</div></div>
-            <div class="table-row" role="row"><div>IPOC / decomposition</div><div>scenario, requirements, constraints</div><div>break problem into inputs, processing, outputs and rules</div><div>copying the story without design decisions</div></div>
-            <div class="table-row" role="row"><div>Trace tables</div><div>dry run, trace, values after each loop</div><div>update variables row by row in execution order</div><div>jumping to final answer and missing intermediate states</div></div>
-            <div class="table-row" role="row"><div>Selection and iteration</div><div>if, otherwise, exactly, until, while</div><div>choose IF, FOR or WHILE from the wording</div><div>using a fixed loop when count is unknown</div></div>
-            <div class="table-row" role="row"><div>Search and sort</div><div>find, sorted, order, compare adjacent</div><div>linear/binary search, bubble/insertion sort</div><div>forgetting binary search needs sorted data</div></div>
-            <div class="table-row" role="row"><div>Running variables</div><div>total, count, maximum, minimum, average</div><div>initialise, update inside loop, output after loop</div><div>initialising maximum to 0 without a stated non-negative range</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start retrieval -->
-        <section class="panel explanation-panel" id="explanation-retrieval" data-explains="retrieval" data-explanation-kind="synthesis" aria-labelledby="explanation-retrieval-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="retrieval">
-          <h2 class="explanation-sr-only" id="explanation-retrieval-title">Section 9 in one page</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-retrieval.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 9 in one page with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 9 in one page: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Retrieval map</li><li><strong>Lesson fact:</strong> Signal words</li><li><strong>Lesson fact:</strong> Expected mechanism</li><li><strong>Lesson fact:</strong> Typical marking error</li><li><strong>Lesson fact:</strong> IPOC / decomposition</li><li><strong>Lesson fact:</strong> scenario, requirements, constraints</li><li><strong>Lesson fact:</strong> break problem into inputs, processing, outputs and rules</li><li><strong>Lesson fact:</strong> copying the story without design decisions</li><li><strong>Lesson fact:</strong> Trace tables</li><li><strong>Lesson fact:</strong> dry run, trace, values after each loop</li><li><strong>Lesson fact:</strong> update variables row by row in execution order</li><li><strong>Lesson fact:</strong> jumping to final answer and missing intermediate states</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end retrieval -->
-
-        <section class="panel" id="triage" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="triage">
-          <div class="section-title">
-            <p class="eyebrow">Scenario triage</p>
-            <h2>Turn question wording into an algorithm plan</h2>
-          </div>
-          <div class="triage-grid">
-            <article>
-              <h3>Step 1: Output first</h3>
-              <p>Ask: what must be displayed, returned or stored at the end? The final output tells you which variables need to exist.</p>
-              <pre><code>Output needed: average rainfall
-
-Therefore:
-Total is needed
-Count is needed
-Average &lt;- Total / Count</code></pre>
-            </article>
-            <article>
-              <h3>Step 2: Stop condition</h3>
-              <p>Ask: does the question state a fixed number of values, or does input continue until a condition is met?</p>
-              <pre><code>Exactly 7 days      -> FOR Day &lt;- 1 TO 7
-Until -1 entered   -> WHILE Value &lt;&gt; -1</code></pre>
-            </article>
-            <article>
-              <h3>Step 3: Update placement</h3>
-              <p>Updates go inside the loop; final outputs normally go after the loop. The exam enjoys catching students who swap those two.</p>
-              <pre><code>Total &lt;- Total + Reading
-Count &lt;- Count + 1
-
-// after the loop
-Average &lt;- Total / Count
-OUTPUT Average</code></pre>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start triage -->
-        <section class="panel explanation-panel" id="explanation-triage" data-explains="triage" data-explanation-kind="synthesis" aria-labelledby="explanation-triage-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="triage">
-          <h2 class="explanation-sr-only" id="explanation-triage-title">Turn question wording into an algorithm plan</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-triage.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn question wording into an algorithm plan with a structured visual model." />
-            <figcaption class="explanation-sr-only">Turn question wording into an algorithm plan: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Scenario triage</li><li><strong>Lesson fact:</strong> Step 1: Output first</li><li><strong>Lesson fact:</strong> Ask: what must be displayed, returned or stored at the end? The final output tells you which variables need to exist.</li><li><strong>Lesson fact:</strong> Output needed: average rainfall</li><li><strong>Lesson fact:</strong> Therefore:</li><li><strong>Lesson fact:</strong> Total is needed</li><li><strong>Lesson fact:</strong> Count is needed</li><li><strong>Lesson fact:</strong> Average &lt;- Total / Count</li><li><strong>Lesson fact:</strong> Step 2: Stop condition</li><li><strong>Lesson fact:</strong> Ask: does the question state a fixed number of values, or does input continue until a condition is met?</li><li><strong>Lesson fact:</strong> Exactly 7 days -&gt; FOR Day &lt;- 1 TO 7</li><li><strong>Lesson fact:</strong> Until -1 entered -&gt; WHILE Value &lt;&gt; -1</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end triage -->
-
-        <section class="panel" id="patterns" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
-          <div class="section-title">
-            <p class="eyebrow">Pattern choice</p>
-            <h2>Match the scenario to the correct algorithm pattern</h2>
-          </div>
-          <div class="data-table pattern-table" role="table" aria-label="Algorithm pattern choices">
-            <div class="table-row table-head" role="row"><div>Scenario clue</div><div>Pattern</div><div>Core pseudocode feature</div><div>One precise explanation</div></div>
-            <div class="table-row" role="row"><div>exactly 10 readings</div><div>Count-controlled loop</div><div><code>FOR Index &lt;- 1 TO 10</code></div><div>The number of repetitions is known before the loop starts.</div></div>
-            <div class="table-row" role="row"><div>until 0 is entered</div><div>Condition-controlled loop</div><div><code>WHILE Value &lt;&gt; 0</code></div><div>The number of repetitions depends on input values.</div></div>
-            <div class="table-row" role="row"><div>find whether target is in unsorted data</div><div>Linear search</div><div>compare each item with target</div><div>There is no ordering that allows values to be skipped safely.</div></div>
-            <div class="table-row" role="row"><div>find target in sorted data efficiently</div><div>Binary search</div><div>halve the search range</div><div>The sorted order makes it possible to discard half the remaining data.</div></div>
-            <div class="table-row" role="row"><div>put items into order by adjacent swaps</div><div>Bubble sort</div><div>compare and swap neighbours</div><div>Large items move towards the end after repeated passes.</div></div>
-            <div class="table-row" role="row"><div>build a sorted left section</div><div>Insertion sort</div><div>insert next item into its correct position</div><div>Each pass keeps the processed section sorted.</div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start patterns -->
-        <section class="panel explanation-panel" id="explanation-patterns" data-explains="patterns" data-explanation-kind="synthesis" aria-labelledby="explanation-patterns-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
-          <h2 class="explanation-sr-only" id="explanation-patterns-title">Match the scenario to the correct algorithm pattern</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-patterns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match the scenario to the correct algorithm pattern with a structured visual model." />
-            <figcaption class="explanation-sr-only">Match the scenario to the correct algorithm pattern: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pattern choice</li><li><strong>Lesson fact:</strong> Scenario clue</li><li><strong>Lesson fact:</strong> Core pseudocode feature</li><li><strong>Lesson fact:</strong> One precise explanation</li><li><strong>Lesson fact:</strong> exactly 10 readings</li><li><strong>Lesson fact:</strong> Count-controlled loop</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 10</li><li><strong>Lesson fact:</strong> The number of repetitions is known before the loop starts.</li><li><strong>Lesson fact:</strong> until 0 is entered</li><li><strong>Lesson fact:</strong> Condition-controlled loop</li><li><strong>Lesson fact:</strong> WHILE Value &lt;&gt; 0</li><li><strong>Lesson fact:</strong> The number of repetitions depends on input values.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end patterns -->
-
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
-          <div class="section-title">
-            <p class="eyebrow">Trace clinic</p>
-            <h2>Marks are often lost between two lines of pseudocode</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Sentinel trace</h3>
-              <p>Input values are 4, 6, 0. The sentinel 0 stops the loop and must not be counted.</p>
-              <div class="data-table mini-table" role="table" aria-label="Sentinel trace">
-                <div class="table-row table-head" role="row"><div>Input</div><div>Total</div><div>Count</div><div>Reason</div></div>
-                <div class="table-row" role="row"><div>start</div><div>0</div><div>0</div><div>initialise</div></div>
-                <div class="table-row" role="row"><div>4</div><div>4</div><div>1</div><div>valid data</div></div>
-                <div class="table-row" role="row"><div>6</div><div>10</div><div>2</div><div>valid data</div></div>
-                <div class="table-row" role="row"><div>0</div><div>10</div><div>2</div><div>stop, do not process</div></div>
-              </div>
-            </article>
-            <article>
-              <h3>Maximum trace warning</h3>
-              <p>If readings may be negative, <code>Maximum &lt;- 0</code> can produce an impossible answer.</p>
-              <pre><code>Inputs: -8, -3, -5
-Wrong initial Maximum &lt;- 0
-Output: 0   // not in the input data
-
-Better:
-INPUT Reading
-Maximum &lt;- Reading</code></pre>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <div class="section-title">
-            <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Paper 2 wants readable Cambridge-style pseudocode</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Cambridge-style answer</h3>
-              <pre><code>Total &lt;- 0
-Count &lt;- 0
-INPUT Value
-WHILE Value &lt;&gt; -1
-    Total &lt;- Total + Value
-    Count &lt;- Count + 1
-    INPUT Value
-ENDWHILE
-Average &lt;- Total / Count
-OUTPUT Average</code></pre>
-            </article>
-            <article>
-              <h3>Java support only</h3>
-              <pre><code>int total = 0;
-int count = 0;
-int value = input.nextInt();
-while (value != -1) {
-    total += value;
-    count++;
-    value = input.nextInt();
-}
-double average = (double) total / count;</code></pre>
-            </article>
-          </div>
-          <div class="callout">Chinese support: Java 可以帮助你测试思路，但 Cambridge pseudocode 才是 Paper 2 的作答格式。</div>
-        </section>
-
-        <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="synthesis" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Paper 2 wants readable Cambridge-style pseudocode</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Paper 2 wants readable Cambridge-style pseudocode with a structured visual model." />
-            <figcaption class="explanation-sr-only">Paper 2 wants readable Cambridge-style pseudocode: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Initialise Total and Count, then input the first Value.</li><li><strong>Lesson fact:</strong> While Value is not -1, add it to Total and increment Count.</li><li><strong>Lesson fact:</strong> Input the next Value inside the WHILE body before ENDWHILE.</li><li><strong>Lesson fact:</strong> If Count is greater than zero, calculate Average using real division and output it.</li><li><strong>Lesson fact:</strong> Java may support understanding but is not the Cambridge pseudocode answer format.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end pseudocode -->
-
-
-        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
-          <div class="section-title">
-            <p class="eyebrow">Interactive topic classifier</p>
-            <h2>Practise choosing the correct Section 9 tool</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario clue
-              <select id="classifierInput">
-                <option value="fixedLoop">Input exactly 12 scores and calculate the total.</option>
-                <option value="sentinel">Input values until -1 is entered.</option>
-                <option value="binarySearch">A sorted list must be searched using few comparisons.</option>
-                <option value="bubble">The algorithm compares adjacent items and swaps if they are in the wrong order.</option>
-                <option value="trace">Complete a table showing variable values after each loop iteration.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="classifierBtn">Classify</button>
-          </div>
-          <div class="trace-output" id="classifierResult">Choose a clue, then classify the topic and reasoning.</div>
-        </section>
-
-        <section class="panel" id="fixer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fixer">
-          <div class="section-title">
-            <p class="eyebrow">Interactive answer fixer</p>
-            <h2>Turn vague answers into mark-worthy answers</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Weak answer
-              <select id="fixerInput">
-                <option value="binary">Binary search is faster.</option>
-                <option value="loop">Use a loop.</option>
-                <option value="max">Set Maximum to 0.</option>
-                <option value="output">Output the average inside the loop.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="fixerBtn">Improve</button>
-          </div>
-          <div class="trace-output" id="fixerResult">Choose a weak answer to see a stricter version.</div>
-        </section>
-
-        <!-- stage10-explanation:start fixer -->
-        <section class="panel explanation-panel" id="explanation-fixer" data-explains="fixer" data-explanation-kind="synthesis" aria-labelledby="explanation-fixer-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fixer">
-          <h2 class="explanation-sr-only" id="explanation-fixer-title">Turn vague answers into mark-worthy answers</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-fixer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn vague answers into mark-worthy answers with a structured visual model." />
-            <figcaption class="explanation-sr-only">Turn vague answers into mark-worthy answers: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive answer fixer</li><li><strong>Lesson fact:</strong> Weak answer</li><li><strong>Lesson fact:</strong> Choose a weak answer to see a stricter version.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end fixer -->
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Review examples across Section 9</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="rainfall">Rainfall IPOC</button>
-            <button class="tab" type="button" data-example="sentinelTrace">Sentinel trace</button>
-            <button class="tab" type="button" data-example="searchSort">Search or sort</button>
-            <button class="tab" type="button" data-example="msUpgrade">MS upgrade</button>
-          </div>
-          <article class="example-box" id="exampleBox" aria-live="polite"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Ten quick Section 9 decisions</h2>
-            <p>Answer briefly. Then use Show answer to compare your wording with a stricter version.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Correct the habits that lose marks</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style Section 9 review questions with expandable MS</h2>
-            <p>MS guidance uses Cambridge-style strictness: award mechanism, reject vague claims, and apply FT only when the candidate's earlier method is logically consistent.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-
-        <!-- stage2-completion:start -->
+<!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
@@ -427,25 +88,364 @@ double average = (double) total / count;</code></pre>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
-            <p>Design an abstract, modular algorithm for processing ten valid marks, then show one refinement level and the central validation logic statement.</p>
+            <p>Develop an abstract, modular algorithm for processing ten valid marks, then show one refinement level and the central validation logic statement.</p>
             <details>
               <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> abstract model keeps only essential data, rules and output</li>
-                <li><strong>B1</strong> decomposition expresses connected program modules</li>
-                <li><strong>B1</strong> identifier table uses meaningful names, types and purposes</li>
-                <li><strong>B1</strong> IPO design forms a complete solution</li>
-                <li><strong>B1</strong> sequence, selection and iteration are used appropriately</li>
-                <li><strong>B1</strong> one representation is accurate and convertible without changing meaning</li>
-                <li><strong>B1</strong> stepwise refinement replaces a complex step with implementable substeps</li>
-                <li><strong>B1</strong> logic statement correctly enforces the required mark range</li>
-              </ol>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>abstract model keeps only essential data, rules and output</td><td>Do not award isolated terminology when the design omits the required model, modules, refinement or logic.</td><td>1</td></tr>
+                  <tr><td>decomposition expresses connected program modules</td><td></td><td>1</td></tr>
+                  <tr><td>identifier table uses meaningful names, types and purposes</td><td></td><td>1</td></tr>
+                  <tr><td>IPO design forms a complete solution</td><td></td><td>1</td></tr>
+                  <tr><td>sequence, selection and iteration are used appropriately</td><td></td><td>1</td></tr>
+                  <tr><td>one representation is accurate and convertible without changing meaning</td><td></td><td>1</td></tr>
+                  <tr><td>stepwise refinement replaces a complex step with implementable substeps</td><td></td><td>1</td></tr>
+                  <tr><td>logic statement correctly enforces the required mark range</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
             </details>
           </article>
         </section>
         <!-- stage2-completion:end -->
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 112 | 45 minutes | Paper 2 Section 9 | stage review</p>
+            <h2>Read the scenario. Find the pattern. Write the marks.</h2>
+            <p>
+              Section 9 questions rarely say, "Please use a sentinel-controlled loop with a running total." They
+              describe a situation and expect you to recognise the algorithm hiding inside it. This review lesson
+              connects decomposition, IPOC, trace tables, searches, sorts, loops and Cambridge pseudocode conventions.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Diagnose</strong><span>identify the likely Section 9 topic from command words and scenario clues</span></div>
+              <div><strong>Design</strong><span>convert requirements into IPOC, variables, control structures and pseudocode</span></div>
+              <div><strong>Upgrade</strong><span>rewrite vague answers into mark-worthy answers with strict Cambridge wording</span></div>
+            </div>
+          </div>
+          <div class="scenario-visual" aria-label="Review visual">
+            <div class="review-card">
+              <strong>Scenario</strong>
+              <span>Input values until -1. Ignore the sentinel. Output count, total and average.</span>
+            </div>
+            <div class="flow-strip">
+              <span>IPOC</span><span>Pattern</span><span>Pseudocode</span><span>Trace</span><span>MS</span>
+            </div>
+            <div class="review-card">
+              <strong>Answer shape</strong>
+              <span>Initialise -> input before test -> WHILE valid -> update -> input next -> output after loop</span>
+            </div>
+            <p>If the paragraph feels long, it is probably trying to hide a short algorithm.</p>
+          </div>
+        </section>
+
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Section 9 rewards mechanism. A correct label may start an answer, but marks usually come from how the algorithm works.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common error</h3>
+            <p>"Use a loop" is not enough. Name the loop type and connect it to wording such as exactly, until, while or for each.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which toolbox should you open?</h2>
+            <p>A question says: "The list is already sorted. Find whether a target value is present using as few comparisons as possible."</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="linear">Linear search</button>
+            <button class="choice-card" type="button" data-hook="binary">Binary search</button>
+            <button class="choice-card" type="button" data-hook="bubble">Bubble sort</button>
+            <button class="choice-card" type="button" data-hook="average">Running average</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the algorithm pattern signalled by "sorted" and "few comparisons".</div>
+        </section>
+
+        <section class="panel" id="retrieval" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <div class="section-title">
+            <p class="eyebrow">Retrieval map</p>
+            <h2>Section 9 in one page</h2>
+            <p>Chinese support: 复习不是重新抄笔记，而是快速识别题目在考哪一种算法思维。</p>
+          </div>
+          <div class="data-table retrieval-table" role="table" aria-label="Section 9 review map">
+            <div class="table-row table-head" role="row"><div>Topic</div><div>Signal words</div><div>Expected mechanism</div><div>Typical marking error</div></div>
+            <div class="table-row" role="row"><div>IPOC / decomposition</div><div>scenario, requirements, constraints</div><div>break problem into inputs, processing, outputs and rules</div><div>copying the story without design decisions</div></div>
+            <div class="table-row" role="row"><div>Trace tables</div><div>dry run, trace, values after each loop</div><div>update variables row by row in execution order</div><div>jumping to final answer and missing intermediate states</div></div>
+            <div class="table-row" role="row"><div>Selection and iteration</div><div>if, otherwise, exactly, until, while</div><div>choose IF, FOR or WHILE from the wording</div><div>using a fixed loop when count is unknown</div></div>
+            <div class="table-row" role="row"><div>Search and sort</div><div>find, sorted, order, compare adjacent</div><div>linear/binary search, bubble/insertion sort</div><div>forgetting binary search needs sorted data</div></div>
+            <div class="table-row" role="row"><div>Running variables</div><div>total, count, maximum, minimum, average</div><div>initialise, update inside loop, output after loop</div><div>initialising maximum to 0 without a stated non-negative range</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start retrieval -->
+        <section class="panel explanation-panel" id="explanation-retrieval" data-explains="retrieval" data-explanation-kind="synthesis" aria-labelledby="explanation-retrieval-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <h2 class="explanation-sr-only" id="explanation-retrieval-title">Section 9 in one page</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-retrieval.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 9 in one page with a structured visual model." />
+            <figcaption class="explanation-sr-only">Section 9 in one page: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Retrieval map</li><li><strong>Lesson fact:</strong> Signal words</li><li><strong>Lesson fact:</strong> Expected mechanism</li><li><strong>Lesson fact:</strong> Typical marking error</li><li><strong>Lesson fact:</strong> IPOC / decomposition</li><li><strong>Lesson fact:</strong> scenario, requirements, constraints</li><li><strong>Lesson fact:</strong> break problem into inputs, processing, outputs and rules</li><li><strong>Lesson fact:</strong> copying the story without design decisions</li><li><strong>Lesson fact:</strong> Trace tables</li><li><strong>Lesson fact:</strong> dry run, trace, values after each loop</li><li><strong>Lesson fact:</strong> update variables row by row in execution order</li><li><strong>Lesson fact:</strong> jumping to final answer and missing intermediate states</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end retrieval -->
+        <section class="panel" id="triage" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <div class="section-title">
+            <p class="eyebrow">Scenario triage</p>
+            <h2>Turn question wording into an algorithm plan</h2>
+          </div>
+          <div class="triage-grid">
+            <article>
+              <h3>Step 1: Output first</h3>
+              <p>Ask: what must be displayed, returned or stored at the end? The final output tells you which variables need to exist.</p>
+              <pre><code>Output needed: average rainfall
+
+Therefore:
+Total is needed
+Count is needed
+Average &lt;- Total / Count</code></pre>
+            </article>
+            <article>
+              <h3>Step 2: Stop condition</h3>
+              <p>Ask: does the question state a fixed number of values, or does input continue until a condition is met?</p>
+              <pre><code>Exactly 7 days      -> FOR Day &lt;- 1 TO 7
+Until -1 entered   -> WHILE Value &lt;&gt; -1</code></pre>
+            </article>
+            <article>
+              <h3>Step 3: Update placement</h3>
+              <p>Updates go inside the loop; final outputs normally go after the loop. The exam enjoys catching students who swap those two.</p>
+              <pre><code>Total &lt;- Total + Reading
+Count &lt;- Count + 1
+
+// after the loop
+Average &lt;- Total / Count
+OUTPUT Average</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start triage -->
+        <section class="panel explanation-panel" id="explanation-triage" data-explains="triage" data-explanation-kind="synthesis" aria-labelledby="explanation-triage-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <h2 class="explanation-sr-only" id="explanation-triage-title">Turn question wording into an algorithm plan</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-triage.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn question wording into an algorithm plan with a structured visual model." />
+            <figcaption class="explanation-sr-only">Turn question wording into an algorithm plan: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Scenario triage</li><li><strong>Lesson fact:</strong> Step 1: Output first</li><li><strong>Lesson fact:</strong> Ask: what must be displayed, returned or stored at the end? The final output tells you which variables need to exist.</li><li><strong>Lesson fact:</strong> Output needed: average rainfall</li><li><strong>Lesson fact:</strong> Therefore:</li><li><strong>Lesson fact:</strong> Total is needed</li><li><strong>Lesson fact:</strong> Count is needed</li><li><strong>Lesson fact:</strong> Average &lt;- Total / Count</li><li><strong>Lesson fact:</strong> Step 2: Stop condition</li><li><strong>Lesson fact:</strong> Ask: does the question state a fixed number of values, or does input continue until a condition is met?</li><li><strong>Lesson fact:</strong> Exactly 7 days -&gt; FOR Day &lt;- 1 TO 7</li><li><strong>Lesson fact:</strong> Until -1 entered -&gt; WHILE Value &lt;&gt; -1</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end triage -->
+        <section class="panel" id="patterns" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <div class="section-title">
+            <p class="eyebrow">Pattern choice</p>
+            <h2>Match the scenario to the correct algorithm pattern</h2>
+          </div>
+          <div class="data-table pattern-table" role="table" aria-label="Algorithm pattern choices">
+            <div class="table-row table-head" role="row"><div>Scenario clue</div><div>Pattern</div><div>Core pseudocode feature</div><div>One precise explanation</div></div>
+            <div class="table-row" role="row"><div>exactly 10 readings</div><div>Count-controlled loop</div><div><code>FOR Index &lt;- 1 TO 10</code></div><div>The number of repetitions is known before the loop starts.</div></div>
+            <div class="table-row" role="row"><div>until 0 is entered</div><div>Condition-controlled loop</div><div><code>WHILE Value &lt;&gt; 0</code></div><div>The number of repetitions depends on input values.</div></div>
+            <div class="table-row" role="row"><div>find whether target is in unsorted data</div><div>Linear search</div><div>compare each item with target</div><div>There is no ordering that allows values to be skipped safely.</div></div>
+            <div class="table-row" role="row"><div>find target in sorted data efficiently</div><div>Binary search</div><div>halve the search range</div><div>The sorted order makes it possible to discard half the remaining data.</div></div>
+            <div class="table-row" role="row"><div>put items into order by adjacent swaps</div><div>Bubble sort</div><div>compare and swap neighbours</div><div>Large items move towards the end after repeated passes.</div></div>
+            <div class="table-row" role="row"><div>build a sorted left section</div><div>Insertion sort</div><div>insert next item into its correct position</div><div>Each pass keeps the processed section sorted.</div></div>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start patterns -->
+        <section class="panel explanation-panel" id="explanation-patterns" data-explains="patterns" data-explanation-kind="synthesis" aria-labelledby="explanation-patterns-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <h2 class="explanation-sr-only" id="explanation-patterns-title">Match the scenario to the correct algorithm pattern</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-patterns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match the scenario to the correct algorithm pattern with a structured visual model." />
+            <figcaption class="explanation-sr-only">Match the scenario to the correct algorithm pattern: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pattern choice</li><li><strong>Lesson fact:</strong> Scenario clue</li><li><strong>Lesson fact:</strong> Core pseudocode feature</li><li><strong>Lesson fact:</strong> One precise explanation</li><li><strong>Lesson fact:</strong> exactly 10 readings</li><li><strong>Lesson fact:</strong> Count-controlled loop</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 10</li><li><strong>Lesson fact:</strong> The number of repetitions is known before the loop starts.</li><li><strong>Lesson fact:</strong> until 0 is entered</li><li><strong>Lesson fact:</strong> Condition-controlled loop</li><li><strong>Lesson fact:</strong> WHILE Value &lt;&gt; 0</li><li><strong>Lesson fact:</strong> The number of repetitions depends on input values.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end patterns -->
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <div class="section-title">
+            <p class="eyebrow">Trace clinic</p>
+            <h2>Marks are often lost between two lines of pseudocode</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Sentinel trace</h3>
+              <p>Input values are 4, 6, 0. The sentinel 0 stops the loop and must not be counted.</p>
+              <div class="data-table mini-table" role="table" aria-label="Sentinel trace">
+                <div class="table-row table-head" role="row"><div>Input</div><div>Total</div><div>Count</div><div>Reason</div></div>
+                <div class="table-row" role="row"><div>start</div><div>0</div><div>0</div><div>initialise</div></div>
+                <div class="table-row" role="row"><div>4</div><div>4</div><div>1</div><div>valid data</div></div>
+                <div class="table-row" role="row"><div>6</div><div>10</div><div>2</div><div>valid data</div></div>
+                <div class="table-row" role="row"><div>0</div><div>10</div><div>2</div><div>stop, do not process</div></div>
+              </div>
+            </article>
+            <article>
+              <h3>Maximum trace warning</h3>
+              <p>If readings may be negative, <code>Maximum &lt;- 0</code> can produce an impossible answer.</p>
+              <pre><code>Inputs: -8, -3, -5
+Wrong initial Maximum &lt;- 0
+Output: 0   // not in the input data
+
+Better:
+INPUT Reading
+Maximum &lt;- Reading</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Paper 2 wants readable Cambridge-style pseudocode</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style answer</h3>
+              <pre><code>Total &lt;- 0
+Count &lt;- 0
+INPUT Value
+WHILE Value &lt;&gt; -1
+    Total &lt;- Total + Value
+    Count &lt;- Count + 1
+    INPUT Value
+ENDWHILE
+Average &lt;- Total / Count
+OUTPUT Average</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int total = 0;
+int count = 0;
+int value = input.nextInt();
+while (value != -1) {
+    total += value;
+    count++;
+    value = input.nextInt();
+}
+double average = (double) total / count;</code></pre>
+            </article>
+          </div>
+          <div class="callout">Chinese support: Java 可以帮助你测试思路，但 Cambridge pseudocode 才是 Paper 2 的作答格式。</div>
+        </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="synthesis" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Paper 2 wants readable Cambridge-style pseudocode</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Paper 2 wants readable Cambridge-style pseudocode with a structured visual model." />
+            <figcaption class="explanation-sr-only">Paper 2 wants readable Cambridge-style pseudocode: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Initialise Total and Count, then input the first Value.</li><li><strong>Lesson fact:</strong> While Value is not -1, add it to Total and increment Count.</li><li><strong>Lesson fact:</strong> Input the next Value inside the WHILE body before ENDWHILE.</li><li><strong>Lesson fact:</strong> If Count is greater than zero, calculate Average using real division and output it.</li><li><strong>Lesson fact:</strong> Java may support understanding but is not the Cambridge pseudocode answer format.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
+        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <div class="section-title">
+            <p class="eyebrow">Interactive topic classifier</p>
+            <h2>Practise choosing the correct Section 9 tool</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario clue
+              <select id="classifierInput">
+                <option value="fixedLoop">Input exactly 12 scores and calculate the total.</option>
+                <option value="sentinel">Input values until -1 is entered.</option>
+                <option value="binarySearch">A sorted list must be searched using few comparisons.</option>
+                <option value="bubble">The algorithm compares adjacent items and swaps if they are in the wrong order.</option>
+                <option value="trace">Complete a table showing variable values after each loop iteration.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifierBtn">Classify</button>
+          </div>
+          <div class="trace-output" id="classifierResult">Choose a clue, then classify the topic and reasoning.</div>
+        </section>
+
+        <section class="panel" id="fixer" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <div class="section-title">
+            <p class="eyebrow">Interactive answer fixer</p>
+            <h2>Turn vague answers into mark-worthy answers</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Weak answer
+              <select id="fixerInput">
+                <option value="binary">Binary search is faster.</option>
+                <option value="loop">Use a loop.</option>
+                <option value="max">Set Maximum to 0.</option>
+                <option value="output">Output the average inside the loop.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="fixerBtn">Improve</button>
+          </div>
+          <div class="trace-output" id="fixerResult">Choose a weak answer to see a stricter version.</div>
+        </section>
+
+        <!-- stage10-explanation:start fixer -->
+        <section class="panel explanation-panel" id="explanation-fixer" data-explains="fixer" data-explanation-kind="synthesis" aria-labelledby="explanation-fixer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <h2 class="explanation-sr-only" id="explanation-fixer-title">Turn vague answers into mark-worthy answers</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-fixer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn vague answers into mark-worthy answers with a structured visual model." />
+            <figcaption class="explanation-sr-only">Turn vague answers into mark-worthy answers: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive answer fixer</li><li><strong>Lesson fact:</strong> Weak answer</li><li><strong>Lesson fact:</strong> Choose a weak answer to see a stricter version.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end fixer -->
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Review examples across Section 9</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="rainfall">Rainfall IPOC</button>
+            <button class="tab" type="button" data-example="sentinelTrace">Sentinel trace</button>
+            <button class="tab" type="button" data-example="searchSort">Search or sort</button>
+            <button class="tab" type="button" data-example="msUpgrade">MS upgrade</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Ten quick Section 9 decisions</h2>
+            <p>Answer briefly. Then use Show answer to compare your wording with a stricter version.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Correct the habits that lose marks</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style Section 9 review questions with expandable MS</h2>
+            <p>MS guidance uses Cambridge-style strictness: award mechanism, reject vague claims, and apply FT only when the candidate's earlier method is logically consistent.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-112">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Section 9 review checklist</h2>

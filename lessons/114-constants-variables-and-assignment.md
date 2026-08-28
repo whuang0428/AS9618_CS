@@ -1,4 +1,48 @@
-# Lesson 114: Constants, variables, and assignment
+# Lesson 114: Define, read and save record data
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Define, read and save record data
+
+### Direct explanation
+
+- A record structure groups a set of related fields, which may have different data types, under one identifier. Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.
+- Define a Cambridge record type with TYPE, field declarations and ENDTYPE. Declare record variables only after the type definition is complete. A complete definition states every field name and its type.
+- Read data from a record by selecting a named field, for example OUTPUT Student1.Mark or CurrentMark <- Student1.Mark. Save data to the record by assigning to a named field, for example Student1.Mark <- 75. Reading or saving one field does not replace unrelated fields.
+
+### Worked example
+
+**Define and use one student record:** TYPE TStudent declares Name : STRING, DateOfBirth : DATE, Mark : INTEGER and Enrolled : BOOLEAN, then closes with ENDTYPE. DECLARE Student1 : TStudent creates one record. Student1.Mark <- 75 saves a value to the Mark field; OUTPUT Student1.Mark reads that field.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Why can a record contain both STRING and DATE fields?
+   **Answer:** Record fields may have different data types but belong to one entity under one identifier.
+2. Which statement saves a mark of 80?
+   **Answer:** Student1.Mark <- 80.
+3. Which expression reads the stored name?
+   **Answer:** Student1.Name, for example OUTPUT Student1.Name.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Define TProduct with Code, Description, Price and InStock fields, Write declarations for Product1, save values to Price and InStock, then read both fields.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| opens TYPE TProduct and declares suitable named fields | Do not use numeric array indexing for record fields or omit ENDTYPE from the type definition. | 1 |
+| uses suitable STRING, REAL and BOOLEAN field types |  | 1 |
+| closes the definition with ENDTYPE |  | 1 |
+| declares Product1 : TProduct after ENDTYPE |  | 1 |
+| assigns/saves values through Product1.Price and Product1.InStock |  | 1 |
+| reads/outputs the two named fields without replacing other data |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -46,7 +90,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit suitable structure choice, correct indexing or field access, and a loop that covers the required data without missing or exceeding bounds.
 
-
 ## Student Task
 Students model a small school dataset using arrays, records or arrays of records, then write one operation on it.
 
@@ -74,43 +117,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Complete Cambridge pseudocode statements
-
-### Direct explanation
-
-- Section 11.1 requires pseudocode for the declaration and initialisation of constants, declaration of variables, assignment of values, arithmetic or logical expressions entered from the keyboard, and input to or output from the console. These are connected statements, not isolated vocabulary.
-- CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of <- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console.
-- Arithmetic expressions use operators such as +, -, *, /, DIV and MOD. Logical expressions combine comparisons with AND, OR or NOT and produce BOOLEAN results. Use = for comparison and <- for assignment.
-
-### Worked example
-
-**Declare, input, calculate and output:** CONSTANT PassMark = 50 defines and initialises a constant. DECLARE Mark : INTEGER and DECLARE Passed : BOOLEAN declare variables. INPUT Mark obtains keyboard input; Passed <- Mark >= PassMark assigns the result of a logical expression; OUTPUT Mark * 2 and OUTPUT Passed send arithmetic and Boolean results to the console.
-
-### Targeted practice and answers
-
-1. What is the difference between = and <-?
-   **Answer:** = compares values; <- assigns the evaluated right-hand value to a variable.
-2. Which statement obtains keyboard input?
-   **Answer:** INPUT followed by the target variable.
-3. What type of result does Mark >= PassMark produce?
-   **Answer:** A BOOLEAN result, TRUE or FALSE.
-
-### Exam-style question and MS
-
-**Question (5 marks):** Write Cambridge pseudocode that defines and initialises constant TaxRate as 0.20, declares Price and Tax as REAL, inputs Price, assigns Price * TaxRate to Tax, and outputs Tax.
-
-- **B1** CONSTANT TaxRate = 0.20
-- **B1** declares Price and Tax as REAL
-- **M1** INPUT Price before the calculation
-- **M1** Tax <- Price * TaxRate
-- **A1** OUTPUT Tax after assignment
-
-**Strict note:** Do not use = for assignment, omit the constant initial value, or replace INPUT/OUTPUT with Java library calls.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -118,7 +124,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `assignment`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-114-assignment.jpg`
 
 1. Assignment
@@ -138,7 +144,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `constants`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-114-constants.jpg`
 
 1. Constants
@@ -156,7 +162,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `declare`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-114-declare.jpg`
 
 1. Declare variables
@@ -176,7 +182,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `model`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-114-model.jpg`
 
 1. Memory model
@@ -191,24 +197,4 @@ Correction prompt: "State the correct term, then explain the relevant process or
 10. CONSTANT VATRate = 0.2
 11. Assignment
 12. Assignment evaluates the right-hand expression first, then stores the result in the left-hand variable.
-
-### The symbol changes, the update idea does not
-
-- **Explains:** `pseudocode`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-114-pseudocode.jpg`
-
-1. Pseudocode vs Java
-2. Cambridge-style pseudocode
-3. CONSTANT PassMark = 50
-4. DECLARE Mark : INTEGER
-5. DECLARE Passed : BOOLEAN
-6. INPUT Mark
-7. Passed <- Mark >= PassMark
-8. Java support only
-9. final int PASS_MARK = 50;
-10. int mark = input.nextInt();
-11. boolean passed = mark >= PASS_MARK;
-12. Paper 2 reminder: use Cambridge-style assignment <- in pseudocode. Java uses = for assignment.
 <!-- stage10-explanations:end -->

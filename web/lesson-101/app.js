@@ -110,11 +110,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Name the correct flowchart symbol for each step: start the algorithm, input a mark, calculate Total <- Total + Mark, test Mark >= 50, output Pass.",
+    prompt: "Identify the correct flowchart symbol for each step: start the algorithm, input a mark, calculate Total <- Total + Mark, test Mark >= 50, output Pass.",
     answer: "Start uses a terminator. Input a mark uses an input/output symbol. Total <- Total + Mark uses a process symbol. Mark >= 50 uses a decision symbol. Output Pass uses an input/output symbol.",
     marking: [
       { mark: "B1", text: "start/end identified as terminator" },
@@ -348,10 +354,10 @@ function setupExam() {
       <p>${question.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${question.answer}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

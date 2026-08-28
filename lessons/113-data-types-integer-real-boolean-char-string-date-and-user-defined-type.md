@@ -1,4 +1,58 @@
-# Lesson 113: Data types: integer, real, Boolean, char, string, date, and user-defined types
+# Lesson 113: Select and use the official Cambridge data types
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- remediation-v2-optional:start -->
+> **Optional enrichment:** user-defined record types before the formal records requirement. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.
+>
+> **Formal AS prerequisite:** S10.01 official data types; S10.02 records must precede this extension.
+<!-- remediation-v2-optional:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Select and use the official Cambridge data types
+
+### Direct explanation
+
+- Select a type from the meaning and operations required by the problem. INTEGER stores whole numbers, REAL stores values that may contain a fractional part, CHAR stores one character, STRING stores a sequence of characters, BOOLEAN stores TRUE or FALSE, and DATE stores a calendar date.
+- Cambridge pseudocode uses the type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE. ARRAY and FILE describe structured or persistent data; their declarations also state an element type, bounds or file usage as required by the problem.
+- An identifier that contains digits is not automatically INTEGER. Codes, telephone numbers and identifiers with leading zeroes normally use STRING because arithmetic is not required. Type selection does not replace validation of permitted values.
+
+### Worked example
+
+**Choose types for a booking:** Use STRING for BookingCode because it may contain letters or leading zeroes; DATE for VisitDate; INTEGER for TicketCount; REAL for TotalCost; CHAR for a one-letter Zone; BOOLEAN for HasPaid; ARRAY for a fixed indexed set of attendee names; and FILE when bookings must persist between program runs.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Suggest a type for the initial M.
+   **Answer:** CHAR, because exactly one character is stored.
+2. Suggest a type for 18.75 used in arithmetic.
+   **Answer:** REAL, because the value has a fractional part.
+3. Why is 0045A a STRING?
+   **Answer:** It is an identifier containing a letter and significant leading zeroes, and arithmetic is not required.
+4. Identify the eight type names listed in the syllabus Notes.
+   **Answer:** INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.
+
+### Exam-style question and MS
+
+**Question (8 marks):** Select and justify suitable Cambridge types for CustomerName, MiddleInitial, DateJoined, ItemCount, MeanScore, IsActive, twenty marks and data that must remain after the program ends.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| STRING for CustomerName | Do not select a numeric type merely because an identifier contains digits, and do not use STRING as a generic replacement for DATE, CHAR or numeric values that require their defined operations. | 1 |
+| CHAR for MiddleInitial |  | 1 |
+| DATE for DateJoined |  | 1 |
+| INTEGER for ItemCount |  | 1 |
+| REAL for MeanScore |  | 1 |
+| BOOLEAN for IsActive |  | 1 |
+| ARRAY with a numeric element type for twenty indexed marks |  | 1 |
+| FILE for persistent data, with justifications linked to meaning or use |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -46,7 +100,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit suitable structure choice, correct indexing or field access, and a loop that covers the required data without missing or exceeding bounds.
 
-
 ## Student Task
 Students model a small school dataset using arrays, records or arrays of records, then write one operation on it.
 
@@ -74,48 +127,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Select and use the official Cambridge data types
-
-### Direct explanation
-
-- Select a type from the meaning and operations required by the problem. INTEGER stores whole numbers, REAL stores values that may contain a fractional part, CHAR stores one character, STRING stores a sequence of characters, BOOLEAN stores TRUE or FALSE, and DATE stores a calendar date.
-- Cambridge pseudocode uses the type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE. ARRAY and FILE describe structured or persistent data; their declarations also state an element type, bounds or file usage as required by the problem.
-- An identifier that contains digits is not automatically INTEGER. Codes, telephone numbers and identifiers with leading zeroes normally use STRING because arithmetic is not required. Type selection does not replace validation of permitted values.
-
-### Worked example
-
-**Choose types for a booking:** Use STRING for BookingCode because it may contain letters or leading zeroes; DATE for VisitDate; INTEGER for TicketCount; REAL for TotalCost; CHAR for a one-letter Zone; BOOLEAN for HasPaid; ARRAY for a fixed indexed set of attendee names; and FILE when bookings must persist between program runs.
-
-### Targeted practice and answers
-
-1. Choose a type for the initial M.
-   **Answer:** CHAR, because exactly one character is stored.
-2. Choose a type for 18.75 used in arithmetic.
-   **Answer:** REAL, because the value has a fractional part.
-3. Why is 0045A a STRING?
-   **Answer:** It is an identifier containing a letter and significant leading zeroes, and arithmetic is not required.
-4. Name the eight type names listed in the syllabus Notes.
-   **Answer:** INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.
-
-### Exam-style question and MS
-
-**Question (8 marks):** Select and justify suitable Cambridge types for CustomerName, MiddleInitial, DateJoined, ItemCount, MeanScore, IsActive, twenty marks and data that must remain after the program ends.
-
-- **B1** STRING for CustomerName
-- **B1** CHAR for MiddleInitial
-- **B1** DATE for DateJoined
-- **B1** INTEGER for ItemCount
-- **B1** REAL for MeanScore
-- **B1** BOOLEAN for IsActive
-- **B1** ARRAY with a numeric element type for twenty indexed marks
-- **B1** FILE for persistent data, with justifications linked to meaning or use
-
-**Strict note:** Do not select a numeric type merely because an identifier contains digits, and do not use STRING as a generic replacement for DATE, CHAR or numeric values that require their defined operations.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -123,7 +134,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `built-in`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-113-built-in.jpg`
 
 1. Built-in types
@@ -143,7 +154,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `choose`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-113-choose.jpg`
 
 1. INTEGER stores whole numbers and REAL stores values that may have a fractional part.
@@ -165,7 +176,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `user-defined`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-113-user-defined.jpg`
 
 1. TYPE TStudent
@@ -180,7 +191,7 @@ Declare variables of the record type only after ENDTYPE.
 
 - **Explains:** `why-types`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-113-why-types.jpg`
 
 1. A data type determines which operations are meaningful for a stored value.

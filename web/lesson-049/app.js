@@ -15,9 +15,9 @@ const scenarioMap = {
     trap: "Do not confuse cache with ordinary storage capacity.",
   },
   large: {
-    result: "Most relevant: word length, if larger values are processed as single units.",
-    method: "A longer word length can allow the CPU to process larger operands or more bits in one operation, depending on the architecture and data type.",
-    trap: "Do not claim longer word length makes every program faster.",
+    result: "Most relevant: bus width, when moving large amounts of data between components is the bottleneck.",
+    method: "A wider data bus can transfer more bits in one transfer, although the memory system and workload must be able to use the extra width.",
+    trap: "Do not claim a wider bus makes every program faster.",
   },
   memory: {
     result: "Most relevant: cache and memory bottleneck.",
@@ -61,13 +61,13 @@ const examples = {
     ],
   },
   word: {
-    title: "Example 4: word length",
-    problem: "Explain why a longer word length can help with some calculations.",
+    title: "Example 4: bus width",
+    problem: "Explain how a wider data bus may affect performance.",
     steps: [
-      "Word length is the number of bits processed as a unit.",
-      "A longer word can represent larger values or more precision in one word.",
-      "Some calculations may need fewer operations if the data fits in one word.",
-      "This does not mean every task becomes faster.",
+      "Bus width is the number of bits that can be transferred together on that bus.",
+      "A wider data bus can transfer more bits per transfer.",
+      "This may reduce the number of transfers needed for suitable data movement.",
+      "The memory system and workload can still limit the benefit.",
       "The data type, architecture and software must benefit from the larger word.",
     ],
   },
@@ -77,13 +77,13 @@ const practice = [
   { id: "p1", prompt: "What factor is measured in Hz or GHz?", accepted: ["clock speed", "clock frequency"], answer: "Clock speed / clock frequency" },
   { id: "p2", prompt: "What is the small fast memory close to the CPU called?", accepted: ["cache", "cache memory"], answer: "Cache / cache memory" },
   { id: "p3", prompt: "What is the term for processing units that can execute instructions independently?", accepted: ["cores", "cpu cores", "processor cores", "core"], answer: "Cores" },
-  { id: "p4", prompt: "What is the number of bits processed as a unit called?", accepted: ["word length", "word size"], answer: "Word length" },
+  { id: "p4", prompt: "What factor states how many bits a bus can transfer together?", accepted: ["bus width", "data bus width"], answer: "Bus width" },
   { id: "p5", prompt: "What is the name for finding requested data in cache?", accepted: ["cache hit", "hit"], answer: "Cache hit" },
   { id: "p6", prompt: "What is the name for not finding requested data in cache?", accepted: ["cache miss", "miss"], answer: "Cache miss" },
   { id: "p7", prompt: "More cores mainly help when work can be split into what kind of tasks?", accepted: ["parallel", "parallel tasks", "parallelisable", "parallelizable", "independent tasks", "threads"], answer: "Parallel / independent tasks or threads" },
   { id: "p8", prompt: "A higher clock speed means more clock cycles per what?", accepted: ["second", "seconds"], answer: "Second" },
   { id: "p9", prompt: "A CPU waiting for slow memory access is an example of what?", accepted: ["bottleneck", "memory bottleneck"], answer: "A bottleneck / memory bottleneck" },
-  { id: "p10", prompt: "Does a longer word length always make every program faster? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p10", prompt: "Does one processor performance factor guarantee that every program is faster? Answer yes or no.", accepted: ["no"], answer: "No" },
 ];
 
 const mistakes = [
@@ -105,6 +105,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -162,18 +168,18 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Explain how word length may affect processor performance.",
-    answer: "Word length is the number of bits the CPU can process as a unit. A longer word can allow larger data values or more bits to be processed in a single operation. This may improve performance for calculations or data types that benefit from the larger word. However, longer word length does not make all programs faster because the workload and architecture must be able to use it.",
+    prompt: "Explain how bus width may affect processor performance.",
+    answer: "Bus width is the number of bits that can be transferred together on a bus. A wider data bus can transfer more bits per transfer, which may reduce the number of transfers needed for suitable data movement. This can contribute to performance when bus transfer is a bottleneck. The memory system, processor and workload may still limit the benefit, so a wider bus does not guarantee a faster computer.",
     marking: [
-      { mark: "B1", text: "word length is the number of bits processed as a unit / in a word/register" },
-      { mark: "B1", text: "larger word can process more bits or larger operands in one operation" },
-      { mark: "B1", text: "valid benefit such as larger values, precision or fewer operations for suitable data" },
-      { mark: "B1", text: "recognises limitation that not all programs/workloads benefit" },
+      { mark: "B1", text: "bus width is the number of bits transferred together on the bus" },
+      { mark: "B1", text: "a wider data bus transfers more bits per transfer" },
+      { mark: "B1", text: "links this to fewer transfers or reduced transfer bottleneck for suitable data" },
+      { mark: "B1", text: "recognises that memory, processor or workload may still limit performance" },
     ],
     strict: [
-      "Do not accept word length as number of characters in a password or source-code word.",
-      "Do not award limitation if answer says longer word is always faster.",
-      "Allow reference to addressable memory only if linked to architecture/address size.",
+      "Do not treat bus width as clock speed or number of cores.",
+      "Do not award the limitation point if the answer says a wider bus is always faster.",
+      "Allow another accurate transfer-rate consequence if linked to bus width.",
     ],
   },
   {
@@ -211,7 +217,7 @@ function setupHook() {
     depends: "Correct. More cores help only when the software/workload can use parallel processing.",
     yes: "Not always. A single-threaded task may use only one core heavily.",
     cache: "No. Cache usually helps by reducing slower memory access; removing it is not the secret sauce.",
-    word: "No. A 1-bit word length would be insufficient for useful processor operations.",
+    bus: "No. Removing the data bus would prevent the required transfers; it is not a performance improvement.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -326,9 +332,9 @@ function renderExamQuestions() {
       <p>${question.prompt}</p>
       <button type="button" class="ms-toggle" data-answer="ms-${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong> ${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((item) => `<li><strong>${item.mark}</strong> ${item.text}</li>`).join("")}</ul>
+        <p><strong>Answer:</strong> ${question.answer}</p>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

@@ -1,4 +1,44 @@
-# Lesson 083: Normalisation: avoiding duplication and update problems
+# Lesson 083: DDL, DML and SQL roles
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** DDL, DML and SQL roles
+
+### Direct explanation
+
+- DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation.
+- Keep the schema and the records distinct: defining a table or constraint changes structure, while selecting, inserting, deleting or updating records works with stored data.
+
+### Worked example
+
+**Classify database operations:** CREATE TABLE is DDL because it creates database structure. SELECT and UPDATE are DML because they query or maintain stored data.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which language category creates structure?
+   **Answer:** DDL.
+2. Which category queries and maintains data?
+   **Answer:** DML.
+3. What is SQL?
+   **Answer:** An industry-standard database language.
+
+### Exam-style question and MS
+
+**Question (3 marks):** Identify CREATE TABLE, SELECT and UPDATE as DDL or DML and explain the distinction.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| DDL creation/modification of structure | Do not describe every SQL statement as changing stored records. | 1 |
+| DML queries/maintenance |  | 1 |
+| SQL identified as industry-standard language |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +83,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** A strong answer separates Student and Loan/Book data, gives each table a primary key, and uses a foreign key to link records.
 
-
-
 ## Student Task
 Pairs convert a messy club list into relational tables, then mark one field as a primary key and one as a foreign key.
 
@@ -72,41 +110,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** First, second and third normal form
-
-### Direct explanation
-
-- 1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.
-- Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.
-
-### Worked example
-
-**Order line data:** ORDER_LINE(OrderID, ProductID, ProductName, Quantity) has composite key OrderID+ProductID. ProductName depends only on ProductID, so split PRODUCT(ProductID, ProductName) and ORDER_LINE(OrderID, ProductID, Quantity) to reach 2NF for that dependency.
-
-### Targeted practice and answers
-
-1. What does 1NF remove?
-   **Answer:** Repeating groups and non-atomic/multiple values in one field.
-2. What dependency violates 2NF?
-   **Answer:** A non-key attribute depending on only part of a composite key.
-3. What dependency violates 3NF?
-   **Answer:** A non-key attribute depending on another non-key attribute.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Explain why CUSTOMER(CustomerID, Postcode, Town) may not be in 3NF when each postcode determines one town, and give a 3NF design.
-
-- **B1** CustomerID determines Postcode and Postcode determines Town
-- **B1** Town is transitively dependent on CustomerID / depends on non-key Postcode
-- **A1** CUSTOMER(CustomerID, Postcode)
-- **A1** POSTCODE(Postcode, Town), with Postcode linked as foreign key
-
-**Strict note:** Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -114,7 +117,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `anomalies`
 - **Explanation type:** tradeoff
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-083-anomalies.jpg`
 
 1. Insertion may require an unrelated fact that is not yet known.
@@ -141,7 +144,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-083-purpose.jpg`
 
 1. Each fact is stored in a relation where its determinant is clear.
@@ -154,7 +157,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `redundancy`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-083-redundancy.jpg`
 
 1. The same real-world fact appears in several rows.

@@ -1,4 +1,46 @@
-# Lesson 076: Environmental and social impacts of computing
+# Lesson 076: AI applications and impact chains
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** AI applications and impact chains
+
+### Direct explanation
+
+- AI applications include medical image classification, recommendation, fraud detection, language processing, autonomous control and predictive maintenance. A valid impact answer names the AI decision mechanism and traces a consequence for a stakeholder.
+- Social impacts include access, bias and privacy; economic impacts include productivity, job redesign and error cost; environmental impacts include data-centre energy/material use and optimisation of transport or power. Evaluation balances benefits, harms and mitigations in context.
+- Evaluate AI by connecting an application to its social, economic and environmental impacts, then reaching a contextual judgement.
+
+### Worked example
+
+**Medical triage model:** The model prioritises scans, reducing waiting time, but biased training data may miss a patient group. Human review, representative validation data and monitoring can reduce rather than eliminate the risk.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Give one economic benefit of predictive maintenance.
+   **Answer:** Reduced downtime or repair cost by predicting failure.
+2. Give one environmental cost of training a large model.
+   **Answer:** Electricity use and associated emissions/resource demand.
+3. Why can biased training data create social harm?
+   **Answer:** The model may produce systematically poorer decisions for under-represented groups.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Evaluate the use of AI to select applicants for jobs.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| valid benefit such as speed/consistent initial processing | Do not accept a list of generic advantages/disadvantages without linking AI decisions to consequences. | 1 |
+| valid risk such as bias, opacity, privacy or exclusion |  | 1 |
+| explains a stakeholder consequence |  | 1 |
+| balanced judgement or mitigation linked to the context |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +85,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit both sides: newer devices may reduce electricity use or improve access, but manufacture and premature disposal consume resources and create e-waste. The judgement must depend on measured savings, device condition, reuse or recycling and user needs.
 
-
-
 ## Student Task
 Students build a balanced impact table for a computing decision, separating environmental effects from social effects and supporting a conditional conclusion.
 
@@ -72,41 +112,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** AI applications and impact chains
-
-### Direct explanation
-
-- AI applications include medical image classification, recommendation, fraud detection, language processing, autonomous control and predictive maintenance. A valid impact answer names the AI decision mechanism and traces a consequence for a stakeholder.
-- Social impacts include access, bias and privacy; economic impacts include productivity, job redesign and error cost; environmental impacts include data-centre energy/material use and optimisation of transport or power. Evaluation balances benefits, harms and mitigations in context.
-
-### Worked example
-
-**Medical triage model:** The model prioritises scans, reducing waiting time, but biased training data may miss a patient group. Human review, representative validation data and monitoring can reduce rather than eliminate the risk.
-
-### Targeted practice and answers
-
-1. Give one economic benefit of predictive maintenance.
-   **Answer:** Reduced downtime or repair cost by predicting failure.
-2. Give one environmental cost of training a large model.
-   **Answer:** Electricity use and associated emissions/resource demand.
-3. Why can biased training data create social harm?
-   **Answer:** The model may produce systematically poorer decisions for under-represented groups.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Evaluate the use of AI to select applicants for jobs.
-
-- **B1** valid benefit such as speed/consistent initial processing
-- **B1** valid risk such as bias, opacity, privacy or exclusion
-- **B1** explains a stakeholder consequence
-- **B1** balanced judgement or mitigation linked to the context
-
-**Strict note:** Do not accept a list of generic advantages/disadvantages without linking AI decisions to consequences.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -114,7 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `analyser`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-analyser.jpg`
 
 1. Interactive impact analyser
@@ -125,7 +130,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `digital-divide`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-digital-divide.jpg`
 
 1. Device access Some users cannot afford suitable hardware.
@@ -149,7 +154,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `ewaste`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-ewaste.jpg`
 
 1. E-waste Discarded electronic devices and components.
@@ -161,7 +166,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `method`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-method.jpg`
 
 1. 1. Change Name the computing change, such as automation or online services.
@@ -175,7 +180,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `social`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-social.jpg`
 
 1. Computing change

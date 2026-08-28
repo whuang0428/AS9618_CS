@@ -109,11 +109,17 @@ const mistakes = [
   { wrong: "I used the same variable name for Row and Column.", fix: "Use separate control variables so each loop has its own counter and clear role." },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Trace the sequence of cells visited by nested loops: FOR Row <- 1 TO 2 and FOR Column <- 1 TO 3. Show Row and Column for each visit.",
+    prompt: "Complete a trace table for the sequence of cells visited by nested loops: FOR Row <- 1 TO 2 and FOR Column <- 1 TO 3. Demonstrate Row and Column for each visit.",
     answer: "Visit 1 Row 1 Column 1\nVisit 2 Row 1 Column 2\nVisit 3 Row 1 Column 3\nVisit 4 Row 2 Column 1\nVisit 5 Row 2 Column 2\nVisit 6 Row 2 Column 3",
     marking: [
       { mark: "B1", text: "shows Row 1 begins with Column 1" },
@@ -348,10 +354,10 @@ function setupExam() {
       <p>${question.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${question.answer}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

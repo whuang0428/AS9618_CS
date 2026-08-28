@@ -1,5 +1,11 @@
 # Lesson 057: Compilation stages: lexical analysis to object code
 
+<!-- remediation-v2-optional:start -->
+> **Optional enrichment:** compiler phases from lexical analysis through optimisation and code generation. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.
+>
+> **Formal AS prerequisite:** S5.04-S5.05 purposes of translators and compiler/interpreter comparison.
+<!-- remediation-v2-optional:end -->
+
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
 **Syllabus reference:** Syllabus Section 5
@@ -22,7 +28,7 @@ Write a tiny high-level statement and a made-up machine-code-looking line. Ask: 
 Focus question: Which feature distinguishes **Compilation stages: lexical analysis to object code** from the most closely related syllabus concept?
 
 ## Guided Explanation
-Move from source code through lexical analysis, syntax analysis, semantic analysis, code generation and optimisation to object code. Compare compiler, interpreter and assembler by when translation happens, what output is produced, and how errors are reported. Use one syntax error to show how translation diagnostics are produced.
+Move from source code to executable behaviour. Compare compiler, interpreter and assembler by when translation happens, what output is produced, and how errors are reported. Use one syntax error to show how translation diagnostics are produced.
 
 Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
@@ -41,9 +47,7 @@ Teacher guidance: require the technical term and the explanation, method or appl
 ## Worked Example
 **Problem:** Choose a suitable translator for distributing a finished program and justify the choice.
 
-**Worked answer / marking focus:** A compiler is usually suitable because it produces object code before execution; a linker can then combine object modules and libraries into an executable that can be distributed without source code. An interpreter is useful during development for statement-by-statement diagnostics.
-
-
+**Worked answer / marking focus:** Compiler is usually suitable for distribution because it produces object/executable code and can run without source code; interpreter is useful during development for line-by-line diagnostics.
 
 ## Student Task
 Students receive development and deployment scenarios and choose compiler, interpreter or assembler with one reason and one trade-off.
@@ -79,7 +83,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `generation`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-057-generation.jpg`
 
 1. Input Checked intermediate representation or syntax tree.
@@ -91,7 +95,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lexical`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-057-lexical.jpg`
 
 1. Lexical analysis converts source characters into tokens.
@@ -102,7 +106,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `optimisation`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-057-optimisation.jpg`
 
 1. Purpose Improve efficiency, such as speed or memory use.
@@ -114,7 +118,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pipeline`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-057-pipeline.jpg`
 
 1. Source code The high-level program written by the programmer.
@@ -126,7 +130,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `semantic`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-057-semantic.jpg`
 
 1. Meaning Code can be grammatically correct but still not make valid sense.
@@ -138,7 +142,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `syntax`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-057-syntax.jpg`
 
 1. Input Tokens produced by lexical analysis.

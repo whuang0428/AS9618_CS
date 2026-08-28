@@ -43,8 +43,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit all eight input combinations and correct intermediate columns for `A AND B` and `NOT C` before the final OR.
 
-
-
 ## Student Task
 Students turn a classroom access rule into a Boolean expression, then draw the gate circuit.
 
@@ -74,22 +72,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
-
-### Six symbols, six exact output rules
-
-- **Explains:** `gate-visual`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-gate-visual.jpg`
-
-1. Visual explanation
-2. Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.
-3. NOT One input; output is the opposite value.
-4. AND / NAND AND tests whether both are 1; NAND inverts that result.
-5. OR / NOR OR tests whether at least one is 1; NOR inverts that result.
-6. XOR Output is 1 only when the two inputs are different.
-7. Check the diagram: what two visual clues separate NOR from XOR?
-8. NOR has an output bubble. XOR has no output bubble, but it has an extra curved line on the input side.
 
 ### The six gate rules
 

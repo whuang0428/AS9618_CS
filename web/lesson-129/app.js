@@ -104,6 +104,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -147,7 +153,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "7 marks",
-    prompt: "Trace this sentinel loop for inputs 4, 7, -1: Total <- 0; INPUT Number; WHILE Number <> -1; Total <- Total + Number; INPUT Number; ENDWHILE; OUTPUT Total.",
+    prompt: "Complete a trace table for this sentinel loop for inputs 4, 7, -1: Total <- 0; INPUT Number; WHILE Number <> -1; Total <- Total + Number; INPUT Number; ENDWHILE; OUTPUT Total.",
     answer: "Input 4 is added so Total becomes 4. Input 7 is added so Total becomes 11. Input -1 stops the loop and is not added. The final output is 11.",
     marking: [
       { mark: "M1", text: "initialises Total to 0" },
@@ -390,7 +396,7 @@ function renderExam() {
           <p><strong>Answer:</strong></p>
           <pre><code>${escapeHtml(question.answer)}</code></pre>
           <p><strong>Mark scheme:</strong></p>
-          <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `)

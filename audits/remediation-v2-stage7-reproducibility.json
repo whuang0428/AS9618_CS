@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "remediation": "v2",
+  "stage": 7,
+  "generatedDate": "2026-08-28",
+  "scope": "Two consecutive runs of the complete safe mature-repository generation chain; all repository files except .git, dist, __pycache__ and this self-referential result are hashed.",
+  "destructiveBootstrapGeneratorExcluded": true,
+  "excludedGenerator": "python3 tools/generate_course.py",
+  "exclusionReason": "The bootstrap generator deletes mature lesson Markdown and overwrites reviewed root artifacts; it is not a valid regeneration path for this repository.",
+  "passes": 2,
+  "commands": [
+    "node scripts/apply-stage2-repairs.mjs",
+    "node scripts/apply-remediation-v2-optional-enrichment.mjs",
+    "node scripts/apply-remediation-v2-stage3-sequence.mjs",
+    "node scripts/apply-remediation-v2-stage3-question-repairs.mjs",
+    "node scripts/generate-assessments.mjs",
+    "node scripts/normalise-stage5-lesson-ms.mjs",
+    "node scripts/apply-cie-wording.mjs",
+    "node scripts/generate-cie-wording-register.mjs",
+    "node scripts/apply-student-navigation.mjs",
+    "node scripts/apply-stage10-explanations.mjs",
+    "node scripts/apply-classroom-delivery.mjs",
+    "node scripts/generate-course-catalog.mjs",
+    "node scripts/generate-resource-hub.mjs",
+    "node scripts/generate-stage10-audits.mjs",
+    "node scripts/generate-syllabus-audit.mjs",
+    "node scripts/generate-curriculum-sequence-audit.mjs",
+    "node scripts/generate-question-ao-contract.mjs",
+    "node scripts/refresh-remediation-v2-audit-integrity-surface-reviews.mjs",
+    "node scripts/generate-remediation-v2-stage4.mjs",
+    "node scripts/generate-stage6-page-review-register.mjs",
+    "node scripts/generate-remediation-v2-stage6.mjs"
+  ],
+  "pass1CommandOutputs": [
+    {
+      "command": "node scripts/apply-stage2-repairs.mjs",
+      "outputSha256": "d1b6461736a07e930efeac2f764bd0491e43a05da84325bb09179cb5f3e49b2d"
+    },
+    {
+      "command": "node scripts/apply-remediation-v2-optional-enrichment.mjs",
+      "outputSha256": "85c198ce652f5fc1f1978067552531807d80b4c4ba0266368f80a4a13fcff627"
+    },
+    {
+      "command": "node scripts/apply-remediation-v2-stage3-sequence.mjs",
+      "outputSha256": "c763f20db454fa59192bdafbdd6b733c08258bb25b5217b6c3359f55d1c4f525"
+    },
+    {
+      "command": "node scripts/apply-remediation-v2-stage3-question-repairs.mjs",
+      "outputSha256": "cf718c5665c3fd66d5dbb71f80ae9dd941cf88adf1ca343caf71d530cd263785"
+    },
+    {
+      "command": "node scripts/generate-assessments.mjs",
+      "outputSha256": "16c141e690df68638c8cdf2cc7d74a7b8b836b862efdc5fd7ec9afdc20158821"
+    },
+    {
+      "command": "node scripts/normalise-stage5-lesson-ms.mjs",
+      "outputSha256": "c4f7ef1f5e86da61477be2211463a456bf25715db76cd7532c3649fcfdb19ae2"
+    },
+    {
+      "command": "node scripts/apply-cie-wording.mjs",
+      "outputSha256": "5fb2d65ec5d1a52ce8d7f28aaf9fe50872b6c896bd58cf35ce0ec1a1f0fb67ff"
+    },
+    {
+      "command": "node scripts/generate-cie-wording-register.mjs",
+      "outputSha256": "6cb292e12d6e33f99ea55ab5d210b05a3eb2eee61b3ca11e2c1f1336c2aa2302"
+    },
+    {
+      "command": "node scripts/apply-student-navigation.mjs",
+      "outputSha256": "1c11924d39f3d20f26af91be06d808ae5552fb000a06e6b22f8af1b48a073242"
+    },
+    {
+      "command": "node scripts/apply-stage10-explanations.mjs",
+      "outputSha256": "ce7f4f258f1b0e4e4777c6dcb0e09e01f52b6c134d18f9a54d6d21512c49d28c"
+    },
+    {
+      "command": "node scripts/apply-classroom-delivery.mjs",
+      "outputSha256": "fa053492169a862fc8800ece896f485750069343a2ab30257811ec00a9904926"
+    },
+    {
+      "command": "node scripts/generate-course-catalog.mjs",
+      "outputSha256": "92ee4a6d5f27149ff7a4dca22be8b595a3b7b6b1e0b097760c41efe8fb35796f"
+    },
+    {
+      "command": "node scripts/generate-resource-hub.mjs",
+      "outputSha256": "66f3fbff4f72ed52154ec2239190095c11ba2d88fa86cf56372f4ddf69229b41"
+    },
+    {
+      "command": "node scripts/generate-stage10-audits.mjs",
+      "outputSha256": "fa8aba7b1d7f0d8f80a2f60beaa48c2ade25c6013247ad8caec669d6ca5d627d"
+    },
+    {
+      "command": "node scripts/generate-syllabus-audit.mjs",
+      "outputSha256": "87569949e576b443feec324c05df2045be76494482ccfae3c1862aa768c667ab"
+    },
+    {
+      "command": "node scripts/generate-curriculum-sequence-audit.mjs",
+      "outputSha256": "ebe66af0f2f7eee31f8d443eafa643eec70b08337ff136077d59f6fd68563031"
+    },
+    {
+      "command": "node scripts/generate-question-ao-contract.mjs",
+      "outputSha256": "deda267605017daff0abd664d0ae068ebe4c51109bc7ffaab3d008c3e9590fb0"
+    },
+    {
+      "command": "node scripts/refresh-remediation-v2-audit-integrity-surface-reviews.mjs",
+      "outputSha256": "ed4e04491a14bd51e7b28a154ab3c099b211b6c216756e6a0fec4b8d9b50a1dd"
+    },
+    {
+      "command": "node scripts/generate-remediation-v2-stage4.mjs",
+      "outputSha256": "ec5155e27ecb4a4207b71ec4767bab2cedd30cfa4632084f2d279be20861d1ba"
+    },
+    {
+      "command": "node scripts/generate-stage6-page-review-register.mjs",
+      "outputSha256": "b432cccbff4ae4db2a319cc9913dcffc888d6cdc2c3bc88eea4733aa7c586545"
+    },
+    {
+      "command": "node scripts/generate-remediation-v2-stage6.mjs",
+      "outputSha256": "6fe741890cbb3426590a0331e9cd0781e59cd9e010eda752d61924b9c0ddc44a"
+    }
+  ],
+  "pass2CommandOutputs": [
+    {
+      "command": "node scripts/apply-stage2-repairs.mjs",
+      "outputSha256": "d1b6461736a07e930efeac2f764bd0491e43a05da84325bb09179cb5f3e49b2d"
+    },
+    {
+      "command": "node scripts/apply-remediation-v2-optional-enrichment.mjs",
+      "outputSha256": "85c198ce652f5fc1f1978067552531807d80b4c4ba0266368f80a4a13fcff627"
+    },
+    {
+      "command": "node scripts/apply-remediation-v2-stage3-sequence.mjs",
+      "outputSha256": "c763f20db454fa59192bdafbdd6b733c08258bb25b5217b6c3359f55d1c4f525"
+    },
+    {
+      "command": "node scripts/apply-remediation-v2-stage3-question-repairs.mjs",
+      "outputSha256": "cf718c5665c3fd66d5dbb71f80ae9dd941cf88adf1ca343caf71d530cd263785"
+    },
+    {
+      "command": "node scripts/generate-assessments.mjs",
+      "outputSha256": "16c141e690df68638c8cdf2cc7d74a7b8b836b862efdc5fd7ec9afdc20158821"
+    },
+    {
+      "command": "node scripts/normalise-stage5-lesson-ms.mjs",
+      "outputSha256": "c4f7ef1f5e86da61477be2211463a456bf25715db76cd7532c3649fcfdb19ae2"
+    },
+    {
+      "command": "node scripts/apply-cie-wording.mjs",
+      "outputSha256": "5fb2d65ec5d1a52ce8d7f28aaf9fe50872b6c896bd58cf35ce0ec1a1f0fb67ff"
+    },
+    {
+      "command": "node scripts/generate-cie-wording-register.mjs",
+      "outputSha256": "6cb292e12d6e33f99ea55ab5d210b05a3eb2eee61b3ca11e2c1f1336c2aa2302"
+    },
+    {
+      "command": "node scripts/apply-student-navigation.mjs",
+      "outputSha256": "1c11924d39f3d20f26af91be06d808ae5552fb000a06e6b22f8af1b48a073242"
+    },
+    {
+      "command": "node scripts/apply-stage10-explanations.mjs",
+      "outputSha256": "ce7f4f258f1b0e4e4777c6dcb0e09e01f52b6c134d18f9a54d6d21512c49d28c"
+    },
+    {
+      "command": "node scripts/apply-classroom-delivery.mjs",
+      "outputSha256": "fa053492169a862fc8800ece896f485750069343a2ab30257811ec00a9904926"
+    },
+    {
+      "command": "node scripts/generate-course-catalog.mjs",
+      "outputSha256": "92ee4a6d5f27149ff7a4dca22be8b595a3b7b6b1e0b097760c41efe8fb35796f"
+    },
+    {
+      "command": "node scripts/generate-resource-hub.mjs",
+      "outputSha256": "66f3fbff4f72ed52154ec2239190095c11ba2d88fa86cf56372f4ddf69229b41"
+    },
+    {
+      "command": "node scripts/generate-stage10-audits.mjs",
+      "outputSha256": "fa8aba7b1d7f0d8f80a2f60beaa48c2ade25c6013247ad8caec669d6ca5d627d"
+    },
+    {
+      "command": "node scripts/generate-syllabus-audit.mjs",
+      "outputSha256": "87569949e576b443feec324c05df2045be76494482ccfae3c1862aa768c667ab"
+    },
+    {
+      "command": "node scripts/generate-curriculum-sequence-audit.mjs",
+      "outputSha256": "ebe66af0f2f7eee31f8d443eafa643eec70b08337ff136077d59f6fd68563031"
+    },
+    {
+      "command": "node scripts/generate-question-ao-contract.mjs",
+      "outputSha256": "deda267605017daff0abd664d0ae068ebe4c51109bc7ffaab3d008c3e9590fb0"
+    },
+    {
+      "command": "node scripts/refresh-remediation-v2-audit-integrity-surface-reviews.mjs",
+      "outputSha256": "ed4e04491a14bd51e7b28a154ab3c099b211b6c216756e6a0fec4b8d9b50a1dd"
+    },
+    {
+      "command": "node scripts/generate-remediation-v2-stage4.mjs",
+      "outputSha256": "ec5155e27ecb4a4207b71ec4767bab2cedd30cfa4632084f2d279be20861d1ba"
+    },
+    {
+      "command": "node scripts/generate-stage6-page-review-register.mjs",
+      "outputSha256": "b432cccbff4ae4db2a319cc9913dcffc888d6cdc2c3bc88eea4733aa7c586545"
+    },
+    {
+      "command": "node scripts/generate-remediation-v2-stage6.mjs",
+      "outputSha256": "6fe741890cbb3426590a0331e9cd0781e59cd9e010eda752d61924b9c0ddc44a"
+    }
+  ],
+  "pass1ManifestSha256": "bfa9e1da60098ec2de9404747eb696fd1726f2275694e34cb6c681531fecbda9",
+  "pass2ManifestSha256": "bfa9e1da60098ec2de9404747eb696fd1726f2275694e34cb6c681531fecbda9",
+  "manifestFileCount": 1681,
+  "secondRunChangedFiles": 0,
+  "changedFiles": [],
+  "gitDiffCommand": "git diff --no-index --exit-code <pass1 SHA-256 manifest> <pass2 SHA-256 manifest>",
+  "gitDiffNoIndexExitCode": 0
+}

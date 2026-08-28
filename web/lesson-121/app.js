@@ -5,6 +5,8 @@ const samples = {
   wrongdelimiter: "S004;Dina;88",
 };
 
+const suppliedCsvFunctions = "// Question-supplied functions; Fields starts at index 1.\nFUNCTION SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING\nFUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER\nFUNCTION IS_NUMERIC(Value : STRING) RETURNS BOOLEAN\nFUNCTION FIELD_COUNT(Fields : ARRAY OF STRING) RETURNS INTEGER";
+
 const examples = {
   parse: {
     title: "Example 1: Parse one CSV-style line",
@@ -15,18 +17,18 @@ const examples = {
       ["Assign", "StudentID <- Fields[1]", "position 1 is ID"],
       ["Convert", "Mark <- STRING_TO_INTEGER(Fields[3])", "mark becomes numeric"],
     ],
-    code: "READFILE \"Scores.csv\", Line\nFields <- SPLIT(Line, \",\")\nStudentID <- Fields[1]\nName <- Fields[2]\nMark <- STRING_TO_INTEGER(Fields[3])",
+    code: `${suppliedCsvFunctions}\nREADFILE "Scores.csv", Line\nFields <- SPLIT(Line, ',')\nStudentID <- Fields[1]\nName <- Fields[2]\nMark <- STRING_TO_INTEGER(Fields[3])`,
     points: ["Read before parsing.", "Use the agreed delimiter.", "Convert numeric text before numeric comparisons."],
   },
   validate: {
     title: "Example 2: Validate before using fields",
     problem: "Reject a line if it does not contain exactly three fields.",
     rows: [
-      ["Split", "Fields <- SPLIT(Line, \",\")", "creates field list"],
-      ["Check count", "LENGTH(Fields) = 3", "prevents missing-field access"],
+      ["Split", "Fields <- SPLIT(Line, ',' )", "uses supplied STRING, CHAR signature"],
+      ["Check count", "FIELD_COUNT(Fields) = 3", "uses supplied array-count signature"],
       ["Check mark", "IS_NUMERIC(Fields[3])", "prevents failed conversion"],
     ],
-    code: "Fields <- SPLIT(Line, \",\")\nIF LENGTH(Fields) = 3 AND IS_NUMERIC(Fields[3]) THEN\n    Mark <- STRING_TO_INTEGER(Fields[3])\nELSE\n    OUTPUT \"Invalid line\"\nENDIF",
+    code: "// Supplied functions: SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING; FIELD_COUNT(Fields : ARRAY OF STRING) RETURNS INTEGER; IS_NUMERIC(Value : STRING) RETURNS BOOLEAN; STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER. Fields starts at index 1.\nFields <- SPLIT(Line, ',')\nIF FIELD_COUNT(Fields) = 3 AND IS_NUMERIC(Fields[3]) THEN\n    Mark <- STRING_TO_INTEGER(Fields[3])\nELSE\n    OUTPUT \"Invalid line\"\nENDIF",
     points: ["Malformed lines still exist in structured files.", "Check field count before using Fields[3].", "Check numeric text before conversion."],
   },
   count: {
@@ -35,10 +37,10 @@ const examples = {
     rows: [
       ["Open", "FOR READ", "existing file"],
       ["Loop", "WHILE NOT EOF", "all lines"],
-      ["Parse", "SPLIT(Line, \",\")", "get fields"],
+      ["Parse", "SPLIT(Line, ',')", "uses supplied signature"],
       ["Count", "IF Mark > 70", "numeric comparison"],
     ],
-    code: "Count <- 0\nOPENFILE \"Scores.csv\" FOR READ\nWHILE NOT EOF(\"Scores.csv\")\n    READFILE \"Scores.csv\", Line\n    Fields <- SPLIT(Line, \",\")\n    Mark <- STRING_TO_INTEGER(Fields[3])\n    IF Mark > 70 THEN\n        Count <- Count + 1\n    ENDIF\nENDWHILE\nCLOSEFILE \"Scores.csv\"\nOUTPUT Count",
+    code: "// Supplied: SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING; STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER. Fields starts at index 1.\nCount <- 0\nOPENFILE \"Scores.csv\" FOR READ\nWHILE NOT EOF(\"Scores.csv\")\n    READFILE \"Scores.csv\", Line\n    Fields <- SPLIT(Line, ',')\n    Mark <- STRING_TO_INTEGER(Fields[3])\n    IF Mark > 70 THEN\n        Count <- Count + 1\n    ENDIF\nENDWHILE\nCLOSEFILE \"Scores.csv\"\nOUTPUT Count",
     points: ["The file loop is from Lesson 120.", "CSV parsing happens inside the loop.", "The mark must be converted before comparison."],
   },
   write: {
@@ -57,8 +59,8 @@ const examples = {
 const practice = [
   { id: "p1", prompt: "In S001,Ali,72, what is the delimiter?", accepted: ["comma", ","], answer: "Comma (,)." },
   { id: "p2", prompt: "In the format StudentID,Name,Mark, which field position is Name?", accepted: ["2", "second", "field 2"], answer: "Field 2." },
-  { id: "p3", prompt: "What command-like operation can separate Line into fields using a comma?", accepted: ["split", "split line", "split(line, comma)"], answer: "SPLIT(Line, \",\")." },
-  { id: "p4", prompt: "Before using Fields[3], what should be checked?", accepted: ["field count", "length", "length(fields)", "3 fields"], answer: "Check that the line has exactly three fields." },
+  { id: "p3", prompt: "Which question-supplied function can separate Line into fields using a comma?", accepted: ["split", "split line", "split(line, comma)"], answer: "SPLIT(Line, ',')." },
+  { id: "p4", prompt: "Before using Fields[3], what should be checked?", accepted: ["field count", "field_count", "3 fields"], answer: "Use the supplied FIELD_COUNT function to check that the line has exactly three fields." },
   { id: "p5", prompt: "If Mark is read from a text file, is it text first? yes or no.", accepted: ["yes"], answer: "Yes. Convert it before numeric comparison." },
   { id: "p6", prompt: "Which conversion is needed before comparing Fields[3] > 70?", accepted: ["string to integer", "string_to_integer", "integer"], answer: "STRING_TO_INTEGER(Fields[3])." },
   { id: "p7", prompt: "Is S002,Bea valid for expected fields StudentID,Name,Mark? yes or no.", accepted: ["no"], answer: "No. It is missing the Mark field." },
@@ -74,7 +76,7 @@ const mistakes = [
   },
   {
     wrong: "I used Fields[3] even when the line was S002,Bea.",
-    fix: "Check LENGTH(Fields) = 3 before accessing Fields[3].",
+    fix: "Use the supplied FIELD_COUNT function and check FIELD_COUNT(Fields) = 3 before accessing Fields[3].",
   },
   {
     wrong: "I wrote new records as Name,Mark,StudentID even though the format says StudentID,Name,Mark.",
@@ -82,16 +84,22 @@ const mistakes = [
   },
   {
     wrong: "I used Java split syntax as the full Paper 2 answer.",
-    fix: "Java can support understanding, but Paper 2 answers should use clear Cambridge-style pseudocode such as SPLIT(Line, \",\").",
+    fix: "Java can support understanding, but a Paper 2 answer must follow the complete SPLIT signature and index convention supplied by the question.",
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A file Scores.csv stores lines in the format StudentID,Name,Mark. Write pseudocode to read one line and assign the three fields to StudentID, Name and Mark. Mark must be stored as an integer.",
-    answer: "READFILE \"Scores.csv\", Line\nFields <- SPLIT(Line, \",\")\nStudentID <- Fields[1]\nName <- Fields[2]\nMark <- STRING_TO_INTEGER(Fields[3])",
+    prompt: "A file Scores.csv stores lines in the format StudentID,Name,Mark. The question supplies FUNCTION SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING, with the first returned element at index 1, and FUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER. Write pseudocode to read one line and assign the fields to StudentID, Name and Mark. Mark must be stored as an integer.",
+    answer: "READFILE \"Scores.csv\", Line\nFields <- SPLIT(Line, ',')\nStudentID <- Fields[1]\nName <- Fields[2]\nMark <- STRING_TO_INTEGER(Fields[3])",
     marking: [
       { mark: "B1", text: "reads a line from Scores.csv into a variable" },
       { mark: "M1", text: "splits the line using comma delimiter" },
@@ -109,8 +117,8 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Write pseudocode to read all lines from Scores.csv and output the Name field for every student with Mark greater than 70.",
-    answer: "OPENFILE \"Scores.csv\" FOR READ\nWHILE NOT EOF(\"Scores.csv\")\n    READFILE \"Scores.csv\", Line\n    Fields <- SPLIT(Line, \",\")\n    Name <- Fields[2]\n    Mark <- STRING_TO_INTEGER(Fields[3])\n    IF Mark > 70 THEN\n        OUTPUT Name\n    ENDIF\nENDWHILE\nCLOSEFILE \"Scores.csv\"",
+    prompt: "The question supplies FUNCTION SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING, with the first returned element at index 1, and FUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER. Write pseudocode to read all lines from Scores.csv and output the Name field for every student with Mark greater than 70.",
+    answer: "OPENFILE \"Scores.csv\" FOR READ\nWHILE NOT EOF(\"Scores.csv\")\n    READFILE \"Scores.csv\", Line\n    Fields <- SPLIT(Line, ',')\n    Name <- Fields[2]\n    Mark <- STRING_TO_INTEGER(Fields[3])\n    IF Mark > 70 THEN\n        OUTPUT Name\n    ENDIF\nENDWHILE\nCLOSEFILE \"Scores.csv\"",
     marking: [
       { mark: "B1", text: "opens Scores.csv for READ" },
       { mark: "M1", text: "uses NOT EOF loop" },
@@ -146,7 +154,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "A student writes Mark <- Fields[3] then IF Mark > 70. Explain the weakness and correct it.",
+    prompt: "The question supplies FUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER. A student writes Mark <- Fields[3] then IF Mark > 70. Explain the weakness and correct it.",
     answer: "Fields[3] is text because it has been read from a text file. A numeric comparison should use an integer value. Corrected pseudocode:\nMark <- STRING_TO_INTEGER(Fields[3])\nIF Mark > 70 THEN\n    OUTPUT Name\nENDIF",
     marking: [
       { mark: "B1", text: "states fields read from CSV/text file are text initially" },
@@ -157,7 +165,7 @@ const examQuestions = [
     ],
     strict: [
       "Do not award conversion mark for simply renaming Fields[3] as Mark.",
-      "Allow INTEGER(Fields[3]) or equivalent conversion notation.",
+      "Allow another conversion only when the question supplies its complete typed signature.",
       "Do not accept Java parseInt alone as a Cambridge pseudocode answer.",
     ],
   },
@@ -359,7 +367,7 @@ function renderExam() {
           <p><strong>Answer:</strong></p>
           <pre><code>${escapeHtml(question.answer)}</code></pre>
           <p><strong>Mark scheme:</strong></p>
-          <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `)

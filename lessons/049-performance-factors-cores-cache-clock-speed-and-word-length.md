@@ -1,4 +1,47 @@
-# Lesson 049: Performance factors: cores, cache, clock speed, and word length
+# Lesson 049: Bit manipulation with masks and shifts
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Bit manipulation with masks and shifts
+
+### Direct explanation
+
+- A bitwise AND mask can test or clear selected bits; an OR mask can set selected bits; an XOR mask can toggle selected bits. These operations are used to monitor and control individual flags without changing unrelated bits.
+- LSL is a logical left shift and LSR is a logical right shift. Distinguish logical shifts from arithmetic shifts and cyclic shifts: a logical shift inserts zero, an arithmetic right shift preserves the sign bit, and a cyclic shift wraps the bit that leaves one end back to the other.
+
+### Worked example
+
+**Test, set, clear and toggle one flag:** For Status = 10110100, an AND mask tests a selected bit, an OR mask sets it, an AND mask with a zero at that position clears it, and an XOR mask toggles it. LSL moves bits left; LSR moves them right and fills with zero.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which mask operation sets selected bits?
+   **Answer:** Bitwise OR.
+2. Which operation toggles selected bits?
+   **Answer:** Bitwise XOR.
+3. What is inserted by a logical shift?
+   **Answer:** Zero bits.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Explain how AND, OR and XOR masks test, clear, set and toggle control flags, then apply one LSL and one LSR.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| AND test/clear | Do not treat logical, arithmetic and cyclic shifts as identical. | 1 |
+| OR set |  | 1 |
+| XOR toggle |  | 1 |
+| correct LSL |  | 1 |
+| correct LSR |  | 1 |
+| monitor/control context |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +86,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Award marks for correct sequence: address from PC to MAR, instruction/data via memory and MDR, instruction held in CIR, PC updated as appropriate.
 
-
-
 ## Student Task
 Students annotate a CPU diagram with arrows for one instruction, then explain the path in four precise sentences.
 
@@ -72,46 +113,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Complete processor performance factors
-
-### Direct explanation
-
-- Processor performance depends on processor type, number of cores, bus width, clock speed and cache memory. Processor type means the processor architecture and instruction-set design, including how much useful work its execution units can perform for a particular instruction or workload; a clock-rate comparison alone is therefore not sufficient.
-- More cores can execute independent threads concurrently when software exposes parallel work. Wider data buses can transfer more bits per transfer, while address-bus width affects the address space. Higher clock speed provides more clock cycles per second, and cache reduces waiting when frequently used instructions or data are found close to the CPU.
-- No factor guarantees that every program runs faster. Performance must be justified for the stated workload, because software parallelism, instruction-set compatibility, cache behaviour, memory traffic, heat and other bottlenecks can limit the benefit.
-
-### Worked example
-
-**Compare two processors for two workloads:** Processor A has four faster general-purpose cores and a larger cache; Processor B has eight specialised cores but a lower clock speed. A lightly threaded office program may favour A's processor type, clock behaviour and cache, while a parallel workload written for B's processor type may use more cores. Bus width and memory traffic must also be considered before reaching a conclusion.
-
-### Targeted practice and answers
-
-1. What does processor type mean as a performance factor?
-   **Answer:** The processor architecture/instruction-set and execution design, which determines what work it can perform per instruction or for a particular workload.
-2. Why do more cores not always improve one program?
-   **Answer:** The program must contain independent threads or tasks that can run in parallel.
-3. How can bus width affect performance?
-   **Answer:** A wider data bus can transfer more bits per transfer; address-bus width affects the address space rather than directly guaranteeing speed.
-4. Why can cache improve performance?
-   **Answer:** A cache hit supplies frequently used data or instructions faster than main memory, reducing CPU waiting.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Two computers have different processor types. Explain how processor type, number of cores, bus width, clock speed and cache can affect their performance for a stated workload.
-
-- **B1** processor type linked to architecture/instruction-set/execution design and workload
-- **B1** cores linked to available parallel threads/tasks
-- **B1** bus width linked accurately to bits transferred or address space
-- **B1** clock speed linked to cycles per second
-- **B1** cache linked to reducing slower main-memory access
-- **B1** conclusion recognises workload and bottlenecks rather than claiming one factor guarantees speed
-
-**Strict note:** Do not accept processor type as only a brand name, or claim that the highest clock speed or largest core count always wins.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -119,7 +120,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cache`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-049-cache.jpg`
 
 1. 1. CPU requests data The CPU needs an instruction or data item.
@@ -133,7 +134,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `clock`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-049-clock.jpg`
 
 1. Mechanism
@@ -142,25 +143,23 @@ Correction prompt: "State the correct term, then explain the relevant process or
 4. Limitation
 5. Memory access, heat, power use and CPU architecture can limit the real improvement.
 
-### Performance factor means a hardware feature that can affect processing speed
+### The official processor performance factors
 
 - **Explains:** `concept`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-049-concept.jpg`
 
-1. Clock speed
-2. How many clock cycles the CPU can perform per second, commonly measured in Hz/GHz.
-3. Processing units that can execute instructions independently, allowing parallel work.
-4. Small, fast memory close to the CPU storing frequently or recently used data/instructions.
-5. Word length
-6. The number of bits the CPU can process as a unit in one operation/register word.
+1. The official performance factors are processor type and number of cores, bus width, clock speed and cache memory.
+2. Processor type affects how much useful work can be completed for a workload, while more cores help only when work can run in parallel.
+3. A wider bus transfers more bits per transfer; a higher clock speed provides more cycles per second; cache reduces slower main-memory accesses when required data or instructions are present.
+4. No single factor guarantees that one computer will be faster for every program.
 
 ### Cores: more independent processing units
 
 - **Explains:** `cores`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-049-cores.jpg`
 
 1. One thread can execute on only one core at a time.
@@ -171,7 +170,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `limits`
 - **Explanation type:** tradeoff
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-049-limits.jpg`
 
 1. Memory bottleneck A fast CPU still waits if data arrives slowly from memory.
@@ -179,11 +178,26 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Heat and power Higher clock speed can require more power and produce more heat.
 4. Architecture Different CPU designs may do different amounts of work per clock cycle.
 
+### Binary shifts: logical, arithmetic, cyclic
+
+- **Explains:** `shifts`
+- **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-050-shifts.jpg`
+
+1. Every shown input and stored result contains exactly eight bits.
+2. Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.
+3. Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.
+4. Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.
+5. Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label.
+- **Analogy:** Three conveyor rules move the same row but handle the end position differently.
+- **Boundary:** State the fixed width, direction and shift type before calculating.
+
 ### Word length: bits processed as a unit
 
 - **Explains:** `word`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-049-word.jpg`
 
 1. Explanation

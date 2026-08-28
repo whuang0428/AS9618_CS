@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "remediation": "v2",
+  "stage": 4,
+  "generatedDate": "2026-08-28",
+  "implementationStatus": "Complete",
+  "approvalStatus": "AwaitingUserApproval",
+  "currentReleaseDecision": "BLOCKED",
+  "officialCommandWords": {
+    "count": 27,
+    "source": "syllabus:p41-42"
+  },
+  "questionReview": {
+    "total": 963,
+    "reviewed": 963,
+    "blocked": 0,
+    "formal": 521,
+    "optionalEnrichment": 442,
+    "commandCounts": {
+      "analyse": 4,
+      "calculate": 37,
+      "compare": 86,
+      "complete": 41,
+      "construct": 1,
+      "convert": 12,
+      "define": 20,
+      "demonstrate": 5,
+      "describe": 88,
+      "develop": 9,
+      "discuss": 19,
+      "draw": 1,
+      "evaluate": 20,
+      "explain": 303,
+      "give": 14,
+      "identify": 40,
+      "justify": 3,
+      "predict": 1,
+      "state": 71,
+      "suggest": 40,
+      "trace": 2,
+      "use": 4,
+      "write": 142
+    }
+  },
+  "trialCases": {
+    "perQuestion": 4,
+    "total": 3852,
+    "failed": 0
+  },
+  "wordingRegister": {
+    "total": 2046,
+    "approved": 2046,
+    "pending": 0,
+    "rejected": 0
+  },
+  "studentMarkSchemes": {
+    "lessonQuestionIds": 750,
+    "assessmentQuestionIds": 213,
+    "columns": [
+      "Answer",
+      "Guidance",
+      "Marks"
+    ],
+    "visibleInternalCodes": 0
+  },
+  "negativeControls": [
+    "unsupported Distinguish",
+    "unsupported Trace requirement",
+    "missing boundary trial",
+    "student-visible B1 code"
+  ],
+  "resolvedStage4Issues": [
+    "RV2-WORD-001",
+    "RV2-MS-001"
+  ],
+  "remainingOpenIssues": []
+}

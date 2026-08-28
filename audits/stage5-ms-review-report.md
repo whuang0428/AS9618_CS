@@ -5,7 +5,7 @@
 - Lesson exam-style questions: 750
 - Assessment questions: 213
 - Total approved questions: 963
-- Total marking points: 4428 (B1 3684, M1 387, A1 357)
+- Total marking points: 4428 (B1 3693, M1 383, A1 352)
 - Questions with explicit follow-through guidance: 41
 - Questions receiving specialist second review: 295
 
@@ -23,7 +23,7 @@ The project uses original questions. Official material was used to calibrate com
 1. Draft: inventory and parse every exam-style question and marking point.
 2. Checked: compare command word, requested depth, answer coverage, marks and guidance.
 3. Revised: remove duplicate or impression-based marks; correct B1/M1/A1 use; restrict FT to a named earlier result; replace vague boundaries with operational wording.
-4. Approved: freeze reviewed content by SHA-256 hash in the review register and run the automated verifier.
+4. Approved: carry forward only a current-hash Stage 4 item-level review, freeze that hash in this internal register and run the automated verifier.
 
 ## Specialist second review
 
@@ -42,3 +42,4 @@ The second pass focused on terminology and causality: translator and OS roles; s
 - Generic phrases such as good answer, clear explanation, balanced judgement and coherent justification are not credit-bearing points.
 - Allow and Do not accept notes define real answer boundaries rather than compulsory filler.
 - All 963 questions are recorded as Approved. Content-hash verification fails if an approved question changes.
+- B1/M1/A1 in this report are internal review metadata only; student-facing schemes use Answer, Guidance and Marks.

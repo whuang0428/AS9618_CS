@@ -1,4 +1,8 @@
-# Lesson 082: Entity-relationship modelling
+# Lesson 082: DBMS features and practical software tools
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +47,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** A strong answer separates Student and Loan/Book data, gives each table a primary key, and uses a foreign key to link records.
 
-
-
 ## Student Task
 Pairs convert a messy club list into relational tables, then mark one field as a primary key and one as a foreign key.
 
@@ -72,45 +74,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Document a design with an E-R diagram
-
-### Direct explanation
-
-- An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.
-- To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.
-
-### Worked example
-
-**Model students joining clubs:** Draw Student(StudentID, Name) and Club(ClubID, ClubName). Because each student may join many clubs and each club may contain many students, add Membership(StudentID, ClubID, JoinDate) as a linking entity. The completed design has Student 1:M Membership and Club 1:M Membership.
-
-### Targeted practice and answers
-
-1. What four kinds of information should an E-R diagram communicate here?
-   **Answer:** Entities, relevant attributes/keys, relationships and cardinality.
-2. What relationship exists between one Customer and many Orders?
-   **Answer:** One-to-many from Customer to Order.
-3. Why add Membership between Student and Club?
-   **Answer:** It resolves the many-to-many relationship into two one-to-many relationships.
-4. Why is matching field spelling not enough to draw a relationship?
-   **Answer:** The scenario/business rule must state or imply that the records are associated.
-
-### Exam-style question and MS
-
-**Question (6 marks):** A clinic stores Patients, Doctors and Appointments. Produce an E-R design in words or a labelled diagram and state the two relationship cardinalities.
-
-- **B1** identifies Patient, Doctor and Appointment as entities
-- **B1** gives a suitable identifier/key for each entity
-- **B1** Patient has a one-to-many relationship with Appointment
-- **B1** Doctor has a one-to-many relationship with Appointment
-- **B1** Appointment carries the linking foreign keys / resolves the patient-doctor many-to-many history
-- **B1** attributes and relationship directions are consistent with the scenario
-
-**Strict note:** Do not award a collection of unconnected entity boxes as a complete E-R design.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -118,7 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `attributes`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-082-attributes.jpg`
 
 1. An attribute is a property stored about an entity. It often becomes a field in the table for that entity.
@@ -135,7 +98,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cardinality`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-082-cardinality.jpg`
 
 1. Cardinality states how many records in one entity can be associated with records in another entity.
@@ -148,7 +111,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `entities`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-082-entities.jpg`
 
 1. An entity is a person, object, event or concept about which data is stored. In a relational design, an entity often becomes a table.
@@ -162,7 +125,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `parser`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-082-parser.jpg`
 
 1. Interactive scenario parser
@@ -174,7 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `participation`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-082-participation.jpg`
 
 1. Participation describes whether a record must be linked. This is often written using minimum and maximum values such as 0..* or 1..1.

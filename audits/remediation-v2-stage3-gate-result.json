@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "remediation": "v2",
+  "stage": 3,
+  "generatedDate": "2026-08-28",
+  "implementationStatus": "Complete",
+  "approvalStatus": "AwaitingUserApproval",
+  "currentReleaseDecision": "BLOCKED",
+  "coverage": {
+    "completeRequirements": 121,
+    "partialRequirements": 0
+  },
+  "sequence": {
+    "officialRequirementRows": 121,
+    "officialOrderEdges": 109,
+    "prerequisiteEdges": 81,
+    "blockingProblems": 0
+  },
+  "lessonIdentity": {
+    "stableLessonIds": 150,
+    "stableLessonUrls": 150,
+    "catalogueEntries": 150,
+    "optionalLegacyBodies": 107
+  },
+  "questionDependencies": {
+    "questions": 963,
+    "formal": 520,
+    "optionalEnrichment": 443,
+    "beforeCoreViolations": 0
+  },
+  "negativeControls": [
+    "official first-use inversion",
+    "intra-lesson official-row inversion",
+    "assessment-before-CORE",
+    "missing first-use review hash"
+  ],
+  "semanticGate": {
+    "status": "Blocked",
+    "problemCount": 24,
+    "sequenceProblemCount": 0,
+    "criticalIds": [
+      "CRIT-L049-PERFORMANCE-FACTORS",
+      "CRIT-L107-CHAR-FUNCTION-TYPE",
+      "CRIT-L121-PROVIDED-FUNCTIONS",
+      "CRIT-L133-CHAR-FUNCTION-TYPE",
+      "CRIT-L133-PROVIDED-FUNCTION"
+    ]
+  },
+  "resolvedStage3Issues": [
+    "RV2-SEQ-001",
+    "RV2-ID-001"
+  ],
+  "remainingOpenIssues": [
+    {
+      "id": "RV2-WORD-001",
+      "severity": "P1"
+    },
+    {
+      "id": "RV2-MS-001",
+      "severity": "P1"
+    },
+    {
+      "id": "RV2-CONT-001",
+      "severity": "P0"
+    },
+    {
+      "id": "RV2-PSEUDO-001",
+      "severity": "P0"
+    },
+    {
+      "id": "RV2-PSEUDO-002",
+      "severity": "P0"
+    }
+  ]
+}

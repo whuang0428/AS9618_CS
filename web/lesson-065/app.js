@@ -101,11 +101,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Explain the role of a user account, then distinguish authentication from authorisation.",
+    prompt: "Explain the role of a user account, then Compare authentication from authorisation.",
     answer: "A user account provides a distinct system identity and supports accountability for access and actions. Authentication verifies the account user's identity claim, for example by checking a password, biometric or token. Authorisation happens after identity is established and determines what the authenticated account is allowed to access or do. A student account may authenticate successfully but still lack permission to edit examination results.",
     marking: [
       { mark: "B1", text: "user account provides a distinct system identity and/or accountability" },
@@ -375,9 +381,9 @@ function renderExam() {
       <p>${item.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms${index}">
-        <h4>Cambridge-style mark scheme</h4>
+        <h4>Mark scheme</h4>
         <p><strong>Model answer:</strong> ${item.answer}</p>
-        <ul>${item.marking.map((mark) => `<li><strong>${mark.mark}</strong> ${mark.text}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(item)}
       </div>
     </article>
   `).join("");

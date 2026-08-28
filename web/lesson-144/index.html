@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 144 | Design documentation: algorithms, data dictionaries, and interfaces</title>
+    <title>AS9618 Lesson 144 | Expose, locate and correct program errors</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 12</p>
-        <h1>Design documentation: algorithms, data dictionaries, and interfaces</h1>
+        <h1>Expose, locate and correct program errors</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,7 +47,104 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+        <!-- remediation-v2-optional:start -->
+        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
+          <strong>Optional enrichment</strong>
+          <p>constructing a state-transition diagram. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
+          <p><strong>Formal AS prerequisite:</strong> S12.03 only requires understanding the purpose of state-transition diagrams; S12.02 structure-chart construction remains CORE.</p>
+        </aside>
+        <!-- remediation-v2-optional:end -->
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Expose, locate and correct program errors</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A syntax error breaks the language grammar and is normally exposed by a translator or an IDE's dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.</p>
+            <p>After an error is exposed, locate the responsible statement and identify the error type before changing it. Correct the cause, not only the observed output, then rerun the failing test and relevant regression tests. Avoid faults by using clear identifiers, modular design, validation, desk checking, peer walkthroughs and a planned set of normal, abnormal and extreme/boundary tests.</p>
+            <p>No single method proves that a program has no remaining faults. Translation can expose syntax faults but not every logic fault; testing can reveal failures for selected cases but cannot demonstrate correctness for every possible input.</p>
+            <p>A runtime error (run-time error) occurs during execution; identify its cause, use runtime diagnostics to locate it and correct the responsible code.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Correct three different faults</h3>
+            <p>A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection. Mark &gt; 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark &gt;= 50. Total / Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start logic -->
+        <section class="panel explanation-panel" id="explanation-logic" data-explains="logic" data-explanation-kind="mechanism" aria-labelledby="explanation-logic-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="logic">
+          <h2 class="explanation-sr-only" id="explanation-logic-title">Logic errors make the program do the wrong thing</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-logic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Logic errors make the program do the wrong thing with a structured visual model." />
+            <figcaption class="explanation-sr-only">Logic errors make the program do the wrong thing: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.</li><li><strong>Lesson fact:</strong> Examples Using &lt; instead of &lt;= , wrong formula, wrong loop condition or off-by-one error.</li><li><strong>Lesson fact:</strong> Detection Usually found by testing, tracing or comparing actual output with expected output.</li><li><strong>Lesson fact:</strong> Common error A translator may not detect it because the instructions are legal.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end logic -->
+
+        <!-- stage10-explanation:start algorithms -->
+        <section class="panel explanation-panel" id="explanation-algorithms" data-explains="algorithms" data-explanation-kind="process" aria-labelledby="explanation-algorithms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="algorithms">
+          <h2 class="explanation-sr-only" id="explanation-algorithms-title">Structure charts, derived pseudocode and state transitions</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-algorithms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Structure charts, derived pseudocode and state transitions with a structured visual model." />
+            <figcaption class="explanation-sr-only">Structure charts, derived pseudocode and state transitions: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A structure chart shows module hierarchy, calling relationships and labelled parameters passed between modules, procedures or functions.</li><li><strong>Lesson fact:</strong> Derive pseudocode by turning each box into a complete subprogram header and each hierarchy connection into a matching call with arguments.</li><li><strong>Lesson fact:</strong> A separate state-transition diagram marks the start state and uses directed, event-labelled transitions between persistent states; it is not a flowchart of processing steps.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end algorithms -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Expose, locate and correct program errors: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which method can expose a syntactically valid wrong boundary?</p>
+              <details><summary>Show answer</summary><p>A trace, dry run, walkthrough or selected boundary test can expose the wrong result.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Why is a translator insufficient for all logic errors?</p>
+              <details><summary>Show answer</summary><p>Logic errors can obey the language grammar, so translation may succeed even though the result is wrong.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What must happen after a correction?</p>
+              <details><summary>Show answer</summary><p>Rerun the failing test and relevant regression tests to check the correction and existing behaviour.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>For each fault, state its type, one way to expose or locate it, and the correction: a missing ENDIF; IF Mark &gt; 50 when 50 should pass; Average &lt;- Total / Count when Count can be zero.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>missing ENDIF identified as syntax error and translator/dynamic syntax check used</td><td>Do not accept changing the expected result to hide a program fault, or claim that successful translation proves the algorithm correct.</td><td>1</td></tr>
+                  <tr><td>adds the required ENDIF</td><td></td><td>1</td></tr>
+                  <tr><td>Mark &gt; 50 identified as logic error and boundary trace/test at 50 used</td><td></td><td>1</td></tr>
+                  <tr><td>changes the condition to Mark &gt;= 50 or equivalent</td><td></td><td>1</td></tr>
+                  <tr><td>division by zero identified as run-time error/risk and execution/test diagnostics used</td><td></td><td>1</td></tr>
+                  <tr><td>guards the division by checking Count or handles the zero case</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 144 | 45 minutes | Paper 2 Section 12 | informal questioning</p>
             <h2>Design documentation is the bridge between “what users need” and “what developers build”.</h2>
@@ -70,7 +167,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Design documentation gives developers, testers and maintainers a shared plan. Without it, the project may look active while quietly drifting away from the requirements.</p>
@@ -81,7 +178,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which document says RoomID is a STRING of length 6 and must not be blank?</h2>
@@ -96,7 +193,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the artefact that defines data item rules.</div>
         </section>
 
-        <section class="panel" id="purpose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Design documentation purpose</p>
             <h2>Design documents translate requirements into a buildable plan</h2>
@@ -110,7 +207,7 @@
         </section>
 
         <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <h2 class="explanation-sr-only" id="explanation-purpose-title">Design documents translate requirements into a buildable plan</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Design documents translate requirements into a buildable plan with a structured visual model." />
@@ -122,8 +219,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end purpose -->
-
-        <section class="panel" id="algorithms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="algorithms">
+        <section class="panel" id="algorithms" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Algorithm design documents</p>
             <h2>Algorithm designs describe the processing steps</h2>
@@ -157,21 +253,7 @@ for (Booking booking : bookingList) {
           </div>
         </section>
 
-        <!-- stage10-explanation:start algorithms -->
-        <section class="panel explanation-panel" id="explanation-algorithms" data-explains="algorithms" data-explanation-kind="process" aria-labelledby="explanation-algorithms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="algorithms">
-          <h2 class="explanation-sr-only" id="explanation-algorithms-title">Structure charts, derived pseudocode and state transitions</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-algorithms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Structure charts, derived pseudocode and state transitions with a structured visual model." />
-            <figcaption class="explanation-sr-only">Structure charts, derived pseudocode and state transitions: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A structure chart shows module hierarchy, calling relationships and labelled parameters passed between modules, procedures or functions.</li><li><strong>Lesson fact:</strong> Derive pseudocode by turning each box into a complete subprogram header and each hierarchy connection into a matching call with arguments.</li><li><strong>Lesson fact:</strong> A separate state-transition diagram marks the start state and uses directed, event-labelled transitions between persistent states; it is not a flowchart of processing steps.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end algorithms -->
-
-        <section class="panel" id="dictionary" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dictionary">
+        <section class="panel" id="dictionary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Data dictionary</p>
             <h2>A data dictionary defines each data item consistently</h2>
@@ -186,7 +268,7 @@ for (Booking booking : bookingList) {
         </section>
 
         <!-- stage10-explanation:start dictionary -->
-        <section class="panel explanation-panel" id="explanation-dictionary" data-explains="dictionary" data-explanation-kind="mechanism" aria-labelledby="explanation-dictionary-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dictionary">
+        <section class="panel explanation-panel" id="explanation-dictionary" data-explains="dictionary" data-explanation-kind="mechanism" aria-labelledby="explanation-dictionary-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <h2 class="explanation-sr-only" id="explanation-dictionary-title">A data dictionary defines each data item consistently</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-dictionary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A data dictionary defines each data item consistently with a structured visual model." />
@@ -198,8 +280,7 @@ for (Booking booking : bookingList) {
           </div>
         </section>
         <!-- stage10-explanation:end dictionary -->
-
-        <section class="panel" id="interfaces" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="interfaces">
+        <section class="panel" id="interfaces" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Interface designs</p>
             <h2>Interface designs show how users will enter data and navigate the system</h2>
@@ -216,7 +297,7 @@ for (Booking booking : bookingList) {
         </section>
 
         <!-- stage10-explanation:start interfaces -->
-        <section class="panel explanation-panel" id="explanation-interfaces" data-explains="interfaces" data-explanation-kind="mechanism" aria-labelledby="explanation-interfaces-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="interfaces">
+        <section class="panel explanation-panel" id="explanation-interfaces" data-explains="interfaces" data-explanation-kind="mechanism" aria-labelledby="explanation-interfaces-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <h2 class="explanation-sr-only" id="explanation-interfaces-title">Interface designs show how users will enter data and navigate the system</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-interfaces.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Interface designs show how users will enter data and navigate the system with a structured visual model." />
@@ -228,8 +309,7 @@ for (Booking booking : bookingList) {
           </div>
         </section>
         <!-- stage10-explanation:end interfaces -->
-
-        <section class="panel" id="traceability" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traceability">
+        <section class="panel" id="traceability" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Linking requirements to design</p>
             <h2>Traceability keeps the design connected to the original need</h2>
@@ -242,7 +322,7 @@ for (Booking booking : bookingList) {
         </section>
 
         <!-- stage10-explanation:start traceability -->
-        <section class="panel explanation-panel" id="explanation-traceability" data-explains="traceability" data-explanation-kind="mechanism" aria-labelledby="explanation-traceability-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traceability">
+        <section class="panel explanation-panel" id="explanation-traceability" data-explains="traceability" data-explanation-kind="mechanism" aria-labelledby="explanation-traceability-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <h2 class="explanation-sr-only" id="explanation-traceability-title">Traceability keeps the design connected to the original need</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-traceability.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Traceability keeps the design connected to the original need with a structured visual model." />
@@ -254,8 +334,7 @@ for (Booking booking : bookingList) {
           </div>
         </section>
         <!-- stage10-explanation:end traceability -->
-
-        <section class="panel" id="lifecycle" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifecycle">
+        <section class="panel" id="lifecycle" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Using design docs later</p>
             <h2>Design documentation supports implementation, testing and maintenance</h2>
@@ -268,7 +347,7 @@ for (Booking booking : bookingList) {
         </section>
 
         <!-- stage10-explanation:start lifecycle -->
-        <section class="panel explanation-panel" id="explanation-lifecycle" data-explains="lifecycle" data-explanation-kind="process" aria-labelledby="explanation-lifecycle-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifecycle">
+        <section class="panel explanation-panel" id="explanation-lifecycle" data-explains="lifecycle" data-explanation-kind="process" aria-labelledby="explanation-lifecycle-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <h2 class="explanation-sr-only" id="explanation-lifecycle-title">Design documentation supports implementation, testing and maintenance</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-lifecycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Design documentation supports implementation, testing and maintenance with a structured visual model." />
@@ -280,9 +359,7 @@ for (Booking booking : bookingList) {
           </div>
         </section>
         <!-- stage10-explanation:end lifecycle -->
-
-
-        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Interactive artefact chooser</p>
             <h2>Pick the best document for the job</h2>
@@ -302,7 +379,7 @@ for (Booking booking : bookingList) {
           <div id="artefactOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="dictionary-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dictionary-tool">
+        <section class="panel" id="dictionary-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Data dictionary checker</p>
             <h2>Inspect a field definition</h2>
@@ -323,7 +400,7 @@ for (Booking booking : bookingList) {
         </section>
 
         <!-- stage10-explanation:start dictionary-tool -->
-        <section class="panel explanation-panel" id="explanation-dictionary-tool" data-explains="dictionary-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-dictionary-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dictionary-tool">
+        <section class="panel explanation-panel" id="explanation-dictionary-tool" data-explains="dictionary-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-dictionary-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <h2 class="explanation-sr-only" id="explanation-dictionary-tool-title">Inspect a field definition</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-dictionary-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Inspect a field definition with a structured visual model." />
@@ -335,8 +412,7 @@ for (Booking booking : bookingList) {
           </div>
         </section>
         <!-- stage10-explanation:end dictionary-tool -->
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Three ways design documentation earns marks</h2>
@@ -349,7 +425,7 @@ for (Booking booking : bookingList) {
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Answer, check, then reveal the model answer if needed</h2>
@@ -357,7 +433,7 @@ for (Booking booking : bookingList) {
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the answer before the examiner has to</h2>
@@ -365,7 +441,7 @@ for (Booking booking : bookingList) {
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable MS</h2>
@@ -374,66 +450,7 @@ for (Booking booking : bookingList) {
           <div id="examList" class="exam-list"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Structure charts and state-transition diagrams</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.</p>
-            <p>To construct a structure chart, place the controlling module at the top, split the problem into one-responsibility subtasks, connect each caller to its called modules, and label every value passed. To derive equivalent pseudocode, turn each box into a complete PROCEDURE or FUNCTION header with corresponding parameters, add calls in the parent body with matching arguments, and preserve the shown hierarchy.</p>
-            <p>A state-transition diagram documents how an algorithm or system changes between persistent states. Mark the start state; draw each state once; label directed transitions with the triggering event and any condition/action. It is not a flowchart of every processing statement.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Door controller: two design views</h3>
-            <p>A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid). Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments. Separately, a state-transition diagram starts at Locked; validCard / unlock leads to Unlocked; timeout / lock returns to Locked.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Structure charts and state-transition diagrams: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What does a box represent in a structure chart?</p>
-              <details><summary>Show answer</summary><p>A module, procedure or function.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How are parameters represented and then derived into pseudocode?</p>
-              <details><summary>Show answer</summary><p>Labelled arrows show values passed; the same values appear as parameters in the called header and arguments in the caller's call.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What labels a state transition?</p>
-              <details><summary>Show answer</summary><p>The triggering event and, where needed, a condition or action.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is a state-transition diagram not a flowchart?</p>
-              <details><summary>Show answer</summary><p>It records persistent states and event-labelled changes, not every processing step in sequence.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>For a login system, construct a structure chart in which Main calls ReadCredentials(UserID, Password) and CheckLogin(UserID, Password, IsValid), then derive equivalent subprogram headers and calls. Also construct a state-transition diagram with start state LoggedOut, valid login to LoggedIn, logout back to LoggedOut and three invalid attempts to Locked.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> structure chart places Main above the two called modules</li>
-                <li><strong>B1</strong> parameter arrows label UserID, Password and IsValid coherently</li>
-                <li><strong>M1</strong> derived pseudocode contains matching complete headers and calls with arguments</li>
-                <li><strong>B1</strong> state diagram contains LoggedOut, LoggedIn and Locked with a start arrow</li>
-                <li><strong>B1</strong> valid login and logout transitions are directed correctly</li>
-                <li><strong>B1</strong> three invalid attempts transition from LoggedOut to Locked</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-144">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>

@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 056 | Compilers, interpreters and assemblers</title>
+    <title>AS9618 Lesson 056 | Java translation and required IDE features</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Compilers, interpreters and assemblers</h1>
+        <h1>Java translation and required IDE features</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -45,7 +45,77 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Java translation and required IDE features</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Java in console mode is partly compiled and partly interpreted: the Java compiler translates source code into platform-independent bytecode, then a Java Virtual Machine (JVM) interprets that bytecode and may just-in-time compile parts for the host processor. Bytecode is not universal processor machine code.</p>
+            <p>For coding, an IDE can provide context-sensitive prompts. For initial error detection it can perform dynamic syntax checks. For presentation it can prettyprint code and expand or collapse code blocks. These features help create and navigate source code but do not prove that its algorithm is correct.</p>
+            <p>For debugging, an IDE can provide single stepping, breakpoints, inspection of variables and expressions, and a report window for diagnostic or output information. Single stepping executes one statement at a time; a breakpoint pauses at a chosen point; variable/expression inspection exposes changing values.</p>
+            <p>IDE presentation features include prettyprint and expand/collapse code blocks; expand/collapse changes the displayed view, not program execution.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Trace Java and locate a loop fault</h3>
+            <p>First the Java compiler produces bytecode; the JVM then interprets the bytecode or JIT-compiles parts for the host. In the IDE, a breakpoint pauses before the faulty loop, single stepping advances one statement at a time, the variable/expression view exposes Index, and the report window records diagnostics. Dynamic syntax checking can flag malformed syntax but not a syntactically valid wrong boundary.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Java translation and required IDE features: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What does a Java compiler normally produce?</p>
+              <details><summary>Show answer</summary><p>Bytecode.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Why is Java described as partly compiled and partly interpreted?</p>
+              <details><summary>Show answer</summary><p>Source is compiled to bytecode, then a JVM interprets the bytecode and may JIT-compile parts for the host.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which IDE feature pauses at a chosen line, and which advances one statement?</p>
+              <details><summary>Show answer</summary><p>A breakpoint pauses; single stepping advances one statement at a time.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Identify the two required presentation features.</p>
+              <details><summary>Show answer</summary><p>Prettyprint and expand/collapse code blocks.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> What can a variables/expressions view and report window show?</p>
+              <details><summary>Show answer</summary><p>Current or evaluated values, plus diagnostic/output information in the report window.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Explain why Java is partly compiled and partly interpreted, then describe four IDE features from coding, initial error detection, presentation and debugging.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>Java source is compiled to bytecode</td><td>Do not accept that Java source becomes one universal machine-code file or that IDE syntax checking proves logical correctness.</td><td>1</td></tr>
+                  <tr><td>JVM interprets bytecode and may JIT-compile parts for the host</td><td></td><td>1</td></tr>
+                  <tr><td>context-sensitive prompts or dynamic syntax checking described accurately</td><td></td><td>1</td></tr>
+                  <tr><td>prettyprint or expand/collapse code blocks described accurately</td><td></td><td>1</td></tr>
+                  <tr><td>single stepping or breakpoint described accurately</td><td></td><td>1</td></tr>
+                  <tr><td>variable/expression inspection or report window described accurately</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 056 | 45 minutes | Paper 1 Section 5 | System software</p>
             <h2>Source code is written for humans. Machine code is what the processor runs.</h2>
@@ -70,7 +140,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Scenario questions often contrast development with distribution. The best answer links translator behaviour to the scenario.</p>
@@ -81,7 +151,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A processor receives <code>PRINT("Hello")</code>. Will it run that directly?</h2>
@@ -98,7 +168,7 @@
           </div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Translator software converts program code into another form</h2>
@@ -113,7 +183,7 @@
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <h2 class="explanation-sr-only" id="explanation-concept-title">Translator software converts program code into another form</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Translator software converts program code into another form with a structured visual model." />
@@ -125,8 +195,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-
-        <section class="panel" id="compiler" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compiler">
+        <section class="panel" id="compiler" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>A compiler translates the whole high-level program before execution</h2>
@@ -140,7 +209,7 @@
         </section>
 
         <!-- stage10-explanation:start compiler -->
-        <section class="panel explanation-panel" id="explanation-compiler" data-explains="compiler" data-explanation-kind="mechanism" aria-labelledby="explanation-compiler-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compiler">
+        <section class="panel explanation-panel" id="explanation-compiler" data-explains="compiler" data-explanation-kind="mechanism" aria-labelledby="explanation-compiler-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <h2 class="explanation-sr-only" id="explanation-compiler-title">A compiler translates the whole high-level program before execution</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-compiler.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A compiler translates the whole high-level program before execution with a structured visual model." />
@@ -152,8 +221,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end compiler -->
-
-        <section class="panel" id="interpreter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="interpreter">
+        <section class="panel" id="interpreter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>An interpreter translates and executes statements as the program runs</h2>
@@ -167,7 +235,7 @@
         </section>
 
         <!-- stage10-explanation:start interpreter -->
-        <section class="panel explanation-panel" id="explanation-interpreter" data-explains="interpreter" data-explanation-kind="mechanism" aria-labelledby="explanation-interpreter-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="interpreter">
+        <section class="panel explanation-panel" id="explanation-interpreter" data-explains="interpreter" data-explanation-kind="mechanism" aria-labelledby="explanation-interpreter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <h2 class="explanation-sr-only" id="explanation-interpreter-title">An interpreter translates and executes statements as the program runs</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-interpreter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining An interpreter translates and executes statements as the program runs with a structured visual model." />
@@ -179,8 +247,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end interpreter -->
-
-        <section class="panel" id="assembler" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assembler">
+        <section class="panel" id="assembler" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>An assembler translates assembly language into machine code</h2>
@@ -194,7 +261,7 @@
         </section>
 
         <!-- stage10-explanation:start assembler -->
-        <section class="panel explanation-panel" id="explanation-assembler" data-explains="assembler" data-explanation-kind="mechanism" aria-labelledby="explanation-assembler-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assembler">
+        <section class="panel explanation-panel" id="explanation-assembler" data-explains="assembler" data-explanation-kind="mechanism" aria-labelledby="explanation-assembler-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <h2 class="explanation-sr-only" id="explanation-assembler-title">An assembler translates assembly language into machine code</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-assembler.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining An assembler translates assembly language into machine code with a structured visual model." />
@@ -206,8 +273,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end assembler -->
-
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Comparison: same goal, different route</h2>
@@ -241,7 +307,7 @@
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <h2 class="explanation-sr-only" id="explanation-compare-title">Comparison: same goal, different route</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Comparison: same goal, different route with a structured visual model." />
@@ -253,9 +319,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Translator selector</h2>
@@ -280,7 +344,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Choose the translator, then justify the trade-off</h2>
@@ -294,7 +358,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant-check questions</h2>
@@ -303,7 +367,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the almost-right answers</h2>
@@ -311,7 +375,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
@@ -320,70 +384,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Assembler, compiler and interpreter choices</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.</p>
-            <p>Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.</p>
-            <p>A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose tools across development and deployment</h3>
-            <p>During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Assembler, compiler and interpreter choices: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Why is an assembler needed?</p>
-              <details><summary>Show answer</summary><p>It translates assembly-language mnemonics and operands into machine or object code for the target processor.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Give one compiler advantage and its mechanism.</p>
-              <details><summary>Show answer</summary><p>A compiled program can run repeatedly without translating the source each time because translation occurred before execution.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Give one compiler disadvantage.</p>
-              <details><summary>Show answer</summary><p>Compilation must complete before execution and the programmer may need to correct a list of reported errors.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Give one interpreter advantage and one disadvantage.</p>
-              <details><summary>Show answer</summary><p>It provides immediate statement-level feedback, but repeated translation can make execution slower and requires the interpreter/source at run time.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Which translator is required for assembly language?</p>
-              <details><summary>Show answer</summary><p>An assembler.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Compare a compiler and an interpreter using two advantages and two disadvantages, then justify the translator used for an assembly-language routine.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> compiler translates the whole high-level program before execution and produces target/object code</li>
-                <li><strong>B1</strong> compiler advantage linked to repeated execution or distribution without source</li>
-                <li><strong>B1</strong> compiler disadvantage linked to separate translation or error-list workflow</li>
-                <li><strong>B1</strong> interpreter translates/executes statements during execution and gives immediate feedback</li>
-                <li><strong>B1</strong> interpreter disadvantage linked to repeated translation, slower execution or run-time dependency</li>
-                <li><strong>B1</strong> assembler selected and justified for assembly-language-to-machine/object-code translation</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Translator memory map</h2>

@@ -110,6 +110,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -133,7 +139,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "7 marks",
-    prompt: "Convert this Java loop into Cambridge-style pseudocode: for (int i = 1; i <= 5; i++) { total = total + scores[i]; }",
+    prompt: "Write this Java loop in Cambridge-style pseudocode: for (int i = 1; i <= 5; i++) { total = total + scores[i]; }",
     answer: "FOR I <- 1 TO 5\n    Total <- Total + Scores[I]\nNEXT I",
     marking: [
       { mark: "B1", text: "uses a FOR loop or equivalent count-controlled loop" },
@@ -379,7 +385,7 @@ function setupExam() {
         <h4>Answer</h4>
         <pre><code>${escapeHtml(question.answer)}</code></pre>
         <h4>Mark scheme</h4>
-        <ul>${question.marking.map((row) => `<li><strong>${escapeHtml(row.mark)}</strong> ${escapeHtml(row.text)}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

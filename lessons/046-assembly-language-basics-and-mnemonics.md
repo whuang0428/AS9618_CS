@@ -1,4 +1,63 @@
-# Lesson 046: Assembly language basics and mnemonics
+# Lesson 046: Two-pass assembly, program tracing and the instruction set
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Two-pass assembly, program tracing and the instruction set
+
+### Direct explanation
+
+- The two-pass assembler stages are Pass 1 and Pass 2. Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.
+- The source form <label>: <opcode> <operand> labels an instruction, while <label>: <data> assigns a symbolic address to a memory location containing data. Pass 1 records both kinds of label in the symbol table.
+- The five instruction groups are data movement (LDM, LDD, LDI, LDX, LDR, MOV, STO), input/output (IN, OUT), arithmetic (ADD, SUB, INC, DEC), unconditional branch and conditional branch. JMP is the unconditional branch instruction; CMP, CMI, JPE and JPN form the compare and conditional branch group. END returns control to the operating system.
+- Data movement: LDM #n loads immediate n into ACC; LDD <address> loads the directly addressed contents into ACC; LDI <address> follows the address stored at <address>; LDX <address> loads from <address> + IX; LDR #n loads n into IX; MOV <register> moves ACC to IX; STO <address> stores ACC at the address.
+- Arithmetic: ADD <address> or ADD #n/Bn/&n adds a memory value or immediate denary/binary/hexadecimal value to ACC; SUB has the corresponding forms; INC <register> and DEC <register> change ACC or IX by one.
+- Control, comparison and I/O: JMP <address> is unconditional. CMP <address> or CMP #n compares ACC directly or with an immediate value. CMI <address> compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.
+- ACC is the accumulator and IX is the index register. An address can be absolute or symbolic. Prefix # gives immediate denary, B immediate binary and & immediate hexadecimal data. These prefixes and operand forms are part of the instruction semantics, not optional decoration.
+- To trace a simple assembly-language program, make a table with one row per executed instruction and columns for the current instruction/address, ACC, IX, relevant memory or output, and branch result. Update only the state changed by that instruction, then use the updated PC or branch target to choose the next row; do not trace source lines that a taken jump skips.
+
+### Worked example
+
+**Assemble, classify and trace a short program:** For LDM #5; ADD #3; CMP #8; JPE MATCH; LDM #0; MATCH: OUT; END, the trace gives ACC 5, then 8, then a True comparison. JPE transfers control to MATCH, so LDM #0 is skipped; OUT outputs the character whose ASCII code is 8, and END returns control to the operating system. In LOOP: ADD ONE, LOOP labels an instruction; ONE: 1 labels the data location containing 1.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which pass builds the symbol table?
+   **Answer:** Pass 1.
+2. What does Pass 2 do?
+   **Answer:** Pass 2 translates mnemonics and operands into machine code using the completed symbol table.
+3. What is the difference between LDM #5 and LDD 5?
+   **Answer:** LDM loads literal 5; LDD loads the contents of memory address 5.
+4. What does LDR #7 do?
+   **Answer:** It loads the immediate value 7 into the index register IX.
+5. Identify IN, SUB, JMP and JPN.
+   **Answer:** IN is input/output; SUB is arithmetic; JMP is unconditional; JPN is conditional/compare.
+6. Compare CMP #4 from CMI 40.
+   **Answer:** CMP #4 compares ACC with immediate value 4; CMI 40 follows the address stored at memory location 40 and compares ACC with the indirectly addressed value.
+7. What do MOV IX, STO TOTAL, OUT and END do?
+   **Answer:** MOV IX copies ACC to IX; STO TOTAL stores ACC at the symbolic address TOTAL; OUT outputs the ASCII character whose code is in ACC; END returns control to the operating system.
+8. Trace LDM #2; ADD #3; STO TOTAL. What changes?
+   **Answer:** ACC becomes 2, then 5; memory at symbolic address TOTAL becomes 5.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Trace the supplied program and classify the instructions, showing each change to ACC, IX, memory, output and control flow.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| uses one row per executed instruction in the correct control-flow order | Do not accept relative LDR, immediate CMI, equality/zero JPE, negative JPN, or a trace that executes a line skipped by a taken branch. | 1 |
+| updates ACC and IX correctly for data movement/arithmetic |  | 1 |
+| updates memory or output correctly for STO/OUT |  | 1 |
+| records compare result before evaluating JPE or JPN |  | 1 |
+| follows the correct taken/not-taken branch and skips non-executed lines |  | 1 |
+| classifies used instructions in the official data movement, input/output, arithmetic, unconditional/conditional and compare groups |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +102,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Award marks for correct sequence: address from PC to MAR, instruction/data via memory and MDR, instruction held in CIR, PC updated as appropriate.
 
-
-
 ## Student Task
 Students annotate a CPU diagram with arrows for one instruction, then explain the path in four precise sentences.
 
@@ -72,59 +129,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Two-pass assembly, program tracing and the instruction set
-
-### Direct explanation
-
-- The two-pass assembler stages are Pass 1 and Pass 2. Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.
-- The source form <label>: <opcode> <operand> labels an instruction, while <label>: <data> assigns a symbolic address to a memory location containing data. Pass 1 records both kinds of label in the symbol table.
-- The five instruction groups are data movement (LDM, LDD, LDI, LDX, LDR, MOV, STO), input/output (IN, OUT), arithmetic (ADD, SUB, INC, DEC), unconditional branch and conditional branch. JMP is the unconditional branch instruction; CMP, CMI, JPE and JPN form the compare and conditional branch group. END returns control to the operating system.
-- Data movement: LDM #n loads immediate n into ACC; LDD <address> loads the directly addressed contents into ACC; LDI <address> follows the address stored at <address>; LDX <address> loads from <address> + IX; LDR #n loads n into IX; MOV <register> moves ACC to IX; STO <address> stores ACC at the address.
-- Arithmetic: ADD <address> or ADD #n/Bn/&n adds a memory value or immediate denary/binary/hexadecimal value to ACC; SUB has the corresponding forms; INC <register> and DEC <register> change ACC or IX by one.
-- Control, comparison and I/O: JMP <address> is unconditional. CMP <address> or CMP #n compares ACC directly or with an immediate value. CMI <address> compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.
-- ACC is the accumulator and IX is the index register. An address can be absolute or symbolic. Prefix # gives immediate denary, B immediate binary and & immediate hexadecimal data. These prefixes and operand forms are part of the instruction semantics, not optional decoration.
-- To trace a simple assembly-language program, make a table with one row per executed instruction and columns for the current instruction/address, ACC, IX, relevant memory or output, and branch result. Update only the state changed by that instruction, then use the updated PC or branch target to choose the next row; do not trace source lines that a taken jump skips.
-
-### Worked example
-
-**Assemble, classify and trace a short program:** For LDM #5; ADD #3; CMP #8; JPE MATCH; LDM #0; MATCH: OUT; END, the trace gives ACC 5, then 8, then a True comparison. JPE transfers control to MATCH, so LDM #0 is skipped; OUT outputs the character whose ASCII code is 8, and END returns control to the operating system. In LOOP: ADD ONE, LOOP labels an instruction; ONE: 1 labels the data location containing 1.
-
-### Targeted practice and answers
-
-1. Which pass builds the symbol table?
-   **Answer:** Pass 1.
-2. What does Pass 2 do?
-   **Answer:** Pass 2 translates mnemonics and operands into machine code using the completed symbol table.
-3. What is the difference between LDM #5 and LDD 5?
-   **Answer:** LDM loads literal 5; LDD loads the contents of memory address 5.
-4. What does LDR #7 do?
-   **Answer:** It loads the immediate value 7 into the index register IX.
-5. Classify IN, SUB, JMP and JPN.
-   **Answer:** IN is input/output; SUB is arithmetic; JMP is unconditional; JPN is conditional/compare.
-6. Distinguish CMP #4 from CMI 40.
-   **Answer:** CMP #4 compares ACC with immediate value 4; CMI 40 follows the address stored at memory location 40 and compares ACC with the indirectly addressed value.
-7. What do MOV IX, STO TOTAL, OUT and END do?
-   **Answer:** MOV IX copies ACC to IX; STO TOTAL stores ACC at the symbolic address TOTAL; OUT outputs the ASCII character whose code is in ACC; END returns control to the operating system.
-8. Trace LDM #2; ADD #3; STO TOTAL. What changes?
-   **Answer:** ACC becomes 2, then 5; memory at symbolic address TOTAL becomes 5.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Trace the supplied program and classify the instructions, showing each change to ACC, IX, memory, output and control flow.
-
-- **M1** uses one row per executed instruction in the correct control-flow order
-- **A1** updates ACC and IX correctly for data movement/arithmetic
-- **A1** updates memory or output correctly for STO/OUT
-- **M1** records compare result before evaluating JPE or JPN
-- **A1** follows the correct taken/not-taken branch and skips non-executed lines
-- **B1** classifies used instructions in the official data movement, input/output, arithmetic, unconditional/conditional and compare groups
-
-**Strict note:** Do not accept relative LDR, immediate CMI, equality/zero JPE, negative JPN, or a trace that executes a line skipped by a taken branch.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -145,7 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `assembly`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-046-assembly.jpg`
 
 1. Low-level language
@@ -161,7 +165,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `mnemonics`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-046-mnemonics.jpg`
 
 1. Mnemonic
@@ -181,7 +185,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `structure`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-046-structure.jpg`
 
 1. <label>: <opcode> <operand> gives a symbolic address to an instruction.

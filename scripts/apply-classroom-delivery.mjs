@@ -4,6 +4,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { deliveryOverrides } from "./stage9-delivery-overrides.mjs";
 import { explanationByKey } from "./stage10-explanations-data.mjs";
+import { stage3OptionalBaseLessons } from "./remediation-v2-stage3-sequence-plan.mjs";
+import { coreVisualSectionKeys } from "./remediation-v2-core-visuals.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const toolbarStylesheet = '    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />';
@@ -15,6 +17,7 @@ const scripts = [
 const optionalIds = new Set([
   "tool", "builder", "simulator", "converter", "checker", "classifier", "chooser", "runner",
 ]);
+const stage3OptionalLessonIds = new Set(stage3OptionalBaseLessons.map((lesson) => String(lesson).padStart(3, "0")));
 
 function decodeHtml(value) {
   return String(value)
@@ -170,11 +173,14 @@ for (let number = 1; number <= 150; number += 1) {
     const key = `lesson-${lessonId}/${sectionId}`;
     const explanationTarget = sectionId.startsWith("explanation-") ? sectionId.slice("explanation-".length) : "";
     const reviewedExplanation = explanationTarget ? explanationByKey[`${lessonId}/${explanationTarget}`] : null;
-    const override = deliveryOverrides[key] ?? (reviewedExplanation ? {
+    const reviewedExplanationOverride = reviewedExplanation ? {
       role: reviewedExplanation.deliveryRole,
       activity: reviewedExplanation.classroomActivity,
       group: explanationTarget,
-    } : {});
+    } : {};
+    const override = coreVisualSectionKeys.has(`${lessonId}/${sectionId}`)
+      ? reviewedExplanationOverride
+      : (deliveryOverrides[key] ?? reviewedExplanationOverride);
     const metadata = {
       id: sectionId,
       role: override.role ?? (support && previousMetadata ? previousMetadata.role : inferRole(sectionId, classes)),
@@ -182,6 +188,11 @@ for (let number = 1; number <= 150; number += 1) {
       group: override.group ?? defaultGroup,
       minutes: override.minutes ?? "",
     };
+    if (stage3OptionalLessonIds.has(lessonId) && !["stage2-completion", "stage2-practice", "homework"].includes(sectionId) && !coreVisualSectionKeys.has(`${lessonId}/${sectionId}`)) {
+      metadata.role = "OPTIONAL";
+      metadata.activity = "EXTEND";
+      metadata.group = `remediation-v2-stage3-optional-${lessonId}`;
+    }
     if (!support) {
       previousGroup = metadata.group;
       previousMetadata = metadata;

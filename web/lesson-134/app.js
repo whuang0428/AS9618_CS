@@ -122,11 +122,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Trace the values assigned by this pseudocode.\n\nNumber <- 23\nDivisor <- 6\nQ <- Number DIV Divisor\nR <- Number MOD Divisor\nOUTPUT Q\nOUTPUT R",
+    prompt: "Complete a trace table for the values assigned by this pseudocode. Number <- 23\nDivisor <- 6\nQ <- Number DIV Divisor\nR <- Number MOD Divisor\nOUTPUT Q\nOUTPUT R",
     answer: "23 DIV 6 gives 3 because there are three complete groups of 6. 23 MOD 6 gives 5 because 23 - 18 = 5. The outputs are 3 then 5.",
     marking: [
       { mark: "B1", text: "states Q is 3" },
@@ -183,7 +189,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "Trace the expression Result <- 4 + 18 MOD 5 * 2. Show the working.",
+    prompt: "Complete a trace table for the expression Result <- 4 + 18 MOD 5 * 2. Demonstrate the working.",
     answer: "18 MOD 5 = 3. Then 3 * 2 = 6. Then 4 + 6 = 10. Result is 10.",
     marking: [
       { mark: "M1", text: "evaluates 18 MOD 5" },
@@ -422,7 +428,7 @@ function setupExamQuestions() {
             <h4>Indicative answer</h4>
             <pre><code>${escapeHtml(question.answer)}</code></pre>
             <h4>Mark scheme</h4>
-            <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+            ${renderStudentMarkPoints(question)}
           </div>
         </article>
       `,

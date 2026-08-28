@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 042 | The fetch-decode-execute cycle</title>
+    <title>AS9618 Lesson 042 | System buses, ports and processor performance</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../student-visuals.css?v=1" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -18,7 +18,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>The fetch-decode-execute cycle</h1>
+        <h1>System buses, ports and processor performance</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,7 +46,101 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>System buses, ports and processor performance</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>The address bus carries the address of the memory or I/O location being accessed and is normally directed from the processor. The data bus carries data and instructions in either direction. The control bus carries control and timing signals in both directions overall, including read/write signals from the CPU and interrupt or status signals toward it.</p>
+            <p>A memory read uses all three buses: the CPU places the required address on the address bus, sends a read signal on the control bus, and memory returns the requested data or instruction on the data bus. A bus transfers signals; it does not permanently store them.</p>
+            <p>USB is a general serial interface carrying digital data and often power for peripherals. HDMI carries digital video and audio. VGA carries analogue video and does not carry audio in the standard VGA signal. Port choice must match the peripheral and signal rather than rely on a claim that one connector is always best.</p>
+            <p>Processor performance depends on processor type, number of cores, bus width, clock speed and cache memory. Processor type means the processor architecture and instruction-set design, including how much useful work its execution units can perform for a particular instruction or workload; a clock-rate comparison alone is therefore not sufficient.</p>
+            <p>More cores can execute independent threads concurrently when software exposes parallel work. Wider data buses can transfer more bits per transfer, while address-bus width affects the address space. Higher clock speed provides more clock cycles per second, and cache reduces waiting when frequently used instructions or data are found close to the CPU.</p>
+            <p>No factor guarantees that every program runs faster. Performance must be justified for the stated workload, because software parallelism, instruction-set compatibility, cache behaviour, memory traffic, heat and other bottlenecks can limit the benefit.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Read memory, then connect a display / Compare two processors for two workloads</h3>
+            <p>To read address 240, the CPU puts 240 on the address bus and read on the control bus; memory returns the contents on the data bus. To connect the computer to a modern TV with one digital audio/video cable, choose HDMI. A keyboard or removable drive commonly uses USB, while a legacy analogue display may use VGA. Processor A has four faster general-purpose cores and a larger cache; Processor B has eight specialised cores but a lower clock speed. A lightly threaded office program may favour A's processor type, clock behaviour and cache, while a parallel workload written for B's processor type may use more cores. Bus width and memory traffic must also be considered before reaching a conclusion.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>System buses, ports and processor performance: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which bus carries an address, which carries a value, and which carries read/write signals?</p>
+              <details><summary>Show answer</summary><p>Address bus; data bus; control bus.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Complete a trace table for a memory read using the three buses.</p>
+              <details><summary>Show answer</summary><p>Address on address bus, read signal on control bus, requested data/instruction from memory on data bus.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which port commonly carries both digital video and audio?</p>
+              <details><summary>Show answer</summary><p>HDMI.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Which named port carries analogue video?</p>
+              <details><summary>Show answer</summary><p>VGA.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Give one USB use or facility.</p>
+              <details><summary>Show answer</summary><p>A digital peripheral connection such as keyboard/storage, often also supplying electrical power.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> What does processor type mean as a performance factor?</p>
+              <details><summary>Show answer</summary><p>The processor architecture/instruction-set and execution design, which determines what work it can perform per instruction or for a particular workload.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>7.</strong> Why do more cores not always improve one program?</p>
+              <details><summary>Show answer</summary><p>The program must contain independent threads or tasks that can run in parallel.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>8.</strong> How can bus width affect performance?</p>
+              <details><summary>Show answer</summary><p>A wider data bus can transfer more bits per transfer; address-bus width affects the address space rather than directly guaranteeing speed.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>9.</strong> Why can cache improve performance?</p>
+              <details><summary>Show answer</summary><p>A cache hit supplies frequently used data or instructions faster than main memory, reducing CPU waiting.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>12 marks</span></div>
+            <p>Describe a memory read using the address, data and control buses, then choose USB, HDMI or VGA for one stated peripheral connection. Two computers have different processor types. Explain how processor type, number of cores, bus width, clock speed and cache can affect their performance for a stated workload.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>address bus carries the required memory/I/O address</td><td>Do not swap the address and data buses or claim that VGA normally carries digital audio. Do not accept processor type as only a brand name, or claim that the highest clock speed or largest core count always wins.</td><td>1</td></tr>
+                  <tr><td>control bus carries the read signal</td><td></td><td>1</td></tr>
+                  <tr><td>data bus returns the requested data/instruction</td><td></td><td>1</td></tr>
+                  <tr><td>USB matched to a suitable digital peripheral/data/power use</td><td></td><td>1</td></tr>
+                  <tr><td>HDMI matched to digital video and audio</td><td></td><td>1</td></tr>
+                  <tr><td>VGA matched to analogue video without standard audio</td><td></td><td>1</td></tr>
+                  <tr><td>processor type linked to architecture/instruction-set/execution design and workload</td><td></td><td>1</td></tr>
+                  <tr><td>cores linked to available parallel threads/tasks</td><td></td><td>1</td></tr>
+                  <tr><td>bus width linked accurately to bits transferred or address space</td><td></td><td>1</td></tr>
+                  <tr><td>clock speed linked to cycles per second</td><td></td><td>1</td></tr>
+                  <tr><td>cache linked to reducing slower main-memory access</td><td></td><td>1</td></tr>
+                  <tr><td>conclusion recognises workload and bottlenecks rather than claiming one factor guarantees speed</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 042 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
             <h2>The CPU follows a routine. It is not improvising jazz with your instructions.</h2>
@@ -72,7 +166,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Marks are often awarded for the correct register and the correct action. A correct name with the wrong job is not enough.</p>
@@ -83,7 +177,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A CPU wants the next instruction. Where does it look first?</h2>
@@ -100,7 +194,7 @@
           </div>
         </section>
 
-        <section class="panel" id="cycle" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cycle">
+        <section class="panel" id="cycle" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>The cycle in one clean sentence</h2>
@@ -123,7 +217,7 @@
         </section>
 
         <!-- stage10-explanation:start cycle -->
-        <section class="panel explanation-panel" id="explanation-cycle" data-explains="cycle" data-explanation-kind="process" aria-labelledby="explanation-cycle-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cycle">
+        <section class="panel explanation-panel" id="explanation-cycle" data-explains="cycle" data-explanation-kind="process" aria-labelledby="explanation-cycle-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <h2 class="explanation-sr-only" id="explanation-cycle-title">The cycle in one clean sentence</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-cycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The cycle in one clean sentence with a structured visual model." />
@@ -135,8 +229,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end cycle -->
-
-        <section class="panel visual-explainer" id="cycle-visual" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cycle-visual">
+        <section class="panel visual-explainer" id="cycle-visual" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <div class="section-title">
             <p class="eyebrow">Visual explanation</p>
             <h2>Trace one instruction through the fetch stage</h2>
@@ -192,7 +285,7 @@
         </section>
 
         <!-- stage10-explanation:start cycle-visual -->
-        <section class="panel explanation-panel" id="explanation-cycle-visual" data-explains="cycle-visual" data-explanation-kind="process" aria-labelledby="explanation-cycle-visual-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cycle-visual">
+        <section class="panel explanation-panel" id="explanation-cycle-visual" data-explains="cycle-visual" data-explanation-kind="process" aria-labelledby="explanation-cycle-visual-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <h2 class="explanation-sr-only" id="explanation-cycle-visual-title">Trace one instruction through the fetch stage</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-cycle-visual.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace one instruction through the fetch stage with a structured visual model." />
@@ -204,8 +297,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end cycle-visual -->
-
-        <section class="panel" id="fetch" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fetch">
+        <section class="panel" id="fetch" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Fetch stage: the register sequence</h2>
@@ -258,7 +350,7 @@
         </section>
 
         <!-- stage10-explanation:start fetch -->
-        <section class="panel explanation-panel" id="explanation-fetch" data-explains="fetch" data-explanation-kind="process" aria-labelledby="explanation-fetch-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fetch">
+        <section class="panel explanation-panel" id="explanation-fetch" data-explains="fetch" data-explanation-kind="process" aria-labelledby="explanation-fetch-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <h2 class="explanation-sr-only" id="explanation-fetch-title">Fetch stage: the register sequence</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-fetch.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Fetch stage: the register sequence with a structured visual model." />
@@ -270,8 +362,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end fetch -->
-
-        <section class="panel" id="decode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="decode">
+        <section class="panel" id="decode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Decode and execute are not filler words</h2>
@@ -301,7 +392,7 @@
         </section>
 
         <!-- stage10-explanation:start decode -->
-        <section class="panel explanation-panel" id="explanation-decode" data-explains="decode" data-explanation-kind="mechanism" aria-labelledby="explanation-decode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="decode">
+        <section class="panel explanation-panel" id="explanation-decode" data-explains="decode" data-explanation-kind="mechanism" aria-labelledby="explanation-decode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <h2 class="explanation-sr-only" id="explanation-decode-title">Decode and execute are not filler words</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-decode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Decode and execute are not filler words with a structured visual model." />
@@ -313,8 +404,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end decode -->
-
-        <section class="panel" id="registers" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="registers">
+        <section class="panel" id="registers" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <div class="section-title">
             <p class="eyebrow">Register roles</p>
             <h2>The four fetch-stage names you cannot blur together</h2>
@@ -328,7 +418,7 @@
         </section>
 
         <!-- stage10-explanation:start registers -->
-        <section class="panel explanation-panel" id="explanation-registers" data-explains="registers" data-explanation-kind="process" aria-labelledby="explanation-registers-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="registers">
+        <section class="panel explanation-panel" id="explanation-registers" data-explains="registers" data-explanation-kind="process" aria-labelledby="explanation-registers-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <h2 class="explanation-sr-only" id="explanation-registers-title">The four fetch-stage names you cannot blur together</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-registers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The four fetch-stage names you cannot blur together with a structured visual model." />
@@ -340,9 +430,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end registers -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Fetch stage sequencer</h2>
@@ -367,7 +455,7 @@
           <div class="reject-box" id="stepTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Trace the mechanism, not just the slogan</h2>
@@ -380,7 +468,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
@@ -389,7 +477,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the sequence</h2>
@@ -397,7 +485,7 @@
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
@@ -406,67 +494,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Register-transfer notation for the fetch-decode-execute cycle</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Register-transfer notation describes a data transfer or register update. The arrow &lt;- means 'is loaded with' or 'receives'; it is not an equality sign. Memory[MAR] means the contents of the memory location whose address is currently held in MAR.</p>
-            <p>A coherent fetch sequence is MAR &lt;- PC; MDR &lt;- Memory[MAR]; CIR &lt;- MDR; and PC &lt;- PC + 1 at an appropriate point before the next fetch. The control unit then decodes the opcode and operand in CIR and sends control signals for execution.</p>
-            <p>During execution, notation such as ACC &lt;- ACC + MDR records an arithmetic result in ACC, while Memory[MAR] &lt;- MDR records a memory write. Read every statement from right to left: obtain the source value, then replace the destination contents.</p>
-            <p>The exact timing of PC increment may vary between coherent processor descriptions, but MAR must receive the current instruction address before that address is replaced. Register-transfer notation describes movement and updates; it does not imply that two registers permanently contain the same value.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Trace one instruction fetch</h3>
-            <p>Start with PC = 120 and Memory[120] = LDD 500. MAR &lt;- PC puts 120 in MAR. MDR &lt;- Memory[MAR] puts LDD 500 in MDR. CIR &lt;- MDR copies the instruction into CIR. PC &lt;- PC + 1 makes PC 121, ready to address the next instruction. The control unit then decodes LDD and executes it.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Register-transfer notation for the fetch-decode-execute cycle: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What does MAR &lt;- PC mean?</p>
-              <details><summary>Show answer</summary><p>Copy the address currently in PC into MAR; PC is not changed by that transfer.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What does MDR &lt;- Memory[MAR] mean?</p>
-              <details><summary>Show answer</summary><p>Read the contents of the memory location addressed by MAR into MDR.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why is CIR &lt;- MDR needed during fetch?</p>
-              <details><summary>Show answer</summary><p>It places the fetched instruction in CIR so the control unit can decode its opcode and operand.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Write register-transfer notation for adding the value in MDR to ACC.</p>
-              <details><summary>Show answer</summary><p>ACC &lt;- ACC + MDR.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Using register-transfer notation, describe the fetch of one instruction and explain the meaning of Memory[MAR].</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>M1</strong> MAR &lt;- PC</li>
-                <li><strong>M1</strong> MDR &lt;- Memory[MAR]</li>
-                <li><strong>M1</strong> CIR &lt;- MDR</li>
-                <li><strong>M1</strong> PC &lt;- PC + 1 at a coherent point</li>
-                <li><strong>B1</strong> Memory[MAR] means the contents at the memory address held in MAR</li>
-                <li><strong>B1</strong> CIR is decoded and control signals initiate execution</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Fetch, decode, execute, repeat</h2>

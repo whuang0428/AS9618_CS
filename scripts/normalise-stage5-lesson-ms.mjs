@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import { dependencyQuestion, evaluateLessonQuestions } from "./ms-review-utils.mjs";
+import { normaliseQuestionPrompt } from "./cie-command-words.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const webRoot = path.join(root, "web");
@@ -23,7 +24,7 @@ const answerReplacements = new Map(Object.entries({
   "L004-Q1": "Align all eight bits and add with carries: 00110101₂ + 00010110₂ = 01001011₂. The denary check is 53 + 22 = 75.",
   "L004-Q2": "11110000₂ + 00010000₂ = 1 00000000₂. The stored 8-bit result is 00000000₂ with carry-out 1, so unsigned overflow occurs.",
   "L004-Q4": "11001010₂ + 01110101₂ = 1 00111111₂. The stored 8-bit result is 00111111₂ with carry-out 1, so unsigned overflow occurs.",
-  "L005-Q1": "+23 = 00010111₂. Invert all bits to obtain 11101000₂, then add 1: 11101001₂. Therefore -23 is 11101001₂ in 8-bit two's complement.",
+  "L005-Q1": "+23 = 00010111₂. Invert every bit exactly once to obtain 11101000₂. Therefore -23 is 11101000₂ in 8-bit one's-complement representation.",
   "L005-Q2": "The leading bit is 1, so the value is negative. Invert 11101001₂ to 00010110₂ and add 1 to obtain 00010111₂ = 23. Therefore the value is -23.",
   "L005-Q3": "An 8-bit two's-complement value has range -2^7 to 2^7 - 1, which is -128 to +127.",
   "L006-Q1": "10.101₂ = 2 + 1/2 + 1/8 = 2 + 0.5 + 0.125 = 2.625₁₀.",
@@ -129,7 +130,7 @@ const renderQuestion = (question, index, id) => {
     "  {",
     `    title: ${JSON.stringify(question.title ?? `Question ${index + 1}`)},`,
     `    marks: ${JSON.stringify(question.marks)},`,
-    `    prompt: ${JSON.stringify(question.prompt)},`,
+    `    prompt: ${JSON.stringify(normaliseQuestionPrompt(question.prompt))},`,
     `    answer: ${JSON.stringify(answerReplacements.get(id) ?? question.answer)},`,
     "    marking: [",
     ...marking.map((point) => `      { mark: ${JSON.stringify(point.mark)}, text: ${JSON.stringify(point.text)} },`),
@@ -149,7 +150,17 @@ for (const directory of directories) {
   const questions = evaluateLessonQuestions(directory, source);
   const lesson = directory.slice(-3);
   const replacement = `const examQuestions = [\n${questions.map((question, index) => renderQuestion(question, index, `L${lesson}-Q${index + 1}`)).join("\n")}\n];`;
-  const updated = source.slice(0, start) + replacement + source.slice(end + 3);
+  let updated = source.slice(0, start) + replacement + source.slice(end + 3);
+  if (!updated.includes("function renderStudentMarkPoints(")) {
+    const helper = `\nfunction renderStudentMarkPoints(question) {\n  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");\n  const guidance = (question.strict || []).join(" ");\n  return \`<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>\${question.marking.map((point, pointIndex) => \`<div class="mark-scheme-row" role="row"><span role="cell">\${escape(point.text)}</span><span role="cell">\${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>\`).join("")}</div>\`;\n}\n`;
+    updated = updated.slice(0, start) + helper + updated.slice(start);
+  }
+  updated = updated
+    .replaceAll("Cambridge-style mark scheme", "Mark scheme")
+    .replaceAll("Expected answer:", "Answer:")
+    .replaceAll("Indicative answer:", "Answer:")
+    .replace(/<ul[^>]*>\s*\$\{question\.marking\.map\([\s\S]*?\.join\(""\)\}\s*<\/ul>/g, "${renderStudentMarkPoints(question)}")
+    .replace(/<ul[^>]*>\s*\$\{item\.marking\.map\([\s\S]*?\.join\(""\)\}\s*<\/ul>/g, "${renderStudentMarkPoints(item)}");
   if (updated !== source) {
     fs.writeFileSync(file, updated);
     changedFiles += 1;

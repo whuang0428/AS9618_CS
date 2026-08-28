@@ -150,11 +150,17 @@ const mistakes = [
   { wrong: "I wrote NewString <- Character inside the loop when removing spaces.", fix: "That overwrites earlier characters. Use NewString <- NewString & Character to append." },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Trace an algorithm that counts the letter A in the string DATA. Show Index, Character and Count after each character is processed.",
+    prompt: "Complete a trace table for an algorithm that counts the letter A in the string DATA. Demonstrate Index, Character and Count after each character is processed.",
     answer: "Index 1 Character D Count 0\nIndex 2 Character A Count 1\nIndex 3 Character T Count 1\nIndex 4 Character A Count 2",
     marking: [
       { mark: "B1", text: "uses positions 1 to 4 / processes each character in DATA" },
@@ -175,7 +181,7 @@ const examQuestions = [
     title: "Question 2",
     marks: "6 marks",
     prompt: "Write Cambridge-style pseudocode to input a string Word and output how many vowels A, E, I, O or U it contains. Assume uppercase input.",
-    answer: "VowelCount <- 0\nFOR Index <- 1 TO LENGTH(Word)\n    Character <- character at position Index\n    IF Character = \"A\" OR Character = \"E\" OR Character = \"I\" OR Character = \"O\" OR Character = \"U\" THEN\n        VowelCount <- VowelCount + 1\n    ENDIF\nNEXT Index\nOUTPUT VowelCount",
+    answer: "VowelCount <- 0\nFOR Index <- 1 TO LENGTH(Word)\n    Character <- MID(Word, Index, 1)\n    IF Character = \"A\" OR Character = \"E\" OR Character = \"I\" OR Character = \"O\" OR Character = \"U\" THEN\n        VowelCount <- VowelCount + 1\n    ENDIF\nNEXT Index\nOUTPUT VowelCount",
     marking: [
       { mark: "B1", text: "initialises VowelCount / Count to 0" },
       { mark: "M1", text: "loops through every character of Word" },
@@ -213,7 +219,7 @@ const examQuestions = [
     title: "Question 4",
     marks: "6 marks",
     prompt: "Write pseudocode to create a new string from Text with all spaces removed.",
-    answer: "NewString <- \"\"\nFOR Index <- 1 TO LENGTH(Text)\n    Character <- character at position Index\n    IF Character <> \" \" THEN\n        NewString <- NewString & Character\n    ENDIF\nNEXT Index\nOUTPUT NewString",
+    answer: "NewString <- \"\"\nFOR Index <- 1 TO LENGTH(Text)\n    Character <- MID(Text, Index, 1)\n    IF Character <> \" \" THEN\n        NewString <- NewString & Character\n    ENDIF\nNEXT Index\nOUTPUT NewString",
     marking: [
       { mark: "B1", text: "initialises NewString to empty string" },
       { mark: "M1", text: "loops through each character of Text" },
@@ -388,10 +394,10 @@ function setupExam() {
       <p>${question.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${question.answer}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

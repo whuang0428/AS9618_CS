@@ -1,14 +1,19 @@
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 
 import { coverageContract, forbiddenSemanticPatterns } from "./syllabus-coverage-contract.mjs";
 import { evaluateRequirement, root } from "./syllabus-coverage-evaluator.mjs";
+import { buildCurriculumSequenceModel } from "./curriculum-sequence-model.mjs";
+import { evaluateCriticalSemanticControls } from "./remediation-v2-semantic-gate.mjs";
+import { officialAsMapping } from "./syllabus-official-as-mapping.mjs";
 
 const failures = [];
 const schemaOnly = process.argv.includes("--schema-only");
 const ids = coverageContract.requirements.map(({ id }) => id);
 const idSet = new Set(ids);
 const forbiddenIds = new Set(forbiddenSemanticPatterns.map(({ id }) => id));
+const requirementById = new Map(coverageContract.requirements.map((requirement) => [requirement.id, requirement]));
 
 function expect(condition, message) {
   if (!condition) failures.push(message);
@@ -24,7 +29,8 @@ function validEvidence(evidence, requireActivity = false) {
     && (!requireActivity || typeof item.activity === "string"));
 }
 
-expect(coverageContract.schemaVersion === 2, `expected contract schemaVersion 2, found ${coverageContract.schemaVersion ?? "missing"}`);
+expect(coverageContract.schemaVersion === 4, `expected contract schemaVersion 4, found ${coverageContract.schemaVersion ?? "missing"}`);
+expect(["InvalidatedPendingRevalidation", "InvalidatedAndRevalidated"].includes(coverageContract.auditIntegrity?.priorCompleteStatuses), "legacy Complete statuses were not invalidated for the audit-integrity review epoch");
 expect(coverageContract.officialSource?.url?.includes("721397-2027-2029-syllabus.pdf"), "official Version 2 syllabus URL is missing");
 expect(/^[a-f0-9]{64}$/.test(coverageContract.officialSource?.sha256 ?? ""), "official syllabus SHA-256 is missing or malformed");
 expect(ids.length === 121, `expected 121 contracts, found ${ids.length}`);
@@ -40,13 +46,31 @@ for (const requirement of coverageContract.requirements) {
   expect(/^S(?:[1-9]|1[0-2])\.\d{2}$/.test(prefix), `${prefix}: malformed requirement ID`);
   expect(typeof requirement.requirement === "string" && requirement.requirement.trim(), `${prefix}: official requirement wording is missing`);
   expect(typeof requirement.notes === "string" && requirement.notes.trim(), `${prefix}: Version 2 Notes interpretation is empty`);
+  const officialReference = requirement.officialReference;
+  expect(officialReference?.syllabus === "Cambridge 9618 2027-2029 Version 2", `${prefix}: official syllabus identity is missing`);
+  expect(officialReference?.sourceSha256 === coverageContract.officialSource.sha256, `${prefix}: official source hash does not match the locked syllabus`);
+  expect(Array.isArray(officialReference?.pages) && officialReference.pages.length > 0 && officialReference.pages.every((page) => Number.isInteger(page) && page >= 14 && page <= 31), `${prefix}: official subject-content page locator is invalid`);
+  expect(Array.isArray(officialReference?.candidateStatements) && officialReference.candidateStatements.length > 0 && officialReference.candidateStatements.every((statement) => typeof statement === "string" && statement.trim()), `${prefix}: official candidate statement mapping is missing`);
+  expect(Array.isArray(officialReference?.adjacentNotesAndGuidance) && officialReference.adjacentNotesAndGuidance.every((note) => typeof note === "string" && note.trim()), `${prefix}: adjacent Notes and guidance mapping is invalid`);
+  if (officialReference) {
+    const { evidenceHash, ...basis } = officialReference;
+    const expectedHash = crypto.createHash("sha256").update(JSON.stringify(basis)).digest("hex");
+    expect(evidenceHash === expectedHash, `${prefix}: official mapping evidence hash does not match its content`);
+  }
+  expect(["remediation-v2-stage2", "remediation-v2-stage3", "remediation-v2-audit-integrity-r1", "remediation-v2-audit-integrity-r2"].includes(requirement.evidenceReviewRound), `${prefix}: evidence has no recognised remediation review round`);
   expect(Array.isArray(requirement.teachingLessons) && requirement.teachingLessons.length > 0 && requirement.teachingLessons.every((lesson) => Number.isInteger(lesson) && lesson >= 1 && lesson <= 150), `${prefix}: invalid teachingLessons`);
   expect(requirement.deliveryRole === "CORE", `${prefix}: compulsory requirement is not CORE`);
   expect(["High", "Medium", "Low"].includes(requirement.riskLevel), `${prefix}: invalid or missing riskLevel`);
   expect(["Reviewed", "Pending"].includes(requirement.evidenceReviewStatus), `${prefix}: invalid or missing evidenceReviewStatus`);
+  expect(["Reviewed", "Pending"].includes(requirement.integrityReviewStatus), `${prefix}: invalid or missing integrityReviewStatus`);
   expect(validGroups(requirement.requiredGroups), `${prefix}: requiredGroups must contain independently testable alternatives`);
   expect(!Object.hasOwn(requirement, "conceptGroups"), `${prefix}: obsolete conceptGroups field remains`);
   expect(Array.isArray(requirement.coreSections), `${prefix}: coreSections must be declared`);
+  expect(requirement.firstTeachingEvidence
+    && requirement.firstTeachingEvidence.lesson === Math.min(...requirement.teachingLessons)
+    && typeof requirement.firstTeachingEvidence.sectionId === "string"
+    && requirement.firstTeachingEvidence.sectionId
+    && validGroups(requirement.firstTeachingEvidence.conceptGroups), `${prefix}: exact CORE firstTeachingEvidence is missing or not the first teaching lesson`);
   expect(Array.isArray(requirement.prerequisites) && requirement.prerequisites.every((id) => idSet.has(id) && id !== prefix), `${prefix}: prerequisites contain a missing or self-referential ID`);
   expect(validEvidence(requirement.workedExampleEvidence), `${prefix}: invalid workedExampleEvidence`);
   expect(validEvidence(requirement.practiceEvidence, true), `${prefix}: invalid practiceEvidence`);
@@ -58,9 +82,17 @@ for (const requirement of coverageContract.requirements) {
   expect(Array.isArray(requirement.forbiddenPatterns) && requirement.forbiddenPatterns.every((id) => forbiddenIds.has(id)), `${prefix}: forbiddenPatterns contains an unknown rule ID`);
 }
 
+for (const [id, mapping] of Object.entries(officialAsMapping)) {
+  const requirement = requirementById.get(id);
+  expect(JSON.stringify(requirement?.officialReference?.candidateStatements) === JSON.stringify(mapping.candidateStatements), `${id}: exact official candidate statement mapping drifted`);
+  expect(JSON.stringify(requirement?.officialReference?.adjacentNotesAndGuidance) === JSON.stringify(mapping.adjacentNotesAndGuidance), `${id}: exact adjacent Notes and guidance mapping drifted`);
+}
+expect(!/file[- ]size calculation/i.test(requirementById.get("S1.10")?.requirement ?? ""), "S1.10: sound file-size calculation is still presented as compulsory wording");
+expect(!/construct/i.test(requirementById.get("S12.03")?.requirement ?? ""), "S12.03: construct state-transition diagram is still presented as compulsory wording");
+expect(!/produce/i.test(requirementById.get("S12.06")?.requirement ?? ""), "S12.06: produce test strategy/test plan is still presented as compulsory wording");
+
 const visiting = new Set();
 const visited = new Set();
-const requirementById = new Map(coverageContract.requirements.map((requirement) => [requirement.id, requirement]));
 function visit(id, trail = []) {
   if (visiting.has(id)) { failures.push(`prerequisite cycle: ${[...trail, id].join(" -> ")}`); return; }
   if (visited.has(id)) return;
@@ -76,6 +108,8 @@ if (!schemaOnly) {
     const evaluation = evaluateRequirement(requirement);
     for (const message of evaluation.messages) failures.push(`${requirement.id}: ${message}`);
   }
+  for (const problem of buildCurriculumSequenceModel().problems) failures.push(`${problem.type} ${problem.id}: ${problem.detail}`);
+  for (const problem of evaluateCriticalSemanticControls()) failures.push(`${problem.id} ${problem.location}: ${problem.detail}`);
 
   const scanFiles = [
     ...fs.readdirSync(path.join(root, "lessons")).filter((name) => name.endsWith(".md")).map((name) => path.join(root, "lessons", name)),

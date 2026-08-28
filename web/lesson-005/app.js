@@ -44,28 +44,34 @@ const practice = [
   { id: "p10", prompt: "What should an exam answer about Signed binary: sign-and-magnitude, one’s complement and two’s complement include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Represent -23 using 8-bit two’s complement. Show your working.",
-    answer: "+23 = 00010111₂. Invert all bits to obtain 11101000₂, then add 1: 11101001₂. Therefore -23 is 11101001₂ in 8-bit two's complement.",
+    prompt: "Convert the integer -23 to 8-bit one’s-complement representation. Demonstrate your working.",
+    answer: "+23 = 00010111₂. Invert every bit exactly once to obtain 11101000₂. Therefore -23 is 11101000₂ in 8-bit one's-complement representation.",
     marking: [
       { mark: "B1", text: "writes +23 as 00010111" },
-      { mark: "B1", text: "inverts bits to get 11101000" },
-      { mark: "B1", text: "adds 1 to the inverted value" },
-      { mark: "B1", text: "11101001" },
+      { mark: "B1", text: "uses a fixed 8-bit positive representation before conversion" },
+      { mark: "M1", text: "inverts every bit exactly once" },
+      { mark: "A1", text: "11101000" },
     ],
     strict: [
-      "Do not award answer mark for 11101000; that is one’s complement, not two’s complement.",
-      "Allow equivalent subtraction method if it clearly produces the same 8-bit result.",
+      "Do not accept 11101001; adding 1 produces two’s complement rather than one’s complement.",
+      "The conversion must start from the positive 8-bit representation and invert every bit.",
       "Final answer must have 8 bits.",
     ],
   },
   {
     title: "Question 2",
     marks: "3 marks",
-    prompt: "Interpret 11101001₂ as an 8-bit two’s complement integer.",
+    prompt: "Give the denary value of 11101001₂ as an 8-bit two’s complement integer.",
     answer: "The leading bit is 1, so the value is negative. Invert 11101001₂ to 00010110₂ and add 1 to obtain 00010111₂ = 23. Therefore the value is -23.",
     marking: [
       { mark: "B1", text: "recognises that the leading 1 means the value is negative in two’s complement" },
@@ -113,7 +119,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "3 marks",
-    prompt: "Using 8-bit two’s complement, calculate 18 - 27. Show how the subtraction is converted to addition.",
+    prompt: "Using 8-bit two’s complement, calculate 18 - 27. Demonstrate how the subtraction is converted to addition.",
     answer: "27 is 00011011₂, so -27 is 11100101₂. Add 00010010₂ + 11100101₂ = 11110111₂, which represents -9.",
     marking: [
       { mark: "M1", text: "forms -27 as 11100101₂ by inverting 00011011₂ and adding 1" },
@@ -316,11 +322,9 @@ function renderExamQuestions() {
         <p class="marks">[${question.marks}]</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="marking" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
-          <p><strong>Expected answer:</strong> ${question.answer}</p>
-          <ul class="ms-list">
-            ${question.marking.map((point) => `<li><b>${point.mark}</b> ${point.text}</li>`).join("")}
-          </ul>
+          <h4>Mark scheme</h4>
+          <p><strong>Answer:</strong> ${question.answer}</p>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

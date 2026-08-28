@@ -1,4 +1,55 @@
-# Lesson 130: Procedures and functions
+# Lesson 130: Procedures, functions and their interfaces
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Procedures, functions and their interfaces
+
+### Direct explanation
+
+- Define and use a procedure when an algorithm needs a named action. A procedure may have no parameters, one parameter or several parameters. BYVAL passes a value that the procedure can use without changing the caller's variable; BYREF gives access to the caller's variable so an assignment can persist after the call.
+- Define and use a function when the caller needs one returned value. A function has a return type and RETURN statement; the call can appear in an expression, for example Total <- Price + CalculateVAT(Price). Use procedures for actions and functions for calculated, searched or checked values.
+- A procedure header or function header names the subprogram and declares its parameters; a function header also declares its return type. The procedure/function interface is the information a caller needs to use the subprogram: its name, parameter list and types, and any returned value/type.
+- A parameter is the named variable in the header, while an argument is the actual value or variable supplied at a call. RETURN sends a function value back to the caller; output displayed by a procedure is an effect, not a return value.
+
+### Worked example
+
+**Use a procedure and a function:** PROCEDURE Increase(BYREF Number : INTEGER, BYVAL Amount : INTEGER) changes the caller's Number by Amount. FUNCTION CalculateVAT(Price : REAL) RETURNS REAL returns Price * 0.20, so Total <- Price + CalculateVAT(Price) uses the returned value in an expression. In Increase(Score, 5), Number and Amount are parameters while Score and 5 are arguments.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. When is a procedure appropriate?
+   **Answer:** When the algorithm needs a named action rather than a returned value used in an expression.
+2. What is the difference between BYVAL and BYREF?
+   **Answer:** BYVAL supplies a value/copy; BYREF aliases the caller variable so changes can persist.
+3. Where can a function call be used?
+   **Answer:** Anywhere its returned value of the declared type is valid, including an expression.
+4. What is included in a subprogram interface?
+   **Answer:** Its name, parameters/types and any return value/type needed by a caller.
+5. In IsPass(Score), which name is the argument?
+   **Answer:** Score.
+6. How does a function return differ from procedure output?
+   **Answer:** RETURN supplies a value to the caller; OUTPUT displays data as an action.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Define a procedure AddBonus(BYREF Mark : INTEGER, BYVAL Bonus : INTEGER), define a function IsPass(Mark : INTEGER) returning BOOLEAN, and use both from a caller with IsPass(Score) inside an IF expression. Identify headers, parameters, arguments and return value.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| procedure header and coherent BYREF/BYVAL parameters | Do not use parameter and argument as synonyms, describe procedure output as a function return, or claim BYVAL changes the caller variable. | 1 |
+| procedure changes Mark using Bonus and closes correctly |  | 1 |
+| function header declares BOOLEAN return type |  | 1 |
+| function returns the result of the pass comparison |  | 1 |
+| caller supplies arguments and uses IsPass(Score) in an expression/condition |  | 1 |
+| correctly identifies parameter, argument and returned value terminology |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -97,53 +148,28 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Procedures, functions and their interfaces
-
-### Direct explanation
-
-- Define and use a procedure when an algorithm needs a named action. A procedure may have no parameters, one parameter or several parameters. BYVAL passes a value that the procedure can use without changing the caller's variable; BYREF gives access to the caller's variable so an assignment can persist after the call.
-- Define and use a function when the caller needs one returned value. A function has a return type and RETURN statement; the call can appear in an expression, for example Total <- Price + CalculateVAT(Price). Use procedures for actions and functions for calculated, searched or checked values.
-- A procedure header or function header names the subprogram and declares its parameters; a function header also declares its return type. The procedure/function interface is the information a caller needs to use the subprogram: its name, parameter list and types, and any returned value/type.
-- A parameter is the named variable in the header, while an argument is the actual value or variable supplied at a call. RETURN sends a function value back to the caller; output displayed by a procedure is an effect, not a return value.
-
-### Worked example
-
-**Use a procedure and a function:** PROCEDURE Increase(BYREF Number : INTEGER, BYVAL Amount : INTEGER) changes the caller's Number by Amount. FUNCTION CalculateVAT(Price : REAL) RETURNS REAL returns Price * 0.20, so Total <- Price + CalculateVAT(Price) uses the returned value in an expression. In Increase(Score, 5), Number and Amount are parameters while Score and 5 are arguments.
-
-### Targeted practice and answers
-
-1. When is a procedure appropriate?
-   **Answer:** When the algorithm needs a named action rather than a returned value used in an expression.
-2. What is the difference between BYVAL and BYREF?
-   **Answer:** BYVAL supplies a value/copy; BYREF aliases the caller variable so changes can persist.
-3. Where can a function call be used?
-   **Answer:** Anywhere its returned value of the declared type is valid, including an expression.
-4. What is included in a subprogram interface?
-   **Answer:** Its name, parameters/types and any return value/type needed by a caller.
-5. In IsPass(Score), which name is the argument?
-   **Answer:** Score.
-6. How does a function return differ from procedure output?
-   **Answer:** RETURN supplies a value to the caller; OUTPUT displays data as an action.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Define a procedure AddBonus(BYREF Mark : INTEGER, BYVAL Bonus : INTEGER), define a function IsPass(Mark : INTEGER) returning BOOLEAN, and use both from a caller with IsPass(Score) inside an IF expression. Identify headers, parameters, arguments and return value.
-
-- **B1** procedure header and coherent BYREF/BYVAL parameters
-- **B1** procedure changes Mark using Bonus and closes correctly
-- **B1** function header declares BOOLEAN return type
-- **B1** function returns the result of the pass comparison
-- **M1** caller supplies arguments and uses IsPass(Score) in an expression/condition
-- **B1** correctly identifies parameter, argument and returned value terminology
-
-**Strict note:** Do not use parameter and argument as synonyms, describe procedure output as a function return, or claim BYVAL changes the caller variable.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
+
+### Same procedure body, different final result
+
+- **Explains:** `byref-compare`
+- **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-compare.jpg`
+
+1. Side-by-side comparison
+2. By value
+3. By reference
+4. Header clue
+5. Number : INTEGER
+6. BYREF Number : INTEGER
+7. What is passed
+8. a copy of the value
+9. a reference to the caller's variable
+10. Change inside subroutine
+11. affects local parameter only
+12. can affect original variable
 
 ### Function calls can appear where a value is needed
 
@@ -166,7 +192,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-compare.jpg`
 
 1. Procedure vs function
@@ -186,7 +212,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `function`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-function.jpg`
 
 1. Function
@@ -203,7 +229,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-java.jpg`
 
 1. Java support only
@@ -231,7 +257,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `procedure`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-procedure.jpg`
 
 1. A procedure performs an action and does not return a value.
@@ -242,7 +268,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `returner`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-returner.jpg`
 
 1. Interactive return simulator

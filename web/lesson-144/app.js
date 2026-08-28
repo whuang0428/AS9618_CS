@@ -114,6 +114,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -137,15 +143,15 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Create suitable data dictionary details for RoomID, BookingDate and NumberOfStudents in a room booking system.",
+    prompt: "Develop suitable data dictionary details for RoomID, BookingDate and NumberOfStudents in a room booking system.",
     answer: "RoomID: STRING, length 6, must not be blank and must match an existing room record. BookingDate: DATE, format YYYY-MM-DD, must be a valid school day and not in the past. NumberOfStudents: INTEGER, range 1 to room capacity, must be numeric and cannot exceed the selected room capacity.",
     marking: [
-      { mark: "M1", text: "RoomID has a suitable data type such as STRING" },
-      { mark: "A1", text: "RoomID includes size/format and a valid validation rule" },
-      { mark: "M1", text: "BookingDate has a suitable type such as DATE" },
-      { mark: "A1", text: "BookingDate includes format or date validation" },
-      { mark: "M1", text: "NumberOfStudents has a suitable numeric type such as INTEGER" },
-      { mark: "A1", text: "NumberOfStudents includes valid range or room-capacity validation" },
+      { mark: "B1", text: "RoomID has a suitable data type such as STRING" },
+      { mark: "B1", text: "RoomID includes size/format and a valid validation rule" },
+      { mark: "B1", text: "BookingDate has a suitable type such as DATE" },
+      { mark: "B1", text: "BookingDate includes format or date validation" },
+      { mark: "B1", text: "NumberOfStudents has a suitable numeric type such as INTEGER" },
+      { mark: "B1", text: "NumberOfStudents includes valid range or room-capacity validation" },
     ],
     strict: [
       "Do not award validation marks for vague 'must be correct' without a rule.",
@@ -377,9 +383,7 @@ function setupExam() {
         <h4>Indicative answer</h4>
         <p>${escapeHtml(item.answer)}</p>
         <h4>Mark scheme</h4>
-        <ul>
-          ${item.marking.map((mark) => `<li><strong>${escapeHtml(mark.mark)}</strong> ${escapeHtml(mark.text)}</li>`).join("")}
-        </ul>
+        ${renderStudentMarkPoints(item)}
       </div>
     </article>
   `).join("");

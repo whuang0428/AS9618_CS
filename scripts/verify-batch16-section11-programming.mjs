@@ -4,6 +4,7 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 
 import { loadAllQuestions } from "./ms-review-utils.mjs";
+import { visualDeliveryLesson, visualDeliveryTarget } from "./remediation-v2-core-visuals.mjs";
 import { coverageContract } from "./syllabus-coverage-contract.mjs";
 import { containsGroup, evaluateRequirement } from "./syllabus-coverage-evaluator.mjs";
 
@@ -78,14 +79,15 @@ expect(containsGroup("Total <- 0. A procedure header declares an interface and e
 expect(containsGroup("Total <- 0. A procedure header declares an interface and each call supplies an argument.", ["argument"]), "coverage normalisation lost argument text after a Markdown assignment arrow");
 
 const lessonChecks = [
-  ["114", ["CONSTANT", "DECLARE", "assignment", "arithmetic", "logical", "INPUT", "OUTPUT"]],
-  ["127", ["IF", "ELSE", "nested", "CASE", "OTHERWISE", "ENDCASE"]],
-  ["128", ["count-controlled", "FOR", "TO", "NEXT"]],
-  ["129", ["pre-condition", "post-condition", "WHILE", "REPEAT", "UNTIL", "justify"]],
+  ["126", ["flowchart", "structured English", "pseudocode", "every branch", "Dry-run"]],
+  ["127", ["CONSTANT", "DECLARE", "assignment", "arithmetic", "logical", "INPUT", "OUTPUT"]],
+  ["128", ["built-in", "library routines", "provided", "string manipulation functions", "supplied", "position convention"]],
+  ["129", [
+    "IF", "ELSE", "nested", "CASE", "OTHERWISE", "ENDCASE", "count-controlled", "FOR", "TO", "NEXT",
+    "pre-condition", "post-condition", "WHILE", "REPEAT", "UNTIL", "justify",
+  ]],
   ["130", ["procedure", "function", "BYREF", "BYVAL", "expression", "procedure header", "function header", "interface", "parameter", "argument", "return value"]],
-  ["133", ["built-in", "library routines", "provided", "string manipulation functions", "supplied", "position convention"]],
-  ["140", ["flowchart", "structured English", "pseudocode", "branches", "Dry-run"]],
-  ["141", ["clear", "efficient", "Cambridge", "pseudocode"]],
+  ["133", ["clear", "efficient", "Cambridge", "pseudocode"]],
 ];
 for (const [lesson, terms] of lessonChecks) {
   const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));
@@ -136,7 +138,9 @@ for (const key of visualKeys) {
   const semanticRow = semanticRows.find((row) => row.lesson === lesson && row.target_id === targetId);
   expect(semanticRow?.sha256 === visualHash, `${key}: semantic review hash does not match the current image`);
   expect(semanticRow?.pass1 === "Reviewed" && semanticRow?.pass2 === "Reviewed" && semanticRow?.status === "Approved", `${key}: visual lacks two approved semantic review passes`);
-  const targetRow = targetRows.find((row) => row.lesson === lesson && row.target_id === targetId);
+  const deliveryLesson = visualDeliveryLesson(lesson, targetId);
+  const deliveryTarget = visualDeliveryTarget(lesson, targetId);
+  const targetRow = targetRows.find((row) => row.lesson === deliveryLesson && row.target_id === deliveryTarget);
   expect(targetRow?.delivery_role === "CORE" && targetRow?.classroom_activity === "TEACH", `${key}: visual is not CORE/TEACH`);
 }
 includesAll(visualFacts, ["String manipulation functions are supplied in the question", "Do not import Java's zero-based substring convention", "Follow a flowchart from Start", "From structured English", "matching paths and outputs confirm equivalence"], "Section 11 visual facts");

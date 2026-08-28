@@ -32,11 +32,15 @@ function parseCsv(text) {
 
 const visualRegisterPath = path.join(root, "audits", "stage10-concept-visual-register.csv");
 const targetRegisterPath = path.join(root, "audits", "stage10-explanation-target-register.csv");
+const ocrRegisterPath = path.join(root, "audits", "stage10-ocr-wording.csv");
 const visualLookup = fs.existsSync(visualRegisterPath)
   ? new Map(parseCsv(fs.readFileSync(visualRegisterPath, "utf8")).map((row) => [`${Number(row.lesson)}:${row.visual_id}`, row]))
   : new Map();
 const targetLookup = fs.existsSync(targetRegisterPath)
   ? new Map(parseCsv(fs.readFileSync(targetRegisterPath, "utf8")).map((row) => [`${Number(row.lesson)}:${row.implementation_id}`, row]))
+  : new Map();
+const ocrLookup = fs.existsSync(ocrRegisterPath)
+  ? new Map(parseCsv(fs.readFileSync(ocrRegisterPath, "utf8")).map((row) => [row.file, row]))
   : new Map();
 
 export function lessonPaths(lesson) {
@@ -123,8 +127,9 @@ function readLesson(lesson) {
   return value;
 }
 
-function evidenceSection(evidence) {
-  return readLesson(evidence.lesson)?.sections.find(({ id }) => id === evidence.sectionId) ?? null;
+function evidenceSection(evidence, lessonSources) {
+  return lessonSources.find(({ number }) => number === lessonNumber(evidence.lesson))?.sections
+    .find(({ id }) => id === evidence.sectionId) ?? null;
 }
 
 function checkEvidenceGroups(messages, prefix, text, groups) {
@@ -140,6 +145,7 @@ function questionText(question) {
 export function evaluateRequirement(requirement, options = {}) {
   const messages = [];
   if (requirement.evidenceReviewStatus !== "Reviewed") messages.push("contract evidence mapping pending independent review");
+  if (requirement.integrityReviewStatus !== "Reviewed") messages.push("official-source and first-teaching integrity pending revalidation");
   const lessonSources = [];
   for (const lesson of requirement.teachingLessons) {
     const storedSource = readLesson(lesson);
@@ -165,10 +171,14 @@ export function evaluateRequirement(requirement, options = {}) {
     const sections = lessonSources.flatMap(({ sections }) => sections).filter((section) => section.id === id);
     if (!sections.some(({ role }) => role === "CORE")) messages.push(`missing CORE section #${id}`);
   }
+  const requirementCoreText = lessonSources.flatMap(({ sections }) => sections)
+    .filter(({ id, role }) => requirement.coreSections.includes(id) && role === "CORE")
+    .map(({ html }) => html).join("\n");
+  checkEvidenceGroups(messages, "requirement-specific CORE evidence", requirementCoreText, requirement.requiredGroups);
 
   if (requirement.workedExampleEvidence.length === 0) messages.push("no worked-example evidence declared");
   for (const evidence of requirement.workedExampleEvidence) {
-    const section = evidenceSection(evidence);
+    const section = evidenceSection(evidence, lessonSources);
     const prefix = `worked example L${lessonNumber(evidence.lesson)}#${evidence.sectionId}`;
     if (!section) messages.push(`${prefix} is missing`);
     else {
@@ -179,7 +189,7 @@ export function evaluateRequirement(requirement, options = {}) {
 
   if (requirement.practiceEvidence.length === 0) messages.push("no practice/MS evidence declared");
   for (const evidence of requirement.practiceEvidence) {
-    const section = evidenceSection(evidence);
+    const section = evidenceSection(evidence, lessonSources);
     const prefix = `practice L${lessonNumber(evidence.lesson)}#${evidence.sectionId}`;
     if (!section) messages.push(`${prefix} is missing`);
     else {
@@ -212,8 +222,20 @@ export function evaluateRequirement(requirement, options = {}) {
       if (evidence.required) messages.push(`${prefix} is missing from the visual/target registers`);
       continue;
     }
-    if (target.delivery_role !== "CORE" || target.classroom_activity !== "TEACH") messages.push(`${prefix} is not CORE/TEACH`);
+    const visualLesson = readLesson(evidence.lesson);
+    const actualSection = visualLesson?.sections.find(({ id }) => id === evidence.sectionId);
+    if (evidence.required && (target.delivery_role !== "CORE" || target.classroom_activity !== "TEACH")) messages.push(`${prefix} target register is not CORE/TEACH`);
+    if (evidence.required && (actualSection?.role !== "CORE" || actualSection?.activity !== "TEACH")) messages.push(`${prefix} actual lesson section is not CORE/TEACH`);
+    if (evidence.required && evidence.lesson < requirement.firstUseReview?.lesson) messages.push(`${prefix} precedes reviewed first use L${lessonNumber(requirement.firstUseReview.lesson)}`);
     checkEvidenceGroups(messages, prefix, `${visual.topic} ${visual.required_facts}`, evidence.conceptGroups);
+    if (visual.method === "Raster image") {
+      const filename = path.basename(actualSection?.html.match(/<img\b[^>]*\bsrc="([^"]+)"/i)?.[1] ?? "");
+      const assetPath = path.join(root, "web", "assets", "diagrams", "stage10-infographics", filename);
+      const ocr = ocrLookup.get(filename);
+      if (!fs.existsSync(assetPath) || fs.statSync(assetPath).size === 0) messages.push(`${prefix} raster asset is missing or empty`);
+      if (!ocr || /Review needed|OCR failed/i.test(ocr.status)) messages.push(`${prefix} has no usable pixel/OCR transcript`);
+      else checkEvidenceGroups(messages, `${prefix} pixel/OCR transcript`, ocr.ocr_text, evidence.conceptGroups);
+    }
   }
   if (requirement.riskLevel === "High" && !requirement.visualEvidence.some(({ required }) => required)) messages.push("high-risk requirement has no required visual evidence");
 

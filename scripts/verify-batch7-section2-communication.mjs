@@ -49,15 +49,11 @@ for (const id of scopedRequirements) {
 }
 
 const checks = [
-  ["016", ["networking devices", "limited geographical area", "large geographical area", "bus topology", "star topology", "mesh topology", "hybrid topology"]],
-  ["017", ["client-server model", "peer-to-peer model", "clients request", "servers provide", "thin client", "thick client"]],
+  ["016", ["networking devices", "limited geographical area", "large geographical area", "client-server", "peer-to-peer", "thin client", "thick client"]],
+  ["017", ["bus topology", "star topology", "mesh topology", "hybrid topology"]],
   ["018", ["between two hosts", "shared backbone", "central switch", "alternative routes", "hybrid"]],
-  ["019", ["carrier sense multiple access", "collision detection", "random backoff", "retry"]],
-  ["020", ["ipv4", "32-bit", "ipv6", "128-bit", "subnetting", "public address", "private address", "uniform resource locator", "dns resolves", "path"]],
-  ["022", ["wired network", "wireless network", "copper cable", "fibre-optic cable", "radio waves", "wifi", "microwave", "satellite"]],
-  ["023", ["nic/wnic", "wap", "switch", "server", "bridge", "repeater", "router", "modem", "pstn", "dedicated line", "cell phone network"]],
-  ["024", ["public cloud", "private cloud", "world wide web", "internet"]],
-  ["025", ["bit streaming", "real-time streaming", "on-demand streaming", "bit rate", "broadband speed", "buffer"]],
+  ["019", ["public cloud", "private cloud", "wired network", "wireless network", "copper cable", "fibre-optic cable", "radio waves", "wifi", "microwave", "satellite"]],
+  ["020", ["nic", "wnic", "wap", "switch", "server", "bridge", "repeater", "router", "carrier sense multiple access", "random backoff", "bit streaming", "world wide web", "modem", "pstn", "ipv4", "ipv6", "uniform resource locator", "dns"]],
 ];
 
 for (const [lesson, terms] of checks) {

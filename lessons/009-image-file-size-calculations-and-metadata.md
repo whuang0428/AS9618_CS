@@ -1,4 +1,46 @@
-# Lesson 009: Image file size calculations and metadata
+# Lesson 009: Vector graphics and drawing lists
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Vector graphics and drawing lists
+
+### Direct explanation
+
+- Vector encoding stores a graphic as a drawing list of drawing objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.
+- Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.
+- For a given application, justify bitmap or vector storage by connecting the image content and required editing or scaling to the chosen representation.
+
+### Worked example
+
+**Store a red circle:** A drawing-list entry could record object = circle, centre = (80, 60), radius = 20, fill = red and outline = black. Enlarging it changes the geometry before redrawing, not a grid of stored pixels.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Identify two properties stored for a vector object.
+   **Answer:** Any two of coordinates, dimensions, fill, line colour or line thickness.
+2. Suggest vector or bitmap for a company logo that must appear on a pen and a billboard.
+   **Answer:** Vector, because geometric objects can be scaled without pixelation.
+3. Why is bitmap normally better for a photograph?
+   **Answer:** A photograph contains complex per-pixel colour and texture that is inefficient to describe as drawing objects.
+
+### Exam-style question and MS
+
+**Question (4 marks):** A designer creates a simple icon from circles and rectangles. Explain how it is stored as a vector graphic and give one advantage over a bitmap when resized.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| stored as a drawing list / list of objects | Do not accept 'vector has better quality' unless scalability or object-based storage is explained. | 1 |
+| stores object properties such as coordinates/dimensions/colour |  | 1 |
+| software redraws objects from the descriptions |  | 1 |
+| can be resized without pixelation / loss of shape quality |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +85,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** `100 * 80 * 8 = 64 000 bits = 8000 bytes`. Credit dimensions, colour depth and bit-to-byte conversion.
 
-
-
 ## Student Task
 Students change one parameter at a time: width, height and colour depth. They predict which change doubles the file size.
 
@@ -72,41 +112,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Vector graphics and drawing lists
-
-### Direct explanation
-
-- Vector encoding stores a graphic as a drawing list of drawing objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.
-- Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.
-
-### Worked example
-
-**Store a red circle:** A drawing-list entry could record object = circle, centre = (80, 60), radius = 20, fill = red and outline = black. Enlarging it changes the geometry before redrawing, not a grid of stored pixels.
-
-### Targeted practice and answers
-
-1. Name two properties stored for a vector object.
-   **Answer:** Any two of coordinates, dimensions, fill, line colour or line thickness.
-2. Choose vector or bitmap for a company logo that must appear on a pen and a billboard.
-   **Answer:** Vector, because geometric objects can be scaled without pixelation.
-3. Why is bitmap normally better for a photograph?
-   **Answer:** A photograph contains complex per-pixel colour and texture that is inefficient to describe as drawing objects.
-
-### Exam-style question and MS
-
-**Question (4 marks):** A designer creates a simple icon from circles and rectangles. Explain how it is stored as a vector graphic and give one advantage over a bitmap when resized.
-
-- **B1** stored as a drawing list / list of objects
-- **B1** stores object properties such as coordinates/dimensions/colour
-- **B1** software redraws objects from the descriptions
-- **B1** can be resized without pixelation / loss of shape quality
-
-**Strict note:** Do not accept 'vector has better quality' unless scalability or object-based storage is explained.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -114,7 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `chain`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-009-chain.jpg`
 
 1. 1. Pixels
@@ -130,7 +135,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `metadata`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-009-metadata.jpg`
 
 1. Examples
@@ -144,7 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `units`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-009-units.jpg`
 
 1. When a formula gives a size in bits, divide by 8 to convert to bytes.

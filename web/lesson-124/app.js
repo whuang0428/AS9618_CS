@@ -85,6 +85,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -127,7 +133,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Define a Cambridge-style record type TBook with fields ISBN, Title and Pages. Choose suitable data types and declare Book1 as TBook.",
+    prompt: "Define a Cambridge-style record type TBook with fields ISBN, Title and Pages. Suggest suitable data types and declare Book1 as TBook.",
     answer: "TYPE TBook\n    DECLARE ISBN : STRING\n    DECLARE Title : STRING\n    DECLARE Pages : INTEGER\nENDTYPE\n\nDECLARE Book1 : TBook",
     marking: [
       { mark: "B1", text: "starts record type using TYPE TBook or equivalent" },
@@ -164,7 +170,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "7 marks",
-    prompt: "Convert the following Java-support declarations to Cambridge-style pseudocode: final int MAX_SIZE = 100; double price; boolean found; String[] names = new String[20];",
+    prompt: "Write the following declarations in Cambridge-style pseudocode: final int MAX_SIZE = 100; double price; boolean found; String[] names = new String[20];",
     answer: "CONSTANT MaxSize = 100\nDECLARE Price : REAL\nDECLARE Found : BOOLEAN\nDECLARE Names : ARRAY[1:20] OF STRING",
     marking: [
       { mark: "B1", text: "declares MAX_SIZE as a constant with value 100" },
@@ -345,7 +351,7 @@ function renderExam() {
           <p><strong>Answer:</strong></p>
           <pre><code>${escapeHtml(question.answer)}</code></pre>
           <p><strong>Mark scheme:</strong></p>
-          <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `)

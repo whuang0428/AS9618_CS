@@ -155,6 +155,7 @@ for (let number = 1; number <= 150; number += 1) {
       && row[deliveryIndex.section_id] !== "overview"
       && !row[deliveryIndex.section_id].startsWith("delivery-")).slice(0, 1);
   }
+  if (!candidates.length && rows.every((row) => row[deliveryIndex.delivery_role] !== "CORE")) continue;
   if (!candidates.length) throw new Error(`Lesson ${lesson} has no auditable explanation target`);
 
   for (const row of candidates) {

@@ -53,6 +53,28 @@ code {
   overflow-wrap: anywhere;
 }
 
+/* Generated Cambridge mark schemes use real tables.  The academic theme also
+   supports div-based mark-scheme grids, so restore table layout explicitly. */
+table.mark-scheme-table {
+  display: table !important;
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed !important;
+}
+
+table.mark-scheme-table :where(th, td) {
+  overflow-wrap: anywhere !important;
+  word-break: normal;
+}
+
+/* Long literal URLs and pseudocode tokens in the mobile text alternative must
+   wrap instead of being clipped by the explanation panel. */
+.explanation-sr-only {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 /* Student pages should size guidance and hero visuals to their actual content. */
 .guidance-grid {
   grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)) !important;

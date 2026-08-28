@@ -1,4 +1,47 @@
-# Lesson 103: Validation algorithms and defensive input handling
+# Lesson 103: Logic statements define parts of an algorithm
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Logic statements define parts of an algorithm
+
+### Direct explanation
+
+- A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution. It combines comparisons such as =, <, <=, >, >= or <> with AND, OR or NOT when more than one condition is needed.
+- Construct a statement from the rule before choosing its branch: a valid mark from 0 to 100 inclusive is Mark >= 0 AND Mark <= 100. Interpret it by checking both comparisons; using OR would accept values outside the range.
+- Logic statements must preserve boundaries and intended truth conditions. Trace representative true, false and boundary values to expose reversed operators or incorrect connectors.
+
+### Worked example
+
+**Define a valid-age condition:** For an accepted age from 11 to 18 inclusive, use Age >= 11 AND Age <= 18. At Age = 11 and Age = 18 the statement is TRUE; at Age = 10 or 19 it is FALSE. NOT(Age >= 11 AND Age <= 18) describes the invalid case.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Complete the valid-mark statement for 0 to 100 inclusive.
+   **Answer:** Mark >= 0 AND Mark <= 100.
+2. Give the denary value of Found = FALSE OR Index <= UpperBound.
+   **Answer:** The statement is true when the target has not been found, or the index is still within the upper bound, or both.
+3. Why is Mark >= 0 OR Mark <= 100 incorrect for validation?
+   **Answer:** Every number satisfies at least one side, so out-of-range values can be accepted.
+
+### Exam-style question and MS
+
+**Question (5 marks):** Write and explain a logic statement that accepts an integer Temperature from -20 to 50 inclusive, then state its value for -21, -20, 50 and 51.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| uses Temperature >= -20 | Do not accept OR for a two-bound inclusive range or award outputs without a correctly constructed statement. | 1 |
+| uses AND Temperature <= 50 |  | 1 |
+| states FALSE for -21 |  | 1 |
+| states TRUE for -20 and 50 |  | 1 |
+| states FALSE for 51 |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -46,7 +89,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Award marks for correct control structure, initialisation, update step and termination. For traces, every changed variable must be shown accurately.
 
-
 ## Student Task
 Students solve the same problem twice: first as numbered English steps, then as Cambridge-style pseudocode. They annotate where selection or iteration appears.
 
@@ -81,7 +123,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `checks`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-checks.jpg`
 
 1. LENGTH(Postcode) <= 8 is a maximum-length check.
@@ -93,7 +135,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `defensive`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-defensive.jpg`
 
 1. Defensive input handling
@@ -103,11 +145,23 @@ Correction prompt: "State the correct term, then explain the relevant process or
 5. 4 Repeat input until valid.
 6. 5 Process only the accepted value.
 
+### A diamond becomes IF...THEN...ELSE
+
+- **Explains:** `equivalence`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-equivalence.jpg`
+
+1. A flowchart decision diamond becomes an IF condition in pseudocode.
+2. The labelled Yes and No branches become THEN and ELSE branches.
+3. Close the selection with ENDIF after the two branches rejoin.
+4. Input Age before testing whether it is between 11 and 18 inclusive.
+
 ### Use Cambridge-style validation loops in the exam
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-pseudocode.jpg`
 
 1. A post-condition validation loop starts with REPEAT and ends with UNTIL.
@@ -119,7 +173,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tester`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-tester.jpg`
 
 1. Interactive input tester
@@ -129,7 +183,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validation`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-validation.jpg`
 
 1. Knowledge explanation

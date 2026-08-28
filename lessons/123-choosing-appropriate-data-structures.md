@@ -1,5 +1,9 @@
 # Lesson 123: Choosing appropriate data structures
 
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
+
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
 **Syllabus reference:** Syllabus Section 10
@@ -46,7 +50,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit suitable structure choice, correct indexing or field access, and a loop that covers the required data without missing or exceeding bounds.
 
-
 ## Student Task
 Students model a small school dataset using arrays, records or arrays of records, then write one operation on it.
 
@@ -74,41 +77,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Choosing stack, queue or linked list
-
-### Direct explanation
-
-- A stack is LIFO with push/pop at the top; a queue is FIFO with enqueue at the rear and dequeue at the front; a linked list supports traversal and insertion/deletion through links.
-- Justification must name the required access order or update behaviour. Array implementations have fixed capacity unless resized and require overflow/underflow checks; linked structures require pointer management.
-
-### Worked example
-
-**Choose structures:** Undo history uses a stack because the most recent action is undone first. Print jobs use a queue because the earliest accepted job prints first. A changing ordered playlist can use a linked list for link-based insertion/deletion.
-
-### Targeted practice and answers
-
-1. Choose an ADT for breadth-first waiting jobs.
-   **Answer:** Queue, because first in is first out.
-2. Choose an ADT for nested function return addresses.
-   **Answer:** Stack, because the most recent call returns first.
-3. What must be checked before pushing to a full array stack?
-   **Answer:** Overflow/capacity.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Justify a suitable ADT for browser Back history and contrast it with a queue.
-
-- **B1** selects stack
-- **B1** most recently visited page is returned to first / LIFO
-- **B1** queue removes earliest item first / FIFO
-- **B1** explains why FIFO gives the wrong access order
-
-**Strict note:** Do not award the structure name without its access-order consequence.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -116,7 +84,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `adt`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-adt.jpg`
 
 1. Stack and queue
@@ -133,7 +101,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `array`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-array.jpg`
 
 1. Initialise Total <- 0 before using Total as an accumulator.
@@ -148,7 +116,7 @@ OUTPUT Total
 
 - **Explains:** `criteria`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-criteria.jpg`
 
 1. Selection criteria
@@ -168,7 +136,7 @@ OUTPUT Total
 
 - **Explains:** `decision`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-decision.jpg`
 
 1. Store one book as a record with ISBN, title and pages fields.
@@ -181,7 +149,7 @@ OUTPUT Total
 
 - **Explains:** `file`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-file.jpg`
 
 1. OPENFILE "Scores.csv" FOR APPEND
@@ -193,7 +161,7 @@ OUTPUT Total
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-pseudocode.jpg`
 
 1. TYPE TBook
@@ -208,7 +176,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `ranker`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-ranker.jpg`
 
 1. Reason ranker
@@ -218,7 +186,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `record`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-record.jpg`
 
 1. TYPE TStudent

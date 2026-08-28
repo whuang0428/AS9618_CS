@@ -106,6 +106,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -145,7 +151,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "5 marks",
-    prompt: "Describe ransomware and recommend two controls to reduce its impact.",
+    prompt: "Describe ransomware and Suggest two controls to reduce its impact.",
     answer: "Ransomware is malware that encrypts or locks files or systems and demands payment for restoring access. It mainly threatens availability because authorised users cannot access their data. Offline or isolated backups can reduce impact because data can be restored without relying on the attacker. Patching, anti-malware, restricted permissions and user training can reduce the chance of infection or limit what files can be encrypted.",
     marking: [
       { mark: "B1", text: "ransomware encrypts/locks files or systems" },
@@ -325,8 +331,8 @@ function renderExam() {
       <div class="ms-panel" id="ms${index}">
         <h4>Indicative answer</h4>
         <p>${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

@@ -129,11 +129,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "The following pseudocode is traced with input values 4, 7, 9. Complete the trace for Total and state the output.\n\nTotal <- 0\nFOR Count <- 1 TO 3\n    INPUT Number\n    Total <- Total + Number\nNEXT Count\nOUTPUT Total",
+    prompt: "The following pseudocode is traced with input values 4, 7, 9. Complete the trace for Total and state the output. Total <- 0\nFOR Count <- 1 TO 3 INPUT Number Total <- Total + Number\nNEXT Count\nOUTPUT Total",
     answer: "Count 1: Number 4, Total 4. Count 2: Number 7, Total 11. Count 3: Number 9, Total 20. Output is 20.",
     marking: [
       { mark: "M1", text: "records Total as 4 after applying the first update" },
@@ -172,7 +178,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "A loop inputs numbers until -1 is entered. It should output the total of values before -1. Trace inputs 5, 2, -1 and explain why -1 is not included.",
+    prompt: "A loop inputs numbers until -1 is entered. It should output the total of values before -1. Complete a trace table for inputs 5, 2, -1 and explain why -1 is not included.",
     answer: "Total starts at 0. Input 5 is not -1, so Total becomes 5. Input 2 is not -1, so Total becomes 7. Input -1 makes the loop condition false, so it is not added. The output is 7.",
     marking: [
       { mark: "B1", text: "initialises or implies Total starts at 0" },
@@ -374,10 +380,10 @@ function setupExam() {
       <p>${question.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${question.answer}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

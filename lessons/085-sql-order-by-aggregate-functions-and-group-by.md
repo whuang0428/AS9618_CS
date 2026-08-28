@@ -1,4 +1,56 @@
-# Lesson 085: SQL ORDER BY, aggregate functions, and GROUP BY
+# Lesson 085: DDL and two-table data queries
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** DDL and two-table data queries
+
+### Direct explanation
+
+- Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE. Field types include CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.
+- A PRIMARY KEY uniquely identifies a row. A FOREIGN KEY with REFERENCES links a field to a key in another table and supports referential integrity.
+- AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.
+- For Student(StudentID, StudentName) and Loan(StudentID, DueDate), SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID returns names only where matching rows exist. Add WHERE for a further row condition, not for the join relationship itself.
+- For the required at-most-two-table subset, queries can use ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG as well as SELECT, FROM and WHERE.
+
+### Worked example
+
+**Define two related tables / List overdue borrowers:** CREATE DATABASE College; then CREATE TABLE Department and CREATE TABLE Student. Student uses INTEGER for StudentID, VARCHAR for Name, DATE for DateOfBirth, BOOLEAN for Active and a DepartmentID foreign key REFERENCES Department(DepartmentID). ALTER TABLE can modify the structure later. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate < '2027-05-01'; uses two tables, one explicit join condition and one separate filter.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Identify four required SQL field types.
+   **Answer:** Any four of CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.
+2. Which clause declares the referenced table?
+   **Answer:** REFERENCES.
+3. Which clause states how two joined tables match?
+   **Answer:** ON.
+4. How many tables are required at most in the AS syllabus query?
+   **Answer:** Two.
+5. Why qualify Student.StudentID and Loan.StudentID?
+   **Answer:** To identify which table supplies each otherwise identical field name.
+
+### Exam-style question and MS
+
+**Question (8 marks):** Write DDL to create a Student table with suitable data types, a primary key and one foreign key. Write an INNER JOIN query listing DepartmentName and EmployeeName from Department and Employee, matching their DepartmentID fields.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| CREATE TABLE and named fields | Do not award DML statements for a schema-definition task. Do not use a three-table query or replace the required INNER JOIN with comma-style FROM and a WHERE join. | 1 |
+| suitable required data types |  | 1 |
+| PRIMARY KEY |  | 1 |
+| FOREIGN KEY with REFERENCES |  | 1 |
+| SELECT includes DepartmentName and EmployeeName |  | 1 |
+| FROM Department |  | 1 |
+| INNER JOIN Employee |  | 1 |
+| ON Department.DepartmentID = Employee.DepartmentID |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +95,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit correct SELECT fields, FROM table, WHERE/JOIN condition and any ORDER BY or aggregate clause required by the question.
 
-
-
 ## Student Task
 Students write three natural-language questions for a database, then swap and write SQL for another pair's questions.
 
@@ -79,7 +129,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `aggregates`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-085-aggregates.jpg`
 
 1. COUNT(*) counts all rows in the result, including rows containing null values.
@@ -90,18 +140,30 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `groupby`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-085-groupby.jpg`
 
 1. Use GROUP BY when the question asks for a summary for each category, each borrower, each course or each group.
 2. Pattern:
 3. SELECT Category, COUNT(*) FROM Book GROUP BY Category;
 
+### Two-table INNER JOIN with ON
+
+- **Explains:** `join`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-086-join.jpg`
+
+1. AS DML questions use at most two tables.
+2. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID uses an explicit two-table join.
+3. ON states the matching key relationship between the tables.
+4. WHERE adds a separate row filter after the join; it does not replace the required INNER JOIN syntax.
+
 ### ORDER BY sorts output rows
 
 - **Explains:** `orderby`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-085-orderby.jpg`
 
 1. ORDER BY controls the order of the result rows. ASC means ascending; DESC means descending.

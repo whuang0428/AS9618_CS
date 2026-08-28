@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 119 | Arrays of records</title>
+    <title>AS9618 Lesson 119 | Why files are needed and how text-file pseudocode works</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Arrays of records</h1>
+        <h1>Why files are needed and how text-file pseudocode works</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -43,10 +43,72 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Why files are needed and how text-file pseudocode works</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed. Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required. A file is not merely a larger array.</p>
+            <p>For a text file containing one or more lines, select the mode before processing: READ obtains existing data, WRITE creates or replaces output content, and APPEND adds after existing content. Every opened file must be closed after processing.</p>
+            <p>A complete read algorithm uses OPENFILE for READ, checks NOT EOF before READFILE, processes each line and then CLOSEFILE. WRITEFILE stores a line in a file opened for WRITE or APPEND. Reading after EOF or using WRITE when old content must remain are boundary errors.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Copy selected lines between text files</h3>
+            <p>Open Results.txt FOR READ and Pass.txt FOR WRITE. While NOT EOF(Results.txt), READFILE the next Line; if it contains PASS, WRITEFILE it to Pass.txt. Close both files after the loop. Results remain available from storage, while Pass.txt is deliberately created as a new output file.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Why files are needed and how text-file pseudocode works: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why use a file instead of only an array?</p>
+              <details><summary>Show answer</summary><p>A file persists after the program ends and can be reloaded in a later run.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which mode adds without replacing old lines?</p>
+              <details><summary>Show answer</summary><p>APPEND.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why test NOT EOF before READFILE?</p>
+              <details><summary>Show answer</summary><p>It prevents an attempt to read beyond the final available line.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Write Cambridge pseudocode to read every line from Input.txt, copy non-blank lines to Output.txt and close both files. Explain why the input data is stored in a file.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>persistent/later-use need for the input file</td><td>Do not test EOF after an invalid read or claim that WRITE preserves existing output-file contents.</td><td>1</td></tr>
+                  <tr><td>opens Input.txt FOR READ</td><td></td><td>1</td></tr>
+                  <tr><td>opens Output.txt FOR WRITE</td><td></td><td>1</td></tr>
+                  <tr><td>loops WHILE NOT EOF before READFILE</td><td></td><td>1</td></tr>
+                  <tr><td>writes only non-blank lines inside a coherent IF</td><td></td><td>1</td></tr>
+                  <tr><td>closes both files after the loop</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 119 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>An array of records stores many entities that share the same record structure.</h2>
@@ -72,7 +134,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 algorithms often store many related items, then loop through them to find, count or update fields.</p>
@@ -83,7 +145,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>How should we store a class register?</h2>
@@ -98,7 +160,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that stores many students while keeping named fields for each one.</div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Concept</p>
             <h2>One array, many records, same record shape</h2>
@@ -114,7 +176,7 @@
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <h2 class="explanation-sr-only" id="explanation-concept-title">One array, many records, same record shape</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One array, many records, same record shape with a structured visual model." />
@@ -126,8 +188,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-
-        <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+        <section class="panel" id="declare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Declare</p>
             <h2>Define the record type, then declare the array</h2>
@@ -153,7 +214,7 @@ Students[1].Mark &lt;- 72</code></pre>
         </section>
 
         <!-- stage10-explanation:start declare -->
-        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <h2 class="explanation-sr-only" id="explanation-declare-title">Define the record type, then declare the array</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Define the record type, then declare the array with a structured visual model." />
@@ -169,8 +230,7 @@ This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> The reco
           </div>
         </section>
         <!-- stage10-explanation:end declare -->
-
-        <section class="panel" id="access" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
+        <section class="panel" id="access" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Access pattern</p>
             <h2>Index first, then field name</h2>
@@ -184,7 +244,7 @@ This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> The reco
         </section>
 
         <!-- stage10-explanation:start access -->
-        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
+        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <h2 class="explanation-sr-only" id="explanation-access-title">Index first, then field name</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Index first, then field name with a structured visual model." />
@@ -196,8 +256,7 @@ This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> The reco
           </div>
         </section>
         <!-- stage10-explanation:end access -->
-
-        <section class="panel" id="traversal" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
+        <section class="panel" id="traversal" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Traversal</p>
             <h2>A loop visits each record; field access uses the loop index</h2>
@@ -211,7 +270,7 @@ NEXT Index</code></pre>
         </section>
 
         <!-- stage10-explanation:start traversal -->
-        <section class="panel explanation-panel" id="explanation-traversal" data-explains="traversal" data-explanation-kind="mechanism" aria-labelledby="explanation-traversal-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
+        <section class="panel explanation-panel" id="explanation-traversal" data-explains="traversal" data-explanation-kind="mechanism" aria-labelledby="explanation-traversal-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <h2 class="explanation-sr-only" id="explanation-traversal-title">A loop visits each record; field access uses the loop index</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-traversal.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A loop visits each record; field access uses the loop index with a structured visual model." />
@@ -223,8 +282,7 @@ NEXT Index</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end traversal -->
-
-        <section class="panel" id="operations" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="operations">
+        <section class="panel" id="operations" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Common operations</p>
             <h2>Search, count and update fields</h2>
@@ -238,7 +296,7 @@ NEXT Index</code></pre>
         </section>
 
         <!-- stage10-explanation:start operations -->
-        <section class="panel explanation-panel" id="explanation-operations" data-explains="operations" data-explanation-kind="process" aria-labelledby="explanation-operations-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="operations">
+        <section class="panel explanation-panel" id="explanation-operations" data-explains="operations" data-explanation-kind="process" aria-labelledby="explanation-operations-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <h2 class="explanation-sr-only" id="explanation-operations-title">Search, count and update fields</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-operations.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Search, count and update fields with a structured visual model." />
@@ -250,8 +308,7 @@ NEXT Index</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end operations -->
-
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Same structure, different syntax</h2>
@@ -278,7 +335,7 @@ for (int index = 0; index &lt; 30; index++) {
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same structure, different syntax</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same structure, different syntax with a structured visual model." />
@@ -290,9 +347,7 @@ for (int index = 0; index &lt; 30; index++) {
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-
-
-        <section class="panel" id="explorer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="explorer">
+        <section class="panel" id="explorer" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Interactive record explorer</p>
             <h2>Read a field from a selected record</h2>
@@ -320,7 +375,7 @@ for (int index = 0; index &lt; 30; index++) {
         </section>
 
         <!-- stage10-explanation:start explorer -->
-        <section class="panel explanation-panel" id="explanation-explorer" data-explains="explorer" data-explanation-kind="mechanism" aria-labelledby="explanation-explorer-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="explorer">
+        <section class="panel explanation-panel" id="explanation-explorer" data-explains="explorer" data-explanation-kind="mechanism" aria-labelledby="explanation-explorer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <h2 class="explanation-sr-only" id="explanation-explorer-title">Read a field from a selected record</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-explorer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read a field from a selected record with a structured visual model." />
@@ -332,8 +387,7 @@ for (int index = 0; index &lt; 30; index++) {
           </div>
         </section>
         <!-- stage10-explanation:end explorer -->
-
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Interactive loop trace</p>
             <h2>Count students with marks of 70 or above</h2>
@@ -345,7 +399,7 @@ for (int index = 0; index &lt; 30; index++) {
           <div class="trace-output" id="loopTrace">Ready: Count = 0, Index has not started.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Array-of-record algorithms</h2>
@@ -359,7 +413,7 @@ for (int index = 0; index &lt; 30; index++) {
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Ten quick arrays-of-records checks</h2>
@@ -368,7 +422,7 @@ for (int index = 0; index &lt; 30; index++) {
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common array-of-record errors</h2>
@@ -376,7 +430,7 @@ for (int index = 0; index &lt; 30; index++) {
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -385,7 +439,7 @@ for (int index = 0; index &lt; 30; index++) {
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-119">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Array of records checklist</h2>

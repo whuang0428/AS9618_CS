@@ -1,4 +1,54 @@
-# Lesson 077: Section 7 review: balanced evaluation answers
+# Lesson 077: Section 7 required-content checkpoint
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Section 7 required-content checkpoint
+
+### Direct explanation
+
+- Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
+- Copyright legislation is needed to give creators enforceable control over software expression that can otherwise be copied and distributed cheaply. A licence grants permission without normally transferring ownership. The required licence categories are the Free Software Foundation (FSF), Open Source Initiative (OSI), shareware and commercial software; justify a choice from the scenario's permissions, restrictions, support, cost and redistribution needs.
+- Artificial intelligence (AI) applications include classification, recommendation, prediction and autonomous control. Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before reaching a contextual judgement with realistic mitigations.
+
+### Worked example
+
+**AI recruitment review:** An AI recruitment system may speed initial screening and reduce administrative cost, but biased data can unfairly exclude applicants, automated rejection can remove accountability, and model operation consumes computing resources. Human review, representative data, appeal, data minimisation and efficient infrastructure address different harms. The system is justified only if measured benefits outweigh social, economic and environmental costs under those safeguards.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Identify the two professional ethical bodies required in Section 7.
+   **Answer:** British Computer Society (BCS) and Institute of Electrical and Electronics Engineers (IEEE).
+2. Identify all four required software-licensing examples.
+   **Answer:** Free Software Foundation (FSF), Open Source Initiative (OSI), shareware and commercial software.
+3. Why is copyright legislation needed for software?
+   **Answer:** It gives creators enforceable control over copying, distribution and adaptation of protected expression, supporting permission, revenue and investment.
+4. Which three impact dimensions must an AI evaluation cover?
+   **Answer:** Social, economic and environmental impacts.
+5. What must follow an ethical or unethical label?
+   **Answer:** An explanation of stakeholder consequences, evidence and a justified action or safeguard.
+
+### Exam-style question and MS
+
+**Question (8 marks):** A company proposes AI facial recognition for employee attendance. Evaluate the proposal using professional ethics and social, economic and environmental impacts.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| identifies the AI biometric-matching application or mechanism | Do not accept a topic-name list, a one-sided AI claim, or BCS/IEEE as unexplained initials. | 1 |
+| explains a social benefit or harm for employees or the company |  | 1 |
+| explains an economic benefit or cost |  | 1 |
+| explains an environmental benefit or computing/resource cost |  | 1 |
+| applies professional-ethics duties such as public interest, privacy, competence or accountability |  | 1 |
+| explains a matching safeguard such as human review, appeal, access/retention limits or monitoring |  | 1 |
+| considers an alternative such as cards or manual attendance |  | 1 |
+| reaches a conditional judgement using named benefits, harms and safeguards |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +93,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit topic recognition, precise terminology, and explanations that fit the scenario rather than generic memorised lines.
 
-
-
 ## Student Task
 Students complete a timed response, swap scripts, mark with a checklist, and write one improved version.
 
@@ -72,50 +120,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Section 7 required-content checkpoint
-
-### Direct explanation
-
-- Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
-- Copyright legislation is needed to give creators enforceable control over software expression that can otherwise be copied and distributed cheaply. A licence grants permission without normally transferring ownership. The required licence categories are the Free Software Foundation (FSF), Open Source Initiative (OSI), shareware and commercial software; justify a choice from the scenario's permissions, restrictions, support, cost and redistribution needs.
-- Artificial intelligence (AI) applications include classification, recommendation, prediction and autonomous control. Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before reaching a contextual judgement with realistic mitigations.
-
-### Worked example
-
-**AI recruitment review:** An AI recruitment system may speed initial screening and reduce administrative cost, but biased data can unfairly exclude applicants, automated rejection can remove accountability, and model operation consumes computing resources. Human review, representative data, appeal, data minimisation and efficient infrastructure address different harms. The system is justified only if measured benefits outweigh social, economic and environmental costs under those safeguards.
-
-### Targeted practice and answers
-
-1. Name the two professional ethical bodies required in Section 7.
-   **Answer:** British Computer Society (BCS) and Institute of Electrical and Electronics Engineers (IEEE).
-2. Name all four required software-licensing examples.
-   **Answer:** Free Software Foundation (FSF), Open Source Initiative (OSI), shareware and commercial software.
-3. Why is copyright legislation needed for software?
-   **Answer:** It gives creators enforceable control over copying, distribution and adaptation of protected expression, supporting permission, revenue and investment.
-4. Which three impact dimensions must an AI evaluation cover?
-   **Answer:** Social, economic and environmental impacts.
-5. What must follow an ethical or unethical label?
-   **Answer:** An explanation of stakeholder consequences, evidence and a justified action or safeguard.
-
-### Exam-style question and MS
-
-**Question (8 marks):** A company proposes AI facial recognition for employee attendance. Evaluate the proposal using professional ethics and social, economic and environmental impacts.
-
-- **B1** identifies the AI biometric-matching application or mechanism
-- **B1** explains a social benefit or harm for employees or the company
-- **B1** explains an economic benefit or cost
-- **B1** explains an environmental benefit or computing/resource cost
-- **B1** applies professional-ethics duties such as public interest, privacy, competence or accountability
-- **B1** explains a matching safeguard such as human review, appeal, access/retention limits or monitoring
-- **B1** considers an alternative such as cards or manual attendance
-- **B1** reaches a conditional judgement using named benefits, harms and safeguards
-
-**Strict note:** Do not accept a topic-name list, a one-sided AI claim, or BCS/IEEE as unexplained initials.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -123,7 +127,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-077-compare.jpg`
 
 1. Contrast
@@ -143,7 +147,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `map`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-077-map.jpg`
 
 1. Trigger words
@@ -163,7 +167,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `marking`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-077-marking.jpg`
 
 1. Precise term privacy, copyright, e-waste, digital divide, open source, stakeholder.
@@ -175,7 +179,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `structure`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-077-structure.jpg`
 
 1. 1. Context Use the actual scenario, not a memorised opening sentence.

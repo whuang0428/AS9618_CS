@@ -93,11 +93,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A school wants a new room booking system. Describe the purpose of the analysis, design and testing stages.",
+    prompt: "A school wants a new room booking system. Describe the purpose of the analysis, Develop and testing stages.",
     answer: "Analysis identifies users, requirements and constraints, such as who can book rooms and how double bookings are prevented. Design plans the solution, including interfaces, data storage, validation and algorithms. Testing checks the implemented system against expected results and requirements, such as rejecting a booking conflict.",
     marking: [
       { mark: "B1", text: "states analysis identifies user needs/requirements/constraints" },
@@ -349,7 +355,7 @@ function setupExam() {
         <h4>Answer</h4>
         <p>${escapeHtml(question.answer)}</p>
         <h4>Mark scheme</h4>
-        <ul>${question.marking.map((row) => `<li><strong>${escapeHtml(row.mark)}</strong> ${escapeHtml(row.text)}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

@@ -96,6 +96,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -156,7 +162,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "7 marks",
-    prompt: "Create a trace table for the pseudocode: Count <- 0; FOR Index <- 1 TO 3; Count <- Count + Index; NEXT Index; OUTPUT Count.",
+    prompt: "Develop a trace table for the pseudocode: Count <- 0; FOR Index <- 1 TO 3; Count <- Count + Index; NEXT Index; OUTPUT Count.",
     answer: "The trace should show Count starts at 0. At Index 1, Count becomes 1. At Index 2, Count becomes 3. At Index 3, Count becomes 6. The final output is 6.",
     marking: [
       { mark: "M1", text: "initialises Count to 0 before applying the loop updates" },
@@ -384,7 +390,7 @@ function setupExam() {
         <h4>Answer</h4>
         <p>${escapeHtml(question.answer)}</p>
         <h4>Mark scheme</h4>
-        <ul>${question.marking.map((row) => `<li><strong>${escapeHtml(row.mark)}</strong> ${escapeHtml(row.text)}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

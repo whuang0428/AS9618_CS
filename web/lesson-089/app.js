@@ -174,6 +174,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -231,19 +237,17 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "A student says validation and verification both make data correct. Explain why this answer is weak, using database examples.",
-    answer: "Validation checks input against rules, such as a range check rejecting Age = 216, but it cannot prove that Age = 16 is the correct age. Verification checks entered data against a source, such as proofreading an email against a form. The weak answer is wrong because both methods reduce errors but neither guarantees the real-world truth of the data.",
+    prompt: "Explain the purposes of a DBMS developer interface and query processor, and describe how they support a database application.",
+    answer: "The developer interface provides tools or an interface for a developer to define forms, reports, queries or application access to the database. The query processor parses and validates a query, chooses how to execute it and obtains the required data. Together they let application code submit database operations and receive results through controlled DBMS services.",
     marking: [
-      { mark: "B1", text: "defines validation as rule checking" },
-      { mark: "B1", text: "gives valid validation example" },
-      { mark: "B1", text: "defines verification as source/copying check" },
-      { mark: "B1", text: "gives valid verification example" },
-      { mark: "B1", text: "states limitation: neither proves real-world truth / both only reduce errors" },
+      { mark: "B1", text: "developer interface provides development tools/access" },
+      { mark: "B1", text: "valid developer task such as forms/reports/queries" },
+      { mark: "B1", text: "query processor parses/validates a query" },
+      { mark: "B1", text: "query processor plans/executes and retrieves results" },
+      { mark: "B1", text: "links both components to application database access" },
     ],
     strict: [
-      "Do not award example marks if both examples are validation checks.",
-      "Allow double entry as a verification method.",
-      "Do not accept 'verification is security' as a valid distinction.",
+      "Do not describe the query processor as the human who writes the query.",
     ],
   },
   {
@@ -425,11 +429,9 @@ function renderExamQuestions() {
           <p>${question.prompt}</p>
           <button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button>
           <div class="ms-panel" id="ms${index}">
-            <p><strong>Indicative answer:</strong> ${question.answer}</p>
-            <h4>Cambridge-style mark scheme</h4>
-            <ul>
-              ${question.marking.map((mark) => `<li><strong>${mark.mark}:</strong> ${mark.text}</li>`).join("")}
-            </ul>
+            <p><strong>Answer:</strong> ${question.answer}</p>
+            <h4>Mark scheme</h4>
+            ${renderStudentMarkPoints(question)}
           </div>
         </article>
       `

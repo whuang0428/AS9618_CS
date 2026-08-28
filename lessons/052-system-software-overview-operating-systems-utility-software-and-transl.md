@@ -1,4 +1,50 @@
-# Lesson 052: System software overview: operating systems, utility software, and translators
+# Lesson 052: Why an operating system is required and what it manages
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Why an operating system is required and what it manages
+
+### Direct explanation
+
+- An operating system is required to provide a controlled interface between applications, users and hardware, and to coordinate shared resources. Without it, each application would need its own incompatible routines for processor time, memory, files, security and devices.
+- Process management schedules CPU time and tracks running processes. Memory management allocates and protects RAM. File management organises files, folders, metadata and file operations. Security management authenticates users and enforces permissions or access rights.
+- Hardware management coordinates devices through drivers, interrupts, buffers and queues. These roles cooperate: security management decides whether a request is authorised, while file or hardware management performs the permitted operation. Antivirus remains a utility and must not replace the OS security-management role.
+
+### Worked example
+
+**Open a protected file and print it:** The OS authenticates the user and security management checks access rights. File management locates and opens the file; memory management allocates RAM; process management schedules the application; hardware management uses a printer driver, buffer and queue to send permitted output to the printer.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which OS role authenticates a user and enforces access rights?
+   **Answer:** Security management.
+2. Which role allocates RAM to a running process?
+   **Answer:** Memory management.
+3. Which role uses drivers, buffers and queues?
+   **Answer:** Hardware management/device management.
+4. Why is an operating system required?
+   **Answer:** It provides a controlled interface and coordinates shared hardware and software resources for applications and users.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Explain why an operating system is required and describe its process, memory, file, security and hardware management roles.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| required interface/control layer between applications, users and hardware | Do not substitute antivirus utility software for OS security management, and do not treat stored files as RAM. | 1 |
+| process management schedules CPU time or tracks processes |  | 1 |
+| memory management allocates/protects RAM |  | 1 |
+| file management organises stored files and operations |  | 1 |
+| security management authenticates users or enforces permissions/access rights |  | 1 |
+| hardware management uses drivers/interrupts/buffers/queues to coordinate devices |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +89,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Compiler is usually suitable for distribution because it produces object/executable code and can run without source code; interpreter is useful during development for line-by-line diagnostics.
 
-
-
 ## Student Task
 Students receive development and deployment scenarios and choose compiler, interpreter or assembler with one reason and one trade-off.
 
@@ -79,7 +123,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `categories`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-052-categories.jpg`
 
 1. System software
@@ -97,7 +141,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-052-concept.jpg`
 
 1. System software
@@ -127,7 +171,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pathway`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-052-pathway.jpg`
 
 1. High-level source code Human-readable instructions such as Python, Java or pseudocode-like code.
@@ -139,7 +183,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `translators`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-052-translators.jpg`
 
 1. Compiler
@@ -155,7 +199,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `utility`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-052-utility.jpg`
 
 1. Exam-safe wording

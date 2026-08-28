@@ -43,8 +43,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit topic recognition, precise terminology, and explanations that fit the scenario rather than generic memorised lines.
 
-
-
 ## Student Task
 Students complete a timed response, swap scripts, mark with a checklist, and write one improved version.
 
@@ -122,16 +120,4 @@ Correction prompt: "State the correct term, then explain the relevant process or
 5. Logic NOT, AND, OR, NAND, NOR, XOR, truth tables and Boolean expressions
 6. Processor ALU, CU, registers, buses, fetch-decode-execute and addressing modes
 7. Performance clock speed, cores, cache, word length, pipelining and interrupts
-
-### Registers and buses: the FDE cycle vocabulary
-
-- **Explains:** `processor`
-- **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-091-processor.jpg`
-
-1. Processor review
-2. PC Stores the address of the next instruction to be fetched.
-3. MAR / MDR MAR stores an address; MDR stores data/instruction being transferred.
-4. CIR / ACC CIR stores current instruction; ACC stores intermediate arithmetic/logic results.
 <!-- stage10-explanations:end -->

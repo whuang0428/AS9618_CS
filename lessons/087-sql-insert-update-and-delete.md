@@ -1,4 +1,44 @@
-# Lesson 087: SQL INSERT, UPDATE, and DELETE
+# Lesson 087: INSERT, DELETE and UPDATE
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** INSERT, DELETE and UPDATE
+
+### Direct explanation
+
+- INSERT adds a new row, DELETE removes matching rows, and UPDATE changes values in matching rows. These DML statements maintain stored data.
+- Use a WHERE condition for DELETE and UPDATE when only specified rows should change. Check field order, value types and conditions against the supplied schema.
+
+### Worked example
+
+**Maintain one student row:** INSERT adds StudentID 104. UPDATE changes only that row when WHERE StudentID = 104 is used. DELETE removes it with the same key condition.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which statement adds a row?
+   **Answer:** INSERT.
+2. Which statement removes rows?
+   **Answer:** DELETE.
+3. Which statement changes existing values?
+   **Answer:** UPDATE.
+
+### Exam-style question and MS
+
+**Question (3 marks):** Write INSERT, UPDATE and DELETE statements for StudentID 104.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| valid INSERT | Do not credit an UPDATE or DELETE that unintentionally affects every row. | 1 |
+| valid UPDATE with condition |  | 1 |
+| valid DELETE with condition |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +83,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit correct SELECT fields, FROM table, WHERE/JOIN condition and any ORDER BY or aggregate clause required by the question.
 
-
-
 ## Student Task
 Students write three natural-language questions for a database, then swap and write SQL for another pair's questions.
 
@@ -72,47 +110,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often select every field with `*`. Correction: exam questions usually specify exactly which fields are required.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** DDL, DML and the complete AS SQL subset
-
-### Direct explanation
-
-- A DBMS carries out creation or modification of database structure using Data Definition Language (DDL). Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE. Table definitions may use CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE and TIME, plus PRIMARY KEY(field) and FOREIGN KEY(field) REFERENCES Table(Field).
-- A DBMS carries out queries and maintenance of stored data using Data Manipulation Language (DML). SELECT queries data; INSERT INTO adds records; UPDATE changes existing records; DELETE FROM removes records. SQL is the industry-standard language for both DDL and DML. WHERE must be used when only selected existing records should be updated or deleted.
-
-### Worked example
-
-**Define a database and maintain its data:** CREATE DATABASE College; creates the database structure. CREATE TABLE Department (DepartmentID INTEGER, Code CHARACTER, Name VARCHAR(40), Open BOOLEAN, Budget REAL, ReviewDate DATE, StartTime TIME, PRIMARY KEY (DepartmentID)); defines a table. ALTER TABLE Department ADD ManagerID INTEGER; changes the structure. INSERT INTO, UPDATE and DELETE FROM then maintain records rather than redefining the table.
-
-### Targeted practice and answers
-
-1. Classify CREATE TABLE and ALTER TABLE as DDL or DML.
-   **Answer:** DDL, because they define or change structure.
-2. Name all seven required DDL data types.
-   **Answer:** CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE and TIME.
-3. Which commands add, change and remove stored records?
-   **Answer:** INSERT INTO, UPDATE and DELETE FROM.
-4. Write the foreign-key clause for DepartmentID referencing Department(DepartmentID).
-   **Answer:** FOREIGN KEY (DepartmentID) REFERENCES Department (DepartmentID).
-5. Why can UPDATE or DELETE without WHERE be dangerous?
-   **Answer:** It can affect every record in the table.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Write SQL to create Event(EventID, Code, Title, EventDate, StartTime, Open, Price), make EventID the primary key, then insert one record and update its Price.
-
-- **B1** CREATE TABLE Event with a valid field list
-- **B1** uses INTEGER for EventID and PRIMARY KEY (EventID)
-- **B1** uses CHARACTER or VARCHAR(n) appropriately for Code/Title
-- **B1** uses DATE, TIME, BOOLEAN and REAL for the remaining named fields
-- **B1** valid INSERT INTO with matching fields and values
-- **B1** valid UPDATE Event SET Price = value WHERE EventID = value
-
-**Strict note:** Do not substitute UPDATE for ALTER TABLE or treat INSERT, UPDATE and DELETE as structure-definition commands.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -120,7 +117,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `delete`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-087-delete.jpg`
 
 1. Use DELETE only when the whole record should be removed. A missing condition can remove all records.
@@ -144,7 +141,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `insert`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-087-insert.jpg`
 
 1. List the fields, then list matching values in the same order. Text values use quotes.
@@ -155,7 +152,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `update`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-087-update.jpg`
 
 1. SET names the field and new value. WHERE restricts which rows are changed.

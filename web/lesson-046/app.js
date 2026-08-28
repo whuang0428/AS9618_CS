@@ -185,11 +185,17 @@ const assemblyFoundationQuestions = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Classify the following instruction purposes: data movement, input/output, arithmetic, unconditional branch and conditional branch/compare. Give one valid mnemonic for each group.",
+    prompt: "Identify the following instruction purposes: data movement, input/output, arithmetic, unconditional branch and conditional branch/compare. Give one valid mnemonic for each group.",
     answer: "Data movement includes LDM/LDD/LDI/LDX/LDR/MOV/STO; input/output includes IN/OUT; arithmetic includes ADD/SUB/INC/DEC; JMP is an unconditional branch; CMP/CMI/JPE/JPN form the conditional branch/compare group.",
     marking: [
       { mark: "B1", text: "data movement with a valid example" },
@@ -263,7 +269,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Explain a two-pass assembler and distinguish LOOP: ADD ONE from ONE: 1.",
+    prompt: "Explain a two-pass assembler and Compare LOOP: ADD ONE from ONE: 1.",
     answer: "Pass 1 assigns addresses and builds the symbol table, so forward references can be recorded before their values are known. Pass 2 translates instructions and substitutes resolved addresses. LOOP labels an instruction containing opcode ADD and operand ONE; ONE is a symbolic data address for the memory location containing 1.",
     marking: [
       { mark: "B1", text: "pass 1 assigns addresses/builds symbol table" },
@@ -409,9 +415,9 @@ function renderExamQuestions() {
       <p>${question.prompt}</p>
       <button type="button" class="ms-toggle" data-answer="ms-${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <p><strong>Indicative answer:</strong> ${question.answer}</p>
-        <h4>Cambridge-style mark scheme</h4>
-        <ul>${question.marking.map((item) => `<li><strong>${item.mark}</strong> ${item.text}</li>`).join("")}</ul>
+        <p><strong>Answer:</strong> ${question.answer}</p>
+        <h4>Mark scheme</h4>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

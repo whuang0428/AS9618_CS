@@ -40,6 +40,12 @@ const mistakes = [
   { wrong: "The stated range is 0 to 100, but my plan checks only the upper limit.", fix: "Record both the lower and upper limits so the complete constraint is represented." },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -61,7 +67,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Construct an IPOC plan for a problem that receives Length and Width and produces the rectangle Area.",
+    prompt: "Complete an IPOC plan for a problem that receives Length and Width and produces the rectangle Area.",
     answer: "Input: Length and Width. Process: multiply Length by Width. Output: Area. Constraints: both dimensions are positive numeric values and use the same unit. Assumption: the shape is a rectangle.",
     marking: [
       { mark: "B1", text: "Length input" },
@@ -159,6 +165,6 @@ function renderPractice() {
   document.querySelectorAll("[data-answer]").forEach((button) => button.addEventListener("click", () => { const panel = document.querySelector(`#${button.dataset.answer}Answer`); panel.classList.toggle("visible"); button.textContent = panel.classList.contains("visible") ? "Hide answer" : "Show answer"; }));
 }
 function renderMistakes() { const grid = document.querySelector("#mistakeGrid"); grid.innerHTML = mistakes.map((item, index) => `<article><p class="wrong"><strong>Weak design ${index + 1}:</strong> ${item.wrong}</p><button class="answer-toggle" type="button" data-fix="fix${index}">Show correction</button><div class="answer-panel" id="fix${index}"><strong>Correction:</strong> ${item.fix}</div></article>`).join(""); document.querySelectorAll("[data-fix]").forEach((button) => button.addEventListener("click", () => { const panel = document.querySelector(`#${button.dataset.fix}`); panel.classList.toggle("visible"); button.textContent = panel.classList.contains("visible") ? "Hide correction" : "Show correction"; })); }
-function renderExamQuestions() { const list = document.querySelector("#examList"); list.innerHTML = examQuestions.map((question, index) => `<article class="exam-card"><div class="exam-head"><h3>${question.title}</h3><span>${question.marks}</span></div><p>${question.prompt}</p><button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button><div class="ms-panel" id="ms${index}"><p><strong>Indicative answer:</strong></p><p>${question.answer}</p><h4>Cambridge-style mark scheme</h4><ul>${question.marking.map((mark) => `<li><strong>${mark.mark}:</strong> ${mark.text}</li>`).join("")}</ul></div></article>`).join(""); document.querySelectorAll("[data-ms]").forEach((button) => button.addEventListener("click", () => { const panel = document.querySelector(`#${button.dataset.ms}`); panel.classList.toggle("visible"); button.textContent = panel.classList.contains("visible") ? "Hide MS" : "Show MS"; })); }
+function renderExamQuestions() { const list = document.querySelector("#examList"); list.innerHTML = examQuestions.map((question, index) => `<article class="exam-card"><div class="exam-head"><h3>${question.title}</h3><span>${question.marks}</span></div><p>${question.prompt}</p><button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button><div class="ms-panel" id="ms${index}"><p><strong>Answer:</strong></p><p>${question.answer}</p><h4>Mark scheme</h4>${renderStudentMarkPoints(question)}</div></article>`).join(""); document.querySelectorAll("[data-ms]").forEach((button) => button.addEventListener("click", () => { const panel = document.querySelector(`#${button.dataset.ms}`); panel.classList.toggle("visible"); button.textContent = panel.classList.contains("visible") ? "Hide MS" : "Show MS"; })); }
 function init() { setupPrint(); setupHook(); setupClassifier(); setupBuilder(); setupExamples(); renderPractice(); renderMistakes(); renderExamQuestions(); }
 init();

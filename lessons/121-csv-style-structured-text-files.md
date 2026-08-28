@@ -1,4 +1,46 @@
-# Lesson 121: CSV-style structured text files
+# Lesson 121: Choosing stack, queue or linked list
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Choosing stack, queue or linked list
+
+### Direct explanation
+
+- A stack is LIFO with push/pop at the top; a queue is FIFO with enqueue at the rear and dequeue at the front; a linked list supports traversal and insertion/deletion through links.
+- Justification must name the required access order or update behaviour. Array implementations have fixed capacity unless resized and require overflow/underflow checks; linked structures require pointer management.
+- Justify a stack, queue or linked list from its operations and the scenario. Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.
+
+### Worked example
+
+**Choose structures:** Undo history uses a stack because the most recent action is undone first. Print jobs use a queue because the earliest accepted job prints first. A changing ordered playlist can use a linked list for link-based insertion/deletion.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Suggest an ADT for breadth-first waiting jobs.
+   **Answer:** Queue, because first in is first out.
+2. Suggest an ADT for nested function return addresses.
+   **Answer:** Stack, because the most recent call returns first.
+3. What must be checked before pushing to a full array stack?
+   **Answer:** Overflow/capacity.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Justify a suitable ADT for browser Back history and contrast it with a queue.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| selects stack | Do not award the structure name without its access-order consequence. | 1 |
+| most recently visited page is returned to first / LIFO |  | 1 |
+| queue removes earliest item first / FIFO |  | 1 |
+| explains why FIFO gives the wrong access order |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -99,7 +141,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-concept.jpg`
 
 1. one complete line of data
@@ -115,7 +157,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `format`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-format.jpg`
 
 1. CSV format
@@ -125,26 +167,23 @@ Correction prompt: "State the correct term, then explain the relevant process or
 5. StudentID
 6. The file stores all fields as text. The program gives each position meaning.
 
-### Read the line before splitting it
+### Use question-supplied CSV functions exactly
 
 - **Explains:** `parse`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-parse.jpg`
 
-1. Parse fields
-2. READFILE "Scores.csv", Line
-3. Fields <- SPLIT(Line, ",")
-4. StudentID <- Fields[1]
-5. Name <- Fields[2]
-6. Mark <- STRING_TO_INTEGER(Fields[3])
-7. SPLIT is used here as clear Cambridge-style pseudocode for separating a line by a delimiter.
+1. The question supplies FUNCTION SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING.
+2. The supplied SPLIT result uses indexes starting at 1; for three fields, use Fields[1], Fields[2] and Fields[3].
+3. The question also supplies FUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER.
+4. Read the line first, then call the supplied functions using their stated parameter order and return types.
 
 ### Split a line into fields
 
 - **Explains:** `parser`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-parser.jpg`
 
 1. Interactive CSV parser
@@ -152,40 +191,35 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Delimiter
 4. Enter a line and split it into fields.
 
-### Java split helps understanding, but Cambridge pseudocode remains the answer format
+### Question-supplied functions versus Java methods
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style pseudocode
-3. READFILE "Scores.csv", Line
-4. Fields <- SPLIT(Line, ",")
-5. Mark <- STRING_TO_INTEGER(Fields[3])
-6. Java support only
-7. String[] fields = line.split(",");
-8. int mark = Integer.parseInt(fields[2]);
-9. Notice the index difference: Cambridge-style examples here use Fields[1] ; Java arrays are zero-based.
+1. SPLIT and STRING_TO_INTEGER are not standard functions in the Cambridge pseudocode guide; this example uses signatures supplied by the question.
+2. FUNCTION SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING; its first returned element is at index 1.
+3. FUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER.
+4. Java split and parseInt are support examples only and use different syntax and zero-based array indexes.
 
-### CSV fields arrive as text, then become useful values
+### Convert CSV text before numeric comparison
 
 - **Explains:** `types`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-types.jpg`
 
-1. CSV fields arrive as text.
-2. Close every IF example with ENDIF.
-3. Convert the mark field to INTEGER before comparing it numerically with 70.
+1. CSV fields arrive as text; the question supplies FUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER.
+2. Use the returned INTEGER for a numeric comparison and close every IF example with ENDIF.
+3. Do not present STRING_TO_INTEGER as a standard Cambridge pseudocode-guide function.
 4. Structural closure and type conversion solve different problems.
 
 ### A structured file can still contain bad lines
 
 - **Explains:** `validate`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-validate.jpg`
 
 1. Validation
@@ -204,7 +238,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validator`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-validator.jpg`
 
 1. Interactive validator

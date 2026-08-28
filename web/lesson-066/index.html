@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 066 | Access rights, permissions, and least privilege</title>
+    <title>AS9618 Lesson 066 | Access rights and encryption as data-security methods</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Access rights, permissions, and least privilege</h1>
+        <h1>Access rights and encryption as data-security methods</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,7 +46,86 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Access rights and encryption as data-security methods</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Access rights restrict authorised actions on resources. Read permission controls viewing; write/modify controls alteration; delete controls removal; execute or administrative rights control running software or changing system settings. Least privilege grants only the permissions needed for a role and removes temporary rights when no longer required.</p>
+            <p>Encryption transforms plaintext into ciphertext using an algorithm and key. Without the correct decryption key, intercepted or stolen ciphertext should not reveal readable content. Encryption therefore protects confidentiality, while access rights can protect confidentiality and integrity by preventing unauthorised viewing or alteration.</p>
+            <p>The methods do different jobs: encryption does not decide which logged-in user may edit a record, and access rights do not make a stolen unencrypted copy unreadable. Neither method guarantees availability, data truth or protection after an authorised account is misused.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Protect a payroll file</h3>
+            <p>The payroll file is encrypted at rest so a stolen storage device does not reveal readable salaries without the key. The payroll application grants read/write rights only to payroll staff and read-only rights to an auditor. A compromised ordinary account cannot open the file through the application, while an attacker who steals only the encrypted file still lacks readable plaintext.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start controls -->
+        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
+          <h2 class="explanation-sr-only" id="explanation-controls-title">One control can support more than one goal, but not every goal</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One control can support more than one goal, but not every goal with a structured visual model." />
+            <figcaption class="explanation-sr-only">One control can support more than one goal, but not every goal: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Encryption makes data unreadable without the correct key and supports confidentiality.</li><li><strong>Lesson fact:</strong> Access rights prevent unauthorised viewing and prevent unauthorised alteration; they support confidentiality and integrity but do not detect whether data changed.</li><li><strong>Lesson fact:</strong> Backups allow recovery after data loss or corruption and support availability.</li><li><strong>Lesson fact:</strong> Hash/checksum comparison can detect whether data changed and supports integrity, but it does not prevent unauthorised alteration.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end controls -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Access rights and encryption as data-security methods: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> How do access rights protect confidentiality?</p>
+              <details><summary>Show answer</summary><p>They prevent users without read permission from viewing the data.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> How do access rights protect integrity?</p>
+              <details><summary>Show answer</summary><p>They prevent users without write/delete permission from altering or removing the data.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> How does encryption protect data?</p>
+              <details><summary>Show answer</summary><p>It converts plaintext to ciphertext that is unreadable without the correct key.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why are both methods useful?</p>
+              <details><summary>Show answer</summary><p>Access rights govern permitted actions in the system; encryption protects the content of an intercepted or stolen copy.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Explain how access rights and encryption protect a payroll file, and state one limitation of each method.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>access rights restrict viewing to users/roles with read permission</td><td>Do not claim that access rights detect changes, that encryption guarantees integrity, or that either method replaces the other.</td><td>1</td></tr>
+                  <tr><td>access rights restrict modification/deletion to permitted users/roles</td><td></td><td>1</td></tr>
+                  <tr><td>encryption converts plaintext to ciphertext using a key</td><td></td><td>1</td></tr>
+                  <tr><td>without the correct key the stolen/intercepted data is not readable</td><td></td><td>1</td></tr>
+                  <tr><td>access-rights limitation developed</td><td></td><td>1</td></tr>
+                  <tr><td>encryption limitation developed</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 066 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
             <h2>Logging in proves who you are. Permissions decide what you can touch.</h2>
@@ -72,7 +151,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Good exam answers connect a permission to a protected security goal, not just to the word "secure".</p>
@@ -83,7 +162,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A student can log into the school system but cannot edit exam grades. What control is this?</h2>
@@ -100,7 +179,7 @@
           </div>
         </section>
 
-        <section class="panel" id="core" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
+        <section class="panel" id="core" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Access control decides what authenticated users may do</h2>
@@ -115,7 +194,7 @@
         </section>
 
         <!-- stage10-explanation:start core -->
-        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
+        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <h2 class="explanation-sr-only" id="explanation-core-title">Access control decides what authenticated users may do</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Access control decides what authenticated users may do with a structured visual model." />
@@ -127,8 +206,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end core -->
-
-        <section class="panel" id="rights" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rights">
+        <section class="panel" id="rights" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Common permission types</h2>
@@ -142,7 +220,7 @@
         </section>
 
         <!-- stage10-explanation:start rights -->
-        <section class="panel explanation-panel" id="explanation-rights" data-explains="rights" data-explanation-kind="mechanism" aria-labelledby="explanation-rights-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rights">
+        <section class="panel explanation-panel" id="explanation-rights" data-explains="rights" data-explanation-kind="mechanism" aria-labelledby="explanation-rights-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <h2 class="explanation-sr-only" id="explanation-rights-title">Common permission types</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-rights.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common permission types with a structured visual model." />
@@ -154,8 +232,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end rights -->
-
-        <section class="panel" id="users" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="users">
+        <section class="panel" id="users" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Users, groups and roles keep permissions manageable</h2>
@@ -169,7 +246,7 @@
         </section>
 
         <!-- stage10-explanation:start users -->
-        <section class="panel explanation-panel" id="explanation-users" data-explains="users" data-explanation-kind="mechanism" aria-labelledby="explanation-users-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="users">
+        <section class="panel explanation-panel" id="explanation-users" data-explains="users" data-explanation-kind="mechanism" aria-labelledby="explanation-users-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <h2 class="explanation-sr-only" id="explanation-users-title">Users, groups and roles keep permissions manageable</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-users.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Users, groups and roles keep permissions manageable with a structured visual model." />
@@ -181,8 +258,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end users -->
-
-        <section class="panel" id="matrix" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="matrix">
+        <section class="panel" id="matrix" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>A permission matrix makes access decisions visible</h2>
@@ -222,7 +298,7 @@
         </section>
 
         <!-- stage10-explanation:start matrix -->
-        <section class="panel explanation-panel" id="explanation-matrix" data-explains="matrix" data-explanation-kind="mechanism" aria-labelledby="explanation-matrix-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="matrix">
+        <section class="panel explanation-panel" id="explanation-matrix" data-explains="matrix" data-explanation-kind="mechanism" aria-labelledby="explanation-matrix-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <h2 class="explanation-sr-only" id="explanation-matrix-title">A permission matrix makes access decisions visible</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-matrix.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A permission matrix makes access decisions visible with a structured visual model." />
@@ -234,8 +310,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end matrix -->
-
-        <section class="panel" id="least" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="least">
+        <section class="panel" id="least" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Least privilege reduces unnecessary damage</h2>
@@ -249,7 +324,7 @@
         </section>
 
         <!-- stage10-explanation:start least -->
-        <section class="panel explanation-panel" id="explanation-least" data-explains="least" data-explanation-kind="mechanism" aria-labelledby="explanation-least-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="least">
+        <section class="panel explanation-panel" id="explanation-least" data-explains="least" data-explanation-kind="mechanism" aria-labelledby="explanation-least-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <h2 class="explanation-sr-only" id="explanation-least-title">Least privilege reduces unnecessary damage</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-least.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Least privilege reduces unnecessary damage with a structured visual model." />
@@ -261,8 +336,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end least -->
-
-        <section class="panel" id="review" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="review">
+        <section class="panel" id="review" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Permissions need review, not just setup day optimism</h2>
@@ -276,7 +350,7 @@
         </section>
 
         <!-- stage10-explanation:start review -->
-        <section class="panel explanation-panel" id="explanation-review" data-explains="review" data-explanation-kind="mechanism" aria-labelledby="explanation-review-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="review">
+        <section class="panel explanation-panel" id="explanation-review" data-explains="review" data-explanation-kind="mechanism" aria-labelledby="explanation-review-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <h2 class="explanation-sr-only" id="explanation-review-title">Permissions need review, not just setup day optimism</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-review.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Permissions need review, not just setup day optimism with a structured visual model." />
@@ -288,9 +362,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end review -->
-
-
-        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">
+        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Interactive decision tool</p>
             <h2>Should the action be allowed?</h2>
@@ -314,7 +386,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Four model answers using role, action and consequence</h2>
@@ -328,7 +400,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short answers: permission, role, reason</h2>
@@ -337,7 +409,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the sentence before it loses marks</h2>
@@ -345,7 +417,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -354,66 +426,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Access rights and encryption as data-security methods</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Access rights restrict authorised actions on resources. Read permission controls viewing; write/modify controls alteration; delete controls removal; execute or administrative rights control running software or changing system settings. Least privilege grants only the permissions needed for a role and removes temporary rights when no longer required.</p>
-            <p>Encryption transforms plaintext into ciphertext using an algorithm and key. Without the correct decryption key, intercepted or stolen ciphertext should not reveal readable content. Encryption therefore protects confidentiality, while access rights can protect confidentiality and integrity by preventing unauthorised viewing or alteration.</p>
-            <p>The methods do different jobs: encryption does not decide which logged-in user may edit a record, and access rights do not make a stolen unencrypted copy unreadable. Neither method guarantees availability, data truth or protection after an authorised account is misused.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Protect a payroll file</h3>
-            <p>The payroll file is encrypted at rest so a stolen storage device does not reveal readable salaries without the key. The payroll application grants read/write rights only to payroll staff and read-only rights to an auditor. A compromised ordinary account cannot open the file through the application, while an attacker who steals only the encrypted file still lacks readable plaintext.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Access rights and encryption as data-security methods: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> How do access rights protect confidentiality?</p>
-              <details><summary>Show answer</summary><p>They prevent users without read permission from viewing the data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How do access rights protect integrity?</p>
-              <details><summary>Show answer</summary><p>They prevent users without write/delete permission from altering or removing the data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> How does encryption protect data?</p>
-              <details><summary>Show answer</summary><p>It converts plaintext to ciphertext that is unreadable without the correct key.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why are both methods useful?</p>
-              <details><summary>Show answer</summary><p>Access rights govern permitted actions in the system; encryption protects the content of an intercepted or stolen copy.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Explain how access rights and encryption protect a payroll file, and state one limitation of each method.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> access rights restrict viewing to users/roles with read permission</li>
-                <li><strong>B1</strong> access rights restrict modification/deletion to permitted users/roles</li>
-                <li><strong>B1</strong> encryption converts plaintext to ciphertext using a key</li>
-                <li><strong>B1</strong> without the correct key the stolen/intercepted data is not readable</li>
-                <li><strong>B1</strong> access-rights limitation developed</li>
-                <li><strong>B1</strong> encryption limitation developed</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Permissions are practical security rules</h2>

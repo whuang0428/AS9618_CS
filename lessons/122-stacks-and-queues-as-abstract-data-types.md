@@ -1,5 +1,9 @@
 # Lesson 122: Stacks and queues as abstract data types
 
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+<!-- remediation-v2-stage3-scope:end -->
+
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
 **Syllabus reference:** Syllabus Section 10
@@ -46,7 +50,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit operation order and pointer/front/rear updates where used. Answers must show when an operation is invalid because the structure is full or empty.
 
-
 ## Student Task
 Students act out a stack or queue with paper cards, then convert the movement into pseudocode operations.
 
@@ -74,68 +77,14 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often describe stacks and queues as just arrays. Correction: the defining feature is the access rule, not the storage implementation.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Abstract data types and array-based operations
-
-### Direct explanation
-
-- An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.
-- A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.
-- All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.
-- Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node's successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.
-
-### Worked example
-
-**Add, edit and delete without changing the ADT rule:** Push D adds D at the stack top and pop deletes the current top. Enqueue D adds at the queue rear and dequeue deletes from the front. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.
-
-### Targeted practice and answers
-
-1. Give the official definition of an ADT.
-   **Answer:** A collection of data and a set of operations on those data.
-2. How are stack and queue removal rules different?
-   **Answer:** Stack removes the most recently added item (LIFO); queue removes the earliest added item (FIFO).
-3. Which state is needed for an array-based linked list?
-   **Answer:** Data and Next storage, a Start index and normally a free-list index.
-4. Must candidates write pseudocode for stack, queue and linked-list operations?
-   **Answer:** No. They must be able to add, edit and delete data and describe array implementations, but operation pseudocode is not required by the syllabus.
-
-### Exam-style question and MS
-
-**Question (6 marks):** For array implementations of a stack, queue and linked list, describe how data is added, edited and deleted while preserving each ADT's rule.
-
-- **B1** stack push/pop uses the top position and stack pointer
-- **B1** queue enqueue/dequeue uses rear and front in FIFO order
-- **B1** linked-list add obtains a free index and changes links
-- **B1** edit changes a stored data field without corrupting order or links
-- **B1** linked-list delete bypasses the node and returns its index to the free list
-- **B1** distinguishes conceptual operations from the non-required task of writing their pseudocode
-
-**Strict note:** Do not define an ADT as only an array, require ADT-operation pseudocode, or delete a linked-list node without repairing its links and free-list state.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
-
-### An ADT is data together with permitted operations
-
-- **Explains:** `concept`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-concept.jpg`
-
-1. An abstract data type is a collection of data and a set of operations on those data.
-2. Stack, queue and linked list are examples whose permitted operations define their behaviour.
-3. The implementation may use arrays and indexes without changing the ADT's observable rules.
-- **Analogy:** A service counter defines allowed requests without exposing the storeroom layout.
-- **Boundary:** Using an array does not automatically make a structure a stack or queue.
 
 ### Why boundary checks come first
 
 - **Explains:** `errors`
 - **Explanation type:** tradeoff
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-errors.jpg`
 
 1. Underflow occurs when removal is requested from an empty structure.
@@ -144,24 +93,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Analogy:** Check whether a shelf is empty or full before moving an item.
 - **Boundary:** Dynamic storage changes the capacity strategy but can still exhaust memory.
 
-### Implement stack, queue and linked list using arrays
-
-- **Explains:** `implementation`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-implementation.jpg`
-
-1. An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.
-2. Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.
-3. Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation.
-- **Analogy:** Markers turn a row of storage boxes into a controlled service structure.
-- **Boundary:** Incorrect wrap-around or update order can overwrite live queue data.
-
 ### Why operation names preserve meaning
 
 - **Explains:** `operations`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-operations.jpg`
 
 1. Push and pop describe changes at a stack's top.
@@ -174,7 +110,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-pseudocode.jpg`
 
 1. Test the empty or full condition before accessing storage.
@@ -182,30 +118,4 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Update the pointer so the invariant remains true.
 - **Analogy:** A clear procedure shows the safety check, action and new boundary marker.
 - **Boundary:** Hiding pointer updates makes correctness impossible to verify.
-
-### Why two ends create FIFO
-
-- **Explains:** `queue`
-- **Explanation type:** process
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-queue.jpg`
-
-1. Enqueue adds a new item at the rear.
-2. Dequeue removes the waiting item at the front.
-3. Earlier arrivals remain ahead of later arrivals.
-- **Analogy:** A single orderly waiting line serves the earliest arrival first.
-- **Boundary:** A priority queue follows a different removal rule and is not ordinary FIFO.
-
-### Why one open end creates LIFO
-
-- **Explains:** `stack`
-- **Explanation type:** process
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-stack.jpg`
-
-1. Push adds the new item at the top position.
-2. Only the current top item is available to pop.
-3. The most recently pushed item therefore leaves first.
-- **Analogy:** Only the top plate of a pile can be removed safely.
-- **Boundary:** Accessing an older item requires removing items above it first.
 <!-- stage10-explanations:end -->

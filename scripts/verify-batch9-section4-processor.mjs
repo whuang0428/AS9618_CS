@@ -66,15 +66,20 @@ for (const id of scopedRequirements) {
 }
 
 const lessonChecks = [
-  ["041", ["Von Neumann architecture", "stored-program concept", "Immediate Access Store", "IAS", "ALU", "CU", "system clock"]],
-  ["042", ["fetch-decode-execute cycle", "register-transfer notation", "MAR <- PC", "MDR <- Memory[MAR]", "CIR <- MDR"]],
-  ["043", ["general-purpose", "special-purpose", "PC", "MDR", "MAR", "ACC", "IX", "CIR", "status register"]],
-  ["044", ["address bus", "data bus", "control bus", "USB", "HDMI", "VGA"]],
+  ["041", [
+    "Von Neumann architecture", "stored-program concept", "Immediate Access Store", "IAS", "ALU", "CU", "system clock",
+    "general-purpose", "special-purpose", "PC", "MDR", "MAR", "ACC", "IX", "CIR", "status register",
+  ]],
+  ["042", [
+    "address bus", "data bus", "control bus", "USB", "HDMI", "VGA",
+    "processor type", "number of cores", "bus width", "clock speed", "cache memory",
+  ]],
+  ["043", ["fetch-decode-execute cycle", "register-transfer notation", "MAR <- PC", "MDR <- Memory[MAR]", "CIR <- MDR"]],
+  ["044", ["causes", "applications", "detects", "interrupt service routine", "saved state", "restores"]],
   ["045", ["assembly language", "machine code", "assembler", "instruction set"]],
   ["046", ["Pass 1", "Pass 2", "symbol table", "Trace", "data movement", "input/output", "arithmetic", "conditional branch", "unconditional branch", "compare"]],
   ["047", ["immediate", "direct", "indirect", "indexed", "relative addressing", "LDR #n", "CMI <address>", "JPE <address>", "JPN <address>"]],
-  ["048", ["causes", "applications", "detects", "interrupt service routine", "saved state", "restores"]],
-  ["049", ["processor type", "number of cores", "bus width", "clock speed", "cache memory"]],
+  ["049", ["AND mask", "OR mask", "XOR mask", "logical left shift", "logical right shift", "test", "set", "clear", "toggle", "monitor", "control"]],
 ];
 
 for (const [lesson, terms] of lessonChecks) {
@@ -88,16 +93,18 @@ for (const [lesson, terms] of lessonChecks) {
   expect(/Show answer|Show MS/i.test(practice), `L${lesson}: Stage 2 practice has no visible answer/MS disclosure`);
 }
 
+const l049 = read("web/lesson-049/index.html");
 const l050 = read("web/lesson-050/index.html");
-for (const id of ["masks", "shifts", "device-bits", "core-practice", "tool", "examples", "practice", "exam", "explanation-shifts"]) {
+for (const id of ["masks", "shifts", "device-bits", "core-practice", "tool", "examples", "practice", "exam"]) {
   const section = sectionHtml(l050, id);
   expect(/data-delivery-role="CORE"/i.test(section), `L050#${id}: required bit manipulation is not CORE`);
 }
+expect(/data-delivery-role="CORE"/i.test(sectionHtml(l049, "explanation-shifts")), "L049#explanation-shifts: first-use bit-manipulation visual is not CORE");
 for (const id of ["pipeline-extension", "concept", "explanation-concept", "compare", "explanation-compare", "timing", "explanation-timing", "hazards", "explanation-hazards", "stalls", "explanation-stalls"]) {
   const section = sectionHtml(l050, id);
   expect(/data-delivery-role="OPTIONAL"/i.test(section) && /data-classroom-activity="EXTEND"/i.test(section), `L050#${id}: pipelining is not OPTIONAL/EXTEND`);
 }
-includesAll(l050, ["AND mask", "OR mask", "XOR mask", "logical left", "logical right", "arithmetic left", "arithmetic right", "cyclic left", "cyclic right", "test", "set", "clear", "toggle", "monitor", "control"], "L050 visible bit-manipulation teaching");
+includesAll(`${l049}\n${l050}`, ["AND mask", "OR mask", "XOR mask", "logical left", "logical right", "arithmetic left", "arithmetic right", "cyclic left", "cyclic right", "test", "set", "clear", "toggle", "monitor", "control"], "L049-L050 visible bit-manipulation teaching");
 
 const assessmentChecks = [
   ["L041-Q4", ["stored-program", "Von Neumann", "binary", "MDR", "CIR"]],

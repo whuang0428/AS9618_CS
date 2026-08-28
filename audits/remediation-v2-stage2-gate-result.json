@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "remediation": "v2",
+  "stage": 2,
+  "generatedDate": "2026-08-28",
+  "implementationStatus": "Complete",
+  "approvalStatus": "AwaitingUserApproval",
+  "currentReleaseDecision": "BLOCKED",
+  "officialContract": {
+    "logicalRequirements": 121,
+    "sections": 12,
+    "mappingRound": "remediation-v2-stage2",
+    "syllabusSha256": "c8a4c6d033c07c6d8025689abed5ef481d581c28bae640986d275303ed6c08bc",
+    "stage2Problems": 0
+  },
+  "coverage": {
+    "completeRequirements": 121,
+    "partialRequirements": 0,
+    "partialRequirementIds": [],
+    "remainingRequirementMessages": 0
+  },
+  "optionalEnrichment": {
+    "lessons": 13,
+    "lessonIds": [
+      "L006",
+      "L011",
+      "L018",
+      "L019",
+      "L021",
+      "L030",
+      "L054",
+      "L057",
+      "L058",
+      "L059",
+      "L113",
+      "L144",
+      "L145"
+    ],
+    "excludedFromCoverage": true
+  },
+  "negativeControls": [
+    "official row/Notes mismatch",
+    "sound file-size overclaim",
+    "state-transition construction overclaim",
+    "test-plan production overclaim",
+    "one's-complement assessment loss",
+    "Optional exclusion loss",
+    "Optional-only lesson leakage"
+  ],
+  "semanticGate": {
+    "status": "Blocked",
+    "problemCount": 39,
+    "sequenceProblemCount": 25,
+    "criticalIds": [
+      "CRIT-L049-PERFORMANCE-FACTORS",
+      "CRIT-L107-CHAR-FUNCTION-TYPE",
+      "CRIT-L121-PROVIDED-FUNCTIONS",
+      "CRIT-L133-CHAR-FUNCTION-TYPE",
+      "CRIT-L133-PROVIDED-FUNCTION"
+    ]
+  },
+  "resolvedStage2Issues": [
+    "RV2-COV-001",
+    "RV2-COV-002",
+    "RV2-SCOPE-001",
+    "RV2-SCOPE-002"
+  ],
+  "remainingOpenIssues": [
+    {
+      "id": "RV2-SEQ-001",
+      "severity": "P1"
+    },
+    {
+      "id": "RV2-ID-001",
+      "severity": "P1"
+    },
+    {
+      "id": "RV2-WORD-001",
+      "severity": "P1"
+    },
+    {
+      "id": "RV2-MS-001",
+      "severity": "P1"
+    },
+    {
+      "id": "RV2-CONT-001",
+      "severity": "P0"
+    },
+    {
+      "id": "RV2-PSEUDO-001",
+      "severity": "P0"
+    },
+    {
+      "id": "RV2-PSEUDO-002",
+      "severity": "P0"
+    }
+  ]
+}

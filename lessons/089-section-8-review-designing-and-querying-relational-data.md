@@ -1,4 +1,53 @@
-# Lesson 089: Section 8 review: designing and querying relational data
+# Lesson 089: Section 8 required-content checkpoint
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Section 8 required-content checkpoint
+
+### Direct explanation
+
+- Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
+- DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.
+- A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
+
+### Worked example
+
+**Design and query a library database:** Separate Student and Loan tables, identify StudentID as primary key in Student and foreign key in Loan, state the one-to-many relationship and referential-integrity rule, then write SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE; using exactly two tables.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which key may retrieve several records sharing a value?
+   **Answer:** A secondary key; it need not be unique.
+2. Which normal form removes partial dependency on part of a composite key?
+   **Answer:** Second Normal Form (2NF).
+3. Which two DBMS tools are named separately in the syllabus?
+   **Answer:** Developer interface and query processor.
+4. Which SQL language category changes table structure?
+   **Answer:** DDL.
+5. What is the AS table-count boundary for a DML query?
+   **Answer:** At most two tables.
+
+### Exam-style question and MS
+
+**Question (7 marks):** A school currently repeats student details in a loan file. Propose a relational design and write a two-table query listing StudentName and DueDate for unreturned loans.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| identifies redundancy/inconsistency in the repeated file | Do not accept a three-table query, comma-style join, unexplained table split or unsupported claim that normalisation alone validates every value. | 1 |
+| separates Student and Loan with suitable primary keys |  | 1 |
+| uses StudentID as a foreign key in Loan and preserves referential integrity |  | 1 |
+| SELECT contains StudentName and DueDate |  | 1 |
+| uses Student INNER JOIN Loan |  | 1 |
+| ON matches Student.StudentID to Loan.StudentID |  | 1 |
+| WHERE Loan.Returned = FALSE |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +92,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit topic recognition, precise terminology, and explanations that fit the scenario rather than generic memorised lines.
 
-
-
 ## Student Task
 Students complete a timed response, swap scripts, mark with a checklist, and write one improved version.
 
@@ -72,49 +119,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Section 8 required-content checkpoint
-
-### Direct explanation
-
-- Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
-- DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.
-- A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
-
-### Worked example
-
-**Design and query a library database:** Separate Student and Loan tables, identify StudentID as primary key in Student and foreign key in Loan, state the one-to-many relationship and referential-integrity rule, then write SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE; using exactly two tables.
-
-### Targeted practice and answers
-
-1. Which key may retrieve several records sharing a value?
-   **Answer:** A secondary key; it need not be unique.
-2. Which normal form removes partial dependency on part of a composite key?
-   **Answer:** Second Normal Form (2NF).
-3. Which two DBMS tools are named separately in the syllabus?
-   **Answer:** Developer interface and query processor.
-4. Which SQL language category changes table structure?
-   **Answer:** DDL.
-5. What is the AS table-count boundary for a DML query?
-   **Answer:** At most two tables.
-
-### Exam-style question and MS
-
-**Question (7 marks):** A school currently repeats student details in a loan file. Propose a relational design and write a two-table query listing StudentName and DueDate for unreturned loans.
-
-- **B1** identifies redundancy/inconsistency in the repeated file
-- **B1** separates Student and Loan with suitable primary keys
-- **B1** uses StudentID as a foreign key in Loan and preserves referential integrity
-- **B1** SELECT contains StudentName and DueDate
-- **B1** uses Student INNER JOIN Loan
-- **B1** ON matches Student.StudentID to Loan.StudentID
-- **B1** WHERE Loan.Returned = FALSE
-
-**Strict note:** Do not accept a three-table query, comma-style join, unexplained table split or unsupported claim that normalisation alone validates every value.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -122,7 +126,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `design`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-089-design.jpg`
 
 1. Design review
@@ -134,7 +138,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `map`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-089-map.jpg`
 
 1. Retrieval map
@@ -149,7 +153,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `protection`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-089-protection.jpg`
 
 1. Protection review
@@ -161,7 +165,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sql`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-089-sql.jpg`
 
 1. For the clauses shown, written syntax order is SELECT, FROM, WHERE, GROUP BY, ORDER BY.
@@ -173,7 +177,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tracer`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-089-tracer.jpg`
 
 1. Interactive SQL tracer

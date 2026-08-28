@@ -125,6 +125,12 @@ const historicalSourceFactOverrides = {
     "A general-purpose register can hold varied working values; a special-purpose register has a defined processor role.",
     "Cambridge assembly questions assume ACC is the available general-purpose working register.",
   ]),
+  "049/concept": Object.freeze([
+    "The official performance factors are processor type and number of cores, bus width, clock speed and cache memory.",
+    "Processor type affects how much useful work can be completed for a workload, while more cores help only when work can run in parallel.",
+    "A wider bus transfers more bits per transfer; a higher clock speed provides more cycles per second; cache reduces slower main-memory accesses when required data or instructions are present.",
+    "No single factor guarantees that one computer will be faster for every program.",
+  ]),
   "047/modes": Object.freeze([
     "Immediate addressing uses the operand field as the value itself.",
     "Direct addressing uses the operand field as the address of the value.",
@@ -364,10 +370,10 @@ const historicalSourceFactOverrides = {
     "Output Total and PassCount after NEXT Index.",
   ]),
   "107/pseudocode": Object.freeze([
-    "Visit each character position in Word and normalise the current character with UCASE.",
-    "Increment VowelCount only when the character is A, E, I, O or U.",
+    "MID(Word, Index, 1) returns a one-character STRING, so compare it with both upper-case and lower-case vowel strings.",
+    "Increment VowelCount only when the current one-character STRING is A, E, I, O, U, a, e, i, o or u.",
     "Close the vowel selection with ENDIF before NEXT Index.",
-    "Output VowelCount after the loop.",
+    "Do not pass the STRING returned by MID directly to CHAR-only UCASE or LCASE.",
   ]),
   "108/pseudocode": Object.freeze([
     "Use an outer loop for three rows and an inner loop for four columns.",
@@ -468,10 +474,22 @@ const historicalSourceFactOverrides = {
     "Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.",
     "Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation.",
   ]),
+  "121/parse": Object.freeze([
+    "The question supplies FUNCTION SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING.",
+    "The supplied SPLIT result uses indexes starting at 1; for three fields, use Fields[1], Fields[2] and Fields[3].",
+    "The question also supplies FUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER.",
+    "Read the line first, then call the supplied functions using their stated parameter order and return types.",
+  ]),
+  "121/pseudocode": Object.freeze([
+    "SPLIT and STRING_TO_INTEGER are not standard functions in the Cambridge pseudocode guide; this example uses signatures supplied by the question.",
+    "FUNCTION SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING; its first returned element is at index 1.",
+    "FUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER.",
+    "Java split and parseInt are support examples only and use different syntax and zero-based array indexes.",
+  ]),
   "121/types": Object.freeze([
-    "CSV fields arrive as text.",
-    "Close every IF example with ENDIF.",
-    "Convert the mark field to INTEGER before comparing it numerically with 70.",
+    "CSV fields arrive as text; the question supplies FUNCTION STRING_TO_INTEGER(Value : STRING) RETURNS INTEGER.",
+    "Use the returned INTEGER for a numeric comparison and close every IF example with ENDIF.",
+    "Do not present STRING_TO_INTEGER as a standard Cambridge pseudocode-guide function.",
     "Structural closure and type conversion solve different problems.",
   ]),
   "126/constructs": Object.freeze([
@@ -525,10 +543,21 @@ const historicalSourceFactOverrides = {
     "The procedure outputs 80, while the main program later outputs the unchanged global 50.",
   ]),
   "133/case": Object.freeze([
-    "Input Answer and normalise it with UCASE before comparison.",
-    "If the normalised answer equals Y, output Continue.",
+    "Declare Answer as CHAR, input one character and normalise it with UCASE before comparison.",
+    "UCASE(Answer) returns CHAR, so compare the result with the CHAR literal 'Y'.",
     "Close the selection with ENDIF.",
-    "Case conversion changes letter case but does not remove spaces or correct spelling.",
+    "LCASE and UCASE accept CHAR, not STRING; case conversion does not remove spaces or correct spelling.",
+  ]),
+  "133/concat": Object.freeze([
+    "Concatenation joins STRING values with the & operator.",
+    "FirstName is \"Lin\" and YearText is \"2029\"; Username <- FirstName & YearText returns \"Lin2029\".",
+    "Do not pass the STRING FirstName to LCASE; that function accepts CHAR.",
+  ]),
+  "133/java": Object.freeze([
+    "Cambridge guide example: MID(Name, 1, 3) returns the first three characters as a STRING.",
+    "Java support example: name.substring(0, 3) uses start index 0 inclusive and end index 3 exclusive.",
+    "LEFT is not listed in the Cambridge pseudocode guide; a question may use it only when the signature and position convention are supplied.",
+    "Do not add UCASE around a STRING expression because UCASE accepts CHAR.",
   ]),
   "133/substring": Object.freeze([
     "String manipulation functions are supplied in the question; use the stated name, parameter order and position convention.",

@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "stage": 2,
+  "records": [
+    {
+      "id": "RV2-GATE-001",
+      "severity": "P0",
+      "stage2Disposition": "Resolved",
+      "closureEvidence": [
+        "scripts/generate-cie-wording-register.mjs rejects every command-line approval option",
+        "scripts/remediation-v2-review-gate.mjs requires independent status, evidence location, current hash, reviewer, round and page-specific official basis"
+      ],
+      "nextStage": null
+    },
+    {
+      "id": "RV2-GATE-002",
+      "severity": "P0",
+      "stage2Disposition": "Resolved",
+      "closureEvidence": [
+        "audits/remediation-v2-current-decision.json is the sole current release-decision artifact",
+        "scripts/verify-scientific-audit.mjs classifies both earlier scientific reports as historical evidence"
+      ],
+      "nextStage": null
+    },
+    {
+      "id": "RV2-COV-001",
+      "severity": "P0",
+      "stage2Disposition": "Resolved",
+      "closureEvidence": [
+        "scripts/syllabus-official-as-mapping.mjs maps all 121 logical requirements to verbatim candidate statements and adjacent Notes on pages 14-31",
+        "scripts/verify-syllabus-coverage.mjs validates each mapping, review round and content hash; S1.08/S1.10/S1.11 no longer contain unrelated Notes"
+      ],
+      "nextStage": null
+    },
+    {
+      "id": "RV2-COV-002",
+      "severity": "P1",
+      "stage2Disposition": "Resolved",
+      "closureEvidence": [
+        "L005 CORE teaching now includes a worked 8-bit one's-complement conversion and direct targeted practice",
+        "L005-Q1 is a stable four-mark direct one's-complement conversion and S1.03 maps it explicitly"
+      ],
+      "nextStage": null
+    },
+    {
+      "id": "RV2-SCOPE-001",
+      "severity": "P1",
+      "stage2Disposition": "Resolved",
+      "closureEvidence": [
+        "S1.10 removes compulsory sound-file-size calculation; S12.03 removes construction; S12.06 removes production",
+        "L011, L144 construction practice and L145 production practice are retained only as labelled Optional enrichment"
+      ],
+      "nextStage": null
+    },
+    {
+      "id": "RV2-SCOPE-002",
+      "severity": "P1",
+      "stage2Disposition": "Resolved",
+      "closureEvidence": [
+        "scripts/remediation-v2-optional-enrichment.mjs records 13 lesson dispositions with formal AS prerequisites and exclusion policy",
+        "Markdown and HTML show visible Optional enrichment notices; listed HTML sections are OPTIONAL/EXTEND and excluded by the coverage evaluator"
+      ],
+      "nextStage": null
+    },
+    {
+      "id": "RV2-SEQ-001",
+      "severity": "P1",
+      "stage2Disposition": "Open",
+      "closureEvidence": [],
+      "nextStage": 3
+    },
+    {
+      "id": "RV2-ID-001",
+      "severity": "P1",
+      "stage2Disposition": "Open",
+      "closureEvidence": [],
+      "nextStage": 3
+    },
+    {
+      "id": "RV2-WORD-001",
+      "severity": "P1",
+      "stage2Disposition": "Open",
+      "closureEvidence": [],
+      "nextStage": 4
+    },
+    {
+      "id": "RV2-MS-001",
+      "severity": "P1",
+      "stage2Disposition": "Open",
+      "closureEvidence": [],
+      "nextStage": 4
+    },
+    {
+      "id": "RV2-CONT-001",
+      "severity": "P0",
+      "stage2Disposition": "Open",
+      "closureEvidence": [],
+      "nextStage": 5
+    },
+    {
+      "id": "RV2-PSEUDO-001",
+      "severity": "P0",
+      "stage2Disposition": "Open",
+      "closureEvidence": [],
+      "nextStage": 5
+    },
+    {
+      "id": "RV2-PSEUDO-002",
+      "severity": "P0",
+      "stage2Disposition": "Open",
+      "closureEvidence": [],
+      "nextStage": 5
+    }
+  ]
+}

@@ -6,7 +6,7 @@
     <title>AS9618 Lesson 105 | Bubble sort and insertion sort</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -42,11 +42,14 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 105 | 45 minutes | Paper 2 Section 9 | 5-minute quiz</p>
             <h2>Sorting algorithms apply a defined sequence of comparisons and movements.</h2>
@@ -77,7 +80,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 sorting questions usually mark the intermediate states. The final sorted list alone is not enough.</p>
@@ -88,7 +91,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Four cards, two legal ways to tidy them</h2>
@@ -103,7 +106,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the bubble sort first action.</div>
         </section>
 
-        <section class="panel" id="bubble" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bubble">
+        <section class="panel" id="bubble" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
             <h2>Bubble sort: compare adjacent items and swap if needed</h2>
@@ -124,23 +127,7 @@ compare 5 and 2 -> swap: [1, 4, 2, 5]</code></pre>
           </div>
         </section>
 
-        <!-- stage10-explanation:start bubble -->
-        <section class="panel explanation-panel" id="explanation-bubble" data-explains="bubble" data-explanation-kind="process" aria-labelledby="explanation-bubble-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bubble">
-          <h2 class="explanation-sr-only" id="explanation-bubble-title">Why bubble sort repeats adjacent comparisons</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-bubble.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why bubble sort repeats adjacent comparisons through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why bubble sort repeats adjacent comparisons: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Bubble sort compares adjacent items and swaps an inverted pair.</li><li><strong>Reason:</strong> For [1, 4, 2, 5, 8], pass 2 makes one swap: 4 and 2.</li><li><strong>Result:</strong> The resulting list is [1, 2, 4, 5, 8], and the next pass makes zero swaps.</li></ol>
-
-            <p><strong>Analogy:</strong> Repeatedly exchange adjacent books until the largest reaches the shelf end.</p>
-            <p><strong>Boundary:</strong> One pass does not generally sort the entire list.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end bubble -->
-
-        <section class="panel" id="insertion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="insertion">
+        <section class="panel" id="insertion" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
             <h2>Insertion sort: insert the next item into the sorted left section</h2>
@@ -162,7 +149,7 @@ take 2 -> insert between 1 and 4: [1, 2, 4, 5]</code></pre>
         </section>
 
         <!-- stage10-explanation:start insertion -->
-        <section class="panel explanation-panel" id="explanation-insertion" data-explains="insertion" data-explanation-kind="process" aria-labelledby="explanation-insertion-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="insertion">
+        <section class="panel explanation-panel" id="explanation-insertion" data-explains="insertion" data-explanation-kind="process" aria-labelledby="explanation-insertion-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <h2 class="explanation-sr-only" id="explanation-insertion-title">How insertion sort grows a sorted region</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-insertion.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How insertion sort grows a sorted region through a cause-and-effect diagram." />
@@ -176,8 +163,7 @@ take 2 -> insert between 1 and 4: [1, 2, 4, 5]</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end insertion -->
-
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Comparison</p>
             <h2>Same final list, different route</h2>
@@ -192,7 +178,7 @@ take 2 -> insert between 1 and 4: [1, 2, 4, 5]</code></pre>
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <h2 class="explanation-sr-only" id="explanation-compare-title">Why the sorts move data differently</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why the sorts move data differently through a cause-and-effect diagram." />
@@ -206,8 +192,7 @@ take 2 -> insert between 1 and 4: [1, 2, 4, 5]</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
-
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Trace Cambridge-style algorithms, not Java syntax habits</h2>
@@ -242,7 +227,7 @@ NEXT Pass</code></pre>
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Why a trace follows state</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a trace follows state through a cause-and-effect diagram." />
@@ -256,9 +241,7 @@ NEXT Pass</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-
-
-        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Interactive sort chooser</p>
             <h2>Identify the method from the movement</h2>
@@ -278,7 +261,7 @@ NEXT Pass</code></pre>
           <div class="feedback" id="chooserResult">Choose a clue to classify it.</div>
         </section>
 
-        <section class="panel" id="bubble-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bubble-tool">
+        <section class="panel" id="bubble-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Interactive bubble pass</p>
             <h2>Trace one full bubble pass</h2>
@@ -297,7 +280,7 @@ NEXT Pass</code></pre>
           <div class="trace-output" id="bubbleResult">Choose a list to trace a pass.</div>
         </section>
 
-        <section class="panel" id="insert-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="insert-tool">
+        <section class="panel" id="insert-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Interactive insertion step</p>
             <h2>Trace insertion sort movements</h2>
@@ -316,7 +299,7 @@ NEXT Pass</code></pre>
           <div class="trace-output" id="insertResult">Choose a list to trace insertion movements.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Sorting traces</h2>
@@ -330,7 +313,7 @@ NEXT Pass</code></pre>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Sorting trace accuracy</h2>
@@ -339,7 +322,7 @@ NEXT Pass</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix sorting mistakes</h2>
@@ -347,7 +330,7 @@ NEXT Pass</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style sorting questions with expandable MS</h2>
@@ -356,64 +339,7 @@ NEXT Pass</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Write linear-search and bubble-sort algorithms</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Linear search examines array elements in index order until the target is found or all populated elements have been checked. A complete algorithm initialises its index and found state, keeps every access within the declared bounds, compares the current element and advances only when another element remains to be checked.</p>
-            <p>Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.</p>
-            <p>A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Two complete array algorithms</h3>
-            <p>A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count. A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Write linear-search and bubble-sort algorithms: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> When must a linear search stop?</p>
-              <details><summary>Show answer</summary><p>When the target has been found or every populated element within the declared bounds has been checked.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What comparison is made by an ascending bubble sort?</p>
-              <details><summary>Show answer</summary><p>Compare adjacent elements and swap when the left element is greater than the right element.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What does a no-swap pass prove?</p>
-              <details><summary>Show answer</summary><p>No adjacent pair is out of ascending order, so the array is sorted and the algorithm may stop.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
-            <p>Write Cambridge pseudocode for a linear search of Name[1:20] and an ascending bubble sort of Score[1:20].</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> linear search initialises Found and Index</li>
-                <li><strong>M1</strong> linear search loops within indexes 1 to 20 until found or exhausted</li>
-                <li><strong>A1</strong> linear search compares Name[Index] with the target and records a match</li>
-                <li><strong>B1</strong> bubble sort uses repeated passes</li>
-                <li><strong>M1</strong> compares adjacent Score[Index] and Score[Index + 1] within valid bounds</li>
-                <li><strong>M1</strong> uses Temp or an equivalent safe three-step swap</li>
-                <li><strong>A1</strong> reduces the unsorted range or uses a valid no-swap stopping condition</li>
-                <li><strong>B1</strong> all constructs close coherently in Cambridge pseudocode</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-105">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Sorting checklist</h2>

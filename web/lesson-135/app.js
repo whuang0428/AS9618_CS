@@ -120,6 +120,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -161,7 +167,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "3 marks",
-    prompt: "Identify and correct the error in this fragment.\n\nOUTPUT \"Enter price\"\nTotal <- Price * 1.20\nOUTPUT Total",
+    prompt: "Identify and correct the error in this fragment. OUTPUT \"Enter price\"\nTotal <- Price * 1.20\nOUTPUT Total",
     answer: "The error is that Price is used without being input or assigned. OUTPUT only displays the prompt; it does not store a value. Add INPUT Price after the prompt and before the calculation.",
     marking: [
       { mark: "B1", text: "identifies that Price has not been input/assigned before use" },
@@ -406,7 +412,7 @@ function setupExamQuestions() {
             <h4>Indicative answer</h4>
             <pre><code>${escapeHtml(question.answer)}</code></pre>
             <h4>Mark scheme</h4>
-            <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+            ${renderStudentMarkPoints(question)}
           </div>
         </article>
       `,

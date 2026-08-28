@@ -1,4 +1,4 @@
-# Lesson 132: Scope, lifetime, and local/global variables
+# Lesson 132: Procedures, functions and their interfaces
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -45,7 +45,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 **Problem:** Write a program fragment using the construct from the lesson and trace it with one normal and one boundary test case.
 
 **Worked answer / marking focus:** Credit correct control flow, meaningful identifiers, correct parameter or variable use, and test data that actually exercises the construct.
-
 
 ## Student Task
 Students write Cambridge pseudocode first, then produce a Java support version. They circle every place where Java syntax must not leak into the exam answer.

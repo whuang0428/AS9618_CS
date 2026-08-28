@@ -17,6 +17,20 @@ export function buildCurriculumSequenceModel(contract = coverageContract, questi
     prerequisiteFirstLesson: Math.min(...requirementLookup.get(prerequisite).teachingLessons),
     dependentFirstLesson: Math.min(...requirement.teachingLessons),
   })));
+  const officialOrderEdges = [];
+  for (const section of [...new Set(contract.requirements.map(({ section }) => section))].sort((a, b) => a - b)) {
+    const sectionRequirements = contract.requirements.filter((requirement) => requirement.section === section);
+    for (let index = 1; index < sectionRequirements.length; index += 1) {
+      const prerequisite = sectionRequirements[index - 1];
+      const dependent = sectionRequirements[index];
+      officialOrderEdges.push({
+        prerequisite: prerequisite.id,
+        dependent: dependent.id,
+        prerequisiteFirstLesson: Math.min(...prerequisite.teachingLessons),
+        dependentFirstLesson: Math.min(...dependent.teachingLessons),
+      });
+    }
+  }
   const assessmentFirstUses = contract.requirements.flatMap((requirement) => requirement.assessmentEvidence.map(({ questionId }) => {
     const question = questionLookupForModel.get(questionId);
     return {
@@ -38,6 +52,11 @@ export function buildCurriculumSequenceModel(contract = coverageContract, questi
       id: `${entry.questionId}->${entry.requirement}`,
       detail: `${entry.questionId} occurs at L${String(entry.assessmentLesson).padStart(3, "0")}; ${entry.requirement} first taught at L${String(entry.firstTeachingLesson).padStart(3, "0")}`,
     })),
+    ...officialOrderEdges.filter(({ prerequisiteFirstLesson, dependentFirstLesson }) => prerequisiteFirstLesson > dependentFirstLesson).map((edge) => ({
+      type: "OFFICIAL_FIRST_USE_INVERSION",
+      id: `${edge.prerequisite}->${edge.dependent}`,
+      detail: `${edge.prerequisite} first taught at L${String(edge.prerequisiteFirstLesson).padStart(3, "0")}; later official row ${edge.dependent} first taught at L${String(edge.dependentFirstLesson).padStart(3, "0")}`,
+    })),
   ].sort((a, b) => a.id.localeCompare(b.id));
   return {
     schemaVersion: 1,
@@ -45,9 +64,11 @@ export function buildCurriculumSequenceModel(contract = coverageContract, questi
     status: problems.length ? "Blocked" : "Ready",
     nodeCount: nodes.length,
     edgeCount: edges.length,
+    officialOrderEdgeCount: officialOrderEdges.length,
     assessmentEvidenceCount: assessmentFirstUses.length,
     nodes,
     edges,
+    officialOrderEdges,
     assessmentFirstUses,
     problems,
   };

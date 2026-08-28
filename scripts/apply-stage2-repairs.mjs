@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import { repairs } from "./stage2-repairs-data.mjs";
+import { stage3CoreRepairs as repairs } from "./remediation-v2-stage3-sequence-plan.mjs";
+import { normaliseQuestionPrompt } from "./cie-command-words.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const htmlMarker = "Core syllabus content";
@@ -9,6 +10,36 @@ const htmlStart = "<!-- stage2-completion:start -->";
 const htmlEnd = "<!-- stage2-completion:end -->";
 const markdownStart = "<!-- stage2-completion:start -->";
 const markdownEnd = "<!-- stage2-completion:end -->";
+
+// These sentences close concepts that the audit-integrity gate found absent from
+// the exact first-teaching section.  Keep them here, beside the generator, so a
+// regeneration cannot silently recreate the omissions.
+const firstTeachingSupplements = new Map([
+  [2, [
+    "Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.",
+  ]],
+  [4, [
+    "Binary subtraction applies to each positive or negative binary integer as well as binary addition; use the stated fixed width and signed representation when interpreting the result.",
+  ]],
+  [29, [
+    "Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.",
+  ]],
+  [63, [
+    "Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.",
+  ]],
+  [69, [
+    "Data validation and data verification help protect data integrity by detecting or preventing many input, copying and transfer errors before inaccurate or corrupted data are accepted. They reduce these risks but do not prove that the original source is true or replace access control and backup.",
+  ]],
+  [74, [
+    "The required licence categories include FSF and OSI open-source licences, shareware and commercial software. A justified licence choice links its permissions, restrictions and cost to the stated situation.",
+  ]],
+  [117, [
+    "Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.",
+  ]],
+  [120, [
+    "Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.",
+  ]],
+]);
 
 function escapeHtml(value) {
   return value
@@ -19,13 +50,14 @@ function escapeHtml(value) {
 }
 
 function htmlFor(repair) {
-  const paragraphs = repair.explanation.map((item) => `            <p>${escapeHtml(item)}</p>`).join("\n");
+  const explanation = [...repair.explanation, ...(firstTeachingSupplements.get(repair.lesson) ?? [])];
+  const paragraphs = explanation.map((item) => `            <p>${escapeHtml(item)}</p>`).join("\n");
   const practice = repair.practice.map((item, index) => `
             <article class="stage2-question">
-              <p><strong>${index + 1}.</strong> ${escapeHtml(item.q)}</p>
+              <p><strong>${index + 1}.</strong> ${escapeHtml(normaliseQuestionPrompt(item.q))}</p>
               <details><summary>Show answer</summary><p>${escapeHtml(item.a)}</p></details>
             </article>`).join("");
-  const marks = repair.marks.map((item) => `                <li><strong>${escapeHtml(item[0])}</strong> ${escapeHtml(item[1])}</li>`).join("\n");
+  const marks = repair.marks.map((item, index) => `                  <tr><td>${escapeHtml(item[1])}</td><td>${index === 0 ? escapeHtml(repair.strict) : ""}</td><td>1</td></tr>`).join("\n");
 
   return `
         ${htmlStart}
@@ -52,12 +84,15 @@ ${paragraphs}
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>${repair.marks.length} marks</span></div>
-            <p>${escapeHtml(repair.exam)}</p>
+            <p>${escapeHtml(normaliseQuestionPrompt(repair.exam))}</p>
             <details>
               <summary>Show MS</summary>
-              <ol class="mark-list">
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
 ${marks}
-              </ol>
+                </tbody>
+              </table>
             </details>
           </article>
         </section>
@@ -66,9 +101,10 @@ ${marks}
 }
 
 function markdownFor(repair) {
-  const explanation = repair.explanation.map((item) => `- ${item}`).join("\n");
-  const practice = repair.practice.map((item, index) => `${index + 1}. ${item.q}\n   **Answer:** ${item.a}`).join("\n");
-  const marks = repair.marks.map((item) => `- **${item[0]}** ${item[1]}`).join("\n");
+  const explanation = [...repair.explanation, ...(firstTeachingSupplements.get(repair.lesson) ?? [])]
+    .map((item) => `- ${item}`).join("\n");
+  const practice = repair.practice.map((item, index) => `${index + 1}. ${normaliseQuestionPrompt(item.q)}\n   **Answer:** ${item.a}`).join("\n");
+  const marks = repair.marks.map((item, index) => `| ${item[1].replaceAll("|", "\\|")} | ${index === 0 ? repair.strict.replaceAll("|", "\\|") : ""} | 1 |`).join("\n");
   return `
 ${markdownStart}
 ## ${markdownMarker}
@@ -83,17 +119,19 @@ ${explanation}
 
 **${repair.exampleTitle}:** ${repair.example}
 
+<!-- stage2-practice:start -->
 ### Targeted practice and answers
 
 ${practice}
 
 ### Exam-style question and MS
 
-**Question (${repair.marks.length} marks):** ${repair.exam}
+**Question (${repair.marks.length} marks):** ${normaliseQuestionPrompt(repair.exam)}
 
+| Answer | Guidance | Marks |
+|---|---|---:|
 ${marks}
-
-**Strict note:** ${repair.strict}
+<!-- stage2-practice:end -->
 ${markdownEnd}
 `;
 }
@@ -107,7 +145,9 @@ const css = `
 .stage2-question + .stage2-question { margin-top: 10px; }
 .stage2-completion details { margin-top: 10px; }
 .stage2-completion summary { cursor: pointer; color: var(--accent-dark, #124d43); font-weight: 750; min-height: 40px; padding: 8px 0; }
-.stage2-completion .mark-list { display: grid; gap: 8px; }
+.stage2-completion .mark-scheme-table { width: 100%; border-collapse: collapse; }
+.stage2-completion .mark-scheme-table :where(th, td) { border: 1px solid var(--line, #d7ddd9); padding: 8px; text-align: left; vertical-align: top; }
+.stage2-completion .mark-scheme-table :where(th, td):last-child { width: 5rem; text-align: center; }
 /* Stage 2 syllabus completion:end */
 `;
 
@@ -159,9 +199,14 @@ for (const repair of repairs) {
   const markdownPath = path.join(lessonDir, markdownMatches[0]);
   let markdown = fs.readFileSync(markdownPath, "utf8");
 
-  const summaryMatch = html.match(/        <section class="[^"]+" id="summary"/);
-  if (!summaryMatch) throw new Error(`Summary anchor missing in lesson ${number}`);
-  html = html.replace(summaryMatch[0], `${htmlFor(repair)}\n${summaryMatch[0]}`);
+  const lessonContentStart = html.indexOf('<div class="lesson-content">');
+  if (lessonContentStart < 0) throw new Error(`Lesson content anchor missing in lesson ${number}`);
+  const firstSectionOffset = html.slice(lessonContentStart).search(/\n\s*<section\b/);
+  if (firstSectionOffset < 0) throw new Error(`First teaching section anchor missing in lesson ${number}`);
+  const firstSectionIndex = lessonContentStart + firstSectionOffset;
+  const prefix = html.slice(0, firstSectionIndex).replace(/\s*$/, "");
+  const suffix = html.slice(firstSectionIndex).replace(/^\s*/, "");
+  html = `${prefix}\n\n${htmlFor(repair).trim()}\n\n${suffix}`;
   html = html.replace(
     /(<aside class="lesson-nav"[^>]*>[\s\S]*?)(\s*<\/aside>)/,
     `$1\n        <a href="#stage2-completion">Core syllabus content</a>$2`,
@@ -169,9 +214,16 @@ for (const repair of repairs) {
   styles = `${styles.trimEnd()}\n\n${css.trim()}\n`;
   fs.writeFileSync(htmlPath, html);
   fs.writeFileSync(cssPath, styles);
-  const stage10Index = markdown.indexOf("\n<!-- stage10-explanations:start -->");
-  if (stage10Index >= 0) markdown = `${markdown.slice(0, stage10Index).trimEnd()}\n${markdownFor(repair)}\n${markdown.slice(stage10Index + 1)}`;
-  else markdown = `${markdown.trimEnd()}\n${markdownFor(repair)}`;
+  const scopeEnd = "<!-- remediation-v2-stage3-scope:end -->";
+  const scopeIndex = markdown.indexOf(scopeEnd);
+  if (scopeIndex >= 0) {
+    const insertionIndex = scopeIndex + scopeEnd.length;
+    markdown = `${markdown.slice(0, insertionIndex)}\n${markdownFor(repair)}\n${markdown.slice(insertionIndex).trimStart()}`;
+  } else {
+    const headingEnd = markdown.indexOf("\n", markdown.indexOf("# "));
+    if (headingEnd < 0) throw new Error(`Markdown heading anchor missing in lesson ${number}`);
+    markdown = `${markdown.slice(0, headingEnd)}\n${markdownFor(repair)}\n${markdown.slice(headingEnd + 1)}`;
+  }
   markdown = markdown.replace(/[ \t]+$/gm, "");
   fs.writeFileSync(markdownPath, markdown);
 }

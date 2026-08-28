@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "recordedDate": "2026-08-28",
+  "browser": "Codex in-app browser",
+  "route": "http://127.0.0.1:8765/web/lesson-009/",
+  "source": "web/lesson-009/index.html",
+  "sourceSha256": "95ac55604d4e4fa3644f36c7ea9651cb6227b59f1ff1eee6bf4b7d83a2eb1841",
+  "pageIdentity": {
+    "title": "AS9618 Lesson 009 | Vector graphics and drawing lists",
+    "h1": "Vector graphics and drawing lists",
+    "meaningfulDom": true,
+    "frameworkOverlay": false,
+    "consoleWarningsOrErrors": 0
+  },
+  "desktop": {
+    "viewport": [
+      1440,
+      900
+    ],
+    "documentHeight": 13105,
+    "coreTopBeforeInteraction": 309,
+    "coreDocumentRatio": 0.02357878672262495,
+    "coreVisibleInInitialViewport": true,
+    "firstSubstantiveTeachingId": "stage2-completion",
+    "firstSubstantiveTeachingRole": "CORE",
+    "firstSubstantiveTeachingHeading": "Vector graphics and drawing lists",
+    "optionalTeachingAfterCore": true,
+    "horizontalOverflow": 0
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "documentHeight": 17733,
+    "coreTopBeforeInteraction": 577,
+    "coreDocumentRatio": 0.03253820560536852,
+    "coreVisibleInInitialViewport": true,
+    "firstSubstantiveTeachingId": "stage2-completion",
+    "firstSubstantiveTeachingRole": "CORE",
+    "firstSubstantiveTeachingHeading": "Vector graphics and drawing lists",
+    "optionalTeachingAfterCore": true,
+    "horizontalOverflow": 0
+  },
+  "interaction": {
+    "steps": [
+      "Open lesson 009",
+      "Activate Show contents",
+      "Activate Core syllabus content"
+    ],
+    "desktopResultingHash": "#stage2-completion",
+    "desktopResultingCoreTop": 0,
+    "mobileResultingHash": "#stage2-completion",
+    "mobileResultingCoreTop": 0
+  },
+  "conclusion": "The rendered desktop and 390px page now starts with the formal vector CORE block, places Optional bitmap content afterwards, has no horizontal overflow or console warning/error, and preserves the contents-menu jump to the CORE heading.",
+  "refreshedFromCurrentEvidence": "audits/remediation-v2-stage6-browser-evidence.json#lesson-009",
+  "currentViewportRecords": [
+    {
+      "viewport": "1440x900",
+      "sourceHash": "793bf86e136ba1531207b11f0da4904c833ccc99391ef6955f9910a8cd5358f8",
+      "status": "Pass"
+    },
+    {
+      "viewport": "390x844",
+      "sourceHash": "793bf86e136ba1531207b11f0da4904c833ccc99391ef6955f9910a8cd5358f8",
+      "status": "Pass"
+    }
+  ]
+}

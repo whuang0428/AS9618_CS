@@ -1,4 +1,51 @@
-# Lesson 012: Compression: lossless vs lossy
+# Lesson 012: Compression methods for text, bitmap, vector and sound files
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Compression methods for text, bitmap, vector and sound files
+
+### Direct explanation
+
+- Compression represents a file using fewer bits. Lossless compression must reconstruct every original bit, so it is required where any change would alter meaning, such as program source or exact text. Lossy compression permanently discards selected detail and is suitable only when the resulting quality remains acceptable for the purpose.
+- Text can be compressed losslessly by run-length encoding repeated characters or by replacing repeated words/strings with shorter dictionary references. Bitmap data can use run-length encoding when adjacent pixels repeat; lossy bitmap compression may reduce colour precision or discard fine spatial detail. RLE is effective only when the runs save more space than their symbol-count representation.
+- A vector file stores drawing objects rather than pixels. It can be compressed losslessly by storing repeated shapes or properties once and referring to them, and by removing redundant object descriptions. Sound can use lossless pattern coding when exact samples are required, or lossy perceptual coding that removes less-audible sound information; reducing sample rate or sampling resolution also reduces data but changes the recording.
+- Method choice depends on file type, repetition, required fidelity and use. A valid justification must connect the chosen method to what may or may not be discarded; naming 'lossy' or 'lossless' alone is not enough.
+
+### Worked example
+
+**Choose methods for four files:** Compress repeated spaces in a text log with RLE or a dictionary without changing the characters; compress a flat-colour bitmap logo with pixel-value RLE; store one repeated vector shape once and reference it; use lossless sound compression for an evidential recording, but perceptual lossy coding may suit streamed music when smaller size is worth a controlled quality loss.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Why must program source code use lossless compression?
+   **Answer:** Every character must be reconstructed exactly; a discarded or changed character can alter syntax or behaviour.
+2. When is RLE effective for a bitmap?
+   **Answer:** When many adjacent pixels have the same value, so symbol-count pairs use fewer bits than storing each pixel separately.
+3. How can repeated objects in a vector file be compressed?
+   **Answer:** Store the repeated shape/properties once and use shorter references for each occurrence.
+4. Give one lossy method for sound and its trade-off.
+   **Answer:** Remove less-audible frequency/detail information, or reduce sample rate/resolution; the file is smaller but the discarded detail cannot be recovered.
+
+### Exam-style question and MS
+
+**Question (6 marks):** For each of text, bitmap, vector and sound data, describe one suitable compression method and state whether it preserves the original data exactly.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| text: lossless RLE or dictionary/token substitution with exact reconstruction | Do not award generic 'make the file smaller' statements without a method tied to the named media type. | 1 |
+| bitmap: RLE for repeated adjacent pixel values, or a valid lossy image method identified as non-exact |  | 1 |
+| vector: stores repeated objects/properties once and uses references / removes redundant descriptions, losslessly |  | 1 |
+| sound: lossless pattern coding for exact samples or perceptual lossy coding that removes less-audible detail |  | 1 |
+| distinguishes exact lossless reconstruction from irreversible lossy removal |  | 1 |
+| links at least one method to repetition, fidelity or intended use |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +90,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit the encoded form and the comparison with the original size. For lossy/lossless questions, the answer must state whether exact reconstruction is possible.
 
-
-
 ## Student Task
 Groups receive three mini-files: repeated text, a photo description and a music clip. They choose lossless or lossy compression and defend the decision.
 
@@ -72,47 +117,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often assume compression always makes a file smaller. Correction: compression has overhead and depends on patterns in the data.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Compression methods for text, bitmap, vector and sound files
-
-### Direct explanation
-
-- Compression represents a file using fewer bits. Lossless compression must reconstruct every original bit, so it is required where any change would alter meaning, such as program source or exact text. Lossy compression permanently discards selected detail and is suitable only when the resulting quality remains acceptable for the purpose.
-- Text can be compressed losslessly by run-length encoding repeated characters or by replacing repeated words/strings with shorter dictionary references. Bitmap data can use run-length encoding when adjacent pixels repeat; lossy bitmap compression may reduce colour precision or discard fine spatial detail. RLE is effective only when the runs save more space than their symbol-count representation.
-- A vector file stores drawing objects rather than pixels. It can be compressed losslessly by storing repeated shapes or properties once and referring to them, and by removing redundant object descriptions. Sound can use lossless pattern coding when exact samples are required, or lossy perceptual coding that removes less-audible sound information; reducing sample rate or sampling resolution also reduces data but changes the recording.
-- Method choice depends on file type, repetition, required fidelity and use. A valid justification must connect the chosen method to what may or may not be discarded; naming 'lossy' or 'lossless' alone is not enough.
-
-### Worked example
-
-**Choose methods for four files:** Compress repeated spaces in a text log with RLE or a dictionary without changing the characters; compress a flat-colour bitmap logo with pixel-value RLE; store one repeated vector shape once and reference it; use lossless sound compression for an evidential recording, but perceptual lossy coding may suit streamed music when smaller size is worth a controlled quality loss.
-
-### Targeted practice and answers
-
-1. Why must program source code use lossless compression?
-   **Answer:** Every character must be reconstructed exactly; a discarded or changed character can alter syntax or behaviour.
-2. When is RLE effective for a bitmap?
-   **Answer:** When many adjacent pixels have the same value, so symbol-count pairs use fewer bits than storing each pixel separately.
-3. How can repeated objects in a vector file be compressed?
-   **Answer:** Store the repeated shape/properties once and use shorter references for each occurrence.
-4. Give one lossy method for sound and its trade-off.
-   **Answer:** Remove less-audible frequency/detail information, or reduce sample rate/resolution; the file is smaller but the discarded detail cannot be recovered.
-
-### Exam-style question and MS
-
-**Question (6 marks):** For each of text, bitmap, vector and sound data, describe one suitable compression method and state whether it preserves the original data exactly.
-
-- **B1** text: lossless RLE or dictionary/token substitution with exact reconstruction
-- **B1** bitmap: RLE for repeated adjacent pixel values, or a valid lossy image method identified as non-exact
-- **B1** vector: stores repeated objects/properties once and uses references / removes redundant descriptions, losslessly
-- **B1** sound: lossless pattern coding for exact samples or perceptual lossy coding that removes less-audible detail
-- **B1** distinguishes exact lossless reconstruction from irreversible lossy removal
-- **B1** links at least one method to repetition, fidelity or intended use
-
-**Strict note:** Do not award generic 'make the file smaller' statements without a method tied to the named media type.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -133,7 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lossy`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-012-lossy.jpg`
 
 1. Definition
@@ -146,7 +150,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-012-purpose.jpg`
 
 1. Less storage
@@ -160,7 +164,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `ratio`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-012-ratio.jpg`
 
 1. compression ratio = original size : compressed size

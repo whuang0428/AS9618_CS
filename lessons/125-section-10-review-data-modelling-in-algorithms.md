@@ -46,17 +46,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit topic recognition, precise terminology, and explanations that fit the scenario rather than generic memorised lines.
 
-For a record declaration, close every Cambridge pseudocode type definition before declaring variables or arrays that use it:
-
-```text
-TYPE TStudent
-    DECLARE Name : STRING
-    DECLARE Mark : INTEGER
-ENDTYPE
-DECLARE Students : ARRAY[1:120] OF TStudent
-```
-
-
 ## Student Task
 Students complete a timed response, swap scripts, mark with a checklist, and write one improved version.
 

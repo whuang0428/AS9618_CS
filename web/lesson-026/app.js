@@ -80,11 +80,17 @@ const practice = [
   { id: "p12", prompt: "Which addressing term identifies a network interface/device on a local network?", accepted: ["mac", "mac address", "mac addresses"], answer: "MAC address" },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A student says: 'A switch and a router are the same because they both send data.' Improve this answer.",
+    prompt: "A student says: 'A switch and a router are the same because they both send data.' Develop this answer.",
     answer: "A switch and router both forward data, but they work at different network boundaries. A switch connects devices inside a LAN and forwards frames to the correct port using MAC addresses. A router connects different networks, such as a LAN and the internet, and forwards packets using IP addresses and routing information.",
     marking: [
       { mark: "B1", text: "states they are not the same / have different roles" },
@@ -143,39 +149,37 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "A video conference has clear image quality but delayed conversation. Explain possible network causes.",
-    answer: "Clear image quality suggests there may be enough bandwidth for the video stream. Delayed conversation suggests high latency or jitter, meaning responses take longer or delay varies. Causes may include long distance, route, congestion, wireless interference, overloaded servers or packet loss/retransmission. The result is pauses before people hear replies even if the image is not low quality.",
+    prompt: "Explain the format and use of IPv4 and IPv6 addresses, and Compare public/private and static/dynamic addresses.",
+    answer: "IPv4 uses 32-bit addresses and IPv6 uses 128-bit addresses. An IP address is associated with a network interface so packets can be routed. A public address is reachable across the internet, while a private address is used inside a local network. A static address remains fixed; a dynamic address is allocated and may change. Possessing an IP address does not by itself guarantee security.",
     marking: [
-      { mark: "B1", text: "bandwidth linked to capacity/image quality" },
-      { mark: "B1", text: "latency identified as delay/response time issue" },
-      { mark: "B1", text: "jitter allowed as variation in delay" },
-      { mark: "B1", text: "valid cause such as distance/route/congestion/interference/server load" },
-      { mark: "B1", text: "packet loss/retransmission or congestion effect explained" },
-      { mark: "B1", text: "links to delayed conversation scenario" },
+      { mark: "B1", text: "IPv4 is 32-bit" },
+      { mark: "B1", text: "IPv6 is 128-bit" },
+      { mark: "B1", text: "address associated with a network interface / used for routing" },
+      { mark: "B1", text: "public and private distinction" },
+      { mark: "B1", text: "static and dynamic distinction" },
+      { mark: "B1", text: "IP addressing does not guarantee security" },
     ],
     strict: [
-      "Do not accept only 'not enough bandwidth' because the prompt states image quality is clear.",
-      "Do not require advanced codec knowledge.",
-      "Allow any valid performance factor if connected to delay.",
+      "Do not credit decimal digit counts as the address bit width.",
+      "Do not claim that a private address alone makes a device secure.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A company lets selected suppliers view private stock data. Explain whether this is internet, intranet or extranet, and justify your answer.",
-    answer: "This is an extranet because selected suppliers are external organisations but are given controlled access to private company information. It is not a normal intranet because access is not only internal staff. It is not simply the public internet because the stock data is restricted to authorised suppliers rather than available to everyone.",
+    prompt: "For the URL https://school.example.org/results/index.html, identify the scheme, domain name and path, then explain how DNS helps locate the WWW resource.",
+    answer: "The scheme is https, the domain name is school.example.org and the path is /results/index.html. DNS resolves the domain name to an IP address. The browser can then send packets toward the web server and request the named WWW resource.",
     marking: [
-      { mark: "B1", text: "identifies extranet" },
-      { mark: "B1", text: "suppliers are external users/organisations" },
-      { mark: "B1", text: "controlled/restricted/authorised access" },
-      { mark: "B1", text: "private company information/stock data" },
-      { mark: "B1", text: "contrasts with intranet as internal-only" },
-      { mark: "B1", text: "contrasts with internet/public access" },
+      { mark: "B1", text: "scheme is https" },
+      { mark: "B1", text: "domain is school.example.org" },
+      { mark: "B1", text: "path is /results/index.html" },
+      { mark: "B1", text: "DNS resolves the domain name" },
+      { mark: "B1", text: "resolution returns/finds an IP address" },
+      { mark: "B1", text: "browser uses the location to request the WWW resource" },
     ],
     strict: [
-      "Do not accept only 'it is online'.",
-      "No identification mark for intranet unless answer later clearly explains selected external access.",
-      "Allow partner/customer portal examples as supporting context.",
+      "Do not describe DNS as storing the webpage.",
+      "Require the URL components to be matched to the supplied URL.",
     ],
   },
 ];
@@ -303,9 +307,9 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
+          <h4>Mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
-          <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

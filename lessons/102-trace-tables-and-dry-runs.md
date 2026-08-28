@@ -1,4 +1,47 @@
-# Lesson 102: Trace tables and dry runs
+# Lesson 102: Stepwise refinement from IPO design to modules
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Stepwise refinement from IPO design to modules
+
+### Direct explanation
+
+- Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.
+- At each level, preserve the parent step's purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
+- Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.
+
+### Worked example
+
+**Refine an order-processing algorithm:** Level 1: InputOrder; ValidateOrder; CalculateTotal; ProduceReceipt. Refine CalculateTotal into Set Total to 0; for each item validate Quantity; add Price * Quantity; apply Discount; return Total. CalculateTotal can be a function returning Total, while ProduceReceipt can be a procedure receiving the completed total.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What is the starting point of stepwise refinement?
+   **Answer:** A high-level algorithm or task.
+2. When should refinement stop?
+   **Answer:** When each step is a defined, implementable action with clear inputs and outputs.
+3. How does IPO help one refinement level?
+   **Answer:** It checks that each module receives the data it needs, performs defined processing and supplies the required output.
+
+### Exam-style question and MS
+
+**Question (5 marks):** Apply two levels of stepwise refinement to 'register a new library member', showing module inputs/outputs and identifying one procedure or function.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| Level 1 separates capture, validation, storage and confirmation responsibilities | Do not award unrelated features, repeated high-level labels or a level that does not reduce ambiguity. | 1 |
+| Level 2 replaces at least one complex step with smaller ordered substeps |  | 1 |
+| module inputs and outputs are clear |  | 1 |
+| procedure or function choice matches action versus returned value |  | 1 |
+| refined steps collectively implement the original task |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -46,7 +89,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Award marks for correct control structure, initialisation, update step and termination. For traces, every changed variable must be shown accurately.
 
-
 ## Student Task
 Students solve the same problem twice: first as numbered English steps, then as Cambridge-style pseudocode. They annotate where selection or iteration appears.
 
@@ -74,51 +116,27 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Logic statements define parts of an algorithm
-
-### Direct explanation
-
-- A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution. It combines comparisons such as =, <, <=, >, >= or <> with AND, OR or NOT when more than one condition is needed.
-- Construct a statement from the rule before choosing its branch: a valid mark from 0 to 100 inclusive is Mark >= 0 AND Mark <= 100. Interpret it by checking both comparisons; using OR would accept values outside the range.
-- Logic statements must preserve boundaries and intended truth conditions. Trace representative true, false and boundary values to expose reversed operators or incorrect connectors.
-
-### Worked example
-
-**Define a valid-age condition:** For an accepted age from 11 to 18 inclusive, use Age >= 11 AND Age <= 18. At Age = 11 and Age = 18 the statement is TRUE; at Age = 10 or 19 it is FALSE. NOT(Age >= 11 AND Age <= 18) describes the invalid case.
-
-### Targeted practice and answers
-
-1. Construct the valid-mark statement for 0 to 100 inclusive.
-   **Answer:** Mark >= 0 AND Mark <= 100.
-2. Interpret Found = FALSE OR Index <= UpperBound.
-   **Answer:** The statement is true when the target has not been found, or the index is still within the upper bound, or both.
-3. Why is Mark >= 0 OR Mark <= 100 incorrect for validation?
-   **Answer:** Every number satisfies at least one side, so out-of-range values can be accepted.
-
-### Exam-style question and MS
-
-**Question (5 marks):** Write and explain a logic statement that accepts an integer Temperature from -20 to 50 inclusive, then state its value for -21, -20, 50 and 51.
-
-- **B1** uses Temperature >= -20
-- **B1** uses AND Temperature <= 50
-- **B1** states FALSE for -21
-- **B1** states TRUE for -20 and 50
-- **B1** states FALSE for 51
-
-**Strict note:** Do not accept OR for a two-bound inclusive range or award outputs without a correctly constructed statement.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
+
+### Stepwise refinement turns a high-level algorithm into implementable modules
+
+- **Explains:** `analyser`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-111-analyser.jpg`
+
+1. Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps.
+2. Refinement stops when every step is precise enough to implement and its input and output are clear.
+3. At each level, preserve the parent step's purpose and input-process-output relationship.
+4. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
+5. Every level must reduce ambiguity and collectively remain a complete solution.
 
 ### Dry run: execute the algorithm by hand
 
 - **Explains:** `dry-run`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-102-dry-run.jpg`
 
 1. 1 Copy the variable names into table columns.
@@ -131,7 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `loops`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-102-loops.jpg`
 
 1. Loop tracing
@@ -146,7 +164,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `predictor`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-102-predictor.jpg`
 
 1. Interactive output predictor
@@ -157,7 +175,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-102-pseudocode.jpg`
 
 1. Initialise Total to zero before a three-iteration loop.
@@ -169,7 +187,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `trace-table`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-102-trace-table.jpg`
 
 1. Knowledge explanation

@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 004 | Binary addition, carries and overflow</title>
+    <title>AS9618 Lesson 004 | Binary addition and fixed-width overflow</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Binary addition, carries and overflow</h1>
+        <h1>Binary addition and fixed-width overflow</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -41,7 +41,94 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Binary addition and fixed-width overflow</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Perform binary addition from the least-significant bit, carrying left when a column total is 2 or 3. Positive and negative integers must be interpreted using the stated representation and fixed bit width.</p>
+            <p>Overflow occurs when the mathematical result is outside the range representable in the available bits. For unsigned 8-bit addition, a carry beyond bit 7 shows that the true result is greater than 255. For signed arithmetic, compare the result with the signed representable range rather than treating every carry as overflow.</p>
+            <p>Binary subtraction applies to each positive or negative binary integer as well as binary addition; use the stated fixed width and signed representation when interpreting the result.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Add two unsigned 8-bit integers</h3>
+            <p>11110000 + 00110000 = 1 00100000. The true result is 288, which is outside the unsigned 8-bit range 0 to 255, so the stored eight-bit result cannot represent the mathematical answer and overflow occurs.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start overflow -->
+        <section class="panel explanation-panel" id="explanation-overflow" data-explains="overflow" data-explanation-kind="mechanism" aria-labelledby="explanation-overflow-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overflow">
+          <h2 class="explanation-sr-only" id="explanation-overflow-title">Unsigned 8-bit overflow</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-004-overflow.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Unsigned 8-bit overflow with a structured visual model." />
+            <figcaption class="explanation-sr-only">Unsigned 8-bit overflow: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 00000000₂ to 11111111₂ = 0 to 255</li><li><strong>Lesson fact:</strong> An unsigned 8-bit result cannot store a value above 255.</li><li><strong>Lesson fact:</strong> Carry-out</li><li><strong>Lesson fact:</strong> 11110000₂ + 00010000₂ = 1 00000000₂</li><li><strong>Lesson fact:</strong> The ninth bit is a carry-out beyond the 8-bit storage width.</li><li><strong>Lesson fact:</strong> Boundary warning</li><li><strong>Lesson fact:</strong> 01111111₂ + 00000001₂ = 10000000₂</li><li><strong>Lesson fact:</strong> No unsigned overflow: the result is 128, which still fits in 8 bits.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end overflow -->
+
+        <!-- stage10-explanation:start method -->
+        <section class="panel explanation-panel" id="explanation-method" data-explains="method" data-explanation-kind="mechanism" aria-labelledby="explanation-method-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="method">
+          <h2 class="explanation-sr-only" id="explanation-method-title">8-bit addition method</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-004-method.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 8-bit addition method with a structured visual model." />
+            <figcaption class="explanation-sr-only">8-bit addition method: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Align the two 8-bit operands and start at the rightmost column.</li><li><strong>Lesson fact:</strong> Add both bits and any carry-in; write the result bit and carry 1 left when required.</li><li><strong>Lesson fact:</strong> For unsigned addition, a carry-out beyond bit 7 means the true sum needs more than 8 bits.</li><li><strong>Lesson fact:</strong> Without a carry-out, the stored 8-bit result remains within the unsigned range 0 to 255.</li><li><strong>Lesson fact:</strong> A leftmost result bit of 1 is not by itself evidence of unsigned overflow.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end method -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Binary addition and fixed-width overflow: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Calculate the sum of 00110101 and 00010110.</p>
+              <details><summary>Show answer</summary><p>01001011; the result is 75 and no unsigned overflow occurs.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Why does 01111111 + 00000001 not overflow as unsigned 8-bit arithmetic?</p>
+              <details><summary>Show answer</summary><p>The result 10000000 is 128, which remains inside 0 to 255.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What is the general overflow test?</p>
+              <details><summary>Show answer</summary><p>The mathematical result lies outside the range representable by the fixed-width binary representation.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Calculate the sum of 11001010 and 01110101 as unsigned 8-bit integers and explain the overflow.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>correct binary addition and carry method</td><td>Do not infer unsigned overflow only from the leftmost stored bit being 1.</td><td>1</td></tr>
+                  <tr><td>1 00111111 / stored result 00111111</td><td></td><td>1</td></tr>
+                  <tr><td>true result needs a ninth bit / exceeds 255</td><td></td><td>1</td></tr>
+                  <tr><td>therefore unsigned 8-bit overflow occurs</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 004 | 45 minutes | Informal questioning</p>
             <h2>Binary addition is column addition with stricter carrying.</h2>
@@ -70,7 +157,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam answers often need both the binary result and a clear overflow explanation.</p>
@@ -81,7 +168,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>If an 8-bit box is full, where does the ninth bit go?</h2>
@@ -97,7 +184,7 @@
           </div>
         </section>
 
-        <section class="panel" id="rules" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rules">
+        <section class="panel" id="rules" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Single-bit addition rules</h2>
@@ -113,7 +200,7 @@
         </section>
 
         <!-- stage10-explanation:start rules -->
-        <section class="panel explanation-panel" id="explanation-rules" data-explains="rules" data-explanation-kind="mechanism" aria-labelledby="explanation-rules-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rules">
+        <section class="panel explanation-panel" id="explanation-rules" data-explains="rules" data-explanation-kind="mechanism" aria-labelledby="explanation-rules-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <h2 class="explanation-sr-only" id="explanation-rules-title">Single-bit addition rules</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-004-rules.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Single-bit addition rules with a structured visual model." />
@@ -125,8 +212,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end rules -->
-
-        <section class="panel" id="method" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="method">
+        <section class="panel" id="method" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>8-bit addition method</h2>
@@ -154,21 +240,7 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start method -->
-        <section class="panel explanation-panel" id="explanation-method" data-explains="method" data-explanation-kind="mechanism" aria-labelledby="explanation-method-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="method">
-          <h2 class="explanation-sr-only" id="explanation-method-title">8-bit addition method</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-004-method.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 8-bit addition method with a structured visual model." />
-            <figcaption class="explanation-sr-only">8-bit addition method: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Align the two 8-bit operands and start at the rightmost column.</li><li><strong>Lesson fact:</strong> Add both bits and any carry-in; write the result bit and carry 1 left when required.</li><li><strong>Lesson fact:</strong> For unsigned addition, a carry-out beyond bit 7 means the true sum needs more than 8 bits.</li><li><strong>Lesson fact:</strong> Without a carry-out, the stored 8-bit result remains within the unsigned range 0 to 255.</li><li><strong>Lesson fact:</strong> A leftmost result bit of 1 is not by itself evidence of unsigned overflow.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end method -->
-
-        <section class="panel" id="overflow" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overflow">
+        <section class="panel" id="overflow" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Unsigned 8-bit overflow</h2>
@@ -192,28 +264,14 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start overflow -->
-        <section class="panel explanation-panel" id="explanation-overflow" data-explains="overflow" data-explanation-kind="mechanism" aria-labelledby="explanation-overflow-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overflow">
-          <h2 class="explanation-sr-only" id="explanation-overflow-title">Unsigned 8-bit overflow</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-004-overflow.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Unsigned 8-bit overflow with a structured visual model." />
-            <figcaption class="explanation-sr-only">Unsigned 8-bit overflow: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 00000000₂ to 11111111₂ = 0 to 255</li><li><strong>Lesson fact:</strong> An unsigned 8-bit result cannot store a value above 255.</li><li><strong>Lesson fact:</strong> Carry-out</li><li><strong>Lesson fact:</strong> 11110000₂ + 00010000₂ = 1 00000000₂</li><li><strong>Lesson fact:</strong> The ninth bit is a carry-out beyond the 8-bit storage width.</li><li><strong>Lesson fact:</strong> Boundary warning</li><li><strong>Lesson fact:</strong> 01111111₂ + 00000001₂ = 10000000₂</li><li><strong>Lesson fact:</strong> No unsigned overflow: the result is 128, which still fits in 8 bits.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end overflow -->
-
-        <section id="delivery-07" class="guidance-grid compact" aria-label="Overflow guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overflow">
+        <section id="delivery-07" class="guidance-grid compact" aria-label="Overflow guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <article class="trap-card">
             <h3>Common error</h3>
             <p>Do not say every carry means overflow. Carries inside the 8-bit result are normal.</p>
           </article>
         </section>
 
-        <section class="panel interactive" id="adder" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="adder">
+        <section class="panel interactive" id="adder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>8-bit binary adder</h2>
@@ -234,7 +292,7 @@
           <div class="addition-visual" id="additionVisual" aria-label="Binary addition visual"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -247,7 +305,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -257,7 +315,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section id="delivery-11" class="panel mistake-panel" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="delivery-11">
+        <section id="delivery-11" class="panel mistake-panel" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <div class="section-title">
             <p class="eyebrow">Debug the mistakes</p>
             <h2>Identify and correct the error</h2>
@@ -278,7 +336,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <div class="section-title">
             <p class="eyebrow">Past-paper style</p>
             <h2>Original exam-style questions</h2>
@@ -290,59 +348,7 @@
           </p>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Binary addition and fixed-width overflow</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Perform binary addition from the least-significant bit, carrying left when a column total is 2 or 3. Positive and negative integers must be interpreted using the stated representation and fixed bit width.</p>
-            <p>Overflow occurs when the mathematical result is outside the range representable in the available bits. For unsigned 8-bit addition, a carry beyond bit 7 shows that the true result is greater than 255. For signed arithmetic, compare the result with the signed representable range rather than treating every carry as overflow.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Add two unsigned 8-bit integers</h3>
-            <p>11110000 + 00110000 = 1 00100000. The true result is 288, which is outside the unsigned 8-bit range 0 to 255, so the stored eight-bit result cannot represent the mathematical answer and overflow occurs.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Binary addition and fixed-width overflow: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Add 00110101 and 00010110.</p>
-              <details><summary>Show answer</summary><p>01001011; the result is 75 and no unsigned overflow occurs.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Why does 01111111 + 00000001 not overflow as unsigned 8-bit arithmetic?</p>
-              <details><summary>Show answer</summary><p>The result 10000000 is 128, which remains inside 0 to 255.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What is the general overflow test?</p>
-              <details><summary>Show answer</summary><p>The mathematical result lies outside the range representable by the fixed-width binary representation.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Add 11001010 and 01110101 as unsigned 8-bit integers and explain the overflow.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>M1</strong> correct binary addition and carry method</li>
-                <li><strong>A1</strong> 1 00111111 / stored result 00111111</li>
-                <li><strong>B1</strong> true result needs a ninth bit / exceeds 255</li>
-                <li><strong>B1</strong> therefore unsigned 8-bit overflow occurs</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Summary of required knowledge</h2>
@@ -371,7 +377,7 @@
           </ol>
         </section>
 
-        <section id="delivery-16" class="panel homework-support" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
+        <section id="delivery-16" class="panel homework-support" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-004">
           <div class="section-title">
             <p class="eyebrow">Homework support</p>
             <h2>Check only after attempting</h2>

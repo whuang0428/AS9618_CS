@@ -1,4 +1,69 @@
-# Lesson 042: The fetch-decode-execute cycle
+# Lesson 042: System buses, ports and processor performance
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** System buses, ports and processor performance
+
+### Direct explanation
+
+- The address bus carries the address of the memory or I/O location being accessed and is normally directed from the processor. The data bus carries data and instructions in either direction. The control bus carries control and timing signals in both directions overall, including read/write signals from the CPU and interrupt or status signals toward it.
+- A memory read uses all three buses: the CPU places the required address on the address bus, sends a read signal on the control bus, and memory returns the requested data or instruction on the data bus. A bus transfers signals; it does not permanently store them.
+- USB is a general serial interface carrying digital data and often power for peripherals. HDMI carries digital video and audio. VGA carries analogue video and does not carry audio in the standard VGA signal. Port choice must match the peripheral and signal rather than rely on a claim that one connector is always best.
+- Processor performance depends on processor type, number of cores, bus width, clock speed and cache memory. Processor type means the processor architecture and instruction-set design, including how much useful work its execution units can perform for a particular instruction or workload; a clock-rate comparison alone is therefore not sufficient.
+- More cores can execute independent threads concurrently when software exposes parallel work. Wider data buses can transfer more bits per transfer, while address-bus width affects the address space. Higher clock speed provides more clock cycles per second, and cache reduces waiting when frequently used instructions or data are found close to the CPU.
+- No factor guarantees that every program runs faster. Performance must be justified for the stated workload, because software parallelism, instruction-set compatibility, cache behaviour, memory traffic, heat and other bottlenecks can limit the benefit.
+
+### Worked example
+
+**Read memory, then connect a display / Compare two processors for two workloads:** To read address 240, the CPU puts 240 on the address bus and read on the control bus; memory returns the contents on the data bus. To connect the computer to a modern TV with one digital audio/video cable, choose HDMI. A keyboard or removable drive commonly uses USB, while a legacy analogue display may use VGA. Processor A has four faster general-purpose cores and a larger cache; Processor B has eight specialised cores but a lower clock speed. A lightly threaded office program may favour A's processor type, clock behaviour and cache, while a parallel workload written for B's processor type may use more cores. Bus width and memory traffic must also be considered before reaching a conclusion.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which bus carries an address, which carries a value, and which carries read/write signals?
+   **Answer:** Address bus; data bus; control bus.
+2. Complete a trace table for a memory read using the three buses.
+   **Answer:** Address on address bus, read signal on control bus, requested data/instruction from memory on data bus.
+3. Which port commonly carries both digital video and audio?
+   **Answer:** HDMI.
+4. Which named port carries analogue video?
+   **Answer:** VGA.
+5. Give one USB use or facility.
+   **Answer:** A digital peripheral connection such as keyboard/storage, often also supplying electrical power.
+6. What does processor type mean as a performance factor?
+   **Answer:** The processor architecture/instruction-set and execution design, which determines what work it can perform per instruction or for a particular workload.
+7. Why do more cores not always improve one program?
+   **Answer:** The program must contain independent threads or tasks that can run in parallel.
+8. How can bus width affect performance?
+   **Answer:** A wider data bus can transfer more bits per transfer; address-bus width affects the address space rather than directly guaranteeing speed.
+9. Why can cache improve performance?
+   **Answer:** A cache hit supplies frequently used data or instructions faster than main memory, reducing CPU waiting.
+
+### Exam-style question and MS
+
+**Question (12 marks):** Describe a memory read using the address, data and control buses, then choose USB, HDMI or VGA for one stated peripheral connection. Two computers have different processor types. Explain how processor type, number of cores, bus width, clock speed and cache can affect their performance for a stated workload.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| address bus carries the required memory/I/O address | Do not swap the address and data buses or claim that VGA normally carries digital audio. Do not accept processor type as only a brand name, or claim that the highest clock speed or largest core count always wins. | 1 |
+| control bus carries the read signal |  | 1 |
+| data bus returns the requested data/instruction |  | 1 |
+| USB matched to a suitable digital peripheral/data/power use |  | 1 |
+| HDMI matched to digital video and audio |  | 1 |
+| VGA matched to analogue video without standard audio |  | 1 |
+| processor type linked to architecture/instruction-set/execution design and workload |  | 1 |
+| cores linked to available parallel threads/tasks |  | 1 |
+| bus width linked accurately to bits transferred or address space |  | 1 |
+| clock speed linked to cycles per second |  | 1 |
+| cache linked to reducing slower main-memory access |  | 1 |
+| conclusion recognises workload and bottlenecks rather than claiming one factor guarantees speed |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +108,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** PC holds the address; address is copied to MAR; memory returns instruction to MDR; instruction is copied to CIR; PC is incremented. Credit sequence.
 
-
-
 ## Student Task
 Students annotate a CPU diagram with numbered arrows for each fetch step.
 
@@ -72,47 +135,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Register-transfer notation for the fetch-decode-execute cycle
-
-### Direct explanation
-
-- Register-transfer notation describes a data transfer or register update. The arrow <- means 'is loaded with' or 'receives'; it is not an equality sign. Memory[MAR] means the contents of the memory location whose address is currently held in MAR.
-- A coherent fetch sequence is MAR <- PC; MDR <- Memory[MAR]; CIR <- MDR; and PC <- PC + 1 at an appropriate point before the next fetch. The control unit then decodes the opcode and operand in CIR and sends control signals for execution.
-- During execution, notation such as ACC <- ACC + MDR records an arithmetic result in ACC, while Memory[MAR] <- MDR records a memory write. Read every statement from right to left: obtain the source value, then replace the destination contents.
-- The exact timing of PC increment may vary between coherent processor descriptions, but MAR must receive the current instruction address before that address is replaced. Register-transfer notation describes movement and updates; it does not imply that two registers permanently contain the same value.
-
-### Worked example
-
-**Trace one instruction fetch:** Start with PC = 120 and Memory[120] = LDD 500. MAR <- PC puts 120 in MAR. MDR <- Memory[MAR] puts LDD 500 in MDR. CIR <- MDR copies the instruction into CIR. PC <- PC + 1 makes PC 121, ready to address the next instruction. The control unit then decodes LDD and executes it.
-
-### Targeted practice and answers
-
-1. What does MAR <- PC mean?
-   **Answer:** Copy the address currently in PC into MAR; PC is not changed by that transfer.
-2. What does MDR <- Memory[MAR] mean?
-   **Answer:** Read the contents of the memory location addressed by MAR into MDR.
-3. Why is CIR <- MDR needed during fetch?
-   **Answer:** It places the fetched instruction in CIR so the control unit can decode its opcode and operand.
-4. Write register-transfer notation for adding the value in MDR to ACC.
-   **Answer:** ACC <- ACC + MDR.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Using register-transfer notation, describe the fetch of one instruction and explain the meaning of Memory[MAR].
-
-- **M1** MAR <- PC
-- **M1** MDR <- Memory[MAR]
-- **M1** CIR <- MDR
-- **M1** PC <- PC + 1 at a coherent point
-- **B1** Memory[MAR] means the contents at the memory address held in MAR
-- **B1** CIR is decoded and control signals initiate execution
-
-**Strict note:** Do not accept PC <- MAR as the first transfer or treat Memory[MAR] as the address value itself.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -120,7 +142,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cycle`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-cycle.jpg`
 
 1. The CPU gets the next instruction from main memory using the address stored in the PC.
@@ -131,7 +153,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cycle-visual`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-cycle-visual.jpg`
 
 1. Copy the next-instruction address from PC to MAR and read the instruction from memory into MDR.
@@ -143,7 +165,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `decode`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-decode.jpg`
 
 1. The control unit interprets the instruction in the CIR. It identifies the opcode, decides what operation is required, and identifies any operands or addresses needed.
@@ -160,7 +182,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `fetch`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-fetch.jpg`
 
 1. This is the part students must be able to trace precisely.
@@ -180,7 +202,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `registers`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-registers.jpg`
 
 1. Register roles

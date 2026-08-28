@@ -104,6 +104,12 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -148,7 +154,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Trace the nested selection: IF Age >= 18 THEN IF Member = TRUE THEN Discount <- 0.20 ELSE Discount <- 0.10 ENDIF ELSE Discount <- 0.05 ENDIF. State Discount for Age = 18, Member = FALSE and for Age = 16, Member = TRUE.",
+    prompt: "Complete a trace table for the nested selection: IF Age >= 18 THEN IF Member = TRUE THEN Discount <- 0.20 ELSE Discount <- 0.10 ENDIF ELSE Discount <- 0.05 ENDIF. State Discount for Age = 18, Member = FALSE and for Age = 16, Member = TRUE.",
     answer: "For Age = 18 and Member = FALSE, the outer condition is true and the inner condition is false, so Discount is 0.10. For Age = 16 and Member = TRUE, the outer condition is false, so Discount is 0.05.",
     marking: [
       { mark: "M1", text: "recognises Age = 18 satisfies Age >= 18" },
@@ -384,7 +390,7 @@ function renderExam() {
           <p><strong>Answer:</strong></p>
           <pre><code>${escapeHtml(question.answer)}</code></pre>
           <p><strong>Mark scheme:</strong></p>
-          <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `)

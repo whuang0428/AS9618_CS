@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 114 | Constants, variables and assignment</title>
+    <title>AS9618 Lesson 114 | Define, read and save record data</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Constants, variables and assignment</h1>
+        <h1>Define, read and save record data</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,7 +47,68 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Define, read and save record data</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A record structure groups a set of related fields, which may have different data types, under one identifier. Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.</p>
+            <p>Define a Cambridge record type with TYPE, field declarations and ENDTYPE. Declare record variables only after the type definition is complete. A complete definition states every field name and its type.</p>
+            <p>Read data from a record by selecting a named field, for example OUTPUT Student1.Mark or CurrentMark &lt;- Student1.Mark. Save data to the record by assigning to a named field, for example Student1.Mark &lt;- 75. Reading or saving one field does not replace unrelated fields.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Define and use one student record</h3>
+            <p>TYPE TStudent declares Name : STRING, DateOfBirth : DATE, Mark : INTEGER and Enrolled : BOOLEAN, then closes with ENDTYPE. DECLARE Student1 : TStudent creates one record. Student1.Mark &lt;- 75 saves a value to the Mark field; OUTPUT Student1.Mark reads that field.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Define, read and save record data: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why can a record contain both STRING and DATE fields?</p>
+              <details><summary>Show answer</summary><p>Record fields may have different data types but belong to one entity under one identifier.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which statement saves a mark of 80?</p>
+              <details><summary>Show answer</summary><p>Student1.Mark &lt;- 80.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which expression reads the stored name?</p>
+              <details><summary>Show answer</summary><p>Student1.Name, for example OUTPUT Student1.Name.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Define TProduct with Code, Description, Price and InStock fields, Write declarations for Product1, save values to Price and InStock, then read both fields.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>opens TYPE TProduct and declares suitable named fields</td><td>Do not use numeric array indexing for record fields or omit ENDTYPE from the type definition.</td><td>1</td></tr>
+                  <tr><td>uses suitable STRING, REAL and BOOLEAN field types</td><td></td><td>1</td></tr>
+                  <tr><td>closes the definition with ENDTYPE</td><td></td><td>1</td></tr>
+                  <tr><td>declares Product1 : TProduct after ENDTYPE</td><td></td><td>1</td></tr>
+                  <tr><td>assigns/saves values through Product1.Price and Product1.InStock</td><td></td><td>1</td></tr>
+                  <tr><td>reads/outputs the two named fields without replacing other data</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 114 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>Assignment is not a maths equals sign. It is an update.</h2>
@@ -71,7 +132,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Trace-table and pseudocode questions often award marks for declaration, initialisation, update and final value.</p>
@@ -82,7 +143,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Can a variable be on both sides?</h2>
@@ -97,7 +158,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Read the arrow as "is set to".</div>
         </section>
 
-        <section class="panel" id="model" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
+        <section class="panel" id="model" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Memory model</p>
             <h2>Identifiers name storage locations</h2>
@@ -126,7 +187,7 @@ Average &lt;- Total / Count</code></pre>
         </section>
 
         <!-- stage10-explanation:start model -->
-        <section class="panel explanation-panel" id="explanation-model" data-explains="model" data-explanation-kind="comparison" aria-labelledby="explanation-model-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
+        <section class="panel explanation-panel" id="explanation-model" data-explains="model" data-explanation-kind="comparison" aria-labelledby="explanation-model-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <h2 class="explanation-sr-only" id="explanation-model-title">Identifiers name storage locations</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-model.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Identifiers name storage locations with a structured visual model." />
@@ -138,8 +199,7 @@ Average &lt;- Total / Count</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end model -->
-
-        <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+        <section class="panel" id="declare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Declare variables</p>
             <h2>Declaration gives a name and a type before use</h2>
@@ -155,7 +215,7 @@ Average &lt;- Total / Count</code></pre>
         </section>
 
         <!-- stage10-explanation:start declare -->
-        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <h2 class="explanation-sr-only" id="explanation-declare-title">Declaration gives a name and a type before use</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Declaration gives a name and a type before use with a structured visual model." />
@@ -167,8 +227,7 @@ Average &lt;- Total / Count</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end declare -->
-
-        <section class="panel" id="constants" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constants">
+        <section class="panel" id="constants" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Constants</p>
             <h2>Name fixed values so the algorithm explains itself</h2>
@@ -195,7 +254,7 @@ ENDIF</code></pre>
         </section>
 
         <!-- stage10-explanation:start constants -->
-        <section class="panel explanation-panel" id="explanation-constants" data-explains="constants" data-explanation-kind="process" aria-labelledby="explanation-constants-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constants">
+        <section class="panel explanation-panel" id="explanation-constants" data-explains="constants" data-explanation-kind="process" aria-labelledby="explanation-constants-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <h2 class="explanation-sr-only" id="explanation-constants-title">Name fixed values so the algorithm explains itself</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-constants.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Name fixed values so the algorithm explains itself with a structured visual model." />
@@ -207,8 +266,7 @@ ENDIF</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end constants -->
-
-        <section class="panel" id="assignment" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assignment">
+        <section class="panel" id="assignment" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Assignment</p>
             <h2>Right side first, left side second</h2>
@@ -223,7 +281,7 @@ ENDIF</code></pre>
         </section>
 
         <!-- stage10-explanation:start assignment -->
-        <section class="panel explanation-panel" id="explanation-assignment" data-explains="assignment" data-explanation-kind="mechanism" aria-labelledby="explanation-assignment-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assignment">
+        <section class="panel explanation-panel" id="explanation-assignment" data-explains="assignment" data-explanation-kind="mechanism" aria-labelledby="explanation-assignment-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <h2 class="explanation-sr-only" id="explanation-assignment-title">Right side first, left side second</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-assignment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Right side first, left side second with a structured visual model." />
@@ -235,8 +293,7 @@ ENDIF</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end assignment -->
-
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Trace</p>
             <h2>Trace assignment one statement at a time</h2>
@@ -265,7 +322,7 @@ Count &lt;- Count + 1</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>The symbol changes, the update idea does not</h2>
@@ -290,22 +347,8 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <div class="callout">Paper 2 reminder: use Cambridge-style assignment <code>&lt;-</code> in pseudocode. Java uses <code>=</code> for assignment.</div>
         </section>
 
-        <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">The symbol changes, the update idea does not</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The symbol changes, the update idea does not with a structured visual model." />
-            <figcaption class="explanation-sr-only">The symbol changes, the update idea does not: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> CONSTANT PassMark = 50</li><li><strong>Lesson fact:</strong> DECLARE Mark : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Passed : BOOLEAN</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> Passed &lt;- Mark &gt;= PassMark</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> final int PASS_MARK = 50;</li><li><strong>Lesson fact:</strong> int mark = input.nextInt();</li><li><strong>Lesson fact:</strong> boolean passed = mark &gt;= PASS_MARK;</li><li><strong>Lesson fact:</strong> Paper 2 reminder: use Cambridge-style assignment &lt;- in pseudocode. Java uses = for assignment.</li></ol>
 
-          </div>
-        </section>
-        <!-- stage10-explanation:end pseudocode -->
-
-
-        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
+        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Interactive assignment simulator</p>
             <h2>Trace a single assignment</h2>
@@ -324,7 +367,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <div class="trace-output" id="simulateResult">Enter values to see the updated Total.</div>
         </section>
 
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Interactive statement builder</p>
             <h2>Choose the correct statement form</h2>
@@ -346,7 +389,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <div class="trace-output" id="builderResult">Choose a task to generate a Cambridge-style statement.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Declaration, constants and trace examples</h2>
@@ -360,7 +403,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Ten quick decisions</h2>
@@ -369,7 +412,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix assignment and constant errors</h2>
@@ -377,7 +420,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -386,61 +429,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Complete Cambridge pseudocode statements</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Section 11.1 requires pseudocode for the declaration and initialisation of constants, declaration of variables, assignment of values, arithmetic or logical expressions entered from the keyboard, and input to or output from the console. These are connected statements, not isolated vocabulary.</p>
-            <p>CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of &lt;- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console.</p>
-            <p>Arithmetic expressions use operators such as +, -, *, /, DIV and MOD. Logical expressions combine comparisons with AND, OR or NOT and produce BOOLEAN results. Use = for comparison and &lt;- for assignment.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Declare, input, calculate and output</h3>
-            <p>CONSTANT PassMark = 50 defines and initialises a constant. DECLARE Mark : INTEGER and DECLARE Passed : BOOLEAN declare variables. INPUT Mark obtains keyboard input; Passed &lt;- Mark &gt;= PassMark assigns the result of a logical expression; OUTPUT Mark * 2 and OUTPUT Passed send arithmetic and Boolean results to the console.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Complete Cambridge pseudocode statements: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What is the difference between = and &lt;-?</p>
-              <details><summary>Show answer</summary><p>= compares values; &lt;- assigns the evaluated right-hand value to a variable.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which statement obtains keyboard input?</p>
-              <details><summary>Show answer</summary><p>INPUT followed by the target variable.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What type of result does Mark &gt;= PassMark produce?</p>
-              <details><summary>Show answer</summary><p>A BOOLEAN result, TRUE or FALSE.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Write Cambridge pseudocode that defines and initialises constant TaxRate as 0.20, declares Price and Tax as REAL, inputs Price, assigns Price * TaxRate to Tax, and outputs Tax.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> CONSTANT TaxRate = 0.20</li>
-                <li><strong>B1</strong> declares Price and Tax as REAL</li>
-                <li><strong>M1</strong> INPUT Price before the calculation</li>
-                <li><strong>M1</strong> Tax &lt;- Price * TaxRate</li>
-                <li><strong>A1</strong> OUTPUT Tax after assignment</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-114">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Constants, variables and assignment checklist</h2>

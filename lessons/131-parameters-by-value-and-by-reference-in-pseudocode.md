@@ -1,4 +1,4 @@
-# Lesson 131: Parameters: by value and by reference in pseudocode
+# Lesson 131: Pre-condition, post-condition and loop choice
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -87,26 +87,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
-
-### Same procedure body, different final result
-
-- **Explains:** `compare`
-- **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-compare.jpg`
-
-1. Side-by-side comparison
-2. By value
-3. By reference
-4. Header clue
-5. Number : INTEGER
-6. BYREF Number : INTEGER
-7. What is passed
-8. a copy of the value
-9. a reference to the caller's variable
-10. Change inside subroutine
-11. affects local parameter only
-12. can affect original variable
 
 ### Do not replace Cambridge BYREF with Java syntax
 

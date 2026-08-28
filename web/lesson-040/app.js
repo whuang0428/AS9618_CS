@@ -70,6 +70,12 @@ const practice = [
   { id: "p10", prompt: "What should you identify before answering a mixed review question?", accepted: ["topic", "command word", "topic and command word"], answer: "Topic and command word" },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -109,7 +115,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "3 marks",
-    prompt: "For Q = (A NAND B) OR C, find Q when A=1, B=1 and C=0. Show working.",
+    prompt: "For Q = (A NAND B) OR C, find Q when A=1, B=1 and C=0. Demonstrate working.",
     answer: "A AND B = 1. A NAND B = 0 because NAND is the inverse of AND. Q = 0 OR 0 = 0.",
     marking: [
       { mark: "B1", text: "A AND B = 1" },
@@ -125,40 +131,38 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "6 marks",
-    prompt: "A delivery company needs hardware for drivers who scan parcels and collect proof of delivery. Recommend suitable hardware and justify your choices.",
-    answer: "A handheld scanner or smartphone is suitable because it is portable and can scan parcel barcodes at the delivery location. Mobile data allows delivery status to be uploaded without returning to the depot. GPS can record location for proof of delivery. Rugged casing and long battery life improve reliability during outdoor full-shift use.",
+    prompt: "Compare RAM and ROM, including volatility, purpose and whether their contents normally change while a computer is in use.",
+    answer: "RAM is volatile read/write memory used for programs and data currently in use, so its contents are lost without power and change during operation. ROM is non-volatile memory that stores instructions or data such as start-up firmware that normally remain available without power and are not routinely changed by the running program.",
     marking: [
-      { mark: "B1", text: "handheld scanner/smartphone/tablet named" },
-      { mark: "B1", text: "portability linked to use at delivery location" },
-      { mark: "B1", text: "barcode/signature/photo capture linked to proof of delivery" },
-      { mark: "B1", text: "mobile data/wireless upload benefit explained" },
-      { mark: "B1", text: "GPS/location benefit explained" },
-      { mark: "B1", text: "rugged casing/battery/reliability feature linked to field use" },
+      { mark: "B1", text: "RAM is volatile" },
+      { mark: "B1", text: "RAM stores current programs/data" },
+      { mark: "B1", text: "RAM is read/write and changes during use" },
+      { mark: "B1", text: "ROM is non-volatile" },
+      { mark: "B1", text: "ROM stores firmware/start-up instructions" },
+      { mark: "B1", text: "ROM contents are not routinely changed during normal use" },
     ],
     strict: [
-      "Do not award marks for desktop hardware unless field use is still clearly supported.",
-      "Do not accept vague 'easy to use' without a feature and consequence.",
+      "Do not define RAM only as faster than ROM.",
+      "Do not claim that all ROM can never be reprogrammed.",
     ],
   },
   {
     title: "Question 5",
     marks: "8 marks",
-    prompt: "Monthly checkpoint mixed question: A remote weather station uses sensors and sends readings to a server. Explain suitable hardware and reliability measures.",
-    answer: "Temperature, humidity and pressure sensors capture environmental readings automatically. A low-power microcontroller can process readings while using little energy. Wireless communication can send readings to the server without manual collection. A weatherproof enclosure protects hardware from rain, dust and moisture. Battery or solar power supports remote operation. The server should use backup and possibly UPS/RAID to reduce data loss or downtime.",
+    prompt: "Compare PROM, EPROM and EEPROM, including how each is programmed or erased and one suitable use consequence.",
+    answer: "PROM is programmed once after manufacture and cannot normally be erased. EPROM can be erased with ultraviolet light and then reprogrammed, usually after removal from the circuit. EEPROM is erased and reprogrammed electrically, often in circuit. Their different update methods affect convenience, equipment and update frequency.",
     marking: [
-      { mark: "B1", text: "suitable environmental sensors named" },
-      { mark: "B1", text: "sensor role linked to automatic environmental readings" },
-      { mark: "B1", text: "low-power controller/processing hardware named" },
-      { mark: "B1", text: "wireless communication linked to remote data transfer" },
-      { mark: "B1", text: "weatherproof/sealed enclosure named" },
-      { mark: "B1", text: "environmental protection linked to rain/dust/moisture risk" },
-      { mark: "B1", text: "battery/solar/low-power measure linked to remote operation" },
-      { mark: "B1", text: "server reliability measure such as backup/UPS/RAID linked to data loss or downtime" },
+      { mark: "B1", text: "PROM identified as programmable once" },
+      { mark: "B1", text: "PROM cannot normally be erased" },
+      { mark: "B1", text: "EPROM erased using ultraviolet light" },
+      { mark: "B1", text: "EPROM can then be reprogrammed" },
+      { mark: "B1", text: "EEPROM erased electrically" },
+      { mark: "B1", text: "EEPROM reprogrammed electrically/in circuit" },
+      { mark: "B1", text: "valid comparison of update convenience/equipment" },
+      { mark: "B1", text: "suitable use consequence linked to update frequency" },
     ],
     strict: [
-      "Do not award reliability marks for generic 'good hardware' without a risk or consequence.",
-      "Do not require brand names or exact specifications.",
-      "Allow any plausible wireless method if remote transfer is clear.",
+      "Do not confuse EPROM ultraviolet erasure with EEPROM electrical erasure.",
     ],
   },
 ];
@@ -283,9 +287,9 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
+          <h4>Mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
-          <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

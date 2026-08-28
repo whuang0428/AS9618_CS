@@ -71,6 +71,12 @@ const practice = [
   { id: "p10", prompt: "Which memory stores startup instructions and is non-volatile?", accepted: ["rom"], answer: "ROM" },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
@@ -92,7 +98,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "A school attendance system scans student ID cards and records entry. Recommend one input device, one storage choice and one output device, justifying each.",
+    prompt: "A school attendance system scans student ID cards and records entry. Suggest one input device, one storage choice and one output device, justifying each.",
     answer: "An ID card reader or barcode/QR scanner is suitable as an input device because it captures student IDs quickly and accurately. Non-volatile secondary storage such as an SSD/database is suitable because attendance records must be kept after power is off. A screen or speaker is suitable as output because it gives immediate feedback such as accepted or not recognised.",
     marking: [
       { mark: "B1", text: "suitable input device such as card reader/barcode/QR scanner" },
@@ -111,7 +117,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "4 marks",
-    prompt: "Distinguish between primary memory and secondary storage.",
+    prompt: "Compare primary memory and secondary storage.",
     answer: "Primary memory holds data and instructions currently in use by the processor. RAM is volatile, so contents are lost when power is off. Secondary storage stores files and data long term and is non-volatile, so data remains after power is off.",
     marking: [
       { mark: "B1", text: "primary memory holds data/instructions currently in use" },
@@ -145,7 +151,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "Trace how data flows through a simple weather station that records temperature and shows a warning if it is too hot.",
+    prompt: "Complete a trace table for how data flows through a simple weather station that records temperature and shows a warning if it is too hot.",
     answer: "A temperature sensor captures the temperature as input. The processor compares the reading with a stored threshold or rule. The current reading and rule may be held in memory while being processed. The reading may be saved in secondary storage for later analysis. If the reading is too high, an output device such as a display, speaker or actuator presents a warning or triggers an action.",
     marking: [
       { mark: "B1", text: "sensor captures temperature as input" },
@@ -283,9 +289,9 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
+          <h4>Mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
-          <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

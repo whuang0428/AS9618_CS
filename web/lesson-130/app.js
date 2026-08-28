@@ -104,11 +104,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Write Cambridge-style pseudocode for a procedure DisplayMenu that outputs Add score and Quit. Show how the procedure is called.",
+    prompt: "Write Cambridge-style pseudocode for a procedure DisplayMenu that outputs Add score and Quit. Demonstrate how the procedure is called.",
     answer: "PROCEDURE DisplayMenu()\n    OUTPUT \"Add score\"\n    OUTPUT \"Quit\"\nENDPROCEDURE\n\nCALL DisplayMenu()",
     marking: [
       { mark: "M1", text: "uses PROCEDURE DisplayMenu or equivalent procedure header" },
@@ -127,7 +133,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "7 marks",
-    prompt: "Write a function CalculateVAT that takes Price as a REAL parameter and returns Price * 0.20 as a REAL. Show a call that stores the returned value in VAT.",
+    prompt: "Write a function CalculateVAT that takes Price as a REAL parameter and returns Price * 0.20 as a REAL. Demonstrate a call that stores the returned value in VAT.",
     answer: "FUNCTION CalculateVAT(Price : REAL) RETURNS REAL\n    RETURN Price * 0.20\nENDFUNCTION\n\nVAT <- CalculateVAT(Price)",
     marking: [
       { mark: "B1", text: "uses FUNCTION CalculateVAT or equivalent function header" },
@@ -374,7 +380,7 @@ function renderExam() {
           <p><strong>Answer:</strong></p>
           <pre><code>${escapeHtml(question.answer)}</code></pre>
           <p><strong>Mark scheme:</strong></p>
-          <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `)

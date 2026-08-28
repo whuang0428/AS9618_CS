@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 062 | Security goals: confidentiality, integrity, availability and authenticity</title>
+    <title>AS9618 Lesson 062 | Security, privacy and data integrity</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Security goals: confidentiality, integrity, availability and authenticity</h1>
+        <h1>Security, privacy and data integrity</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,317 +46,11 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 062 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
-            <h2>Security is not one word. It is a set of goals that protect different things.</h2>
-            <p>
-              A control is only a good answer if it protects the right security goal in the scenario.
-              This lesson separates confidentiality, integrity, availability and authenticity, then maps each goal to suitable controls.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>confidentiality, integrity, availability and authenticity</span></div>
-              <div><strong>Classify</strong><span>risks and controls using the correct security goal</span></div>
-              <div><strong>Justify</strong><span>why a safeguard fits the asset, threat and impact</span></div>
-            </div>
-          </div>
-          <div class="security-card" aria-label="Security goal map">
-            <div class="security-stack">
-              <span>Confidentiality: only authorised viewing</span>
-              <span>Integrity: accurate and unchanged data</span>
-              <span>Availability: accessible when needed</span>
-              <span>Authenticity: identity or origin is genuine</span>
-            </div>
-            <p>Encryption is useful. It is not a universal spell for every problem.</p>
-          </div>
-        </section>
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Many answers lose marks because the control is real but protects the wrong goal for the scenario.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not answer "encryption" automatically. It protects confidentiality, but not availability or poor user behaviour by itself.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>If the school password is <code>Password123</code>, is the problem the hacker or our optimism?</h2>
-            <p>Click the best diagnosis. The password is not weak; it is practically waving a small flag.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="vulnerability">It is a vulnerability that increases risk to confidentiality and authenticity.</button>
-            <button class="choice-card" type="button" data-hook="threat">The password itself is the attacker.</button>
-            <button class="choice-card" type="button" data-hook="availability">It only affects availability.</button>
-            <button class="choice-card" type="button" data-hook="encryption">Encryption alone fixes all password problems.</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. A good security answer separates threat, vulnerability and control.
-          </div>
-        </section>
-
-        <section class="panel" id="risk-chain" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="risk-chain">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Use the risk chain before naming a control</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Asset</strong><span>Something valuable that needs protection, such as exam marks, passwords or customer records.</span></article>
-            <article><strong>Threat</strong><span>A possible cause of harm, such as unauthorised access, data corruption or service failure.</span></article>
-            <article><strong>Vulnerability</strong><span>A weakness that a threat could exploit, such as weak passwords or poor permissions.</span></article>
-            <article><strong>Control</strong><span>A safeguard that reduces likelihood or impact, such as access rights, backups or authentication.</span></article>
-          </div>
-          <div class="callout">Chinese support: asset = 资产；threat = 威胁；vulnerability = 漏洞/弱点；control = 控制措施；risk = 风险。</div>
-        </section>
-
-        <!-- stage10-explanation:start risk-chain -->
-        <section class="panel explanation-panel" id="explanation-risk-chain" data-explains="risk-chain" data-explanation-kind="mechanism" aria-labelledby="explanation-risk-chain-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="risk-chain">
-          <h2 class="explanation-sr-only" id="explanation-risk-chain-title">Use the risk chain before naming a control</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-risk-chain.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the risk chain before naming a control with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use the risk chain before naming a control: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Asset Something valuable that needs protection, such as exam marks, passwords or customer records.</li><li><strong>Lesson fact:</strong> Threat A possible cause of harm, such as unauthorised access, data corruption or service failure.</li><li><strong>Lesson fact:</strong> Vulnerability A weakness that a threat could exploit, such as weak passwords or poor permissions.</li><li><strong>Lesson fact:</strong> Control A safeguard that reduces likelihood or impact, such as access rights, backups or authentication.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end risk-chain -->
-
-        <section class="panel" id="confidentiality" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="confidentiality">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Confidentiality protects data from unauthorised access</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Goal</strong><span>Only authorised users should be able to view or access the data.</span></article>
-            <article><strong>Risk</strong><span>Personal details, passwords or exam marks are viewed by unauthorised people.</span></article>
-            <article><strong>Controls</strong><span>Access rights, authentication, encryption and least privilege can support confidentiality.</span></article>
-            <article><strong>Exam wording</strong><span>Say who is prevented from reading what, and why they are unauthorised.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start confidentiality -->
-        <section class="panel explanation-panel" id="explanation-confidentiality" data-explains="confidentiality" data-explanation-kind="mechanism" aria-labelledby="explanation-confidentiality-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="confidentiality">
-          <h2 class="explanation-sr-only" id="explanation-confidentiality-title">Confidentiality protects data from unauthorised access</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-confidentiality.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Confidentiality protects data from unauthorised access with a structured visual model." />
-            <figcaption class="explanation-sr-only">Confidentiality protects data from unauthorised access: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Goal Only authorised users should be able to view or access the data.</li><li><strong>Lesson fact:</strong> Risk Personal details, passwords or exam marks are viewed by unauthorised people.</li><li><strong>Lesson fact:</strong> Controls Access rights, authentication, encryption and least privilege can support confidentiality.</li><li><strong>Lesson fact:</strong> Exam wording Say who is prevented from reading what, and why they are unauthorised.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end confidentiality -->
-
-        <section class="panel" id="integrity" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="integrity">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Integrity protects data from unauthorised or accidental alteration</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Goal</strong><span>Data should remain accurate, complete and unaltered unless changed by an authorised process.</span></article>
-            <article><strong>Risk</strong><span>Exam marks, bank balances or stock levels are changed incorrectly.</span></article>
-            <article><strong>Validation and verification</strong><span>Validation checks stated rules; verification checks entered or transferred data against its source, not whether the source is true or complete.</span></article>
-            <article><strong>Other controls</strong><span>Access rights, checksums, hashes and audit trails can prevent, detect or record some changes, but no control guarantees integrity.</span></article>
-            <article><strong>Exam wording</strong><span>Explain exactly how the named control prevents, detects or records an incorrect change.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start integrity -->
-        <section class="panel explanation-panel" id="explanation-integrity" data-explains="integrity" data-explanation-kind="mechanism" aria-labelledby="explanation-integrity-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="integrity">
-          <h2 class="explanation-sr-only" id="explanation-integrity-title">Integrity protects data from unauthorised or accidental alteration</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-integrity.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Integrity protects data from unauthorised or accidental alteration with a structured visual model." />
-            <figcaption class="explanation-sr-only">Integrity protects data from unauthorised or accidental alteration: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Goal Data should remain accurate, complete and unaltered unless changed by an authorised process.</li><li><strong>Lesson fact:</strong> Risk Exam marks, bank balances or stock levels are changed incorrectly.</li><li><strong>Lesson fact:</strong> Validation and verification Validation checks stated rules; verification checks entered or transferred data against its source, not whether the source is true or complete.</li><li><strong>Lesson fact:</strong> Other controls Access rights, checksums, hashes and audit trails can prevent, detect or record some changes, but no control guarantees integrity.</li><li><strong>Lesson fact:</strong> Exam wording Explain exactly how the named control prevents, detects or records an incorrect change.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end integrity -->
-
-        <section class="panel" id="availability" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="availability">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Availability keeps systems and data accessible when needed</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Goal</strong><span>Authorised users should be able to access data and services when required.</span></article>
-            <article><strong>Risk</strong><span>Hardware failure, network failure or overload prevents legitimate use.</span></article>
-            <article><strong>Controls</strong><span>Backups, redundancy, disaster recovery, UPS and monitoring can support availability.</span></article>
-            <article><strong>Exam wording</strong><span>State what remains accessible or recoverable, and for whom.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start availability -->
-        <section class="panel explanation-panel" id="explanation-availability" data-explains="availability" data-explanation-kind="mechanism" aria-labelledby="explanation-availability-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="availability">
-          <h2 class="explanation-sr-only" id="explanation-availability-title">Availability keeps systems and data accessible when needed</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-availability.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Availability keeps systems and data accessible when needed with a structured visual model." />
-            <figcaption class="explanation-sr-only">Availability keeps systems and data accessible when needed: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Goal Authorised users should be able to access data and services when required.</li><li><strong>Lesson fact:</strong> Risk Hardware failure, network failure or overload prevents legitimate use.</li><li><strong>Lesson fact:</strong> Controls Backups, redundancy, disaster recovery, UPS and monitoring can support availability.</li><li><strong>Lesson fact:</strong> Exam wording State what remains accessible or recoverable, and for whom.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end availability -->
-
-        <section class="panel" id="authenticity" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="authenticity">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Authenticity checks that identity or data origin is genuine</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Goal</strong><span>Users, devices, messages or files should be verified as genuine.</span></article>
-            <article><strong>Risk</strong><span>An attacker pretends to be a valid user, sender or website.</span></article>
-            <article><strong>Controls</strong><span>Authentication, digital certificates, digital signatures and multi-factor authentication can support authenticity.</span></article>
-            <article><strong>Exam wording</strong><span>Say what identity or source is being verified, not just "make it secure".</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start authenticity -->
-        <section class="panel explanation-panel" id="explanation-authenticity" data-explains="authenticity" data-explanation-kind="mechanism" aria-labelledby="explanation-authenticity-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="authenticity">
-          <h2 class="explanation-sr-only" id="explanation-authenticity-title">Authenticity checks that identity or data origin is genuine</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-authenticity.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Authenticity checks that identity or data origin is genuine with a structured visual model." />
-            <figcaption class="explanation-sr-only">Authenticity checks that identity or data origin is genuine: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Goal Users, devices, messages or files should be verified as genuine.</li><li><strong>Lesson fact:</strong> Risk An attacker pretends to be a valid user, sender or website.</li><li><strong>Lesson fact:</strong> Controls Authentication, digital certificates, digital signatures and multi-factor authentication can support authenticity.</li><li><strong>Lesson fact:</strong> Exam wording Say what identity or source is being verified, not just &quot;make it secure&quot;.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end authenticity -->
-
-        <section class="panel" id="controls" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>One control can support more than one goal, but not every goal</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Security goal comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Control</div>
-              <div role="columnheader">Often supports</div>
-              <div role="columnheader">Why</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Encryption</div>
-              <div role="cell">Confidentiality</div>
-              <div role="cell">Makes data unreadable without the correct key.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Access rights</div>
-              <div role="cell">Confidentiality and integrity</div>
-              <div role="cell">Limits who can view or alter data.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Backup</div>
-              <div role="cell">Availability</div>
-              <div role="cell">Allows recovery if data is lost or corrupted.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Hash/checksum</div>
-              <div role="cell">Integrity</div>
-              <div role="cell">Can detect whether data has changed.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Digital certificate</div>
-              <div role="cell">Authenticity</div>
-              <div role="cell">Helps verify identity or origin of a website/entity.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start controls -->
-        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
-          <h2 class="explanation-sr-only" id="explanation-controls-title">One control can support more than one goal, but not every goal</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One control can support more than one goal, but not every goal with a structured visual model." />
-            <figcaption class="explanation-sr-only">One control can support more than one goal, but not every goal: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Encryption makes data unreadable without the correct key and supports confidentiality.</li><li><strong>Lesson fact:</strong> Access rights prevent unauthorised viewing and prevent unauthorised alteration; they support confidentiality and integrity but do not detect whether data changed.</li><li><strong>Lesson fact:</strong> Backups allow recovery after data loss or corruption and support availability.</li><li><strong>Lesson fact:</strong> Hash/checksum comparison can detect whether data changed and supports integrity, but it does not prevent unauthorised alteration.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end controls -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Security goal classifier</h2>
-            <p>Select a risk or control and identify the main security goal.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="readmarks">Unauthorised student views exam marks</option>
-                <option value="editmarks">Exam marks are changed without permission</option>
-                <option value="serverdown">Students cannot access the learning platform during class</option>
-                <option value="fakebank">User must verify that a banking website is genuine</option>
-                <option value="backup">Nightly backups allow recovery after disk failure</option>
-                <option value="weakpass">Weak password allows someone to log in as another user</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Risk, goal, control, consequence</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="confidentiality">Confidentiality</button>
-            <button class="tab" type="button" data-example="integrity">Integrity</button>
-            <button class="tab" type="button" data-example="availability">Availability</button>
-            <button class="tab" type="button" data-example="authenticity">Authenticity</button>
-          </div>
-          <div class="example-box" id="exampleBox"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
-          <div class="section-title">
-            <p class="eyebrow">Practice</p>
-            <h2>Instant-check questions</h2>
-            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the almost-right answers</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
-            <p>These are original Cambridge-style questions. The mark schemes reward strict goal-control linkage.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-
-        <!-- stage2-completion:start -->
+<!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
@@ -398,22 +92,315 @@
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Distinguish data security, privacy and integrity, then explain why both data and its computer system require security.</p>
+            <p>Compare data security, privacy and integrity, then explain why both data and its computer system require security.</p>
             <details>
               <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> security protects against unauthorised access/loss/damage</li>
-                <li><strong>B1</strong> privacy controls appropriate personal-data use/disclosure</li>
-                <li><strong>B1</strong> integrity concerns accuracy/completeness/authorised change</li>
-                <li><strong>B1</strong> computer-system compromise can expose/alter/destroy data or prevent authorised access</li>
-                <li><strong>B1</strong> data-specific and system controls are both required / one does not replace the other</li>
-              </ol>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>security protects against unauthorised access/loss/damage</td><td>Do not accept repeated versions of 'keeping data safe' or the claim that file encryption alone secures the computer system.</td><td>1</td></tr>
+                  <tr><td>privacy controls appropriate personal-data use/disclosure</td><td></td><td>1</td></tr>
+                  <tr><td>integrity concerns accuracy/completeness/authorised change</td><td></td><td>1</td></tr>
+                  <tr><td>computer-system compromise can expose/alter/destroy data or prevent authorised access</td><td></td><td>1</td></tr>
+                  <tr><td>data-specific and system controls are both required / one does not replace the other</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
             </details>
           </article>
         </section>
         <!-- stage2-completion:end -->
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 062 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
+            <h2>Security is not one word. It is a set of goals that protect different things.</h2>
+            <p>
+              A control is only a good answer if it protects the right security goal in the scenario.
+              This lesson separates confidentiality, integrity, availability and authenticity, then maps each goal to suitable controls.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>confidentiality, integrity, availability and authenticity</span></div>
+              <div><strong>Classify</strong><span>risks and controls using the correct security goal</span></div>
+              <div><strong>Justify</strong><span>why a safeguard fits the asset, threat and impact</span></div>
+            </div>
+          </div>
+          <div class="security-card" aria-label="Security goal map">
+            <div class="security-stack">
+              <span>Confidentiality: only authorised viewing</span>
+              <span>Integrity: accurate and unchanged data</span>
+              <span>Availability: accessible when needed</span>
+              <span>Authenticity: identity or origin is genuine</span>
+            </div>
+            <p>Encryption is useful. It is not a universal spell for every problem.</p>
+          </div>
+        </section>
+
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Many answers lose marks because the control is real but protects the wrong goal for the scenario.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common error</h3>
+            <p>Do not answer "encryption" automatically. It protects confidentiality, but not availability or poor user behaviour by itself.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>If the school password is <code>Password123</code>, is the problem the hacker or our optimism?</h2>
+            <p>Click the best diagnosis. The password is not weak; it is practically waving a small flag.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="vulnerability">It is a vulnerability that increases risk to confidentiality and authenticity.</button>
+            <button class="choice-card" type="button" data-hook="threat">The password itself is the attacker.</button>
+            <button class="choice-card" type="button" data-hook="availability">It only affects availability.</button>
+            <button class="choice-card" type="button" data-hook="encryption">Encryption alone fixes all password problems.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. A good security answer separates threat, vulnerability and control.
+          </div>
+        </section>
+
+        <section class="panel" id="risk-chain" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Use the risk chain before naming a control</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Asset</strong><span>Something valuable that needs protection, such as exam marks, passwords or customer records.</span></article>
+            <article><strong>Threat</strong><span>A possible cause of harm, such as unauthorised access, data corruption or service failure.</span></article>
+            <article><strong>Vulnerability</strong><span>A weakness that a threat could exploit, such as weak passwords or poor permissions.</span></article>
+            <article><strong>Control</strong><span>A safeguard that reduces likelihood or impact, such as access rights, backups or authentication.</span></article>
+          </div>
+          <div class="callout">Chinese support: asset = 资产；threat = 威胁；vulnerability = 漏洞/弱点；control = 控制措施；risk = 风险。</div>
+        </section>
+
+        <!-- stage10-explanation:start risk-chain -->
+        <section class="panel explanation-panel" id="explanation-risk-chain" data-explains="risk-chain" data-explanation-kind="mechanism" aria-labelledby="explanation-risk-chain-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <h2 class="explanation-sr-only" id="explanation-risk-chain-title">Use the risk chain before naming a control</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-risk-chain.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the risk chain before naming a control with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use the risk chain before naming a control: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Asset Something valuable that needs protection, such as exam marks, passwords or customer records.</li><li><strong>Lesson fact:</strong> Threat A possible cause of harm, such as unauthorised access, data corruption or service failure.</li><li><strong>Lesson fact:</strong> Vulnerability A weakness that a threat could exploit, such as weak passwords or poor permissions.</li><li><strong>Lesson fact:</strong> Control A safeguard that reduces likelihood or impact, such as access rights, backups or authentication.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end risk-chain -->
+        <section class="panel" id="confidentiality" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Confidentiality protects data from unauthorised access</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Goal</strong><span>Only authorised users should be able to view or access the data.</span></article>
+            <article><strong>Risk</strong><span>Personal details, passwords or exam marks are viewed by unauthorised people.</span></article>
+            <article><strong>Controls</strong><span>Access rights, authentication, encryption and least privilege can support confidentiality.</span></article>
+            <article><strong>Exam wording</strong><span>Say who is prevented from reading what, and why they are unauthorised.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start confidentiality -->
+        <section class="panel explanation-panel" id="explanation-confidentiality" data-explains="confidentiality" data-explanation-kind="mechanism" aria-labelledby="explanation-confidentiality-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <h2 class="explanation-sr-only" id="explanation-confidentiality-title">Confidentiality protects data from unauthorised access</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-confidentiality.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Confidentiality protects data from unauthorised access with a structured visual model." />
+            <figcaption class="explanation-sr-only">Confidentiality protects data from unauthorised access: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Goal Only authorised users should be able to view or access the data.</li><li><strong>Lesson fact:</strong> Risk Personal details, passwords or exam marks are viewed by unauthorised people.</li><li><strong>Lesson fact:</strong> Controls Access rights, authentication, encryption and least privilege can support confidentiality.</li><li><strong>Lesson fact:</strong> Exam wording Say who is prevented from reading what, and why they are unauthorised.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end confidentiality -->
+        <section class="panel" id="integrity" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Integrity protects data from unauthorised or accidental alteration</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Goal</strong><span>Data should remain accurate, complete and unaltered unless changed by an authorised process.</span></article>
+            <article><strong>Risk</strong><span>Exam marks, bank balances or stock levels are changed incorrectly.</span></article>
+            <article><strong>Validation and verification</strong><span>Validation checks stated rules; verification checks entered or transferred data against its source, not whether the source is true or complete.</span></article>
+            <article><strong>Other controls</strong><span>Access rights, checksums, hashes and audit trails can prevent, detect or record some changes, but no control guarantees integrity.</span></article>
+            <article><strong>Exam wording</strong><span>Explain exactly how the named control prevents, detects or records an incorrect change.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start integrity -->
+        <section class="panel explanation-panel" id="explanation-integrity" data-explains="integrity" data-explanation-kind="mechanism" aria-labelledby="explanation-integrity-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <h2 class="explanation-sr-only" id="explanation-integrity-title">Integrity protects data from unauthorised or accidental alteration</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-integrity.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Integrity protects data from unauthorised or accidental alteration with a structured visual model." />
+            <figcaption class="explanation-sr-only">Integrity protects data from unauthorised or accidental alteration: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Goal Data should remain accurate, complete and unaltered unless changed by an authorised process.</li><li><strong>Lesson fact:</strong> Risk Exam marks, bank balances or stock levels are changed incorrectly.</li><li><strong>Lesson fact:</strong> Validation and verification Validation checks stated rules; verification checks entered or transferred data against its source, not whether the source is true or complete.</li><li><strong>Lesson fact:</strong> Other controls Access rights, checksums, hashes and audit trails can prevent, detect or record some changes, but no control guarantees integrity.</li><li><strong>Lesson fact:</strong> Exam wording Explain exactly how the named control prevents, detects or records an incorrect change.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end integrity -->
+        <section class="panel" id="availability" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Availability keeps systems and data accessible when needed</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Goal</strong><span>Authorised users should be able to access data and services when required.</span></article>
+            <article><strong>Risk</strong><span>Hardware failure, network failure or overload prevents legitimate use.</span></article>
+            <article><strong>Controls</strong><span>Backups, redundancy, disaster recovery, UPS and monitoring can support availability.</span></article>
+            <article><strong>Exam wording</strong><span>State what remains accessible or recoverable, and for whom.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start availability -->
+        <section class="panel explanation-panel" id="explanation-availability" data-explains="availability" data-explanation-kind="mechanism" aria-labelledby="explanation-availability-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <h2 class="explanation-sr-only" id="explanation-availability-title">Availability keeps systems and data accessible when needed</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-availability.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Availability keeps systems and data accessible when needed with a structured visual model." />
+            <figcaption class="explanation-sr-only">Availability keeps systems and data accessible when needed: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Goal Authorised users should be able to access data and services when required.</li><li><strong>Lesson fact:</strong> Risk Hardware failure, network failure or overload prevents legitimate use.</li><li><strong>Lesson fact:</strong> Controls Backups, redundancy, disaster recovery, UPS and monitoring can support availability.</li><li><strong>Lesson fact:</strong> Exam wording State what remains accessible or recoverable, and for whom.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end availability -->
+        <section class="panel" id="authenticity" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Authenticity checks that identity or data origin is genuine</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Goal</strong><span>Users, devices, messages or files should be verified as genuine.</span></article>
+            <article><strong>Risk</strong><span>An attacker pretends to be a valid user, sender or website.</span></article>
+            <article><strong>Controls</strong><span>Authentication, digital certificates, digital signatures and multi-factor authentication can support authenticity.</span></article>
+            <article><strong>Exam wording</strong><span>Say what identity or source is being verified, not just "make it secure".</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start authenticity -->
+        <section class="panel explanation-panel" id="explanation-authenticity" data-explains="authenticity" data-explanation-kind="mechanism" aria-labelledby="explanation-authenticity-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <h2 class="explanation-sr-only" id="explanation-authenticity-title">Authenticity checks that identity or data origin is genuine</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-authenticity.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Authenticity checks that identity or data origin is genuine with a structured visual model." />
+            <figcaption class="explanation-sr-only">Authenticity checks that identity or data origin is genuine: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Goal Users, devices, messages or files should be verified as genuine.</li><li><strong>Lesson fact:</strong> Risk An attacker pretends to be a valid user, sender or website.</li><li><strong>Lesson fact:</strong> Controls Authentication, digital certificates, digital signatures and multi-factor authentication can support authenticity.</li><li><strong>Lesson fact:</strong> Exam wording Say what identity or source is being verified, not just &quot;make it secure&quot;.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end authenticity -->
+        <section class="panel" id="controls" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>One control can support more than one goal, but not every goal</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Security goal comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Control</div>
+              <div role="columnheader">Often supports</div>
+              <div role="columnheader">Why</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Encryption</div>
+              <div role="cell">Confidentiality</div>
+              <div role="cell">Makes data unreadable without the correct key.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Access rights</div>
+              <div role="cell">Confidentiality and integrity</div>
+              <div role="cell">Limits who can view or alter data.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Backup</div>
+              <div role="cell">Availability</div>
+              <div role="cell">Allows recovery if data is lost or corrupted.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Hash/checksum</div>
+              <div role="cell">Integrity</div>
+              <div role="cell">Can detect whether data has changed.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Digital certificate</div>
+              <div role="cell">Authenticity</div>
+              <div role="cell">Helps verify identity or origin of a website/entity.</div>
+            </div>
+          </div>
+        </section>
+
+
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Security goal classifier</h2>
+            <p>Select a risk or control and identify the main security goal.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="readmarks">Unauthorised student views exam marks</option>
+                <option value="editmarks">Exam marks are changed without permission</option>
+                <option value="serverdown">Students cannot access the learning platform during class</option>
+                <option value="fakebank">User must verify that a banking website is genuine</option>
+                <option value="backup">Nightly backups allow recovery after disk failure</option>
+                <option value="weakpass">Weak password allows someone to log in as another user</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Risk, goal, control, consequence</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="confidentiality">Confidentiality</button>
+            <button class="tab" type="button" data-example="integrity">Integrity</button>
+            <button class="tab" type="button" data-example="availability">Availability</button>
+            <button class="tab" type="button" data-example="authenticity">Authenticity</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant-check questions</h2>
+            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the almost-right answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
+            <p>These are original Cambridge-style questions. The mark schemes reward strict goal-control linkage.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-062">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Security goal memory map</h2>

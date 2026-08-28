@@ -1,4 +1,46 @@
-# Lesson 002: Binary place value and denary conversion
+# Lesson 002: Integer conversion between binary and denary
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Integer conversion between binary and denary
+
+### Direct explanation
+
+- Binary is base 2 and uses place values that are powers of 2. Denary is base 10 and uses place values that are powers of 10. A base label identifies the representation; it does not change the integer value.
+- To convert a binary integer to denary, add the binary place values whose bits are 1. To convert a denary integer to binary, select powers of 2 that sum to the value and write every required bit position, including zeros.
+- Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.
+
+### Worked example
+
+**Convert the same integer in both directions:** 10110110 binary = 128 + 32 + 16 + 4 + 2 = 182 denary. Reversing the process, 182 = 128 + 32 + 16 + 4 + 2, so the 8-bit binary representation is 10110110.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Convert the binary integer 01001101 to denary.
+   **Answer:** 77.
+2. Convert the denary integer 129 to 8-bit binary.
+   **Answer:** 10000001.
+3. Why must a base or representation be stated?
+   **Answer:** The same digit string can represent different integer values in different number bases.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Convert 156 denary to 8-bit binary, then convert your binary answer back to denary as a check.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| selects 128 + 16 + 8 + 4 | Do not award an unlabelled digit string when the base is ambiguous. | 1 |
+| 10011100 |  | 1 |
+| re-expands the binary place values |  | 1 |
+| returns to 156 denary |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +85,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** `128 + 32 + 16 + 4 + 2 = 182`; credit visible columns `128 64 32 16 8 4 2 1` and correct base labelling.
 
-
-
 ## Student Task
 Students convert three 8-bit values to denary, then write one deliberately wrong solution where a zero bit is accidentally counted.
 
@@ -72,41 +112,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Integer conversion between binary and denary
-
-### Direct explanation
-
-- Binary is base 2 and uses place values that are powers of 2. Denary is base 10 and uses place values that are powers of 10. A base label identifies the representation; it does not change the integer value.
-- To convert a binary integer to denary, add the binary place values whose bits are 1. To convert a denary integer to binary, select powers of 2 that sum to the value and write every required bit position, including zeros.
-
-### Worked example
-
-**Convert the same integer in both directions:** 10110110 binary = 128 + 32 + 16 + 4 + 2 = 182 denary. Reversing the process, 182 = 128 + 32 + 16 + 4 + 2, so the 8-bit binary representation is 10110110.
-
-### Targeted practice and answers
-
-1. Convert the binary integer 01001101 to denary.
-   **Answer:** 77.
-2. Convert the denary integer 129 to 8-bit binary.
-   **Answer:** 10000001.
-3. Why must a base or representation be stated?
-   **Answer:** The same digit string can represent different integer values in different number bases.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Convert 156 denary to 8-bit binary, then convert your binary answer back to denary as a check.
-
-- **M1** selects 128 + 16 + 8 + 4
-- **A1** 10011100
-- **M1** re-expands the binary place values
-- **A1** returns to 156 denary
-
-**Strict note:** Do not award an unlabelled digit string when the base is ambiguous.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -114,7 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `knowledge`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-002-knowledge.jpg`
 
 1. Bit position 7 6 5 4 3 2 1 0
@@ -145,7 +150,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `range`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-002-range.jpg`
 
 1. Smallest 8-bit value

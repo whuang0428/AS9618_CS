@@ -113,11 +113,17 @@ const mistakes = [
   },
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Declare a two-dimensional array called Marks to store integer marks for 5 students and 4 tests. Then write pseudocode to input every mark.",
+    prompt: "Write declarations for a two-dimensional array called Marks to store integer marks for 5 students and 4 tests. Then write pseudocode to input every mark.",
     answer: "DECLARE Marks : ARRAY[1:5, 1:4] OF INTEGER\n\nFOR Student <- 1 TO 5\n    FOR Test <- 1 TO 4\n        INPUT Marks[Student, Test]\n    NEXT Test\nNEXT Student",
     marking: [
       { mark: "B1", text: "uses identifier Marks" },
@@ -136,7 +142,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "7 marks",
-    prompt: "A 2 by 3 array Values stores row 1 as 2, 4, 6 and row 2 as 1, 3, 5. Trace the total when nested loops add every cell.",
+    prompt: "A 2 by 3 array Values stores row 1 as 2, 4, 6 and row 2 as 1, 3, 5. Complete a trace table for the total when nested loops add every cell.",
     answer: "Total starts at 0. Row 1 column 1 adds 2 so Total = 2. Row 1 column 2 adds 4 so Total = 6. Row 1 column 3 adds 6 so Total = 12. Row 2 column 1 adds 1 so Total = 13. Row 2 column 2 adds 3 so Total = 16. Row 2 column 3 adds 5 so final Total = 21.",
     marking: [
       { mark: "B1", text: "states Total starts at 0" },
@@ -370,10 +376,10 @@ function renderExam() {
       <p>${escapeHtml(question.prompt)}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms${index}">
-        <p><strong>Indicative answer:</strong></p>
+        <p><strong>Answer:</strong></p>
         <pre><code>${escapeHtml(question.answer)}</code></pre>
         <p><strong>Mark scheme:</strong></p>
-        <ul>${question.marking.map((line) => `<li><strong>${escapeHtml(line.mark)}</strong> ${escapeHtml(line.text)}</li>`).join("")}</ul>
+        ${renderStudentMarkPoints(question)}
       </div>
     </article>
   `).join("");

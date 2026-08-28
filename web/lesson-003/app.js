@@ -46,11 +46,17 @@ const practice = [
   { id: "p10", prompt: "What should an exam answer about Hexadecimal notation and binary grouping include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
 ];
 
+
+function renderStudentMarkPoints(question) {
+  const escape = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+  const guidance = (question.strict || []).join(" ");
+  return `<div class="mark-scheme-table" role="table" aria-label="Mark scheme"><div class="mark-scheme-row mark-scheme-head" role="row"><strong role="columnheader">Answer</strong><strong role="columnheader">Guidance</strong><strong role="columnheader">Marks</strong></div>${question.marking.map((point, pointIndex) => `<div class="mark-scheme-row" role="row"><span role="cell">${escape(point.text)}</span><span role="cell">${pointIndex === 0 ? escape(guidance) : ""}</span><strong role="cell">1</strong></div>`).join("")}</div>`;
+}
 const examQuestions = [
   {
     title: "Question 1",
     marks: "3 marks",
-    prompt: "Convert 11010110₂ to hexadecimal. Show your grouping.",
+    prompt: "Convert 11010110₂ to hexadecimal. Demonstrate your grouping.",
     answer: "Group from the right: 1101 0110. 1101₂ = D₁₆ and 0110₂ = 6₁₆, so the result is D6₁₆.",
     marking: [
       { mark: "M1", text: "groups the binary value into nibbles correctly, e.g. 1101 0110" },
@@ -82,7 +88,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "3 marks",
-    prompt: "Convert 101101₂ to hexadecimal. Show how padding is used.",
+    prompt: "Convert 101101₂ to hexadecimal. Demonstrate how padding is used.",
     answer: "Group from the right and pad the left group: 101101₂ -> 0010 1101₂. 0010₂ = 2₁₆ and 1101₂ = D₁₆, so the result is 2D₁₆.",
     marking: [
       { mark: "M1", text: "groups from the right, e.g. 10 1101" },
@@ -333,11 +339,9 @@ function renderExamQuestions() {
         <p class="marks">[${question.marks}]</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="marking" id="${msId}">
-          <h4>Cambridge-style mark scheme</h4>
-          <p><strong>Expected answer:</strong> ${question.answer}</p>
-          <ul class="ms-list">
-            ${question.marking.map((point) => `<li><b>${point.mark}</b> ${point.text}</li>`).join("")}
-          </ul>
+          <h4>Mark scheme</h4>
+          <p><strong>Answer:</strong> ${question.answer}</p>
+          ${renderStudentMarkPoints(question)}
         </div>
       </article>
     `;

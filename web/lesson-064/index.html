@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 064 | Hacking, phishing, pharming, and denial-of-service attacks</title>
+    <title>AS9618 Lesson 064 | Required internet threats and matching risk-reduction methods</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Hacking, phishing, pharming, and denial-of-service attacks</h1>
+        <h1>Required internet threats and matching risk-reduction methods</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,7 +47,72 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Required internet threats and matching risk-reduction methods</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>The required threats are malware (virus and spyware), hackers, phishing and pharming. A hacker gains unauthorised access to a computer system or data. Phishing uses a deceptive message, link or site to persuade a user to disclose information. Pharming redirects traffic to a fake website, possibly even after the user enters the correct address.</p>
+            <p>Methods restrict risk only when their mechanism matches the threat: updated anti-virus and anti-spyware can detect known malware; user training and independent contact checks reduce phishing; secure DNS, certificate/HTTPS checks and patched software reduce pharming risk; strong authentication, access rights, patching, firewalls and monitoring reduce unauthorised access by hackers.</p>
+            <p>A control reduces likelihood or impact; it rarely makes an attack impossible. Layered controls are needed because people, software, credentials and network traffic provide different attack routes.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Protect an online payroll service</h3>
+            <p>Staff receive a phishing email while a hacker probes the server and pharming redirects one user towards a fake site. Training and an independent sender check reduce phishing risk; multi-factor authentication reduces the value of a stolen password; a firewall filters unwanted traffic; access rights limit what an authenticated account may change; updated anti-virus and anti-spyware detect known virus or spyware signatures; secure DNS and certificate warnings reduce pharming risk.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Required internet threats and matching risk-reduction methods: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Compare phishing from pharming.</p>
+              <details><summary>Show answer</summary><p>Phishing persuades through a deceptive message/link/site; pharming redirects traffic to a fake site, potentially after the correct address is entered.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What is the syllabus meaning of a hacker threat?</p>
+              <details><summary>Show answer</summary><p>A person gaining or attempting unauthorised access to a computer system or data.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Draw lines to match virus, spyware, phishing and pharming to one suitable risk-reduction method each.</p>
+              <details><summary>Show answer</summary><p>Updated anti-virus; updated anti-spyware; training/independent verification; secure DNS plus certificate/HTTPS checks, respectively.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why are layered controls required?</p>
+              <details><summary>Show answer</summary><p>Different controls address different attack routes, so failure or bypass of one control need not expose the whole system.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>For each of virus, spyware, hacking, phishing and pharming, describe the threat route and one matching method that restricts its risk.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>virus route plus anti-virus mechanism</td><td>Do not define phishing and pharming identically or award a control that is unrelated to the stated attack route.</td><td>1</td></tr>
+                  <tr><td>spyware route plus anti-spyware mechanism</td><td></td><td>1</td></tr>
+                  <tr><td>hacker/unauthorised-access route plus a matching access/network control</td><td></td><td>1</td></tr>
+                  <tr><td>phishing/deception route plus training or independent verification</td><td></td><td>1</td></tr>
+                  <tr><td>pharming/redirection route plus secure DNS/certificate/HTTPS or patched-software control</td><td></td><td>1</td></tr>
+                  <tr><td>states that controls reduce rather than eliminate risk</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 064 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
             <h2>Same target, different route: access, trick, redirect, overload.</h2>
@@ -73,7 +138,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Cambridge-style answers reward the mechanism. "It is dangerous" is true, but it is not a full mark machine.</p>
@@ -84,7 +149,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A user types the correct bank URL but lands on a convincing fake banking page. What is the best diagnosis?</h2>
@@ -101,7 +166,7 @@
           </div>
         </section>
 
-        <section class="panel" id="core" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
+        <section class="panel" id="core" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Start from mechanism, then discuss impact</h2>
@@ -116,7 +181,7 @@
         </section>
 
         <!-- stage10-explanation:start core -->
-        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
+        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <h2 class="explanation-sr-only" id="explanation-core-title">Start from mechanism, then discuss impact</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Start from mechanism, then discuss impact with a structured visual model." />
@@ -128,8 +193,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end core -->
-
-        <section class="panel" id="hacking" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="hacking">
+        <section class="panel" id="hacking" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Hacking: gaining unauthorised access to a system or data</h2>
@@ -143,7 +207,7 @@
         </section>
 
         <!-- stage10-explanation:start hacking -->
-        <section class="panel explanation-panel" id="explanation-hacking" data-explains="hacking" data-explanation-kind="mechanism" aria-labelledby="explanation-hacking-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="hacking">
+        <section class="panel explanation-panel" id="explanation-hacking" data-explains="hacking" data-explanation-kind="mechanism" aria-labelledby="explanation-hacking-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <h2 class="explanation-sr-only" id="explanation-hacking-title">Hacking: gaining unauthorised access to a system or data</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-hacking.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Hacking: gaining unauthorised access to a system or data with a structured visual model." />
@@ -155,8 +219,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end hacking -->
-
-        <section class="panel" id="phishing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="phishing">
+        <section class="panel" id="phishing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Phishing: tricking users into revealing information or visiting a fake page</h2>
@@ -170,7 +233,7 @@
         </section>
 
         <!-- stage10-explanation:start phishing -->
-        <section class="panel explanation-panel" id="explanation-phishing" data-explains="phishing" data-explanation-kind="mechanism" aria-labelledby="explanation-phishing-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="phishing">
+        <section class="panel explanation-panel" id="explanation-phishing" data-explains="phishing" data-explanation-kind="mechanism" aria-labelledby="explanation-phishing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <h2 class="explanation-sr-only" id="explanation-phishing-title">Phishing: tricking users into revealing information or visiting a fake page</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-phishing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Phishing: tricking users into revealing information or visiting a fake page with a structured visual model." />
@@ -182,8 +245,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end phishing -->
-
-        <section class="panel" id="pharming" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pharming">
+        <section class="panel" id="pharming" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Pharming: redirecting users to a fake website</h2>
@@ -197,7 +259,7 @@
         </section>
 
         <!-- stage10-explanation:start pharming -->
-        <section class="panel explanation-panel" id="explanation-pharming" data-explains="pharming" data-explanation-kind="mechanism" aria-labelledby="explanation-pharming-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pharming">
+        <section class="panel explanation-panel" id="explanation-pharming" data-explains="pharming" data-explanation-kind="mechanism" aria-labelledby="explanation-pharming-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <h2 class="explanation-sr-only" id="explanation-pharming-title">Pharming: redirecting users to a fake website</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-pharming.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pharming: redirecting users to a fake website with a structured visual model." />
@@ -209,8 +271,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end pharming -->
-
-        <section class="panel" id="dos" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dos">
+        <section class="panel" id="dos" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Denial-of-service: making a service unavailable</h2>
@@ -224,7 +285,7 @@
         </section>
 
         <!-- stage10-explanation:start dos -->
-        <section class="panel explanation-panel" id="explanation-dos" data-explains="dos" data-explanation-kind="mechanism" aria-labelledby="explanation-dos-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dos">
+        <section class="panel explanation-panel" id="explanation-dos" data-explains="dos" data-explanation-kind="mechanism" aria-labelledby="explanation-dos-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <h2 class="explanation-sr-only" id="explanation-dos-title">Denial-of-service: making a service unavailable</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-dos.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Denial-of-service: making a service unavailable with a structured visual model." />
@@ -236,8 +297,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end dos -->
-
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Compare by route and result</h2>
@@ -272,7 +332,7 @@
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by route and result</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by route and result with a structured visual model." />
@@ -284,8 +344,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
-
-        <section class="panel" id="controls" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
+        <section class="panel" id="controls" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 7</p>
             <h2>Controls must fit the attack route</h2>
@@ -300,7 +359,7 @@
         </section>
 
         <!-- stage10-explanation:start controls -->
-        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
+        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <h2 class="explanation-sr-only" id="explanation-controls-title">Controls must fit the attack route</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Controls must fit the attack route with a structured visual model." />
@@ -312,9 +371,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end controls -->
-
-
-        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">
+        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Interactive classifier</p>
             <h2>Classify the attack by the clue</h2>
@@ -338,7 +395,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Four model answers with the mark-winning mechanism visible</h2>
@@ -352,7 +409,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short answers: be precise, then check</h2>
@@ -361,7 +418,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the sentence before it loses marks</h2>
@@ -369,7 +426,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -378,66 +435,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Required internet threats and matching risk-reduction methods</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>The required threats are malware (virus and spyware), hackers, phishing and pharming. A hacker gains unauthorised access to a computer system or data. Phishing uses a deceptive message, link or site to persuade a user to disclose information. Pharming redirects traffic to a fake website, possibly even after the user enters the correct address.</p>
-            <p>Methods restrict risk only when their mechanism matches the threat: updated anti-virus and anti-spyware can detect known malware; user training and independent contact checks reduce phishing; secure DNS, certificate/HTTPS checks and patched software reduce pharming risk; strong authentication, access rights, patching, firewalls and monitoring reduce unauthorised access by hackers.</p>
-            <p>A control reduces likelihood or impact; it rarely makes an attack impossible. Layered controls are needed because people, software, credentials and network traffic provide different attack routes.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Protect an online payroll service</h3>
-            <p>Staff receive a phishing email while a hacker probes the server and pharming redirects one user towards a fake site. Training and an independent sender check reduce phishing risk; multi-factor authentication reduces the value of a stolen password; a firewall filters unwanted traffic; access rights limit what an authenticated account may change; updated anti-virus and anti-spyware detect known virus or spyware signatures; secure DNS and certificate warnings reduce pharming risk.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Required internet threats and matching risk-reduction methods: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Distinguish phishing from pharming.</p>
-              <details><summary>Show answer</summary><p>Phishing persuades through a deceptive message/link/site; pharming redirects traffic to a fake site, potentially after the correct address is entered.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What is the syllabus meaning of a hacker threat?</p>
-              <details><summary>Show answer</summary><p>A person gaining or attempting unauthorised access to a computer system or data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Match virus, spyware, phishing and pharming to one suitable risk-reduction method each.</p>
-              <details><summary>Show answer</summary><p>Updated anti-virus; updated anti-spyware; training/independent verification; secure DNS plus certificate/HTTPS checks, respectively.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why are layered controls required?</p>
-              <details><summary>Show answer</summary><p>Different controls address different attack routes, so failure or bypass of one control need not expose the whole system.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>For each of virus, spyware, hacking, phishing and pharming, describe the threat route and one matching method that restricts its risk.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> virus route plus anti-virus mechanism</li>
-                <li><strong>B1</strong> spyware route plus anti-spyware mechanism</li>
-                <li><strong>B1</strong> hacker/unauthorised-access route plus a matching access/network control</li>
-                <li><strong>B1</strong> phishing/deception route plus training or independent verification</li>
-                <li><strong>B1</strong> pharming/redirection route plus secure DNS/certificate/HTTPS or patched-software control</li>
-                <li><strong>B1</strong> states that controls reduce rather than eliminate risk</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>The four labels are not interchangeable</h2>

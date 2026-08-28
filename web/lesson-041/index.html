@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 041 | CPU architecture: ALU, CU, registers, buses and clock</title>
+    <title>AS9618 Lesson 041 | Von Neumann architecture, CPU components and registers</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../student-visuals.css?v=1" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -18,7 +18,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>CPU architecture: ALU, CU, registers, buses and clock</h1>
+        <h1>Von Neumann architecture, CPU components and registers</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -45,7 +45,121 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Von Neumann architecture, CPU components and registers</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required. This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.</p>
+            <p>The control unit (CU) fetches and decodes instructions and sends control signals. The arithmetic and logic unit (ALU) performs arithmetic and logical operations. Registers provide small, fast temporary storage, buses carry addresses, data and control signals, and the system clock supplies regular timing pulses that synchronise state changes.</p>
+            <p>The immediate access store (IAS) is processor-accessible main memory, not a register, cache or secondary-storage device. A program held on secondary storage must be loaded into IAS before its instructions can be fetched and executed normally.</p>
+            <p>A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.</p>
+            <p>PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.</p>
+            <p>ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Run one stored program / Follow registers through fetch and indexed execute</h3>
+            <p>A program and its input data are copied from SSD into IAS. The PC supplies the address of the next instruction; the instruction is fetched through MDR into CIR, the CU decodes it, and the ALU or another component carries out the operation. The same memory can hold an instruction at one address and data at another because their use is determined by the fetch and instruction semantics. PC = 300 is copied to MAR; the instruction read from memory enters MDR and then CIR. If that instruction is LDX 500 while IX = 3, the effective address is 503 and the value at that address is loaded into ACC. A resulting condition can update a flag in the status register.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start architecture -->
+        <section class="panel explanation-panel" id="explanation-architecture" data-explains="architecture" data-explanation-kind="mechanism" aria-labelledby="explanation-architecture-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="architecture">
+          <h2 class="explanation-sr-only" id="explanation-architecture-title">Why a CPU divides specialised work</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-041-architecture.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a CPU divides specialised work through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why a CPU divides specialised work: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> The control unit interprets the current instruction.</li><li><strong>Reason:</strong> The ALU performs the required arithmetic or logical operation.</li><li><strong>Result:</strong> Registers and buses hold and move the immediate values.</li></ol>
+
+            <p><strong>Analogy:</strong> A laboratory separates coordination, processing, temporary trays and transport lanes.</p>
+            <p><strong>Boundary:</strong> The components form one system; none executes a program alone.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end architecture -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Von Neumann architecture, CPU components and registers: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What is the stored-program concept?</p>
+              <details><summary>Show answer</summary><p>Program instructions are stored in memory in binary form alongside data and are fetched by the processor for execution.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Why is this a Von Neumann model?</p>
+              <details><summary>Show answer</summary><p>The basic model uses the same directly accessible memory for instructions and data.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Compare the ALU from the CU.</p>
+              <details><summary>Show answer</summary><p>The ALU performs arithmetic and logical operations; the CU decodes instructions and coordinates components using control signals.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> What does the system clock do?</p>
+              <details><summary>Show answer</summary><p>It supplies regular timing pulses that synchronise processor operations and state changes.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Why is IAS not a CPU register?</p>
+              <details><summary>Show answer</summary><p>IAS is processor-accessible main memory for current instructions and data; registers are smaller temporary locations inside the CPU.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> Compare a general-purpose register from a special-purpose register.</p>
+              <details><summary>Show answer</summary><p>A general-purpose register can hold values for varied operations; a special-purpose register has a defined processor role.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>7.</strong> State the roles of PC, MAR, MDR and CIR.</p>
+              <details><summary>Show answer</summary><p>PC holds the next-instruction address; MAR the accessed address; MDR transferred data/instruction; CIR the current instruction.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>8.</strong> State the roles of ACC, IX and the status register.</p>
+              <details><summary>Show answer</summary><p>ACC holds ALU results; IX an indexed-address offset; the status register holds flags about results or CPU state.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>9.</strong> Which general-purpose working register is assumed in Cambridge assembly questions?</p>
+              <details><summary>Show answer</summary><p>The accumulator, ACC.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>10.</strong> Base 120 plus IX 7 gives which indexed effective address?</p>
+              <details><summary>Show answer</summary><p>127.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>12 marks</span></div>
+            <p>Explain how the Von Neumann stored-program concept, IAS, CU, ALU and system clock cooperate when a program runs. Compare general-purpose and special-purpose registers, then state the roles of PC, MAR, MDR, CIR, ACC, IX and the status register.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>instructions and data are stored together in IAS/main memory</td><td>Do not accept that instructions are permanently built into the CU, that IAS is cache, or that the ALU decodes instructions. Do not swap MAR with MDR, PC with CIR, or claim that the status register stores the calculation result.</td><td>1</td></tr>
+                  <tr><td>program instructions are represented in binary and fetched from memory</td><td></td><td>1</td></tr>
+                  <tr><td>CU fetches/decodes and sends control signals</td><td></td><td>1</td></tr>
+                  <tr><td>ALU performs arithmetic or logical operations</td><td></td><td>1</td></tr>
+                  <tr><td>clock supplies regular timing pulses to synchronise operations</td><td></td><td>1</td></tr>
+                  <tr><td>IAS is directly accessible memory rather than a register or secondary storage</td><td></td><td>1</td></tr>
+                  <tr><td>general-purpose register can hold values for varied operations; special-purpose register has a defined role</td><td></td><td>1</td></tr>
+                  <tr><td>PC next-instruction address and CIR current instruction</td><td></td><td>1</td></tr>
+                  <tr><td>MAR accessed address and MDR transferred data/instruction</td><td></td><td>1</td></tr>
+                  <tr><td>ACC intermediate/final ALU result</td><td></td><td>1</td></tr>
+                  <tr><td>IX offset used in indexed addressing</td><td></td><td>1</td></tr>
+                  <tr><td>status register stores flags about a result or processor state</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 041 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
             <h2>CPU components perform distinct and coordinated functions.</h2>
@@ -75,7 +189,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Section 4 questions often reward precise verbs: calculates, coordinates, stores temporarily, transfers, synchronises.</p>
@@ -86,7 +200,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A computer adds 23 and 19. Which CPU part deserves the credit?</h2>
@@ -103,7 +217,7 @@
           </div>
         </section>
 
-        <section class="panel" id="architecture" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="architecture">
+        <section class="panel" id="architecture" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>CPU architecture is about cooperating parts</h2>
@@ -129,23 +243,7 @@
           <div class="callout">Chinese support: architecture = 结构/体系结构；processor = 处理器；component = 组成部分；synchronise = 同步。</div>
         </section>
 
-        <!-- stage10-explanation:start architecture -->
-        <section class="panel explanation-panel" id="explanation-architecture" data-explains="architecture" data-explanation-kind="mechanism" aria-labelledby="explanation-architecture-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="architecture">
-          <h2 class="explanation-sr-only" id="explanation-architecture-title">Why a CPU divides specialised work</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-041-architecture.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a CPU divides specialised work through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why a CPU divides specialised work: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> The control unit interprets the current instruction.</li><li><strong>Reason:</strong> The ALU performs the required arithmetic or logical operation.</li><li><strong>Result:</strong> Registers and buses hold and move the immediate values.</li></ol>
-
-            <p><strong>Analogy:</strong> A laboratory separates coordination, processing, temporary trays and transport lanes.</p>
-            <p><strong>Boundary:</strong> The components form one system; none executes a program alone.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end architecture -->
-
-        <section class="panel visual-explainer" id="cpu-map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cpu-map">
+        <section class="panel visual-explainer" id="cpu-map" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <div class="section-title">
             <p class="eyebrow">Visual explanation</p>
             <h2>Inside the CPU, outside the CPU, and what connects them</h2>
@@ -193,7 +291,7 @@
         </section>
 
         <!-- stage10-explanation:start cpu-map -->
-        <section class="panel explanation-panel" id="explanation-cpu-map" data-explains="cpu-map" data-explanation-kind="mechanism" aria-labelledby="explanation-cpu-map-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cpu-map">
+        <section class="panel explanation-panel" id="explanation-cpu-map" data-explains="cpu-map" data-explanation-kind="mechanism" aria-labelledby="explanation-cpu-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <h2 class="explanation-sr-only" id="explanation-cpu-map-title">Inside the CPU, outside the CPU, and what connects them</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-041-cpu-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Inside the CPU, outside the CPU, and what connects them with a structured visual model." />
@@ -205,8 +303,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end cpu-map -->
-
-        <section class="panel" id="alu-cu" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="alu-cu">
+        <section class="panel" id="alu-cu" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>ALU and CU: do not swap their jobs</h2>
@@ -238,7 +335,7 @@
         </section>
 
         <!-- stage10-explanation:start alu-cu -->
-        <section class="panel explanation-panel" id="explanation-alu-cu" data-explains="alu-cu" data-explanation-kind="comparison" aria-labelledby="explanation-alu-cu-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="alu-cu">
+        <section class="panel explanation-panel" id="explanation-alu-cu" data-explains="alu-cu" data-explanation-kind="comparison" aria-labelledby="explanation-alu-cu-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <h2 class="explanation-sr-only" id="explanation-alu-cu-title">Why control and calculation are separate</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-041-alu-cu.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why control and calculation are separate through a cause-and-effect diagram." />
@@ -252,8 +349,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end alu-cu -->
-
-        <section class="panel" id="registers" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="registers">
+        <section class="panel" id="registers" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Registers, buses and clock</h2>
@@ -288,7 +384,7 @@
         </section>
 
         <!-- stage10-explanation:start registers -->
-        <section class="panel explanation-panel" id="explanation-registers" data-explains="registers" data-explanation-kind="mechanism" aria-labelledby="explanation-registers-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="registers">
+        <section class="panel explanation-panel" id="explanation-registers" data-explains="registers" data-explanation-kind="mechanism" aria-labelledby="explanation-registers-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <h2 class="explanation-sr-only" id="explanation-registers-title">How registers, buses and clock stay aligned</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-041-registers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How registers, buses and clock stay aligned through a cause-and-effect diagram." />
@@ -302,9 +398,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end registers -->
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>CPU component mapper</h2>
@@ -330,7 +424,7 @@
           <div class="reject-box" id="mapTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Build answers from exact component roles</h2>
@@ -343,7 +437,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
@@ -352,7 +446,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the wording before it loses marks</h2>
@@ -360,7 +454,7 @@
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
@@ -369,70 +463,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Von Neumann architecture and CPU components</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required. This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.</p>
-            <p>The control unit (CU) fetches and decodes instructions and sends control signals. The arithmetic and logic unit (ALU) performs arithmetic and logical operations. Registers provide small, fast temporary storage, buses carry addresses, data and control signals, and the system clock supplies regular timing pulses that synchronise state changes.</p>
-            <p>The immediate access store (IAS) is processor-accessible main memory, not a register, cache or secondary-storage device. A program held on secondary storage must be loaded into IAS before its instructions can be fetched and executed normally.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Run one stored program</h3>
-            <p>A program and its input data are copied from SSD into IAS. The PC supplies the address of the next instruction; the instruction is fetched through MDR into CIR, the CU decodes it, and the ALU or another component carries out the operation. The same memory can hold an instruction at one address and data at another because their use is determined by the fetch and instruction semantics.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Von Neumann architecture and CPU components: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What is the stored-program concept?</p>
-              <details><summary>Show answer</summary><p>Program instructions are stored in memory in binary form alongside data and are fetched by the processor for execution.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Why is this a Von Neumann model?</p>
-              <details><summary>Show answer</summary><p>The basic model uses the same directly accessible memory for instructions and data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Distinguish the ALU from the CU.</p>
-              <details><summary>Show answer</summary><p>The ALU performs arithmetic and logical operations; the CU decodes instructions and coordinates components using control signals.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> What does the system clock do?</p>
-              <details><summary>Show answer</summary><p>It supplies regular timing pulses that synchronise processor operations and state changes.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Why is IAS not a CPU register?</p>
-              <details><summary>Show answer</summary><p>IAS is processor-accessible main memory for current instructions and data; registers are smaller temporary locations inside the CPU.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Explain how the Von Neumann stored-program concept, IAS, CU, ALU and system clock cooperate when a program runs.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> instructions and data are stored together in IAS/main memory</li>
-                <li><strong>B1</strong> program instructions are represented in binary and fetched from memory</li>
-                <li><strong>B1</strong> CU fetches/decodes and sends control signals</li>
-                <li><strong>B1</strong> ALU performs arithmetic or logical operations</li>
-                <li><strong>B1</strong> clock supplies regular timing pulses to synchronise operations</li>
-                <li><strong>B1</strong> IAS is directly accessible memory rather than a register or secondary storage</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-041">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>One CPU, several specialised jobs</h2>

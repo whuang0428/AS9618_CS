@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 087 | SQL INSERT, UPDATE and DELETE</title>
+    <title>AS9618 Lesson 087 | INSERT, DELETE and UPDATE</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>SQL INSERT, UPDATE and DELETE</h1>
+        <h1>INSERT, DELETE and UPDATE</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,7 +46,78 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>INSERT, DELETE and UPDATE</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>INSERT adds a new row, DELETE removes matching rows, and UPDATE changes values in matching rows. These DML statements maintain stored data.</p>
+            <p>Use a WHERE condition for DELETE and UPDATE when only specified rows should change. Check field order, value types and conditions against the supplied schema.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Maintain one student row</h3>
+            <p>INSERT adds StudentID 104. UPDATE changes only that row when WHERE StudentID = 104 is used. DELETE removes it with the same key condition.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start dml -->
+        <section class="panel explanation-panel" id="explanation-dml" data-explains="dml" data-explanation-kind="mechanism" aria-labelledby="explanation-dml-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dml">
+          <h2 class="explanation-sr-only" id="explanation-dml-title">INSERT, UPDATE and DELETE are data manipulation commands</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-087-dml.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining INSERT, UPDATE and DELETE are data manipulation commands with a structured visual model." />
+            <figcaption class="explanation-sr-only">INSERT, UPDATE and DELETE are data manipulation commands: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> They change stored data. In exam answers, be precise about command keywords and affected records.</li><li><strong>Lesson fact:</strong> INSERT Adds a new record to a table.</li><li><strong>Lesson fact:</strong> UPDATE Changes values in existing records.</li><li><strong>Lesson fact:</strong> DELETE Removes existing records from a table.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end dml -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>INSERT, DELETE and UPDATE: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which statement adds a row?</p>
+              <details><summary>Show answer</summary><p>INSERT.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which statement removes rows?</p>
+              <details><summary>Show answer</summary><p>DELETE.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which statement changes existing values?</p>
+              <details><summary>Show answer</summary><p>UPDATE.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>3 marks</span></div>
+            <p>Write INSERT, UPDATE and DELETE statements for StudentID 104.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>valid INSERT</td><td>Do not credit an UPDATE or DELETE that unintentionally affects every row.</td><td>1</td></tr>
+                  <tr><td>valid UPDATE with condition</td><td></td><td>1</td></tr>
+                  <tr><td>valid DELETE with condition</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 087 | 45 minutes | Paper 1 Section 8 | informal questioning</p>
             <h2>SELECT asks politely. INSERT, UPDATE and DELETE move the furniture.</h2>
@@ -69,7 +140,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Mark schemes credit exact command structure and conditions. A missing <code>WHERE</code> can change every record.</p>
@@ -80,7 +151,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which statement changes only Amira's tutor group?</h2>
@@ -97,7 +168,7 @@
           </div>
         </section>
 
-        <section class="panel" id="dml" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dml">
+        <section class="panel" id="dml" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>INSERT, UPDATE and DELETE are data manipulation commands</h2>
@@ -110,21 +181,7 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start dml -->
-        <section class="panel explanation-panel" id="explanation-dml" data-explains="dml" data-explanation-kind="mechanism" aria-labelledby="explanation-dml-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dml">
-          <h2 class="explanation-sr-only" id="explanation-dml-title">INSERT, UPDATE and DELETE are data manipulation commands</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-087-dml.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining INSERT, UPDATE and DELETE are data manipulation commands with a structured visual model." />
-            <figcaption class="explanation-sr-only">INSERT, UPDATE and DELETE are data manipulation commands: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> They change stored data. In exam answers, be precise about command keywords and affected records.</li><li><strong>Lesson fact:</strong> INSERT Adds a new record to a table.</li><li><strong>Lesson fact:</strong> UPDATE Changes values in existing records.</li><li><strong>Lesson fact:</strong> DELETE Removes existing records from a table.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end dml -->
-
-        <section class="panel" id="insert" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="insert">
+        <section class="panel" id="insert" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2><code>INSERT INTO</code> adds a record</h2>
@@ -138,7 +195,7 @@
         </section>
 
         <!-- stage10-explanation:start insert -->
-        <section class="panel explanation-panel" id="explanation-insert" data-explains="insert" data-explanation-kind="mechanism" aria-labelledby="explanation-insert-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="insert">
+        <section class="panel explanation-panel" id="explanation-insert" data-explains="insert" data-explanation-kind="mechanism" aria-labelledby="explanation-insert-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <h2 class="explanation-sr-only" id="explanation-insert-title">INSERT INTO adds a record</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-087-insert.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining INSERT INTO adds a record with a structured visual model." />
@@ -150,8 +207,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end insert -->
-
-        <section class="panel" id="update" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="update">
+        <section class="panel" id="update" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2><code>UPDATE</code> changes existing records</h2>
@@ -169,7 +225,7 @@
         </section>
 
         <!-- stage10-explanation:start update -->
-        <section class="panel explanation-panel" id="explanation-update" data-explains="update" data-explanation-kind="mechanism" aria-labelledby="explanation-update-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="update">
+        <section class="panel explanation-panel" id="explanation-update" data-explains="update" data-explanation-kind="mechanism" aria-labelledby="explanation-update-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <h2 class="explanation-sr-only" id="explanation-update-title">UPDATE changes existing records</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-087-update.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining UPDATE changes existing records with a structured visual model." />
@@ -181,8 +237,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end update -->
-
-        <section class="panel" id="delete" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="delete">
+        <section class="panel" id="delete" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2><code>DELETE FROM</code> removes records</h2>
@@ -196,7 +251,7 @@
         </section>
 
         <!-- stage10-explanation:start delete -->
-        <section class="panel explanation-panel" id="explanation-delete" data-explains="delete" data-explanation-kind="mechanism" aria-labelledby="explanation-delete-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="delete">
+        <section class="panel explanation-panel" id="explanation-delete" data-explains="delete" data-explanation-kind="mechanism" aria-labelledby="explanation-delete-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <h2 class="explanation-sr-only" id="explanation-delete-title">DELETE FROM removes records</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-087-delete.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining DELETE FROM removes records with a structured visual model." />
@@ -208,8 +263,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end delete -->
-
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
+        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Trace changes from a small table</h2>
@@ -228,7 +282,7 @@
         </section>
 
 
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="section-title">
             <p class="eyebrow">Interactive statement builder</p>
             <h2>Choose the right data modification command</h2>
@@ -250,7 +304,7 @@
           <div class="feedback" id="builderReason">The output will show command choice and condition logic.</div>
         </section>
 
-        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
+        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="section-title">
             <p class="eyebrow">Interactive change simulator</p>
             <h2>Preview the result before the database gets nervous</h2>
@@ -272,7 +326,7 @@
           <div class="result-table" id="simulationResult">The after-table will appear here.</div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Write the command that matches the intention</h2>
@@ -286,7 +340,7 @@
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short quiz and core checks</h2>
@@ -295,7 +349,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Repair weak modification statements</h2>
@@ -303,7 +357,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
@@ -312,69 +366,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>DDL, DML and the complete AS SQL subset</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A DBMS carries out creation or modification of database structure using Data Definition Language (DDL). Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE. Table definitions may use CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE and TIME, plus PRIMARY KEY(field) and FOREIGN KEY(field) REFERENCES Table(Field).</p>
-            <p>A DBMS carries out queries and maintenance of stored data using Data Manipulation Language (DML). SELECT queries data; INSERT INTO adds records; UPDATE changes existing records; DELETE FROM removes records. SQL is the industry-standard language for both DDL and DML. WHERE must be used when only selected existing records should be updated or deleted.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Define a database and maintain its data</h3>
-            <p>CREATE DATABASE College; creates the database structure. CREATE TABLE Department (DepartmentID INTEGER, Code CHARACTER, Name VARCHAR(40), Open BOOLEAN, Budget REAL, ReviewDate DATE, StartTime TIME, PRIMARY KEY (DepartmentID)); defines a table. ALTER TABLE Department ADD ManagerID INTEGER; changes the structure. INSERT INTO, UPDATE and DELETE FROM then maintain records rather than redefining the table.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>DDL, DML and the complete AS SQL subset: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Classify CREATE TABLE and ALTER TABLE as DDL or DML.</p>
-              <details><summary>Show answer</summary><p>DDL, because they define or change structure.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Name all seven required DDL data types.</p>
-              <details><summary>Show answer</summary><p>CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE and TIME.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which commands add, change and remove stored records?</p>
-              <details><summary>Show answer</summary><p>INSERT INTO, UPDATE and DELETE FROM.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Write the foreign-key clause for DepartmentID referencing Department(DepartmentID).</p>
-              <details><summary>Show answer</summary><p>FOREIGN KEY (DepartmentID) REFERENCES Department (DepartmentID).</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Why can UPDATE or DELETE without WHERE be dangerous?</p>
-              <details><summary>Show answer</summary><p>It can affect every record in the table.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Write SQL to create Event(EventID, Code, Title, EventDate, StartTime, Open, Price), make EventID the primary key, then insert one record and update its Price.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> CREATE TABLE Event with a valid field list</li>
-                <li><strong>B1</strong> uses INTEGER for EventID and PRIMARY KEY (EventID)</li>
-                <li><strong>B1</strong> uses CHARACTER or VARCHAR(n) appropriately for Code/Title</li>
-                <li><strong>B1</strong> uses DATE, TIME, BOOLEAN and REAL for the remaining named fields</li>
-                <li><strong>B1</strong> valid INSERT INTO with matching fields and values</li>
-                <li><strong>B1</strong> valid UPDATE Event SET Price = value WHERE EventID = value</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Modification command checklist</h2>

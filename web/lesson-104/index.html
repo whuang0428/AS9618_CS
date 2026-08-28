@@ -6,7 +6,7 @@
     <title>AS9618 Lesson 104 | Linear search and binary search</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=7" />
+    <link rel="stylesheet" href="../stage6-qa.css?v=9" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
@@ -42,11 +42,14 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 104 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
             <h2>Linear search checks politely from the front. Binary search cuts the queue in half.</h2>
@@ -77,7 +80,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 may ask students to trace, compare or justify a search method. "Faster" alone is not enough for the mark.</p>
@@ -88,7 +91,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Find the exam paper in a pile</h2>
@@ -103,7 +106,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose a strategy for unsorted data.</div>
         </section>
 
-        <section class="panel" id="linear" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linear">
+        <section class="panel" id="linear" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
             <h2>Linear search checks each item in order</h2>
@@ -122,21 +125,7 @@
           </div>
         </section>
 
-        <!-- stage10-explanation:start linear -->
-        <section class="panel explanation-panel" id="explanation-linear" data-explains="linear" data-explanation-kind="mechanism" aria-labelledby="explanation-linear-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linear">
-          <h2 class="explanation-sr-only" id="explanation-linear-title">Linear search checks each item in order</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-linear.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Linear search checks each item in order with a structured visual model." />
-            <figcaption class="explanation-sr-only">Linear search checks each item in order: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> How it works</li><li><strong>Lesson fact:</strong> Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.</li><li><strong>Lesson fact:</strong> When it is suitable</li><li><strong>Lesson fact:</strong> Use it when data is unsorted, the list is small, or simplicity matters more than speed.</li><li><strong>Lesson fact:</strong> Worst case: the target is last or absent, so every item may be checked.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end linear -->
-
-        <section class="panel" id="binary" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="binary">
+        <section class="panel" id="binary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
             <h2>Binary search repeatedly halves a sorted list</h2>
@@ -152,7 +141,7 @@
         </section>
 
         <!-- stage10-explanation:start binary -->
-        <section class="panel explanation-panel" id="explanation-binary" data-explains="binary" data-explanation-kind="process" aria-labelledby="explanation-binary-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="binary">
+        <section class="panel explanation-panel" id="explanation-binary" data-explains="binary" data-explanation-kind="process" aria-labelledby="explanation-binary-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <h2 class="explanation-sr-only" id="explanation-binary-title">Binary search repeatedly halves a sorted list</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-binary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Binary search repeatedly halves a sorted list with a structured visual model." />
@@ -165,8 +154,7 @@ This produces an integer array index.</li></ol>
           </div>
         </section>
         <!-- stage10-explanation:end binary -->
-
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Comparison</p>
             <h2>Choosing the right search</h2>
@@ -181,7 +169,7 @@ This produces an integer array index.</li></ol>
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <h2 class="explanation-sr-only" id="explanation-compare-title">Choosing the right search</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choosing the right search with a structured visual model." />
@@ -193,8 +181,7 @@ This produces an integer array index.</li></ol>
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
-
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Cambridge pseudocode is the exam format</h2>
@@ -229,7 +216,7 @@ while (!found &amp;&amp; index &lt; list.length) {
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge pseudocode is the exam format</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode is the exam format with a structured visual model." />
@@ -241,9 +228,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-
-
-        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
+        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Interactive search chooser</p>
             <h2>Pick a suitable search method</h2>
@@ -263,7 +248,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           <div class="feedback" id="classifyResult">Choose a scenario to see a justified method.</div>
         </section>
 
-        <section class="panel" id="linear-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linear-tool">
+        <section class="panel" id="linear-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Interactive linear trace</p>
             <h2>Trace linear search</h2>
@@ -283,7 +268,7 @@ while (!found &amp;&amp; index &lt; list.length) {
         </section>
 
         <!-- stage10-explanation:start linear-tool -->
-        <section class="panel explanation-panel" id="explanation-linear-tool" data-explains="linear-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-linear-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linear-tool">
+        <section class="panel explanation-panel" id="explanation-linear-tool" data-explains="linear-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-linear-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <h2 class="explanation-sr-only" id="explanation-linear-tool-title">Trace linear search</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-linear-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace linear search with a structured visual model." />
@@ -295,8 +280,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           </div>
         </section>
         <!-- stage10-explanation:end linear-tool -->
-
-        <section class="panel" id="binary-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="binary-tool">
+        <section class="panel" id="binary-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Interactive binary trace</p>
             <h2>Trace binary search on sorted data</h2>
@@ -316,7 +300,7 @@ while (!found &amp;&amp; index &lt; list.length) {
         </section>
 
         <!-- stage10-explanation:start binary-tool -->
-        <section class="panel explanation-panel" id="explanation-binary-tool" data-explains="binary-tool" data-explanation-kind="process" aria-labelledby="explanation-binary-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="binary-tool">
+        <section class="panel explanation-panel" id="explanation-binary-tool" data-explains="binary-tool" data-explanation-kind="process" aria-labelledby="explanation-binary-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <h2 class="explanation-sr-only" id="explanation-binary-tool-title">Trace binary search on sorted data</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-binary-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace binary search on sorted data with a structured visual model." />
@@ -328,8 +312,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           </div>
         </section>
         <!-- stage10-explanation:end binary-tool -->
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Search traces</h2>
@@ -343,7 +326,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Searching accuracy</h2>
@@ -352,7 +335,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix search mistakes</h2>
@@ -360,7 +343,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style search questions with expandable MS</h2>
@@ -369,60 +352,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Array model required by search algorithms</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.</p>
-            <p>Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.</p>
-            <p>Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Declare the search data before tracing it</h3>
-            <p>DECLARE Names : ARRAY[1:4] OF STRING defines four string elements. For Names = ['Asha', 'Ben', 'Chen', 'Dina'], a one-based linear search compares Names[1], then Names[2], and stops when it finds 'Ben'. Index 0 is invalid because it is below the declared lower bound.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Array model required by search algorithms: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What are the lower and upper bounds of ARRAY[1:4]?</p>
-              <details><summary>Show answer</summary><p>The lower bound is 1 and the upper bound is 4.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What does Names[Index] mean?</p>
-              <details><summary>Show answer</summary><p>The single array element selected by the current value of Index.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why must binary search know the current Low and High indexes?</p>
-              <details><summary>Show answer</summary><p>They delimit the remaining sorted portion of the array that may contain the target.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Declare an array called Code that stores 20 STRING values, then state the first and last valid indexes used by a search.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> DECLARE Code : ARRAY[1:20] or another explicit 20-element bound range</li>
-                <li><strong>B1</strong> OF STRING</li>
-                <li><strong>B1</strong> first valid index matches the declared lower bound</li>
-                <li><strong>B1</strong> last valid index matches the declared upper bound</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Search checklist</h2>

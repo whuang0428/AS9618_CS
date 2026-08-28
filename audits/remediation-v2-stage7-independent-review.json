@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "remediation": "v2",
+  "stage": 7,
+  "generatedDate": "2026-08-28",
+  "reviewer": "Codex independent final gate",
+  "reviewRound": "remediation-v2-stage7-r1",
+  "sourceApprovalImported": false,
+  "oldApprovedRowsUsedForDecision": false,
+  "registeredP0": 8,
+  "registeredP1": 8,
+  "pending": 0,
+  "records": [
+    {
+      "defectId": "RV2-GATE-001",
+      "severity": "P0",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-remediation-v2-audit-integrity.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "00a4d788400030b885c495c2809be8594c4a60f840ab3cc1296e978bfb79ff87",
+      "sourceHashes": {
+        "scripts/remediation-v2-review-gate.mjs": "4a3d5aabc829c72123d1888a27a29ebf44a4de956380e1b44a1aab2b7bda830b",
+        "scripts/generate-cie-wording-register.mjs": "69f3ee4518ac224dc882b536c0cea2fb3719a5b07d9af61defe69ac2256d3736"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-GATE-002",
+      "severity": "P0",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-scientific-audit.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "83c94a04fdd64c8e51432b7f60b48be806944c90d7dffd08f7855e9908bf3c3c",
+      "sourceHashes": {
+        "scripts/remediation-v2-decision-gate.mjs": "d693d2956c3488323ce0c562292f241849fb6a0945f52d4419de3546cfbd468c",
+        "scripts/verify-scientific-audit.mjs": "8a0695bc2ff2c9ce44b63679e7c3025f874adfa09aa6925bb6a24cc2221274a6"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-COV-001",
+      "severity": "P0",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-syllabus-coverage.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "6c50989b333803a9b73439d0e4727a775ad401640b6eca0a2ca632cee890c5cf",
+      "sourceHashes": {
+        "scripts/syllabus-official-as-mapping.mjs": "80be1b2e144a8995adb25cac39458ac4a9b92daa4f68e8819bbcd5379af8ee86",
+        "scripts/syllabus-coverage-contract.json": "9b01011104c5b2ab60baa27bc86997506b9e658f3ba76568daf795b40f0d0f79"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-COV-002",
+      "severity": "P1",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-batch6-section1-foundations.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "dab115b905bd099762a0c555019150525487093a3efe4e6aa9bf1888a2e59f4f",
+      "sourceHashes": {
+        "lessons/005-signed-binary-sign-and-magnitude-and-twos-complement.md": "b433b5f943148bb221006deaa6a492a713cb153eed39b3186c3c21e0c6301331",
+        "scripts/syllabus-coverage-contract.json": "9b01011104c5b2ab60baa27bc86997506b9e658f3ba76568daf795b40f0d0f79"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-SCOPE-001",
+      "severity": "P1",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-stage2.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "d97ff1b9e99d14fba1eba28e8685b4e23e4335db21d80203f2f9792c6f91f6dc",
+      "sourceHashes": {
+        "scripts/syllabus-coverage-contract.json": "9b01011104c5b2ab60baa27bc86997506b9e658f3ba76568daf795b40f0d0f79",
+        "scripts/remediation-v2-optional-enrichment.mjs": "1be2c03f4e6e19bbda18207b70181220a5a5269163f8260dd50efcd2ca23a9eb"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-SCOPE-002",
+      "severity": "P1",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-stage2.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "d97ff1b9e99d14fba1eba28e8685b4e23e4335db21d80203f2f9792c6f91f6dc",
+      "sourceHashes": {
+        "scripts/remediation-v2-optional-enrichment.mjs": "1be2c03f4e6e19bbda18207b70181220a5a5269163f8260dd50efcd2ca23a9eb",
+        "audits/remediation-v2-stage2-closure.json": "0c7e4df0cf747545b4e5b5116c4f05dc5e279a17f6234332ae7c7fb1e8c3fb5b"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-SEQ-001",
+      "severity": "P1",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-curriculum-sequence.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "f1efea572056b7a5ca00aae39f54aaf122ed98f3dfcd616e78ba0e64ce14ccd8",
+      "sourceHashes": {
+        "scripts/curriculum-sequence-model.mjs": "7af9f31f0f918f07a01b36c14a371669d1caf4d0ae7c0e95eabe736b7a493391",
+        "audits/remediation-v2-stage3-question-sequence.json": "ecd42c8068168b3ea04761fe19694268f38b970226d16931003e1b59258b504f"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-ID-001",
+      "severity": "P1",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-remediation-v2-stage3.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "18ee4b731e9a95be87ba92f6924adc3b88d12fc6550feb2aab9c19683c1303be",
+      "sourceHashes": {
+        "scripts/course-structure.mjs": "fc7bf44975c096c7c02da0016a2323905655488cb6ede5d7e4887b36d59accba",
+        "scripts/remediation-v2-stage3-sequence-plan.mjs": "4803b9711a33f655780c3d5fb5e5f452dacc39b02f0ee722ac606a0bcef201ba"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-WORD-001",
+      "severity": "P1",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-cie-wording.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "36ede209cd84b4f51b7783b17478bf5bae32ac3ca020496d50698dbe0d991dc8",
+      "sourceHashes": {
+        "scripts/cie-command-words.mjs": "d54c50ac0d057daa869bed87efd36534359c7c787efef2d4466467dc12825a51",
+        "audits/remediation-v2-stage4-question-review.json": "0f79377dc1c790576d8541865c7940ba796513f3a6a6f1c90db0fdba58d37d77"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-MS-001",
+      "severity": "P1",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-stage5-mark-schemes.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "faaba0113a32df99c0a97c308657cbd06659090ef6b9aac5ccf095782ceec160",
+      "sourceHashes": {
+        "scripts/ms-review-utils.mjs": "a62ec2d7c480739c433e6f6e57123918535b389989335232ba8064a78fe604bb",
+        "audits/stage5-ms-review-register.csv": "15f640738c744a6ffd3c9e21c49512c50ab5234bfe146046764681b6e0389dfe"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-CONT-001",
+      "severity": "P0",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-remediation-v2-stage5.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "48fe820355ece9cc1355428e40addf8898d8514acf76948cccdb75056d98790f",
+      "sourceHashes": {
+        "lessons/049-performance-factors-cores-cache-clock-speed-and-word-length.md": "f361c05f0fed10b6b1810826064653d55e9c1eb5b5735d058e015c930eab2490",
+        "scripts/remediation-v2-stage5-gate.mjs": "f0ccc9cf3f5f6bf5214e21b676d13c86ac2998e2728f81ba8d37b2125eca69b0"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-PSEUDO-001",
+      "severity": "P0",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-remediation-v2-stage5.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "48fe820355ece9cc1355428e40addf8898d8514acf76948cccdb75056d98790f",
+      "sourceHashes": {
+        "lessons/107-string-processing-algorithms.md": "5735fc9754093d55e82e212a3656d79711bad741c514008588d1b4841b64e87b",
+        "lessons/133-string-handling-and-built-in-functions.md": "d84e85e588334ed8d33d6726284ebaa5c6258319a8d3383a9f3fac35a446bcca"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-PSEUDO-002",
+      "severity": "P0",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-remediation-v2-stage5.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "48fe820355ece9cc1355428e40addf8898d8514acf76948cccdb75056d98790f",
+      "sourceHashes": {
+        "lessons/121-csv-style-structured-text-files.md": "89d6cde21b240fecf9b5f7659e8d882c5db956900080897b8b195d25889ff39b",
+        "scripts/remediation-v2-stage5-gate.mjs": "f0ccc9cf3f5f6bf5214e21b676d13c86ac2998e2728f81ba8d37b2125eca69b0"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-AUDIT-001",
+      "severity": "P0",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-remediation-v2-audit-integrity.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "00a4d788400030b885c495c2809be8594c4a60f840ab3cc1296e978bfb79ff87",
+      "sourceHashes": {
+        "scripts/syllabus-official-as-mapping.mjs": "80be1b2e144a8995adb25cac39458ac4a9b92daa4f68e8819bbcd5379af8ee86",
+        "audits/remediation-v2-audit-integrity-closure.json": "a3e6456671b2bd7d4458182f624c25169e13e4d072bb67971973a48e8d715fb2"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-AUDIT-002",
+      "severity": "P0",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-remediation-v2-audit-integrity.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "00a4d788400030b885c495c2809be8594c4a60f840ab3cc1296e978bfb79ff87",
+      "sourceHashes": {
+        "scripts/syllabus-coverage-evaluator.mjs": "d7bbc4085db62d88a923f68d60ecd3f25bd5e194dd9be5bd95315b45f1d557c7",
+        "audits/remediation-v2-audit-integrity-gate-result.json": "073786bb0e9545380f60f152f3feb9fdb59368ed0c856b483c4637790fbbe601"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "defectId": "RV2-AUDIT-003",
+      "severity": "P1",
+      "reviewer": "Codex independent final gate",
+      "reviewRound": "remediation-v2-stage7-r1",
+      "oldApprovedUsed": false,
+      "command": "node scripts/verify-syllabus-coverage.mjs",
+      "commandExitCode": 0,
+      "commandOutputSha256": "6c50989b333803a9b73439d0e4727a775ad401640b6eca0a2ca632cee890c5cf",
+      "sourceHashes": {
+        "scripts/remediation-v2-core-visuals.mjs": "298815b2be72c7294719bba3f605ebf800288287d8486a0cbd63efecd30e56c4",
+        "scripts/remediation-v2-visual-delivery-map.json": "09bb153f6f346a83ecd169ce34f93280a8813781e62bbb7ffa2bb75f2fd4e25b"
+      },
+      "evidenceBasis": "Current source bytes and a newly executed fail-closed verifier; historical Approved status was not read as a conclusion.",
+      "status": "PassedCurrentSource"
+    }
+  ]
+}

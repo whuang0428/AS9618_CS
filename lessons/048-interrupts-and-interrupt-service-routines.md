@@ -1,4 +1,48 @@
-# Lesson 048: Interrupts and interrupt service routines
+# Lesson 048: Section 4 semantic checkpoint
+
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Section 4 semantic checkpoint
+
+### Direct explanation
+
+- Read each instruction by its specified effect: LDR #n loads the immediate value n into IX; CMI <address> compares ACC with a value reached by indirect addressing; JPE <address> jumps after a True comparison; JPN <address> jumps after a False comparison.
+- For bit manipulation, identify the fixed width and bit numbering before tracing. AND tests or clears selected bits, OR sets selected bits, XOR toggles selected bits, and logical, arithmetic and cyclic shifts differ in fill and rotation behaviour.
+
+### Worked example
+
+**Resolve four instruction cards:** Match LDR #4 to IX <- 4, trace CMI POINTER through the address stored at POINTER, send a True comparison to JPE MATCH and a False comparison to JPN DIFFERENT. None of the four names should be decoded by an English guess.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What does LDR #6 change?
+   **Answer:** It loads the immediate value 6 into IX.
+2. How does CMI <address> obtain the comparison value?
+   **Answer:** It uses indirect addressing: the operand location contains the address of the value compared with ACC.
+3. Which branch follows a True comparison, and which follows a False comparison?
+   **Answer:** JPE follows True; JPN follows False.
+4. Which operation toggles selected device bits?
+   **Answer:** XOR with a mask containing 1 at each bit to toggle.
+
+### Exam-style question and MS
+
+**Question (5 marks):** State the exact effects of LDR #n, CMI <address>, JPE <address> and JPN <address>.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| LDR loads immediate n into IX | Do not infer an instruction effect from the mnemonic letters; use the specified instruction-set semantics. | 1 |
+| CMI obtains the comparison value by indirect addressing |  | 1 |
+| CMI compares that value with ACC |  | 1 |
+| JPE branches after a True comparison |  | 1 |
+| JPN branches after a False comparison |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -43,8 +87,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Award marks for correct sequence: address from PC to MAR, instruction/data via memory and MDR, instruction held in CIR, PC updated as appropriate.
 
-
-
 ## Student Task
 Students annotate a CPU diagram with arrows for one instruction, then explain the path in four precise sentences.
 
@@ -72,48 +114,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Interrupt causes, detection and handling
-
-### Direct explanation
-
-- An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.
-- For most maskable interrupts, the processor completes the current instruction and checks for pending enabled interrupts at the end of that fetch-execute cycle, before beginning the next instruction. Detection is therefore not the same as stopping halfway through an ordinary instruction.
-- If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.
-
-### Worked example
-
-**Handle a keyboard interrupt:** A key press raises an interrupt while the CPU is executing another program. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and continues the original program.
-
-### Targeted practice and answers
-
-1. Give two possible causes or applications of interrupts.
-   **Answer:** For example an I/O device request, timer/scheduler event, hardware fault or software exception.
-2. When is a normal maskable interrupt detected and accepted?
-   **Answer:** After the current instruction completes, at the end of the fetch-execute cycle before the next instruction begins, subject to enabled/priority checks.
-3. What is an ISR?
-   **Answer:** An interrupt service routine: program code that handles a particular interrupt.
-4. Why must processor state be saved and restored?
-   **Answer:** So the interrupted program can resume at the correct instruction with its earlier register and status values.
-5. List the handling sequence after detection.
-   **Answer:** Check/accept, save state, locate and execute ISR, restore state, resume program.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Describe one interrupt cause or application, state when it is detected in the fetch-execute cycle, and trace handling through the ISR to resumption.
-
-- **B1** valid cause/application such as I/O, timer, fault or exception
-- **B1** current instruction completes and interrupt is detected/checked at the cycle boundary
-- **B1** priority/enabled status is checked
-- **B1** PC/register/status state is saved
-- **B1** correct ISR is located and executed
-- **B1** state is restored and the interrupted program resumes
-
-**Strict note:** Do not accept that every interrupt stops an instruction halfway through, that the ISR is the signal, or that the whole interrupted program restarts.
-<!-- stage2-completion:end -->
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -121,7 +121,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-048-concept.jpg`
 
 1. Interrupt
@@ -137,7 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cycle`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-048-cycle.jpg`
 
 1. 1. Execute instruction The CPU finishes the current instruction before accepting most maskable interrupts.
@@ -153,7 +153,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `polling`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-048-polling.jpg`
 
 1. Interrupt-driven input
@@ -170,7 +170,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `priority`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-048-priority.jpg`
 
 1. Exam-safe wording
@@ -190,7 +190,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sources`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-048-sources.jpg`
 
 1. Input/output device
