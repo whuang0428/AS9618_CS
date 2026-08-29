@@ -1,44 +1,47 @@
-# Lesson 029: Microphone, touchscreen and VR headset operation
+# Lesson 029: Output devices and user feedback
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Microphone, touchscreen and VR headset operation
+**Focus:** Laser/3D printers, speakers and output buffers
 
 ### Direct explanation
 
-- A microphone diaphragm vibrates with sound; a transducer converts the movement into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in an electric field and calculates touch coordinates.
-- A VR headset displays a separate view to each eye and uses motion/orientation sensors to update the viewpoint. Low-latency tracking is needed so the displayed scene follows head movement.
+- A laser printer charges a drum, a laser discharges selected points, toner adheres to the image, toner transfers to paper and heat/pressure fuse it. A 3D printer deposits or solidifies material layer by layer from a digital model.
+- A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.
+- A buffer temporarily holds data when producer and consumer operate at different speeds, reducing loss or interruption caused by the rate difference.
 - Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.
 
 ### Worked example
 
-**Turn head in VR:** Gyroscope/accelerometer readings report orientation; the processor calculates a new camera view; displays present updated left/right images, creating stereoscopic depth.
+**Print a page:** The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. What converts a microphone's analogue signal into digital samples?
-   **Answer:** An analogue-to-digital converter (ADC).
-2. What does a capacitive touchscreen detect?
-   **Answer:** A change in capacitance/electric field at a touch location.
-3. Why does a VR headset track head movement?
-   **Answer:** To update the displayed viewpoint to match the user's orientation.
+1. What permanently bonds toner to laser-printer paper?
+   **Answer:** Heat and pressure in the fuser.
+2. How does a 3D printer build an object?
+   **Answer:** It deposits/solidifies successive layers.
+3. How does a speaker produce sound from digital output?
+   **Answer:** A DAC and amplifier drive a coil and cone; cone vibration produces pressure waves in the air.
+4. Why is a print buffer needed?
+   **Answer:** It handles the speed difference and lets the producer continue while the printer consumes data.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Describe how a microphone captures sound for storage in a computer.
+**Question (4 marks):** Explain why a buffer is used when a computer sends a large document to a laser printer.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| sound waves vibrate a diaphragm | Do not accept that the microphone directly records binary without an analogue signal and conversion stage. | 1 |
-| transducer converts vibration to an analogue electrical signal |  | 1 |
-| ADC samples/measures the signal |  | 1 |
-| sample values are encoded/stored as binary |  | 1 |
+| processor/computer and printer operate at different speeds | Do not accept 'the buffer makes the printer faster'; it manages transfer-rate differences. | 1 |
+| buffer temporarily stores print data |  | 1 |
+| printer reads data at its own rate |  | 1 |
+| computer/processor can continue other processing without waiting for the full print |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 

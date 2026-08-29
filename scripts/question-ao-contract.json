@@ -299,7 +299,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S1.05",
+      "primaryRequirement": "S1.06",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -1914,7 +1914,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S2.10",
+      "primaryRequirement": "S2.16",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -2066,7 +2066,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S2.13",
+      "primaryRequirement": "S2.06",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -2218,7 +2218,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S2.15",
+      "primaryRequirement": "S2.06",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -2256,7 +2256,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S2.13",
+      "primaryRequirement": "S2.06",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -2826,7 +2826,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S3.04",
+      "primaryRequirement": "S3.05",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -2902,7 +2902,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S3.04",
+      "primaryRequirement": "S3.05",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -2978,7 +2978,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S3.06",
+      "primaryRequirement": "S3.03",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -2997,7 +2997,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S3.04",
+      "primaryRequirement": "S3.01",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -3016,7 +3016,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S3.06",
+      "primaryRequirement": "S3.01",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -3035,7 +3035,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S3.06",
+      "primaryRequirement": "S3.01",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -3054,7 +3054,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S3.06",
+      "primaryRequirement": "S3.01",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -3263,7 +3263,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S3.01",
+      "primaryRequirement": "S3.10",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -3947,7 +3947,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S4.02",
+      "primaryRequirement": "S4.07",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -3966,7 +3966,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S4.03",
+      "primaryRequirement": "S4.07",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -4517,7 +4517,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S4.12",
+      "primaryRequirement": "S4.08",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -4707,7 +4707,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S4.12",
+      "primaryRequirement": "S4.15",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -5068,7 +5068,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S5.03",
+      "primaryRequirement": "S5.01",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -5106,7 +5106,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S5.05",
+      "primaryRequirement": "S5.01",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -5125,7 +5125,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S5.03",
+      "primaryRequirement": "S5.01",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -5144,7 +5144,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S5.03",
+      "primaryRequirement": "S5.01",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -5163,7 +5163,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S5.03",
+      "primaryRequirement": "S5.01",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -5220,7 +5220,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S5.05",
+      "primaryRequirement": "S5.02",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -5239,7 +5239,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S5.03",
+      "primaryRequirement": "S5.02",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -5467,7 +5467,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S5.06",
+      "primaryRequirement": "S5.03",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -5505,7 +5505,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S5.06",
+      "primaryRequirement": "S5.03",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -5543,7 +5543,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S5.06",
+      "primaryRequirement": "S5.03",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -5657,7 +5657,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S5.04",
+      "primaryRequirement": "S5.03",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -5676,7 +5676,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S5.04",
+      "primaryRequirement": "S5.03",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -7348,7 +7348,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S8.07",
+      "primaryRequirement": "S8.10",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -7481,7 +7481,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S8.07",
+      "primaryRequirement": "S8.08",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -7576,7 +7576,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S8.04",
+      "primaryRequirement": "S8.02",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -7823,7 +7823,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S8.10",
+      "primaryRequirement": "S8.02",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -9514,7 +9514,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S9.05",
+      "primaryRequirement": "S9.01",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -9647,7 +9647,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S9.05",
+      "primaryRequirement": "S9.06",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -9723,7 +9723,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S9.07",
+      "primaryRequirement": "S9.01",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -9742,7 +9742,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S9.05",
+      "primaryRequirement": "S9.01",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -9761,7 +9761,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S9.04",
+      "primaryRequirement": "S9.01",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -9780,7 +9780,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S9.04",
+      "primaryRequirement": "S9.01",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -9799,7 +9799,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S9.07",
+      "primaryRequirement": "S9.01",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -9837,7 +9837,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S9.08",
+      "primaryRequirement": "S9.01",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -9856,7 +9856,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S9.05",
+      "primaryRequirement": "S9.04",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -9913,7 +9913,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S9.05",
+      "primaryRequirement": "S9.07",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -9989,7 +9989,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S9.05",
+      "primaryRequirement": "S9.07",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -10483,7 +10483,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S9.04",
+      "primaryRequirement": "S9.05",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -10825,7 +10825,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.06",
+      "primaryRequirement": "S10.07",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -10844,7 +10844,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.02",
+      "primaryRequirement": "S10.05",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -11053,7 +11053,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.05",
+      "primaryRequirement": "S10.01",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -11072,7 +11072,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.06",
+      "primaryRequirement": "S10.03",
       "marks": 7,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -11091,7 +11091,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.05",
+      "primaryRequirement": "S10.01",
       "marks": 8,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -11110,7 +11110,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.10",
+      "primaryRequirement": "S10.03",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -11129,7 +11129,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.06",
+      "primaryRequirement": "S10.01",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -11262,7 +11262,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.07",
+      "primaryRequirement": "S10.01",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -11281,7 +11281,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.05",
+      "primaryRequirement": "S10.03",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -11319,7 +11319,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.10",
+      "primaryRequirement": "S10.03",
       "marks": 7,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -11357,7 +11357,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.10",
+      "primaryRequirement": "S10.07",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -11414,7 +11414,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.10",
+      "primaryRequirement": "S10.07",
       "marks": 7,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -11452,7 +11452,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.10",
+      "primaryRequirement": "S10.01",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -11471,7 +11471,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.07",
+      "primaryRequirement": "S10.01",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -11509,7 +11509,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S10.05",
+      "primaryRequirement": "S10.02",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12478,7 +12478,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "marks": 3,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12516,7 +12516,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12668,7 +12668,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12687,7 +12687,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S11.03",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12706,7 +12706,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S11.03",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12725,7 +12725,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12744,7 +12744,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S11.03",
       "marks": 7,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12763,7 +12763,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S11.02",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12782,7 +12782,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S11.02",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12801,7 +12801,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "marks": 3,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12820,7 +12820,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12839,7 +12839,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S11.02",
       "marks": 7,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12858,7 +12858,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S10.07",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12877,7 +12877,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S10.07",
       "marks": 7,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12896,7 +12896,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12915,7 +12915,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -12934,7 +12934,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "marks": 5,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -13143,7 +13143,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -13181,7 +13181,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.02",
+      "primaryRequirement": "S11.06",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -13200,7 +13200,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "marks": 4,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -13219,7 +13219,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.06",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -13523,7 +13523,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S12.02",
+      "primaryRequirement": "S12.01",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -13542,7 +13542,7 @@
       "rationale": "The item requires Paper 2 design, programming, evaluation or a reasoned system judgement.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S12.02",
+      "primaryRequirement": "S12.01",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -13580,7 +13580,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S12.02",
+      "primaryRequirement": "S12.01",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -14427,7 +14427,7 @@
       "sourceKey": "quiz",
       "lesson": 10,
       "section": "1.1,1.2",
-      "contentHash": "cc93b69a407f54231b5b33e3c503305ccf2c905673ccaea66876efeb16d06c61",
+      "contentHash": "09934be52fd04dd52c7a4c3fe8e7608dac3262e3b19e15d4afaf1d3a97bccaff",
       "paper": "Paper 1",
       "assessmentObjectives": [
         "AO1"
@@ -14435,7 +14435,7 @@
       "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S1.09",
+      "primaryRequirement": "S1.08",
       "marks": 2,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -15111,7 +15111,7 @@
       "sourceKey": "quiz",
       "lesson": 45,
       "section": "4.1",
-      "contentHash": "a78de21e002a4d4dde7dd27729406c671931d59ca661545b66eb1345a3b5caee",
+      "contentHash": "45002d23da5f13eee14f2e2897fe018d3d83173e7d35a12ac2cd3858edd2c9fa",
       "paper": "Paper 1",
       "assessmentObjectives": [
         "AO2"
@@ -15119,7 +15119,7 @@
       "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S4.05",
+      "primaryRequirement": "S4.09",
       "marks": 2,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -16772,7 +16772,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "marks": 2,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -16810,7 +16810,7 @@
       "rationale": "The item applies or analyses Paper 2 knowledge, an existing algorithm, data structure, trace or program fragment.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "marks": 2,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"
@@ -17163,15 +17163,15 @@
       "sourceKey": "monthly",
       "lesson": 20,
       "section": "1,2",
-      "contentHash": "23d052cae930bb480e392e09c1906881eec954d89837e6a0c32f0dd13bd038b9",
+      "contentHash": "8cc80db738d27fb164ae2f7240c96e7b0bbb6040cd7197c2907d3df8c1ef05d2",
       "paper": "Paper 1",
       "assessmentObjectives": [
-        "AO1"
+        "AO2"
       ],
-      "rationale": "The item directly recalls or describes Paper 1 knowledge without requiring a new applied construction.",
+      "rationale": "The item applies or analyses Paper 1 knowledge in a calculation, representation, trace or stated context.",
       "reviewStatus": "Reviewed",
       "classificationMethod": "Question-level task classification constrained by the official paper AO weighting",
-      "primaryRequirement": "S2.08",
+      "primaryRequirement": "S2.16",
       "marks": 6,
       "allowedAnswerBoundary": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope.",
       "reviewRound": "remediation-v2-stage4"

@@ -1,7 +1,7 @@
-# Lesson 101: Structured English, flowcharts and pseudocode conversion
+# Lesson 101: Flowcharts and pseudocode notation
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
@@ -116,6 +116,18 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
+
+### A diamond becomes IF...THEN...ELSE
+
+- **Explains:** `equivalence`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-equivalence.jpg`
+
+1. A flowchart decision diamond becomes an IF condition in pseudocode.
+2. The labelled Yes and No branches become THEN and ELSE branches.
+3. Close the selection with ENDIF after the two branches rejoin.
+4. Input Age before testing whether it is between 11 and 18 inclusive.
 
 ### Flowcharts use symbols to show control flow
 

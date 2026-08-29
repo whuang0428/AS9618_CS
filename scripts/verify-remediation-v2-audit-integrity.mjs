@@ -29,6 +29,8 @@ const decision = readJson("remediation-v2-current-decision.json");
 const closure = readJson("remediation-v2-audit-integrity-closure.json");
 const browser = readJson("remediation-v2-audit-integrity-browser-evidence.json");
 const progressedBeyondAuditRepair = decision.currentStage?.number > 4;
+const coreTeachingPagesChecked = new Set(coverageContract.requirements.flatMap(({ teachingLessons }) => teachingLessons)).size;
+const uniqueFirstUsePagesChecked = new Set(coverageContract.requirements.map(({ firstTeachingEvidence }) => firstTeachingEvidence.lesson)).size;
 
 expect(inventory.inventoryHash === LOCKED_OFFICIAL_INVENTORY_HASH, "official source inventory is not on the reviewed lock hash");
 expect(inventory.counts.total === 360 && inventory.counts.total === inventory.items.length, "official source inventory count is stale");
@@ -52,13 +54,13 @@ for (const requirement of coverageContract.requirements) {
 
 expect(live.status === "Ready" && live.problemCount === 0, `live audit-integrity gate has ${live.problemCount} problem(s)`);
 expect(gate.liveGate.status === "Ready" && gate.liveGate.problemCount === 0 && gate.liveGate.officialSourceProblemCount === 0 && gate.liveGate.pedagogicalProblemCount === 0, "gate-result does not record a zero-failure live gate");
-expect(gate.liveGate.coreTeachingPagesChecked === 83 && gate.liveGate.uniqueFirstUsePagesChecked === 70, "CORE teaching / first-use page counts are stale");
+expect(gate.liveGate.coreTeachingPagesChecked === coreTeachingPagesChecked && gate.liveGate.uniqueFirstUsePagesChecked === uniqueFirstUsePagesChecked, "CORE teaching / first-use page counts are stale");
 expect(gate.requirementReview.reviewed === 121 && gate.requirementReview.pending === 0, "requirement review summary is stale");
 
 const l009Source = fs.readFileSync(path.join(root, browser.source));
 expect(digest(l009Source) === browser.sourceSha256, "L009 browser evidence is stale for the current HTML");
 for (const surface of [browser.desktop, browser.mobile]) {
-  expect(surface.firstSubstantiveTeachingId === "stage2-completion" && surface.firstSubstantiveTeachingRole === "CORE", "L009 does not start with the formal vector CORE block");
+  expect(surface.firstSubstantiveTeachingId === "stage2-completion" && surface.firstSubstantiveTeachingRole === "CORE", "L009 does not start with the bitmap file-size and metadata CORE block");
   expect(surface.coreVisibleInInitialViewport && surface.coreDocumentRatio < 0.1, "L009 CORE remains buried outside the initial learning path");
   expect(surface.optionalTeachingAfterCore && surface.horizontalOverflow === 0, "L009 Optional order or horizontal layout is wrong");
 }
@@ -89,4 +91,4 @@ if (problems.length) {
   for (const problem of problems) console.error(`- ${problem}`);
   process.exit(1);
 }
-console.log("Remediation v2 audit-integrity verification passed: 360 official atoms, 83 CORE pages, 70 first-use pages and 121 current requirement reviews reconcile with zero live failures; all negative mutations were rejected.");
+console.log(`Remediation v2 audit-integrity verification passed: 360 official atoms, ${coreTeachingPagesChecked} CORE pages, ${uniqueFirstUsePagesChecked} first-use pages and 121 current requirement reviews reconcile with zero live failures; all negative mutations were rejected.`);

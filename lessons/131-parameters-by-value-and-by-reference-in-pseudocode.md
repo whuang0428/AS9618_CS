@@ -1,4 +1,4 @@
-# Lesson 131: Pre-condition, post-condition and loop choice
+# Lesson 131: Parameters: by value and by reference
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -92,7 +92,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-java.jpg`
 
 1. Java support only
@@ -110,7 +110,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `reference`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-reference.jpg`
 
 1. Passing by reference
@@ -130,7 +130,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `terms`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-terms.jpg`
 
 1. Parameter and argument
@@ -149,7 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `use`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-use.jpg`
 
 1. When to use BYREF
@@ -163,7 +163,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `value`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-value.jpg`
 
 1. Passing by value

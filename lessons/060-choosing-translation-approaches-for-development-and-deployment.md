@@ -1,8 +1,53 @@
 # Lesson 060: Choosing translation approaches for development and deployment
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Java translation and required IDE features
+
+### Direct explanation
+
+- Java in console mode is partly compiled and partly interpreted: the Java compiler translates source code into platform-independent bytecode, then a Java Virtual Machine (JVM) interprets that bytecode and may just-in-time compile parts for the host processor. Bytecode is not universal processor machine code.
+- For coding, an IDE can provide context-sensitive prompts. For initial error detection it can perform dynamic syntax checks. For presentation it can prettyprint code and expand or collapse code blocks. These features help create and navigate source code but do not prove that its algorithm is correct.
+- For debugging, an IDE can provide single stepping, breakpoints, inspection of variables and expressions, and a report window for diagnostic or output information. Single stepping executes one statement at a time; a breakpoint pauses at a chosen point; variable/expression inspection exposes changing values.
+- IDE presentation features include prettyprint and expand/collapse code blocks; expand/collapse changes the displayed view, not program execution.
+
+### Worked example
+
+**Trace Java and locate a loop fault:** First the Java compiler produces bytecode; the JVM then interprets the bytecode or JIT-compiles parts for the host. In the IDE, a breakpoint pauses before the faulty loop, single stepping advances one statement at a time, the variable/expression view exposes Index, and the report window records diagnostics. Dynamic syntax checking can flag malformed syntax but not a syntactically valid wrong boundary.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What does a Java compiler normally produce?
+   **Answer:** Bytecode.
+2. Why is Java described as partly compiled and partly interpreted?
+   **Answer:** Source is compiled to bytecode, then a JVM interprets the bytecode and may JIT-compile parts for the host.
+3. Which IDE feature pauses at a chosen line, and which advances one statement?
+   **Answer:** A breakpoint pauses; single stepping advances one statement at a time.
+4. Identify the two required presentation features.
+   **Answer:** Prettyprint and expand/collapse code blocks.
+5. What can a variables/expressions view and report window show?
+   **Answer:** Current or evaluated values, plus diagnostic/output information in the report window.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Explain why Java is partly compiled and partly interpreted, then describe four IDE features from coding, initial error detection, presentation and debugging.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| Java source is compiled to bytecode | Do not accept that Java source becomes one universal machine-code file or that IDE syntax checking proves logical correctness. | 1 |
+| JVM interprets bytecode and may JIT-compile parts for the host |  | 1 |
+| context-sensitive prompts or dynamic syntax checking described accurately |  | 1 |
+| prettyprint or expand/collapse code blocks described accurately |  | 1 |
+| single stepping or breakpoint described accurately |  | 1 |
+| variable/expression inspection or report window described accurately |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1

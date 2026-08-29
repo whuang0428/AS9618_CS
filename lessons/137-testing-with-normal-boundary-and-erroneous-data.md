@@ -1,8 +1,45 @@
 # Lesson 137: Testing with normal, abnormal, and extreme/boundary data
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Choose normal, abnormal and extreme or boundary test data
+
+### Direct explanation
+
+- Normal data are valid values within the accepted range. Abnormal data are invalid and should be rejected. Extreme or boundary data are valid values at the limits of the accepted range; values immediately outside a limit are abnormal boundary checks.
+- Choose test data from the stated validation rule and give an expected result for each value. A label such as 'boundary' is insufficient unless the value really tests a stated limit.
+
+### Worked example
+
+**Test an inclusive mark range:** For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Give one normal mark for 0 to 100 inclusive.
+   **Answer:** Any valid non-boundary value, for example 55.
+2. Give two valid extreme values.
+   **Answer:** 0 and 100.
+3. Give one abnormal boundary value.
+   **Answer:** -1 or 101.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Suggest normal, abnormal and extreme/boundary data for an integer age accepted from 12 to 18 inclusive, and state each expected result.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| valid normal value | Do not credit a value whose classification contradicts the stated inclusive range. | 1 |
+| 12 and/or 18 as valid extremes |  | 1 |
+| 11 and/or 19 as abnormal boundary |  | 1 |
+| coherent expected results |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -79,6 +116,17 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
+
+### Extreme or boundary data uses valid values at accepted limits
+
+- **Explains:** `boundary`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-137-boundary.jpg`
+
+1. Extreme/boundary data uses valid values at the accepted lower or upper limit.
+2. For an accepted mark range of 0 to 100 inclusive, 0 and 100 are valid extreme/boundary values.
+3. Values just outside the limits, such as -1 and 101, are abnormal and should be rejected.
 
 ### Abnormal data is invalid data that should be rejected
 

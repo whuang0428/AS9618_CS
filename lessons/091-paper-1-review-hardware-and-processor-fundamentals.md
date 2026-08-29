@@ -77,7 +77,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `hardware`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-091-hardware.jpg`
 
 1. Hardware review
@@ -97,7 +97,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `logic`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-091-logic.jpg`
 
 1. Name the component or representation involved.
@@ -110,7 +110,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `map`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-091-map.jpg`
 
 1. Retrieval map

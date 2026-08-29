@@ -76,13 +76,13 @@ for (const id of scopedRequirements) {
 
 const lessonChecks = [
   ["113", ["INTEGER", "REAL", "CHAR", "STRING", "BOOLEAN", "DATE", "ARRAY", "FILE"]],
-  ["114", ["different data types", "one identifier", "TYPE", "ENDTYPE", "Student1.Mark", "save", "read"]],
+  ["118", ["different data types", "one identifier", "TYPE", "ENDTYPE", "Student1.Mark", "save", "read"]],
   ["115", ["index", "lower bound", "upper bound", "one-dimensional", "two-dimensional", "DECLARE"]],
   ["116", ["two-dimensional array", "DECLARE", "FOR", "row", "column"]],
-  ["118", ["linear search", "bubble sort", "REPEAT", "swaps", "ARRAY"]],
-  ["119", ["persistent", "OPENFILE", "READFILE", "WRITEFILE", "EOF", "CLOSEFILE"]],
-  ["120", ["collection of data and a set of operations", "stack", "queue", "linked list", "add", "edit", "delete", "array", "does not require pseudocode"]],
-  ["121", ["LIFO", "FIFO", "linked list", "justify"]],
+  ["104", ["linear search", "bubble sort", "repeated passes", "swap", "ARRAY"]],
+  ["120", ["persistent", "OPENFILE", "READFILE", "WRITEFILE", "EOF", "CLOSEFILE"]],
+  ["122", ["collection of data and a set of operations", "stack", "queue", "linked list", "add", "edit", "delete", "array", "does not require pseudocode"]],
+  ["123", ["LIFO", "FIFO", "linked list", "justify"]],
   ["125", ["Section 10", "record", "array", "file", "stack", "queue"]],
 ];
 for (const [lesson, terms] of lessonChecks) {

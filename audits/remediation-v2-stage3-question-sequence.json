@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "reviewRound": "remediation-v2-stage3",
   "questionCount": 963,
-  "formalCount": 521,
-  "optionalCount": 442,
+  "formalCount": 545,
+  "optionalCount": 418,
   "violationCount": 0,
   "entries": [
     {
@@ -606,7 +606,6 @@
         "S1.06",
         "S1.07",
         "S1.08",
-        "S1.09",
         "S1.10"
       ],
       "beforeCoreViolations": [],
@@ -641,7 +640,6 @@
         "S1.06",
         "S1.07",
         "S1.08",
-        "S1.09",
         "S1.10"
       ],
       "beforeCoreViolations": [],
@@ -1264,15 +1262,7 @@
         "S2.03",
         "S2.04",
         "S2.05",
-        "S2.06",
-        "S2.07",
-        "S2.08",
-        "S2.09",
-        "S2.10",
         "S2.11",
-        "S2.12",
-        "S2.13",
-        "S2.14",
         "S2.15",
         "S2.16"
       ],
@@ -1292,15 +1282,7 @@
         "S2.03",
         "S2.04",
         "S2.05",
-        "S2.06",
-        "S2.07",
-        "S2.08",
-        "S2.09",
-        "S2.10",
         "S2.11",
-        "S2.12",
-        "S2.13",
-        "S2.14",
         "S2.15",
         "S2.16"
       ],
@@ -1320,15 +1302,7 @@
         "S2.03",
         "S2.04",
         "S2.05",
-        "S2.06",
-        "S2.07",
-        "S2.08",
-        "S2.09",
-        "S2.10",
         "S2.11",
-        "S2.12",
-        "S2.13",
-        "S2.14",
         "S2.15",
         "S2.16"
       ],
@@ -1348,15 +1322,7 @@
         "S2.03",
         "S2.04",
         "S2.05",
-        "S2.06",
-        "S2.07",
-        "S2.08",
-        "S2.09",
-        "S2.10",
         "S2.11",
-        "S2.12",
-        "S2.13",
-        "S2.14",
         "S2.15",
         "S2.16"
       ],
@@ -1376,15 +1342,7 @@
         "S2.03",
         "S2.04",
         "S2.05",
-        "S2.06",
-        "S2.07",
-        "S2.08",
-        "S2.09",
-        "S2.10",
         "S2.11",
-        "S2.12",
-        "S2.13",
-        "S2.14",
         "S2.15",
         "S2.16"
       ],
@@ -2006,9 +1964,11 @@
       "lesson": 32,
       "source": "lesson",
       "sourceKey": "lesson-032",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "stage3-reviewed-override",
+      "requirementDependencies": [
+        "S3.03"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "e5bcf1ede5fa6d0fa4c36b84c5bdaf03bf9b7d76f619d8170987e12e71ba422f"
     },
@@ -2017,9 +1977,16 @@
       "lesson": 32,
       "source": "lesson",
       "sourceKey": "lesson-032",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S3.01",
+        "S3.03",
+        "S3.04",
+        "S3.05",
+        "S3.06",
+        "S3.07"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "175a56488b8c2eccae9d0b2c555d5ca44fa0a4571e58f5c5b4955670c6dba177"
     },
@@ -2028,9 +1995,16 @@
       "lesson": 32,
       "source": "lesson",
       "sourceKey": "lesson-032",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S3.01",
+        "S3.03",
+        "S3.04",
+        "S3.05",
+        "S3.06",
+        "S3.07"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "25aea3d29295252de8431573e4fb7e4f06781d316a48d6ab41b1763592699d51"
     },
@@ -2039,9 +2013,16 @@
       "lesson": 32,
       "source": "lesson",
       "sourceKey": "lesson-032",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S3.01",
+        "S3.03",
+        "S3.04",
+        "S3.05",
+        "S3.06",
+        "S3.07"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "66957619f95de883f85b4a5e5e1271e5be67dcbb6a9a5335f36e7a2757ec840c"
     },
@@ -2050,9 +2031,16 @@
       "lesson": 32,
       "source": "lesson",
       "sourceKey": "lesson-032",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S3.01",
+        "S3.03",
+        "S3.04",
+        "S3.05",
+        "S3.06",
+        "S3.07"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "a9996b70cf45a1e089f191405d28e919a7dac618e60e46fb4ecb21d49579dba6"
     },
@@ -2175,20 +2163,9 @@
       "lesson": 35,
       "source": "lesson",
       "sourceKey": "lesson-035",
-      "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-prior-CORE",
-      "requirementDependencies": [
-        "S3.01",
-        "S3.02",
-        "S3.03",
-        "S3.04",
-        "S3.05",
-        "S3.06",
-        "S3.07",
-        "S3.08",
-        "S3.09",
-        "S3.10"
-      ],
+      "sequenceRole": "OPTIONAL_ENRICHMENT",
+      "dependencyBasis": "optional-legacy-lesson-body",
+      "requirementDependencies": [],
       "beforeCoreViolations": [],
       "contentHash": "910d2677e2b45eeafaf0dac70049054da928d112a89729bd0711b31bf2453751"
     },
@@ -2210,11 +2187,9 @@
       "lesson": 35,
       "source": "lesson",
       "sourceKey": "lesson-035",
-      "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
-      "requirementDependencies": [
-        "S3.10"
-      ],
+      "sequenceRole": "OPTIONAL_ENRICHMENT",
+      "dependencyBasis": "optional-legacy-lesson-body",
+      "requirementDependencies": [],
       "beforeCoreViolations": [],
       "contentHash": "22867f59ad027d3a1d3d2b214efbe9c8a03d0158a08d60049dff9b9703806e44"
     },
@@ -2223,11 +2198,9 @@
       "lesson": 35,
       "source": "lesson",
       "sourceKey": "lesson-035",
-      "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
-      "requirementDependencies": [
-        "S3.10"
-      ],
+      "sequenceRole": "OPTIONAL_ENRICHMENT",
+      "dependencyBasis": "optional-legacy-lesson-body",
+      "requirementDependencies": [],
       "beforeCoreViolations": [],
       "contentHash": "7129fb0e569b719e9f0e81dff1388f88cc3e9df3567094ed9594c1ff886e6d11"
     },
@@ -2236,11 +2209,9 @@
       "lesson": 35,
       "source": "lesson",
       "sourceKey": "lesson-035",
-      "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
-      "requirementDependencies": [
-        "S3.10"
-      ],
+      "sequenceRole": "OPTIONAL_ENRICHMENT",
+      "dependencyBasis": "optional-legacy-lesson-body",
+      "requirementDependencies": [],
       "beforeCoreViolations": [],
       "contentHash": "91dbd0314c969c91b0820938ad04b126cf02a469197cc32b84064e0bd78ec30c"
     },
@@ -3152,11 +3123,9 @@
       "lesson": 50,
       "source": "lesson",
       "sourceKey": "lesson-050",
-      "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
-      "requirementDependencies": [
-        "S4.12"
-      ],
+      "sequenceRole": "OPTIONAL_ENRICHMENT",
+      "dependencyBasis": "optional-legacy-lesson-body",
+      "requirementDependencies": [],
       "beforeCoreViolations": [],
       "contentHash": "5b29e34da73a9dbb318a72644e48931547023670ab6b6e6cdf86cf96cadf1fbc"
     },
@@ -3178,11 +3147,9 @@
       "lesson": 50,
       "source": "lesson",
       "sourceKey": "lesson-050",
-      "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
-      "requirementDependencies": [
-        "S4.15"
-      ],
+      "sequenceRole": "OPTIONAL_ENRICHMENT",
+      "dependencyBasis": "optional-legacy-lesson-body",
+      "requirementDependencies": [],
       "beforeCoreViolations": [],
       "contentHash": "4d2751bd9a62489045512e55060e6a47b487773e9a4f21b88ed2027de0128588"
     },
@@ -3191,11 +3158,9 @@
       "lesson": 50,
       "source": "lesson",
       "sourceKey": "lesson-050",
-      "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
-      "requirementDependencies": [
-        "S4.15"
-      ],
+      "sequenceRole": "OPTIONAL_ENRICHMENT",
+      "dependencyBasis": "optional-legacy-lesson-body",
+      "requirementDependencies": [],
       "beforeCoreViolations": [],
       "contentHash": "a570f6ca30316828b505808b30f9703f57152af47d637f0b869a6810ef11074f"
     },
@@ -3371,9 +3336,12 @@
       "lesson": 54,
       "source": "lesson",
       "sourceKey": "lesson-054",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S5.01",
+        "S5.02"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "1ff8b8307bb21262a2e8ef49787143027e3bd9bfeda225e80606307069f8e454"
     },
@@ -3382,9 +3350,12 @@
       "lesson": 54,
       "source": "lesson",
       "sourceKey": "lesson-054",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S5.01",
+        "S5.02"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "60e83e10b526be88762e6bc7aff7e4f13b95849698ce7db0cbcd6744c9ddb7ec"
     },
@@ -3393,9 +3364,12 @@
       "lesson": 54,
       "source": "lesson",
       "sourceKey": "lesson-054",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S5.01",
+        "S5.02"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "1851063440ab183e70959b8d73ea53be5fc4257b11a3605e428252b51c6b581d"
     },
@@ -3404,9 +3378,12 @@
       "lesson": 54,
       "source": "lesson",
       "sourceKey": "lesson-054",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S5.01",
+        "S5.02"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "931bc76c950de1b30b0e928610c82a3720d3b49b49676739d2ae4b67156daf33"
     },
@@ -3415,9 +3392,12 @@
       "lesson": 54,
       "source": "lesson",
       "sourceKey": "lesson-054",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S5.01",
+        "S5.02"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "71ab77378ab96ec719b77f62056b9713ba03319abe34dcb9c65b0a99eba996b2"
     },
@@ -3545,11 +3525,8 @@
       "requirementDependencies": [
         "S5.01",
         "S5.02",
-        "S5.03",
         "S5.04",
-        "S5.05",
-        "S5.06",
-        "S5.07"
+        "S5.05"
       ],
       "beforeCoreViolations": [],
       "contentHash": "014988b398c97bdcce1f93a198ed4ed14aeb1766a793052d3231f59286009f21"
@@ -3564,11 +3541,8 @@
       "requirementDependencies": [
         "S5.01",
         "S5.02",
-        "S5.03",
         "S5.04",
-        "S5.05",
-        "S5.06",
-        "S5.07"
+        "S5.05"
       ],
       "beforeCoreViolations": [],
       "contentHash": "72c4c9869d3b9f6e2989ff1524c7ab5e38a6db9ad26a1d163d9747339eaa0fc5"
@@ -3583,11 +3557,8 @@
       "requirementDependencies": [
         "S5.01",
         "S5.02",
-        "S5.03",
         "S5.04",
-        "S5.05",
-        "S5.06",
-        "S5.07"
+        "S5.05"
       ],
       "beforeCoreViolations": [],
       "contentHash": "c999b62405264bdbd536f42906004a1b25af48389cbab345a585a7b986a35bb8"
@@ -3602,11 +3573,8 @@
       "requirementDependencies": [
         "S5.01",
         "S5.02",
-        "S5.03",
         "S5.04",
-        "S5.05",
-        "S5.06",
-        "S5.07"
+        "S5.05"
       ],
       "beforeCoreViolations": [],
       "contentHash": "4d5cdcfcccbbf4534cc3832eadae66348639ea47d7bc3402c8110c5601cfd333"
@@ -3621,11 +3589,8 @@
       "requirementDependencies": [
         "S5.01",
         "S5.02",
-        "S5.03",
         "S5.04",
-        "S5.05",
-        "S5.06",
-        "S5.07"
+        "S5.05"
       ],
       "beforeCoreViolations": [],
       "contentHash": "76c0a9e6735b4c36e7f250ea867f7188b1fa595354f6ae748d5380935092fb0e"
@@ -7075,9 +7040,18 @@
       "lesson": 103,
       "source": "lesson",
       "sourceKey": "lesson-103",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S9.01",
+        "S9.02",
+        "S9.03",
+        "S9.04",
+        "S9.05",
+        "S9.06",
+        "S9.07",
+        "S9.09"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "df6e6120783451da9f20968662a275cd15e97e4ea0d4bb9e0082c4805e22bb73"
     },
@@ -7086,9 +7060,18 @@
       "lesson": 103,
       "source": "lesson",
       "sourceKey": "lesson-103",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S9.01",
+        "S9.02",
+        "S9.03",
+        "S9.04",
+        "S9.05",
+        "S9.06",
+        "S9.07",
+        "S9.09"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "396e684d3aacc2d48a041306c52bc4dfba623ac033487051fbf09a8189eee60b"
     },
@@ -7097,9 +7080,18 @@
       "lesson": 103,
       "source": "lesson",
       "sourceKey": "lesson-103",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S9.01",
+        "S9.02",
+        "S9.03",
+        "S9.04",
+        "S9.05",
+        "S9.06",
+        "S9.07",
+        "S9.09"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "026074d4bfa017811ba5867f685ec16652c3a14298ffe3cb7b51a7fc014ef2c0"
     },
@@ -7108,9 +7100,18 @@
       "lesson": 103,
       "source": "lesson",
       "sourceKey": "lesson-103",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S9.01",
+        "S9.02",
+        "S9.03",
+        "S9.04",
+        "S9.05",
+        "S9.06",
+        "S9.07",
+        "S9.09"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "5b51222a4c87e49802116974669ecee8ff63b4a566389f81eba94503ec8679f3"
     },
@@ -7119,9 +7120,18 @@
       "lesson": 103,
       "source": "lesson",
       "sourceKey": "lesson-103",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S9.01",
+        "S9.02",
+        "S9.03",
+        "S9.04",
+        "S9.05",
+        "S9.06",
+        "S9.07",
+        "S9.09"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "0b0c7695b9473d05dc0fbc1dd4959c5f9f073a9a717c9420dc0f5d7fc5654d76"
     },
@@ -7250,7 +7260,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7271,7 +7280,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7292,7 +7300,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7313,7 +7320,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7334,7 +7340,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7355,7 +7360,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7389,7 +7393,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7410,7 +7413,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7444,7 +7446,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7465,7 +7466,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7486,7 +7486,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7507,7 +7506,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7541,7 +7539,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7562,7 +7559,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7583,7 +7579,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7604,7 +7599,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7625,7 +7619,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7646,7 +7639,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7680,7 +7672,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -7715,7 +7706,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -8066,9 +8056,15 @@
       "lesson": 117,
       "source": "lesson",
       "sourceKey": "lesson-117",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S10.01",
+        "S10.03",
+        "S10.04",
+        "S10.05",
+        "S10.06"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "bca6bcc241d7a6672e9920dc33a2a06f6074249a579481e8c22ffd83de0939bc"
     },
@@ -8077,9 +8073,11 @@
       "lesson": 117,
       "source": "lesson",
       "sourceKey": "lesson-117",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-semantic-inference",
+      "requirementDependencies": [
+        "S10.03"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "0d544b92fcc87b2320075be5fa3a2e3f83e5a97c81fd3eca5e33666e8ad9acc6"
     },
@@ -8088,9 +8086,15 @@
       "lesson": 117,
       "source": "lesson",
       "sourceKey": "lesson-117",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S10.01",
+        "S10.03",
+        "S10.04",
+        "S10.05",
+        "S10.06"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "77da56079b304d8c6ddbcc24c65cce5acade3d3a5083babe31e6d7eca7bd895c"
     },
@@ -8099,9 +8103,12 @@
       "lesson": 117,
       "source": "lesson",
       "sourceKey": "lesson-117",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-semantic-inference",
+      "requirementDependencies": [
+        "S10.03",
+        "S10.05"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "dd730a624cdaafc9b9b0440c8ac86b15f2b01d1ad4947f5c721ebf4ee6573d21"
     },
@@ -8110,9 +8117,15 @@
       "lesson": 117,
       "source": "lesson",
       "sourceKey": "lesson-117",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S10.01",
+        "S10.03",
+        "S10.04",
+        "S10.05",
+        "S10.06"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "ae9ff7c4e7a0f361565e3d1117033226714288a3fa7764185678ea7a87779172"
     },
@@ -8178,9 +8191,11 @@
       "lesson": 119,
       "source": "lesson",
       "sourceKey": "lesson-119",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-semantic-inference",
+      "requirementDependencies": [
+        "S10.01"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "4caa64f595bae5e92b4ce68fa93bd4b729d19075a3198ca455fa349547d231df"
     },
@@ -8189,9 +8204,16 @@
       "lesson": 119,
       "source": "lesson",
       "sourceKey": "lesson-119",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S10.01",
+        "S10.02",
+        "S10.03",
+        "S10.04",
+        "S10.05",
+        "S10.06"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "f4f2282844db436186074ebaf4605ed9b251fd7dc262801e413f035246c357bb"
     },
@@ -8200,9 +8222,12 @@
       "lesson": 119,
       "source": "lesson",
       "sourceKey": "lesson-119",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-semantic-inference",
+      "requirementDependencies": [
+        "S10.03",
+        "S10.05"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "2bdb77e3490c1aa5a6050597d9fc6918160b609e46db6986985ce5039c8b4b5e"
     },
@@ -8211,9 +8236,11 @@
       "lesson": 119,
       "source": "lesson",
       "sourceKey": "lesson-119",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-semantic-inference",
+      "requirementDependencies": [
+        "S10.03"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "c10739ab78bb8bf27bdf2299072daf6ebd2c19b0527080973dd9c57bc91ff360"
     },
@@ -8222,9 +8249,12 @@
       "lesson": 119,
       "source": "lesson",
       "sourceKey": "lesson-119",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-semantic-inference",
+      "requirementDependencies": [
+        "S10.03",
+        "S10.05"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "b2a15192c9aaaff5f45aaf8989c7f15245f46f18622ab1df3e8d220c5e739db5"
     },
@@ -8290,9 +8320,11 @@
       "lesson": 121,
       "source": "lesson",
       "sourceKey": "lesson-121",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-semantic-inference",
+      "requirementDependencies": [
+        "S10.01"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "00cf6912b856afcbaaf2facf7e3719421b86fd95371704d9e8491ae76e4b62cb"
     },
@@ -8301,9 +8333,11 @@
       "lesson": 121,
       "source": "lesson",
       "sourceKey": "lesson-121",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-semantic-inference",
+      "requirementDependencies": [
+        "S10.01"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "eb29c10749293202d510c4471a831a5fa357edcda7205ccad840ac2f6bb0e2c2"
     },
@@ -8312,9 +8346,17 @@
       "lesson": 121,
       "source": "lesson",
       "sourceKey": "lesson-121",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S10.01",
+        "S10.02",
+        "S10.03",
+        "S10.04",
+        "S10.05",
+        "S10.06",
+        "S10.07"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "b1f5967e0bec438aacd1474e244e4b78a2e0fc8e65230efd0583d4d4482d4fb7"
     },
@@ -8323,9 +8365,11 @@
       "lesson": 121,
       "source": "lesson",
       "sourceKey": "lesson-121",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-semantic-inference",
+      "requirementDependencies": [
+        "S10.07"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "02e4b57ace3cd468a53ef10e10b109334b8a2578452615cfb95acb175ad575f8"
     },
@@ -8334,9 +8378,11 @@
       "lesson": 121,
       "source": "lesson",
       "sourceKey": "lesson-121",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-semantic-inference",
+      "requirementDependencies": [
+        "S10.02"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "3fd636713aa95a15b2b2a3ae0b6c8fad0f12c22636499c93ff9aaae58daa9ddd"
     },
@@ -8955,9 +9001,7 @@
       "sequenceRole": "FORMAL_ASSESSMENT",
       "dependencyBasis": "section-prior-CORE",
       "requirementDependencies": [
-        "S11.01",
         "S11.02",
-        "S11.03",
         "S11.04",
         "S11.05",
         "S11.06",
@@ -8988,9 +9032,7 @@
       "sequenceRole": "FORMAL_ASSESSMENT",
       "dependencyBasis": "section-prior-CORE",
       "requirementDependencies": [
-        "S11.01",
         "S11.02",
-        "S11.03",
         "S11.04",
         "S11.05",
         "S11.06",
@@ -9091,15 +9133,13 @@
       "sequenceRole": "FORMAL_ASSESSMENT",
       "dependencyBasis": "section-prior-CORE",
       "requirementDependencies": [
-        "S11.01",
         "S11.02",
         "S11.03",
         "S11.04",
         "S11.05",
         "S11.06",
         "S11.07",
-        "S11.08",
-        "S11.09"
+        "S11.08"
       ],
       "beforeCoreViolations": [],
       "contentHash": "597d2a59d41243b4ecce90a78bd4b8312b2d816d8d3352095bcc57eff271dc7b"
@@ -9110,9 +9150,9 @@
       "source": "lesson",
       "sourceKey": "lesson-134",
       "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
+      "dependencyBasis": "stage3-reviewed-override",
       "requirementDependencies": [
-        "S11.09"
+        "S11.03"
       ],
       "beforeCoreViolations": [],
       "contentHash": "5778a98dbb647e4574c3293911aa865756df16c8681c7f07dc7eefe617a82ee1"
@@ -9123,9 +9163,9 @@
       "source": "lesson",
       "sourceKey": "lesson-134",
       "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
+      "dependencyBasis": "stage3-reviewed-override",
       "requirementDependencies": [
-        "S11.09"
+        "S11.03"
       ],
       "beforeCoreViolations": [],
       "contentHash": "557c494dbfcad026ce19241e0f56609dea94d20c67348753cba05805206fded7"
@@ -9138,15 +9178,13 @@
       "sequenceRole": "FORMAL_ASSESSMENT",
       "dependencyBasis": "section-prior-CORE",
       "requirementDependencies": [
-        "S11.01",
         "S11.02",
         "S11.03",
         "S11.04",
         "S11.05",
         "S11.06",
         "S11.07",
-        "S11.08",
-        "S11.09"
+        "S11.08"
       ],
       "beforeCoreViolations": [],
       "contentHash": "79febc7308159961c5f62026e3eae74e0a4e377c650aad62dcdd64f6707073a9"
@@ -9157,9 +9195,9 @@
       "source": "lesson",
       "sourceKey": "lesson-134",
       "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
+      "dependencyBasis": "stage3-reviewed-override",
       "requirementDependencies": [
-        "S11.09"
+        "S11.03"
       ],
       "beforeCoreViolations": [],
       "contentHash": "8340deaf4efffcb57dda6ea593fcec79ced77aca69783defe129632570ca7817"
@@ -9170,9 +9208,9 @@
       "source": "lesson",
       "sourceKey": "lesson-135",
       "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
+      "dependencyBasis": "stage3-reviewed-override",
       "requirementDependencies": [
-        "S11.09"
+        "S11.02"
       ],
       "beforeCoreViolations": [],
       "contentHash": "007b1713bee99fb46f762c500ab0e1c20f4516ce70665455cd4287b9254895cd"
@@ -9183,9 +9221,9 @@
       "source": "lesson",
       "sourceKey": "lesson-135",
       "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
+      "dependencyBasis": "stage3-reviewed-override",
       "requirementDependencies": [
-        "S11.09"
+        "S11.02"
       ],
       "beforeCoreViolations": [],
       "contentHash": "34bc642003b1419b946bae4e011d29698747a1f74748c9a25bed132406b0838a"
@@ -9198,15 +9236,13 @@
       "sequenceRole": "FORMAL_ASSESSMENT",
       "dependencyBasis": "section-prior-CORE",
       "requirementDependencies": [
-        "S11.01",
         "S11.02",
         "S11.03",
         "S11.04",
         "S11.05",
         "S11.06",
         "S11.07",
-        "S11.08",
-        "S11.09"
+        "S11.08"
       ],
       "beforeCoreViolations": [],
       "contentHash": "9aaa07e5339c10da4da06c6bf37d5a67d0e9301d4e08981743f00b9f407f61bb"
@@ -9219,15 +9255,13 @@
       "sequenceRole": "FORMAL_ASSESSMENT",
       "dependencyBasis": "section-prior-CORE",
       "requirementDependencies": [
-        "S11.01",
         "S11.02",
         "S11.03",
         "S11.04",
         "S11.05",
         "S11.06",
         "S11.07",
-        "S11.08",
-        "S11.09"
+        "S11.08"
       ],
       "beforeCoreViolations": [],
       "contentHash": "c1bc46d810b3f2b63d703abfbc6e669e80295bd109a2a1050fdbb85edd324d5b"
@@ -9238,9 +9272,9 @@
       "source": "lesson",
       "sourceKey": "lesson-135",
       "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
+      "dependencyBasis": "stage3-reviewed-override",
       "requirementDependencies": [
-        "S11.09"
+        "S11.02"
       ],
       "beforeCoreViolations": [],
       "contentHash": "d2d5226e73548eb587d6438ddc78cdb4e226a4f47bf45d3826af93104e2bade3"
@@ -9251,9 +9285,9 @@
       "source": "lesson",
       "sourceKey": "lesson-136",
       "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
+      "dependencyBasis": "stage3-reviewed-override",
       "requirementDependencies": [
-        "S11.09"
+        "S10.07"
       ],
       "beforeCoreViolations": [],
       "contentHash": "aa9e39c1636004c741cdd9020ccde27efcb58c1ff19b00ed08db1dc2d21f5beb"
@@ -9264,9 +9298,9 @@
       "source": "lesson",
       "sourceKey": "lesson-136",
       "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
+      "dependencyBasis": "stage3-reviewed-override",
       "requirementDependencies": [
-        "S11.09"
+        "S10.07"
       ],
       "beforeCoreViolations": [],
       "contentHash": "4e2f43fe5e4a99d984b37be8622eb07d74c6ff85ce4e22157e55d2e7a45875c6"
@@ -9279,15 +9313,13 @@
       "sequenceRole": "FORMAL_ASSESSMENT",
       "dependencyBasis": "section-prior-CORE",
       "requirementDependencies": [
-        "S11.01",
         "S11.02",
         "S11.03",
         "S11.04",
         "S11.05",
         "S11.06",
         "S11.07",
-        "S11.08",
-        "S11.09"
+        "S11.08"
       ],
       "beforeCoreViolations": [],
       "contentHash": "a33b2af4cf3af45a88318c76769f08f1decacc5af724c2bff2a0021328545644"
@@ -9300,15 +9332,13 @@
       "sequenceRole": "FORMAL_ASSESSMENT",
       "dependencyBasis": "section-prior-CORE",
       "requirementDependencies": [
-        "S11.01",
         "S11.02",
         "S11.03",
         "S11.04",
         "S11.05",
         "S11.06",
         "S11.07",
-        "S11.08",
-        "S11.09"
+        "S11.08"
       ],
       "beforeCoreViolations": [],
       "contentHash": "cbc0cfce8fdc0097734e39c5773df4ddbab1a475ffe9fb7f897755fe792e27f5"
@@ -9321,15 +9351,13 @@
       "sequenceRole": "FORMAL_ASSESSMENT",
       "dependencyBasis": "section-prior-CORE",
       "requirementDependencies": [
-        "S11.01",
         "S11.02",
         "S11.03",
         "S11.04",
         "S11.05",
         "S11.06",
         "S11.07",
-        "S11.08",
-        "S11.09"
+        "S11.08"
       ],
       "beforeCoreViolations": [],
       "contentHash": "5a0b17be04ac40a9c1288119fabcf7a2b4a09dd2e20dd8e2c78958dd6f090e92"
@@ -9449,19 +9477,9 @@
       "lesson": 139,
       "source": "lesson",
       "sourceKey": "lesson-139",
-      "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-prior-CORE",
-      "requirementDependencies": [
-        "S11.01",
-        "S11.02",
-        "S11.03",
-        "S11.04",
-        "S11.05",
-        "S11.06",
-        "S11.07",
-        "S11.08",
-        "S11.09"
-      ],
+      "sequenceRole": "OPTIONAL_ENRICHMENT",
+      "dependencyBasis": "optional-legacy-lesson-body",
+      "requirementDependencies": [],
       "beforeCoreViolations": [],
       "contentHash": "83645f8dcda5b488dfdfea3a7c149d85c20d3f87e43c980f98f555c776867e54"
     },
@@ -9483,11 +9501,9 @@
       "lesson": 139,
       "source": "lesson",
       "sourceKey": "lesson-139",
-      "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-semantic-inference",
-      "requirementDependencies": [
-        "S11.02"
-      ],
+      "sequenceRole": "OPTIONAL_ENRICHMENT",
+      "dependencyBasis": "optional-legacy-lesson-body",
+      "requirementDependencies": [],
       "beforeCoreViolations": [],
       "contentHash": "bc26c787d4fd45ac0bea3ec6af5820ba37b2098c63d5d5971b8ca3014de27eee"
     },
@@ -9496,19 +9512,9 @@
       "lesson": 139,
       "source": "lesson",
       "sourceKey": "lesson-139",
-      "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-prior-CORE",
-      "requirementDependencies": [
-        "S11.01",
-        "S11.02",
-        "S11.03",
-        "S11.04",
-        "S11.05",
-        "S11.06",
-        "S11.07",
-        "S11.08",
-        "S11.09"
-      ],
+      "sequenceRole": "OPTIONAL_ENRICHMENT",
+      "dependencyBasis": "optional-legacy-lesson-body",
+      "requirementDependencies": [],
       "beforeCoreViolations": [],
       "contentHash": "6fbcd3f8709d37e0f54bfa4e0e1164650d92386bdc5be73f3a68b1ebba507d5f"
     },
@@ -9517,19 +9523,9 @@
       "lesson": 139,
       "source": "lesson",
       "sourceKey": "lesson-139",
-      "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "section-prior-CORE",
-      "requirementDependencies": [
-        "S11.01",
-        "S11.02",
-        "S11.03",
-        "S11.04",
-        "S11.05",
-        "S11.06",
-        "S11.07",
-        "S11.08",
-        "S11.09"
-      ],
+      "sequenceRole": "OPTIONAL_ENRICHMENT",
+      "dependencyBasis": "optional-legacy-lesson-body",
+      "requirementDependencies": [],
       "beforeCoreViolations": [],
       "contentHash": "5dcad9694cb6c90fb314849d765d5251d3df7b61828471ed22c436acf8c7af68"
     },
@@ -9709,9 +9705,14 @@
       "lesson": 143,
       "source": "lesson",
       "sourceKey": "lesson-143",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S12.01",
+        "S12.04",
+        "S12.07",
+        "S12.09"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "06be7716aaec3996dcd69b3e67ccf726f24aa306f859459032f31438c7bb94ed"
     },
@@ -9720,9 +9721,14 @@
       "lesson": 143,
       "source": "lesson",
       "sourceKey": "lesson-143",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S12.01",
+        "S12.04",
+        "S12.07",
+        "S12.09"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "1a12b3f3fe502e97a40b3029cb91b1e39fe6dd9bb2564ffcbe262a0d9914fe0b"
     },
@@ -9731,9 +9737,14 @@
       "lesson": 143,
       "source": "lesson",
       "sourceKey": "lesson-143",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S12.01",
+        "S12.04",
+        "S12.07",
+        "S12.09"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "2008de8cd2716ce4ef165bf139880b2940966a3892ebc3be3872074bc19a3366"
     },
@@ -9742,9 +9753,14 @@
       "lesson": 143,
       "source": "lesson",
       "sourceKey": "lesson-143",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S12.01",
+        "S12.04",
+        "S12.07",
+        "S12.09"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "00991b514a5ffbad38ffe02f97e477e3dbcd595c7c445aef962d442a671f4e71"
     },
@@ -9753,9 +9769,14 @@
       "lesson": 143,
       "source": "lesson",
       "sourceKey": "lesson-143",
-      "sequenceRole": "OPTIONAL_ENRICHMENT",
-      "dependencyBasis": "optional-legacy-lesson-body",
-      "requirementDependencies": [],
+      "sequenceRole": "FORMAL_ASSESSMENT",
+      "dependencyBasis": "section-prior-CORE",
+      "requirementDependencies": [
+        "S12.01",
+        "S12.04",
+        "S12.07",
+        "S12.09"
+      ],
       "beforeCoreViolations": [],
       "contentHash": "98339d94fa8d28e30f2997d0bcd11512fcd5d4ce3186a88ed05b7be9bad15a92"
     },
@@ -10300,7 +10321,8 @@
         "S1.02",
         "S1.03",
         "S1.04",
-        "S1.05"
+        "S1.05",
+        "S1.06"
       ],
       "beforeCoreViolations": [],
       "contentHash": "295f43037f6a7a702d4b1724fe4e184d12d102e639a5c03ff661bfccb928f570"
@@ -10352,12 +10374,12 @@
       "source": "assessment",
       "sourceKey": "quiz",
       "sequenceRole": "FORMAL_ASSESSMENT",
-      "dependencyBasis": "contract-assessment-evidence",
+      "dependencyBasis": "section-semantic-inference",
       "requirementDependencies": [
-        "S1.09"
+        "S1.08"
       ],
       "beforeCoreViolations": [],
-      "contentHash": "cc93b69a407f54231b5b33e3c503305ccf2c905673ccaea66876efeb16d06c61"
+      "contentHash": "09934be52fd04dd52c7a4c3fe8e7608dac3262e3b19e15d4afaf1d3a97bccaff"
     },
     {
       "questionId": "AQ010-Q5",
@@ -10522,15 +10544,7 @@
         "S2.03",
         "S2.04",
         "S2.05",
-        "S2.06",
-        "S2.07",
-        "S2.08",
-        "S2.09",
-        "S2.10",
         "S2.11",
-        "S2.12",
-        "S2.13",
-        "S2.14",
         "S2.15",
         "S2.16"
       ],
@@ -10818,10 +10832,8 @@
         "S4.02",
         "S4.03",
         "S4.04",
-        "S4.05",
         "S4.06",
         "S4.07",
-        "S4.08",
         "S4.09"
       ],
       "beforeCoreViolations": [],
@@ -10875,11 +10887,10 @@
       "sequenceRole": "FORMAL_ASSESSMENT",
       "dependencyBasis": "contract-assessment-evidence",
       "requirementDependencies": [
-        "S4.05",
         "S4.09"
       ],
       "beforeCoreViolations": [],
-      "contentHash": "a78de21e002a4d4dde7dd27729406c671931d59ca661545b66eb1345a3b5caee"
+      "contentHash": "45002d23da5f13eee14f2e2897fe018d3d83173e7d35a12ac2cd3858edd2c9fa"
     },
     {
       "questionId": "AQ050-Q1",
@@ -10969,10 +10980,7 @@
       "dependencyBasis": "section-prior-CORE",
       "requirementDependencies": [
         "S5.01",
-        "S5.02",
-        "S5.03",
-        "S5.04",
-        "S5.05"
+        "S5.02"
       ],
       "beforeCoreViolations": [],
       "contentHash": "f824e8434c8e512345a98cdce68f617cefbc47aef5bbdcbaa9e4cd59413f2a6d"
@@ -10999,10 +11007,7 @@
       "dependencyBasis": "section-prior-CORE",
       "requirementDependencies": [
         "S5.01",
-        "S5.02",
-        "S5.03",
-        "S5.04",
-        "S5.05"
+        "S5.02"
       ],
       "beforeCoreViolations": [],
       "contentHash": "8647fc42817c89a821eb70504a277e9fe57fd3c48cc6d3ad424574333d79d11e"
@@ -11366,8 +11371,6 @@
         "S7.06",
         "S8.01",
         "S8.02",
-        "S8.03",
-        "S8.04",
         "S8.05",
         "S8.06"
       ],
@@ -12000,7 +12003,8 @@
         "S9.03",
         "S9.04",
         "S9.05",
-        "S9.06"
+        "S9.06",
+        "S9.09"
       ],
       "beforeCoreViolations": [],
       "contentHash": "2fe3ee89042bfe52e2cad299108fe9f8beda5fa4b5a2e1af312ab7c3de0a5948"
@@ -12073,7 +12077,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -12107,7 +12110,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -12128,7 +12130,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -12149,7 +12150,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -12170,7 +12170,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -12191,7 +12190,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -12212,7 +12210,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -12233,7 +12230,6 @@
         "S9.05",
         "S9.06",
         "S9.07",
-        "S9.08",
         "S9.09"
       ],
       "beforeCoreViolations": [],
@@ -12257,10 +12253,10 @@
         "S9.08",
         "S9.09",
         "S10.01",
-        "S10.02",
         "S10.03",
         "S10.04",
-        "S10.05"
+        "S10.05",
+        "S10.06"
       ],
       "beforeCoreViolations": [],
       "contentHash": "d1b6881a939e231eeeec321a7badc132dd261e9db613a09fe2f418e25fcbcb90"
@@ -12283,10 +12279,10 @@
         "S9.08",
         "S9.09",
         "S10.01",
-        "S10.02",
         "S10.03",
         "S10.04",
-        "S10.05"
+        "S10.05",
+        "S10.06"
       ],
       "beforeCoreViolations": [],
       "contentHash": "7243fad1c7040160d99a7c13341cd825fa899fffeb17c8297acfe76cd2cda8ec"
@@ -12322,10 +12318,10 @@
         "S9.08",
         "S9.09",
         "S10.01",
-        "S10.02",
         "S10.03",
         "S10.04",
-        "S10.05"
+        "S10.05",
+        "S10.06"
       ],
       "beforeCoreViolations": [],
       "contentHash": "5fbd3d14df24a6dd00438da5db8ceba7794c856f51c59578020379d8db6560d2"
@@ -12397,10 +12393,7 @@
         "S10.04",
         "S10.05",
         "S10.06",
-        "S10.07",
-        "S10.08",
-        "S10.09",
-        "S10.10"
+        "S10.07"
       ],
       "beforeCoreViolations": [],
       "contentHash": "47ab57d5dea76948b5adf408c06a50cbabcaac2a8246087102b3b4535c1ba6e2"
@@ -12419,10 +12412,7 @@
         "S10.04",
         "S10.05",
         "S10.06",
-        "S10.07",
-        "S10.08",
-        "S10.09",
-        "S10.10"
+        "S10.07"
       ],
       "beforeCoreViolations": [],
       "contentHash": "ed30864cdcde47dfdb99d74e3249be84a6ca5fb5a925a1795c7f7058c31d8309"
@@ -12597,15 +12587,13 @@
       "sequenceRole": "FORMAL_ASSESSMENT",
       "dependencyBasis": "section-prior-CORE",
       "requirementDependencies": [
-        "S11.01",
         "S11.02",
         "S11.03",
         "S11.04",
         "S11.05",
         "S11.06",
         "S11.07",
-        "S11.08",
-        "S11.09"
+        "S11.08"
       ],
       "beforeCoreViolations": [],
       "contentHash": "34ccb17c86d5cb51e4a32cb21c53de864a7fa7dbdfcaca5c2e7dd1f9ee9274f0"
@@ -12631,15 +12619,13 @@
       "sequenceRole": "FORMAL_ASSESSMENT",
       "dependencyBasis": "section-prior-CORE",
       "requirementDependencies": [
-        "S11.01",
         "S11.02",
         "S11.03",
         "S11.04",
         "S11.05",
         "S11.06",
         "S11.07",
-        "S11.08",
-        "S11.09"
+        "S11.08"
       ],
       "beforeCoreViolations": [],
       "contentHash": "45fc79fb68045fcc3294e1a1482a3cd88ccd775c37215c7008c988133436e23c"
@@ -12972,10 +12958,10 @@
       "sequenceRole": "FORMAL_ASSESSMENT",
       "dependencyBasis": "section-semantic-inference",
       "requirementDependencies": [
-        "S2.08"
+        "S2.16"
       ],
       "beforeCoreViolations": [],
-      "contentHash": "23d052cae930bb480e392e09c1906881eec954d89837e6a0c32f0dd13bd038b9"
+      "contentHash": "8cc80db738d27fb164ae2f7240c96e7b0bbb6040cd7197c2907d3df8c1ef05d2"
     },
     {
       "questionId": "AM020-Q4",
@@ -13388,7 +13374,8 @@
         "S9.03",
         "S9.04",
         "S9.05",
-        "S9.06"
+        "S9.06",
+        "S9.09"
       ],
       "beforeCoreViolations": [],
       "contentHash": "1b342c1006cce5b6f2b95e3eb84458889544ddcabb871e2cc2ec52c830e93b47"
@@ -13490,7 +13477,8 @@
         "S9.03",
         "S9.04",
         "S9.05",
-        "S9.06"
+        "S9.06",
+        "S9.09"
       ],
       "beforeCoreViolations": [],
       "contentHash": "26ec64ac92d2148a8b78d29b47106a0a32480e8ed2728bd0ecba435bb15391f1"
@@ -13609,10 +13597,7 @@
         "S10.04",
         "S10.05",
         "S10.06",
-        "S10.07",
-        "S10.08",
-        "S10.09",
-        "S10.10"
+        "S10.07"
       ],
       "beforeCoreViolations": [],
       "contentHash": "e853e58ae7d394e4cbe8af0054561ed45bb224ef8ff791679cd29bde2f91e646"

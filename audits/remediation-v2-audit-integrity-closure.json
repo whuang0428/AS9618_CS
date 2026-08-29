@@ -115,26 +115,35 @@
     {
       "id": "RV2-CONT-001",
       "severity": "P0",
-      "disposition": "Open",
-      "currentStatus": "Open",
-      "closureEvidence": [],
-      "nextAction": "Stage 5 technical content and image repair after user approval"
+      "disposition": "Resolved",
+      "currentStatus": "Resolved",
+      "closureEvidence": [
+        "L049 topic heading, teaching, assessment, maintained transcript and deterministic concept image use processor type and number of cores, bus width, clock speed and cache memory",
+        "The word-length discussion remains visibly labelled Optional enrichment and is excluded from the official performance-factor list"
+      ],
+      "nextAction": null
     },
     {
       "id": "RV2-PSEUDO-001",
       "severity": "P0",
-      "disposition": "Open",
-      "currentStatus": "Open",
-      "closureEvidence": [],
-      "nextAction": "Stage 5 technical content and image repair after user approval"
+      "disposition": "Resolved",
+      "currentStatus": "Resolved",
+      "closureEvidence": [
+        "L107/L133 keep MID results as STRING and reserve LCASE/UCASE for declared CHAR values with single-quoted literals",
+        "LEFT is identified as guide-external and is not called without a complete question-supplied signature"
+      ],
+      "nextAction": null
     },
     {
       "id": "RV2-PSEUDO-002",
       "severity": "P0",
-      "disposition": "Open",
-      "currentStatus": "Open",
-      "closureEvidence": [],
-      "nextAction": "Stage 5 technical content and image repair after user approval"
+      "disposition": "Resolved",
+      "currentStatus": "Resolved",
+      "closureEvidence": [
+        "L121 defines SPLIT, STRING_TO_INTEGER, IS_NUMERIC and FIELD_COUNT with complete typed signatures before use",
+        "The supplied SPLIT array starts at index 1; parameter order and return types are explicit in teaching, questions, transcript and pixels"
+      ],
+      "nextAction": null
     },
     {
       "id": "RV2-AUDIT-001",
@@ -153,8 +162,19 @@
       "disposition": "ResolvedByAuditIntegrityRepair",
       "currentStatus": "Resolved",
       "closureEvidence": [
-        "83/83 CORE teaching pages place substantive CORE before Optional content; all 70 unique first-use pages are owned by declared requirements",
+        "95/95 CORE teaching pages place substantive CORE before Optional content; all 72 unique first-use pages are owned by declared requirements",
         "All declared first-teaching concept groups pass, including vector, representations, devices, security, licensing, algorithms and ADT scope"
+      ],
+      "nextAction": null
+    },
+    {
+      "id": "RV2-AUDIT-003",
+      "severity": "P1",
+      "disposition": "Resolved",
+      "currentStatus": "Resolved",
+      "closureEvidence": [
+        "Required visual evidence now checks the contract mapping, target register and actual DOM section role/activity together; Optional evidence cannot satisfy CORE coverage",
+        "74 unique required visual panels are anchored after reviewed CORE teaching, with 28 source panels relocated so none precedes first use or depends on an Optional-only page"
       ],
       "nextAction": null
     }

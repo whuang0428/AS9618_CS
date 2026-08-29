@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 017 | Bus, star, mesh and hybrid topologies</title>
+    <title>AS9618 Lesson 017 | Client-server and peer-to-peer models</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Bus, star, mesh and hybrid topologies</h1>
+        <h1>Client-server and peer-to-peer models</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -43,52 +43,62 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Bus, star, mesh and hybrid topologies</h2>
+            <h2>Network models and thin/thick client designs</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A topology describes the pattern of links between devices. In a bus topology devices share one backbone; in a star topology each device has a separate link to a central switch; in a mesh topology nodes have multiple interconnections; a hybrid topology combines two or more topology patterns.</p>
-            <p>Compare topologies using packet path, single points of failure, alternative routes, cabling, expansion and traffic. A topology name without a path or failure consequence is not a developed explanation.</p>
+            <p>In a client-server model, clients request services or resources and one or more servers provide them. Dedicated server roles can include authentication, file storage, web hosting and backup. Central management, consistent access control and central backup are benefits; server cost, specialist administration, dependence on the server and a possible central failure are drawbacks.</p>
+            <p>In a peer-to-peer model, each peer may request and provide resources directly. It can be inexpensive and simple for a small trusted group because no dedicated server is required, but distributed accounts, backups, security and availability become harder to control. A model choice must be justified from number of users, trust, management, availability, cost and the required shared services.</p>
+            <p>A thin client relies mainly on a server for processing and/or storage. A thick client performs more processing locally and normally stores more software or data on the client device. Thin clients simplify central updates and can use lower-specification hardware, but depend heavily on the server and network. Thick clients can continue more work when disconnected, but local installation, security and maintenance are distributed.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Compare failure paths</h3>
-            <p>After one end-device cable fails, only that device normally loses access in a star. If the central switch fails, every attached device loses access. A mesh can retain an alternative path after one link fails.</p>
+            <h3>Worked example: Choose a model and client type for a school examination room</h3>
+            <p>Use a client-server model so accounts, permissions, exam files and backups are controlled by servers. Thin clients support central software management and reduce local storage, but the school must provide resilient servers and networking because a failure can stop the room. Thick clients would reduce that dependence but distribute software and security maintenance.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Bus, star, mesh and hybrid topologies: apply and assess</h2>
+            <h2>Network models and thin/thick client designs: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Describe the path followed in a star topology.</p>
-              <details><summary>Show answer</summary><p>A frame travels from the sender to the central switch and then to the destination.</p></details>
+              <p><strong>1.</strong> State the roles of a client and server.</p>
+              <details><summary>Show answer</summary><p>A client requests a service or resource; a server provides and manages the service or resource.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Why can a mesh be more resilient than a bus?</p>
-              <details><summary>Show answer</summary><p>Its multiple links can provide an alternative route after one link fails.</p></details>
+              <p><strong>2.</strong> Give one benefit and one drawback of peer-to-peer networking.</p>
+              <details><summary>Show answer</summary><p>Benefit: no dedicated server / low setup cost. Drawback: distributed security, backup and availability are harder to manage.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Justify client-server for 600 managed school users.</p>
+              <details><summary>Show answer</summary><p>Central accounts, permissions, storage, updates and backup suit many users, despite server cost and availability risk.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Compare a thin client from a thick client.</p>
+              <details><summary>Show answer</summary><p>A thin client depends mainly on server processing/storage; a thick client performs and stores more locally.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Compare star and mesh topologies for a hospital network and justify one choice.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>A call centre is choosing a client-server model with thin clients. Explain two benefits and two drawbacks of this combined choice.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>accurate star path</td><td>Do not credit a topology name without an accurate connection pattern and consequence.</td><td>1</td></tr>
-                  <tr><td>accurate mesh path</td><td></td><td>1</td></tr>
-                  <tr><td>developed failure or cost comparison</td><td></td><td>1</td></tr>
-                  <tr><td>scenario-linked justification</td><td></td><td>1</td></tr>
+                  <tr><td>centralised accounts/software/update or data management</td><td>Do not award 'cheaper' unless the lower client specification or central administration explains why; do not confuse network model with topology.</td><td>1</td></tr>
+                  <tr><td>lower client hardware/storage requirement</td><td></td><td>1</td></tr>
+                  <tr><td>depends on network/server availability or performance</td><td></td><td>1</td></tr>
+                  <tr><td>server infrastructure, administration or central-failure cost</td><td></td><td>1</td></tr>
+                  <tr><td>develops at least one point in the call-centre context</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

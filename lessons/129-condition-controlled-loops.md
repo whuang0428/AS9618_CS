@@ -1,68 +1,40 @@
-# Lesson 129: Selection and loop structures
+# Lesson 129: Condition-controlled loops
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Selection and loop structures
+**Focus:** Pre-condition, post-condition and loop choice
 
 ### Direct explanation
 
-- Use IF...THEN...ELSE...ENDIF when a Boolean condition selects between paths. An ELSE clause supplies the false path. In nested IF statements, every inner and outer IF must be closed and the indentation must show which ELSE belongs to which IF.
-- Use CASE...OF...OTHERWISE...ENDCASE when one expression is compared with several discrete values. CASE is not a replacement for range or compound-condition decisions unless the stated values cover the requirement correctly.
-- A count-controlled loop uses FOR...TO...NEXT when the repetition count or inclusive counter range is known before the loop starts. The counter, start value and end value define the iterations; NEXT closes the loop.
-- Match the loop bounds to the declared data. Initialise accumulators before the loop, update them inside it and output a final result after the loop unless intermediate output is explicitly required.
-- Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.
 - A WHILE...ENDWHILE loop is a pre-condition loop: it tests before the body and may run zero times. A REPEAT...UNTIL loop is a post-condition loop: it executes the body before testing and therefore runs at least once. A FOR...NEXT loop is count-controlled.
 - Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.
 
 ### Worked example
 
-**Nested IF and CASE / Total a fixed array / Choose the loop from the stopping rule:** For a grade, an outer IF tests Mark >= 80; its ELSE contains an inner IF testing Mark >= 50; each IF closes with ENDIF. For a menu, CASE Choice OF maps 1, 2 and 3 to actions and OTHERWISE handles every unlisted value before ENDCASE. For Marks[1:30], set Total <- 0, use FOR Index <- 1 TO 30, add Marks[Index] to Total, close with NEXT Index and output Total after all thirty elements have been processed. Input validation must request a value at least once, so REPEAT; INPUT Mark; UNTIL Mark >= 0 AND Mark <= 100 is suitable. Processing records while a file is not at EOF can use WHILE because an empty file may require zero iterations. Processing twelve months uses FOR because the count is fixed.
+**Choose the loop from the stopping rule:** Input validation must request a value at least once, so REPEAT; INPUT Mark; UNTIL Mark >= 0 AND Mark <= 100 is suitable. Processing records while a file is not at EOF can use WHILE because an empty file may require zero iterations. Processing twelve months uses FOR because the count is fixed.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. How many ENDIF statements close two nested IF statements?
-   **Answer:** Two: one closes the inner IF and one closes the outer IF.
-2. When is CASE suitable?
-   **Answer:** When one expression has several discrete values that map to separate branches.
-3. What handles an unlisted CASE value?
-   **Answer:** OTHERWISE, followed by ENDCASE for the complete structure.
-4. Why is FOR suitable for Marks[1:30]?
-   **Answer:** The 30 iterations and valid index bounds are known before the loop starts.
-5. Where is Total initialised?
-   **Answer:** Once before the loop.
-6. Which keyword closes the count-controlled loop?
-   **Answer:** NEXT followed by the counter name.
-7. Which structure may execute zero times?
+1. Which structure may execute zero times?
    **Answer:** WHILE, because it tests its condition before the body.
-8. Which structure must execute at least once?
+2. Which structure must execute at least once?
    **Answer:** REPEAT...UNTIL, because it tests after the body.
-9. Why is FOR suitable for twelve months?
+3. Why is FOR suitable for twelve months?
    **Answer:** The twelve repetitions are known before execution.
 
 ### Exam-style question and MS
 
-**Question (16 marks):** Write Cambridge pseudocode that inputs Age and Member, outputs Adult member when Age is at least 18 and Member is TRUE, Adult non-member for other adults, and Child otherwise. Then state why nested IF is appropriate. Write Cambridge pseudocode to input and total exactly 12 monthly values, then output the total. Explain why the selected loop is count-controlled. Suggest and justify FOR, WHILE or REPEAT...UNTIL for (a) processing 50 array elements, (b) reading while a file is not at EOF, and (c) requesting a password at least once until correct.
+**Question (5 marks):** Suggest and justify FOR, WHILE or REPEAT...UNTIL for (a) processing 50 array elements, (b) reading while a file is not at EOF, and (c) requesting a password at least once until correct.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| inputs/uses both Age and Member | Do not use CASE for overlapping ranges without a complete mapping or close two IF statements with only one ENDIF. Do not use an eleven- or thirteen-iteration bound or reset the accumulator inside the loop. Do not select a loop only by its spelling or claim that WHILE always executes once. | 1 |
-| outer IF tests Age >= 18 |  | 1 |
-| inner IF tests Member only on the adult path |  | 1 |
-| three outputs are attached to the correct branches |  | 1 |
-| closes both IF statements coherently |  | 1 |
-| justifies nested selection because the membership decision depends on the age decision |  | 1 |
-| initialises Total before repetition |  | 1 |
-| uses FOR Month <- 1 TO 12 or an equivalent twelve-iteration range |  | 1 |
-| inputs a value and adds it inside the loop |  | 1 |
-| closes with NEXT and outputs Total after the loop |  | 1 |
-| justifies FOR because the repetition count is known in advance |  | 1 |
-| FOR for 50 known elements |  | 1 |
+| FOR for 50 known elements | Do not select a loop only by its spelling or claim that WHILE always executes once. | 1 |
 | justifies fixed count/bounds |  | 1 |
 | WHILE for the pre-tested EOF condition and possible empty file |  | 1 |
 | REPEAT...UNTIL for password input that must occur once |  | 1 |
@@ -163,17 +135,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
-### Use CASE for clear values of one expression
-
-- **Explains:** `case`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-case.jpg`
-
-1. CASE compares one expression with several discrete values.
-2. Each listed value has its own action and OTHERWISE handles unlisted values.
-3. Close the complete multi-way selection with ENDCASE.
-
 ### The difference is when the condition is tested
 
 - **Explains:** `compare`
@@ -193,26 +154,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 10. Typical use
 11. read while not EOF, repeat while invalid
 12. input validation where input must be requested once
-
-### A FOR loop has a counter, a start value and an end value
-
-- **Explains:** `for`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-128-for.jpg`
-
-1. FOR loop structure
-2. General pattern
-3. FOR Counter <- StartValue TO EndValue
-4. // repeated statements
-5. NEXT Counter
-6. Concrete example
-7. Total <- 0
-8. FOR Count <- 1 TO 5
-9. Total <- Total + Count
-10. NEXT Count
-11. OUTPUT Total
-12. Use a FOR loop when the number of repetitions is known before the loop starts.
 
 ### Java syntax is support, not Cambridge pseudocode
 

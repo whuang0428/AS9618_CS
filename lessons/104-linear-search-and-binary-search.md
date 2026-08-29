@@ -1,8 +1,64 @@
 # Lesson 104: Linear search and binary search
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Array-based linear search and bubble sort
+
+### Direct explanation
+
+- Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.
+- Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.
+- Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.
+- Linear search examines array elements in index order until the target is found or all populated elements have been checked. A complete algorithm initialises its index and found state, keeps every access within the declared bounds, compares the current element and advances only when another element remains to be checked.
+- Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.
+- A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.
+- Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.
+
+### Worked example
+
+**Declare the search data before tracing it / Two complete array algorithms:** DECLARE Names : ARRAY[1:4] OF STRING defines four string elements. For Names = ['Asha', 'Ben', 'Chen', 'Dina'], a one-based linear search compares Names[1], then Names[2], and stops when it finds 'Ben'. Index 0 is invalid because it is below the declared lower bound. A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count. A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What are the lower and upper bounds of ARRAY[1:4]?
+   **Answer:** The lower bound is 1 and the upper bound is 4.
+2. What does Names[Index] mean?
+   **Answer:** The single array element selected by the current value of Index.
+3. Why must binary search know the current Low and High indexes?
+   **Answer:** They delimit the remaining sorted portion of the array that may contain the target.
+4. When must a linear search stop?
+   **Answer:** When the target has been found or every populated element within the declared bounds has been checked.
+5. What comparison is made by an ascending bubble sort?
+   **Answer:** Compare adjacent elements and swap when the left element is greater than the right element.
+6. What does a no-swap pass prove?
+   **Answer:** No adjacent pair is out of ascending order, so the array is sorted and the algorithm may stop.
+
+### Exam-style question and MS
+
+**Question (12 marks):** Write declarations for an array called Code that stores 20 STRING values, then state the first and last valid indexes used by a search. Write Cambridge pseudocode for a linear search of Name[1:20] and an ascending bubble sort of Score[1:20].
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| DECLARE Code : ARRAY[1:20] or another explicit 20-element bound range | Do not assume zero-based indexing when the declaration gives different bounds. Do not award only a trace or a description; both requested algorithms must be written and must not access Index + 1 beyond the upper bound. | 1 |
+| OF STRING |  | 1 |
+| first valid index matches the declared lower bound |  | 1 |
+| last valid index matches the declared upper bound |  | 1 |
+| linear search initialises Found and Index |  | 1 |
+| linear search loops within indexes 1 to 20 until found or exhausted |  | 1 |
+| linear search compares Name[Index] with the target and records a match |  | 1 |
+| bubble sort uses repeated passes |  | 1 |
+| compares adjacent Score[Index] and Score[Index + 1] within valid bounds |  | 1 |
+| uses Temp or an equivalent safe three-step swap |  | 1 |
+| reduces the unsorted range or uses a valid no-swap stopping condition |  | 1 |
+| all constructs close coherently in Cambridge pseudocode |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -148,6 +204,20 @@ This produces an integer array index.
 10. may check every item
 11. checks far fewer items for large sorted lists
 12. Exam phrase
+
+### Linear search checks each item in order
+
+- **Explains:** `linear`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-linear.jpg`
+
+1. Knowledge explanation
+2. How it works
+3. Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.
+4. When it is suitable
+5. Use it when data is unsorted, the list is small, or simplicity matters more than speed.
+6. Worst case: the target is last or absent, so every item may be checked.
 
 ### Trace linear search
 

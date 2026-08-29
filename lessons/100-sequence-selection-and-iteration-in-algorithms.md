@@ -1,23 +1,26 @@
-# Lesson 100: Sequence, selection and iteration
+# Lesson 100: Sequence, selection, and iteration
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Sequence, selection and iteration
+**Focus:** Sequence, selection, iteration and logic statements
 
 ### Direct explanation
 
 - Sequence executes defined steps once in order. Selection chooses one of two or more paths using a condition. Iteration repeats one or more steps using a count or a condition.
 - A complete algorithm often combines the three constructs: use sequence to initialise and input, iteration to process repeated items, and selection inside the loop when each item needs a decision.
 - Choose the construct from the required behaviour. A known number of repetitions suggests count-controlled iteration; a stopping rule based on data suggests condition-controlled iteration.
+- A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution. It combines comparisons such as =, <, <=, >, >= or <> with AND, OR or NOT when more than one condition is needed.
+- Construct a statement from the rule before choosing its branch: a valid mark from 0 to 100 inclusive is Mark >= 0 AND Mark <= 100. Interpret it by checking both comparisons; using OR would accept values outside the range.
+- Logic statements must preserve boundaries and intended truth conditions. Trace representative true, false and boundary values to expose reversed operators or incorrect connectors.
 
 ### Worked example
 
-**Count five passing marks:** Sequence sets PassCount to 0. A FOR loop iterates through five marks. Inside the loop, selection tests Mark >= 50 and increments PassCount only on the true path. Sequence after the loop outputs PassCount.
+**Count five passing marks / Define a valid-age condition:** Sequence sets PassCount to 0. A FOR loop iterates through five marks. Inside the loop, selection tests Mark >= 50 and increments PassCount only on the true path. Sequence after the loop outputs PassCount. For an accepted age from 11 to 18 inclusive, use Age >= 11 AND Age <= 18. At Age = 11 and Age = 18 the statement is TRUE; at Age = 10 or 19 it is FALSE. NOT(Age >= 11 AND Age <= 18) describes the invalid case.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
@@ -28,17 +31,28 @@
    **Answer:** Selection.
 3. Which construct processes ten supplied readings?
    **Answer:** Iteration, normally a count-controlled loop because the number is known.
+4. Complete the valid-mark statement for 0 to 100 inclusive.
+   **Answer:** Mark >= 0 AND Mark <= 100.
+5. Give the denary value of Found = FALSE OR Index <= UpperBound.
+   **Answer:** The statement is true when the target has not been found, or the index is still within the upper bound, or both.
+6. Why is Mark >= 0 OR Mark <= 100 incorrect for validation?
+   **Answer:** Every number satisfies at least one side, so out-of-range values can be accepted.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Develop a short algorithm that inputs ten marks and outputs how many are passes, labelling where sequence, selection and iteration are used.
+**Question (9 marks):** Develop a short algorithm that inputs ten marks and outputs how many are passes, labelling where sequence, selection and iteration are used. Write and explain a logic statement that accepts an integer Temperature from -20 to 50 inclusive, then state its value for -21, -20, 50 and 51.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| sequence initialises the pass count | Do not award a construct name unless the stated algorithm uses it for the correct behaviour. | 1 |
+| sequence initialises the pass count | Do not award a construct name unless the stated algorithm uses it for the correct behaviour. Do not accept OR for a two-bound inclusive range or award outputs without a correctly constructed statement. | 1 |
 | iteration processes exactly ten marks |  | 1 |
 | selection tests each mark against the pass condition |  | 1 |
 | sequence outputs the final count after the loop |  | 1 |
+| uses Temperature >= -20 |  | 1 |
+| uses AND Temperature <= 50 |  | 1 |
+| states FALSE for -21 |  | 1 |
+| states TRUE for -20 and 50 |  | 1 |
+| states FALSE for 51 |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 

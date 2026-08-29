@@ -902,7 +902,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S1.05",
+      "primaryRequirement": "S1.06",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p14",
       "assessmentObjectives": [
@@ -6190,9 +6190,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S2.10",
+      "primaryRequirement": "S2.16",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
-      "officialBasis": "syllabus:p16",
+      "officialBasis": "syllabus:p17",
       "assessmentObjectives": [
         "AO1"
       ],
@@ -6694,7 +6694,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S2.13",
+      "primaryRequirement": "S2.06",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p16",
       "assessmentObjectives": [
@@ -7193,9 +7193,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S2.15",
+      "primaryRequirement": "S2.06",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
-      "officialBasis": "syllabus:p17",
+      "officialBasis": "syllabus:p16",
       "assessmentObjectives": [
         "AO2"
       ],
@@ -7317,7 +7317,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S2.13",
+      "primaryRequirement": "S2.06",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p16",
       "assessmentObjectives": [
@@ -9199,7 +9199,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S3.04",
+      "primaryRequirement": "S3.05",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p17",
       "assessmentObjectives": [
@@ -9452,7 +9452,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S3.04",
+      "primaryRequirement": "S3.05",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p17",
       "assessmentObjectives": [
@@ -9703,8 +9703,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S3.06",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S3.03",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p17",
       "assessmentObjectives": [
         "AO1"
@@ -9766,8 +9766,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S3.04",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S3.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p17",
       "assessmentObjectives": [
         "AO2"
@@ -9828,8 +9828,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S3.06",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S3.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p17",
       "assessmentObjectives": [
         "AO2"
@@ -9891,8 +9891,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S3.06",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S3.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p17",
       "assessmentObjectives": [
         "AO1"
@@ -9953,8 +9953,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S3.06",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S3.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p17",
       "assessmentObjectives": [
         "AO1"
@@ -10643,9 +10643,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S3.01",
-      "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p17",
+      "primaryRequirement": "S3.10",
+      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "officialBasis": "syllabus:p18",
       "assessmentObjectives": [
         "AO2"
       ],
@@ -10767,7 +10767,7 @@
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
       "primaryRequirement": "S3.10",
-      "syllabusRelationship": "formal-assessment",
+      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p18",
       "assessmentObjectives": [
         "AO1"
@@ -10828,7 +10828,7 @@
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
       "primaryRequirement": "S3.10",
-      "syllabusRelationship": "formal-assessment",
+      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p18",
       "assessmentObjectives": [
         "AO1"
@@ -10887,7 +10887,7 @@
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
       "primaryRequirement": "S3.10",
-      "syllabusRelationship": "formal-assessment",
+      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p18",
       "assessmentObjectives": [
         "AO1"
@@ -12881,7 +12881,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S4.02",
+      "primaryRequirement": "S4.07",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p19",
       "assessmentObjectives": [
@@ -12944,7 +12944,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S4.03",
+      "primaryRequirement": "S4.07",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p19",
       "assessmentObjectives": [
@@ -14778,9 +14778,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S4.12",
+      "primaryRequirement": "S4.08",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
-      "officialBasis": "syllabus:p20",
+      "officialBasis": "syllabus:p19",
       "assessmentObjectives": [
         "AO2"
       ],
@@ -15404,9 +15404,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S4.12",
-      "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p20",
+      "primaryRequirement": "S4.15",
+      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "officialBasis": "syllabus:p22",
       "assessmentObjectives": [
         "AO2"
       ],
@@ -15528,7 +15528,7 @@
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
       "primaryRequirement": "S4.15",
-      "syllabusRelationship": "formal-assessment",
+      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p22",
       "assessmentObjectives": [
         "AO1"
@@ -15589,7 +15589,7 @@
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
       "primaryRequirement": "S4.15",
-      "syllabusRelationship": "formal-assessment",
+      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p22",
       "assessmentObjectives": [
         "AO2"
@@ -16602,8 +16602,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S5.03",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S5.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p23",
       "assessmentObjectives": [
         "AO2"
@@ -16666,7 +16666,7 @@
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
       "primaryRequirement": "S5.01",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p23",
       "assessmentObjectives": [
         "AO2"
@@ -16727,8 +16727,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S5.05",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S5.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p23",
       "assessmentObjectives": [
         "AO1"
@@ -16790,8 +16790,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S5.03",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S5.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p23",
       "assessmentObjectives": [
         "AO1"
@@ -16852,8 +16852,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S5.03",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S5.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p23",
       "assessmentObjectives": [
         "AO2"
@@ -16916,7 +16916,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S5.03",
+      "primaryRequirement": "S5.01",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p23",
       "assessmentObjectives": [
@@ -17102,7 +17102,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S5.05",
+      "primaryRequirement": "S5.02",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p23",
       "assessmentObjectives": [
@@ -17164,7 +17164,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S5.03",
+      "primaryRequirement": "S5.02",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p23",
       "assessmentObjectives": [
@@ -17921,7 +17921,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S5.06",
+      "primaryRequirement": "S5.03",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p23",
       "assessmentObjectives": [
@@ -18045,7 +18045,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S5.06",
+      "primaryRequirement": "S5.03",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p23",
       "assessmentObjectives": [
@@ -18172,7 +18172,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S5.06",
+      "primaryRequirement": "S5.03",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p23",
       "assessmentObjectives": [
@@ -18551,7 +18551,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S5.04",
+      "primaryRequirement": "S5.03",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p23",
       "assessmentObjectives": [
@@ -18615,7 +18615,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S5.04",
+      "primaryRequirement": "S5.03",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p23",
       "assessmentObjectives": [
@@ -24211,9 +24211,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S8.07",
+      "primaryRequirement": "S8.10",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
-      "officialBasis": "syllabus:p26",
+      "officialBasis": "syllabus:p27",
       "assessmentObjectives": [
         "AO2"
       ],
@@ -24650,7 +24650,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S8.07",
+      "primaryRequirement": "S8.08",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p26",
       "assessmentObjectives": [
@@ -24966,9 +24966,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S8.04",
+      "primaryRequirement": "S8.02",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
-      "officialBasis": "syllabus:p25",
+      "officialBasis": "syllabus:p25-26",
       "assessmentObjectives": [
         "AO2"
       ],
@@ -25789,9 +25789,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S8.10",
+      "primaryRequirement": "S8.02",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
-      "officialBasis": "syllabus:p27",
+      "officialBasis": "syllabus:p25-26",
       "assessmentObjectives": [
         "AO2"
       ],
@@ -31376,7 +31376,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S9.05",
+      "primaryRequirement": "S9.01",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p27",
       "assessmentObjectives": [
@@ -31819,7 +31819,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S9.05",
+      "primaryRequirement": "S9.06",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p27",
       "assessmentObjectives": [
@@ -32074,8 +32074,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S9.07",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S9.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p27",
       "assessmentObjectives": [
         "AO2"
@@ -32137,8 +32137,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S9.05",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S9.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p27",
       "assessmentObjectives": [
         "AO3"
@@ -32201,8 +32201,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S9.04",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S9.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p27",
       "assessmentObjectives": [
         "AO2"
@@ -32263,8 +32263,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S9.04",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S9.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p27",
       "assessmentObjectives": [
         "AO2"
@@ -32326,8 +32326,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S9.07",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S9.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p27",
       "assessmentObjectives": [
         "AO2"
@@ -32452,9 +32452,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S9.08",
+      "primaryRequirement": "S9.01",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
-      "officialBasis": "syllabus:p28",
+      "officialBasis": "syllabus:p27",
       "assessmentObjectives": [
         "AO2"
       ],
@@ -32515,7 +32515,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S9.05",
+      "primaryRequirement": "S9.04",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p27",
       "assessmentObjectives": [
@@ -32705,7 +32705,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S9.05",
+      "primaryRequirement": "S9.07",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p27",
       "assessmentObjectives": [
@@ -32957,7 +32957,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S9.05",
+      "primaryRequirement": "S9.07",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p27",
       "assessmentObjectives": [
@@ -34609,7 +34609,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S9.04",
+      "primaryRequirement": "S9.05",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p27",
       "assessmentObjectives": [
@@ -35764,7 +35764,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.06",
+      "primaryRequirement": "S10.07",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
@@ -35828,7 +35828,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.02",
+      "primaryRequirement": "S10.05",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
@@ -36534,8 +36534,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.05",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S10.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO3"
@@ -36598,8 +36598,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.06",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S10.03",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO2"
@@ -36663,8 +36663,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.05",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S10.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO3"
@@ -36729,9 +36729,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.10",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
-      "officialBasis": "syllabus:p29",
+      "primaryRequirement": "S10.03",
+      "syllabusRelationship": "formal-assessment",
+      "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO3"
       ],
@@ -36793,8 +36793,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.06",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S10.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO2"
@@ -37177,7 +37177,7 @@
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
       "primaryRequirement": "S10.01",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO2"
@@ -37240,8 +37240,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.07",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S10.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO3"
@@ -37303,8 +37303,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.05",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S10.03",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO3"
@@ -37367,7 +37367,7 @@
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
       "primaryRequirement": "S10.03",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO2"
@@ -37429,9 +37429,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.10",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
-      "officialBasis": "syllabus:p29",
+      "primaryRequirement": "S10.03",
+      "syllabusRelationship": "formal-assessment",
+      "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO3"
       ],
@@ -37557,9 +37557,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.10",
+      "primaryRequirement": "S10.07",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
-      "officialBasis": "syllabus:p29",
+      "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO3"
       ],
@@ -37745,9 +37745,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.10",
+      "primaryRequirement": "S10.07",
       "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
-      "officialBasis": "syllabus:p29",
+      "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO3"
       ],
@@ -37811,7 +37811,7 @@
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
       "primaryRequirement": "S10.01",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO3"
@@ -37874,9 +37874,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.10",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
-      "officialBasis": "syllabus:p29",
+      "primaryRequirement": "S10.01",
+      "syllabusRelationship": "formal-assessment",
+      "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO3"
       ],
@@ -37938,8 +37938,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.07",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S10.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO2"
@@ -38002,7 +38002,7 @@
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
       "primaryRequirement": "S10.07",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO2"
@@ -38064,8 +38064,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S10.05",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S10.02",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO3"
@@ -41321,7 +41321,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
@@ -41445,7 +41445,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
@@ -41953,7 +41953,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
@@ -42016,9 +42016,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S11.03",
       "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p30",
+      "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
         "AO3"
       ],
@@ -42081,9 +42081,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S11.03",
       "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p30",
+      "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
         "AO2"
       ],
@@ -42145,7 +42145,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
@@ -42210,9 +42210,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S11.03",
       "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p30",
+      "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
         "AO3"
       ],
@@ -42275,9 +42275,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p30",
+      "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
         "AO3"
       ],
@@ -42338,9 +42338,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p30",
+      "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
         "AO3"
       ],
@@ -42402,7 +42402,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
@@ -42463,7 +42463,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
@@ -42526,9 +42526,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p30",
+      "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
         "AO3"
       ],
@@ -42591,9 +42591,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S10.07",
       "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p30",
+      "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO3"
       ],
@@ -42655,9 +42655,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.09",
+      "primaryRequirement": "S10.07",
       "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p30",
+      "officialBasis": "syllabus:p28",
       "assessmentObjectives": [
         "AO3"
       ],
@@ -42720,7 +42720,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
@@ -42784,7 +42784,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
@@ -42848,7 +42848,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
@@ -43550,8 +43550,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
-      "syllabusRelationship": "formal-assessment",
+      "primaryRequirement": "S11.02",
+      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
         "AO2"
@@ -43679,9 +43679,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.02",
-      "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p29",
+      "primaryRequirement": "S11.06",
+      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "officialBasis": "syllabus:p30",
       "assessmentObjectives": [
         "AO2"
       ],
@@ -43743,8 +43743,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
-      "syllabusRelationship": "formal-assessment",
+      "primaryRequirement": "S11.02",
+      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
       "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
         "AO2"
@@ -43805,9 +43805,9 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
-      "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p29",
+      "primaryRequirement": "S11.06",
+      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "officialBasis": "syllabus:p30",
       "assessmentObjectives": [
         "AO2"
       ],
@@ -44827,8 +44827,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S12.02",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S12.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p30",
       "assessmentObjectives": [
         "AO2"
@@ -44891,8 +44891,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S12.02",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S12.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p30",
       "assessmentObjectives": [
         "AO3"
@@ -44956,7 +44956,7 @@
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
       "primaryRequirement": "S12.01",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p30",
       "assessmentObjectives": [
         "AO2"
@@ -45018,8 +45018,8 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S12.02",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "primaryRequirement": "S12.01",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p30",
       "assessmentObjectives": [
         "AO2"
@@ -45083,7 +45083,7 @@
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
       "primaryRequirement": "S12.01",
-      "syllabusRelationship": "optional-enrichment-prerequisite-anchor",
+      "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p30",
       "assessmentObjectives": [
         "AO2"
@@ -47842,13 +47842,13 @@
       "source": "assessment",
       "sourceKey": "quiz",
       "lesson": 10,
-      "prompt": "State two items stored for a vector drawing object.",
-      "contentHash": "cc93b69a407f54231b5b33e3c503305ccf2c905673ccaea66876efeb16d06c61",
-      "primaryCommandWord": "state",
+      "prompt": "A bitmap has 20,000 bytes of pixel data and a supplied 54-byte header. Calculate the total uncompressed size and state what the header stores.",
+      "contentHash": "09934be52fd04dd52c7a4c3fe8e7608dac3262e3b19e15d4afaf1d3a97bccaff",
+      "primaryCommandWord": "calculate",
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S1.09",
+      "primaryRequirement": "S1.08",
       "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p15",
       "assessmentObjectives": [
@@ -47857,29 +47857,29 @@
       "marks": 2,
       "allowedAnswerBoundary": {
         "creditworthyPoints": [
-          "one valid property such as object type/coordinates/dimensions",
-          "a second valid property such as line/fill colour or transformation"
+          "20,054 bytes",
+          "the header stores metadata needed to interpret the bitmap, separate from pixel values"
         ],
         "guidance": [
-          "Do not award pixel colour depth as an object property."
+          "Do not multiply the header by the number of pixels or omit the supplied header."
         ],
         "rule": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope."
       },
       "trialCases": {
         "correctAnswer": {
-          "fixture": "one valid property such as object type/coordinates/dimensions; a second valid property such as line/fill colour or transformation",
+          "fixture": "20,054 bytes; the header stores metadata needed to interpret the bitmap, separate from pixel values",
           "expectedMarks": 2,
           "observedMarks": 2,
           "result": "Pass"
         },
         "commonError": {
-          "fixture": "one valid property such as object type/coordinates/dimensions",
+          "fixture": "20,054 bytes",
           "expectedMarks": 1,
           "observedMarks": 1,
           "result": "Pass"
         },
         "boundaryAnswer": {
-          "fixture": "one valid property such as object type/coordinates/dimensions",
+          "fixture": "20,054 bytes",
           "expectedMarks": 1,
           "observedMarks": 1,
           "result": "Pass"
@@ -49930,44 +49930,44 @@
       "source": "assessment",
       "sourceKey": "quiz",
       "lesson": 45,
-      "prompt": "Explain how processor type can affect performance for a workload and why machine code is processor dependent.",
-      "contentHash": "a78de21e002a4d4dde7dd27729406c671931d59ca661545b66eb1345a3b5caee",
+      "prompt": "Explain why machine code is processor dependent and how an assembler uses the instruction set when translating a mnemonic.",
+      "contentHash": "45002d23da5f13eee14f2e2897fe018d3d83173e7d35a12ac2cd3858edd2c9fa",
       "primaryCommandWord": "explain",
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S4.05",
+      "primaryRequirement": "S4.09",
       "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p19",
+      "officialBasis": "syllabus:p20",
       "assessmentObjectives": [
         "AO2"
       ],
       "marks": 2,
       "allowedAnswerBoundary": {
         "creditworthyPoints": [
-          "processor type includes its architecture/instruction-set and execution design, so different types may perform different amounts of useful work for the workload",
-          "machine-code opcodes/formats belong to that processor instruction set, so another type may decode them differently or not support them"
+          "machine-code opcodes/formats belong to a specific processor instruction set, so another processor may decode them differently or not support them",
+          "the assembler maps the mnemonic and operands to the opcode/format defined by that instruction set"
         ],
         "guidance": [
-          "Do not accept processor type as only a brand name or only 'processors are different'."
+          "Do not describe machine code as a universal representation shared by every processor."
         ],
         "rule": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope."
       },
       "trialCases": {
         "correctAnswer": {
-          "fixture": "processor type includes its architecture/instruction-set and execution design, so different types may perform different amounts of useful work for the workload; machine-code opcodes/formats belong to that processor instruction set, so another type may decode them differently or not support them",
+          "fixture": "machine-code opcodes/formats belong to a specific processor instruction set, so another processor may decode them differently or not support them; the assembler maps the mnemonic and operands to the opcode/format defined by that instruction set",
           "expectedMarks": 2,
           "observedMarks": 2,
           "result": "Pass"
         },
         "commonError": {
-          "fixture": "processor type includes its architecture/instruction-set and execution design, so different types may perform different amounts of useful work for the workload",
+          "fixture": "machine-code opcodes/formats belong to a specific processor instruction set, so another processor may decode them differently or not support them",
           "expectedMarks": 1,
           "observedMarks": 1,
           "result": "Pass"
         },
         "boundaryAnswer": {
-          "fixture": "processor type includes its architecture/instruction-set and execution design, so different types may perform different amounts of useful work for the workload",
+          "fixture": "machine-code opcodes/formats belong to a specific processor instruction set, so another processor may decode them differently or not support them",
           "expectedMarks": 1,
           "observedMarks": 1,
           "result": "Pass"
@@ -54982,7 +54982,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
@@ -55098,7 +55098,7 @@
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S11.01",
+      "primaryRequirement": "S11.02",
       "syllabusRelationship": "formal-assessment",
       "officialBasis": "syllabus:p29",
       "assessmentObjectives": [
@@ -56200,48 +56200,48 @@
       "source": "assessment",
       "sourceKey": "monthly",
       "lesson": 20,
-      "prompt": "A school connects two buildings. Compare fibre-optic cable with a wireless microwave link and Suggest one.",
-      "contentHash": "23d052cae930bb480e392e09c1906881eec954d89837e6a0c32f0dd13bd038b9",
-      "primaryCommandWord": "compare",
+      "prompt": "Describe how a packet is transmitted from one host to another through a switched network, including addressing, routing and reassembly.",
+      "contentHash": "8cc80db738d27fb164ae2f7240c96e7b0bbb6040cd7197c2907d3df8c1ef05d2",
+      "primaryCommandWord": "describe",
       "commandClassification": "official-command-word",
       "commandReviewStatus": "Approved",
       "commandReviewReason": "Official command-word table or page-specific subject-content operation.",
-      "primaryRequirement": "S2.08",
+      "primaryRequirement": "S2.16",
       "syllabusRelationship": "formal-assessment",
-      "officialBasis": "syllabus:p16",
+      "officialBasis": "syllabus:p17",
       "assessmentObjectives": [
-        "AO1"
+        "AO2"
       ],
       "marks": 6,
       "allowedAnswerBoundary": {
         "creditworthyPoints": [
-          "fibre supports high bandwidth/data rate",
-          "fibre has low attenuation / resists electromagnetic interference",
-          "fibre installation requires physical cable and may cost/disrupt",
-          "microwave avoids laying cable / can bridge distance",
-          "microwave needs line of sight and may suffer obstruction/weather/interference",
-          "justified recommendation linked to distance, reliability or installation"
+          "data is divided into packets",
+          "packet contains destination addressing and sequence/control information",
+          "switch forwards the local frame toward the router or destination",
+          "router selects a route/next hop using the destination IP address",
+          "packets may take different routes and errors/loss can be detected",
+          "destination checks and reassembles packets in the correct order"
         ],
         "guidance": [
-          "Do not award a recommendation without a developed comparison."
+          "Do not describe a permanent dedicated path or omit destination reassembly."
         ],
         "rule": "Award one mark for each independent creditworthy point; accept equivalents only within the stated guidance and syllabus scope."
       },
       "trialCases": {
         "correctAnswer": {
-          "fixture": "fibre supports high bandwidth/data rate; fibre has low attenuation / resists electromagnetic interference; fibre installation requires physical cable and may cost/disrupt; microwave avoids laying cable / can bridge distance; microwave needs line of sight and may suffer obstruction/weather/interference; justified recommendation linked to distance, reliability or installation",
+          "fixture": "data is divided into packets; packet contains destination addressing and sequence/control information; switch forwards the local frame toward the router or destination; router selects a route/next hop using the destination IP address; packets may take different routes and errors/loss can be detected; destination checks and reassembles packets in the correct order",
           "expectedMarks": 6,
           "observedMarks": 6,
           "result": "Pass"
         },
         "commonError": {
-          "fixture": "fibre supports high bandwidth/data rate; fibre has low attenuation / resists electromagnetic interference; fibre installation requires physical cable and may cost/disrupt; microwave avoids laying cable / can bridge distance; microwave needs line of sight and may suffer obstruction/weather/interference",
+          "fixture": "data is divided into packets; packet contains destination addressing and sequence/control information; switch forwards the local frame toward the router or destination; router selects a route/next hop using the destination IP address; packets may take different routes and errors/loss can be detected",
           "expectedMarks": 5,
           "observedMarks": 5,
           "result": "Pass"
         },
         "boundaryAnswer": {
-          "fixture": "fibre supports high bandwidth/data rate",
+          "fixture": "data is divided into packets",
           "expectedMarks": 1,
           "observedMarks": 1,
           "result": "Pass"

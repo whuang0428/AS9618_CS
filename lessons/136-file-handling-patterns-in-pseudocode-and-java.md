@@ -99,7 +99,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `append`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-append.jpg`
 
 1. Append pattern
@@ -114,7 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `close`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-close.jpg`
 
 1. Closing files
@@ -126,7 +126,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `eof`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-eof.jpg`
 
 1. EOF loop
@@ -146,7 +146,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-java.jpg`
 
 1. Java support only
@@ -166,7 +166,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `modes`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-modes.jpg`
 
 1. File modes
@@ -185,7 +185,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-purpose.jpg`
 
 1. Volatile variable
@@ -197,7 +197,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `read`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-read.jpg`
 
 1. Read pattern
@@ -217,7 +217,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `write`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-write.jpg`
 
 1. Write pattern

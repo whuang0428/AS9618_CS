@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 133 | Clear and efficient Cambridge pseudocode</title>
+    <title>AS9618 Lesson 133 | String handling and built-in functions</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>Clear and efficient Cambridge pseudocode</h1>
+        <h1>String handling and built-in functions</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -49,25 +49,23 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Clear and efficient Cambridge pseudocode</h2>
+            <h2>Use supplied built-in and library routines</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Efficient pseudocode avoids unnecessary repeated work and selects a structure suited to the data and stopping rule. For example, total and count can be updated during one traversal instead of scanning the same array twice when both results are needed.</p>
-            <p>Efficiency does not justify incorrect bounds, hidden assumptions or compressed code that cannot be traced. A strong answer remains clear: initialise once, access only valid data, avoid redundant calculations and use meaningful identifiers and coherent constructs.</p>
-            <p>At AS Level, justify an improvement from the actual algorithm, such as fewer repeated passes or stopping a search once the target is found. Do not claim that shorter text alone proves a more efficient algorithm.</p>
-            <p>Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path. Efficient pseudocode avoids unnecessary repeated work while preserving correctness.</p>
-            <p>An improvement must be justified from the algorithm, such as combining repeated traversals or stopping a search when no later work is required. Fewer written lines alone do not prove efficiency.</p>
+            <p>Use built-in functions and library routines exactly as defined. The syllabus states that any function not given in the Cambridge pseudocode guide will be provided, and string manipulation functions will always be given in the question. Students are not expected to memorise one unofficial substring API.</p>
+            <p>Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.</p>
+            <p>A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java's zero-based substring convention unless the question explicitly specifies it.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Count passes and total in one traversal / Combine two traversals</h3>
-            <p>Set Total and PassCount to 0 before one FOR loop through Marks[1:30]. Add each mark to Total and increment PassCount only when the mark is at least 50. Output both values after NEXT Index. This preserves clear control flow while avoiding a second full traversal. One traversal of Marks can update both Total and PassCount. The Cambridge pseudocode remains clear because initialisation, loop bounds, selection and outputs are explicit.</p>
+            <h3>Worked example: Apply a supplied string routine</h3>
+            <p>A question supplies FUNCTION EXTRACT(Text : STRING, Start : INTEGER, Count : INTEGER) RETURNS STRING and states that positions start at 1. LENGTH(&quot;NETWORK&quot;) returns 7; EXTRACT(&quot;NETWORK&quot;, 4, 2) returns &quot;WO&quot;. Code &lt;- EXTRACT(Name, 1, 3) uses the supplied routine in an assignment without importing Java indexing.</p>
           </article>
         </section>
 
@@ -84,65 +82,38 @@
           </div>
         </section>
         <!-- stage10-explanation:end substring -->
-
-        <!-- stage10-explanation:start robust-java -->
-        <section class="panel explanation-panel" id="explanation-robust-java" data-explains="robust-java" data-explanation-kind="comparison" aria-labelledby="explanation-robust-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="robust-java">
-          <h2 class="explanation-sr-only" id="explanation-robust-java-title">Java methods can model modularity, but Cambridge pseudocode remains the exam format</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java methods can model modularity, but Cambridge pseudocode remains the exam format with a structured visual model." />
-            <figcaption class="explanation-sr-only">Java methods can model modularity, but Cambridge pseudocode remains the exam format: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN</li><li><strong>Lesson fact:</strong> RETURN Mark &gt;= 0 AND Mark &lt;= 100</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> static boolean isValidMark(int mark) {</li><li><strong>Lesson fact:</strong> return mark &gt;= 0 &amp;&amp; mark &lt;= 100;</li><li><strong>Lesson fact:</strong> Use Java to practise running code, but use Cambridge-style pseudocode when the exam asks for algorithm design.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end robust-java -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Clear and efficient Cambridge pseudocode: apply and assess</h2>
+            <h2>Use supplied built-in and library routines: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Why is one combined traversal more efficient than two separate full traversals here?</p>
-              <details><summary>Show answer</summary><p>The same 30 elements are read once while both required results are updated, avoiding a redundant second pass.</p></details>
+              <p><strong>1.</strong> Will an unfamiliar string manipulation function be supplied?</p>
+              <details><summary>Show answer</summary><p>Yes. The syllabus says string manipulation functions will always be given.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Does fewer lines always mean greater efficiency?</p>
-              <details><summary>Show answer</summary><p>No. The control flow and amount of work matter; compressed but repeated or incorrect work is not an improvement.</p></details>
+              <p><strong>2.</strong> What must be checked before tracing EXTRACT?</p>
+              <details><summary>Show answer</summary><p>Its supplied parameter order, position/index convention and return definition.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> When may a search stop early?</p>
-              <details><summary>Show answer</summary><p>When the target has been found, provided the algorithm no longer needs to inspect later elements for another stated result.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Does shorter code always mean more efficient code?</p>
-              <details><summary>Show answer</summary><p>No; the amount of work and correctness matter.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Identify one clarity feature.</p>
-              <details><summary>Show answer</summary><p>Meaningful identifiers, indentation or complete constructs.</p></details>
+              <p><strong>3.</strong> May a returned string be assigned to a variable?</p>
+              <details><summary>Show answer</summary><p>Yes; a function return can be used wherever a compatible value is needed.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>9 marks</span></div>
-            <p>Write an algorithm that first totals Marks[1:30] and then makes a second pass to count passes, using one clear traversal. Explain the efficiency improvement. Write two full traversals as one clear and efficient Cambridge pseudocode traversal and justify the change.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>A question supplies FUNCTION TAKE(Text : STRING, Start : INTEGER, Count : INTEGER) RETURNS STRING and FUNCTION TO_UPPER(Text : STRING) RETURNS STRING, with positions starting at 1. State LENGTH(&quot;ALGORITHM&quot;), state TAKE(&quot;ALGORITHM&quot;, 3, 4), and write an assignment that converts the extracted STRING to upper case.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>initialises Total and PassCount once before the loop</td><td>Do not award an efficiency claim based only on fewer written lines; the revised pseudocode must perform less repeated work and remain correct. Do not credit an efficiency claim based only on line count.</td><td>1</td></tr>
-                  <tr><td>uses one loop over valid indexes 1 to 30</td><td></td><td>1</td></tr>
-                  <tr><td>updates Total and conditionally updates PassCount inside that loop</td><td></td><td>1</td></tr>
-                  <tr><td>outputs both results after the loop</td><td></td><td>1</td></tr>
-                  <tr><td>explains that the rewrite removes a redundant second traversal without changing the result</td><td></td><td>1</td></tr>
-                  <tr><td>clear Cambridge pseudocode</td><td></td><td>1</td></tr>
-                  <tr><td>one correct traversal</td><td></td><td>1</td></tr>
-                  <tr><td>avoids repeated work</td><td></td><td>1</td></tr>
-                  <tr><td>valid efficiency justification</td><td></td><td>1</td></tr>
+                  <tr><td>LENGTH result is 9</td><td>Do not use CHAR-only UCASE on a STRING, require memorisation of an unstated substring signature or import Java's zero-based indexes.</td><td>1</td></tr>
+                  <tr><td>TAKE result is GORI</td><td></td><td>1</td></tr>
+                  <tr><td>uses the supplied Start/Count convention rather than Java indexing</td><td></td><td>1</td></tr>
+                  <tr><td>assigns TO_UPPER(TAKE(&quot;ALGORITHM&quot;, 3, 4)) or equivalent to a variable</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

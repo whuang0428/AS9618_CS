@@ -1,44 +1,48 @@
-# Lesson 053: Required utility software
+# Lesson 053: Operating system roles: process, memory, file and device management
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Required utility software
+**Focus:** Why an operating system is required and what it manages
 
 ### Direct explanation
 
-- A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware. A disk defragmenter rearranges fragmented file blocks on a magnetic disk; it is not a speed treatment for SSDs.
-- A disk contents analysis/repair utility examines file-system structures, reports faults and attempts defined repairs. Compression reduces file size and backup creates a separate recoverable copy. Encryption may be useful additional protection, but it does not replace any of the six named syllabus utilities.
-- Required utilities include defragmentation software and disk contents analysis/disk repair software; defragmentation rearranges file blocks, while analysis/repair checks and attempts to repair file-system faults.
+- An operating system is required to provide a controlled interface between applications, users and hardware, and to coordinate shared resources. Without it, each application would need its own incompatible routines for processor time, memory, files, security and devices.
+- Process management schedules CPU time and tracks running processes. Memory management allocates and protects RAM. File management organises files, folders, metadata and file operations. Security management authenticates users and enforces permissions or access rights.
+- Hardware management coordinates devices through drivers, interrupts, buffers and queues. These roles cooperate: security management decides whether a request is authorised, while file or hardware management performs the permitted operation. Antivirus remains a utility and must not replace the OS security-management role.
 
 ### Worked example
 
-**Choose the utility from the fault:** Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size. Choose by the operation required, not by calling every tool 'maintenance'.
+**Open a protected file and print it:** The OS authenticates the user and security management checks access rights. File management locates and opens the file; memory management allocates RAM; process management schedules the application; hardware management uses a printer driver, buffer and queue to send permitted output to the printer.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. Which utility prepares file-system structures on a storage medium?
-   **Answer:** A disk formatter.
-2. Which utility checks file-system structures and attempts repairs?
-   **Answer:** A disk contents analysis/repair utility.
-3. Why is compression not a backup?
-   **Answer:** Compression reduces size; a backup creates a separate copy that can be restored.
+1. Which OS role authenticates a user and enforces access rights?
+   **Answer:** Security management.
+2. Which role allocates RAM to a running process?
+   **Answer:** Memory management.
+3. Which role uses drivers, buffers and queues?
+   **Answer:** Hardware management/device management.
+4. Why is an operating system required?
+   **Answer:** It provides a controlled interface and coordinates shared hardware and software resources for applications and users.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** A computer has a new storage medium and another disk reports file-system errors. Identify the utility for each task and explain its purpose.
+**Question (6 marks):** Explain why an operating system is required and describe its process, memory, file, security and hardware management roles.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| disk formatter for the new medium | Do not accept defragmentation as formatting or as a general file-system repair operation. | 1 |
-| formatter creates/prepares file-system structures |  | 1 |
-| disk contents analysis/repair utility for the faulty disk |  | 1 |
-| it examines structures and reports/attempts repair of faults |  | 1 |
+| required interface/control layer between applications, users and hardware | Do not substitute antivirus utility software for OS security management, and do not treat stored files as RAM. | 1 |
+| process management schedules CPU time or tracks processes |  | 1 |
+| memory management allocates/protects RAM |  | 1 |
+| file management organises stored files and operations |  | 1 |
+| security management authenticates users or enforces permissions/access rights |  | 1 |
+| hardware management uses drivers/interrupts/buffers/queues to coordinate devices |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 

@@ -1,8 +1,46 @@
-# Lesson 086: Two-table INNER JOIN queries
+# Lesson 086: SQL joins using related tables
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Two-table INNER JOIN queries
+
+### Direct explanation
+
+- AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.
+- For Student(StudentID, StudentName) and Loan(StudentID, DueDate), SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID returns names only where matching rows exist. Add WHERE for a further row condition, not for the join relationship itself.
+- For the required at-most-two-table subset, queries can use ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG as well as SELECT, FROM and WHERE.
+
+### Worked example
+
+**List overdue borrowers:** SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate < '2027-05-01'; uses two tables, one explicit join condition and one separate filter.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which clause states how two joined tables match?
+   **Answer:** ON.
+2. How many tables are required at most in the AS syllabus query?
+   **Answer:** Two.
+3. Why qualify Student.StudentID and Loan.StudentID?
+   **Answer:** To identify which table supplies each otherwise identical field name.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Write an INNER JOIN query listing DepartmentName and EmployeeName from Department and Employee, matching their DepartmentID fields.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| SELECT includes DepartmentName and EmployeeName | Do not use a three-table query or replace the required INNER JOIN with comma-style FROM and a WHERE join. | 1 |
+| FROM Department |  | 1 |
+| INNER JOIN Employee |  | 1 |
+| ON Department.DepartmentID = Employee.DepartmentID |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -88,6 +126,18 @@ Correction prompt: "State the correct term, then explain the relevant process or
 2. Full name Student.StudentID clearly means the field from Student.
 3. Alias Student AS S lets you write S.StudentID .
 4. Exam caution Only use aliases if they make the query clear. Do not hide the join logic.
+
+### Two-table INNER JOIN with ON
+
+- **Explains:** `join`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-086-join.jpg`
+
+1. AS DML questions use at most two tables.
+2. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID uses an explicit two-table join.
+3. ON states the matching key relationship between the tables.
+4. WHERE adds a separate row filter after the join; it does not replace the required INNER JOIN syntax.
 
 ### Related tables use primary keys and foreign keys
 

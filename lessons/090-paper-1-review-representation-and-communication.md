@@ -77,7 +77,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `calculator`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-090-calculator.jpg`
 
 1. Interactive calculation checker
@@ -89,7 +89,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `communication`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-090-communication.jpg`
 
 1. Communication review
@@ -101,7 +101,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `map`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-090-map.jpg`
 
 1. Retrieval map
@@ -116,7 +116,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `representation`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-090-representation.jpg`
 
 1. Representation review

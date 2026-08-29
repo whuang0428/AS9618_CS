@@ -42,12 +42,106 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Array-based linear search and bubble sort</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.</p>
+            <p>Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.</p>
+            <p>Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.</p>
+            <p>Linear search examines array elements in index order until the target is found or all populated elements have been checked. A complete algorithm initialises its index and found state, keeps every access within the declared bounds, compares the current element and advances only when another element remains to be checked.</p>
+            <p>Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.</p>
+            <p>A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.</p>
+            <p>Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Declare the search data before tracing it / Two complete array algorithms</h3>
+            <p>DECLARE Names : ARRAY[1:4] OF STRING defines four string elements. For Names = ['Asha', 'Ben', 'Chen', 'Dina'], a one-based linear search compares Names[1], then Names[2], and stops when it finds 'Ben'. Index 0 is invalid because it is below the declared lower bound. A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count. A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start linear -->
+        <section class="panel explanation-panel" id="explanation-linear" data-explains="linear" data-explanation-kind="mechanism" aria-labelledby="explanation-linear-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linear">
+          <h2 class="explanation-sr-only" id="explanation-linear-title">Linear search checks each item in order</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-linear.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Linear search checks each item in order with a structured visual model." />
+            <figcaption class="explanation-sr-only">Linear search checks each item in order: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> How it works</li><li><strong>Lesson fact:</strong> Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.</li><li><strong>Lesson fact:</strong> When it is suitable</li><li><strong>Lesson fact:</strong> Use it when data is unsorted, the list is small, or simplicity matters more than speed.</li><li><strong>Lesson fact:</strong> Worst case: the target is last or absent, so every item may be checked.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end linear -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Array-based linear search and bubble sort: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What are the lower and upper bounds of ARRAY[1:4]?</p>
+              <details><summary>Show answer</summary><p>The lower bound is 1 and the upper bound is 4.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What does Names[Index] mean?</p>
+              <details><summary>Show answer</summary><p>The single array element selected by the current value of Index.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why must binary search know the current Low and High indexes?</p>
+              <details><summary>Show answer</summary><p>They delimit the remaining sorted portion of the array that may contain the target.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> When must a linear search stop?</p>
+              <details><summary>Show answer</summary><p>When the target has been found or every populated element within the declared bounds has been checked.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> What comparison is made by an ascending bubble sort?</p>
+              <details><summary>Show answer</summary><p>Compare adjacent elements and swap when the left element is greater than the right element.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> What does a no-swap pass prove?</p>
+              <details><summary>Show answer</summary><p>No adjacent pair is out of ascending order, so the array is sorted and the algorithm may stop.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>12 marks</span></div>
+            <p>Write declarations for an array called Code that stores 20 STRING values, then state the first and last valid indexes used by a search. Write Cambridge pseudocode for a linear search of Name[1:20] and an ascending bubble sort of Score[1:20].</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>DECLARE Code : ARRAY[1:20] or another explicit 20-element bound range</td><td>Do not assume zero-based indexing when the declaration gives different bounds. Do not award only a trace or a description; both requested algorithms must be written and must not access Index + 1 beyond the upper bound.</td><td>1</td></tr>
+                  <tr><td>OF STRING</td><td></td><td>1</td></tr>
+                  <tr><td>first valid index matches the declared lower bound</td><td></td><td>1</td></tr>
+                  <tr><td>last valid index matches the declared upper bound</td><td></td><td>1</td></tr>
+                  <tr><td>linear search initialises Found and Index</td><td></td><td>1</td></tr>
+                  <tr><td>linear search loops within indexes 1 to 20 until found or exhausted</td><td></td><td>1</td></tr>
+                  <tr><td>linear search compares Name[Index] with the target and records a match</td><td></td><td>1</td></tr>
+                  <tr><td>bubble sort uses repeated passes</td><td></td><td>1</td></tr>
+                  <tr><td>compares adjacent Score[Index] and Score[Index + 1] within valid bounds</td><td></td><td>1</td></tr>
+                  <tr><td>uses Temp or an equivalent safe three-step swap</td><td></td><td>1</td></tr>
+                  <tr><td>reduces the unsorted range or uses a valid no-swap stopping condition</td><td></td><td>1</td></tr>
+                  <tr><td>all constructs close coherently in Cambridge pseudocode</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-104">
           <div class="hero-copy">

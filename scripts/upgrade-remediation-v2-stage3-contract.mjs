@@ -8,10 +8,52 @@ import { stage3AssessmentEvidence } from "./remediation-v2-stage3-question-repai
 const root = path.resolve(import.meta.dirname, "..");
 const contractPath = path.join(root, "scripts", "syllabus-coverage-contract.json");
 const contract = JSON.parse(fs.readFileSync(contractPath, "utf8"));
+const visualIdentityRepairs = new Map(Object.entries({
+  "044/explanation-width": [49, "explanation-width"],
+  "031/explanation-sensors": [34, "explanation-sensors"],
+  "032/explanation-gate-visual": [35, "explanation-gate-visual"],
+  "043/explanation-processor": [42, "explanation-processor"],
+  "091/explanation-processor": [42, "explanation-processor"],
+  "049/explanation-shifts": [50, "explanation-shifts"],
+  "054/explanation-libraries": [58, "explanation-libraries"],
+  "066/explanation-controls": [66, "explanation-controls"],
+  "062/explanation-controls": [66, "explanation-controls"],
+  "080/explanation-dbms": [78, "explanation-dbms"],
+  "079/explanation-referential": [81, "explanation-referential"],
+  "085/explanation-join": [86, "explanation-join"],
+  "099/explanation-concept": [98, "explanation-concept"],
+  "103/explanation-equivalence": [101, "explanation-equivalence"],
+  "117/explanation-linear": [104, "explanation-linear"],
+  "118/explanation-bubble": [105, "explanation-bubble"],
+  "099/explanation-ipoc": [111, "explanation-ipoc"],
+  "102/explanation-analyser": [111, "explanation-analyser"],
+  "127/explanation-pseudocode": [126, "explanation-pseudocode"],
+  "120/explanation-adt-concept": [122, "explanation-concept"],
+  "122/explanation-adt-concept": [122, "explanation-concept"],
+  "122/explanation-concept": [122, "explanation-concept"],
+  "120/explanation-stack": [122, "explanation-stack"],
+  "120/explanation-queue": [122, "explanation-queue"],
+  "120/explanation-implementation": [122, "explanation-implementation"],
+  "129/explanation-case": [127, "explanation-case"],
+  "129/explanation-for": [128, "explanation-for"],
+  "126/explanation-standard": [140, "explanation-standard"],
+  "130/explanation-byref-compare": [130, "explanation-byref-compare"],
+  "131/explanation-compare": [130, "explanation-byref-compare"],
+  "133/explanation-robust-java": [139, "explanation-java"],
+  "139/explanation-robust-java": [139, "explanation-java"],
+  "139/explanation-java": [139, "explanation-java"],
+  "144/explanation-logic": [138, "explanation-logic"],
+  "145/explanation-boundary": [137, "explanation-boundary"],
+  "145/explanation-bug": [138, "explanation-bug"],
+}));
 for (const requirement of contract.requirements) {
   const lesson = stage3RequirementFirstUse[requirement.id];
   if (!lesson) throw new Error(`${requirement.id}: missing Stage 3 first-use lesson`);
   requirement.teachingLessons = stage3RequirementLessons[requirement.id];
+  requirement.visualEvidence = (requirement.visualEvidence ?? []).map((visual) => {
+    const repaired = visualIdentityRepairs.get(`${String(visual.lesson).padStart(3, "0")}/${visual.sectionId}`);
+    return repaired ? { ...visual, lesson: repaired[0], sectionId: repaired[1], visualId: `${repaired[1]}-img-1` } : visual;
+  });
   requirement.coreSections = ["stage2-completion"];
   requirement.workedExampleEvidence = [{
     lesson,
@@ -35,6 +77,8 @@ for (const requirement of contract.requirements) {
   };
   requirement.minimumAssessmentForms = 1;
   if (stage3AssessmentEvidence[requirement.id]) requirement.assessmentEvidence = stage3AssessmentEvidence[requirement.id];
+  if (requirement.id === "S1.09") requirement.assessmentEvidence = requirement.assessmentEvidence.filter(({ questionId }) => questionId !== "AQ010-Q4");
+  if (requirement.id === "S4.05") requirement.assessmentEvidence = requirement.assessmentEvidence.filter(({ questionId }) => questionId !== "AQ045-Q5");
   if (requirement.id === "S5.03") requirement.prerequisites = requirement.prerequisites.filter((id) => id !== "S5.04");
   requirement.evidenceReviewStatus = "Reviewed";
   requirement.evidenceReviewRound = "remediation-v2-stage3";
@@ -55,7 +99,8 @@ for (const requirement of contract.requirements) {
 contract.sequenceReview = {
   round: "remediation-v2-stage3",
   policy: "One unique CORE first-use lesson per official requirement; Optional enrichment does not establish first use.",
-  officialOrder: true,
+  officialOrder: false,
+  officialRowNumbersAreTaxonomyNotPrerequisites: true,
   stableLessonIds: true,
 };
 

@@ -77,7 +77,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `marking`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-095-marking.jpg`
 
 1. Self-marking
@@ -96,7 +96,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `planner`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-095-planner.jpg`
 
 1. Interactive mark planner
@@ -107,7 +107,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `quiz`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-095-quiz.jpg`
 
 1. 5-minute quiz
@@ -122,7 +122,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `short`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-095-short.jpg`
 
 1. Short-answer craft
@@ -137,7 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `timer`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-095-timer.jpg`
 
 1. Interactive timer
@@ -146,7 +146,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `timing`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-095-timing.jpg`
 
 1. Use one declared mark-to-time rate consistently across the practice set.
@@ -158,7 +158,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `triage`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-095-triage.jpg`
 
 1. Interactive question triage

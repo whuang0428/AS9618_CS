@@ -1,46 +1,8 @@
-# Lesson 121: Choosing stack, queue or linked list
+# Lesson 121: CSV-style structured text files
 
 <!-- remediation-v2-stage3-scope:start -->
 > **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
 <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Choosing stack, queue or linked list
-
-### Direct explanation
-
-- A stack is LIFO with push/pop at the top; a queue is FIFO with enqueue at the rear and dequeue at the front; a linked list supports traversal and insertion/deletion through links.
-- Justification must name the required access order or update behaviour. Array implementations have fixed capacity unless resized and require overflow/underflow checks; linked structures require pointer management.
-- Justify a stack, queue or linked list from its operations and the scenario. Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.
-
-### Worked example
-
-**Choose structures:** Undo history uses a stack because the most recent action is undone first. Print jobs use a queue because the earliest accepted job prints first. A changing ordered playlist can use a linked list for link-based insertion/deletion.
-
-<!-- stage2-practice:start -->
-### Targeted practice and answers
-
-1. Suggest an ADT for breadth-first waiting jobs.
-   **Answer:** Queue, because first in is first out.
-2. Suggest an ADT for nested function return addresses.
-   **Answer:** Stack, because the most recent call returns first.
-3. What must be checked before pushing to a full array stack?
-   **Answer:** Overflow/capacity.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Justify a suitable ADT for browser Back history and contrast it with a queue.
-
-| Answer | Guidance | Marks |
-|---|---|---:|
-| selects stack | Do not award the structure name without its access-order consequence. | 1 |
-| most recently visited page is returned to first / LIFO |  | 1 |
-| queue removes earliest item first / FIFO |  | 1 |
-| explains why FIFO gives the wrong access order |  | 1 |
-<!-- stage2-practice:end -->
-<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2

@@ -1,8 +1,52 @@
-# Lesson 034: Logic-gate symbols, functions and representation conversions
+# Lesson 034: Sensors, actuators and control systems
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Monitoring, control, feedback and required sensors
+
+### Direct explanation
+
+- A monitoring system uses sensors to collect data for recording, display or alerts; it does not necessarily change the environment. A control system uses sensor input and a stored rule or target to send output to an actuator. In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust or stop the output.
+- A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.
+- Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.
+- A control system sends output signals to actuators and uses sensor feedback to determine the next control action.
+
+### Worked example
+
+**Greenhouse monitoring and control:** A monitoring system records and displays temperature readings. A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot. New temperature readings provide feedback, so the fan can stop when the target is reached.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Compare monitoring from control.
+   **Answer:** Monitoring records, displays or reports sensor data; control uses data to change an actuator or system state.
+2. What is feedback in a closed-loop control system?
+   **Answer:** A new sensor reading after the action, used to adjust or stop the output.
+3. Which named sensor detects radiation used by a remote control?
+   **Answer:** An infra-red sensor.
+4. Which named sensor is suitable for a classroom noise monitor?
+   **Answer:** A sound sensor.
+5. Why is a sensor not an actuator?
+   **Answer:** A sensor supplies input about a physical quantity; an actuator produces a physical output action.
+
+### Exam-style question and MS
+
+**Question (5 marks):** A greenhouse system records temperature and automatically opens a vent when necessary. Compare its monitoring and control functions and explain the feedback cycle.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| monitoring records/displays temperature readings | Do not state that monitoring necessarily changes an actuator, or that a sensor performs the control decision. | 1 |
+| control compares a reading with a rule/threshold |  | 1 |
+| controller sends output to a vent motor or other actuator |  | 1 |
+| new sensor readings provide feedback after the action |  | 1 |
+| feedback is used to adjust or stop the actuator |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -110,4 +154,17 @@ Correction prompt: "State the correct term, then explain the relevant process or
 10. Decision Processor compares the reading with a threshold or rule.
 11. Output Signal is sent to an actuator.
 12. Feedback New sensor readings check the result.
+
+### Required sensor types and applications
+
+- **Explains:** `sensors`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-034-sensors.jpg`
+
+1. A temperature sensor measures temperature and a pressure sensor measures pressure.
+2. An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.
+3. A sound sensor detects sound level or sound waves, for example in a noise monitor.
+4. A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.
+5. Light intensity is supporting context and does not replace the named infra-red or sound sensors.
 <!-- stage10-explanations:end -->

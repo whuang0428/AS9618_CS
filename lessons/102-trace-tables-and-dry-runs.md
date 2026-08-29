@@ -1,47 +1,8 @@
-# Lesson 102: Stepwise refinement from IPO design to modules
+# Lesson 102: Trace tables and dry runs
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
 <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Stepwise refinement from IPO design to modules
-
-### Direct explanation
-
-- Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.
-- At each level, preserve the parent step's purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
-- Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.
-
-### Worked example
-
-**Refine an order-processing algorithm:** Level 1: InputOrder; ValidateOrder; CalculateTotal; ProduceReceipt. Refine CalculateTotal into Set Total to 0; for each item validate Quantity; add Price * Quantity; apply Discount; return Total. CalculateTotal can be a function returning Total, while ProduceReceipt can be a procedure receiving the completed total.
-
-<!-- stage2-practice:start -->
-### Targeted practice and answers
-
-1. What is the starting point of stepwise refinement?
-   **Answer:** A high-level algorithm or task.
-2. When should refinement stop?
-   **Answer:** When each step is a defined, implementable action with clear inputs and outputs.
-3. How does IPO help one refinement level?
-   **Answer:** It checks that each module receives the data it needs, performs defined processing and supplies the required output.
-
-### Exam-style question and MS
-
-**Question (5 marks):** Apply two levels of stepwise refinement to 'register a new library member', showing module inputs/outputs and identifying one procedure or function.
-
-| Answer | Guidance | Marks |
-|---|---|---:|
-| Level 1 separates capture, validation, storage and confirmation responsibilities | Do not award unrelated features, repeated high-level labels or a level that does not reduce ambiguity. | 1 |
-| Level 2 replaces at least one complex step with smaller ordered substeps |  | 1 |
-| module inputs and outputs are clear |  | 1 |
-| procedure or function choice matches action versus returned value |  | 1 |
-| refined steps collectively implement the original task |  | 1 |
-<!-- stage2-practice:end -->
-<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -118,19 +79,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
-
-### Stepwise refinement turns a high-level algorithm into implementable modules
-
-- **Explains:** `analyser`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-111-analyser.jpg`
-
-1. Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps.
-2. Refinement stops when every step is precise enough to implement and its input and output are clear.
-3. At each level, preserve the parent step's purpose and input-process-output relationship.
-4. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
-5. Every level must reduce ambiguity and collectively remain a complete solution.
 
 ### Dry run: execute the algorithm by hand
 

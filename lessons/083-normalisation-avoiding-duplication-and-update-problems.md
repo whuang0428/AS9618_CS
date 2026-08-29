@@ -1,42 +1,43 @@
-# Lesson 083: DDL, DML and SQL roles
+# Lesson 083: Normalisation: avoiding duplication and update problems
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** DDL, DML and SQL roles
+**Focus:** First, second and third normal form
 
 ### Direct explanation
 
-- DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation.
-- Keep the schema and the records distinct: defining a table or constraint changes structure, while selecting, inserting, deleting or updating records works with stored data.
+- 1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.
+- Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.
 
 ### Worked example
 
-**Classify database operations:** CREATE TABLE is DDL because it creates database structure. SELECT and UPDATE are DML because they query or maintain stored data.
+**Order line data:** ORDER_LINE(OrderID, ProductID, ProductName, Quantity) has composite key OrderID+ProductID. ProductName depends only on ProductID, so split PRODUCT(ProductID, ProductName) and ORDER_LINE(OrderID, ProductID, Quantity) to reach 2NF for that dependency.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. Which language category creates structure?
-   **Answer:** DDL.
-2. Which category queries and maintains data?
-   **Answer:** DML.
-3. What is SQL?
-   **Answer:** An industry-standard database language.
+1. What does 1NF remove?
+   **Answer:** Repeating groups and non-atomic/multiple values in one field.
+2. What dependency violates 2NF?
+   **Answer:** A non-key attribute depending on only part of a composite key.
+3. What dependency violates 3NF?
+   **Answer:** A non-key attribute depending on another non-key attribute.
 
 ### Exam-style question and MS
 
-**Question (3 marks):** Identify CREATE TABLE, SELECT and UPDATE as DDL or DML and explain the distinction.
+**Question (4 marks):** Explain why CUSTOMER(CustomerID, Postcode, Town) may not be in 3NF when each postcode determines one town, and give a 3NF design.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| DDL creation/modification of structure | Do not describe every SQL statement as changing stored records. | 1 |
-| DML queries/maintenance |  | 1 |
-| SQL identified as industry-standard language |  | 1 |
+| CustomerID determines Postcode and Postcode determines Town | Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship. | 1 |
+| Town is transitively dependent on CustomerID / depends on non-key Postcode |  | 1 |
+| CUSTOMER(CustomerID, Postcode) |  | 1 |
+| POSTCODE(Postcode, Town), with Postcode linked as foreign key |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 

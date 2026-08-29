@@ -1,5 +1,49 @@
 # Lesson 035: Logic gates: NOT, AND, OR, NAND, NOR, XOR
 
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Logic-gate symbols, functions and representation conversions
+
+### Direct explanation
+
+- Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR). NOT has one input; each of the other five gates has two inputs for this syllabus. A truth table lists every input combination and the resulting output according to the gate or circuit function.
+- You must be able to construct a logic circuit from a problem statement, logic expression or truth table; construct a truth table from a problem statement, logic circuit or logic expression; and construct a logic expression from a problem statement, logic circuit or truth table. Move through variables and conditions first, then intermediate gate outputs, then the final output so every representation can be checked against the same rows.
+- Use the standard symbol for each logic gate as well as its function, Boolean expression, circuit and truth table.
+
+### Worked example
+
+**Convert one rule among four representations:** Rule: an alarm sounds when the system is armed and either the door or window is open. Define A, D and W; write Alarm = A AND (D OR W); draw an OR gate for D and W feeding an AND gate with A; then list all eight input combinations and evaluate the intermediate OR column before Alarm.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. What distinguishes the XOR symbol from the OR symbol?
+   **Answer:** XOR has an additional curved line on the input side.
+2. How many inputs does NOT have, and how many do the other specified gates have in this syllabus?
+   **Answer:** NOT has one input; AND, OR, NAND, NOR and XOR each have two inputs.
+3. Identify the three possible sources from which a logic circuit may be constructed.
+   **Answer:** A problem statement, a logic expression or a truth table.
+4. How do intermediate columns help convert a circuit into a truth table?
+   **Answer:** Each intermediate column records one gate output, allowing the final result to be calculated and checked row by row.
+
+### Exam-style question and MS
+
+**Question (4 marks):** A truth table gives output 1 only when input A is 1 and input B is 0. Construct a logic expression and describe the corresponding circuit.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| identifies that B must be inverted | Do not accept XOR: XOR is also 1 for A=0, B=1, which contradicts the given truth table. | 1 |
+| constructs expression Q = A AND NOT B |  | 1 |
+| B is connected to a NOT gate |  | 1 |
+| A and the NOT-gate output are connected to an AND gate whose output is Q |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
+
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
 **Syllabus reference:** Syllabus Section 3
@@ -73,11 +117,27 @@ Correction prompt: "State the correct term, then explain the relevant process or
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
+### Six symbols, six exact output rules
+
+- **Explains:** `gate-visual`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-gate-visual.jpg`
+
+1. Visual explanation
+2. Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.
+3. NOT One input; output is the opposite value.
+4. AND / NAND AND tests whether both are 1; NAND inverts that result.
+5. OR / NOR OR tests whether at least one is 1; NOR inverts that result.
+6. XOR Output is 1 only when the two inputs are different.
+7. Check the diagram: what two visual clues separate NOR from XOR?
+8. NOR has an output bubble. XOR has no output bubble, but it has an extra curved line on the input side.
+
 ### The six gate rules
 
 - **Explains:** `gates`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-gates.jpg`
 
 1. The six gates are NOT, AND, OR, NAND, NOR and XOR.
@@ -89,7 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `signals`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-signals.jpg`
 
 1. Logic 0 means false, off or a valid low logic level.
@@ -100,7 +160,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `symbols`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-symbols.jpg`
 
 1. NOT Triangle + bubble One input. Bubble means inversion.

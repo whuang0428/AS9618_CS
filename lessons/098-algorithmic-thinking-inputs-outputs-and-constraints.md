@@ -1,46 +1,46 @@
-# Lesson 098: Abstraction and decomposition into program modules
+# Lesson 098: Algorithmic thinking: inputs, outputs, and constraints
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Abstraction and decomposition into program modules
+**Focus:** Algorithms, IPO solutions and identifier tables
 
 ### Direct explanation
 
-- Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.
-- Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.
-- Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.
+- An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
+- Before writing pseudocode, identify the input data, the processing that transforms it and the required output. This input-process-output design must describe a complete solution rather than three unrelated lists.
+- Choose meaningful identifier names that describe each value's role. An identifier table records at least the identifier name, data type and purpose; its entries must match the pseudocode solution.
 
 ### Worked example
 
-**Model and decompose a car-park charge:** Keep entry time, exit time and tariff; omit car colour because it cannot change the charge. Express the solution as modules InputTimes, CalculateDuration, CalculateCharge and OutputCharge. CalculateCharge can become a function returning the charge, while OutputCharge can become a procedure that displays it.
+**Define and plan a ticket algorithm:** Problem: input TicketCount and TicketPrice, then output TotalCost. The algorithm is the defined sequence INPUT TicketCount; INPUT TicketPrice; TotalCost <- TicketCount * TicketPrice; OUTPUT TotalCost. The identifier table records TicketCount: INTEGER, number requested; TicketPrice: REAL, price of one ticket; TotalCost: REAL, calculated cost.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. What must an abstract model contain?
-   **Answer:** The essential details and relationships/processes needed to solve the problem.
-2. What does decomposition produce here?
-   **Answer:** Smaller sub-problems expressed as connected program modules with clear responsibilities.
-3. Compare a procedure module from a function module at this design stage.
-   **Answer:** A procedure performs an action; a function returns a value to its caller.
+1. What is an algorithm?
+   **Answer:** A solution to a problem expressed as a sequence of defined steps.
+2. State the input, process and output for rectangle area.
+   **Answer:** Inputs Length and Width; process multiply Length by Width; output Area.
+3. Develop identifier x for the number of absent students and state its type.
+   **Answer:** AbsentCount or NumberAbsent, with type INTEGER.
 
 ### Exam-style question and MS
 
-**Question (6 marks):** Write an abstract model for a school meal bill, then decompose it into named program modules and identify one likely procedure and one likely function.
+**Question (6 marks):** Complete an identifier table and an input-process-output pseudocode solution that inputs a student's name and three marks, then outputs the calculated mean.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| retains meal choice, quantity and price as essential details | Do not award only a list of omitted details, vague Part1/Part2 labels or modules that do not collectively solve the problem. | 1 |
-| states the calculation and total output in the abstract model |  | 1 |
-| excludes a justified irrelevant detail such as tray colour |  | 1 |
-| expresses the problem as connected modules with distinct responsibilities |  | 1 |
-| identifies a suitable procedure module that performs an action |  | 1 |
-| identifies a suitable function module that returns a value |  | 1 |
+| meaningful STRING identifier and purpose for the student's name | Do not award an identifier list without types and purposes, or IPO headings without a complete sequence of defined steps. | 1 |
+| three clearly identified numeric mark inputs or a clearly bounded mark collection |  | 1 |
+| meaningful REAL identifier and purpose for the mean |  | 1 |
+| pseudocode inputs the required values |  | 1 |
+| processing calculates the total and mean in a defined sequence |  | 1 |
+| outputs the calculated mean and matches the identifier table |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 
@@ -119,6 +119,19 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
+
+### An algorithm is a solution expressed as defined steps
+
+- **Explains:** `concept`
+- **Explanation type:** process
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-098-concept.jpg`
+
+1. An algorithm is a solution to a problem expressed as a sequence of defined steps.
+2. Each step must be unambiguous, ordered where order matters and capable of being carried out.
+3. Identify what data is supplied, state the required transformation and state the exact result.
+4. Record limits, quantity requirements and supported assumptions.
+5. Check that every requirement maps to an input, process, output, constraint or assumption.
 
 ### Constraints stop algorithms from wandering off
 

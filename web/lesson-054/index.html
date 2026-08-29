@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 054 | Libraries and dynamically linked library files</title>
+    <title>AS9618 Lesson 054 | User interfaces: command line, graphical, menu-driven and natural language</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Libraries and dynamically linked library files</h1>
+        <h1>User interfaces: command line, graphical, menu-driven and natural language</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -42,14 +42,9 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
         <!-- remediation-v2-optional:start -->
         <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
           <strong>Optional enrichment</strong>
@@ -57,81 +52,11 @@
           <p><strong>Formal AS prerequisite:</strong> S5.01 operating-system purpose and management roles.</p>
         </aside>
         <!-- remediation-v2-optional:end -->
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Libraries and dynamically linked library files</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Software under development is often constructed using existing code from program libraries. A program library is a collection of reusable routines or modules, so a developer can call tested implementations instead of rewriting common mathematical, input/output, graphics or string operations.</p>
-            <p>Benefits to the developer include shorter development time, less duplicated source code, reuse of tested routines and more consistent maintenance. A dynamically linked library (DLL) is connected when a program loads or calls it rather than copying all library code into every executable.</p>
-            <p>DLL files can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.</p>
-            <p>A developer benefit of a program library is reuse of existing tested routines, which can reduce development time and duplicated code.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Three programs use one graphics DLL</h3>
-            <p>All three executables call the shared graphics code. One loaded copy may be shared in memory and a security fix can update the DLL once, but replacing it with an incompatible version can break all three programs.</p>
-          </article>
-        </section>
 
-        <!-- stage10-explanation:start libraries -->
-        <section class="panel explanation-panel" id="explanation-libraries" data-explains="libraries" data-explanation-kind="mechanism" aria-labelledby="explanation-libraries-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="libraries">
-          <h2 class="explanation-sr-only" id="explanation-libraries-title">Libraries provide reusable routines and modules</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-libraries.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Libraries provide reusable routines and modules with a structured visual model." />
-            <figcaption class="explanation-sr-only">Libraries provide reusable routines and modules: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Purpose Provide pre-written, tested routines that programs can use.</li><li><strong>Lesson fact:</strong> Examples Mathematical functions, input/output routines, graphics or string-handling routines.</li><li><strong>Lesson fact:</strong> Benefits Saves development time, reduces duplication and may improve reliability.</li><li><strong>Lesson fact:</strong> Requirement Calls to library routines must be linked or made available at run time.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end libraries -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Libraries and dynamically linked library files: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> How do program libraries support software under development?</p>
-              <details><summary>Show answer</summary><p>They supply existing reusable routines or modules, avoiding the need to write common code again.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> When is a dynamically linked library connected to a program?</p>
-              <details><summary>Show answer</summary><p>At load time or run time when required.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Give one storage benefit of dynamic linking.</p>
-              <details><summary>Show answer</summary><p>Library code need not be copied into every executable.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Give one DLL risk.</p>
-              <details><summary>Show answer</summary><p>A missing/incompatible version can prevent execution or cause faults.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Explain two benefits and one drawback of using a dynamically linked library.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>shared reusable code / avoids rewriting</td><td>Do not accept 'saves space' unless duplication or executable size is explained.</td><td>1</td></tr>
-                  <tr><td>smaller executables or reduced duplicate memory/storage</td><td></td><td>1</td></tr>
-                  <tr><td>shared library can be updated once</td><td></td><td>1</td></tr>
-                  <tr><td>missing/incompatible DLL can stop or alter programs</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+<!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 054 | 45 minutes | Paper 1 Section 5 | System software</p>
             <h2>An interface is the conversation style between user and computer.</h2>
@@ -157,7 +82,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Scenario questions often ask for suitability. Students must link interface features to the user, not just list features.</p>
@@ -168,7 +93,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A technician needs to rename 500 files with one command. Which interface is likely best?</h2>
@@ -185,7 +110,7 @@
           </div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>A user interface allows interaction with a computer system</h2>
@@ -200,7 +125,7 @@
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <h2 class="explanation-sr-only" id="explanation-concept-title">A user interface allows interaction with a computer system</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-054-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A user interface allows interaction with a computer system with a structured visual model." />
@@ -212,7 +137,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-        <section class="panel" id="cli" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel" id="cli" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Command line interface: precise text commands</h2>
@@ -226,7 +151,7 @@
         </section>
 
         <!-- stage10-explanation:start cli -->
-        <section class="panel explanation-panel" id="explanation-cli" data-explains="cli" data-explanation-kind="mechanism" aria-labelledby="explanation-cli-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel explanation-panel" id="explanation-cli" data-explains="cli" data-explanation-kind="mechanism" aria-labelledby="explanation-cli-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <h2 class="explanation-sr-only" id="explanation-cli-title">Command line interface: precise text commands</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-054-cli.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Command line interface: precise text commands with a structured visual model." />
@@ -238,7 +163,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end cli -->
-        <section class="panel" id="gui" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel" id="gui" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Graphical user interface: visual objects and pointer actions</h2>
@@ -252,7 +177,7 @@
         </section>
 
         <!-- stage10-explanation:start gui -->
-        <section class="panel explanation-panel" id="explanation-gui" data-explains="gui" data-explanation-kind="mechanism" aria-labelledby="explanation-gui-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel explanation-panel" id="explanation-gui" data-explains="gui" data-explanation-kind="mechanism" aria-labelledby="explanation-gui-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <h2 class="explanation-sr-only" id="explanation-gui-title">Graphical user interface: visual objects and pointer actions</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-054-gui.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Graphical user interface: visual objects and pointer actions with a structured visual model." />
@@ -264,7 +189,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end gui -->
-        <section class="panel" id="menu" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel" id="menu" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Menu-driven interface: choose from fixed options</h2>
@@ -278,7 +203,7 @@
         </section>
 
         <!-- stage10-explanation:start menu -->
-        <section class="panel explanation-panel" id="explanation-menu" data-explains="menu" data-explanation-kind="mechanism" aria-labelledby="explanation-menu-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel explanation-panel" id="explanation-menu" data-explains="menu" data-explanation-kind="mechanism" aria-labelledby="explanation-menu-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <h2 class="explanation-sr-only" id="explanation-menu-title">Menu-driven interface: choose from fixed options</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-054-menu.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Menu-driven interface: choose from fixed options with a structured visual model." />
@@ -290,7 +215,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end menu -->
-        <section class="panel" id="natural" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel" id="natural" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Natural language interface: ordinary language input</h2>
@@ -304,7 +229,7 @@
         </section>
 
         <!-- stage10-explanation:start natural -->
-        <section class="panel explanation-panel" id="explanation-natural" data-explains="natural" data-explanation-kind="mechanism" aria-labelledby="explanation-natural-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel explanation-panel" id="explanation-natural" data-explains="natural" data-explanation-kind="mechanism" aria-labelledby="explanation-natural-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <h2 class="explanation-sr-only" id="explanation-natural-title">Natural language interface: ordinary language input</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-054-natural.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Natural language interface: ordinary language input with a structured visual model." />
@@ -316,7 +241,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end natural -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Compare interface suitability by scenario</h2>
@@ -351,7 +276,7 @@
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <h2 class="explanation-sr-only" id="explanation-compare-title">Compare interface suitability by scenario</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-054-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare interface suitability by scenario with a structured visual model." />
@@ -363,7 +288,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Interface selector</h2>
@@ -388,7 +313,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Choose the interface and justify the trade-off</h2>
@@ -402,7 +327,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
@@ -411,7 +336,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the interface claim</h2>
@@ -419,7 +344,7 @@
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
@@ -428,7 +353,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-054">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Interface choice depends on task and user</h2>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 053 | Required utility software</title>
+    <title>AS9618 Lesson 053 | Operating system roles: process, memory, file and device management</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Required utility software</h1>
+        <h1>Operating system roles: process, memory, file and device management</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,57 +47,63 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Required utility software</h2>
+            <h2>Why an operating system is required and what it manages</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware. A disk defragmenter rearranges fragmented file blocks on a magnetic disk; it is not a speed treatment for SSDs.</p>
-            <p>A disk contents analysis/repair utility examines file-system structures, reports faults and attempts defined repairs. Compression reduces file size and backup creates a separate recoverable copy. Encryption may be useful additional protection, but it does not replace any of the six named syllabus utilities.</p>
-            <p>Required utilities include defragmentation software and disk contents analysis/disk repair software; defragmentation rearranges file blocks, while analysis/repair checks and attempts to repair file-system faults.</p>
+            <p>An operating system is required to provide a controlled interface between applications, users and hardware, and to coordinate shared resources. Without it, each application would need its own incompatible routines for processor time, memory, files, security and devices.</p>
+            <p>Process management schedules CPU time and tracks running processes. Memory management allocates and protects RAM. File management organises files, folders, metadata and file operations. Security management authenticates users and enforces permissions or access rights.</p>
+            <p>Hardware management coordinates devices through drivers, interrupts, buffers and queues. These roles cooperate: security management decides whether a request is authorised, while file or hardware management performs the permitted operation. Antivirus remains a utility and must not replace the OS security-management role.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Choose the utility from the fault</h3>
-            <p>Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size. Choose by the operation required, not by calling every tool 'maintenance'.</p>
+            <h3>Worked example: Open a protected file and print it</h3>
+            <p>The OS authenticates the user and security management checks access rights. File management locates and opens the file; memory management allocates RAM; process management schedules the application; hardware management uses a printer driver, buffer and queue to send permitted output to the printer.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Required utility software: apply and assess</h2>
+            <h2>Why an operating system is required and what it manages: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Which utility prepares file-system structures on a storage medium?</p>
-              <details><summary>Show answer</summary><p>A disk formatter.</p></details>
+              <p><strong>1.</strong> Which OS role authenticates a user and enforces access rights?</p>
+              <details><summary>Show answer</summary><p>Security management.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Which utility checks file-system structures and attempts repairs?</p>
-              <details><summary>Show answer</summary><p>A disk contents analysis/repair utility.</p></details>
+              <p><strong>2.</strong> Which role allocates RAM to a running process?</p>
+              <details><summary>Show answer</summary><p>Memory management.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why is compression not a backup?</p>
-              <details><summary>Show answer</summary><p>Compression reduces size; a backup creates a separate copy that can be restored.</p></details>
+              <p><strong>3.</strong> Which role uses drivers, buffers and queues?</p>
+              <details><summary>Show answer</summary><p>Hardware management/device management.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why is an operating system required?</p>
+              <details><summary>Show answer</summary><p>It provides a controlled interface and coordinates shared hardware and software resources for applications and users.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A computer has a new storage medium and another disk reports file-system errors. Identify the utility for each task and explain its purpose.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Explain why an operating system is required and describe its process, memory, file, security and hardware management roles.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>disk formatter for the new medium</td><td>Do not accept defragmentation as formatting or as a general file-system repair operation.</td><td>1</td></tr>
-                  <tr><td>formatter creates/prepares file-system structures</td><td></td><td>1</td></tr>
-                  <tr><td>disk contents analysis/repair utility for the faulty disk</td><td></td><td>1</td></tr>
-                  <tr><td>it examines structures and reports/attempts repair of faults</td><td></td><td>1</td></tr>
+                  <tr><td>required interface/control layer between applications, users and hardware</td><td>Do not substitute antivirus utility software for OS security management, and do not treat stored files as RAM.</td><td>1</td></tr>
+                  <tr><td>process management schedules CPU time or tracks processes</td><td></td><td>1</td></tr>
+                  <tr><td>memory management allocates/protects RAM</td><td></td><td>1</td></tr>
+                  <tr><td>file management organises stored files and operations</td><td></td><td>1</td></tr>
+                  <tr><td>security management authenticates users or enforces permissions/access rights</td><td></td><td>1</td></tr>
+                  <tr><td>hardware management uses drivers/interrupts/buffers/queues to coordinate devices</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

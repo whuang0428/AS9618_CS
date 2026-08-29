@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 032 | Logic-gate symbols, functions and representation conversions</title>
+    <title>AS9618 Lesson 032 | Storage characteristics: capacity, speed, durability, portability and cost</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Logic-gate symbols, functions and representation conversions</h1>
+        <h1>Storage characteristics: capacity, speed, durability, portability and cost</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -38,7 +38,6 @@
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -46,80 +45,7 @@
         <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Logic-gate symbols, functions and representation conversions</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR). NOT has one input; each of the other five gates has two inputs for this syllabus. A truth table lists every input combination and the resulting output according to the gate or circuit function.</p>
-            <p>You must be able to construct a logic circuit from a problem statement, logic expression or truth table; construct a truth table from a problem statement, logic circuit or logic expression; and construct a logic expression from a problem statement, logic circuit or truth table. Move through variables and conditions first, then intermediate gate outputs, then the final output so every representation can be checked against the same rows.</p>
-            <p>Use the standard symbol for each logic gate as well as its function, Boolean expression, circuit and truth table.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Convert one rule among four representations</h3>
-            <p>Rule: an alarm sounds when the system is armed and either the door or window is open. Define A, D and W; write Alarm = A AND (D OR W); draw an OR gate for D and W feeding an AND gate with A; then list all eight input combinations and evaluate the intermediate OR column before Alarm.</p>
-          </article>
-        </section>
-
-        <!-- stage10-explanation:start gate-visual -->
-        <section class="panel explanation-panel" id="explanation-gate-visual" data-explains="gate-visual" data-explanation-kind="mechanism" aria-labelledby="explanation-gate-visual-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="gate-visual">
-          <h2 class="explanation-sr-only" id="explanation-gate-visual-title">Six symbols, six exact output rules</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-gate-visual.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Six symbols, six exact output rules with a structured visual model." />
-            <figcaption class="explanation-sr-only">Six symbols, six exact output rules: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.</li><li><strong>Lesson fact:</strong> NOT One input; output is the opposite value.</li><li><strong>Lesson fact:</strong> AND / NAND AND tests whether both are 1; NAND inverts that result.</li><li><strong>Lesson fact:</strong> OR / NOR OR tests whether at least one is 1; NOR inverts that result.</li><li><strong>Lesson fact:</strong> XOR Output is 1 only when the two inputs are different.</li><li><strong>Lesson fact:</strong> Check the diagram: what two visual clues separate NOR from XOR?</li><li><strong>Lesson fact:</strong> NOR has an output bubble. XOR has no output bubble, but it has an extra curved line on the input side.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end gate-visual -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Logic-gate symbols, functions and representation conversions: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What distinguishes the XOR symbol from the OR symbol?</p>
-              <details><summary>Show answer</summary><p>XOR has an additional curved line on the input side.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How many inputs does NOT have, and how many do the other specified gates have in this syllabus?</p>
-              <details><summary>Show answer</summary><p>NOT has one input; AND, OR, NAND, NOR and XOR each have two inputs.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Identify the three possible sources from which a logic circuit may be constructed.</p>
-              <details><summary>Show answer</summary><p>A problem statement, a logic expression or a truth table.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> How do intermediate columns help convert a circuit into a truth table?</p>
-              <details><summary>Show answer</summary><p>Each intermediate column records one gate output, allowing the final result to be calculated and checked row by row.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A truth table gives output 1 only when input A is 1 and input B is 0. Construct a logic expression and describe the corresponding circuit.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>identifies that B must be inverted</td><td>Do not accept XOR: XOR is also 1 for A=0, B=1, which contradicts the given truth table.</td><td>1</td></tr>
-                  <tr><td>constructs expression Q = A AND NOT B</td><td></td><td>1</td></tr>
-                  <tr><td>B is connected to a NOT gate</td><td></td><td>1</td></tr>
-                  <tr><td>A and the NOT-gate output are connected to an AND gate whose output is Q</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 032 | 45 minutes | Paper 1 Section 3</p>
             <h2>Storage choice is a trade-off, not a popularity contest.</h2>
@@ -140,7 +66,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>CIE marking is strict with vague claims. "Efficient" or "better" usually needs a named characteristic and a scenario consequence.</p>
@@ -151,7 +77,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Choose storage for a travel photographer: huge photo library, rough travel bag, limited budget and quick editing. Which feature matters most?</h2>
@@ -167,7 +93,7 @@
           </div>
         </section>
 
-        <section class="panel" id="criteria" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section class="panel" id="criteria" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="criteria">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>The five core characteristics</h2>
@@ -183,7 +109,7 @@
         </section>
 
         <!-- stage10-explanation:start criteria -->
-        <section class="panel explanation-panel" id="explanation-criteria" data-explains="criteria" data-explanation-kind="mechanism" aria-labelledby="explanation-criteria-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section class="panel explanation-panel" id="explanation-criteria" data-explains="criteria" data-explanation-kind="mechanism" aria-labelledby="explanation-criteria-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="criteria">
           <h2 class="explanation-sr-only" id="explanation-criteria-title">The five core characteristics</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-criteria.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The five core characteristics with a structured visual model." />
@@ -195,7 +121,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end criteria -->
-        <section class="panel" id="tradeoffs" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section class="panel" id="tradeoffs" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tradeoffs">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Trade-offs by common storage device</h2>
@@ -241,7 +167,7 @@
         </section>
 
         <!-- stage10-explanation:start tradeoffs -->
-        <section class="panel explanation-panel" id="explanation-tradeoffs" data-explains="tradeoffs" data-explanation-kind="mechanism" aria-labelledby="explanation-tradeoffs-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section class="panel explanation-panel" id="explanation-tradeoffs" data-explains="tradeoffs" data-explanation-kind="mechanism" aria-labelledby="explanation-tradeoffs-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="tradeoffs">
           <h2 class="explanation-sr-only" id="explanation-tradeoffs-title">Trade-offs by common storage device</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-tradeoffs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trade-offs by common storage device with a structured visual model." />
@@ -253,7 +179,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end tradeoffs -->
-        <section class="panel" id="answer" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section class="panel" id="answer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="answer">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>The answer pattern: choice -> characteristic -> context -> consequence</h2>
@@ -268,7 +194,7 @@
         </section>
 
         <!-- stage10-explanation:start answer -->
-        <section class="panel explanation-panel" id="explanation-answer" data-explains="answer" data-explanation-kind="mechanism" aria-labelledby="explanation-answer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section class="panel explanation-panel" id="explanation-answer" data-explains="answer" data-explanation-kind="mechanism" aria-labelledby="explanation-answer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="answer">
           <h2 class="explanation-sr-only" id="explanation-answer-title">The answer pattern: choice -&gt; characteristic -&gt; context -&gt; consequence</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-answer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The answer pattern: choice -&gt; characteristic -&gt; context -&gt; consequence with a structured visual model." />
@@ -280,7 +206,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end answer -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Choose by priority</h2>
@@ -303,7 +229,7 @@
           <div class="method-box" id="componentMethod"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Trade-off answers in exam style</h2>
@@ -316,7 +242,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -326,7 +252,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the vague comparison</h2>
@@ -345,7 +271,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -354,7 +280,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-032">
+        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Characteristics decide suitability</h2>

@@ -85,7 +85,7 @@ Use panels labelled `CORE / TEACH` as assessed support. Panels labelled `OPTIONA
 
 - **Explains:** `device-bits`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-050-device-bits.jpg`
 
 1. AND a status byte with a one-bit mask to test a named device flag.
@@ -116,7 +116,7 @@ Use panels labelled `CORE / TEACH` as assessed support. Panels labelled `OPTIONA
 
 - **Explains:** `masks`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-050-masks.jpg`
 
 1. AND with a 1 preserves or tests a bit, while AND with a 0 clears it.
@@ -124,6 +124,21 @@ Use panels labelled `CORE / TEACH` as assessed support. Panels labelled `OPTIONA
 3. XOR with a 1 toggles a bit while XOR with a 0 preserves it.
 - **Analogy:** A stencil exposes only the positions that one operation may affect.
 - **Boundary:** Apply the operation independently to corresponding bit positions.
+
+### Binary shifts: logical, arithmetic, cyclic
+
+- **Explains:** `shifts`
+- **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-050-shifts.jpg`
+
+1. Every shown input and stored result contains exactly eight bits.
+2. Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.
+3. Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.
+4. Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.
+5. Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label.
+- **Analogy:** Three conveyor rules move the same row but handle the end position differently.
+- **Boundary:** State the fixed width, direction and shift type before calculating.
 
 ### Stalls and flushes reduce the ideal gain
 

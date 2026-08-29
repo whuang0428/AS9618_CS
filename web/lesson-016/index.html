@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 016 | Network purpose and client/server models</title>
+    <title>AS9618 Lesson 016 | Network purposes, LAN, WAN and topologies</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css?v=2" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Network purpose and client/server models</h1>
+        <h1>Network purposes, LAN, WAN and topologies</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -42,33 +42,30 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Network purpose and client/server models</h2>
+            <h2>Networking benefits, LAN/WAN and the four required topologies</h2>
           </div>
           <div class="stage2-explanation">
             <p>Networking devices allow computers and users to share resources such as files, printers, storage and an internet connection. A network can also support communication, collaboration, central account management, central backup and access to shared services. A benefit must identify what is shared or managed and explain the consequence; 'it is easier' is not enough.</p>
             <p>A LAN covers a limited geographical area such as one building or site and is normally owned or managed by one organisation. A WAN covers a large geographical area, connects separate LANs or sites and commonly uses telecommunications-provider infrastructure. LAN and WAN describe scope and management, not a guaranteed speed.</p>
             <p>In a bus topology, devices attach to one shared backbone cable and a transmitted signal travels along that shared medium. In a star topology, every device has a separate link to a central switch and each frame passes through that switch. In a mesh topology, nodes have multiple interconnections so packets may use alternative routes. A hybrid topology combines two or more topology patterns, for example two star segments connected by a backbone.</p>
             <p>Topology choice must be justified from packet path, failure effect, redundancy, cabling cost, expansion and traffic. A star isolates most individual cable faults but the central switch is a single point of failure; a mesh offers alternative paths but needs more links and management; a bus uses less cable but the shared backbone and shared traffic are weaknesses.</p>
-            <p>In a client-server model, clients request services or resources and one or more servers provide them. Dedicated server roles can include authentication, file storage, web hosting and backup. Central management, consistent access control and central backup are benefits; server cost, specialist administration, dependence on the server and a possible central failure are drawbacks.</p>
-            <p>In a peer-to-peer model, each peer may request and provide resources directly. It can be inexpensive and simple for a small trusted group because no dedicated server is required, but distributed accounts, backups, security and availability become harder to control. A model choice must be justified from number of users, trust, management, availability, cost and the required shared services.</p>
-            <p>A thin client relies mainly on a server for processing and/or storage. A thick client performs more processing locally and normally stores more software or data on the client device. Thin clients simplify central updates and can use lower-specification hardware, but depend heavily on the server and network. Thick clients can continue more work when disconnected, but local installation, security and maintenance are distributed.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Choose a topology for a two-building clinic / Choose a model and client type for a school examination room</h3>
-            <p>Use a star LAN inside each building so individual devices have independent links to a central switch. Connect the two stars to form a hybrid network. If the inter-building link is safety-critical, add a second path: packets can use the alternative route after one link fails, at extra cost. Use a client-server model so accounts, permissions, exam files and backups are controlled by servers. Thin clients support central software management and reduce local storage, but the school must provide resilient servers and networking because a failure can stop the room. Thick clients would reduce that dependence but distribute software and security maintenance.</p>
+            <h3>Worked example: Choose a topology for a two-building clinic</h3>
+            <p>Use a star LAN inside each building so individual devices have independent links to a central switch. Connect the two stars to form a hybrid network. If the inter-building link is safety-critical, add a second path: packets can use the alternative route after one link fails, at extra cost.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Network purpose and client/server models: apply and assess</h2>
+            <h2>Networking benefits, LAN/WAN and the four required topologies: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
@@ -88,41 +85,20 @@
               <p><strong>4.</strong> Suggest star or mesh for a hospital network that prioritises resilience.</p>
               <details><summary>Show answer</summary><p>Mesh, because alternative packet routes can maintain communication after a link failure; acknowledge the additional links/cost.</p></details>
             </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> State the roles of a client and server.</p>
-              <details><summary>Show answer</summary><p>A client requests a service or resource; a server provides and manages the service or resource.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> Give one benefit and one drawback of peer-to-peer networking.</p>
-              <details><summary>Show answer</summary><p>Benefit: no dedicated server / low setup cost. Drawback: distributed security, backup and availability are harder to manage.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> Justify client-server for 600 managed school users.</p>
-              <details><summary>Show answer</summary><p>Central accounts, permissions, storage, updates and backup suit many users, despite server cost and availability risk.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>8.</strong> Compare a thin client from a thick client.</p>
-              <details><summary>Show answer</summary><p>A thin client depends mainly on server processing/storage; a thick client performs and stores more locally.</p></details>
-            </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>10 marks</span></div>
-            <p>A college is replacing one shared bus network with star LANs connected into a hybrid topology. Explain two networking benefits and justify the topology change. A call centre is choosing a client-server model with thin clients. Explain two benefits and two drawbacks of this combined choice.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>A college is replacing one shared bus network with star LANs connected into a hybrid topology. Explain two networking benefits and justify the topology change.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>one developed resource-sharing, communication or central-management benefit</td><td>Do not award generic benefits or a topology name without a path/failure consequence. Do not award 'cheaper' unless the lower client specification or central administration explains why; do not confuse network model with topology.</td><td>1</td></tr>
+                  <tr><td>one developed resource-sharing, communication or central-management benefit</td><td>Do not award generic benefits or a topology name without a path/failure consequence.</td><td>1</td></tr>
                   <tr><td>a second distinct developed networking benefit</td><td></td><td>1</td></tr>
                   <tr><td>star frames pass through a central switch and an individual cable failure normally affects one device</td><td></td><td>1</td></tr>
                   <tr><td>hybrid combines topology patterns / connects the star segments</td><td></td><td>1</td></tr>
                   <tr><td>justification links reliability, expansion, traffic or cost to the college</td><td></td><td>1</td></tr>
-                  <tr><td>centralised accounts/software/update or data management</td><td></td><td>1</td></tr>
-                  <tr><td>lower client hardware/storage requirement</td><td></td><td>1</td></tr>
-                  <tr><td>depends on network/server availability or performance</td><td></td><td>1</td></tr>
-                  <tr><td>server infrastructure, administration or central-failure cost</td><td></td><td>1</td></tr>
-                  <tr><td>develops at least one point in the call-centre context</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

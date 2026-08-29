@@ -1,7 +1,7 @@
-# Lesson 144: Expose, locate and correct program errors
+# Lesson 144: Design documentation: algorithms, data dictionaries, and interfaces
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- remediation-v2-optional:start -->
@@ -13,41 +13,42 @@
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Expose, locate and correct program errors
+**Focus:** Structure charts and the purpose of state-transition diagrams
 
 ### Direct explanation
 
-- A syntax error breaks the language grammar and is normally exposed by a translator or an IDE's dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.
-- After an error is exposed, locate the responsible statement and identify the error type before changing it. Correct the cause, not only the observed output, then rerun the failing test and relevant regression tests. Avoid faults by using clear identifiers, modular design, validation, desk checking, peer walkthroughs and a planned set of normal, abnormal and extreme/boundary tests.
-- No single method proves that a program has no remaining faults. Translation can expose syntax faults but not every logic fault; testing can reveal failures for selected cases but cannot demonstrate correctness for every possible input.
-- A runtime error (run-time error) occurs during execution; identify its cause, use runtime diagnostics to locate it and correct the responsible code.
+- A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.
+- To construct a structure chart, place the controlling module at the top, split the problem into one-responsibility subtasks, connect each caller to its called modules, and label every value passed. To derive equivalent pseudocode, turn each box into a complete PROCEDURE or FUNCTION header with corresponding parameters, add calls in the parent body with matching arguments, and preserve the shown hierarchy.
+- A state-transition diagram documents an algorithm by showing persistent states and the events that cause changes between them. Its syllabus requirement is to understand that purpose; constructing a state-transition diagram is retained only as Optional enrichment.
 
 ### Worked example
 
-**Correct three different faults:** A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection. Mark > 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark >= 50. Total / Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division.
+**Door controller: two design views:** A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid). Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments. A provided state-transition diagram with Locked and Unlocked states serves a different purpose: it documents event-driven changes rather than module hierarchy or processing sequence.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. Which method can expose a syntactically valid wrong boundary?
-   **Answer:** A trace, dry run, walkthrough or selected boundary test can expose the wrong result.
-2. Why is a translator insufficient for all logic errors?
-   **Answer:** Logic errors can obey the language grammar, so translation may succeed even though the result is wrong.
-3. What must happen after a correction?
-   **Answer:** Rerun the failing test and relevant regression tests to check the correction and existing behaviour.
+1. What does a box represent in a structure chart?
+   **Answer:** A module, procedure or function.
+2. How are parameters represented and then derived into pseudocode?
+   **Answer:** Labelled arrows show values passed; the same values appear as parameters in the called header and arguments in the caller's call.
+3. What does a state-transition diagram document?
+   **Answer:** The persistent states of an algorithm/system and the event-driven changes between them.
+4. Why is a state-transition diagram not a flowchart?
+   **Answer:** Its purpose is to document states and transitions, not every processing step in sequence.
 
 ### Exam-style question and MS
 
-**Question (6 marks):** For each fault, state its type, one way to expose or locate it, and the correction: a missing ENDIF; IF Mark > 50 when 50 should pass; Average <- Total / Count when Count can be zero.
+**Question (6 marks):** For a login system, construct a structure chart in which Main calls ReadCredentials(UserID, Password) and CheckLogin(UserID, Password, IsValid), then derive equivalent subprogram headers and calls. A separate diagram shows LoggedOut, LoggedIn and Locked states: explain the purpose of this state-transition diagram.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| missing ENDIF identified as syntax error and translator/dynamic syntax check used | Do not accept changing the expected result to hide a program fault, or claim that successful translation proves the algorithm correct. | 1 |
-| adds the required ENDIF |  | 1 |
-| Mark > 50 identified as logic error and boundary trace/test at 50 used |  | 1 |
-| changes the condition to Mark >= 50 or equivalent |  | 1 |
-| division by zero identified as run-time error/risk and execution/test diagnostics used |  | 1 |
-| guards the division by checking Count or handles the zero case |  | 1 |
+| structure chart places Main above the two called modules | Do not award construction marks for the state-transition diagram; the construction marks apply to the structure chart only. | 1 |
+| parameter arrows label UserID, Password and IsValid coherently |  | 1 |
+| derived pseudocode contains matching complete headers and calls with arguments |  | 1 |
+| identifies persistent states in the provided state-transition diagram |  | 1 |
+| explains that labelled transitions show event-driven changes |  | 1 |
+| distinguishes this purpose from module hierarchy or a flowchart of processing steps |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 
@@ -196,18 +197,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 4. Testers compare actual behaviour with the designed rules, validation and expected messages.
 5. Maintenance
 6. Future changes are safer because developers can see existing data rules and processing assumptions.
-
-### Logic errors make the program do the wrong thing
-
-- **Explains:** `logic`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-059-logic.jpg`
-
-1. Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.
-2. Examples Using < instead of <= , wrong formula, wrong loop condition or off-by-one error.
-3. Detection Usually found by testing, tracing or comparing actual output with expected output.
-4. Common error A translator may not detect it because the instructions are legal.
 
 ### Design documents translate requirements into a buildable plan
 

@@ -1,46 +1,51 @@
-# Lesson 048: Section 4 semantic checkpoint
+# Lesson 048: Interrupts and interrupt service routines
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Section 4 semantic checkpoint
+**Focus:** Interrupt causes, detection and handling
 
 ### Direct explanation
 
-- Read each instruction by its specified effect: LDR #n loads the immediate value n into IX; CMI <address> compares ACC with a value reached by indirect addressing; JPE <address> jumps after a True comparison; JPN <address> jumps after a False comparison.
-- For bit manipulation, identify the fixed width and bit numbering before tracing. AND tests or clears selected bits, OR sets selected bits, XOR toggles selected bits, and logical, arithmetic and cyclic shifts differ in fill and rotation behaviour.
+- An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.
+- For most maskable interrupts, the processor completes the current instruction and checks for pending enabled interrupts at the end of that fetch-execute cycle, before beginning the next instruction. Detection is therefore not the same as stopping halfway through an ordinary instruction.
+- If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.
+- Interrupts are detected at the specified point in the fetch-execute cycle before the processor saves state and enters the ISR.
 
 ### Worked example
 
-**Resolve four instruction cards:** Match LDR #4 to IX <- 4, trace CMI POINTER through the address stored at POINTER, send a True comparison to JPE MATCH and a False comparison to JPN DIFFERENT. None of the four names should be decoded by an English guess.
+**Handle a keyboard interrupt:** A key press raises an interrupt while the CPU is executing another program. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and continues the original program.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. What does LDR #6 change?
-   **Answer:** It loads the immediate value 6 into IX.
-2. How does CMI <address> obtain the comparison value?
-   **Answer:** It uses indirect addressing: the operand location contains the address of the value compared with ACC.
-3. Which branch follows a True comparison, and which follows a False comparison?
-   **Answer:** JPE follows True; JPN follows False.
-4. Which operation toggles selected device bits?
-   **Answer:** XOR with a mask containing 1 at each bit to toggle.
+1. Give two possible causes or applications of interrupts.
+   **Answer:** For example an I/O device request, timer/scheduler event, hardware fault or software exception.
+2. When is a normal maskable interrupt detected and accepted?
+   **Answer:** After the current instruction completes, at the end of the fetch-execute cycle before the next instruction begins, subject to enabled/priority checks.
+3. What is an ISR?
+   **Answer:** An interrupt service routine: program code that handles a particular interrupt.
+4. Why must processor state be saved and restored?
+   **Answer:** So the interrupted program can resume at the correct instruction with its earlier register and status values.
+5. List the handling sequence after detection.
+   **Answer:** Check/accept, save state, locate and execute ISR, restore state, resume program.
 
 ### Exam-style question and MS
 
-**Question (5 marks):** State the exact effects of LDR #n, CMI <address>, JPE <address> and JPN <address>.
+**Question (6 marks):** Describe one interrupt cause or application, state when it is detected in the fetch-execute cycle, and trace handling through the ISR to resumption.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| LDR loads immediate n into IX | Do not infer an instruction effect from the mnemonic letters; use the specified instruction-set semantics. | 1 |
-| CMI obtains the comparison value by indirect addressing |  | 1 |
-| CMI compares that value with ACC |  | 1 |
-| JPE branches after a True comparison |  | 1 |
-| JPN branches after a False comparison |  | 1 |
+| valid cause/application such as I/O, timer, fault or exception | Do not accept that every interrupt stops an instruction halfway through, that the ISR is the signal, or that the whole interrupted program restarts. | 1 |
+| current instruction completes and interrupt is detected/checked at the cycle boundary |  | 1 |
+| priority/enabled status is checked |  | 1 |
+| PC/register/status state is saved |  | 1 |
+| correct ISR is located and executed |  | 1 |
+| state is restored and the interrupted program resumes |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 

@@ -1,8 +1,49 @@
-# Lesson 022: Ethernet collisions and CSMA/CD
+# Lesson 022: Wired and wireless transmission media
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Wired and wireless networks with all required transmission media
+
+### Direct explanation
+
+- A wired network carries signals through a physical cable. It can provide stable, predictable links and avoids radio interference, but installation restricts movement and may require disruptive cabling. A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security. The implications must be tied to a given use, not reduced to 'wired is faster'.
+- Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference. Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.
+- Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.
+
+### Worked example
+
+**Connect a school campus and a remote weather station:** Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling between two buildings is impractical, and satellite for the remote station without local cable infrastructure. Each choice follows distance, mobility, interference, bandwidth, latency and cost.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Compare wired and wireless networks for fixed desktops and mobile tablets.
+   **Answer:** Wired provides a stable physical link for fixed devices; wireless radio supports mobility but may suffer interference, obstacles and shared capacity.
+2. Compare copper cable with fibre-optic cable.
+   **Answer:** Copper uses electrical signals and may be cheaper; fibre uses light, supports higher bandwidth/longer distance and resists electromagnetic interference.
+3. Compare WiFi radio waves, terrestrial microwave and satellite links.
+   **Answer:** WiFi provides local wireless access; terrestrial microwave is directional and line-of-sight; satellite provides wide/remote coverage but commonly has greater latency.
+4. Suggest a medium for a remote location with no cable infrastructure.
+   **Answer:** Satellite if wide remote coverage is required; justify the latency/cost/weather drawback.
+
+### Exam-style question and MS
+
+**Question (5 marks):** Suggest transmission media for fixed classroom PCs, mobile tablets, an inter-building backbone and a remote field station.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| copper cable for short fixed links with a valid cost/stability reason | Do not accept unqualified 'wireless is less secure' or 'fibre is faster'; require a mechanism or scenario consequence. | 1 |
+| WiFi/radio waves for mobile devices with an interference/security implication |  | 1 |
+| fibre-optic cable for the high-bandwidth/longer inter-building link |  | 1 |
+| satellite for remote coverage without cable infrastructure |  | 1 |
+| at least one limitation is correctly linked to the chosen medium |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1

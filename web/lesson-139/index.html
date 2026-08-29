@@ -44,10 +44,79 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Clear and efficient Cambridge pseudocode</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path. Efficient pseudocode avoids unnecessary repeated work while preserving correctness.</p>
+            <p>An improvement must be justified from the algorithm, such as combining repeated traversals or stopping a search when no later work is required. Fewer written lines alone do not prove efficiency.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Combine two traversals</h3>
+            <p>One traversal of Marks can update both Total and PassCount. The Cambridge pseudocode remains clear because initialisation, loop bounds, selection and outputs are explicit.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="comparison" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java methods can model modularity, but Cambridge pseudocode remains the exam format</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java methods can model modularity, but Cambridge pseudocode remains the exam format with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java methods can model modularity, but Cambridge pseudocode remains the exam format: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN</li><li><strong>Lesson fact:</strong> RETURN Mark &gt;= 0 AND Mark &lt;= 100</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> static boolean isValidMark(int mark) {</li><li><strong>Lesson fact:</strong> return mark &gt;= 0 &amp;&amp; mark &lt;= 100;</li><li><strong>Lesson fact:</strong> Use Java to practise running code, but use Cambridge-style pseudocode when the exam asks for algorithm design.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Clear and efficient Cambridge pseudocode: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Does shorter code always mean more efficient code?</p>
+              <details><summary>Show answer</summary><p>No; the amount of work and correctness matter.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Identify one clarity feature.</p>
+              <details><summary>Show answer</summary><p>Meaningful identifiers, indentation or complete constructs.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Write two full traversals as one clear and efficient Cambridge pseudocode traversal and justify the change.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>clear Cambridge pseudocode</td><td>Do not credit an efficiency claim based only on line count.</td><td>1</td></tr>
+                  <tr><td>one correct traversal</td><td></td><td>1</td></tr>
+                  <tr><td>avoids repeated work</td><td></td><td>1</td></tr>
+                  <tr><td>valid efficiency justification</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 139 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
             <h2>Robust programs expect trouble and still behave politely.</h2>
@@ -71,7 +140,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam answers often need causes and consequences: validation prevents invalid data being processed; modularity makes code easier to test and maintain.</p>
@@ -82,7 +151,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A user enters <code>banana</code> as a mark. What should a robust program do first?</h2>
@@ -97,7 +166,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the action that prevents invalid data being processed.</div>
         </section>
 
-        <section class="panel" id="robust" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="robust">
+        <section class="panel" id="robust" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Robust design</p>
             <h2>A robust program handles expected misuse without collapsing</h2>
@@ -110,7 +179,7 @@
         </section>
 
         <!-- stage10-explanation:start robust -->
-        <section class="panel explanation-panel" id="explanation-robust" data-explains="robust" data-explanation-kind="mechanism" aria-labelledby="explanation-robust-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="robust">
+        <section class="panel explanation-panel" id="explanation-robust" data-explains="robust" data-explanation-kind="mechanism" aria-labelledby="explanation-robust-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <h2 class="explanation-sr-only" id="explanation-robust-title">A robust program handles expected misuse without collapsing</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-robust.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A robust program handles expected misuse without collapsing with a structured visual model." />
@@ -122,7 +191,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end robust -->
-        <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
+        <section class="panel" id="validation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Validation</p>
             <h2>Validation checks whether data is acceptable for the program</h2>
@@ -149,7 +218,7 @@ UNTIL Valid = TRUE</code></pre>
         </section>
 
         <!-- stage10-explanation:start validation -->
-        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
+        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <h2 class="explanation-sr-only" id="explanation-validation-title">Validation checks whether data is acceptable for the program</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation checks whether data is acceptable for the program with a structured visual model." />
@@ -161,7 +230,7 @@ UNTIL Valid = TRUE</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end validation -->
-        <section class="panel" id="checks" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checks">
+        <section class="panel" id="checks" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Validation check types</p>
             <h2>Pick the check that matches the rule</h2>
@@ -176,7 +245,7 @@ UNTIL Valid = TRUE</code></pre>
         </section>
 
         <!-- stage10-explanation:start checks -->
-        <section class="panel explanation-panel" id="explanation-checks" data-explains="checks" data-explanation-kind="mechanism" aria-labelledby="explanation-checks-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checks">
+        <section class="panel explanation-panel" id="explanation-checks" data-explains="checks" data-explanation-kind="mechanism" aria-labelledby="explanation-checks-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <h2 class="explanation-sr-only" id="explanation-checks-title">Pick the check that matches the rule</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-checks.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pick the check that matches the rule with a structured visual model." />
@@ -188,7 +257,7 @@ UNTIL Valid = TRUE</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end checks -->
-        <section class="panel" id="modularity" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="modularity">
+        <section class="panel" id="modularity" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Modularity</p>
             <h2>Modular design splits a solution into smaller named parts</h2>
@@ -208,7 +277,7 @@ OUTPUT Grade</code></pre>
         </section>
 
         <!-- stage10-explanation:start modularity -->
-        <section class="panel explanation-panel" id="explanation-modularity" data-explains="modularity" data-explanation-kind="mechanism" aria-labelledby="explanation-modularity-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="modularity">
+        <section class="panel explanation-panel" id="explanation-modularity" data-explains="modularity" data-explanation-kind="mechanism" aria-labelledby="explanation-modularity-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <h2 class="explanation-sr-only" id="explanation-modularity-title">Modular design splits a solution into smaller named parts</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-modularity.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Modular design splits a solution into smaller named parts with a structured visual model." />
@@ -220,7 +289,7 @@ OUTPUT Grade</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end modularity -->
-        <section class="panel" id="parameters" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parameters">
+        <section class="panel" id="parameters" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Parameters and return values</p>
             <h2>Pass data into a module and return only what is needed</h2>
@@ -234,7 +303,7 @@ OUTPUT Grade</code></pre>
         </section>
 
         <!-- stage10-explanation:start parameters -->
-        <section class="panel explanation-panel" id="explanation-parameters" data-explains="parameters" data-explanation-kind="mechanism" aria-labelledby="explanation-parameters-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parameters">
+        <section class="panel explanation-panel" id="explanation-parameters" data-explains="parameters" data-explanation-kind="mechanism" aria-labelledby="explanation-parameters-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <h2 class="explanation-sr-only" id="explanation-parameters-title">Pass data into a module and return only what is needed</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-parameters.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pass data into a module and return only what is needed with a structured visual model." />
@@ -246,7 +315,7 @@ OUTPUT Grade</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end parameters -->
-        <section class="panel" id="integration" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="integration">
+        <section class="panel" id="integration" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Combine ideas</p>
             <h2>Validation and modularity support each other</h2>
@@ -270,7 +339,7 @@ ENDFUNCTION</code></pre>
         </section>
 
         <!-- stage10-explanation:start integration -->
-        <section class="panel explanation-panel" id="explanation-integration" data-explains="integration" data-explanation-kind="mechanism" aria-labelledby="explanation-integration-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="integration">
+        <section class="panel explanation-panel" id="explanation-integration" data-explains="integration" data-explanation-kind="mechanism" aria-labelledby="explanation-integration-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <h2 class="explanation-sr-only" id="explanation-integration-title">Validation and modularity support each other</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-integration.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation and modularity support each other with a structured visual model." />
@@ -282,7 +351,7 @@ ENDFUNCTION</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end integration -->
-        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+        <section class="panel" id="java" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Java methods can model modularity, but Cambridge pseudocode remains the exam format</h2>
@@ -305,7 +374,7 @@ ENDFUNCTION</code></pre>
         </section>
 
 
-        <section class="panel" id="validator" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validator">
+        <section class="panel" id="validator" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Interactive validator</p>
             <h2>Check whether a mark input is robustly acceptable</h2>
@@ -321,7 +390,7 @@ ENDFUNCTION</code></pre>
         </section>
 
         <!-- stage10-explanation:start validator -->
-        <section class="panel explanation-panel" id="explanation-validator" data-explains="validator" data-explanation-kind="mechanism" aria-labelledby="explanation-validator-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validator">
+        <section class="panel explanation-panel" id="explanation-validator" data-explains="validator" data-explanation-kind="mechanism" aria-labelledby="explanation-validator-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <h2 class="explanation-sr-only" id="explanation-validator-title">Check whether a mark input is robustly acceptable</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-validator.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Check whether a mark input is robustly acceptable with a structured visual model." />
@@ -333,7 +402,7 @@ ENDFUNCTION</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end validator -->
-        <section class="panel" id="module-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="module-tool">
+        <section class="panel" id="module-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Module chooser</p>
             <h2>Choose a module for each responsibility</h2>
@@ -353,7 +422,7 @@ ENDFUNCTION</code></pre>
         </section>
 
         <!-- stage10-explanation:start module-tool -->
-        <section class="panel explanation-panel" id="explanation-module-tool" data-explains="module-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-module-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="module-tool">
+        <section class="panel explanation-panel" id="explanation-module-tool" data-explains="module-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-module-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <h2 class="explanation-sr-only" id="explanation-module-tool-title">Choose a module for each responsibility</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-module-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose a module for each responsibility with a structured visual model." />
@@ -365,7 +434,7 @@ ENDFUNCTION</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end module-tool -->
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Design robust code one responsibility at a time</h2>
@@ -378,7 +447,7 @@ ENDFUNCTION</code></pre>
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant checking: answer first, reveal second</h2>
@@ -386,7 +455,7 @@ ENDFUNCTION</code></pre>
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix weak design decisions</h2>
@@ -394,7 +463,7 @@ ENDFUNCTION</code></pre>
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style wording with expandable MS</h2>
@@ -403,7 +472,7 @@ ENDFUNCTION</code></pre>
           <div id="examList" class="exam-list"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-139">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>

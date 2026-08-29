@@ -3,6 +3,8 @@ import path from "node:path";
 import { sourceFactOverrides } from "./stage10-semantic-source-overrides.mjs";
 import { stage3OptionalBaseLessons } from "./remediation-v2-stage3-sequence-plan.mjs";
 import { coreVisualTargetKeys, visualDeliveryLesson, visualDeliveryTarget } from "./remediation-v2-core-visuals.mjs";
+import { coverageContract } from "./syllabus-coverage-contract.mjs";
+import { optionalEnrichment } from "./remediation-v2-optional-enrichment.mjs";
 
 const visualTitleOverrides = Object.freeze({
   "098/concept": "An algorithm is a solution expressed as defined steps",
@@ -56,12 +58,17 @@ const deliveryOverrides = Object.freeze({
 });
 
 const stage3OptionalLessonIds = new Set(stage3OptionalBaseLessons.map((lesson) => String(lesson).padStart(3, "0")));
+const formalCoreLessonIds = new Set(coverageContract.requirements.flatMap(({ teachingLessons }) => teachingLessons).map((lesson) => String(lesson).padStart(3, "0")));
+const reviewedOptionalExplanationKeys = new Set(optionalEnrichment.flatMap(({ lesson, optionalSectionIds }) => optionalSectionIds
+  .filter((sectionId) => sectionId.startsWith("explanation-"))
+  .map((sectionId) => `${String(lesson).padStart(3, "0")}/${sectionId.replace(/^explanation-/, "")}`)));
 const additionalOptionalExplanationLessons = new Set(["011", "021", "057"]);
 const deliveryFor = (key, lesson) => {
   const lessonId = String(lesson).padStart(3, "0");
   if (coreVisualTargetKeys.has(key)) return { role: "CORE", activity: "TEACH", group: key.split("/")[1] };
   if (stage3OptionalLessonIds.has(lessonId)) return { role: "OPTIONAL", activity: "EXTEND", group: `remediation-v2-stage3-optional-${lessonId}` };
-  if (additionalOptionalExplanationLessons.has(lessonId)) return { role: "OPTIONAL", activity: "EXTEND", group: `remediation-v2-optional-${lessonId}` };
+  if (reviewedOptionalExplanationKeys.has(key) || additionalOptionalExplanationLessons.has(lessonId)) return { role: "OPTIONAL", activity: "EXTEND", group: `remediation-v2-optional-${lessonId}` };
+  if (!formalCoreLessonIds.has(lessonId)) return { role: "OPTIONAL", activity: "EXTEND", group: key.split("/")[1] };
   return { ...(deliveryOverrides[key] ?? { role: "CORE", activity: "TEACH" }), group: key.split("/")[1] };
 };
 

@@ -1,13 +1,13 @@
-# Lesson 016: Network purpose and client/server models
+# Lesson 016: Network purposes, LAN, WAN and topologies
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Network purpose and client/server models
+**Focus:** Networking benefits, LAN/WAN and the four required topologies
 
 ### Direct explanation
 
@@ -15,13 +15,10 @@
 - A LAN covers a limited geographical area such as one building or site and is normally owned or managed by one organisation. A WAN covers a large geographical area, connects separate LANs or sites and commonly uses telecommunications-provider infrastructure. LAN and WAN describe scope and management, not a guaranteed speed.
 - In a bus topology, devices attach to one shared backbone cable and a transmitted signal travels along that shared medium. In a star topology, every device has a separate link to a central switch and each frame passes through that switch. In a mesh topology, nodes have multiple interconnections so packets may use alternative routes. A hybrid topology combines two or more topology patterns, for example two star segments connected by a backbone.
 - Topology choice must be justified from packet path, failure effect, redundancy, cabling cost, expansion and traffic. A star isolates most individual cable faults but the central switch is a single point of failure; a mesh offers alternative paths but needs more links and management; a bus uses less cable but the shared backbone and shared traffic are weaknesses.
-- In a client-server model, clients request services or resources and one or more servers provide them. Dedicated server roles can include authentication, file storage, web hosting and backup. Central management, consistent access control and central backup are benefits; server cost, specialist administration, dependence on the server and a possible central failure are drawbacks.
-- In a peer-to-peer model, each peer may request and provide resources directly. It can be inexpensive and simple for a small trusted group because no dedicated server is required, but distributed accounts, backups, security and availability become harder to control. A model choice must be justified from number of users, trust, management, availability, cost and the required shared services.
-- A thin client relies mainly on a server for processing and/or storage. A thick client performs more processing locally and normally stores more software or data on the client device. Thin clients simplify central updates and can use lower-specification hardware, but depend heavily on the server and network. Thick clients can continue more work when disconnected, but local installation, security and maintenance are distributed.
 
 ### Worked example
 
-**Choose a topology for a two-building clinic / Choose a model and client type for a school examination room:** Use a star LAN inside each building so individual devices have independent links to a central switch. Connect the two stars to form a hybrid network. If the inter-building link is safety-critical, add a second path: packets can use the alternative route after one link fails, at extra cost. Use a client-server model so accounts, permissions, exam files and backups are controlled by servers. Thin clients support central software management and reduce local storage, but the school must provide resilient servers and networking because a failure can stop the room. Thick clients would reduce that dependence but distribute software and security maintenance.
+**Choose a topology for a two-building clinic:** Use a star LAN inside each building so individual devices have independent links to a central switch. Connect the two stars to form a hybrid network. If the inter-building link is safety-critical, add a second path: packets can use the alternative route after one link fails, at extra cost.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
@@ -34,31 +31,18 @@
    **Answer:** Bus: shared backbone; star: central switch; mesh: one of several interconnected routes; hybrid: the path follows the combined component topologies.
 4. Suggest star or mesh for a hospital network that prioritises resilience.
    **Answer:** Mesh, because alternative packet routes can maintain communication after a link failure; acknowledge the additional links/cost.
-5. State the roles of a client and server.
-   **Answer:** A client requests a service or resource; a server provides and manages the service or resource.
-6. Give one benefit and one drawback of peer-to-peer networking.
-   **Answer:** Benefit: no dedicated server / low setup cost. Drawback: distributed security, backup and availability are harder to manage.
-7. Justify client-server for 600 managed school users.
-   **Answer:** Central accounts, permissions, storage, updates and backup suit many users, despite server cost and availability risk.
-8. Compare a thin client from a thick client.
-   **Answer:** A thin client depends mainly on server processing/storage; a thick client performs and stores more locally.
 
 ### Exam-style question and MS
 
-**Question (10 marks):** A college is replacing one shared bus network with star LANs connected into a hybrid topology. Explain two networking benefits and justify the topology change. A call centre is choosing a client-server model with thin clients. Explain two benefits and two drawbacks of this combined choice.
+**Question (5 marks):** A college is replacing one shared bus network with star LANs connected into a hybrid topology. Explain two networking benefits and justify the topology change.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| one developed resource-sharing, communication or central-management benefit | Do not award generic benefits or a topology name without a path/failure consequence. Do not award 'cheaper' unless the lower client specification or central administration explains why; do not confuse network model with topology. | 1 |
+| one developed resource-sharing, communication or central-management benefit | Do not award generic benefits or a topology name without a path/failure consequence. | 1 |
 | a second distinct developed networking benefit |  | 1 |
 | star frames pass through a central switch and an individual cable failure normally affects one device |  | 1 |
 | hybrid combines topology patterns / connects the star segments |  | 1 |
 | justification links reliability, expansion, traffic or cost to the college |  | 1 |
-| centralised accounts/software/update or data management |  | 1 |
-| lower client hardware/storage requirement |  | 1 |
-| depends on network/server availability or performance |  | 1 |
-| server infrastructure, administration or central-failure cost |  | 1 |
-| develops at least one point in the call-centre context |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 

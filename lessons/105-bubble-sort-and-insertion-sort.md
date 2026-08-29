@@ -1,8 +1,51 @@
 # Lesson 105: Bubble sort and insertion sort
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Write linear-search and bubble-sort algorithms
+
+### Direct explanation
+
+- Linear search examines array elements in index order until the target is found or all populated elements have been checked. A complete algorithm initialises its index and found state, keeps every access within the declared bounds, compares the current element and advances only when another element remains to be checked.
+- Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.
+- A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.
+- Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.
+
+### Worked example
+
+**Two complete array algorithms:** A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count. A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. When must a linear search stop?
+   **Answer:** When the target has been found or every populated element within the declared bounds has been checked.
+2. What comparison is made by an ascending bubble sort?
+   **Answer:** Compare adjacent elements and swap when the left element is greater than the right element.
+3. What does a no-swap pass prove?
+   **Answer:** No adjacent pair is out of ascending order, so the array is sorted and the algorithm may stop.
+
+### Exam-style question and MS
+
+**Question (8 marks):** Write Cambridge pseudocode for a linear search of Name[1:20] and an ascending bubble sort of Score[1:20].
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| linear search initialises Found and Index | Do not award only a trace or a description; both requested algorithms must be written and must not access Index + 1 beyond the upper bound. | 1 |
+| linear search loops within indexes 1 to 20 until found or exhausted |  | 1 |
+| linear search compares Name[Index] with the target and records a match |  | 1 |
+| bubble sort uses repeated passes |  | 1 |
+| compares adjacent Score[Index] and Score[Index + 1] within valid bounds |  | 1 |
+| uses Temp or an equivalent safe three-step swap |  | 1 |
+| reduces the unsorted range or uses a valid no-swap stopping condition |  | 1 |
+| all constructs close coherently in Cambridge pseudocode |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -101,6 +144,19 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
+
+### Why bubble sort repeats adjacent comparisons
+
+- **Explains:** `bubble`
+- **Explanation type:** process
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-105-bubble.jpg`
+
+1. Bubble sort compares adjacent items and swaps an inverted pair.
+2. For [1, 4, 2, 5, 8], pass 2 makes one swap: 4 and 2.
+3. The resulting list is [1, 2, 4, 5, 8], and the next pass makes zero swaps.
+- **Analogy:** Repeatedly exchange adjacent books until the largest reaches the shelf end.
+- **Boundary:** One pass does not generally sort the entire list.
 
 ### Why the sorts move data differently
 

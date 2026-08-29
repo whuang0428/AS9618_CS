@@ -80,7 +80,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `arrays`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-arrays.jpg`
 
 1. Cambridge-style pseudocode
@@ -95,7 +95,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `assignment`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-assignment.jpg`
 
 1. Assignment versus comparison
@@ -112,7 +112,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `constants`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-constants.jpg`
 
 1. Constants
@@ -128,7 +128,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `principle`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-principle.jpg`
 
 1. Core principle
@@ -148,7 +148,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `records`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-records.jpg`
 
 1. Cambridge-style pseudocode
@@ -166,7 +166,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sorter`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-sorter.jpg`
 
 1. Syntax sorter
@@ -176,7 +176,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `types`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-types.jpg`
 
 1. Data type mapping
@@ -191,7 +191,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `variables`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-variables.jpg`
 
 1. Variables

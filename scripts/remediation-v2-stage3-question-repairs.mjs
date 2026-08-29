@@ -66,4 +66,13 @@ export const stage3AssessmentEvidence = Object.freeze({
 
 export const stage3QuestionDependencyOverrides = Object.freeze({
   "AQ130-Q3": ["S11.05"],
+  "L032-Q1": ["S3.03"],
+  "L134-Q2": ["S11.03"],
+  "L134-Q3": ["S11.03"],
+  "L134-Q5": ["S11.03"],
+  "L135-Q1": ["S11.02"],
+  "L135-Q2": ["S11.02"],
+  "L135-Q5": ["S11.02"],
+  "L136-Q1": ["S10.07"],
+  "L136-Q2": ["S10.07"],
 });

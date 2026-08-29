@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 041 | Von Neumann architecture, CPU components and registers</title>
+    <title>AS9618 Lesson 041 | CPU architecture: ALU, CU, registers, buses and clock</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../student-visuals.css?v=1" />
@@ -18,7 +18,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Von Neumann architecture, CPU components and registers</h1>
+        <h1>CPU architecture: ALU, CU, registers, buses and clock</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,26 +46,23 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Von Neumann architecture, CPU components and registers</h2>
+            <h2>Von Neumann architecture and CPU components</h2>
           </div>
           <div class="stage2-explanation">
             <p>The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required. This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.</p>
             <p>The control unit (CU) fetches and decodes instructions and sends control signals. The arithmetic and logic unit (ALU) performs arithmetic and logical operations. Registers provide small, fast temporary storage, buses carry addresses, data and control signals, and the system clock supplies regular timing pulses that synchronise state changes.</p>
             <p>The immediate access store (IAS) is processor-accessible main memory, not a register, cache or secondary-storage device. A program held on secondary storage must be loaded into IAS before its instructions can be fetched and executed normally.</p>
-            <p>A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.</p>
-            <p>PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.</p>
-            <p>ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Run one stored program / Follow registers through fetch and indexed execute</h3>
-            <p>A program and its input data are copied from SSD into IAS. The PC supplies the address of the next instruction; the instruction is fetched through MDR into CIR, the CU decodes it, and the ALU or another component carries out the operation. The same memory can hold an instruction at one address and data at another because their use is determined by the fetch and instruction semantics. PC = 300 is copied to MAR; the instruction read from memory enters MDR and then CIR. If that instruction is LDX 500 while IX = 3, the effective address is 503 and the value at that address is loaded into ACC. A resulting condition can update a flag in the status register.</p>
+            <h3>Worked example: Run one stored program</h3>
+            <p>A program and its input data are copied from SSD into IAS. The PC supplies the address of the next instruction; the instruction is fetched through MDR into CIR, the CU decodes it, and the ALU or another component carries out the operation. The same memory can hold an instruction at one address and data at another because their use is determined by the fetch and instruction semantics.</p>
           </article>
         </section>
 
@@ -87,7 +84,7 @@
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Von Neumann architecture, CPU components and registers: apply and assess</h2>
+            <h2>Von Neumann architecture and CPU components: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
@@ -111,47 +108,21 @@
               <p><strong>5.</strong> Why is IAS not a CPU register?</p>
               <details><summary>Show answer</summary><p>IAS is processor-accessible main memory for current instructions and data; registers are smaller temporary locations inside the CPU.</p></details>
             </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> Compare a general-purpose register from a special-purpose register.</p>
-              <details><summary>Show answer</summary><p>A general-purpose register can hold values for varied operations; a special-purpose register has a defined processor role.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> State the roles of PC, MAR, MDR and CIR.</p>
-              <details><summary>Show answer</summary><p>PC holds the next-instruction address; MAR the accessed address; MDR transferred data/instruction; CIR the current instruction.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>8.</strong> State the roles of ACC, IX and the status register.</p>
-              <details><summary>Show answer</summary><p>ACC holds ALU results; IX an indexed-address offset; the status register holds flags about results or CPU state.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>9.</strong> Which general-purpose working register is assumed in Cambridge assembly questions?</p>
-              <details><summary>Show answer</summary><p>The accumulator, ACC.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>10.</strong> Base 120 plus IX 7 gives which indexed effective address?</p>
-              <details><summary>Show answer</summary><p>127.</p></details>
-            </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>12 marks</span></div>
-            <p>Explain how the Von Neumann stored-program concept, IAS, CU, ALU and system clock cooperate when a program runs. Compare general-purpose and special-purpose registers, then state the roles of PC, MAR, MDR, CIR, ACC, IX and the status register.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Explain how the Von Neumann stored-program concept, IAS, CU, ALU and system clock cooperate when a program runs.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>instructions and data are stored together in IAS/main memory</td><td>Do not accept that instructions are permanently built into the CU, that IAS is cache, or that the ALU decodes instructions. Do not swap MAR with MDR, PC with CIR, or claim that the status register stores the calculation result.</td><td>1</td></tr>
+                  <tr><td>instructions and data are stored together in IAS/main memory</td><td>Do not accept that instructions are permanently built into the CU, that IAS is cache, or that the ALU decodes instructions.</td><td>1</td></tr>
                   <tr><td>program instructions are represented in binary and fetched from memory</td><td></td><td>1</td></tr>
                   <tr><td>CU fetches/decodes and sends control signals</td><td></td><td>1</td></tr>
                   <tr><td>ALU performs arithmetic or logical operations</td><td></td><td>1</td></tr>
                   <tr><td>clock supplies regular timing pulses to synchronise operations</td><td></td><td>1</td></tr>
                   <tr><td>IAS is directly accessible memory rather than a register or secondary storage</td><td></td><td>1</td></tr>
-                  <tr><td>general-purpose register can hold values for varied operations; special-purpose register has a defined role</td><td></td><td>1</td></tr>
-                  <tr><td>PC next-instruction address and CIR current instruction</td><td></td><td>1</td></tr>
-                  <tr><td>MAR accessed address and MDR transferred data/instruction</td><td></td><td>1</td></tr>
-                  <tr><td>ACC intermediate/final ALU result</td><td></td><td>1</td></tr>
-                  <tr><td>IX offset used in indexed addressing</td><td></td><td>1</td></tr>
-                  <tr><td>status register stores flags about a result or processor state</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 087 | INSERT, DELETE and UPDATE</title>
+    <title>AS9618 Lesson 087 | SQL INSERT, UPDATE and DELETE</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>INSERT, DELETE and UPDATE</h1>
+        <h1>SQL INSERT, UPDATE and DELETE</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,22 +47,22 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>INSERT, DELETE and UPDATE</h2>
+            <h2>DDL, DML and the complete AS SQL subset</h2>
           </div>
           <div class="stage2-explanation">
-            <p>INSERT adds a new row, DELETE removes matching rows, and UPDATE changes values in matching rows. These DML statements maintain stored data.</p>
-            <p>Use a WHERE condition for DELETE and UPDATE when only specified rows should change. Check field order, value types and conditions against the supplied schema.</p>
+            <p>A DBMS carries out creation or modification of database structure using Data Definition Language (DDL). Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE. Table definitions may use CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE and TIME, plus PRIMARY KEY(field) and FOREIGN KEY(field) REFERENCES Table(Field).</p>
+            <p>A DBMS carries out queries and maintenance of stored data using Data Manipulation Language (DML). SELECT queries data; INSERT INTO adds records; UPDATE changes existing records; DELETE FROM removes records. SQL is the industry-standard language for both DDL and DML. WHERE must be used when only selected existing records should be updated or deleted.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Maintain one student row</h3>
-            <p>INSERT adds StudentID 104. UPDATE changes only that row when WHERE StudentID = 104 is used. DELETE removes it with the same key condition.</p>
+            <h3>Worked example: Define a database and maintain its data</h3>
+            <p>CREATE DATABASE College; creates the database structure. CREATE TABLE Department (DepartmentID INTEGER, Code CHARACTER, Name VARCHAR(40), Open BOOLEAN, Budget REAL, ReviewDate DATE, StartTime TIME, PRIMARY KEY (DepartmentID)); defines a table. ALTER TABLE Department ADD ManagerID INTEGER; changes the structure. INSERT INTO, UPDATE and DELETE FROM then maintain records rather than redefining the table.</p>
           </article>
         </section>
 
@@ -82,34 +82,45 @@
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>INSERT, DELETE and UPDATE: apply and assess</h2>
+            <h2>DDL, DML and the complete AS SQL subset: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Which statement adds a row?</p>
-              <details><summary>Show answer</summary><p>INSERT.</p></details>
+              <p><strong>1.</strong> Identify CREATE TABLE and ALTER TABLE as DDL or DML.</p>
+              <details><summary>Show answer</summary><p>DDL, because they define or change structure.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Which statement removes rows?</p>
-              <details><summary>Show answer</summary><p>DELETE.</p></details>
+              <p><strong>2.</strong> Identify all seven required DDL data types.</p>
+              <details><summary>Show answer</summary><p>CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE and TIME.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Which statement changes existing values?</p>
-              <details><summary>Show answer</summary><p>UPDATE.</p></details>
+              <p><strong>3.</strong> Which commands add, change and remove stored records?</p>
+              <details><summary>Show answer</summary><p>INSERT INTO, UPDATE and DELETE FROM.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Write the foreign-key clause for DepartmentID referencing Department(DepartmentID).</p>
+              <details><summary>Show answer</summary><p>FOREIGN KEY (DepartmentID) REFERENCES Department (DepartmentID).</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Why can UPDATE or DELETE without WHERE be dangerous?</p>
+              <details><summary>Show answer</summary><p>It can affect every record in the table.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>3 marks</span></div>
-            <p>Write INSERT, UPDATE and DELETE statements for StudentID 104.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Write SQL to create Event(EventID, Code, Title, EventDate, StartTime, Open, Price), make EventID the primary key, then insert one record and update its Price.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>valid INSERT</td><td>Do not credit an UPDATE or DELETE that unintentionally affects every row.</td><td>1</td></tr>
-                  <tr><td>valid UPDATE with condition</td><td></td><td>1</td></tr>
-                  <tr><td>valid DELETE with condition</td><td></td><td>1</td></tr>
+                  <tr><td>CREATE TABLE Event with a valid field list</td><td>Do not substitute UPDATE for ALTER TABLE or treat INSERT, UPDATE and DELETE as structure-definition commands.</td><td>1</td></tr>
+                  <tr><td>uses INTEGER for EventID and PRIMARY KEY (EventID)</td><td></td><td>1</td></tr>
+                  <tr><td>uses CHARACTER or VARCHAR(n) appropriately for Code/Title</td><td></td><td>1</td></tr>
+                  <tr><td>uses DATE, TIME, BOOLEAN and REAL for the remaining named fields</td><td></td><td>1</td></tr>
+                  <tr><td>valid INSERT INTO with matching fields and values</td><td></td><td>1</td></tr>
+                  <tr><td>valid UPDATE Event SET Price = value WHERE EventID = value</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

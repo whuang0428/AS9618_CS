@@ -1,44 +1,43 @@
-# Lesson 009: Vector graphics and drawing lists
+# Lesson 009: Image file size calculations and metadata
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Vector graphics and drawing lists
+**Focus:** Bitmap file-size calculations and metadata
 
 ### Direct explanation
 
-- Vector encoding stores a graphic as a drawing list of drawing objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.
-- Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.
-- For a given application, justify bitmap or vector storage by connecting the image content and required editing or scaling to the chosen representation.
+- For an uncompressed bitmap, pixel-data size in bits is width in pixels x height in pixels x colour depth in bits per pixel. Divide by 8 to convert bits to bytes. Use the units requested by the question and state whether a decimal or binary prefix is being used.
+- Bitmap metadata is stored separately from the pixel values, commonly in a file header. It can include the format, dimensions, colour depth and other information needed to interpret the pixel data. Add header or metadata bytes only when their size is supplied; when a question says to ignore the header, calculate pixel data only.
 
 ### Worked example
 
-**Store a red circle:** A drawing-list entry could record object = circle, centre = (80, 60), radius = 20, fill = red and outline = black. Enlarging it changes the geometry before redrawing, not a grid of stored pixels.
+**Calculate pixel data and then account for metadata:** A 640 x 480 bitmap using 24-bit colour stores 640 x 480 x 24 = 7,372,800 bits = 921,600 bytes of pixel data. If the question supplies a 54-byte header, the uncompressed total is 921,654 bytes; if it says to ignore metadata, the answer remains 921,600 bytes.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. Identify two properties stored for a vector object.
-   **Answer:** Any two of coordinates, dimensions, fill, line colour or line thickness.
-2. Suggest vector or bitmap for a company logo that must appear on a pen and a billboard.
-   **Answer:** Vector, because geometric objects can be scaled without pixelation.
-3. Why is bitmap normally better for a photograph?
-   **Answer:** A photograph contains complex per-pixel colour and texture that is inefficient to describe as drawing objects.
+1. Calculate the pixel-data size of a 200 x 100 bitmap using 8-bit colour, in bytes.
+   **Answer:** 200 x 100 x 8 / 8 = 20,000 bytes.
+2. A bitmap has 60,000 bytes of pixel data and a supplied 54-byte header. What is its total uncompressed size?
+   **Answer:** 60,054 bytes.
+3. Why must a header not be invented in a file-size calculation?
+   **Answer:** Its size and contents depend on the file format; add it only when the question supplies the metadata size.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** A designer creates a simple icon from circles and rectangles. Explain how it is stored as a vector graphic and give one advantage over a bitmap when resized.
+**Question (4 marks):** A 1024 x 768 bitmap uses 16-bit colour and has a supplied 128-byte header. Calculate (i) its pixel-data size and (ii) its total uncompressed file size in bytes.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| stored as a drawing list / list of objects | Do not accept 'vector has better quality' unless scalability or object-based storage is explained. | 1 |
-| stores object properties such as coordinates/dimensions/colour |  | 1 |
-| software redraws objects from the descriptions |  | 1 |
-| can be resized without pixelation / loss of shape quality |  | 1 |
+| 1024 x 768 x 16 bits | Do not multiply metadata by the number of pixels or add an assumed header size. | 1 |
+| 1,572,864 bytes of pixel data |  | 1 |
+| adds the supplied 128-byte header |  | 1 |
+| 1,572,992 bytes total |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 

@@ -77,7 +77,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `clinic`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-clinic.jpg`
 
 1. Correction clinic
@@ -92,7 +92,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `coverage`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-coverage.jpg`
 
 1. Coverage map
@@ -107,7 +107,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `diagnosis`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-diagnosis.jpg`
 
 1. Diagnosis
@@ -127,7 +127,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `error`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-error.jpg`
 
 1. Interactive error classifier
@@ -138,7 +138,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `rewrite`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-rewrite.jpg`
 
 1. Interactive rewrite builder
@@ -149,7 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `routine`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-routine.jpg`
 
 1. Review routine
@@ -169,7 +169,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `score`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-score.jpg`
 
 1. Interactive score analyser

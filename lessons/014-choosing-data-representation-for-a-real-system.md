@@ -77,7 +77,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cases`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-014-cases.jpg`
 
 1. Multilingual chat app
@@ -93,7 +93,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `framework`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-014-framework.jpg`
 
 1. 1. What data?
@@ -109,7 +109,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tradeoffs`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-014-tradeoffs.jpg`
 
 1. Higher image resolution or colour depth can improve image quality and increases image file size.

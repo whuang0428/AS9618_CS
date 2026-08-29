@@ -26,7 +26,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 1. (a) Convert denary 173 to 8-bit binary. (b) Convert hexadecimal B6 to denary. **[4]**
 2. A 640 x 480 bitmap has 16-bit colour depth. Calculate its uncompressed pixel data in MiB. **[6]**
-3. A school connects two buildings. Compare fibre-optic cable with a wireless microwave link and Suggest one. **[6]**
+3. Describe how a packet is transmitted from one host to another through a switched network, including addressing, routing and reassembly. **[6]**
 4. Describe how a browser uses a URL, DNS, IP addressing and network devices to request a web page from a remote server. **[8]**
 5. A music service supplies photographic album covers and recorded songs on demand. Explain suitable representation, compression and streaming choices. **[6]**
 
@@ -56,12 +56,12 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| fibre supports high bandwidth/data rate | Do not award a recommendation without a developed comparison. | 1 |
-| fibre has low attenuation / resists electromagnetic interference |  | 1 |
-| fibre installation requires physical cable and may cost/disrupt |  | 1 |
-| microwave avoids laying cable / can bridge distance |  | 1 |
-| microwave needs line of sight and may suffer obstruction/weather/interference |  | 1 |
-| justified recommendation linked to distance, reliability or installation |  | 1 |
+| data is divided into packets | Do not describe a permanent dedicated path or omit destination reassembly. | 1 |
+| packet contains destination addressing and sequence/control information |  | 1 |
+| switch forwards the local frame toward the router or destination |  | 1 |
+| router selects a route/next hop using the destination IP address |  | 1 |
+| packets may take different routes and errors/loss can be detected |  | 1 |
+| destination checks and reassembles packets in the correct order |  | 1 |
 
 #### Q4 [8]
 

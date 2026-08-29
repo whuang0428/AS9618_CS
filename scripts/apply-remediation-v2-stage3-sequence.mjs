@@ -1,7 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { stage3OptionalBaseLessons, stage3TitleByLesson } from "./remediation-v2-stage3-sequence-plan.mjs";
+import { lessonIdentityByNumber } from "./lesson-identity-contract.mjs";
+import { stage3OptionalBaseLessons } from "./remediation-v2-stage3-sequence-plan.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const lessonsRoot = path.join(root, "lessons");
@@ -12,7 +13,7 @@ const escapeHtml = (value) => String(value).replaceAll("&", "&amp;").replaceAll(
 
 for (const lesson of stage3OptionalBaseLessons) {
   const number = String(lesson).padStart(3, "0");
-  const title = stage3TitleByLesson[lesson] ?? `Optional enrichment and review for Lesson ${number}`;
+  const identity = lessonIdentityByNumber[lesson];
   const htmlPath = path.join(root, "web", `lesson-${number}`, "index.html");
   const markdownNames = fs.readdirSync(lessonsRoot).filter((name) => name.startsWith(`${number}-`) && name.endsWith(".md"));
   if (markdownNames.length !== 1) throw new Error(`Expected one Markdown lesson for ${number}`);
@@ -20,13 +21,11 @@ for (const lesson of stage3OptionalBaseLessons) {
 
   let html = fs.readFileSync(htmlPath, "utf8")
     .replace(new RegExp(`\\s*${start}[\\s\\S]*?${end}\\s*`, "g"), "\n");
-  if (stage3TitleByLesson[lesson]) {
-    html = html.replace(/<title>([\s\S]*?)<\/title>/, `<title>AS9618 Lesson ${number} | ${escapeHtml(title)}</title>`);
-    html = html.replace(/<h1>([\s\S]*?)<\/h1>/, `<h1>${escapeHtml(title)}</h1>`);
-  }
+  html = html.replace(/<title>([\s\S]*?)<\/title>/, `<title>AS9618 Lesson ${number} | ${escapeHtml(identity.title)}</title>`);
+  html = html.replace(/<h1>([\s\S]*?)<\/h1>/, `<h1>${escapeHtml(identity.title)}</h1>`);
   const hasCore = html.includes('id="stage2-completion"');
   const noticeText = hasCore
-    ? "The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use."
+    ? "The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional."
     : "This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.";
   const notice = `\n        ${start}\n        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>${noticeText}</p></aside>\n        ${end}\n`;
   if (!html.includes('<div class="lesson-content">')) throw new Error(`Lesson ${number}: lesson-content anchor missing`);
@@ -35,7 +34,7 @@ for (const lesson of stage3OptionalBaseLessons) {
 
   let markdown = fs.readFileSync(markdownPath, "utf8")
     .replace(new RegExp(`\\n?${start}[\\s\\S]*?${end}\\n?`, "g"), "\n");
-  if (stage3TitleByLesson[lesson]) markdown = markdown.replace(/^# Lesson \d{3}: .*$/m, `# Lesson ${number}: ${title}`);
+  markdown = markdown.replace(/^# Lesson \d{3}: .*$/m, `# Lesson ${number}: ${identity.title}`);
   const markdownNotice = `${start}\n> **Lesson sequence scope:** ${noticeText}\n${end}\n`;
   const headingEnd = markdown.indexOf("\n", markdown.indexOf("# "));
   markdown = `${markdown.slice(0, headingEnd + 1)}\n${markdownNotice}${markdown.slice(headingEnd + 1).replace(/^\n+/, "\n")}`;
@@ -44,6 +43,7 @@ for (const lesson of stage3OptionalBaseLessons) {
 
 for (let lesson = 1; lesson <= 150; lesson += 1) {
   const number = String(lesson).padStart(3, "0");
+  const identity = lessonIdentityByNumber[lesson];
   const htmlPath = path.join(root, "web", `lesson-${number}`, "index.html");
   const markdownNames = fs.readdirSync(lessonsRoot).filter((name) => name.startsWith(`${number}-`) && name.endsWith(".md"));
   if (markdownNames.length !== 1) throw new Error(`Expected one Markdown lesson for ${number}`);
@@ -55,11 +55,11 @@ for (let lesson = 1; lesson <= 150; lesson += 1) {
       .replace(/Lesson (137|138) \| 45 minutes \| Paper 2 Section 12\.3/g, "Lesson $1 | 45 minutes | Paper 2 Section 11 | Optional enrichment preview of Section 12.3");
     fs.writeFileSync(htmlPath, html);
   }
-  const h1 = html.match(/<h1>([\s\S]*?)<\/h1>/)?.[1]
-    .replace(/<[^>]+>/g, " ").replaceAll("&amp;", "&").replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&quot;", '"').replaceAll("&#39;", "'").replace(/\s+/g, " ").trim();
-  if (!h1) throw new Error(`Lesson ${number}: h1 missing`);
+  html = html.replace(/<title>([\s\S]*?)<\/title>/, `<title>AS9618 Lesson ${number} | ${escapeHtml(identity.title)}</title>`);
+  html = html.replace(/<h1>([\s\S]*?)<\/h1>/, `<h1>${escapeHtml(identity.title)}</h1>`);
+  fs.writeFileSync(htmlPath, html);
   let markdown = fs.readFileSync(markdownPath, "utf8")
-    .replace(/^# Lesson \d{3}: .*$/m, `# Lesson ${number}: ${h1}`)
+    .replace(/^# Lesson \d{3}: .*$/m, `# Lesson ${number}: ${identity.title}`)
     .replace(/\n{3,}/g, "\n\n");
   if ([137, 138].includes(lesson)) {
     const sequenceReference = "**Syllabus reference:** Course sequence Section 11; Optional enrichment preview of Section 12.3";

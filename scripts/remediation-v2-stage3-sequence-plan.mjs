@@ -94,6 +94,15 @@ const section8Sql = focused(87, ["S8.11"], "INSERT, DELETE and UPDATE", [
   "Use a WHERE condition for DELETE and UPDATE when only specified rows should change. Check field order, value types and conditions against the supplied schema.",
 ], "Maintain one student row", "INSERT adds StudentID 104. UPDATE changes only that row when WHERE StudentID = 104 is used. DELETE removes it with the same key condition.", [qa("Which statement adds a row?", "INSERT."), qa("Which statement removes rows?", "DELETE."), qa("Which statement changes existing values?", "UPDATE.")], "Write INSERT, UPDATE and DELETE statements for StudentID 104.", [["B1", "valid INSERT"], ["B1", "valid UPDATE with condition"], ["B1", "valid DELETE with condition"]], "Do not credit an UPDATE or DELETE that unintentionally affects every row.");
 
+const section8Queries = focused(85, ["S8.10"], "One- and two-table SELECT queries", [
+  "A query uses SELECT to name output fields and FROM to name one table or at most two related tables. WHERE filters rows, ORDER BY sorts the result and GROUP BY forms groups for aggregate functions such as SUM, COUNT and AVG.",
+  "For two tables, use INNER JOIN with ON to state how the related key fields match. The ON condition is separate from any WHERE filter applied after the tables are joined.",
+], "Count books by category and join departments", "SELECT Category, COUNT(*) FROM Book GROUP BY Category counts rows in each category. SELECT Employee.Name, Department.DepartmentName FROM Employee INNER JOIN Department ON Employee.DepartmentID = Department.DepartmentID returns fields from two related tables.", [
+  qa("Which clauses filter and sort selected rows?", "WHERE filters rows; ORDER BY sorts the result."),
+  qa("Which clause states the relationship in an INNER JOIN?", "ON."),
+  qa("Name three required aggregate functions.", "SUM, COUNT and AVG."),
+], "Write one grouped single-table query and one INNER JOIN query using at most two tables.", [["B1", "SELECT and FROM"], ["B1", "WHERE or ORDER BY"], ["B1", "GROUP BY with SUM, COUNT or AVG"], ["B1", "INNER JOIN"], ["B1", "ON relationship condition"], ["B1", "uses at most two tables"]], "Do not omit ON from a two-table INNER JOIN or place an aggregate in WHERE.");
+
 const section12TestData = focused(145, ["S12.07"], "Choose normal, abnormal and extreme or boundary test data", [
   "Normal data are valid values within the accepted range. Abnormal data are invalid and should be rejected. Extreme or boundary data are valid values at the limits of the accepted range; values immediately outside a limit are abnormal boundary checks.",
   "Choose test data from the stated validation rule and give an expected result for each value. A label such as 'boundary' is insufficient unless the value really tests a stated limit.",
@@ -126,20 +135,43 @@ const section12LifecycleLimits = focused(142, ["S12.01"], "Lifecycle purpose and
 const affectedSections = new Set([1, 2, 3, 4, 5, 8, 9, 10, 11, 12]);
 const unchanged = stage2Repairs.filter((repair) => !affectedSections.has(Number(repair.rows[0].match(/^S(\d+)\./)?.[1])));
 
+// Keep assessed CORE teaching on the lesson whose established topic actually
+// matches it. Stage 3 previously compressed the official syllabus row order by
+// moving donor content to unrelated target lessons; that produced internally
+// consistent metadata but semantically split pages. The six combinations below
+// are deliberate, topic-aligned placements. All other repairs stay on their
+// original lesson.
+const relocatedDonors = new Set([3, 6, 9, 12, 27, 37, 51, 59, 78, 80, 100, 102, 104, 114, 122, 126, 138, 141, 142, 145, 146]);
+const alignedBaseRepairs = stage2Repairs.filter(({ lesson }) => !relocatedDonors.has(lesson));
+
 export const stage3CoreRepairs = Object.freeze([
-  take(1), take(2), take(3), take(4), take(5), take(6), take(7), take(8), take(9), take(10), take(12),
-  ...section2Sequenced,
-  take(27), take(33, 28), take(28, 29), combine(30, "Output, storage devices and primary memory", take(29), take(31), section3StorageDevices, take(30)), take(34, 31), take(37, 32),
-  combine(41, "Von Neumann architecture, CPU components and registers", take(41), take(43)),
-  combine(42, "System buses, ports and processor performance", take(44), take(49)),
-  take(42, 43), take(48, 44), take(45), take(46), take(47), take(51, 48, ["S4.13"]), section4BitManipulation,
-  take(53, 52), take(55, 53), take(58, 54), take(56, 55), take(60, 56),
-  ...unchanged,
-  take(79, 78), combine(79, "Relational terminology, keys and relationships", take(80), take(81), section8Indexing), combine(80, "E-R design, normalisation and DBMS features", take(82), take(83), take(78, 80, ["S8.05", "S8.06"])), section8Ddl, take(84), combine(85, "DDL and two-table data queries", section8Dml, take(86)), section8Sql, take(89),
-  take(99, 98), take(98, 99), take(100), take(101), take(111, 102), take(102, 103), take(112),
-  take(113), take(118, 114), take(115), take(116), take(104, 117), take(105, 118), take(120, 119), take(122, 120), take(123, 121),
-  take(140, 126), take(114, 127), take(133, 128), combine(129, "Selection and loop structures", take(127), take(128), take(129)), take(130, 130), combine(133, "Clear and efficient Cambridge pseudocode", take(141), section11Efficiency),
-  combine(142, "Lifecycle models, purpose and limitations", take(142), section12LifecycleLimits), take(144, 143), take(59, 144), combine(145, "Testing, maintenance and enhancement", take(145), section12TestData, take(146), take(138)),
+  ...alignedBaseRepairs,
+  combine(3, "Hexadecimal and BCD representations in practical systems", take(3), take(6)),
+  focused(9, ["S1.08"], "Bitmap file-size calculations and metadata", [
+    "For an uncompressed bitmap, pixel-data size in bits is width in pixels x height in pixels x colour depth in bits per pixel. Divide by 8 to convert bits to bytes. Use the units requested by the question and state whether a decimal or binary prefix is being used.",
+    "Bitmap metadata is stored separately from the pixel values, commonly in a file header. It can include the format, dimensions, colour depth and other information needed to interpret the pixel data. Add header or metadata bytes only when their size is supplied; when a question says to ignore the header, calculate pixel data only.",
+  ], "Calculate pixel data and then account for metadata", "A 640 x 480 bitmap using 24-bit colour stores 640 x 480 x 24 = 7,372,800 bits = 921,600 bytes of pixel data. If the question supplies a 54-byte header, the uncompressed total is 921,654 bytes; if it says to ignore metadata, the answer remains 921,600 bytes.", [
+    qa("Calculate the pixel-data size of a 200 x 100 bitmap using 8-bit colour, in bytes.", "200 x 100 x 8 / 8 = 20,000 bytes."),
+    qa("A bitmap has 60,000 bytes of pixel data and a supplied 54-byte header. What is its total uncompressed size?", "60,054 bytes."),
+    qa("Why must a header not be invented in a file-size calculation?", "Its size and contents depend on the file format; add it only when the question supplies the metadata size."),
+  ], "A 1024 x 768 bitmap uses 16-bit colour and has a supplied 128-byte header. Calculate (i) its pixel-data size and (ii) its total uncompressed file size in bytes.", [["M1", "1024 x 768 x 16 bits"], ["A1", "1,572,864 bytes of pixel data"], ["M1", "adds the supplied 128-byte header"], ["A1", "1,572,992 bytes total"]], "Do not multiply metadata by the number of pixels or add an assumed header size."),
+  combine(12, "Vector graphics and compression methods", take(9), take(12)),
+  combine(27, "Computer-system input, output and storage overview", take(27), take(28), take(29), take(31)),
+  combine(78, "Data, databases, relational solutions and DBMS features", take(78), take(79)),
+  combine(80, "Relational terminology, keys, relationships and indexing", take(80), take(81)),
+  section8Queries,
+  combine(100, "Sequence, selection, iteration and logic statements", take(100), take(102)),
+  combine(104, "Array-based linear search and bubble sort", take(104), take(105)),
+  combine(122, "Abstract data types, operations and justified selection", take(122), take(123)),
+  take(37, 35),
+  Object.freeze({ ...section4BitManipulation, lesson: 50 }),
+  combine(52, "System software: operating-system and utility roles", take(53), take(55)),
+  combine(126, "Cambridge pseudocode statements, selection and loop constructs", take(114), take(127), take(128), take(129)),
+  combine(138, "Debugging, error correction and program enhancement", take(59), take(138)),
+  Object.freeze({ ...section12TestData, lesson: 137 }),
+  Object.freeze({ ...section11Efficiency, lesson: 139 }),
+  combine(142, "Lifecycle models, purpose and limitations", take(142), section12LifecycleLimits),
+  combine(145, "Testing, implementation and maintenance", take(145), take(146)),
 ].sort((a, b) => a.lesson - b.lesson));
 
 const duplicateLessons = [...new Set(stage3CoreRepairs.map(({ lesson }) => lesson).filter((lesson, index, all) => all.indexOf(lesson) !== index))];

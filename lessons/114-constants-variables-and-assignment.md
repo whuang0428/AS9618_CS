@@ -1,48 +1,8 @@
-# Lesson 114: Define, read and save record data
+# Lesson 114: Constants, variables and assignment
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
 <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Define, read and save record data
-
-### Direct explanation
-
-- A record structure groups a set of related fields, which may have different data types, under one identifier. Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.
-- Define a Cambridge record type with TYPE, field declarations and ENDTYPE. Declare record variables only after the type definition is complete. A complete definition states every field name and its type.
-- Read data from a record by selecting a named field, for example OUTPUT Student1.Mark or CurrentMark <- Student1.Mark. Save data to the record by assigning to a named field, for example Student1.Mark <- 75. Reading or saving one field does not replace unrelated fields.
-
-### Worked example
-
-**Define and use one student record:** TYPE TStudent declares Name : STRING, DateOfBirth : DATE, Mark : INTEGER and Enrolled : BOOLEAN, then closes with ENDTYPE. DECLARE Student1 : TStudent creates one record. Student1.Mark <- 75 saves a value to the Mark field; OUTPUT Student1.Mark reads that field.
-
-<!-- stage2-practice:start -->
-### Targeted practice and answers
-
-1. Why can a record contain both STRING and DATE fields?
-   **Answer:** Record fields may have different data types but belong to one entity under one identifier.
-2. Which statement saves a mark of 80?
-   **Answer:** Student1.Mark <- 80.
-3. Which expression reads the stored name?
-   **Answer:** Student1.Name, for example OUTPUT Student1.Name.
-
-### Exam-style question and MS
-
-**Question (6 marks):** Define TProduct with Code, Description, Price and InStock fields, Write declarations for Product1, save values to Price and InStock, then read both fields.
-
-| Answer | Guidance | Marks |
-|---|---|---:|
-| opens TYPE TProduct and declares suitable named fields | Do not use numeric array indexing for record fields or omit ENDTYPE from the type definition. | 1 |
-| uses suitable STRING, REAL and BOOLEAN field types |  | 1 |
-| closes the definition with ENDTYPE |  | 1 |
-| declares Product1 : TProduct after ENDTYPE |  | 1 |
-| assigns/saves values through Product1.Price and Product1.InStock |  | 1 |
-| reads/outputs the two named fields without replacing other data |  | 1 |
-<!-- stage2-practice:end -->
-<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2

@@ -1,45 +1,48 @@
-# Lesson 049: Bit manipulation with masks and shifts
+# Lesson 049: Performance factors: cores, cache, clock speed and word length
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Bit manipulation with masks and shifts
+**Focus:** Complete processor performance factors
 
 ### Direct explanation
 
-- A bitwise AND mask can test or clear selected bits; an OR mask can set selected bits; an XOR mask can toggle selected bits. These operations are used to monitor and control individual flags without changing unrelated bits.
-- LSL is a logical left shift and LSR is a logical right shift. Distinguish logical shifts from arithmetic shifts and cyclic shifts: a logical shift inserts zero, an arithmetic right shift preserves the sign bit, and a cyclic shift wraps the bit that leaves one end back to the other.
+- Processor performance depends on processor type, number of cores, bus width, clock speed and cache memory. Processor type means the processor architecture and instruction-set design, including how much useful work its execution units can perform for a particular instruction or workload; a clock-rate comparison alone is therefore not sufficient.
+- More cores can execute independent threads concurrently when software exposes parallel work. Wider data buses can transfer more bits per transfer, while address-bus width affects the address space. Higher clock speed provides more clock cycles per second, and cache reduces waiting when frequently used instructions or data are found close to the CPU.
+- No factor guarantees that every program runs faster. Performance must be justified for the stated workload, because software parallelism, instruction-set compatibility, cache behaviour, memory traffic, heat and other bottlenecks can limit the benefit.
 
 ### Worked example
 
-**Test, set, clear and toggle one flag:** For Status = 10110100, an AND mask tests a selected bit, an OR mask sets it, an AND mask with a zero at that position clears it, and an XOR mask toggles it. LSL moves bits left; LSR moves them right and fills with zero.
+**Compare two processors for two workloads:** Processor A has four faster general-purpose cores and a larger cache; Processor B has eight specialised cores but a lower clock speed. A lightly threaded office program may favour A's processor type, clock behaviour and cache, while a parallel workload written for B's processor type may use more cores. Bus width and memory traffic must also be considered before reaching a conclusion.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. Which mask operation sets selected bits?
-   **Answer:** Bitwise OR.
-2. Which operation toggles selected bits?
-   **Answer:** Bitwise XOR.
-3. What is inserted by a logical shift?
-   **Answer:** Zero bits.
+1. What does processor type mean as a performance factor?
+   **Answer:** The processor architecture/instruction-set and execution design, which determines what work it can perform per instruction or for a particular workload.
+2. Why do more cores not always improve one program?
+   **Answer:** The program must contain independent threads or tasks that can run in parallel.
+3. How can bus width affect performance?
+   **Answer:** A wider data bus can transfer more bits per transfer; address-bus width affects the address space rather than directly guaranteeing speed.
+4. Why can cache improve performance?
+   **Answer:** A cache hit supplies frequently used data or instructions faster than main memory, reducing CPU waiting.
 
 ### Exam-style question and MS
 
-**Question (6 marks):** Explain how AND, OR and XOR masks test, clear, set and toggle control flags, then apply one LSL and one LSR.
+**Question (6 marks):** Two computers have different processor types. Explain how processor type, number of cores, bus width, clock speed and cache can affect their performance for a stated workload.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| AND test/clear | Do not treat logical, arithmetic and cyclic shifts as identical. | 1 |
-| OR set |  | 1 |
-| XOR toggle |  | 1 |
-| correct LSL |  | 1 |
-| correct LSR |  | 1 |
-| monitor/control context |  | 1 |
+| processor type linked to architecture/instruction-set/execution design and workload | Do not accept processor type as only a brand name, or claim that the highest clock speed or largest core count always wins. | 1 |
+| cores linked to available parallel threads/tasks |  | 1 |
+| bus width linked accurately to bits transferred or address space |  | 1 |
+| clock speed linked to cycles per second |  | 1 |
+| cache linked to reducing slower main-memory access |  | 1 |
+| conclusion recognises workload and bottlenecks rather than claiming one factor guarantees speed |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 
@@ -178,20 +181,20 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Heat and power Higher clock speed can require more power and produce more heat.
 4. Architecture Different CPU designs may do different amounts of work per clock cycle.
 
-### Binary shifts: logical, arithmetic, cyclic
+### Bus width and addressable locations
 
-- **Explains:** `shifts`
-- **Explanation type:** comparison
+- **Explains:** `width`
+- **Explanation type:** mechanism
 - **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-050-shifts.jpg`
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-044-width.jpg`
 
-1. Every shown input and stored result contains exactly eight bits.
-2. Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.
-3. Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.
-4. Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.
-5. Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label.
-- **Analogy:** Three conveyor rules move the same row but handle the end position differently.
-- **Boundary:** State the fixed width, direction and shift type before calculating.
+1. Address bus width
+2. If the address bus has n lines, it can represent 2^n different addresses.
+3. A 16-bit address bus can address 2^16 = 65,536 memory locations.
+4. Data bus width
+5. A wider data bus can transfer more bits at once, which can affect throughput.
+6. Precision
+7. Address bus width affects address range; data bus width affects transfer size.
 
 ### Word length: bits processed as a unit
 

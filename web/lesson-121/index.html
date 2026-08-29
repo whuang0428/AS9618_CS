@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 121 | Choosing stack, queue or linked list</title>
+    <title>AS9618 Lesson 121 | CSV-style structured text files</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Choosing stack, queue or linked list</h1>
+        <h1>CSV-style structured text files</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -43,7 +43,6 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -51,62 +50,7 @@
         <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Choosing stack, queue or linked list</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A stack is LIFO with push/pop at the top; a queue is FIFO with enqueue at the rear and dequeue at the front; a linked list supports traversal and insertion/deletion through links.</p>
-            <p>Justification must name the required access order or update behaviour. Array implementations have fixed capacity unless resized and require overflow/underflow checks; linked structures require pointer management.</p>
-            <p>Justify a stack, queue or linked list from its operations and the scenario. Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose structures</h3>
-            <p>Undo history uses a stack because the most recent action is undone first. Print jobs use a queue because the earliest accepted job prints first. A changing ordered playlist can use a linked list for link-based insertion/deletion.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Choosing stack, queue or linked list: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Suggest an ADT for breadth-first waiting jobs.</p>
-              <details><summary>Show answer</summary><p>Queue, because first in is first out.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Suggest an ADT for nested function return addresses.</p>
-              <details><summary>Show answer</summary><p>Stack, because the most recent call returns first.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What must be checked before pushing to a full array stack?</p>
-              <details><summary>Show answer</summary><p>Overflow/capacity.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Justify a suitable ADT for browser Back history and contrast it with a queue.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>selects stack</td><td>Do not award the structure name without its access-order consequence.</td><td>1</td></tr>
-                  <tr><td>most recently visited page is returned to first / LIFO</td><td></td><td>1</td></tr>
-                  <tr><td>queue removes earliest item first / FIFO</td><td></td><td>1</td></tr>
-                  <tr><td>explains why FIFO gives the wrong access order</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 121 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>A CSV-style file gives each text line a predictable structure.</h2>
@@ -133,7 +77,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 file questions often require a line to be read first, then split or parsed before a field can be tested.</p>
@@ -144,7 +88,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which line is useful to a program?</h2>
@@ -159,7 +103,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the line where field boundaries are clear and repeatable.</div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
           <div class="section-title">
             <p class="eyebrow">Concept</p>
             <h2>CSV-style means separated fields in a fixed order</h2>
@@ -175,7 +119,7 @@
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="concept">
           <h2 class="explanation-sr-only" id="explanation-concept-title">CSV-style means separated fields in a fixed order</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining CSV-style means separated fields in a fixed order with a structured visual model." />
@@ -187,7 +131,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-        <section class="panel" id="format" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="format" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="format">
           <div class="section-title">
             <p class="eyebrow">CSV format</p>
             <h2>Design the format before writing code</h2>
@@ -202,7 +146,7 @@
         </section>
 
         <!-- stage10-explanation:start format -->
-        <section class="panel explanation-panel" id="explanation-format" data-explains="format" data-explanation-kind="mechanism" aria-labelledby="explanation-format-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel explanation-panel" id="explanation-format" data-explains="format" data-explanation-kind="mechanism" aria-labelledby="explanation-format-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="format">
           <h2 class="explanation-sr-only" id="explanation-format-title">Design the format before writing code</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-format.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Design the format before writing code with a structured visual model." />
@@ -214,7 +158,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end format -->
-        <section class="panel" id="parse" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="parse" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parse">
           <div class="section-title">
             <p class="eyebrow">Parse fields</p>
             <h2>Read the line before splitting it</h2>
@@ -233,7 +177,7 @@ Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
         </section>
 
         <!-- stage10-explanation:start parse -->
-        <section class="panel explanation-panel" id="explanation-parse" data-explains="parse" data-explanation-kind="mechanism" aria-labelledby="explanation-parse-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel explanation-panel" id="explanation-parse" data-explains="parse" data-explanation-kind="mechanism" aria-labelledby="explanation-parse-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="parse">
           <h2 class="explanation-sr-only" id="explanation-parse-title">Use question-supplied CSV functions exactly</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-parse.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use question-supplied CSV functions exactly with a structured visual model." />
@@ -245,7 +189,7 @@ Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end parse -->
-        <section class="panel" id="validate" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="validate" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validate">
           <div class="section-title">
             <p class="eyebrow">Validation</p>
             <h2>A structured file can still contain bad lines</h2>
@@ -259,7 +203,7 @@ Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
         </section>
 
         <!-- stage10-explanation:start validate -->
-        <section class="panel explanation-panel" id="explanation-validate" data-explains="validate" data-explanation-kind="mechanism" aria-labelledby="explanation-validate-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel explanation-panel" id="explanation-validate" data-explains="validate" data-explanation-kind="mechanism" aria-labelledby="explanation-validate-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="validate">
           <h2 class="explanation-sr-only" id="explanation-validate-title">A structured file can still contain bad lines</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-validate.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A structured file can still contain bad lines with a structured visual model." />
@@ -271,7 +215,7 @@ Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end validate -->
-        <section class="panel" id="types" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="types" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="types">
           <div class="section-title">
             <p class="eyebrow">Text vs data types</p>
             <h2>CSV fields arrive as text, then become useful values</h2>
@@ -296,7 +240,7 @@ ENDIF</code></pre>
         </section>
 
         <!-- stage10-explanation:start types -->
-        <section class="panel explanation-panel" id="explanation-types" data-explains="types" data-explanation-kind="mechanism" aria-labelledby="explanation-types-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel explanation-panel" id="explanation-types" data-explains="types" data-explanation-kind="mechanism" aria-labelledby="explanation-types-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="types">
           <h2 class="explanation-sr-only" id="explanation-types-title">Convert CSV text before numeric comparison</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-types.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Convert CSV text before numeric comparison with a structured visual model." />
@@ -308,7 +252,7 @@ ENDIF</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end types -->
-        <section class="panel" id="pseudocode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Java split helps understanding, but Cambridge pseudocode remains the answer format</h2>
@@ -331,7 +275,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pseudocode">
           <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Question-supplied functions versus Java methods</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Question-supplied functions versus Java methods with a structured visual model." />
@@ -343,7 +287,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-        <section class="panel" id="parser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="parser" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parser">
           <div class="section-title">
             <p class="eyebrow">Interactive CSV parser</p>
             <h2>Split a line into fields</h2>
@@ -367,7 +311,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
         </section>
 
         <!-- stage10-explanation:start parser -->
-        <section class="panel explanation-panel" id="explanation-parser" data-explains="parser" data-explanation-kind="mechanism" aria-labelledby="explanation-parser-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel explanation-panel" id="explanation-parser" data-explains="parser" data-explanation-kind="mechanism" aria-labelledby="explanation-parser-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="parser">
           <h2 class="explanation-sr-only" id="explanation-parser-title">Split a line into fields</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-parser.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Split a line into fields with a structured visual model." />
@@ -379,7 +323,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end parser -->
-        <section class="panel" id="validator" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="validator" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validator">
           <div class="section-title">
             <p class="eyebrow">Interactive validator</p>
             <h2>Check field count and mark type</h2>
@@ -394,7 +338,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
         </section>
 
         <!-- stage10-explanation:start validator -->
-        <section class="panel explanation-panel" id="explanation-validator" data-explains="validator" data-explanation-kind="mechanism" aria-labelledby="explanation-validator-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel explanation-panel" id="explanation-validator" data-explains="validator" data-explanation-kind="mechanism" aria-labelledby="explanation-validator-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="validator">
           <h2 class="explanation-sr-only" id="explanation-validator-title">Check field count and mark type</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-validator.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Check field count and mark type with a structured visual model." />
@@ -406,7 +350,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           </div>
         </section>
         <!-- stage10-explanation:end validator -->
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>CSV parsing patterns</h2>
@@ -420,7 +364,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Ten quick CSV checks</h2>
@@ -429,7 +373,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common CSV-style file errors</h2>
@@ -437,7 +381,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -446,7 +390,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-121">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>CSV-style checklist</h2>

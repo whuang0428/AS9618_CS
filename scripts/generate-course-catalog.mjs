@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { unitForLesson } from "./course-structure.mjs";
+import { lessonIdentities } from "./lesson-identity-contract.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -17,20 +18,22 @@ function decodeHtml(value) {
     .trim();
 }
 
-const lessons = Array.from({ length: 150 }, (_, index) => {
-  const number = index + 1;
-  const id = String(number).padStart(3, "0");
+const lessons = lessonIdentities.map((identity) => {
+  const { lesson: number, id, title, markdownFile } = identity;
   const html = fs.readFileSync(path.join(root, "web", `lesson-${id}`, "index.html"), "utf8");
-  const title = html.match(/<h1>([\s\S]*?)<\/h1>/)?.[1];
+  const renderedTitle = html.match(/<h1>([\s\S]*?)<\/h1>/)?.[1];
+  const markdownPath = path.join(root, "lessons", markdownFile);
   const unit = unitForLesson(number);
 
-  if (!title) throw new Error(`Lesson ${id}: missing h1 title`);
+  if (!renderedTitle) throw new Error(`Lesson ${id}: missing h1 title`);
+  if (!fs.existsSync(markdownPath)) throw new Error(`Lesson ${id}: canonical Markdown file is missing`);
+  if (decodeHtml(renderedTitle) !== title) throw new Error(`Lesson ${id}: h1 does not match canonical identity`);
   if (!unit) throw new Error(`Lesson ${id}: missing course unit`);
 
   return {
     number,
     id,
-    title: decodeHtml(title),
+    title,
     paper: unit.paper,
     section: unit.section,
     unitId: unit.id,

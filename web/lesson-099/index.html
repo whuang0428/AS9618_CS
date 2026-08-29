@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 099 | Algorithms, IPO solutions and identifier tables</title>
+    <title>AS9618 Lesson 099 | Decomposition and abstraction</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
-        <h1>Algorithms, IPO solutions and identifier tables</h1>
+        <h1>Decomposition and abstraction</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,87 +46,59 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Algorithms, IPO solutions and identifier tables</h2>
+            <h2>Abstraction and decomposition into program modules</h2>
           </div>
           <div class="stage2-explanation">
-            <p>An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.</p>
-            <p>Before writing pseudocode, identify the input data, the processing that transforms it and the required output. This input-process-output design must describe a complete solution rather than three unrelated lists.</p>
-            <p>Choose meaningful identifier names that describe each value's role. An identifier table records at least the identifier name, data type and purpose; its entries must match the pseudocode solution.</p>
+            <p>Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.</p>
+            <p>Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.</p>
+            <p>Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Define and plan a ticket algorithm</h3>
-            <p>Problem: input TicketCount and TicketPrice, then output TotalCost. The algorithm is the defined sequence INPUT TicketCount; INPUT TicketPrice; TotalCost &lt;- TicketCount * TicketPrice; OUTPUT TotalCost. The identifier table records TicketCount: INTEGER, number requested; TicketPrice: REAL, price of one ticket; TotalCost: REAL, calculated cost.</p>
+            <h3>Worked example: Model and decompose a car-park charge</h3>
+            <p>Keep entry time, exit time and tariff; omit car colour because it cannot change the charge. Express the solution as modules InputTimes, CalculateDuration, CalculateCharge and OutputCharge. CalculateCharge can become a function returning the charge, while OutputCharge can become a procedure that displays it.</p>
           </article>
         </section>
-
-        <!-- stage10-explanation:start ipoc -->
-        <section class="panel explanation-panel" id="explanation-ipoc" data-explains="ipoc" data-explanation-kind="mechanism" aria-labelledby="explanation-ipoc-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ipoc">
-          <h2 class="explanation-sr-only" id="explanation-ipoc-title">Turn paragraphs into a design table</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-111-ipoc.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn paragraphs into a design table with a structured visual model." />
-            <figcaption class="explanation-sr-only">Turn paragraphs into a design table: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> IPOC reading</li><li><strong>Lesson fact:</strong> Question to ask</li><li><strong>Lesson fact:</strong> Example evidence</li><li><strong>Lesson fact:</strong> Algorithm consequence</li><li><strong>Lesson fact:</strong> What data is provided?</li><li><strong>Lesson fact:</strong> mark, price, password, reading</li><li><strong>Lesson fact:</strong> use INPUT or given array/list item</li><li><strong>Lesson fact:</strong> What must be calculated or checked?</li><li><strong>Lesson fact:</strong> total, maximum, validation, search</li><li><strong>Lesson fact:</strong> choose assignment, IF, loop</li><li><strong>Lesson fact:</strong> What must be displayed or returned?</li><li><strong>Lesson fact:</strong> message, total, average, position</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end ipoc -->
-
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">An algorithm is a solution expressed as defined steps</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-098-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining An algorithm is a solution expressed as defined steps with a structured visual model." />
-            <figcaption class="explanation-sr-only">An algorithm is a solution expressed as defined steps: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> An algorithm is a solution to a problem expressed as a sequence of defined steps.</li><li><strong>Lesson fact:</strong> Each step must be unambiguous, ordered where order matters and capable of being carried out.</li><li><strong>Lesson fact:</strong> Identify what data is supplied, state the required transformation and state the exact result.</li><li><strong>Lesson fact:</strong> Record limits, quantity requirements and supported assumptions.</li><li><strong>Lesson fact:</strong> Check that every requirement maps to an input, process, output, constraint or assumption.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end concept -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Algorithms, IPO solutions and identifier tables: apply and assess</h2>
+            <h2>Abstraction and decomposition into program modules: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What is an algorithm?</p>
-              <details><summary>Show answer</summary><p>A solution to a problem expressed as a sequence of defined steps.</p></details>
+              <p><strong>1.</strong> What must an abstract model contain?</p>
+              <details><summary>Show answer</summary><p>The essential details and relationships/processes needed to solve the problem.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> State the input, process and output for rectangle area.</p>
-              <details><summary>Show answer</summary><p>Inputs Length and Width; process multiply Length by Width; output Area.</p></details>
+              <p><strong>2.</strong> What does decomposition produce here?</p>
+              <details><summary>Show answer</summary><p>Smaller sub-problems expressed as connected program modules with clear responsibilities.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Develop identifier x for the number of absent students and state its type.</p>
-              <details><summary>Show answer</summary><p>AbsentCount or NumberAbsent, with type INTEGER.</p></details>
+              <p><strong>3.</strong> Compare a procedure module from a function module at this design stage.</p>
+              <details><summary>Show answer</summary><p>A procedure performs an action; a function returns a value to its caller.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Complete an identifier table and an input-process-output pseudocode solution that inputs a student's name and three marks, then outputs the calculated mean.</p>
+            <p>Write an abstract model for a school meal bill, then decompose it into named program modules and identify one likely procedure and one likely function.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>meaningful STRING identifier and purpose for the student's name</td><td>Do not award an identifier list without types and purposes, or IPO headings without a complete sequence of defined steps.</td><td>1</td></tr>
-                  <tr><td>three clearly identified numeric mark inputs or a clearly bounded mark collection</td><td></td><td>1</td></tr>
-                  <tr><td>meaningful REAL identifier and purpose for the mean</td><td></td><td>1</td></tr>
-                  <tr><td>pseudocode inputs the required values</td><td></td><td>1</td></tr>
-                  <tr><td>processing calculates the total and mean in a defined sequence</td><td></td><td>1</td></tr>
-                  <tr><td>outputs the calculated mean and matches the identifier table</td><td></td><td>1</td></tr>
+                  <tr><td>retains meal choice, quantity and price as essential details</td><td>Do not award only a list of omitted details, vague Part1/Part2 labels or modules that do not collectively solve the problem.</td><td>1</td></tr>
+                  <tr><td>states the calculation and total output in the abstract model</td><td></td><td>1</td></tr>
+                  <tr><td>excludes a justified irrelevant detail such as tray colour</td><td></td><td>1</td></tr>
+                  <tr><td>expresses the problem as connected modules with distinct responsibilities</td><td></td><td>1</td></tr>
+                  <tr><td>identifies a suitable procedure module that performs an action</td><td></td><td>1</td></tr>
+                  <tr><td>identifies a suitable function module that returns a value</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

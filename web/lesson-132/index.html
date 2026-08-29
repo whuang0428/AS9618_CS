@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 132 | Procedures, functions and their interfaces</title>
+    <title>AS9618 Lesson 132 | Scope, lifetime, and local/global variables</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>Procedures, functions and their interfaces</h1>
+        <h1>Scope, lifetime, and local/global variables</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -144,7 +144,7 @@ OUTPUT Total</code></pre>
         </section>
 
         <!-- stage10-explanation:start scope -->
-        <section class="panel explanation-panel" id="explanation-scope" data-explains="scope" data-explanation-kind="mechanism" aria-labelledby="explanation-scope-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="scope">
+        <section class="panel explanation-panel" id="explanation-scope" data-explains="scope" data-explanation-kind="mechanism" aria-labelledby="explanation-scope-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="scope">
           <h2 class="explanation-sr-only" id="explanation-scope-title">Scope means where a variable or identifier can be accessed</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-scope.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Scope means where a variable or identifier can be accessed with a structured visual model." />
@@ -171,7 +171,7 @@ OUTPUT Total</code></pre>
         </section>
 
         <!-- stage10-explanation:start lifetime -->
-        <section class="panel explanation-panel" id="explanation-lifetime" data-explains="lifetime" data-explanation-kind="mechanism" aria-labelledby="explanation-lifetime-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifetime">
+        <section class="panel explanation-panel" id="explanation-lifetime" data-explains="lifetime" data-explanation-kind="mechanism" aria-labelledby="explanation-lifetime-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="lifetime">
           <h2 class="explanation-sr-only" id="explanation-lifetime-title">Lifetime means how long a variable exists during execution</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-lifetime.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lifetime means how long a variable exists during execution with a structured visual model." />
@@ -208,7 +208,7 @@ ENDPROCEDURE</code></pre>
         </section>
 
         <!-- stage10-explanation:start local -->
-        <section class="panel explanation-panel" id="explanation-local" data-explains="local" data-explanation-kind="mechanism" aria-labelledby="explanation-local-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="local">
+        <section class="panel explanation-panel" id="explanation-local" data-explains="local" data-explanation-kind="mechanism" aria-labelledby="explanation-local-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="local">
           <h2 class="explanation-sr-only" id="explanation-local-title">Local variables are declared inside a subroutine or block</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-local.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Local variables are declared inside a subroutine or block with a structured visual model." />
@@ -243,7 +243,7 @@ ENDPROCEDURE</code></pre>
         </section>
 
         <!-- stage10-explanation:start global -->
-        <section class="panel explanation-panel" id="explanation-global" data-explains="global" data-explanation-kind="mechanism" aria-labelledby="explanation-global-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="global">
+        <section class="panel explanation-panel" id="explanation-global" data-explains="global" data-explanation-kind="mechanism" aria-labelledby="explanation-global-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="global">
           <h2 class="explanation-sr-only" id="explanation-global-title">Global variables are declared outside subroutines and can be accessed widely</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-global.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Global variables are declared outside subroutines and can be accessed widely with a structured visual model." />
@@ -282,7 +282,7 @@ OUTPUT Score</code></pre>
         </section>
 
         <!-- stage10-explanation:start shadowing -->
-        <section class="panel explanation-panel" id="explanation-shadowing" data-explains="shadowing" data-explanation-kind="mechanism" aria-labelledby="explanation-shadowing-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shadowing">
+        <section class="panel explanation-panel" id="explanation-shadowing" data-explains="shadowing" data-explanation-kind="mechanism" aria-labelledby="explanation-shadowing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="shadowing">
           <h2 class="explanation-sr-only" id="explanation-shadowing-title">A local variable can hide a global variable with the same name</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-shadowing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A local variable can hide a global variable with the same name with a structured visual model." />
@@ -309,7 +309,7 @@ OUTPUT Score</code></pre>
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="compare">
           <h2 class="explanation-sr-only" id="explanation-compare-title">Local and global variables differ by accessibility and lifetime</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Local and global variables differ by accessibility and lifetime with a structured visual model." />
@@ -346,7 +346,7 @@ ENDPROCEDURE</code></pre>
         </section>
 
         <!-- stage10-explanation:start java -->
-        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="java">
           <h2 class="explanation-sr-only" id="explanation-java-title">Java helps illustrate scope, but Cambridge pseudocode remains the answer format</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java helps illustrate scope, but Cambridge pseudocode remains the answer format with a structured visual model." />

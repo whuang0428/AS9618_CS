@@ -76,11 +76,11 @@ for (const id of scopedRequirements) {
 
 const lessonChecks = [
   ["142", ["waterfall", "iterative", "RAD", "rapid prototyping", "time-box", "user involvement"]],
-  ["143", ["structure chart", "parameters", "derive equivalent pseudocode", "state-transition diagram", "persistent states", "event-driven changes"]],
-  ["144", ["syntax error", "logic error", "run-time error", "exposed", "locate", "correct"]],
+  ["144", ["structure chart", "parameters", "derive equivalent pseudocode", "state-transition diagram", "persistent states", "event-driven changes"]],
+  ["138", ["syntax error", "logic error", "run-time error", "exposed", "locate", "correct", "existing program", "enhances functionality", "MeritCount"]],
   ["145", [
     "dry run", "walkthrough", "white-box", "black-box", "integration", "alpha", "beta", "acceptance", "stub", "test strategy", "test plan",
-    "maintenance continues", "corrective", "adaptive", "perfective", "regression", "analyse", "existing program", "amend", "enhances functionality", "MeritCount",
+    "maintenance continues", "corrective", "adaptive", "perfective", "regression",
   ]],
 ];
 for (const [lesson, terms] of lessonChecks) {

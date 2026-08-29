@@ -1,50 +1,44 @@
-# Lesson 055: Assembler, compiler and interpreter choices
+# Lesson 055: Utility software: backup, compression, encryption, defragmentation and antivirus
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Assembler, compiler and interpreter choices
+**Focus:** Required utility software
 
 ### Direct explanation
 
-- An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.
-- Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.
-- A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.
+- A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware. A disk defragmenter rearranges fragmented file blocks on a magnetic disk; it is not a speed treatment for SSDs.
+- A disk contents analysis/repair utility examines file-system structures, reports faults and attempts defined repairs. Compression reduces file size and backup creates a separate recoverable copy. Encryption may be useful additional protection, but it does not replace any of the six named syllabus utilities.
+- Required utilities include defragmentation software and disk contents analysis/disk repair software; defragmentation rearranges file blocks, while analysis/repair checks and attempts to repair file-system faults.
 
 ### Worked example
 
-**Choose tools across development and deployment:** During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.
+**Choose the utility from the fault:** Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size. Choose by the operation required, not by calling every tool 'maintenance'.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. Why is an assembler needed?
-   **Answer:** It translates assembly-language mnemonics and operands into machine or object code for the target processor.
-2. Give one compiler advantage and its mechanism.
-   **Answer:** A compiled program can run repeatedly without translating the source each time because translation occurred before execution.
-3. Give one compiler disadvantage.
-   **Answer:** Compilation must complete before execution and the programmer may need to correct a list of reported errors.
-4. Give one interpreter advantage and one disadvantage.
-   **Answer:** It provides immediate statement-level feedback, but repeated translation can make execution slower and requires the interpreter/source at run time.
-5. Which translator is required for assembly language?
-   **Answer:** An assembler.
+1. Which utility prepares file-system structures on a storage medium?
+   **Answer:** A disk formatter.
+2. Which utility checks file-system structures and attempts repairs?
+   **Answer:** A disk contents analysis/repair utility.
+3. Why is compression not a backup?
+   **Answer:** Compression reduces size; a backup creates a separate copy that can be restored.
 
 ### Exam-style question and MS
 
-**Question (6 marks):** Compare a compiler and an interpreter using two advantages and two disadvantages, then justify the translator used for an assembly-language routine.
+**Question (4 marks):** A computer has a new storage medium and another disk reports file-system errors. Identify the utility for each task and explain its purpose.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| compiler translates the whole high-level program before execution and produces target/object code | Do not award vague claims such as 'compiler is faster' or 'interpreter is easier' without the mechanism and scenario. | 1 |
-| compiler advantage linked to repeated execution or distribution without source |  | 1 |
-| compiler disadvantage linked to separate translation or error-list workflow |  | 1 |
-| interpreter translates/executes statements during execution and gives immediate feedback |  | 1 |
-| interpreter disadvantage linked to repeated translation, slower execution or run-time dependency |  | 1 |
-| assembler selected and justified for assembly-language-to-machine/object-code translation |  | 1 |
+| disk formatter for the new medium | Do not accept defragmentation as formatting or as a general file-system repair operation. | 1 |
+| formatter creates/prepares file-system structures |  | 1 |
+| disk contents analysis/repair utility for the faulty disk |  | 1 |
+| it examines structures and reports/attempts repair of faults |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 

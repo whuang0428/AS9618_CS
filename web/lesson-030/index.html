@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 030 | Output, storage devices and primary memory</title>
+    <title>AS9618 Lesson 030 | Primary storage: RAM, ROM, cache and virtual memory</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Output, storage devices and primary memory</h1>
+        <h1>Primary storage: RAM, ROM, cache and virtual memory</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -43,7 +43,7 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
         <!-- remediation-v2-optional:start -->
@@ -57,104 +57,51 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Output, storage devices and primary memory</h2>
+            <h2>RAM, ROM and their principal technologies</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A laser printer charges a drum, a laser discharges selected points, toner adheres to the image, toner transfers to paper and heat/pressure fuse it. A 3D printer deposits or solidifies material layer by layer from a digital model.</p>
-            <p>A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.</p>
-            <p>A buffer temporarily holds data when producer and consumer operate at different speeds, reducing loss or interruption caused by the rate difference.</p>
-            <p>An HDD spins magnetic platters while an actuator positions read/write heads; writing changes magnetic orientation and reading senses it. Flash memory stores charge in floating-gate cells and has no moving parts.</p>
-            <p>An optical drive spins a disc and directs a laser at its track. Reflected-light differences are read as data; a writer uses a higher-power laser to change a dye or recording layer.</p>
-            <p>A magnetic HDD uses moving read/write heads over rotating platters. Flash memory stores charge electronically with no moving parts. An optical disc reader/writer uses a laser to read marks and, on writable media, to create or alter marks.</p>
             <p>RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.</p>
             <p>SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.</p>
             <p>PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Print a page / Read an HDD block / Choose a storage mechanism / Choose memory for a computer system</h3>
-            <p>The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages. The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer. A portable device may use flash memory for shock resistance; an archive may use optical media when an optical disc reader/writer is available. Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.</p>
+            <h3>Worked example: Choose memory for a computer system</h3>
+            <p>Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Output, storage devices and primary memory: apply and assess</h2>
+            <h2>RAM, ROM and their principal technologies: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What permanently bonds toner to laser-printer paper?</p>
-              <details><summary>Show answer</summary><p>Heat and pressure in the fuser.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How does a 3D printer build an object?</p>
-              <details><summary>Show answer</summary><p>It deposits/solidifies successive layers.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> How does a speaker produce sound from digital output?</p>
-              <details><summary>Show answer</summary><p>A DAC and amplifier drive a coil and cone; cone vibration produces pressure waves in the air.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is a print buffer needed?</p>
-              <details><summary>Show answer</summary><p>It handles the speed difference and lets the producer continue while the printer consumes data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Why is flash storage resistant to mechanical shock?</p>
-              <details><summary>Show answer</summary><p>It has no moving read/write head or spinning platter.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> What physical property stores HDD data?</p>
-              <details><summary>Show answer</summary><p>Magnetic orientation/patterns on a platter.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> How does an optical reader Compare stored data?</p>
-              <details><summary>Show answer</summary><p>It detects differences in reflected laser light.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>8.</strong> Which device uses rotating platters?</p>
-              <details><summary>Show answer</summary><p>An HDD.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>9.</strong> Which device uses a laser?</p>
-              <details><summary>Show answer</summary><p>An optical reader/writer.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>10.</strong> Compare RAM from ROM by volatility and use.</p>
+              <p><strong>1.</strong> Compare RAM from ROM by volatility and use.</p>
               <details><summary>Show answer</summary><p>RAM is volatile and holds current programs/data; ROM is non-volatile and holds persistent firmware or start-up instructions.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>11.</strong> Why is DRAM refreshed?</p>
+              <p><strong>2.</strong> Why is DRAM refreshed?</p>
               <details><summary>Show answer</summary><p>Charge in its storage capacitors leaks and must be restored.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>12.</strong> Why is SRAM used for cache while DRAM is used for main memory?</p>
+              <p><strong>3.</strong> Why is SRAM used for cache while DRAM is used for main memory?</p>
               <details><summary>Show answer</summary><p>SRAM is faster and needs no refresh; DRAM is denser and cheaper per bit for a larger capacity.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>13.</strong> Compare PROM, EPROM and EEPROM.</p>
+              <p><strong>4.</strong> Compare PROM, EPROM and EEPROM.</p>
               <details><summary>Show answer</summary><p>PROM is programmed once; EPROM is erased with ultraviolet light; EEPROM is erased and rewritten electrically.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>15 marks</span></div>
-            <p>Explain why a buffer is used when a computer sends a large document to a laser printer. Describe how data is read from a magnetic hard disk drive. Explain how an HDD, flash memory and an optical reader/writer store or retrieve data. Compare SRAM and DRAM and explain why DRAM is normally used for main memory.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Compare SRAM and DRAM and explain why DRAM is normally used for main memory.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>processor/computer and printer operate at different speeds</td><td>Do not accept 'the buffer makes the printer faster'; it manages transfer-rate differences. Do not accept a laser-based explanation for an HDD; lasers apply to optical media. Do not describe every storage device as magnetic. Do not award both comparison marks for merely expanding the abbreviations.</td><td>1</td></tr>
-                  <tr><td>buffer temporarily stores print data</td><td></td><td>1</td></tr>
-                  <tr><td>printer reads data at its own rate</td><td></td><td>1</td></tr>
-                  <tr><td>computer/processor can continue other processing without waiting for the full print</td><td></td><td>1</td></tr>
-                  <tr><td>platters rotate</td><td></td><td>1</td></tr>
-                  <tr><td>actuator positions read/write head over the required track</td><td></td><td>1</td></tr>
-                  <tr><td>required sector passes beneath the head</td><td></td><td>1</td></tr>
-                  <tr><td>head senses magnetic patterns which are decoded as data</td><td></td><td>1</td></tr>
-                  <tr><td>HDD mechanism</td><td></td><td>1</td></tr>
-                  <tr><td>flash mechanism</td><td></td><td>1</td></tr>
-                  <tr><td>optical reader/writer mechanism</td><td></td><td>1</td></tr>
-                  <tr><td>SRAM is faster / does not require refresh</td><td></td><td>1</td></tr>
+                  <tr><td>SRAM is faster / does not require refresh</td><td>Do not award both comparison marks for merely expanding the abbreviations.</td><td>1</td></tr>
                   <tr><td>DRAM requires refresh / is slower</td><td></td><td>1</td></tr>
                   <tr><td>DRAM has greater density / lower cost per bit</td><td></td><td>1</td></tr>
                   <tr><td>main memory needs large capacity, making DRAM more economical</td><td></td><td>1</td></tr>

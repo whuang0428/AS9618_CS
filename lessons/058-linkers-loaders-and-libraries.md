@@ -1,7 +1,7 @@
 # Lesson 058: Linkers, loaders and libraries
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- remediation-v2-optional:start -->
@@ -9,6 +9,47 @@
 >
 > **Formal AS prerequisite:** S5.03 program libraries and benefits of dynamically linked library files.
 <!-- remediation-v2-optional:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Libraries and dynamically linked library files
+
+### Direct explanation
+
+- Software under development is often constructed using existing code from program libraries. A program library is a collection of reusable routines or modules, so a developer can call tested implementations instead of rewriting common mathematical, input/output, graphics or string operations.
+- Benefits to the developer include shorter development time, less duplicated source code, reuse of tested routines and more consistent maintenance. A dynamically linked library (DLL) is connected when a program loads or calls it rather than copying all library code into every executable.
+- DLL files can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.
+- A developer benefit of a program library is reuse of existing tested routines, which can reduce development time and duplicated code.
+
+### Worked example
+
+**Three programs use one graphics DLL:** All three executables call the shared graphics code. One loaded copy may be shared in memory and a security fix can update the DLL once, but replacing it with an incompatible version can break all three programs.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. How do program libraries support software under development?
+   **Answer:** They supply existing reusable routines or modules, avoiding the need to write common code again.
+2. When is a dynamically linked library connected to a program?
+   **Answer:** At load time or run time when required.
+3. Give one storage benefit of dynamic linking.
+   **Answer:** Library code need not be copied into every executable.
+4. Give one DLL risk.
+   **Answer:** A missing/incompatible version can prevent execution or cause faults.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Explain two benefits and one drawback of using a dynamically linked library.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| shared reusable code / avoids rewriting | Do not accept 'saves space' unless duplication or executable size is explained. | 1 |
+| smaller executables or reduced duplicate memory/storage |  | 1 |
+| shared library can be updated once |  | 1 |
+| missing/incompatible DLL can stop or alter programs |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -114,6 +155,18 @@ Correction prompt: "State the correct term, then explain the relevant process or
 2. External reference A call to code or data defined in another module or library.
 3. Executable file A program file with required code linked and arranged for execution.
 4. In memory Code and data must be placed into main memory before the CPU can execute it.
+
+### Libraries provide reusable routines and modules
+
+- **Explains:** `libraries`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-libraries.jpg`
+
+1. Purpose Provide pre-written, tested routines that programs can use.
+2. Examples Mathematical functions, input/output routines, graphics or string-handling routines.
+3. Benefits Saves development time, reduces duplication and may improve reliability.
+4. Requirement Calls to library routines must be linked or made available at run time.
 
 ### Linkers combine object modules and resolve references
 

@@ -1,4 +1,4 @@
-# Lesson 026: IP addressing, URL structure and DNS
+# Lesson 026: Section 2 review: explaining communication with precision
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -77,7 +77,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `map`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-026-map.jpg`
 
 1. Packets in a packet-switched network are routed independently.
@@ -88,7 +88,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `precision`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-026-precision.jpg`
 
 1. Answer craft

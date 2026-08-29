@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 048 | Section 4 semantic checkpoint</title>
+    <title>AS9618 Lesson 048 | Interrupts and interrupt service routines</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Section 4 semantic checkpoint</h1>
+        <h1>Interrupts and interrupt service routines</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,61 +46,68 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Section 4 semantic checkpoint</h2>
+            <h2>Interrupt causes, detection and handling</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Read each instruction by its specified effect: LDR #n loads the immediate value n into IX; CMI &lt;address&gt; compares ACC with a value reached by indirect addressing; JPE &lt;address&gt; jumps after a True comparison; JPN &lt;address&gt; jumps after a False comparison.</p>
-            <p>For bit manipulation, identify the fixed width and bit numbering before tracing. AND tests or clears selected bits, OR sets selected bits, XOR toggles selected bits, and logical, arithmetic and cyclic shifts differ in fill and rotation behaviour.</p>
+            <p>An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.</p>
+            <p>For most maskable interrupts, the processor completes the current instruction and checks for pending enabled interrupts at the end of that fetch-execute cycle, before beginning the next instruction. Detection is therefore not the same as stopping halfway through an ordinary instruction.</p>
+            <p>If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.</p>
+            <p>Interrupts are detected at the specified point in the fetch-execute cycle before the processor saves state and enters the ISR.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Resolve four instruction cards</h3>
-            <p>Match LDR #4 to IX &lt;- 4, trace CMI POINTER through the address stored at POINTER, send a True comparison to JPE MATCH and a False comparison to JPN DIFFERENT. None of the four names should be decoded by an English guess.</p>
+            <h3>Worked example: Handle a keyboard interrupt</h3>
+            <p>A key press raises an interrupt while the CPU is executing another program. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and continues the original program.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Section 4 semantic checkpoint: apply and assess</h2>
+            <h2>Interrupt causes, detection and handling: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What does LDR #6 change?</p>
-              <details><summary>Show answer</summary><p>It loads the immediate value 6 into IX.</p></details>
+              <p><strong>1.</strong> Give two possible causes or applications of interrupts.</p>
+              <details><summary>Show answer</summary><p>For example an I/O device request, timer/scheduler event, hardware fault or software exception.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> How does CMI &lt;address&gt; obtain the comparison value?</p>
-              <details><summary>Show answer</summary><p>It uses indirect addressing: the operand location contains the address of the value compared with ACC.</p></details>
+              <p><strong>2.</strong> When is a normal maskable interrupt detected and accepted?</p>
+              <details><summary>Show answer</summary><p>After the current instruction completes, at the end of the fetch-execute cycle before the next instruction begins, subject to enabled/priority checks.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Which branch follows a True comparison, and which follows a False comparison?</p>
-              <details><summary>Show answer</summary><p>JPE follows True; JPN follows False.</p></details>
+              <p><strong>3.</strong> What is an ISR?</p>
+              <details><summary>Show answer</summary><p>An interrupt service routine: program code that handles a particular interrupt.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Which operation toggles selected device bits?</p>
-              <details><summary>Show answer</summary><p>XOR with a mask containing 1 at each bit to toggle.</p></details>
+              <p><strong>4.</strong> Why must processor state be saved and restored?</p>
+              <details><summary>Show answer</summary><p>So the interrupted program can resume at the correct instruction with its earlier register and status values.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> List the handling sequence after detection.</p>
+              <details><summary>Show answer</summary><p>Check/accept, save state, locate and execute ISR, restore state, resume program.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>State the exact effects of LDR #n, CMI &lt;address&gt;, JPE &lt;address&gt; and JPN &lt;address&gt;.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Describe one interrupt cause or application, state when it is detected in the fetch-execute cycle, and trace handling through the ISR to resumption.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>LDR loads immediate n into IX</td><td>Do not infer an instruction effect from the mnemonic letters; use the specified instruction-set semantics.</td><td>1</td></tr>
-                  <tr><td>CMI obtains the comparison value by indirect addressing</td><td></td><td>1</td></tr>
-                  <tr><td>CMI compares that value with ACC</td><td></td><td>1</td></tr>
-                  <tr><td>JPE branches after a True comparison</td><td></td><td>1</td></tr>
-                  <tr><td>JPN branches after a False comparison</td><td></td><td>1</td></tr>
+                  <tr><td>valid cause/application such as I/O, timer, fault or exception</td><td>Do not accept that every interrupt stops an instruction halfway through, that the ISR is the signal, or that the whole interrupted program restarts.</td><td>1</td></tr>
+                  <tr><td>current instruction completes and interrupt is detected/checked at the cycle boundary</td><td></td><td>1</td></tr>
+                  <tr><td>priority/enabled status is checked</td><td></td><td>1</td></tr>
+                  <tr><td>PC/register/status state is saved</td><td></td><td>1</td></tr>
+                  <tr><td>correct ISR is located and executed</td><td></td><td>1</td></tr>
+                  <tr><td>state is restored and the interrupted program resumes</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

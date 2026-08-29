@@ -34,7 +34,7 @@
   "pass1CommandOutputs": [
     {
       "command": "node scripts/apply-stage2-repairs.mjs",
-      "outputSha256": "d1b6461736a07e930efeac2f764bd0491e43a05da84325bb09179cb5f3e49b2d"
+      "outputSha256": "02ef457e1c043e0ca2b87bbd4249e425c5d109041324943c5438badd464c6859"
     },
     {
       "command": "node scripts/apply-remediation-v2-optional-enrichment.mjs",
@@ -42,7 +42,7 @@
     },
     {
       "command": "node scripts/apply-remediation-v2-stage3-sequence.mjs",
-      "outputSha256": "c763f20db454fa59192bdafbdd6b733c08258bb25b5217b6c3359f55d1c4f525"
+      "outputSha256": "7ab7df61e304fe8509fd9731c3ad637b89f6653323467bf3032753b9ead728cb"
     },
     {
       "command": "node scripts/apply-remediation-v2-stage3-question-repairs.mjs",
@@ -70,11 +70,11 @@
     },
     {
       "command": "node scripts/apply-stage10-explanations.mjs",
-      "outputSha256": "ce7f4f258f1b0e4e4777c6dcb0e09e01f52b6c134d18f9a54d6d21512c49d28c"
+      "outputSha256": "05eb42af12ad116ae294e16ecf9dcca66b8ecae437bb84f2d76f230a7cab3d82"
     },
     {
       "command": "node scripts/apply-classroom-delivery.mjs",
-      "outputSha256": "fa053492169a862fc8800ece896f485750069343a2ab30257811ec00a9904926"
+      "outputSha256": "7e93bdb4dbf72cc7d32023fcd374d19b666ef314bbc5fea493f5a96879b37ac6"
     },
     {
       "command": "node scripts/generate-course-catalog.mjs",
@@ -86,7 +86,7 @@
     },
     {
       "command": "node scripts/generate-stage10-audits.mjs",
-      "outputSha256": "fa8aba7b1d7f0d8f80a2f60beaa48c2ade25c6013247ad8caec669d6ca5d627d"
+      "outputSha256": "7331f689f398b083352da1de1a60b4622463df4c5e03c623cdf6b11d1b979632"
     },
     {
       "command": "node scripts/generate-syllabus-audit.mjs",
@@ -102,7 +102,7 @@
     },
     {
       "command": "node scripts/refresh-remediation-v2-audit-integrity-surface-reviews.mjs",
-      "outputSha256": "ed4e04491a14bd51e7b28a154ab3c099b211b6c216756e6a0fec4b8d9b50a1dd"
+      "outputSha256": "65974b2691096cec86357f62795a105786039b4f9bcafcc7afe36754d16c6451"
     },
     {
       "command": "node scripts/generate-remediation-v2-stage4.mjs",
@@ -120,7 +120,7 @@
   "pass2CommandOutputs": [
     {
       "command": "node scripts/apply-stage2-repairs.mjs",
-      "outputSha256": "d1b6461736a07e930efeac2f764bd0491e43a05da84325bb09179cb5f3e49b2d"
+      "outputSha256": "02ef457e1c043e0ca2b87bbd4249e425c5d109041324943c5438badd464c6859"
     },
     {
       "command": "node scripts/apply-remediation-v2-optional-enrichment.mjs",
@@ -128,7 +128,7 @@
     },
     {
       "command": "node scripts/apply-remediation-v2-stage3-sequence.mjs",
-      "outputSha256": "c763f20db454fa59192bdafbdd6b733c08258bb25b5217b6c3359f55d1c4f525"
+      "outputSha256": "7ab7df61e304fe8509fd9731c3ad637b89f6653323467bf3032753b9ead728cb"
     },
     {
       "command": "node scripts/apply-remediation-v2-stage3-question-repairs.mjs",
@@ -156,11 +156,11 @@
     },
     {
       "command": "node scripts/apply-stage10-explanations.mjs",
-      "outputSha256": "ce7f4f258f1b0e4e4777c6dcb0e09e01f52b6c134d18f9a54d6d21512c49d28c"
+      "outputSha256": "05eb42af12ad116ae294e16ecf9dcca66b8ecae437bb84f2d76f230a7cab3d82"
     },
     {
       "command": "node scripts/apply-classroom-delivery.mjs",
-      "outputSha256": "fa053492169a862fc8800ece896f485750069343a2ab30257811ec00a9904926"
+      "outputSha256": "7e93bdb4dbf72cc7d32023fcd374d19b666ef314bbc5fea493f5a96879b37ac6"
     },
     {
       "command": "node scripts/generate-course-catalog.mjs",
@@ -172,7 +172,7 @@
     },
     {
       "command": "node scripts/generate-stage10-audits.mjs",
-      "outputSha256": "fa8aba7b1d7f0d8f80a2f60beaa48c2ade25c6013247ad8caec669d6ca5d627d"
+      "outputSha256": "7331f689f398b083352da1de1a60b4622463df4c5e03c623cdf6b11d1b979632"
     },
     {
       "command": "node scripts/generate-syllabus-audit.mjs",
@@ -188,7 +188,7 @@
     },
     {
       "command": "node scripts/refresh-remediation-v2-audit-integrity-surface-reviews.mjs",
-      "outputSha256": "ed4e04491a14bd51e7b28a154ab3c099b211b6c216756e6a0fec4b8d9b50a1dd"
+      "outputSha256": "65974b2691096cec86357f62795a105786039b4f9bcafcc7afe36754d16c6451"
     },
     {
       "command": "node scripts/generate-remediation-v2-stage4.mjs",
@@ -203,9 +203,9 @@
       "outputSha256": "6fe741890cbb3426590a0331e9cd0781e59cd9e010eda752d61924b9c0ddc44a"
     }
   ],
-  "pass1ManifestSha256": "bfa9e1da60098ec2de9404747eb696fd1726f2275694e34cb6c681531fecbda9",
-  "pass2ManifestSha256": "bfa9e1da60098ec2de9404747eb696fd1726f2275694e34cb6c681531fecbda9",
-  "manifestFileCount": 1681,
+  "pass1ManifestSha256": "1273cef93742b945e72045be7394142a4e5b47825194048719bf0794f9bf123c",
+  "pass2ManifestSha256": "1273cef93742b945e72045be7394142a4e5b47825194048719bf0794f9bf123c",
+  "manifestFileCount": 1683,
   "secondRunChangedFiles": 0,
   "changedFiles": [],
   "gitDiffCommand": "git diff --no-index --exit-code <pass1 SHA-256 manifest> <pass2 SHA-256 manifest>",

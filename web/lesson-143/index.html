@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 143 | Structure charts and the purpose of state-transition diagrams</title>
+    <title>AS9618 Lesson 143 | Requirements analysis and success criteria</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 12</p>
-        <h1>Structure charts and the purpose of state-transition diagrams</h1>
+        <h1>Requirements analysis and success criteria</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -43,7 +43,6 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -51,68 +50,7 @@
         <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Structure charts and the purpose of state-transition diagrams</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.</p>
-            <p>To construct a structure chart, place the controlling module at the top, split the problem into one-responsibility subtasks, connect each caller to its called modules, and label every value passed. To derive equivalent pseudocode, turn each box into a complete PROCEDURE or FUNCTION header with corresponding parameters, add calls in the parent body with matching arguments, and preserve the shown hierarchy.</p>
-            <p>A state-transition diagram documents an algorithm by showing persistent states and the events that cause changes between them. Its syllabus requirement is to understand that purpose; constructing a state-transition diagram is retained only as Optional enrichment.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Door controller: two design views</h3>
-            <p>A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid). Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments. A provided state-transition diagram with Locked and Unlocked states serves a different purpose: it documents event-driven changes rather than module hierarchy or processing sequence.</p>
-          </article>
-        </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Structure charts and the purpose of state-transition diagrams: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What does a box represent in a structure chart?</p>
-              <details><summary>Show answer</summary><p>A module, procedure or function.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How are parameters represented and then derived into pseudocode?</p>
-              <details><summary>Show answer</summary><p>Labelled arrows show values passed; the same values appear as parameters in the called header and arguments in the caller's call.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What does a state-transition diagram document?</p>
-              <details><summary>Show answer</summary><p>The persistent states of an algorithm/system and the event-driven changes between them.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is a state-transition diagram not a flowchart?</p>
-              <details><summary>Show answer</summary><p>Its purpose is to document states and transitions, not every processing step in sequence.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>For a login system, construct a structure chart in which Main calls ReadCredentials(UserID, Password) and CheckLogin(UserID, Password, IsValid), then derive equivalent subprogram headers and calls. A separate diagram shows LoggedOut, LoggedIn and Locked states: explain the purpose of this state-transition diagram.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>structure chart places Main above the two called modules</td><td>Do not award construction marks for the state-transition diagram; the construction marks apply to the structure chart only.</td><td>1</td></tr>
-                  <tr><td>parameter arrows label UserID, Password and IsValid coherently</td><td></td><td>1</td></tr>
-                  <tr><td>derived pseudocode contains matching complete headers and calls with arguments</td><td></td><td>1</td></tr>
-                  <tr><td>identifies persistent states in the provided state-transition diagram</td><td></td><td>1</td></tr>
-                  <tr><td>explains that labelled transitions show event-driven changes</td><td></td><td>1</td></tr>
-                  <tr><td>distinguishes this purpose from module hierarchy or a flowchart of processing steps</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 143 | 45 minutes | Paper 2 Section 12 | informal questioning</p>
             <h2>“User-friendly” is a wish. A success criterion is something you can test.</h2>
@@ -135,7 +73,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Analysis feeds design, testing and evaluation. If requirements are vague, later stages can look busy while building the wrong thing.</p>
@@ -146,7 +84,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which statement is a measurable success criterion?</h2>
@@ -161,7 +99,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the statement that can be tested with evidence.</div>
         </section>
 
-        <section class="panel" id="analysis" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="analysis" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="analysis">
           <div class="section-title">
             <p class="eyebrow">Requirements analysis</p>
             <h2>Analysis turns user needs into a requirements specification</h2>
@@ -174,7 +112,7 @@
         </section>
 
         <!-- stage10-explanation:start analysis -->
-        <section class="panel explanation-panel" id="explanation-analysis" data-explains="analysis" data-explanation-kind="mechanism" aria-labelledby="explanation-analysis-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel explanation-panel" id="explanation-analysis" data-explains="analysis" data-explanation-kind="mechanism" aria-labelledby="explanation-analysis-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="analysis">
           <h2 class="explanation-sr-only" id="explanation-analysis-title">Analysis turns user needs into a requirements specification</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-analysis.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Analysis turns user needs into a requirements specification with a structured visual model." />
@@ -186,7 +124,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end analysis -->
-        <section class="panel" id="functional" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="functional" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="functional">
           <div class="section-title">
             <p class="eyebrow">Functional requirements</p>
             <h2>Functional requirements describe what the system must do</h2>
@@ -200,7 +138,7 @@
         </section>
 
         <!-- stage10-explanation:start functional -->
-        <section class="panel explanation-panel" id="explanation-functional" data-explains="functional" data-explanation-kind="mechanism" aria-labelledby="explanation-functional-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel explanation-panel" id="explanation-functional" data-explains="functional" data-explanation-kind="mechanism" aria-labelledby="explanation-functional-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="functional">
           <h2 class="explanation-sr-only" id="explanation-functional-title">Functional requirements describe what the system must do</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-functional.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Functional requirements describe what the system must do with a structured visual model." />
@@ -212,7 +150,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end functional -->
-        <section class="panel" id="non-functional" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="non-functional" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="non-functional">
           <div class="section-title">
             <p class="eyebrow">Non-functional requirements</p>
             <h2>Non-functional requirements describe qualities or constraints</h2>
@@ -226,7 +164,7 @@
         </section>
 
         <!-- stage10-explanation:start non-functional -->
-        <section class="panel explanation-panel" id="explanation-non-functional" data-explains="non-functional" data-explanation-kind="mechanism" aria-labelledby="explanation-non-functional-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel explanation-panel" id="explanation-non-functional" data-explains="non-functional" data-explanation-kind="mechanism" aria-labelledby="explanation-non-functional-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="non-functional">
           <h2 class="explanation-sr-only" id="explanation-non-functional-title">Non-functional requirements describe qualities or constraints</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-non-functional.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Non-functional requirements describe qualities or constraints with a structured visual model." />
@@ -238,7 +176,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end non-functional -->
-        <section class="panel" id="success" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="success" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="success">
           <div class="section-title">
             <p class="eyebrow">Success criteria</p>
             <h2>Success criteria make evaluation possible</h2>
@@ -257,7 +195,7 @@
         </section>
 
         <!-- stage10-explanation:start success -->
-        <section class="panel explanation-panel" id="explanation-success" data-explains="success" data-explanation-kind="mechanism" aria-labelledby="explanation-success-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel explanation-panel" id="explanation-success" data-explains="success" data-explanation-kind="mechanism" aria-labelledby="explanation-success-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="success">
           <h2 class="explanation-sr-only" id="explanation-success-title">Success criteria make evaluation possible</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-success.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Success criteria make evaluation possible with a structured visual model." />
@@ -269,7 +207,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end success -->
-        <section class="panel" id="acceptance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="acceptance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="acceptance">
           <div class="section-title">
             <p class="eyebrow">Acceptance tests</p>
             <h2>Acceptance tests check whether requirements are met</h2>
@@ -283,7 +221,7 @@
         </section>
 
         <!-- stage10-explanation:start acceptance -->
-        <section class="panel explanation-panel" id="explanation-acceptance" data-explains="acceptance" data-explanation-kind="mechanism" aria-labelledby="explanation-acceptance-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel explanation-panel" id="explanation-acceptance" data-explains="acceptance" data-explanation-kind="mechanism" aria-labelledby="explanation-acceptance-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="acceptance">
           <h2 class="explanation-sr-only" id="explanation-acceptance-title">Acceptance tests check whether requirements are met</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-acceptance.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Acceptance tests check whether requirements are met with a structured visual model." />
@@ -295,7 +233,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end acceptance -->
-        <section class="panel" id="stakeholders" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="stakeholders" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stakeholders">
           <div class="section-title">
             <p class="eyebrow">Stakeholders</p>
             <h2>Different users reveal different requirements</h2>
@@ -308,7 +246,7 @@
         </section>
 
         <!-- stage10-explanation:start stakeholders -->
-        <section class="panel explanation-panel" id="explanation-stakeholders" data-explains="stakeholders" data-explanation-kind="mechanism" aria-labelledby="explanation-stakeholders-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel explanation-panel" id="explanation-stakeholders" data-explains="stakeholders" data-explanation-kind="mechanism" aria-labelledby="explanation-stakeholders-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="stakeholders">
           <h2 class="explanation-sr-only" id="explanation-stakeholders-title">Different users reveal different requirements</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-stakeholders.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Different users reveal different requirements with a structured visual model." />
@@ -320,7 +258,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end stakeholders -->
-        <section class="panel" id="rewriter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="rewriter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rewriter">
           <div class="section-title">
             <p class="eyebrow">Interactive rewriter</p>
             <h2>Turn vague requests into stronger requirements</h2>
@@ -340,7 +278,7 @@
         </section>
 
         <!-- stage10-explanation:start rewriter -->
-        <section class="panel explanation-panel" id="explanation-rewriter" data-explains="rewriter" data-explanation-kind="mechanism" aria-labelledby="explanation-rewriter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel explanation-panel" id="explanation-rewriter" data-explains="rewriter" data-explanation-kind="mechanism" aria-labelledby="explanation-rewriter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="rewriter">
           <h2 class="explanation-sr-only" id="explanation-rewriter-title">Turn vague requests into stronger requirements</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-rewriter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn vague requests into stronger requirements with a structured visual model." />
@@ -352,7 +290,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end rewriter -->
-        <section class="panel" id="criteria-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="criteria-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="criteria-tool">
           <div class="section-title">
             <p class="eyebrow">Criteria checker</p>
             <h2>Is the criterion testable?</h2>
@@ -372,7 +310,7 @@
         </section>
 
         <!-- stage10-explanation:start criteria-tool -->
-        <section class="panel explanation-panel" id="explanation-criteria-tool" data-explains="criteria-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-criteria-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel explanation-panel" id="explanation-criteria-tool" data-explains="criteria-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-criteria-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="criteria-tool">
           <h2 class="explanation-sr-only" id="explanation-criteria-tool-title">Is the criterion testable?</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-143-criteria-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Is the criterion testable? with a structured visual model." />
@@ -384,7 +322,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end criteria-tool -->
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>From request to requirement to acceptance test</h2>
@@ -397,7 +335,7 @@
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant checking: requirement language</h2>
@@ -405,7 +343,7 @@
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix weak analysis answers</h2>
@@ -413,7 +351,7 @@
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style requirements questions with expandable MS</h2>
@@ -422,7 +360,7 @@
           <div id="examList" class="exam-list"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-143">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>

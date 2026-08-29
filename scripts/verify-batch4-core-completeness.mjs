@@ -29,7 +29,7 @@ for (const id of ["S4.05", "S5.01", "S6.07", "S12.07"]) {
 }
 
 includesAll(questionText("L049-Q5"), ["processor type", "cores", "bus width", "clock speed", "cache"], "L049-Q5");
-includesAll(questionText("AQ045-Q5"), ["processor type", "instruction-set", "workload"], "AQ045-Q5");
+includesAll(questionText("AQ045-Q5"), ["machine code", "processor dependent", "instruction set", "assembler", "mnemonic", "opcode"], "AQ045-Q5");
 includesAll(questionText("L053-Q5"), ["operating system", "process management", "memory management", "file management", "security management", "hardware management"], "L053-Q5");
 includesAll(questionText("L069-Q2"), ["range check", "limit check", "lower", "upper", "maximum", "length check", "format check", "presence check", "existence check"], "L069-Q2");
 includesAll(questionText("L069-Q4"), ["check digit", "calculated", "recalculates", "compares"], "L069-Q4");
@@ -81,14 +81,14 @@ for (let lesson = 1; lesson <= 150; lesson += 1) {
 }
 
 const processorMutation = evaluateRequirement(requirements.get("S4.05"), {
-  lessonTransform: ({ lesson, markdown, html }) => lesson === 42
+  lessonTransform: ({ lesson, markdown, html }) => lesson === 49
     ? { markdown: markdown.replaceAll(/processor type/gi, "processor category"), html: html.replaceAll(/processor type/gi, "processor category") }
     : { markdown, html },
 });
 expect(processorMutation.messages.some((message) => message.includes("processor type")), "mutation escaped: deleting processor type must fail S4.05");
 
 const securityMutation = evaluateRequirement(requirements.get("S5.01"), {
-  lessonTransform: ({ lesson, markdown, html }) => lesson === 52
+  lessonTransform: ({ lesson, markdown, html }) => [52, 53].includes(lesson)
     ? { markdown: markdown.replaceAll(/security management/gi, "account checks"), html: html.replaceAll(/security management/gi, "account checks") }
     : { markdown, html },
 });

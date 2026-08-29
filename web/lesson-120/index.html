@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 120 | Abstract data types and array-based operations</title>
+    <title>AS9618 Lesson 120 | Text files: reading, writing and appending</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
-        <h1>Abstract data types and array-based operations</h1>
+        <h1>Text files: reading, writing and appending</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -49,59 +49,25 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Abstract data types and array-based operations</h2>
+            <h2>Why files are needed and how text-file pseudocode works</h2>
           </div>
           <div class="stage2-explanation">
-            <p>An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.</p>
-            <p>A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.</p>
-            <p>All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.</p>
-            <p>Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node's successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.</p>
-            <p>Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.</p>
+            <p>Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed. Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required. A file is not merely a larger array.</p>
+            <p>For a text file containing one or more lines, select the mode before processing: READ obtains existing data, WRITE creates or replaces output content, and APPEND adds after existing content. Every opened file must be closed after processing.</p>
+            <p>A complete read algorithm uses OPENFILE for READ, checks NOT EOF before READFILE, processes each line and then CLOSEFILE. WRITEFILE stores a line in a file opened for WRITE or APPEND. Reading after EOF or using WRITE when old content must remain are boundary errors.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Add, edit and delete without changing the ADT rule</h3>
-            <p>Push D adds D at the stack top and pop deletes the current top. Enqueue D adds at the queue rear and dequeue deletes from the front. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.</p>
+            <h3>Worked example: Copy selected lines between text files</h3>
+            <p>Open Results.txt FOR READ and Pass.txt FOR WRITE. While NOT EOF(Results.txt), READFILE the next Line; if it contains PASS, WRITEFILE it to Pass.txt. Close both files after the loop. Results remain available from storage, while Pass.txt is deliberately created as a new output file.</p>
           </article>
         </section>
-
-        <!-- stage10-explanation:start stack -->
-        <section class="panel explanation-panel" id="explanation-stack" data-explains="stack" data-explanation-kind="process" aria-labelledby="explanation-stack-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stack">
-          <h2 class="explanation-sr-only" id="explanation-stack-title">Why one open end creates LIFO</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-122-stack.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why one open end creates LIFO through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why one open end creates LIFO: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Push adds the new item at the top position.</li><li><strong>Reason:</strong> Only the current top item is available to pop.</li><li><strong>Result:</strong> The most recently pushed item therefore leaves first.</li></ol>
-
-            <p><strong>Analogy:</strong> Only the top plate of a pile can be removed safely.</p>
-            <p><strong>Boundary:</strong> Accessing an older item requires removing items above it first.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end stack -->
-
-        <!-- stage10-explanation:start queue -->
-        <section class="panel explanation-panel" id="explanation-queue" data-explains="queue" data-explanation-kind="process" aria-labelledby="explanation-queue-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="queue">
-          <h2 class="explanation-sr-only" id="explanation-queue-title">Why two ends create FIFO</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-122-queue.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why two ends create FIFO through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why two ends create FIFO: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Enqueue adds a new item at the rear.</li><li><strong>Reason:</strong> Dequeue removes the waiting item at the front.</li><li><strong>Result:</strong> Earlier arrivals remain ahead of later arrivals.</li></ol>
-
-            <p><strong>Analogy:</strong> A single orderly waiting line serves the earliest arrival first.</p>
-            <p><strong>Boundary:</strong> A priority queue follows a different removal rule and is not ordinary FIFO.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end queue -->
 
         <!-- stage10-explanation:start pseudocode -->
         <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
@@ -116,76 +82,40 @@
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
-
-        <!-- stage10-explanation:start implementation -->
-        <section class="panel explanation-panel" id="explanation-implementation" data-explains="implementation" data-explanation-kind="mechanism" aria-labelledby="explanation-implementation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="implementation">
-          <h2 class="explanation-sr-only" id="explanation-implementation-title">Implement stack, queue and linked list using arrays</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-122-implementation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Implement stack, queue and linked list using arrays through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Implement stack, queue and linked list using arrays: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.</li><li><strong>Reason:</strong> Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.</li><li><strong>Result:</strong> Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation.</li></ol>
-
-            <p><strong>Analogy:</strong> Markers turn a row of storage boxes into a controlled service structure.</p>
-            <p><strong>Boundary:</strong> Incorrect wrap-around or update order can overwrite live queue data.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end implementation -->
-
-        <!-- stage10-explanation:start adt-concept -->
-        <section class="panel explanation-panel" id="explanation-adt-concept" data-explains="adt-concept" data-explanation-kind="mechanism" aria-labelledby="explanation-adt-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="adt-concept">
-          <h2 class="explanation-sr-only" id="explanation-adt-concept-title">An ADT is data together with permitted operations</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-122-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining An ADT is data together with permitted operations through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">An ADT is data together with permitted operations: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> An abstract data type is a collection of data and a set of operations on those data.</li><li><strong>Reason:</strong> Stack, queue and linked list are examples whose permitted operations define their behaviour.</li><li><strong>Result:</strong> The implementation may use arrays and indexes without changing the ADT's observable rules.</li></ol>
-
-            <p><strong>Analogy:</strong> A service counter defines allowed requests without exposing the storeroom layout.</p>
-            <p><strong>Boundary:</strong> Using an array does not automatically make a structure a stack or queue.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end adt-concept -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Abstract data types and array-based operations: apply and assess</h2>
+            <h2>Why files are needed and how text-file pseudocode works: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Give the official definition of an ADT.</p>
-              <details><summary>Show answer</summary><p>A collection of data and a set of operations on those data.</p></details>
+              <p><strong>1.</strong> Why use a file instead of only an array?</p>
+              <details><summary>Show answer</summary><p>A file persists after the program ends and can be reloaded in a later run.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> How are stack and queue removal rules different?</p>
-              <details><summary>Show answer</summary><p>Stack removes the most recently added item (LIFO); queue removes the earliest added item (FIFO).</p></details>
+              <p><strong>2.</strong> Which mode adds without replacing old lines?</p>
+              <details><summary>Show answer</summary><p>APPEND.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Which state is needed for an array-based linked list?</p>
-              <details><summary>Show answer</summary><p>Data and Next storage, a Start index and normally a free-list index.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Must candidates write pseudocode for stack, queue and linked-list operations?</p>
-              <details><summary>Show answer</summary><p>No. They must be able to add, edit and delete data and describe array implementations, but operation pseudocode is not required by the syllabus.</p></details>
+              <p><strong>3.</strong> Why test NOT EOF before READFILE?</p>
+              <details><summary>Show answer</summary><p>It prevents an attempt to read beyond the final available line.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>For array implementations of a stack, queue and linked list, describe how data is added, edited and deleted while preserving each ADT's rule.</p>
+            <p>Write Cambridge pseudocode to read every line from Input.txt, copy non-blank lines to Output.txt and close both files. Explain why the input data is stored in a file.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>stack push/pop uses the top position and stack pointer</td><td>Do not define an ADT as only an array, require ADT-operation pseudocode, or delete a linked-list node without repairing its links and free-list state.</td><td>1</td></tr>
-                  <tr><td>queue enqueue/dequeue uses rear and front in FIFO order</td><td></td><td>1</td></tr>
-                  <tr><td>linked-list add obtains a free index and changes links</td><td></td><td>1</td></tr>
-                  <tr><td>edit changes a stored data field without corrupting order or links</td><td></td><td>1</td></tr>
-                  <tr><td>linked-list delete bypasses the node and returns its index to the free list</td><td></td><td>1</td></tr>
-                  <tr><td>distinguishes conceptual operations from the non-required task of writing their pseudocode</td><td></td><td>1</td></tr>
+                  <tr><td>persistent/later-use need for the input file</td><td>Do not test EOF after an invalid read or claim that WRITE preserves existing output-file contents.</td><td>1</td></tr>
+                  <tr><td>opens Input.txt FOR READ</td><td></td><td>1</td></tr>
+                  <tr><td>opens Output.txt FOR WRITE</td><td></td><td>1</td></tr>
+                  <tr><td>loops WHILE NOT EOF before READFILE</td><td></td><td>1</td></tr>
+                  <tr><td>writes only non-blank lines inside a coherent IF</td><td></td><td>1</td></tr>
+                  <tr><td>closes both files after the loop</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

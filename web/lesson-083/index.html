@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 083 | DDL, DML and SQL roles</title>
+    <title>AS9618 Lesson 083 | Normalisation: avoiding duplication and update problems</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>DDL, DML and SQL roles</h1>
+        <h1>Normalisation: avoiding duplication and update problems</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,22 +46,22 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>DDL, DML and SQL roles</h2>
+            <h2>First, second and third normal form</h2>
           </div>
           <div class="stage2-explanation">
-            <p>DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation.</p>
-            <p>Keep the schema and the records distinct: defining a table or constraint changes structure, while selecting, inserting, deleting or updating records works with stored data.</p>
+            <p>1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.</p>
+            <p>Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Classify database operations</h3>
-            <p>CREATE TABLE is DDL because it creates database structure. SELECT and UPDATE are DML because they query or maintain stored data.</p>
+            <h3>Worked example: Order line data</h3>
+            <p>ORDER_LINE(OrderID, ProductID, ProductName, Quantity) has composite key OrderID+ProductID. ProductName depends only on ProductID, so split PRODUCT(ProductID, ProductName) and ORDER_LINE(OrderID, ProductID, Quantity) to reach 2NF for that dependency.</p>
           </article>
         </section>
 
@@ -83,34 +83,35 @@
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>DDL, DML and SQL roles: apply and assess</h2>
+            <h2>First, second and third normal form: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Which language category creates structure?</p>
-              <details><summary>Show answer</summary><p>DDL.</p></details>
+              <p><strong>1.</strong> What does 1NF remove?</p>
+              <details><summary>Show answer</summary><p>Repeating groups and non-atomic/multiple values in one field.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Which category queries and maintains data?</p>
-              <details><summary>Show answer</summary><p>DML.</p></details>
+              <p><strong>2.</strong> What dependency violates 2NF?</p>
+              <details><summary>Show answer</summary><p>A non-key attribute depending on only part of a composite key.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> What is SQL?</p>
-              <details><summary>Show answer</summary><p>An industry-standard database language.</p></details>
+              <p><strong>3.</strong> What dependency violates 3NF?</p>
+              <details><summary>Show answer</summary><p>A non-key attribute depending on another non-key attribute.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>3 marks</span></div>
-            <p>Identify CREATE TABLE, SELECT and UPDATE as DDL or DML and explain the distinction.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Explain why CUSTOMER(CustomerID, Postcode, Town) may not be in 3NF when each postcode determines one town, and give a 3NF design.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>DDL creation/modification of structure</td><td>Do not describe every SQL statement as changing stored records.</td><td>1</td></tr>
-                  <tr><td>DML queries/maintenance</td><td></td><td>1</td></tr>
-                  <tr><td>SQL identified as industry-standard language</td><td></td><td>1</td></tr>
+                  <tr><td>CustomerID determines Postcode and Postcode determines Town</td><td>Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship.</td><td>1</td></tr>
+                  <tr><td>Town is transitively dependent on CustomerID / depends on non-key Postcode</td><td></td><td>1</td></tr>
+                  <tr><td>CUSTOMER(CustomerID, Postcode)</td><td></td><td>1</td></tr>
+                  <tr><td>POSTCODE(Postcode, Town), with Postcode linked as foreign key</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

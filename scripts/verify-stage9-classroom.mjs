@@ -4,7 +4,7 @@ import vm from "node:vm";
 import { commandWords } from "./assessment-filter-utils.mjs";
 import { pageDefinitions, root } from "./stage6-qa-utils.mjs";
 import { optionalEnrichment } from "./remediation-v2-optional-enrichment.mjs";
-import { stage3OptionalBaseLessons } from "./remediation-v2-stage3-sequence-plan.mjs";
+import { coverageContract } from "./syllabus-coverage-contract.mjs";
 
 const failures = [];
 const expect = (condition, message) => { if (!condition) failures.push(message); };
@@ -63,9 +63,10 @@ expect(Array.isArray(catalog) && catalog.length === 150, "Course catalog must co
 const lessons = pageDefinitions.filter(({ kind }) => kind === "lesson");
 const roles = new Set(["CORE", "OPTIONAL", "AFTER_CLASS"]);
 const activities = new Set(["TEACH", "ASK", "THINK", "PAIR", "PRACTISE", "CHECK", "EXAM", "EXTEND", "HOMEWORK"]);
+const formalCoreLessons = new Set(coverageContract.requirements.flatMap(({ teachingLessons }) => teachingLessons));
 const optionalOnlyLessons = new Set([
   ...optionalEnrichment.filter(({ disposition }) => disposition === "Optional enrichment lesson").map(({ lesson }) => lesson),
-  ...stage3OptionalBaseLessons,
+  ...Array.from({ length: 150 }, (_, index) => index + 1).filter((lesson) => !formalCoreLessons.has(lesson)),
 ]);
 let sectionCount = 0;
 

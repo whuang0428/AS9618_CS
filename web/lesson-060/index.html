@@ -42,12 +42,79 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Java translation and required IDE features</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Java in console mode is partly compiled and partly interpreted: the Java compiler translates source code into platform-independent bytecode, then a Java Virtual Machine (JVM) interprets that bytecode and may just-in-time compile parts for the host processor. Bytecode is not universal processor machine code.</p>
+            <p>For coding, an IDE can provide context-sensitive prompts. For initial error detection it can perform dynamic syntax checks. For presentation it can prettyprint code and expand or collapse code blocks. These features help create and navigate source code but do not prove that its algorithm is correct.</p>
+            <p>For debugging, an IDE can provide single stepping, breakpoints, inspection of variables and expressions, and a report window for diagnostic or output information. Single stepping executes one statement at a time; a breakpoint pauses at a chosen point; variable/expression inspection exposes changing values.</p>
+            <p>IDE presentation features include prettyprint and expand/collapse code blocks; expand/collapse changes the displayed view, not program execution.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Trace Java and locate a loop fault</h3>
+            <p>First the Java compiler produces bytecode; the JVM then interprets the bytecode or JIT-compiles parts for the host. In the IDE, a breakpoint pauses before the faulty loop, single stepping advances one statement at a time, the variable/expression view exposes Index, and the report window records diagnostics. Dynamic syntax checking can flag malformed syntax but not a syntactically valid wrong boundary.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Java translation and required IDE features: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What does a Java compiler normally produce?</p>
+              <details><summary>Show answer</summary><p>Bytecode.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Why is Java described as partly compiled and partly interpreted?</p>
+              <details><summary>Show answer</summary><p>Source is compiled to bytecode, then a JVM interprets the bytecode and may JIT-compile parts for the host.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which IDE feature pauses at a chosen line, and which advances one statement?</p>
+              <details><summary>Show answer</summary><p>A breakpoint pauses; single stepping advances one statement at a time.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Identify the two required presentation features.</p>
+              <details><summary>Show answer</summary><p>Prettyprint and expand/collapse code blocks.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> What can a variables/expressions view and report window show?</p>
+              <details><summary>Show answer</summary><p>Current or evaluated values, plus diagnostic/output information in the report window.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Explain why Java is partly compiled and partly interpreted, then describe four IDE features from coding, initial error detection, presentation and debugging.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>Java source is compiled to bytecode</td><td>Do not accept that Java source becomes one universal machine-code file or that IDE syntax checking proves logical correctness.</td><td>1</td></tr>
+                  <tr><td>JVM interprets bytecode and may JIT-compile parts for the host</td><td></td><td>1</td></tr>
+                  <tr><td>context-sensitive prompts or dynamic syntax checking described accurately</td><td></td><td>1</td></tr>
+                  <tr><td>prettyprint or expand/collapse code blocks described accurately</td><td></td><td>1</td></tr>
+                  <tr><td>single stepping or breakpoint described accurately</td><td></td><td>1</td></tr>
+                  <tr><td>variable/expression inspection or report window described accurately</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
           <div class="hero-copy">

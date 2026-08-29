@@ -3,10 +3,10 @@
   "remediation": "v2",
   "sourceBaseline": "audits/remediation-v2-stage0-baseline.json",
   "decisionContribution": "BLOCKED",
-  "blockingSummary": "Stage 7 final gate is Ready. Current conclusion is RELEASE_CANDIDATE; commit, push and publication remain separately unauthorised.",
+  "blockingSummary": "All registered P0/P1 defects are resolved through Stage 6. Release remains BLOCKED because Stage 7 independent final/reproducibility review is unverified.",
   "stageStatus": {
-    "stage": 7,
-    "status": "Complete"
+    "stage": 6,
+    "status": "AwaitingUserApproval"
   },
   "stageApprovals": [
     {
@@ -323,7 +323,7 @@
       "confidence": "High",
       "status": "Resolved",
       "closureEvidence": [
-        "83/83 CORE teaching pages place substantive CORE before Optional content; all 70 unique first-use pages are owned by declared requirements",
+        "95/95 CORE teaching pages place substantive CORE before Optional content; all 72 unique first-use pages are owned by declared requirements",
         "All declared first-teaching concept groups pass, including vector, representations, devices, security, licensing, algorithms and ADT scope"
       ]
     },

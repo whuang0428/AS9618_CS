@@ -94,7 +94,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `formatter`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-formatter.jpg`
 
 1. Interactive output formatter
@@ -105,7 +105,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `formatting`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-formatting.jpg`
 
 1. Formatting output
@@ -125,7 +125,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `input`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-input.jpg`
 
 1. Cambridge-style pseudocode
@@ -139,7 +139,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-java.jpg`
 
 1. Java support only
@@ -158,7 +158,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `output`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-output.jpg`
 
 1. Display text and values
@@ -175,7 +175,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `prompts`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-prompts.jpg`
 
 1. OUTPUT "Input"
@@ -189,7 +189,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tables`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-tables.jpg`
 
 1. Table-like output
@@ -205,7 +205,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `types`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-types.jpg`
 
 1. Input type handling

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 027 | Why computer systems need input, output and storage</title>
+    <title>AS9618 Lesson 027 | Computer system overview: input, output, storage, processor and memory</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Why computer systems need input, output and storage</h1>
+        <h1>Computer system overview: input, output, storage, processor and memory</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -43,28 +43,36 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Why computer systems need input, output and storage</h2>
+            <h2>Computer-system input, output and storage overview</h2>
           </div>
           <div class="stage2-explanation">
             <p>Input is needed to enter data and instructions into a computer system. Output is needed to communicate processed information to a user or to cause an action. A processor cannot perform a useful task unless it can receive the required data and make the result available.</p>
             <p>Primary memory is needed to hold the instructions and data currently being used by the processor. Secondary storage is needed for non-volatile, long-term retention of programs and data. Removable storage is secondary storage that can be disconnected, so it can transfer data or hold an offline backup, although it can be lost or stolen.</p>
+            <p>A microphone diaphragm vibrates with sound; a transducer converts the movement into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in an electric field and calculates touch coordinates.</p>
+            <p>A VR headset displays a separate view to each eye and uses motion/orientation sensors to update the viewpoint. Low-latency tracking is needed so the displayed scene follows head movement.</p>
+            <p>A laser printer charges a drum, a laser discharges selected points, toner adheres to the image, toner transfers to paper and heat/pressure fuse it. A 3D printer deposits or solidifies material layer by layer from a digital model.</p>
+            <p>A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.</p>
+            <p>A buffer temporarily holds data when producer and consumer operate at different speeds, reducing loss or interruption caused by the rate difference.</p>
+            <p>An HDD spins magnetic platters while an actuator positions read/write heads; writing changes magnetic orientation and reading senses it. Flash memory stores charge in floating-gate cells and has no moving parts.</p>
+            <p>An optical drive spins a disc and directs a laser at its track. Reflected-light differences are read as data; a writer uses a higher-power laser to change a dye or recording layer.</p>
+            <p>Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Field survey tablet</h3>
-            <p>A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and copies an encrypted backup to removable storage before leaving the site.</p>
+            <h3>Worked example: Field survey tablet / Turn head in VR / Print a page / Read an HDD block</h3>
+            <p>A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and copies an encrypted backup to removable storage before leaving the site. Gyroscope/accelerometer readings report orientation; the processor calculates a new camera view; displays present updated left/right images, creating stereoscopic depth. The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages. The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Why computer systems need input, output and storage: apply and assess</h2>
+            <h2>Computer-system input, output and storage overview: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
@@ -84,20 +92,72 @@
               <p><strong>4.</strong> Give one purpose of removable storage.</p>
               <details><summary>Show answer</summary><p>To transfer data between systems or keep a detachable/offline backup copy.</p></details>
             </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> What converts a microphone's analogue signal into digital samples?</p>
+              <details><summary>Show answer</summary><p>An analogue-to-digital converter (ADC).</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> What does a capacitive touchscreen detect?</p>
+              <details><summary>Show answer</summary><p>A change in capacitance/electric field at a touch location.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>7.</strong> Why does a VR headset track head movement?</p>
+              <details><summary>Show answer</summary><p>To update the displayed viewpoint to match the user's orientation.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>8.</strong> What permanently bonds toner to laser-printer paper?</p>
+              <details><summary>Show answer</summary><p>Heat and pressure in the fuser.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>9.</strong> How does a 3D printer build an object?</p>
+              <details><summary>Show answer</summary><p>It deposits/solidifies successive layers.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>10.</strong> How does a speaker produce sound from digital output?</p>
+              <details><summary>Show answer</summary><p>A DAC and amplifier drive a coil and cone; cone vibration produces pressure waves in the air.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>11.</strong> Why is a print buffer needed?</p>
+              <details><summary>Show answer</summary><p>It handles the speed difference and lets the producer continue while the printer consumes data.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>12.</strong> Why is flash storage resistant to mechanical shock?</p>
+              <details><summary>Show answer</summary><p>It has no moving read/write head or spinning platter.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>13.</strong> What physical property stores HDD data?</p>
+              <details><summary>Show answer</summary><p>Magnetic orientation/patterns on a platter.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>14.</strong> How does an optical reader Compare stored data?</p>
+              <details><summary>Show answer</summary><p>It detects differences in reflected laser light.</p></details>
+            </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>A portable medical system receives patient measurements, processes them and stores the records. Explain why it needs input, output, primary memory, secondary storage and removable storage.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>17 marks</span></div>
+            <p>A portable medical system receives patient measurements, processes them and stores the records. Explain why it needs input, output, primary memory, secondary storage and removable storage. Describe how a microphone captures sound for storage in a computer. Explain why a buffer is used when a computer sends a large document to a laser printer. Describe how data is read from a magnetic hard disk drive.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>input receives patient measurements/data</td><td>Do not treat primary memory, secondary storage and removable storage as interchangeable terms.</td><td>1</td></tr>
+                  <tr><td>input receives patient measurements/data</td><td>Do not treat primary memory, secondary storage and removable storage as interchangeable terms. Do not accept that the microphone directly records binary without an analogue signal and conversion stage. Do not accept 'the buffer makes the printer faster'; it manages transfer-rate differences. Do not accept a laser-based explanation for an HDD; lasers apply to optical media.</td><td>1</td></tr>
                   <tr><td>output communicates results or warnings</td><td></td><td>1</td></tr>
                   <tr><td>primary memory holds current program instructions and working data</td><td></td><td>1</td></tr>
                   <tr><td>secondary storage retains patient records long term without power</td><td></td><td>1</td></tr>
                   <tr><td>removable storage supports transfer or an offline/detachable backup</td><td></td><td>1</td></tr>
+                  <tr><td>sound waves vibrate a diaphragm</td><td></td><td>1</td></tr>
+                  <tr><td>transducer converts vibration to an analogue electrical signal</td><td></td><td>1</td></tr>
+                  <tr><td>ADC samples/measures the signal</td><td></td><td>1</td></tr>
+                  <tr><td>sample values are encoded/stored as binary</td><td></td><td>1</td></tr>
+                  <tr><td>processor/computer and printer operate at different speeds</td><td></td><td>1</td></tr>
+                  <tr><td>buffer temporarily stores print data</td><td></td><td>1</td></tr>
+                  <tr><td>printer reads data at its own rate</td><td></td><td>1</td></tr>
+                  <tr><td>computer/processor can continue other processing without waiting for the full print</td><td></td><td>1</td></tr>
+                  <tr><td>platters rotate</td><td></td><td>1</td></tr>
+                  <tr><td>actuator positions read/write head over the required track</td><td></td><td>1</td></tr>
+                  <tr><td>required sector passes beneath the head</td><td></td><td>1</td></tr>
+                  <tr><td>head senses magnetic patterns which are decoded as data</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 009 | Vector graphics and drawing lists</title>
+    <title>AS9618 Lesson 009 | Image file size calculations and metadata</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Vector graphics and drawing lists</h1>
+        <h1>Image file size calculations and metadata</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -42,57 +42,56 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Vector graphics and drawing lists</h2>
+            <h2>Bitmap file-size calculations and metadata</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Vector encoding stores a graphic as a drawing list of drawing objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.</p>
-            <p>Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.</p>
-            <p>For a given application, justify bitmap or vector storage by connecting the image content and required editing or scaling to the chosen representation.</p>
+            <p>For an uncompressed bitmap, pixel-data size in bits is width in pixels x height in pixels x colour depth in bits per pixel. Divide by 8 to convert bits to bytes. Use the units requested by the question and state whether a decimal or binary prefix is being used.</p>
+            <p>Bitmap metadata is stored separately from the pixel values, commonly in a file header. It can include the format, dimensions, colour depth and other information needed to interpret the pixel data. Add header or metadata bytes only when their size is supplied; when a question says to ignore the header, calculate pixel data only.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Store a red circle</h3>
-            <p>A drawing-list entry could record object = circle, centre = (80, 60), radius = 20, fill = red and outline = black. Enlarging it changes the geometry before redrawing, not a grid of stored pixels.</p>
+            <h3>Worked example: Calculate pixel data and then account for metadata</h3>
+            <p>A 640 x 480 bitmap using 24-bit colour stores 640 x 480 x 24 = 7,372,800 bits = 921,600 bytes of pixel data. If the question supplies a 54-byte header, the uncompressed total is 921,654 bytes; if it says to ignore metadata, the answer remains 921,600 bytes.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Vector graphics and drawing lists: apply and assess</h2>
+            <h2>Bitmap file-size calculations and metadata: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Identify two properties stored for a vector object.</p>
-              <details><summary>Show answer</summary><p>Any two of coordinates, dimensions, fill, line colour or line thickness.</p></details>
+              <p><strong>1.</strong> Calculate the pixel-data size of a 200 x 100 bitmap using 8-bit colour, in bytes.</p>
+              <details><summary>Show answer</summary><p>200 x 100 x 8 / 8 = 20,000 bytes.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Suggest vector or bitmap for a company logo that must appear on a pen and a billboard.</p>
-              <details><summary>Show answer</summary><p>Vector, because geometric objects can be scaled without pixelation.</p></details>
+              <p><strong>2.</strong> A bitmap has 60,000 bytes of pixel data and a supplied 54-byte header. What is its total uncompressed size?</p>
+              <details><summary>Show answer</summary><p>60,054 bytes.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why is bitmap normally better for a photograph?</p>
-              <details><summary>Show answer</summary><p>A photograph contains complex per-pixel colour and texture that is inefficient to describe as drawing objects.</p></details>
+              <p><strong>3.</strong> Why must a header not be invented in a file-size calculation?</p>
+              <details><summary>Show answer</summary><p>Its size and contents depend on the file format; add it only when the question supplies the metadata size.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A designer creates a simple icon from circles and rectangles. Explain how it is stored as a vector graphic and give one advantage over a bitmap when resized.</p>
+            <p>A 1024 x 768 bitmap uses 16-bit colour and has a supplied 128-byte header. Calculate (i) its pixel-data size and (ii) its total uncompressed file size in bytes.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>stored as a drawing list / list of objects</td><td>Do not accept 'vector has better quality' unless scalability or object-based storage is explained.</td><td>1</td></tr>
-                  <tr><td>stores object properties such as coordinates/dimensions/colour</td><td></td><td>1</td></tr>
-                  <tr><td>software redraws objects from the descriptions</td><td></td><td>1</td></tr>
-                  <tr><td>can be resized without pixelation / loss of shape quality</td><td></td><td>1</td></tr>
+                  <tr><td>1024 x 768 x 16 bits</td><td>Do not multiply metadata by the number of pixels or add an assumed header size.</td><td>1</td></tr>
+                  <tr><td>1,572,864 bytes of pixel data</td><td></td><td>1</td></tr>
+                  <tr><td>adds the supplied 128-byte header</td><td></td><td>1</td></tr>
+                  <tr><td>1,572,992 bytes total</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

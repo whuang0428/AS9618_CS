@@ -1,7 +1,7 @@
-# Lesson 145: Testing, maintenance and enhancement
+# Lesson 145: Testing, implementation, maintenance, and evaluation
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- remediation-v2-optional:start -->
@@ -13,24 +13,19 @@
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Testing, maintenance and enhancement
+**Focus:** Testing, implementation and maintenance
 
 ### Direct explanation
 
 - Dry run manually traces code; walkthrough is a structured peer review; white-box derives tests from internal paths; black-box derives tests from specifications. Integration tests combined modules, using a stub to imitate an unavailable called module.
 - Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.
-- Normal data are valid values within the accepted range. Abnormal data are invalid and should be rejected. Extreme or boundary data are valid values at the limits of the accepted range; values immediately outside a limit are abnormal boundary checks.
-- Choose test data from the stated validation rule and give an expected result for each value. A label such as 'boundary' is insufficient unless the value really tests a stated limit.
 - Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.
 - Classify the reason for the change, not the code edited. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search and a clearer result display.
 - Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.
-- Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions. Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.
-- Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.
-- Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
 
 ### Worked example
 
-**Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount:** First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour. For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal. Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive. Adding a wait-list search and making results faster is perfective. Each change is traced to a request and followed by targeted and regression tests. The existing program counts marks at least 50 in PassCount. Analysis shows one traversal already reads every mark, so declare and initialise MeritCount, add IF Marks[Index] >= 70 THEN MeritCount <- MeritCount + 1 ENDIF inside the same loop, and output both counters after the loop. Test 49, 50, 69 and 70 to cover unchanged pass behaviour and the new merit boundary.
+**Test login through review, construction, integration and release / Three changes to one booking system:** First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour. Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive. Adding a wait-list search and making results faster is perfective. Each change is traced to a request and followed by targeted and regression tests.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
@@ -43,53 +38,31 @@
    **Answer:** A called module/component not yet available.
 4. How does a walkthrough differ from a dry run?
    **Answer:** A walkthrough is a structured peer review of the algorithm or code; a dry run manually traces values and control flow for selected data.
-5. Give one normal mark for 0 to 100 inclusive.
-   **Answer:** Any valid non-boundary value, for example 55.
-6. Give two valid extreme values.
-   **Answer:** 0 and 100.
-7. Give one abnormal boundary value.
-   **Answer:** -1 or 101.
-8. Why does maintenance continue after acceptance?
+5. Why does maintenance continue after acceptance?
    **Answer:** Faults, environmental changes and requested improvements continue after delivery.
-9. Which type changes software for a new external rule?
+6. Which type changes software for a new external rule?
    **Answer:** Adaptive maintenance.
-10. Which type adds useful functionality or improves performance?
+7. Which type adds useful functionality or improves performance?
    **Answer:** Perfective maintenance.
-11. What should be recorded before changing existing code?
-   **Answer:** Its purpose, inputs, outputs, relevant control/data flow, assumptions and behaviour that must remain unchanged.
-12. Why rerun old tests after adding a feature?
-   **Answer:** Regression tests check that the amendment has not broken existing behaviour.
-13. How is an enhancement different from merely correcting a fault?
-   **Answer:** An enhancement adds or improves required functionality; a correction restores behaviour that was already required.
 
 ### Exam-style question and MS
 
-**Question (22 marks):** Explain why a login-system project needs both a test strategy and a test plan. State three likely contents of each document. Suggest normal, abnormal and extreme/boundary data for an integer age accepted from 12 to 18 inclusive, and state each expected result. Identify and justify these changes: fix a save crash; support a new operating-system API; add an export feature. For one change, state the impact-analysis and regression evidence required. An existing program counts PassCount for Marks[1:30] where each mark is at least 50. Analyse where a new MeritCount for marks at least 70 should be added, write the amended declarations, initialisation, loop update and output, and name four boundary-focused test values.
+**Question (12 marks):** Explain why a login-system project needs both a test strategy and a test plan. State three likely contents of each document. Identify and justify these changes: fix a save crash; support a new operating-system API; add an export feature. For one change, state the impact-analysis and regression evidence required.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| strategy coordinates the overall approach, levels/methods or responsibilities | Do not require candidates to produce either document as a syllabus obligation; assess the need and likely contents. Do not credit a value whose classification contradicts the stated inclusive range. Do not classify every post-release change as adaptive or describe perfective maintenance as fault correction only. Do not accept a rewrite that removes the existing pass count, changes its boundary, or tests only the new feature. | 1 |
+| strategy coordinates the overall approach, levels/methods or responsibilities | Do not require candidates to produce either document as a syllabus obligation; assess the need and likely contents. Do not classify every post-release change as adaptive or describe perfective maintenance as fault correction only. | 1 |
 | strategy content such as methods, sequence, responsibility or resources |  | 1 |
 | a second distinct strategy content |  | 1 |
 | plan records individual tests and their evidence |  | 1 |
 | plan content such as test ID, purpose, data or expected result |  | 1 |
 | a second distinct plan content such as actual result or pass/fail |  | 1 |
-| valid normal value |  | 1 |
-| 12 and/or 18 as valid extremes |  | 1 |
-| 11 and/or 19 as abnormal boundary |  | 1 |
-| coherent expected results |  | 1 |
 | save-crash fix classified as corrective with fault reason |  | 1 |
 | new operating-system API classified as adaptive with environment reason |  | 1 |
 | new export feature classified as perfective with enhancement reason |  | 1 |
 | identifies affected interfaces/modules or behaviour before amendment |  | 1 |
 | tests the changed path |  | 1 |
 | reruns relevant existing tests to detect regression |  | 1 |
-| analysis identifies the existing traversal and output that must remain |  | 1 |
-| declares and initialises MeritCount without removing PassCount |  | 1 |
-| increments MeritCount inside the existing traversal when mark is at least 70 |  | 1 |
-| preserves the existing pass condition at 50 and outputs both results after the loop |  | 1 |
-| uses 49 and 50 to regression-test the pass boundary |  | 1 |
-| uses 69 and 70 to test the new merit boundary |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 
@@ -168,28 +141,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
-
-### Extreme or boundary data uses valid values at accepted limits
-
-- **Explains:** `boundary`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-137-boundary.jpg`
-
-1. Extreme/boundary data uses valid values at the accepted lower or upper limit.
-2. For an accepted mark range of 0 to 100 inclusive, 0 and 100 are valid extreme/boundary values.
-3. Values just outside the limits, such as -1 and 101, are abnormal and should be rejected.
-
-### Analyse and amend an existing program
-
-- **Explains:** `bug`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-138-bug.jpg`
-
-1. Analyse the existing program's purpose, inputs, outputs, control flow and behaviour that must remain unchanged before editing it.
-2. Amend declarations, initialisation, processing and output coherently to add the requested functionality rather than rewriting unrelated code.
-3. Test the new path and rerun regression tests for the existing path; adding functionality is an enhancement, not merely correcting a fault.
 
 ### Test strategy and test plan are different documents
 

@@ -1,8 +1,46 @@
-# Lesson 024: The internet and the World Wide Web
+# Lesson 024: Internet, intranet, extranet and cloud services
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Public/private cloud and WWW/internet distinction
+
+### Direct explanation
+
+- The internet is the global network infrastructure and protocols connecting networks. The World Wide Web is one service using that infrastructure: linked web resources accessed using browsers and HTTP/HTTPS.
+- A public cloud offers shared provider infrastructure to customers; a private cloud is dedicated to one organisation. Public cloud can scale with lower capital cost but gives less direct control; private cloud offers more control/customisation but costs more to operate.
+- State at least one benefit and one drawback of cloud computing, then link both to the situation; remote access and scalable provision can help, while provider dependence, connectivity and control can create risks.
+
+### Worked example
+
+**Company document system:** A small company may choose public cloud storage for rapid scaling and outsourced maintenance. A regulated organisation may choose a private cloud for control over configuration and data location, accepting higher cost.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Is email part of the WWW?
+   **Answer:** No. It uses the internet but is a separate internet service.
+2. Who uses the infrastructure in a private cloud?
+   **Answer:** One organisation.
+3. Give one public-cloud drawback.
+   **Answer:** Less direct control, provider dependence, privacy/location concerns or internet dependence.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Compare the internet from the World Wide Web, then explain one benefit of a private cloud for an organisation.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| internet is the network infrastructure / interconnected networks | Do not accept 'the internet is WiFi' or 'the WWW is the internet'. | 1 |
+| WWW is a service of linked web resources using the internet |  | 1 |
+| private cloud infrastructure is dedicated to one organisation |  | 1 |
+| greater control/security configuration/customisation developed |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1

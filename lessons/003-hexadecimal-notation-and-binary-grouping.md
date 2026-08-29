@@ -1,22 +1,27 @@
-# Lesson 003: Hexadecimal as a base-16 representation
+# Lesson 003: Hexadecimal notation and binary grouping
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Hexadecimal as a base-16 representation
+**Focus:** Hexadecimal and BCD representations in practical systems
 
 ### Direct explanation
 
 - Hexadecimal is base 16 and uses digits 0 to 9 and A to F. One hexadecimal digit represents one four-bit binary nibble, so grouping from the right gives an exact conversion between binary and hexadecimal integer representations.
 - To convert hexadecimal to denary, multiply each digit value by its power-of-16 place value. Binary, denary and hexadecimal may encode the same integer value even though their written representations differ.
+- BCD encodes each denary digit separately in four bits. For example, 59 becomes 0101 1001, not the pure-binary value 00111011.
+- Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
+- Hexadecimal is used as a compact human-readable form of binary. One hex digit represents four bits, so hexadecimal is practical for memory addresses, machine-code/debug displays and colour values.
+- A digital clock is a practical BCD application because each displayed denary digit maps directly to one four-bit BCD group.
+- Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.
 
 ### Worked example
 
-**Convert D6 hexadecimal:** D6 hexadecimal = 1101 0110 binary. In denary, D6 = 13 x 16 + 6 = 214, so all three representations encode the integer 214.
+**Convert D6 hexadecimal / Choose representations for a clock and an address:** D6 hexadecimal = 1101 0110 binary. In denary, D6 = 13 x 16 + 6 = 214, so all three representations encode the integer 214. A clock can encode 407 as BCD 0100 0000 0111 so each displayed denary digit maps to one four-bit group. A binary memory address can be written compactly in hexadecimal because each hexadecimal digit maps exactly to one nibble.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
@@ -27,17 +32,29 @@
    **Answer:** 2 x 16 + 13 = 45.
 3. Convert binary 00111100 to hexadecimal.
    **Answer:** 3C.
+4. Write denary 82 in BCD.
+   **Answer:** 1000 0010.
+5. Give the decoded form of BCD 0011 1001.
+   **Answer:** 39.
+6. Why is BCD suitable for a digital clock?
+   **Answer:** Each displayed denary digit maps directly to one four-bit group.
+7. Why is hexadecimal suitable for a memory address?
+   **Answer:** It is a compact form of binary with one digit per four-bit nibble.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Convert the integer 159 denary to hexadecimal and then to 8-bit binary.
+**Question (8 marks):** Convert the integer 159 denary to hexadecimal and then to 8-bit binary. Explain one practical application of BCD and one practical application of hexadecimal.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| 159 = 9 x 16 + 15 | Do not treat A to F as decimal two-digit values. | 1 |
+| 159 = 9 x 16 + 15 | Do not treat A to F as decimal two-digit values. Do not award a named application without explaining why the representation suits it. | 1 |
 | 9F hexadecimal |  | 1 |
 | maps 9 to 1001 and F to 1111 |  | 1 |
 | 10011111 binary |  | 1 |
+| BCD application such as a digital clock, calculator or financial display |  | 1 |
+| links BCD to separate exact denary digits |  | 1 |
+| hexadecimal application such as memory addresses, machine-code/debug output or colour values |  | 1 |
+| links hexadecimal to compact four-bit grouping |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 

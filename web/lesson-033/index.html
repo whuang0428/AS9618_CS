@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 033 | Monitoring, control, feedback and required sensors</title>
+    <title>AS9618 Lesson 033 | Embedded systems and microcontrollers</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Monitoring, control, feedback and required sensors</h1>
+        <h1>Embedded systems and microcontrollers</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -37,12 +37,73 @@
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Embedded systems: purpose, benefits and drawbacks</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.</p>
+            <p>Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.</p>
+            <p>An embedded system can have a benefit such as efficient dedicated operation and a drawback such as limited flexibility; both must be applied to the device.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Washing-machine controller</h3>
+            <p>A dedicated microcontroller can read sensors and control the motor and valves with low power use and predictable timing. Its limited interface is acceptable for wash programs, but it cannot readily run unrelated applications, and a controller failure can prevent the whole machine from operating.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Embedded systems: purpose, benefits and drawbacks: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What two features define an embedded system?</p>
+              <details><summary>Show answer</summary><p>It is built into a larger device and performs a dedicated task or closely related set of tasks.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Give one benefit of an embedded controller and explain its consequence.</p>
+              <details><summary>Show answer</summary><p>For example, low power use reduces energy or battery demand for the device.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Give one drawback of an embedded controller and explain its consequence.</p>
+              <details><summary>Show answer</summary><p>For example, limited resources make it difficult to add unrelated functions or run general-purpose software.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why can failure of an embedded controller be serious?</p>
+              <details><summary>Show answer</summary><p>The larger device may lose the function controlled by that computer or stop operating.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>A battery-powered medical monitor uses an embedded controller. Explain two benefits and two drawbacks of this design in context.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>benefit such as low power, compact size or predictable automatic operation</td><td>Do not award bare adjectives such as 'small' or 'cheap' without a device-specific consequence.</td><td>1</td></tr>
+                  <tr><td>first benefit linked to battery life, portability or continuous monitoring</td><td></td><td>1</td></tr>
+                  <tr><td>drawback such as limited resources/upgrading/interface or controller dependence</td><td></td><td>1</td></tr>
+                  <tr><td>first drawback linked to limited new functions or device failure</td><td></td><td>1</td></tr>
+                  <tr><td>second distinct benefit or drawback correctly developed</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
           <div class="hero-copy">

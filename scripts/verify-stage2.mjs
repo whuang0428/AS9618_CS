@@ -25,7 +25,7 @@ for (let lesson = 1; lesson <= 150; lesson += 1) {
   expect(occurrence(html, 'id="stage2-completion"') === (expected ? 1 : 0), `L${number}: ${expected ? "missing or duplicate" : "orphan"} HTML completion module`);
   expect(occurrence(html, 'href="#stage2-completion"') === (expected ? 1 : 0), `L${number}: ${expected ? "missing or duplicate" : "orphan"} completion navigation link`);
   expect(occurrence(css, "/* Stage 2 syllabus completion:start */") === (expected ? 1 : 0), `L${number}: ${expected ? "missing or duplicate" : "orphan"} completion CSS block`);
-  expect(occurrence(markdown, "<!-- stage2-completion:start -->") === (expected ? 1 : 0), `L${number}: ${expected ? "missing or duplicate" : "orphan"} Markdown completion module`);
+  expect(occurrence(markdown, "## Core syllabus content") === (expected ? 1 : 0), `L${number}: ${expected ? "missing or duplicate" : "orphan"} Markdown CORE module`);
 }
 
 for (const repair of repairs) {

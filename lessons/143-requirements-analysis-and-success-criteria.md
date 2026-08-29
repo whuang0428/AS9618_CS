@@ -1,50 +1,8 @@
-# Lesson 143: Structure charts and the purpose of state-transition diagrams
+# Lesson 143: Requirements analysis and success criteria
 
 <!-- remediation-v2-stage3-scope:start -->
 > **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
 <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** Structure charts and the purpose of state-transition diagrams
-
-### Direct explanation
-
-- A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.
-- To construct a structure chart, place the controlling module at the top, split the problem into one-responsibility subtasks, connect each caller to its called modules, and label every value passed. To derive equivalent pseudocode, turn each box into a complete PROCEDURE or FUNCTION header with corresponding parameters, add calls in the parent body with matching arguments, and preserve the shown hierarchy.
-- A state-transition diagram documents an algorithm by showing persistent states and the events that cause changes between them. Its syllabus requirement is to understand that purpose; constructing a state-transition diagram is retained only as Optional enrichment.
-
-### Worked example
-
-**Door controller: two design views:** A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid). Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments. A provided state-transition diagram with Locked and Unlocked states serves a different purpose: it documents event-driven changes rather than module hierarchy or processing sequence.
-
-<!-- stage2-practice:start -->
-### Targeted practice and answers
-
-1. What does a box represent in a structure chart?
-   **Answer:** A module, procedure or function.
-2. How are parameters represented and then derived into pseudocode?
-   **Answer:** Labelled arrows show values passed; the same values appear as parameters in the called header and arguments in the caller's call.
-3. What does a state-transition diagram document?
-   **Answer:** The persistent states of an algorithm/system and the event-driven changes between them.
-4. Why is a state-transition diagram not a flowchart?
-   **Answer:** Its purpose is to document states and transitions, not every processing step in sequence.
-
-### Exam-style question and MS
-
-**Question (6 marks):** For a login system, construct a structure chart in which Main calls ReadCredentials(UserID, Password) and CheckLogin(UserID, Password, IsValid), then derive equivalent subprogram headers and calls. A separate diagram shows LoggedOut, LoggedIn and Locked states: explain the purpose of this state-transition diagram.
-
-| Answer | Guidance | Marks |
-|---|---|---:|
-| structure chart places Main above the two called modules | Do not award construction marks for the state-transition diagram; the construction marks apply to the structure chart only. | 1 |
-| parameter arrows label UserID, Password and IsValid coherently |  | 1 |
-| derived pseudocode contains matching complete headers and calls with arguments |  | 1 |
-| identifies persistent states in the provided state-transition diagram |  | 1 |
-| explains that labelled transitions show event-driven changes |  | 1 |
-| distinguishes this purpose from module hierarchy or a flowchart of processing steps |  | 1 |
-<!-- stage2-practice:end -->
-<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2

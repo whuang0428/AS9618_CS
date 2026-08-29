@@ -1,7 +1,7 @@
-# Lesson 030: Output, storage devices and primary memory
+# Lesson 030: Primary storage: RAM, ROM, cache and virtual memory
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- remediation-v2-optional:start -->
@@ -13,72 +13,37 @@
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Output, storage devices and primary memory
+**Focus:** RAM, ROM and their principal technologies
 
 ### Direct explanation
 
-- A laser printer charges a drum, a laser discharges selected points, toner adheres to the image, toner transfers to paper and heat/pressure fuse it. A 3D printer deposits or solidifies material layer by layer from a digital model.
-- A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.
-- A buffer temporarily holds data when producer and consumer operate at different speeds, reducing loss or interruption caused by the rate difference.
-- An HDD spins magnetic platters while an actuator positions read/write heads; writing changes magnetic orientation and reading senses it. Flash memory stores charge in floating-gate cells and has no moving parts.
-- An optical drive spins a disc and directs a laser at its track. Reflected-light differences are read as data; a writer uses a higher-power laser to change a dye or recording layer.
-- A magnetic HDD uses moving read/write heads over rotating platters. Flash memory stores charge electronically with no moving parts. An optical disc reader/writer uses a laser to read marks and, on writable media, to create or alter marks.
 - RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.
 - SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
 - PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.
 
 ### Worked example
 
-**Print a page / Read an HDD block / Choose a storage mechanism / Choose memory for a computer system:** The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages. The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer. A portable device may use flash memory for shock resistance; an archive may use optical media when an optical disc reader/writer is available. Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.
+**Choose memory for a computer system:** Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. What permanently bonds toner to laser-printer paper?
-   **Answer:** Heat and pressure in the fuser.
-2. How does a 3D printer build an object?
-   **Answer:** It deposits/solidifies successive layers.
-3. How does a speaker produce sound from digital output?
-   **Answer:** A DAC and amplifier drive a coil and cone; cone vibration produces pressure waves in the air.
-4. Why is a print buffer needed?
-   **Answer:** It handles the speed difference and lets the producer continue while the printer consumes data.
-5. Why is flash storage resistant to mechanical shock?
-   **Answer:** It has no moving read/write head or spinning platter.
-6. What physical property stores HDD data?
-   **Answer:** Magnetic orientation/patterns on a platter.
-7. How does an optical reader Compare stored data?
-   **Answer:** It detects differences in reflected laser light.
-8. Which device uses rotating platters?
-   **Answer:** An HDD.
-9. Which device uses a laser?
-   **Answer:** An optical reader/writer.
-10. Compare RAM from ROM by volatility and use.
+1. Compare RAM from ROM by volatility and use.
    **Answer:** RAM is volatile and holds current programs/data; ROM is non-volatile and holds persistent firmware or start-up instructions.
-11. Why is DRAM refreshed?
+2. Why is DRAM refreshed?
    **Answer:** Charge in its storage capacitors leaks and must be restored.
-12. Why is SRAM used for cache while DRAM is used for main memory?
+3. Why is SRAM used for cache while DRAM is used for main memory?
    **Answer:** SRAM is faster and needs no refresh; DRAM is denser and cheaper per bit for a larger capacity.
-13. Compare PROM, EPROM and EEPROM.
+4. Compare PROM, EPROM and EEPROM.
    **Answer:** PROM is programmed once; EPROM is erased with ultraviolet light; EEPROM is erased and rewritten electrically.
 
 ### Exam-style question and MS
 
-**Question (15 marks):** Explain why a buffer is used when a computer sends a large document to a laser printer. Describe how data is read from a magnetic hard disk drive. Explain how an HDD, flash memory and an optical reader/writer store or retrieve data. Compare SRAM and DRAM and explain why DRAM is normally used for main memory.
+**Question (4 marks):** Compare SRAM and DRAM and explain why DRAM is normally used for main memory.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| processor/computer and printer operate at different speeds | Do not accept 'the buffer makes the printer faster'; it manages transfer-rate differences. Do not accept a laser-based explanation for an HDD; lasers apply to optical media. Do not describe every storage device as magnetic. Do not award both comparison marks for merely expanding the abbreviations. | 1 |
-| buffer temporarily stores print data |  | 1 |
-| printer reads data at its own rate |  | 1 |
-| computer/processor can continue other processing without waiting for the full print |  | 1 |
-| platters rotate |  | 1 |
-| actuator positions read/write head over the required track |  | 1 |
-| required sector passes beneath the head |  | 1 |
-| head senses magnetic patterns which are decoded as data |  | 1 |
-| HDD mechanism |  | 1 |
-| flash mechanism |  | 1 |
-| optical reader/writer mechanism |  | 1 |
-| SRAM is faster / does not require refresh |  | 1 |
+| SRAM is faster / does not require refresh | Do not award both comparison marks for merely expanding the abbreviations. | 1 |
 | DRAM requires refresh / is slower |  | 1 |
 | DRAM has greater density / lower cost per bit |  | 1 |
 | main memory needs large capacity, making DRAM more economical |  | 1 |

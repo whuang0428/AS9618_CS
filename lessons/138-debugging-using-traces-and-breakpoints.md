@@ -1,8 +1,65 @@
 # Lesson 138: Debugging using traces and breakpoints
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Debugging, error correction and program enhancement
+
+### Direct explanation
+
+- A syntax error breaks the language grammar and is normally exposed by a translator or an IDE's dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.
+- After an error is exposed, locate the responsible statement and identify the error type before changing it. Correct the cause, not only the observed output, then rerun the failing test and relevant regression tests. Avoid faults by using clear identifiers, modular design, validation, desk checking, peer walkthroughs and a planned set of normal, abnormal and extreme/boundary tests.
+- No single method proves that a program has no remaining faults. Translation can expose syntax faults but not every logic fault; testing can reveal failures for selected cases but cannot demonstrate correctness for every possible input.
+- A runtime error (run-time error) occurs during execution; identify its cause, use runtime diagnostics to locate it and correct the responsible code.
+- Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions. Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.
+- Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.
+- Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
+- Program errors can be exposed by suitable test data and expected results, located with trace output or breakpoints, and corrected before the same tests are repeated to confirm the fix.
+
+### Worked example
+
+**Correct three different faults / Add a Merit count without breaking PassCount:** A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection. Mark > 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark >= 50. Total / Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division. The existing program counts marks at least 50 in PassCount. Analysis shows one traversal already reads every mark, so declare and initialise MeritCount, add IF Marks[Index] >= 70 THEN MeritCount <- MeritCount + 1 ENDIF inside the same loop, and output both counters after the loop. Test 49, 50, 69 and 70 to cover unchanged pass behaviour and the new merit boundary.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Which method can expose a syntactically valid wrong boundary?
+   **Answer:** A trace, dry run, walkthrough or selected boundary test can expose the wrong result.
+2. Why is a translator insufficient for all logic errors?
+   **Answer:** Logic errors can obey the language grammar, so translation may succeed even though the result is wrong.
+3. What must happen after a correction?
+   **Answer:** Rerun the failing test and relevant regression tests to check the correction and existing behaviour.
+4. What should be recorded before changing existing code?
+   **Answer:** Its purpose, inputs, outputs, relevant control/data flow, assumptions and behaviour that must remain unchanged.
+5. Why rerun old tests after adding a feature?
+   **Answer:** Regression tests check that the amendment has not broken existing behaviour.
+6. How is an enhancement different from merely correcting a fault?
+   **Answer:** An enhancement adds or improves required functionality; a correction restores behaviour that was already required.
+
+### Exam-style question and MS
+
+**Question (12 marks):** For each fault, state its type, one way to expose or locate it, and the correction: a missing ENDIF; IF Mark > 50 when 50 should pass; Average <- Total / Count when Count can be zero. An existing program counts PassCount for Marks[1:30] where each mark is at least 50. Analyse where a new MeritCount for marks at least 70 should be added, write the amended declarations, initialisation, loop update and output, and name four boundary-focused test values.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| missing ENDIF identified as syntax error and translator/dynamic syntax check used | Do not accept changing the expected result to hide a program fault, or claim that successful translation proves the algorithm correct. Do not accept a rewrite that removes the existing pass count, changes its boundary, or tests only the new feature. | 1 |
+| adds the required ENDIF |  | 1 |
+| Mark > 50 identified as logic error and boundary trace/test at 50 used |  | 1 |
+| changes the condition to Mark >= 50 or equivalent |  | 1 |
+| division by zero identified as run-time error/risk and execution/test diagnostics used |  | 1 |
+| guards the division by checking Count or handles the zero case |  | 1 |
+| analysis identifies the existing traversal and output that must remain |  | 1 |
+| declares and initialises MeritCount without removing PassCount |  | 1 |
+| increments MeritCount inside the existing traversal when mark is at least 70 |  | 1 |
+| preserves the existing pass condition at 50 and outputs both results after the loop |  | 1 |
+| uses 49 and 50 to regression-test the pass boundary |  | 1 |
+| uses 69 and 70 to test the new merit boundary |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -95,6 +152,17 @@ Correction prompt: "State the correct term, then explain the relevant process or
 6. What not to do
 7. Do not scatter breakpoints randomly. Random pausing is just procrastination wearing a technical hat.
 
+### Analyse and amend an existing program
+
+- **Explains:** `bug`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-138-bug.jpg`
+
+1. Analyse the existing program's purpose, inputs, outputs, control flow and behaviour that must remain unchanged before editing it.
+2. Amend declarations, initialisation, processing and output coherently to add the requested functionality rather than rewriting unrelated code.
+3. Test the new path and rerun regression tests for the existing path; adding functionality is an enhancement, not merely correcting a fault.
+
 ### Java debugging tools help practice, but Cambridge pseudocode remains the exam format
 
 - **Explains:** `java`
@@ -114,6 +182,18 @@ Correction prompt: "State the correct term, then explain the relevant process or
 10. System.out.println("Pass");
 11. } else {
 12. System.out.println("Resit needed");
+
+### Logic errors make the program do the wrong thing
+
+- **Explains:** `logic`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-059-logic.jpg`
+
+1. Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.
+2. Examples Using < instead of <= , wrong formula, wrong loop condition or off-by-one error.
+3. Detection Usually found by testing, tracing or comparing actual output with expected output.
+4. Common error A translator may not detect it because the instructions are legal.
 
 ### Debugging locates and corrects faults
 

@@ -1,7 +1,7 @@
-# Lesson 006: BCD and hexadecimal in practical systems
+# Lesson 006: Binary fractions and precision limits
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- remediation-v2-optional:start -->
@@ -9,47 +9,6 @@
 >
 > **Formal AS prerequisite:** S1.02-S1.03 integer number systems and conversions.
 <!-- remediation-v2-optional:end -->
-
-<!-- stage2-completion:start -->
-## Core syllabus content
-
-**Focus:** BCD and hexadecimal in practical systems
-
-### Direct explanation
-
-- BCD encodes each denary digit separately in four bits. For example, 59 becomes 0101 1001, not the pure-binary value 00111011.
-- Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
-- Hexadecimal is used as a compact human-readable form of binary. One hex digit represents four bits, so hexadecimal is practical for memory addresses, machine-code/debug displays and colour values.
-- A digital clock is a practical BCD application because each displayed denary digit maps directly to one four-bit BCD group.
-
-### Worked example
-
-**Choose representations for a clock and an address:** A clock can encode 407 as BCD 0100 0000 0111 so each displayed denary digit maps to one four-bit group. A binary memory address can be written compactly in hexadecimal because each hexadecimal digit maps exactly to one nibble.
-
-<!-- stage2-practice:start -->
-### Targeted practice and answers
-
-1. Write denary 82 in BCD.
-   **Answer:** 1000 0010.
-2. Give the decoded form of BCD 0011 1001.
-   **Answer:** 39.
-3. Why is BCD suitable for a digital clock?
-   **Answer:** Each displayed denary digit maps directly to one four-bit group.
-4. Why is hexadecimal suitable for a memory address?
-   **Answer:** It is a compact form of binary with one digit per four-bit nibble.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Explain one practical application of BCD and one practical application of hexadecimal.
-
-| Answer | Guidance | Marks |
-|---|---|---:|
-| BCD application such as a digital clock, calculator or financial display | Do not award a named application without explaining why the representation suits it. | 1 |
-| links BCD to separate exact denary digits |  | 1 |
-| hexadecimal application such as memory addresses, machine-code/debug output or colour values |  | 1 |
-| links hexadecimal to compact four-bit grouping |  | 1 |
-<!-- stage2-practice:end -->
-<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1

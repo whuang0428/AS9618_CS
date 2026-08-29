@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 055 | Assembler, compiler and interpreter choices</title>
+    <title>AS9618 Lesson 055 | Utility software: backup, compression, encryption, defragmentation and antivirus</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Assembler, compiler and interpreter choices</h1>
+        <h1>Utility software: backup, compression, encryption, defragmentation and antivirus</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -48,23 +48,23 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Assembler, compiler and interpreter choices</h2>
+            <h2>Required utility software</h2>
           </div>
           <div class="stage2-explanation">
-            <p>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.</p>
-            <p>Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.</p>
-            <p>A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.</p>
+            <p>A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware. A disk defragmenter rearranges fragmented file blocks on a magnetic disk; it is not a speed treatment for SSDs.</p>
+            <p>A disk contents analysis/repair utility examines file-system structures, reports faults and attempts defined repairs. Compression reduces file size and backup creates a separate recoverable copy. Encryption may be useful additional protection, but it does not replace any of the six named syllabus utilities.</p>
+            <p>Required utilities include defragmentation software and disk contents analysis/disk repair software; defragmentation rearranges file blocks, while analysis/repair checks and attempts to repair file-system faults.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Choose tools across development and deployment</h3>
-            <p>During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.</p>
+            <h3>Worked example: Choose the utility from the fault</h3>
+            <p>Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size. Choose by the operation required, not by calling every tool 'maintenance'.</p>
           </article>
         </section>
 
@@ -84,45 +84,35 @@
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Assembler, compiler and interpreter choices: apply and assess</h2>
+            <h2>Required utility software: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Why is an assembler needed?</p>
-              <details><summary>Show answer</summary><p>It translates assembly-language mnemonics and operands into machine or object code for the target processor.</p></details>
+              <p><strong>1.</strong> Which utility prepares file-system structures on a storage medium?</p>
+              <details><summary>Show answer</summary><p>A disk formatter.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Give one compiler advantage and its mechanism.</p>
-              <details><summary>Show answer</summary><p>A compiled program can run repeatedly without translating the source each time because translation occurred before execution.</p></details>
+              <p><strong>2.</strong> Which utility checks file-system structures and attempts repairs?</p>
+              <details><summary>Show answer</summary><p>A disk contents analysis/repair utility.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Give one compiler disadvantage.</p>
-              <details><summary>Show answer</summary><p>Compilation must complete before execution and the programmer may need to correct a list of reported errors.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Give one interpreter advantage and one disadvantage.</p>
-              <details><summary>Show answer</summary><p>It provides immediate statement-level feedback, but repeated translation can make execution slower and requires the interpreter/source at run time.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Which translator is required for assembly language?</p>
-              <details><summary>Show answer</summary><p>An assembler.</p></details>
+              <p><strong>3.</strong> Why is compression not a backup?</p>
+              <details><summary>Show answer</summary><p>Compression reduces size; a backup creates a separate copy that can be restored.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Compare a compiler and an interpreter using two advantages and two disadvantages, then justify the translator used for an assembly-language routine.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>A computer has a new storage medium and another disk reports file-system errors. Identify the utility for each task and explain its purpose.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>compiler translates the whole high-level program before execution and produces target/object code</td><td>Do not award vague claims such as 'compiler is faster' or 'interpreter is easier' without the mechanism and scenario.</td><td>1</td></tr>
-                  <tr><td>compiler advantage linked to repeated execution or distribution without source</td><td></td><td>1</td></tr>
-                  <tr><td>compiler disadvantage linked to separate translation or error-list workflow</td><td></td><td>1</td></tr>
-                  <tr><td>interpreter translates/executes statements during execution and gives immediate feedback</td><td></td><td>1</td></tr>
-                  <tr><td>interpreter disadvantage linked to repeated translation, slower execution or run-time dependency</td><td></td><td>1</td></tr>
-                  <tr><td>assembler selected and justified for assembly-language-to-machine/object-code translation</td><td></td><td>1</td></tr>
+                  <tr><td>disk formatter for the new medium</td><td>Do not accept defragmentation as formatting or as a general file-system repair operation.</td><td>1</td></tr>
+                  <tr><td>formatter creates/prepares file-system structures</td><td></td><td>1</td></tr>
+                  <tr><td>disk contents analysis/repair utility for the faulty disk</td><td></td><td>1</td></tr>
+                  <tr><td>it examines structures and reports/attempts repair of faults</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

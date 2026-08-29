@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 127 | Complete Cambridge pseudocode statements</title>
+    <title>AS9618 Lesson 127 | IF, CASE and nested selection</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>Complete Cambridge pseudocode statements</h1>
+        <h1>IF, CASE and nested selection</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -48,72 +48,72 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Complete Cambridge pseudocode statements</h2>
+            <h2>Selection structures in Cambridge pseudocode</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Section 11.1 requires pseudocode for the declaration and initialisation of constants, declaration of variables, assignment of values, arithmetic or logical expressions entered from the keyboard, and input to or output from the console. These are connected statements, not isolated vocabulary.</p>
-            <p>CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of &lt;- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console.</p>
-            <p>Arithmetic expressions use operators such as +, -, *, /, DIV and MOD. Logical expressions combine comparisons with AND, OR or NOT and produce BOOLEAN results. Use = for comparison and &lt;- for assignment.</p>
+            <p>Use IF...THEN...ELSE...ENDIF when a Boolean condition selects between paths. An ELSE clause supplies the false path. In nested IF statements, every inner and outer IF must be closed and the indentation must show which ELSE belongs to which IF.</p>
+            <p>Use CASE...OF...OTHERWISE...ENDCASE when one expression is compared with several discrete values. CASE is not a replacement for range or compound-condition decisions unless the stated values cover the requirement correctly.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Declare, input, calculate and output</h3>
-            <p>CONSTANT PassMark = 50 defines and initialises a constant. DECLARE Mark : INTEGER and DECLARE Passed : BOOLEAN declare variables. INPUT Mark obtains keyboard input; Passed &lt;- Mark &gt;= PassMark assigns the result of a logical expression; OUTPUT Mark * 2 and OUTPUT Passed send arithmetic and Boolean results to the console.</p>
+            <h3>Worked example: Nested IF and CASE</h3>
+            <p>For a grade, an outer IF tests Mark &gt;= 80; its ELSE contains an inner IF testing Mark &gt;= 50; each IF closes with ENDIF. For a menu, CASE Choice OF maps 1, 2 and 3 to actions and OTHERWISE handles every unlisted value before ENDCASE.</p>
           </article>
         </section>
 
-        <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">The symbol changes, the update idea does not</h2>
+        <!-- stage10-explanation:start case -->
+        <section class="panel explanation-panel" id="explanation-case" data-explains="case" data-explanation-kind="mechanism" aria-labelledby="explanation-case-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="case">
+          <h2 class="explanation-sr-only" id="explanation-case-title">Use CASE for clear values of one expression</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The symbol changes, the update idea does not with a structured visual model." />
-            <figcaption class="explanation-sr-only">The symbol changes, the update idea does not: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-127-case.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use CASE for clear values of one expression with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use CASE for clear values of one expression: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> CONSTANT PassMark = 50</li><li><strong>Lesson fact:</strong> DECLARE Mark : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Passed : BOOLEAN</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> Passed &lt;- Mark &gt;= PassMark</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> final int PASS_MARK = 50;</li><li><strong>Lesson fact:</strong> int mark = input.nextInt();</li><li><strong>Lesson fact:</strong> boolean passed = mark &gt;= PASS_MARK;</li><li><strong>Lesson fact:</strong> Paper 2 reminder: use Cambridge-style assignment &lt;- in pseudocode. Java uses = for assignment.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> CASE compares one expression with several discrete values.</li><li><strong>Lesson fact:</strong> Each listed value has its own action and OTHERWISE handles unlisted values.</li><li><strong>Lesson fact:</strong> Close the complete multi-way selection with ENDCASE.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end pseudocode -->
+        <!-- stage10-explanation:end case -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Complete Cambridge pseudocode statements: apply and assess</h2>
+            <h2>Selection structures in Cambridge pseudocode: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What is the difference between = and &lt;-?</p>
-              <details><summary>Show answer</summary><p>= compares values; &lt;- assigns the evaluated right-hand value to a variable.</p></details>
+              <p><strong>1.</strong> How many ENDIF statements close two nested IF statements?</p>
+              <details><summary>Show answer</summary><p>Two: one closes the inner IF and one closes the outer IF.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Which statement obtains keyboard input?</p>
-              <details><summary>Show answer</summary><p>INPUT followed by the target variable.</p></details>
+              <p><strong>2.</strong> When is CASE suitable?</p>
+              <details><summary>Show answer</summary><p>When one expression has several discrete values that map to separate branches.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> What type of result does Mark &gt;= PassMark produce?</p>
-              <details><summary>Show answer</summary><p>A BOOLEAN result, TRUE or FALSE.</p></details>
+              <p><strong>3.</strong> What handles an unlisted CASE value?</p>
+              <details><summary>Show answer</summary><p>OTHERWISE, followed by ENDCASE for the complete structure.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Write Cambridge pseudocode that defines and initialises constant TaxRate as 0.20, declares Price and Tax as REAL, inputs Price, assigns Price * TaxRate to Tax, and outputs Tax.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Write Cambridge pseudocode that inputs Age and Member, outputs Adult member when Age is at least 18 and Member is TRUE, Adult non-member for other adults, and Child otherwise. Then state why nested IF is appropriate.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>CONSTANT TaxRate = 0.20</td><td>Do not use = for assignment, omit the constant initial value, or replace INPUT/OUTPUT with Java library calls.</td><td>1</td></tr>
-                  <tr><td>declares Price and Tax as REAL</td><td></td><td>1</td></tr>
-                  <tr><td>INPUT Price before the calculation</td><td></td><td>1</td></tr>
-                  <tr><td>Tax &lt;- Price * TaxRate</td><td></td><td>1</td></tr>
-                  <tr><td>OUTPUT Tax after assignment</td><td></td><td>1</td></tr>
+                  <tr><td>inputs/uses both Age and Member</td><td>Do not use CASE for overlapping ranges without a complete mapping or close two IF statements with only one ENDIF.</td><td>1</td></tr>
+                  <tr><td>outer IF tests Age &gt;= 18</td><td></td><td>1</td></tr>
+                  <tr><td>inner IF tests Member only on the adult path</td><td></td><td>1</td></tr>
+                  <tr><td>three outputs are attached to the correct branches</td><td></td><td>1</td></tr>
+                  <tr><td>closes both IF statements coherently</td><td></td><td>1</td></tr>
+                  <tr><td>justifies nested selection because the membership decision depends on the age decision</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

@@ -77,7 +77,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `answer`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-094-answer.jpg`
 
 1. Answer frames
@@ -92,7 +92,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `commands`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-094-commands.jpg`
 
 1. Command words
@@ -112,7 +112,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `decoder`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-094-decoder.jpg`
 
 1. Interactive command decoder
@@ -123,7 +123,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `map`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-094-map.jpg`
 
 1. Paper map
@@ -138,7 +138,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `strategy`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-094-strategy.jpg`
 
 1. Mixed question strategy

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 042 | System buses, ports and processor performance</title>
+    <title>AS9618 Lesson 042 | The fetch-decode-execute cycle</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../student-visuals.css?v=1" />
@@ -18,7 +18,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>System buses, ports and processor performance</h1>
+        <h1>The fetch-decode-execute cycle</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,92 +47,78 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>System buses, ports and processor performance</h2>
+            <h2>Register-transfer notation for the fetch-decode-execute cycle</h2>
           </div>
           <div class="stage2-explanation">
-            <p>The address bus carries the address of the memory or I/O location being accessed and is normally directed from the processor. The data bus carries data and instructions in either direction. The control bus carries control and timing signals in both directions overall, including read/write signals from the CPU and interrupt or status signals toward it.</p>
-            <p>A memory read uses all three buses: the CPU places the required address on the address bus, sends a read signal on the control bus, and memory returns the requested data or instruction on the data bus. A bus transfers signals; it does not permanently store them.</p>
-            <p>USB is a general serial interface carrying digital data and often power for peripherals. HDMI carries digital video and audio. VGA carries analogue video and does not carry audio in the standard VGA signal. Port choice must match the peripheral and signal rather than rely on a claim that one connector is always best.</p>
-            <p>Processor performance depends on processor type, number of cores, bus width, clock speed and cache memory. Processor type means the processor architecture and instruction-set design, including how much useful work its execution units can perform for a particular instruction or workload; a clock-rate comparison alone is therefore not sufficient.</p>
-            <p>More cores can execute independent threads concurrently when software exposes parallel work. Wider data buses can transfer more bits per transfer, while address-bus width affects the address space. Higher clock speed provides more clock cycles per second, and cache reduces waiting when frequently used instructions or data are found close to the CPU.</p>
-            <p>No factor guarantees that every program runs faster. Performance must be justified for the stated workload, because software parallelism, instruction-set compatibility, cache behaviour, memory traffic, heat and other bottlenecks can limit the benefit.</p>
+            <p>Register-transfer notation describes a data transfer or register update. The arrow &lt;- means 'is loaded with' or 'receives'; it is not an equality sign. Memory[MAR] means the contents of the memory location whose address is currently held in MAR.</p>
+            <p>A coherent fetch sequence is MAR &lt;- PC; MDR &lt;- Memory[MAR]; CIR &lt;- MDR; and PC &lt;- PC + 1 at an appropriate point before the next fetch. The control unit then decodes the opcode and operand in CIR and sends control signals for execution.</p>
+            <p>During execution, notation such as ACC &lt;- ACC + MDR records an arithmetic result in ACC, while Memory[MAR] &lt;- MDR records a memory write. Read every statement from right to left: obtain the source value, then replace the destination contents.</p>
+            <p>The exact timing of PC increment may vary between coherent processor descriptions, but MAR must receive the current instruction address before that address is replaced. Register-transfer notation describes movement and updates; it does not imply that two registers permanently contain the same value.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Read memory, then connect a display / Compare two processors for two workloads</h3>
-            <p>To read address 240, the CPU puts 240 on the address bus and read on the control bus; memory returns the contents on the data bus. To connect the computer to a modern TV with one digital audio/video cable, choose HDMI. A keyboard or removable drive commonly uses USB, while a legacy analogue display may use VGA. Processor A has four faster general-purpose cores and a larger cache; Processor B has eight specialised cores but a lower clock speed. A lightly threaded office program may favour A's processor type, clock behaviour and cache, while a parallel workload written for B's processor type may use more cores. Bus width and memory traffic must also be considered before reaching a conclusion.</p>
+            <h3>Worked example: Trace one instruction fetch</h3>
+            <p>Start with PC = 120 and Memory[120] = LDD 500. MAR &lt;- PC puts 120 in MAR. MDR &lt;- Memory[MAR] puts LDD 500 in MDR. CIR &lt;- MDR copies the instruction into CIR. PC &lt;- PC + 1 makes PC 121, ready to address the next instruction. The control unit then decodes LDD and executes it.</p>
           </article>
         </section>
+
+        <!-- stage10-explanation:start processor -->
+        <section class="panel explanation-panel" id="explanation-processor" data-explains="processor" data-explanation-kind="synthesis" aria-labelledby="explanation-processor-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="processor">
+          <h2 class="explanation-sr-only" id="explanation-processor-title">Registers and buses: the FDE cycle vocabulary</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-091-processor.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Registers and buses: the FDE cycle vocabulary with a structured visual model." />
+            <figcaption class="explanation-sr-only">Registers and buses: the FDE cycle vocabulary: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Processor review</li><li><strong>Lesson fact:</strong> PC Stores the address of the next instruction to be fetched.</li><li><strong>Lesson fact:</strong> MAR / MDR MAR stores an address; MDR stores data/instruction being transferred.</li><li><strong>Lesson fact:</strong> CIR / ACC CIR stores current instruction; ACC stores intermediate arithmetic/logic results.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end processor -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>System buses, ports and processor performance: apply and assess</h2>
+            <h2>Register-transfer notation for the fetch-decode-execute cycle: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Which bus carries an address, which carries a value, and which carries read/write signals?</p>
-              <details><summary>Show answer</summary><p>Address bus; data bus; control bus.</p></details>
+              <p><strong>1.</strong> What does MAR &lt;- PC mean?</p>
+              <details><summary>Show answer</summary><p>Copy the address currently in PC into MAR; PC is not changed by that transfer.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Complete a trace table for a memory read using the three buses.</p>
-              <details><summary>Show answer</summary><p>Address on address bus, read signal on control bus, requested data/instruction from memory on data bus.</p></details>
+              <p><strong>2.</strong> What does MDR &lt;- Memory[MAR] mean?</p>
+              <details><summary>Show answer</summary><p>Read the contents of the memory location addressed by MAR into MDR.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Which port commonly carries both digital video and audio?</p>
-              <details><summary>Show answer</summary><p>HDMI.</p></details>
+              <p><strong>3.</strong> Why is CIR &lt;- MDR needed during fetch?</p>
+              <details><summary>Show answer</summary><p>It places the fetched instruction in CIR so the control unit can decode its opcode and operand.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Which named port carries analogue video?</p>
-              <details><summary>Show answer</summary><p>VGA.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Give one USB use or facility.</p>
-              <details><summary>Show answer</summary><p>A digital peripheral connection such as keyboard/storage, often also supplying electrical power.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> What does processor type mean as a performance factor?</p>
-              <details><summary>Show answer</summary><p>The processor architecture/instruction-set and execution design, which determines what work it can perform per instruction or for a particular workload.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> Why do more cores not always improve one program?</p>
-              <details><summary>Show answer</summary><p>The program must contain independent threads or tasks that can run in parallel.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>8.</strong> How can bus width affect performance?</p>
-              <details><summary>Show answer</summary><p>A wider data bus can transfer more bits per transfer; address-bus width affects the address space rather than directly guaranteeing speed.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>9.</strong> Why can cache improve performance?</p>
-              <details><summary>Show answer</summary><p>A cache hit supplies frequently used data or instructions faster than main memory, reducing CPU waiting.</p></details>
+              <p><strong>4.</strong> Write register-transfer notation for adding the value in MDR to ACC.</p>
+              <details><summary>Show answer</summary><p>ACC &lt;- ACC + MDR.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>12 marks</span></div>
-            <p>Describe a memory read using the address, data and control buses, then choose USB, HDMI or VGA for one stated peripheral connection. Two computers have different processor types. Explain how processor type, number of cores, bus width, clock speed and cache can affect their performance for a stated workload.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Using register-transfer notation, describe the fetch of one instruction and explain the meaning of Memory[MAR].</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>address bus carries the required memory/I/O address</td><td>Do not swap the address and data buses or claim that VGA normally carries digital audio. Do not accept processor type as only a brand name, or claim that the highest clock speed or largest core count always wins.</td><td>1</td></tr>
-                  <tr><td>control bus carries the read signal</td><td></td><td>1</td></tr>
-                  <tr><td>data bus returns the requested data/instruction</td><td></td><td>1</td></tr>
-                  <tr><td>USB matched to a suitable digital peripheral/data/power use</td><td></td><td>1</td></tr>
-                  <tr><td>HDMI matched to digital video and audio</td><td></td><td>1</td></tr>
-                  <tr><td>VGA matched to analogue video without standard audio</td><td></td><td>1</td></tr>
-                  <tr><td>processor type linked to architecture/instruction-set/execution design and workload</td><td></td><td>1</td></tr>
-                  <tr><td>cores linked to available parallel threads/tasks</td><td></td><td>1</td></tr>
-                  <tr><td>bus width linked accurately to bits transferred or address space</td><td></td><td>1</td></tr>
-                  <tr><td>clock speed linked to cycles per second</td><td></td><td>1</td></tr>
-                  <tr><td>cache linked to reducing slower main-memory access</td><td></td><td>1</td></tr>
-                  <tr><td>conclusion recognises workload and bottlenecks rather than claiming one factor guarantees speed</td><td></td><td>1</td></tr>
+                  <tr><td>MAR &lt;- PC</td><td>Do not accept PC &lt;- MAR as the first transfer or treat Memory[MAR] as the address value itself.</td><td>1</td></tr>
+                  <tr><td>MDR &lt;- Memory[MAR]</td><td></td><td>1</td></tr>
+                  <tr><td>CIR &lt;- MDR</td><td></td><td>1</td></tr>
+                  <tr><td>PC &lt;- PC + 1 at a coherent point</td><td></td><td>1</td></tr>
+                  <tr><td>Memory[MAR] means the contents at the memory address held in MAR</td><td></td><td>1</td></tr>
+                  <tr><td>CIR is decoded and control signals initiate execution</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

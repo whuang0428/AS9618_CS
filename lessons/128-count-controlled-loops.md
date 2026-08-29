@@ -1,44 +1,45 @@
-# Lesson 128: Use supplied built-in and library routines
+# Lesson 128: Count-controlled loops
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Use supplied built-in and library routines
+**Focus:** Write and justify a count-controlled loop
 
 ### Direct explanation
 
-- Use built-in functions and library routines exactly as defined. The syllabus states that any function not given in the Cambridge pseudocode guide will be provided, and string manipulation functions will always be given in the question. Students are not expected to memorise one unofficial substring API.
-- Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.
-- A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java's zero-based substring convention unless the question explicitly specifies it.
+- A count-controlled loop uses FOR...TO...NEXT when the repetition count or inclusive counter range is known before the loop starts. The counter, start value and end value define the iterations; NEXT closes the loop.
+- Match the loop bounds to the declared data. Initialise accumulators before the loop, update them inside it and output a final result after the loop unless intermediate output is explicitly required.
+- Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.
 
 ### Worked example
 
-**Apply a supplied string routine:** A question defines EXTRACT(Text, Start, Count) using positions starting at 1. LENGTH("NETWORK") returns 7; EXTRACT("NETWORK", 4, 2) returns "WO". Code <- EXTRACT(UCASE(Name), 1, 3) nests a supplied library routine inside an expression.
+**Total a fixed array:** For Marks[1:30], set Total <- 0, use FOR Index <- 1 TO 30, add Marks[Index] to Total, close with NEXT Index and output Total after all thirty elements have been processed.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. Will an unfamiliar string manipulation function be supplied?
-   **Answer:** Yes. The syllabus says string manipulation functions will always be given.
-2. What must be checked before tracing EXTRACT?
-   **Answer:** Its supplied parameter order, position/index convention and return definition.
-3. May a returned string be assigned to a variable?
-   **Answer:** Yes; a function return can be used wherever a compatible value is needed.
+1. Why is FOR suitable for Marks[1:30]?
+   **Answer:** The 30 iterations and valid index bounds are known before the loop starts.
+2. Where is Total initialised?
+   **Answer:** Once before the loop.
+3. Which keyword closes the count-controlled loop?
+   **Answer:** NEXT followed by the counter name.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** A question defines TAKE(Text, Start, Count), with positions starting at 1. State LENGTH("ALGORITHM"), state TAKE("ALGORITHM", 3, 4), and write an assignment that converts the extracted text to upper case using supplied routine UCASE.
+**Question (5 marks):** Write Cambridge pseudocode to input and total exactly 12 monthly values, then output the total. Explain why the selected loop is count-controlled.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| LENGTH result is 9 | Do not require memorisation of an unstated substring signature or import Java's zero-based indexes. | 1 |
-| TAKE result is GORI |  | 1 |
-| uses the supplied Start/Count convention rather than Java indexing |  | 1 |
-| assigns UCASE(TAKE("ALGORITHM", 3, 4)) or equivalent to a variable |  | 1 |
+| initialises Total before repetition | Do not use an eleven- or thirteen-iteration bound or reset the accumulator inside the loop. | 1 |
+| uses FOR Month <- 1 TO 12 or an equivalent twelve-iteration range |  | 1 |
+| inputs a value and adds it inside the loop |  | 1 |
+| closes with NEXT and outputs Total after the loop |  | 1 |
+| justifies FOR because the repetition count is known in advance |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 
@@ -181,6 +182,26 @@ Correction prompt: "State the correct term, then explain the relevant process or
 6. 0, 1, 3, 6, 10, 15
 7. bound; controls where the loop stops
 8. 5 in 1 TO 5
+
+### A FOR loop has a counter, a start value and an end value
+
+- **Explains:** `for`
+- **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-128-for.jpg`
+
+1. FOR loop structure
+2. General pattern
+3. FOR Counter <- StartValue TO EndValue
+4. // repeated statements
+5. NEXT Counter
+6. Concrete example
+7. Total <- 0
+8. FOR Count <- 1 TO 5
+9. Total <- Total + Count
+10. NEXT Count
+11. OUTPUT Total
+12. Use a FOR loop when the number of repetitions is known before the loop starts.
 
 ### Java for loops are useful, but not the exam answer format
 

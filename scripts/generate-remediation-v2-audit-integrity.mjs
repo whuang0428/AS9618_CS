@@ -13,6 +13,9 @@ const browser = readJson("audits/remediation-v2-audit-integrity-browser-evidence
 const defects = readJson("audits/remediation-v2-defects.json");
 const decision = readJson("audits/remediation-v2-current-decision.json");
 const reviewed = coverageContract.requirements.filter(({ evidenceReviewStatus, integrityReviewStatus, firstUseReview }) => evidenceReviewStatus === "Reviewed" && integrityReviewStatus === "Reviewed" && firstUseReview?.status === "Reviewed").length;
+const coreTeachingPagesChecked = new Set(coverageContract.requirements.flatMap(({ teachingLessons }) => teachingLessons)).size;
+const uniqueFirstUsePagesChecked = new Set(coverageContract.requirements.map(({ firstTeachingEvidence }) => firstTeachingEvidence.lesson)).size;
+const progressedBeyondAuditRepair = decision.currentStage?.number > 4;
 
 if (result.status !== "Ready" || result.problemCount !== 0) throw new Error(`Audit-integrity repair is not ready: ${result.problemCount} live problem(s).`);
 if (reviewed !== coverageContract.requirements.length) throw new Error(`Only ${reviewed}/${coverageContract.requirements.length} requirements have current review records.`);
@@ -25,23 +28,27 @@ for (const id of ["RV2-AUDIT-001", "RV2-AUDIT-002"]) {
     "360 locked official source atoms reconcile bidirectionally with zero unmapped, phantom, partial-claim or page-locator failures",
     "P22 bitwise/label rows and P24 validation/verification integrity wording now have explicit contract ownership",
   ] : [
-    "83/83 CORE teaching pages place substantive CORE before Optional content; all 70 unique first-use pages are owned by declared requirements",
+    `${coreTeachingPagesChecked}/${coreTeachingPagesChecked} CORE teaching pages place substantive CORE before Optional content; all ${uniqueFirstUsePagesChecked} unique first-use pages are owned by declared requirements`,
     "All declared first-teaching concept groups pass, including vector, representations, devices, security, licensing, algorithms and ADT scope",
   ];
 }
-defects.blockingSummary = "Audit-integrity repair is complete and awaiting progression approval. Stage 5 has not started; L049/L107/L121/L133 technical and image defects remain the three open P0 blockers.";
-defects.stageStatus = { stage: 4, phase: "AuditIntegrityRepair", status: "AwaitingUserApproval" };
+if (!progressedBeyondAuditRepair) {
+  defects.blockingSummary = "Audit-integrity repair is complete and awaiting progression approval. Stage 5 has not started; L049/L107/L121/L133 technical and image defects remain the three open P0 blockers.";
+  defects.stageStatus = { stage: 4, phase: "AuditIntegrityRepair", status: "AwaitingUserApproval" };
+}
 writeJson("audits/remediation-v2-defects.json", defects);
 
-decision.currentReleaseDecision = "BLOCKED";
-decision.currentStage = {
-  number: 4,
-  phase: "AuditIntegrityRepair",
-  name: "Independent official-source and first-teaching integrity repair",
-  implementationStatus: "Complete",
-  approvalStatus: "AwaitingUserApproval",
-};
-decision.decisionInputs = ["audits/remediation-v2-defects.json", "audits/remediation-v2-audit-integrity-gate-result.json"];
+if (!progressedBeyondAuditRepair) {
+  decision.currentReleaseDecision = "BLOCKED";
+  decision.currentStage = {
+    number: 4,
+    phase: "AuditIntegrityRepair",
+    name: "Independent official-source and first-teaching integrity repair",
+    implementationStatus: "Complete",
+    approvalStatus: "AwaitingUserApproval",
+  };
+  decision.decisionInputs = ["audits/remediation-v2-defects.json", "audits/remediation-v2-audit-integrity-gate-result.json"];
+}
 decision.invalidatedConclusions = {
   scope: "All 121 legacy requirement conclusions",
   status: "InvalidatedAndRevalidated",
@@ -76,8 +83,8 @@ const gateResult = {
     problemCount: result.problemCount,
     officialSourceProblemCount: result.officialSourceProblems.length,
     pedagogicalProblemCount: result.pedagogicalProblems.length,
-    coreTeachingPagesChecked: new Set(coverageContract.requirements.flatMap(({ teachingLessons }) => teachingLessons)).size,
-    uniqueFirstUsePagesChecked: new Set(coverageContract.requirements.map(({ firstTeachingEvidence }) => firstTeachingEvidence.lesson)).size,
+    coreTeachingPagesChecked,
+    uniqueFirstUsePagesChecked,
   },
   renderedL009Evidence: {
     sourceSha256: browser.sourceSha256,
@@ -118,11 +125,11 @@ writeJson("audits/remediation-v2-audit-integrity-closure.json", {
 const report = `# AS9618 remediation v2 — Audit-integrity repair before Stage 5
 
 **Current release decision:** BLOCKED
-**Phase status:** Implementation complete; awaiting user approval before Stage 5.
+**Phase status:** Audit-integrity implementation complete${progressedBeyondAuditRepair ? `; project has progressed to Stage ${decision.currentStage.number}.` : "; awaiting user approval before Stage 5."}
 
 ## Change summary
 
-- Corrected the generator defect that placed formal CORE teaching near the end of the page; all 83 generated CORE teaching pages now place CORE before Optional content.
+- Corrected the generator defect that placed formal CORE teaching near the end of the page; all ${coreTeachingPagesChecked} generated CORE teaching pages now place CORE before Optional content.
 - Reconciled the 360-atom independent official inventory with the 121-row contract in both directions, including the formerly unowned p22 bitwise/label rows and p24 integrity statement.
 - Filled every declared first-teaching concept gap and added a direct five-mark assessment of how validation and verification help protect data integrity while preserving L069-Q1 and its total marks.
 - Invalidated, then independently revalidated, all 121 requirement conclusions in review epoch ${coverageContract.auditIntegrity.reviewEpoch}.
@@ -132,7 +139,7 @@ const report = `# AS9618 remediation v2 — Audit-integrity repair before Stage 
 | Issue | Disposition | Evidence |
 |---|---|---|
 | RV2-AUDIT-001 | Resolved P0 | 0 official-source problems; 360/360 atoms reconciled; 121/121 current review records |
-| RV2-AUDIT-002 | Resolved P0 | 0 first-teaching problems; 83 CORE pages and 70 unique first-use pages checked |
+| RV2-AUDIT-002 | Resolved P0 | 0 first-teaching problems; ${coreTeachingPagesChecked} CORE pages and ${uniqueFirstUsePagesChecked} unique first-use pages checked |
 | Stage 5 technical/image defects | Open P0 | RV2-CONT-001, RV2-PSEUDO-001 and RV2-PSEUDO-002 remain untouched |
 
 ## Passed evidence
@@ -140,7 +147,7 @@ const report = `# AS9618 remediation v2 — Audit-integrity repair before Stage 
 - Official-source gate: Ready; unmapped=0, phantom=0, partial claim=0, page mismatch=0.
 - Pedagogical gate: Ready; CORE-not-first=0, Optional-before-CORE=0, CORE-after-Optional=0, buried-CORE=0, missing concept=0.
 - Coverage evaluation: 121 Complete, 0 Partial after current-hash review; prior approvals were not inherited.
-- L009 browser evidence: first substantive role is CORE on 1440x900 and 390x844; CORE begins at ${(browser.desktop.coreDocumentRatio * 100).toFixed(1)}% and ${(browser.mobile.coreDocumentRatio * 100).toFixed(1)}% of the document; no overflow or console warning/error; contents navigation reaches #stage2-completion.
+- L009 browser evidence: the bitmap file-size and metadata CORE section is the first substantive teaching block on 1440x900 and 390x844; CORE begins at ${(browser.desktop.coreDocumentRatio * 100).toFixed(1)}% and ${(browser.mobile.coreDocumentRatio * 100).toFixed(1)}% of the document; no overflow or console warning/error; contents navigation reaches #stage2-completion.
 - L069-Q1 keeps its stable ID and five marks and passes correct, common-error, boundary and out-of-scope trial cases.
 
 ## Active failed samples
@@ -153,7 +160,7 @@ const report = `# AS9618 remediation v2 — Audit-integrity repair before Stage 
 ## Command evidence
 
 - node scripts/repair-remediation-v2-audit-integrity.mjs — reconciles explicit source ownership and exact pages.
-- node scripts/apply-stage2-repairs.mjs — regenerated 83 CORE teaching pages from the corrected CORE-first insertion rule.
+- node scripts/apply-stage2-repairs.mjs — regenerated ${coreTeachingPagesChecked} CORE teaching pages from the corrected CORE-first insertion rule.
 - node scripts/test-remediation-v2-audit-integrity-mutations.mjs — all active negative controls rejected.
 - node scripts/verify-syllabus-coverage.mjs — reaches only the deliberately deferred Stage 5 L049/L107/L121/L133 blockers.
 - node scripts/verify-remediation-v2-audit-integrity.mjs — verifies this phase and current browser evidence.

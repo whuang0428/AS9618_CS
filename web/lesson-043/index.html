@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 043 | Register-transfer notation for the fetch-decode-execute cycle</title>
+    <title>AS9618 Lesson 043 | Registers: PC, CIR, MAR, MDR, ACC, IX and status register</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Register-transfer notation for the fetch-decode-execute cycle</h1>
+        <h1>Registers: PC, CIR, MAR, MDR, ACC, IX and status register</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -44,40 +44,25 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Register-transfer notation for the fetch-decode-execute cycle</h2>
+            <h2>General-purpose and special-purpose registers</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Register-transfer notation describes a data transfer or register update. The arrow &lt;- means 'is loaded with' or 'receives'; it is not an equality sign. Memory[MAR] means the contents of the memory location whose address is currently held in MAR.</p>
-            <p>A coherent fetch sequence is MAR &lt;- PC; MDR &lt;- Memory[MAR]; CIR &lt;- MDR; and PC &lt;- PC + 1 at an appropriate point before the next fetch. The control unit then decodes the opcode and operand in CIR and sends control signals for execution.</p>
-            <p>During execution, notation such as ACC &lt;- ACC + MDR records an arithmetic result in ACC, while Memory[MAR] &lt;- MDR records a memory write. Read every statement from right to left: obtain the source value, then replace the destination contents.</p>
-            <p>The exact timing of PC increment may vary between coherent processor descriptions, but MAR must receive the current instruction address before that address is replaced. Register-transfer notation describes movement and updates; it does not imply that two registers permanently contain the same value.</p>
+            <p>A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.</p>
+            <p>PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.</p>
+            <p>ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Trace one instruction fetch</h3>
-            <p>Start with PC = 120 and Memory[120] = LDD 500. MAR &lt;- PC puts 120 in MAR. MDR &lt;- Memory[MAR] puts LDD 500 in MDR. CIR &lt;- MDR copies the instruction into CIR. PC &lt;- PC + 1 makes PC 121, ready to address the next instruction. The control unit then decodes LDD and executes it.</p>
+            <h3>Worked example: Follow registers through fetch and indexed execute</h3>
+            <p>PC = 300 is copied to MAR; the instruction read from memory enters MDR and then CIR. If that instruction is LDX 500 while IX = 3, the effective address is 503 and the value at that address is loaded into ACC. A resulting condition can update a flag in the status register.</p>
           </article>
         </section>
-
-        <!-- stage10-explanation:start processor -->
-        <section class="panel explanation-panel" id="explanation-processor" data-explains="processor" data-explanation-kind="synthesis" aria-labelledby="explanation-processor-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="processor">
-          <h2 class="explanation-sr-only" id="explanation-processor-title">Registers and buses: the FDE cycle vocabulary</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-091-processor.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Registers and buses: the FDE cycle vocabulary with a structured visual model." />
-            <figcaption class="explanation-sr-only">Registers and buses: the FDE cycle vocabulary: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Processor review</li><li><strong>Lesson fact:</strong> PC Stores the address of the next instruction to be fetched.</li><li><strong>Lesson fact:</strong> MAR / MDR MAR stores an address; MDR stores data/instruction being transferred.</li><li><strong>Lesson fact:</strong> CIR / ACC CIR stores current instruction; ACC stores intermediate arithmetic/logic results.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end processor -->
 
         <!-- stage10-explanation:start acc-status -->
         <section class="panel explanation-panel" id="explanation-acc-status" data-explains="acc-status" data-explanation-kind="process" aria-labelledby="explanation-acc-status-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="acc-status">
@@ -95,41 +80,45 @@
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Register-transfer notation for the fetch-decode-execute cycle: apply and assess</h2>
+            <h2>General-purpose and special-purpose registers: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What does MAR &lt;- PC mean?</p>
-              <details><summary>Show answer</summary><p>Copy the address currently in PC into MAR; PC is not changed by that transfer.</p></details>
+              <p><strong>1.</strong> Compare a general-purpose register from a special-purpose register.</p>
+              <details><summary>Show answer</summary><p>A general-purpose register can hold values for varied operations; a special-purpose register has a defined processor role.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What does MDR &lt;- Memory[MAR] mean?</p>
-              <details><summary>Show answer</summary><p>Read the contents of the memory location addressed by MAR into MDR.</p></details>
+              <p><strong>2.</strong> State the roles of PC, MAR, MDR and CIR.</p>
+              <details><summary>Show answer</summary><p>PC holds the next-instruction address; MAR the accessed address; MDR transferred data/instruction; CIR the current instruction.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why is CIR &lt;- MDR needed during fetch?</p>
-              <details><summary>Show answer</summary><p>It places the fetched instruction in CIR so the control unit can decode its opcode and operand.</p></details>
+              <p><strong>3.</strong> State the roles of ACC, IX and the status register.</p>
+              <details><summary>Show answer</summary><p>ACC holds ALU results; IX an indexed-address offset; the status register holds flags about results or CPU state.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Write register-transfer notation for adding the value in MDR to ACC.</p>
-              <details><summary>Show answer</summary><p>ACC &lt;- ACC + MDR.</p></details>
+              <p><strong>4.</strong> Which general-purpose working register is assumed in Cambridge assembly questions?</p>
+              <details><summary>Show answer</summary><p>The accumulator, ACC.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Base 120 plus IX 7 gives which indexed effective address?</p>
+              <details><summary>Show answer</summary><p>127.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Using register-transfer notation, describe the fetch of one instruction and explain the meaning of Memory[MAR].</p>
+            <p>Compare general-purpose and special-purpose registers, then state the roles of PC, MAR, MDR, CIR, ACC, IX and the status register.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>MAR &lt;- PC</td><td>Do not accept PC &lt;- MAR as the first transfer or treat Memory[MAR] as the address value itself.</td><td>1</td></tr>
-                  <tr><td>MDR &lt;- Memory[MAR]</td><td></td><td>1</td></tr>
-                  <tr><td>CIR &lt;- MDR</td><td></td><td>1</td></tr>
-                  <tr><td>PC &lt;- PC + 1 at a coherent point</td><td></td><td>1</td></tr>
-                  <tr><td>Memory[MAR] means the contents at the memory address held in MAR</td><td></td><td>1</td></tr>
-                  <tr><td>CIR is decoded and control signals initiate execution</td><td></td><td>1</td></tr>
+                  <tr><td>general-purpose register can hold values for varied operations; special-purpose register has a defined role</td><td>Do not swap MAR with MDR, PC with CIR, or claim that the status register stores the calculation result.</td><td>1</td></tr>
+                  <tr><td>PC next-instruction address and CIR current instruction</td><td></td><td>1</td></tr>
+                  <tr><td>MAR accessed address and MDR transferred data/instruction</td><td></td><td>1</td></tr>
+                  <tr><td>ACC intermediate/final ALU result</td><td></td><td>1</td></tr>
+                  <tr><td>IX offset used in indexed addressing</td><td></td><td>1</td></tr>
+                  <tr><td>status register stores flags about a result or processor state</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

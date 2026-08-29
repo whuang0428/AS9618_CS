@@ -2,7 +2,7 @@
 
 ## Current gate
 
-- Explanation targets: 871 across 150 lessons.
+- Explanation targets: 880 across 150 lessons.
 - Implemented visual explanations: 783 across 150 lessons.
 - Academic infographic assets: 783 (782 ImageGen, 1 deterministic correction).
 - Semantic reviews complete: 783/783; unresolved blocking assets: 0.

@@ -1,8 +1,45 @@
-# Lesson 025: Internet connection hardware
+# Lesson 025: Network performance, latency, bandwidth and congestion
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Bit streaming, bit rate and broadband
+
+### Direct explanation
+
+- Bit streaming delivers media progressively so playback can begin before the whole file arrives. Real-time streaming carries a live event with minimal delay; on-demand streaming sends stored content selected by the user.
+- Bit rate is the number of bits transmitted each second. Available broadband speed must normally exceed the media bit rate and absorb variation; otherwise the player buffers, lowers quality or pauses. A buffer stores arriving data temporarily.
+
+### Worked example
+
+**6 Mbit/s video on 4 Mbit/s link:** The stream consumes data faster than the link supplies it. A starting buffer only delays the shortage; sustained playback requires a lower bit rate or faster connection.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Why does a streaming player buffer data?
+   **Answer:** To absorb short variations between arrival and playback rates.
+2. Identify a live sports broadcast.
+   **Answer:** Real-time streaming.
+3. Identify a selected recorded film.
+   **Answer:** On-demand streaming.
+
+### Exam-style question and MS
+
+**Question (4 marks):** A video has a bit rate of 8 Mbit/s. Explain why a connection advertised as 8 Mbit/s may still pause during playback.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| video requires about 8 million bits each second | Do not accept 'bandwidth is slow' without comparing arrival rate with the stream bit rate. | 1 |
+| actual available speed may be below advertised/maximum speed |  | 1 |
+| other traffic, overhead or variation reduces throughput |  | 1 |
+| buffer empties when data arrives more slowly than playback consumes it |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1

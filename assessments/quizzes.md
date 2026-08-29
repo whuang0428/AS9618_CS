@@ -88,7 +88,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 1. Write denary 59 in BCD and state one reason BCD is used in a digital clock. **[2]**
 2. Explain one reason Unicode is used instead of ASCII for a worldwide messaging system. **[2]**
 3. A 100 x 50 bitmap uses 8-bit colour depth. Calculate its pixel data in bytes and state whether a bitmap file header is included. **[2]**
-4. State two items stored for a vector drawing object. **[2]**
+4. A bitmap has 20,000 bytes of pixel data and a supplied 54-byte header. Calculate the total uncompressed size and state what the header stores. **[2]**
 5. Compare sampling rate from sampling resolution. **[2]**
 
 ### Answer Key / Mark Scheme
@@ -118,8 +118,8 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| one valid property such as object type/coordinates/dimensions | Do not award pixel colour depth as an object property. | 1 |
-| a second valid property such as line/fill colour or transformation |  | 1 |
+| 20,054 bytes | Do not multiply the header by the number of pixels or omit the supplied header. | 1 |
+| the header stores metadata needed to interpret the bitmap, separate from pixel values |  | 1 |
 
 #### Q5 [2]
 
@@ -502,7 +502,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 2. State the first and final register transfers in a basic fetch stage. **[2]**
 3. Explain the stored-program concept in the basic Von Neumann architecture. **[2]**
 4. State which of USB, HDMI and VGA suits each use: a keyboard that also receives power, one-cable digital video/audio, and a legacy analogue display. **[2]**
-5. Explain how processor type can affect performance for a workload and why machine code is processor dependent. **[2]**
+5. Explain why machine code is processor dependent and how an assembler uses the instruction set when translating a mnemonic. **[2]**
 
 ### Answer Key / Mark Scheme
 
@@ -538,8 +538,8 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| processor type includes its architecture/instruction-set and execution design, so different types may perform different amounts of useful work for the workload | Do not accept processor type as only a brand name or only 'processors are different'. | 1 |
-| machine-code opcodes/formats belong to that processor instruction set, so another type may decode them differently or not support them |  | 1 |
+| machine-code opcodes/formats belong to a specific processor instruction set, so another processor may decode them differently or not support them | Do not describe machine code as a universal representation shared by every processor. | 1 |
+| the assembler maps the mnemonic and operands to the opcode/format defined by that instruction set |  | 1 |
 
 ---
 

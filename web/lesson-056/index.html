@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 056 | Java translation and required IDE features</title>
+    <title>AS9618 Lesson 056 | Compilers, interpreters and assemblers</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Java translation and required IDE features</h1>
+        <h1>Compilers, interpreters and assemblers</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,68 +46,67 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Java translation and required IDE features</h2>
+            <h2>Assembler, compiler and interpreter choices</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Java in console mode is partly compiled and partly interpreted: the Java compiler translates source code into platform-independent bytecode, then a Java Virtual Machine (JVM) interprets that bytecode and may just-in-time compile parts for the host processor. Bytecode is not universal processor machine code.</p>
-            <p>For coding, an IDE can provide context-sensitive prompts. For initial error detection it can perform dynamic syntax checks. For presentation it can prettyprint code and expand or collapse code blocks. These features help create and navigate source code but do not prove that its algorithm is correct.</p>
-            <p>For debugging, an IDE can provide single stepping, breakpoints, inspection of variables and expressions, and a report window for diagnostic or output information. Single stepping executes one statement at a time; a breakpoint pauses at a chosen point; variable/expression inspection exposes changing values.</p>
-            <p>IDE presentation features include prettyprint and expand/collapse code blocks; expand/collapse changes the displayed view, not program execution.</p>
+            <p>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.</p>
+            <p>Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.</p>
+            <p>A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Trace Java and locate a loop fault</h3>
-            <p>First the Java compiler produces bytecode; the JVM then interprets the bytecode or JIT-compiles parts for the host. In the IDE, a breakpoint pauses before the faulty loop, single stepping advances one statement at a time, the variable/expression view exposes Index, and the report window records diagnostics. Dynamic syntax checking can flag malformed syntax but not a syntactically valid wrong boundary.</p>
+            <h3>Worked example: Choose tools across development and deployment</h3>
+            <p>During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Java translation and required IDE features: apply and assess</h2>
+            <h2>Assembler, compiler and interpreter choices: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What does a Java compiler normally produce?</p>
-              <details><summary>Show answer</summary><p>Bytecode.</p></details>
+              <p><strong>1.</strong> Why is an assembler needed?</p>
+              <details><summary>Show answer</summary><p>It translates assembly-language mnemonics and operands into machine or object code for the target processor.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Why is Java described as partly compiled and partly interpreted?</p>
-              <details><summary>Show answer</summary><p>Source is compiled to bytecode, then a JVM interprets the bytecode and may JIT-compile parts for the host.</p></details>
+              <p><strong>2.</strong> Give one compiler advantage and its mechanism.</p>
+              <details><summary>Show answer</summary><p>A compiled program can run repeatedly without translating the source each time because translation occurred before execution.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Which IDE feature pauses at a chosen line, and which advances one statement?</p>
-              <details><summary>Show answer</summary><p>A breakpoint pauses; single stepping advances one statement at a time.</p></details>
+              <p><strong>3.</strong> Give one compiler disadvantage.</p>
+              <details><summary>Show answer</summary><p>Compilation must complete before execution and the programmer may need to correct a list of reported errors.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Identify the two required presentation features.</p>
-              <details><summary>Show answer</summary><p>Prettyprint and expand/collapse code blocks.</p></details>
+              <p><strong>4.</strong> Give one interpreter advantage and one disadvantage.</p>
+              <details><summary>Show answer</summary><p>It provides immediate statement-level feedback, but repeated translation can make execution slower and requires the interpreter/source at run time.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>5.</strong> What can a variables/expressions view and report window show?</p>
-              <details><summary>Show answer</summary><p>Current or evaluated values, plus diagnostic/output information in the report window.</p></details>
+              <p><strong>5.</strong> Which translator is required for assembly language?</p>
+              <details><summary>Show answer</summary><p>An assembler.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Explain why Java is partly compiled and partly interpreted, then describe four IDE features from coding, initial error detection, presentation and debugging.</p>
+            <p>Compare a compiler and an interpreter using two advantages and two disadvantages, then justify the translator used for an assembly-language routine.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>Java source is compiled to bytecode</td><td>Do not accept that Java source becomes one universal machine-code file or that IDE syntax checking proves logical correctness.</td><td>1</td></tr>
-                  <tr><td>JVM interprets bytecode and may JIT-compile parts for the host</td><td></td><td>1</td></tr>
-                  <tr><td>context-sensitive prompts or dynamic syntax checking described accurately</td><td></td><td>1</td></tr>
-                  <tr><td>prettyprint or expand/collapse code blocks described accurately</td><td></td><td>1</td></tr>
-                  <tr><td>single stepping or breakpoint described accurately</td><td></td><td>1</td></tr>
-                  <tr><td>variable/expression inspection or report window described accurately</td><td></td><td>1</td></tr>
+                  <tr><td>compiler translates the whole high-level program before execution and produces target/object code</td><td>Do not award vague claims such as 'compiler is faster' or 'interpreter is easier' without the mechanism and scenario.</td><td>1</td></tr>
+                  <tr><td>compiler advantage linked to repeated execution or distribution without source</td><td></td><td>1</td></tr>
+                  <tr><td>compiler disadvantage linked to separate translation or error-list workflow</td><td></td><td>1</td></tr>
+                  <tr><td>interpreter translates/executes statements during execution and gives immediate feedback</td><td></td><td>1</td></tr>
+                  <tr><td>interpreter disadvantage linked to repeated translation, slower execution or run-time dependency</td><td></td><td>1</td></tr>
+                  <tr><td>assembler selected and justified for assembly-language-to-machine/object-code translation</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

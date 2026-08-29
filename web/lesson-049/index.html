@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 049 | Bit manipulation with masks and shifts</title>
+    <title>AS9618 Lesson 049 | Performance factors: cores, cache, clock speed and word length</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Bit manipulation with masks and shifts</h1>
+        <h1>Performance factors: cores, cache, clock speed and word length</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,74 +47,77 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Bit manipulation with masks and shifts</h2>
+            <h2>Complete processor performance factors</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A bitwise AND mask can test or clear selected bits; an OR mask can set selected bits; an XOR mask can toggle selected bits. These operations are used to monitor and control individual flags without changing unrelated bits.</p>
-            <p>LSL is a logical left shift and LSR is a logical right shift. Distinguish logical shifts from arithmetic shifts and cyclic shifts: a logical shift inserts zero, an arithmetic right shift preserves the sign bit, and a cyclic shift wraps the bit that leaves one end back to the other.</p>
+            <p>Processor performance depends on processor type, number of cores, bus width, clock speed and cache memory. Processor type means the processor architecture and instruction-set design, including how much useful work its execution units can perform for a particular instruction or workload; a clock-rate comparison alone is therefore not sufficient.</p>
+            <p>More cores can execute independent threads concurrently when software exposes parallel work. Wider data buses can transfer more bits per transfer, while address-bus width affects the address space. Higher clock speed provides more clock cycles per second, and cache reduces waiting when frequently used instructions or data are found close to the CPU.</p>
+            <p>No factor guarantees that every program runs faster. Performance must be justified for the stated workload, because software parallelism, instruction-set compatibility, cache behaviour, memory traffic, heat and other bottlenecks can limit the benefit.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Test, set, clear and toggle one flag</h3>
-            <p>For Status = 10110100, an AND mask tests a selected bit, an OR mask sets it, an AND mask with a zero at that position clears it, and an XOR mask toggles it. LSL moves bits left; LSR moves them right and fills with zero.</p>
+            <h3>Worked example: Compare two processors for two workloads</h3>
+            <p>Processor A has four faster general-purpose cores and a larger cache; Processor B has eight specialised cores but a lower clock speed. A lightly threaded office program may favour A's processor type, clock behaviour and cache, while a parallel workload written for B's processor type may use more cores. Bus width and memory traffic must also be considered before reaching a conclusion.</p>
           </article>
         </section>
 
-        <!-- stage10-explanation:start shifts -->
-        <section class="panel explanation-panel" id="explanation-shifts" data-explains="shifts" data-explanation-kind="comparison" aria-labelledby="explanation-shifts-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shifts">
-          <h2 class="explanation-sr-only" id="explanation-shifts-title">Binary shifts: logical, arithmetic, cyclic</h2>
+        <!-- stage10-explanation:start width -->
+        <section class="panel explanation-panel" id="explanation-width" data-explains="width" data-explanation-kind="mechanism" aria-labelledby="explanation-width-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="width">
+          <h2 class="explanation-sr-only" id="explanation-width-title">Bus width and addressable locations</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-shifts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Binary shifts: logical, arithmetic, cyclic through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Binary shifts: logical, arithmetic, cyclic: mechanism, reason, result, analogy and boundary condition.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-044-width.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bus width and addressable locations with a structured visual model." />
+            <figcaption class="explanation-sr-only">Bus width and addressable locations: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Every shown input and stored result contains exactly eight bits.</li><li><strong>Reason:</strong> Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.</li><li><strong>Result:</strong> Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.</li><li><strong>Additional fact:</strong> Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.</li><li><strong>Additional fact:</strong> Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Address bus width</li><li><strong>Lesson fact:</strong> If the address bus has n lines, it can represent 2^n different addresses.</li><li><strong>Lesson fact:</strong> A 16-bit address bus can address 2^16 = 65,536 memory locations.</li><li><strong>Lesson fact:</strong> Data bus width</li><li><strong>Lesson fact:</strong> A wider data bus can transfer more bits at once, which can affect throughput.</li><li><strong>Lesson fact:</strong> Precision</li><li><strong>Lesson fact:</strong> Address bus width affects address range; data bus width affects transfer size.</li></ol>
 
-            <p><strong>Analogy:</strong> Three conveyor rules move the same row but handle the end position differently.</p>
-            <p><strong>Boundary:</strong> State the fixed width, direction and shift type before calculating.</p>
           </div>
         </section>
-        <!-- stage10-explanation:end shifts -->
+        <!-- stage10-explanation:end width -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Bit manipulation with masks and shifts: apply and assess</h2>
+            <h2>Complete processor performance factors: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Which mask operation sets selected bits?</p>
-              <details><summary>Show answer</summary><p>Bitwise OR.</p></details>
+              <p><strong>1.</strong> What does processor type mean as a performance factor?</p>
+              <details><summary>Show answer</summary><p>The processor architecture/instruction-set and execution design, which determines what work it can perform per instruction or for a particular workload.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Which operation toggles selected bits?</p>
-              <details><summary>Show answer</summary><p>Bitwise XOR.</p></details>
+              <p><strong>2.</strong> Why do more cores not always improve one program?</p>
+              <details><summary>Show answer</summary><p>The program must contain independent threads or tasks that can run in parallel.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> What is inserted by a logical shift?</p>
-              <details><summary>Show answer</summary><p>Zero bits.</p></details>
+              <p><strong>3.</strong> How can bus width affect performance?</p>
+              <details><summary>Show answer</summary><p>A wider data bus can transfer more bits per transfer; address-bus width affects the address space rather than directly guaranteeing speed.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why can cache improve performance?</p>
+              <details><summary>Show answer</summary><p>A cache hit supplies frequently used data or instructions faster than main memory, reducing CPU waiting.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Explain how AND, OR and XOR masks test, clear, set and toggle control flags, then apply one LSL and one LSR.</p>
+            <p>Two computers have different processor types. Explain how processor type, number of cores, bus width, clock speed and cache can affect their performance for a stated workload.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>AND test/clear</td><td>Do not treat logical, arithmetic and cyclic shifts as identical.</td><td>1</td></tr>
-                  <tr><td>OR set</td><td></td><td>1</td></tr>
-                  <tr><td>XOR toggle</td><td></td><td>1</td></tr>
-                  <tr><td>correct LSL</td><td></td><td>1</td></tr>
-                  <tr><td>correct LSR</td><td></td><td>1</td></tr>
-                  <tr><td>monitor/control context</td><td></td><td>1</td></tr>
+                  <tr><td>processor type linked to architecture/instruction-set/execution design and workload</td><td>Do not accept processor type as only a brand name, or claim that the highest clock speed or largest core count always wins.</td><td>1</td></tr>
+                  <tr><td>cores linked to available parallel threads/tasks</td><td></td><td>1</td></tr>
+                  <tr><td>bus width linked accurately to bits transferred or address space</td><td></td><td>1</td></tr>
+                  <tr><td>clock speed linked to cycles per second</td><td></td><td>1</td></tr>
+                  <tr><td>cache linked to reducing slower main-memory access</td><td></td><td>1</td></tr>
+                  <tr><td>conclusion recognises workload and bottlenecks rather than claiming one factor guarantees speed</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

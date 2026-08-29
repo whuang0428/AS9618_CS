@@ -1,0 +1,665 @@
+{
+  "schemaVersion": 1,
+  "source": "Reviewed topic-aligned CORE placement contract. This file is independent of the generator plan and must change only with an explicit curriculum review.",
+  "lessons": [
+    {
+      "lesson": 1,
+      "requirementIds": [
+        "S1.01"
+      ]
+    },
+    {
+      "lesson": 2,
+      "requirementIds": [
+        "S1.02",
+        "S1.03"
+      ]
+    },
+    {
+      "lesson": 3,
+      "requirementIds": [
+        "S1.02",
+        "S1.03",
+        "S1.06"
+      ]
+    },
+    {
+      "lesson": 4,
+      "requirementIds": [
+        "S1.04",
+        "S1.05"
+      ]
+    },
+    {
+      "lesson": 5,
+      "requirementIds": [
+        "S1.02",
+        "S1.03",
+        "S1.04"
+      ]
+    },
+    {
+      "lesson": 7,
+      "requirementIds": [
+        "S1.07"
+      ]
+    },
+    {
+      "lesson": 8,
+      "requirementIds": [
+        "S1.08"
+      ]
+    },
+    {
+      "lesson": 9,
+      "requirementIds": [
+        "S1.08"
+      ]
+    },
+    {
+      "lesson": 10,
+      "requirementIds": [
+        "S1.10"
+      ]
+    },
+    {
+      "lesson": 12,
+      "requirementIds": [
+        "S1.09",
+        "S1.11"
+      ]
+    },
+    {
+      "lesson": 16,
+      "requirementIds": [
+        "S2.01",
+        "S2.04"
+      ]
+    },
+    {
+      "lesson": 17,
+      "requirementIds": [
+        "S2.02",
+        "S2.03"
+      ]
+    },
+    {
+      "lesson": 18,
+      "requirementIds": [
+        "S2.05"
+      ]
+    },
+    {
+      "lesson": 19,
+      "requirementIds": [
+        "S2.11"
+      ]
+    },
+    {
+      "lesson": 20,
+      "requirementIds": [
+        "S2.15",
+        "S2.16"
+      ]
+    },
+    {
+      "lesson": 22,
+      "requirementIds": [
+        "S2.07",
+        "S2.08"
+      ]
+    },
+    {
+      "lesson": 23,
+      "requirementIds": [
+        "S2.09",
+        "S2.10",
+        "S2.14"
+      ]
+    },
+    {
+      "lesson": 24,
+      "requirementIds": [
+        "S2.06",
+        "S2.13"
+      ]
+    },
+    {
+      "lesson": 25,
+      "requirementIds": [
+        "S2.12"
+      ]
+    },
+    {
+      "lesson": 27,
+      "requirementIds": [
+        "S3.01",
+        "S3.03",
+        "S3.04"
+      ]
+    },
+    {
+      "lesson": 28,
+      "requirementIds": [
+        "S3.03"
+      ]
+    },
+    {
+      "lesson": 29,
+      "requirementIds": [
+        "S3.03",
+        "S3.04"
+      ]
+    },
+    {
+      "lesson": 30,
+      "requirementIds": [
+        "S3.05",
+        "S3.06",
+        "S3.07"
+      ]
+    },
+    {
+      "lesson": 31,
+      "requirementIds": [
+        "S3.03"
+      ]
+    },
+    {
+      "lesson": 33,
+      "requirementIds": [
+        "S3.02"
+      ]
+    },
+    {
+      "lesson": 34,
+      "requirementIds": [
+        "S3.08",
+        "S3.09"
+      ]
+    },
+    {
+      "lesson": 35,
+      "requirementIds": [
+        "S3.10"
+      ]
+    },
+    {
+      "lesson": 41,
+      "requirementIds": [
+        "S4.01",
+        "S4.03"
+      ]
+    },
+    {
+      "lesson": 42,
+      "requirementIds": [
+        "S4.07"
+      ]
+    },
+    {
+      "lesson": 43,
+      "requirementIds": [
+        "S4.02"
+      ]
+    },
+    {
+      "lesson": 44,
+      "requirementIds": [
+        "S4.04",
+        "S4.06"
+      ]
+    },
+    {
+      "lesson": 45,
+      "requirementIds": [
+        "S4.09"
+      ]
+    },
+    {
+      "lesson": 46,
+      "requirementIds": [
+        "S4.10",
+        "S4.11",
+        "S4.12",
+        "S4.13"
+      ]
+    },
+    {
+      "lesson": 47,
+      "requirementIds": [
+        "S4.13",
+        "S4.14"
+      ]
+    },
+    {
+      "lesson": 48,
+      "requirementIds": [
+        "S4.08"
+      ]
+    },
+    {
+      "lesson": 49,
+      "requirementIds": [
+        "S4.05"
+      ]
+    },
+    {
+      "lesson": 50,
+      "requirementIds": [
+        "S4.15"
+      ]
+    },
+    {
+      "lesson": 52,
+      "requirementIds": [
+        "S5.01",
+        "S5.02"
+      ]
+    },
+    {
+      "lesson": 53,
+      "requirementIds": [
+        "S5.01"
+      ]
+    },
+    {
+      "lesson": 55,
+      "requirementIds": [
+        "S5.02"
+      ]
+    },
+    {
+      "lesson": 56,
+      "requirementIds": [
+        "S5.04",
+        "S5.05"
+      ]
+    },
+    {
+      "lesson": 58,
+      "requirementIds": [
+        "S5.03"
+      ]
+    },
+    {
+      "lesson": 60,
+      "requirementIds": [
+        "S5.06",
+        "S5.07"
+      ]
+    },
+    {
+      "lesson": 62,
+      "requirementIds": [
+        "S6.01",
+        "S6.02"
+      ]
+    },
+    {
+      "lesson": 63,
+      "requirementIds": [
+        "S6.03",
+        "S6.04"
+      ]
+    },
+    {
+      "lesson": 64,
+      "requirementIds": [
+        "S6.04",
+        "S6.05"
+      ]
+    },
+    {
+      "lesson": 65,
+      "requirementIds": [
+        "S6.03"
+      ]
+    },
+    {
+      "lesson": 66,
+      "requirementIds": [
+        "S6.05",
+        "S6.06"
+      ]
+    },
+    {
+      "lesson": 67,
+      "requirementIds": [
+        "S6.03",
+        "S6.06"
+      ]
+    },
+    {
+      "lesson": 68,
+      "requirementIds": [
+        "S6.03",
+        "S6.05"
+      ]
+    },
+    {
+      "lesson": 69,
+      "requirementIds": [
+        "S6.07",
+        "S6.08"
+      ]
+    },
+    {
+      "lesson": 72,
+      "requirementIds": [
+        "S7.01",
+        "S7.02",
+        "S7.03"
+      ]
+    },
+    {
+      "lesson": 74,
+      "requirementIds": [
+        "S7.04",
+        "S7.05"
+      ]
+    },
+    {
+      "lesson": 75,
+      "requirementIds": [
+        "S7.05"
+      ]
+    },
+    {
+      "lesson": 76,
+      "requirementIds": [
+        "S7.06"
+      ]
+    },
+    {
+      "lesson": 77,
+      "requirementIds": [
+        "S7.01",
+        "S7.02",
+        "S7.03",
+        "S7.04",
+        "S7.05",
+        "S7.06"
+      ]
+    },
+    {
+      "lesson": 78,
+      "requirementIds": [
+        "S8.01",
+        "S8.05",
+        "S8.06"
+      ]
+    },
+    {
+      "lesson": 79,
+      "requirementIds": [
+        "S8.01"
+      ]
+    },
+    {
+      "lesson": 80,
+      "requirementIds": [
+        "S8.02"
+      ]
+    },
+    {
+      "lesson": 81,
+      "requirementIds": [
+        "S8.02"
+      ]
+    },
+    {
+      "lesson": 82,
+      "requirementIds": [
+        "S8.03"
+      ]
+    },
+    {
+      "lesson": 83,
+      "requirementIds": [
+        "S8.04"
+      ]
+    },
+    {
+      "lesson": 84,
+      "requirementIds": [
+        "S8.08"
+      ]
+    },
+    {
+      "lesson": 85,
+      "requirementIds": [
+        "S8.10"
+      ]
+    },
+    {
+      "lesson": 86,
+      "requirementIds": [
+        "S8.10"
+      ]
+    },
+    {
+      "lesson": 87,
+      "requirementIds": [
+        "S8.07",
+        "S8.09",
+        "S8.11"
+      ]
+    },
+    {
+      "lesson": 89,
+      "requirementIds": [
+        "S8.01",
+        "S8.02",
+        "S8.03",
+        "S8.04",
+        "S8.05",
+        "S8.06",
+        "S8.07",
+        "S8.08",
+        "S8.09",
+        "S8.10",
+        "S8.11"
+      ]
+    },
+    {
+      "lesson": 98,
+      "requirementIds": [
+        "S9.03",
+        "S9.04",
+        "S9.05"
+      ]
+    },
+    {
+      "lesson": 99,
+      "requirementIds": [
+        "S9.01",
+        "S9.02"
+      ]
+    },
+    {
+      "lesson": 100,
+      "requirementIds": [
+        "S9.06",
+        "S9.09"
+      ]
+    },
+    {
+      "lesson": 101,
+      "requirementIds": [
+        "S9.07"
+      ]
+    },
+    {
+      "lesson": 104,
+      "requirementIds": [
+        "S10.03",
+        "S10.06"
+      ]
+    },
+    {
+      "lesson": 105,
+      "requirementIds": [
+        "S10.06"
+      ]
+    },
+    {
+      "lesson": 111,
+      "requirementIds": [
+        "S9.02",
+        "S9.05",
+        "S9.08"
+      ]
+    },
+    {
+      "lesson": 112,
+      "requirementIds": [
+        "S9.01",
+        "S9.02",
+        "S9.03",
+        "S9.04",
+        "S9.05",
+        "S9.06",
+        "S9.07",
+        "S9.08",
+        "S9.09"
+      ]
+    },
+    {
+      "lesson": 113,
+      "requirementIds": [
+        "S10.01"
+      ]
+    },
+    {
+      "lesson": 115,
+      "requirementIds": [
+        "S10.03",
+        "S10.04",
+        "S10.05"
+      ]
+    },
+    {
+      "lesson": 116,
+      "requirementIds": [
+        "S10.04",
+        "S10.05"
+      ]
+    },
+    {
+      "lesson": 118,
+      "requirementIds": [
+        "S10.02"
+      ]
+    },
+    {
+      "lesson": 120,
+      "requirementIds": [
+        "S10.07"
+      ]
+    },
+    {
+      "lesson": 122,
+      "requirementIds": [
+        "S10.08",
+        "S10.09",
+        "S10.10"
+      ]
+    },
+    {
+      "lesson": 123,
+      "requirementIds": [
+        "S10.09",
+        "S10.10"
+      ]
+    },
+    {
+      "lesson": 126,
+      "requirementIds": [
+        "S11.02",
+        "S11.04",
+        "S11.05"
+      ]
+    },
+    {
+      "lesson": 127,
+      "requirementIds": [
+        "S11.04"
+      ]
+    },
+    {
+      "lesson": 128,
+      "requirementIds": [
+        "S11.04",
+        "S11.05"
+      ]
+    },
+    {
+      "lesson": 129,
+      "requirementIds": [
+        "S11.04",
+        "S11.05"
+      ]
+    },
+    {
+      "lesson": 130,
+      "requirementIds": [
+        "S11.06",
+        "S11.07",
+        "S11.08"
+      ]
+    },
+    {
+      "lesson": 133,
+      "requirementIds": [
+        "S11.03"
+      ]
+    },
+    {
+      "lesson": 137,
+      "requirementIds": [
+        "S12.07"
+      ]
+    },
+    {
+      "lesson": 138,
+      "requirementIds": [
+        "S12.04",
+        "S12.09"
+      ]
+    },
+    {
+      "lesson": 139,
+      "requirementIds": [
+        "S11.09"
+      ]
+    },
+    {
+      "lesson": 140,
+      "requirementIds": [
+        "S11.01"
+      ]
+    },
+    {
+      "lesson": 142,
+      "requirementIds": [
+        "S12.01"
+      ]
+    },
+    {
+      "lesson": 144,
+      "requirementIds": [
+        "S12.02",
+        "S12.03"
+      ]
+    },
+    {
+      "lesson": 145,
+      "requirementIds": [
+        "S12.05",
+        "S12.06",
+        "S12.08"
+      ]
+    }
+  ]
+}

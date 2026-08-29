@@ -77,7 +77,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `map`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-092-map.jpg`
 
 1. Compiler, interpreter and assembler are alternative translator paths rather than one serial pipeline.
@@ -89,7 +89,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `matcher`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-092-matcher.jpg`
 
 1. Interactive risk-control matcher
@@ -99,7 +99,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `security`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-092-security.jpg`
 
 1. Security review
@@ -119,7 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `software`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-092-software.jpg`
 
 1. System software review
@@ -139,7 +139,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `translators`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-092-translators.jpg`
 
 1. Translator review

@@ -77,7 +77,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `audit-trails`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-audit-trails.jpg`
 
 1. Who User ID, account, device or process involved.
@@ -89,7 +89,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `backups`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-backups.jpg`
 
 1. Full backup Copies all selected data. Simple to restore, but uses more time and storage.
@@ -101,7 +101,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-compare.jpg`
 
 1. Main purpose
@@ -119,7 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `core`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-core.jpg`
 
 1. Backup A separate copy of data that can be used to restore the original after loss or corruption.
@@ -131,7 +131,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `recovery`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-recovery.jpg`
 
 1. 1. Identify incident Detect failure, confirm scope and prevent further damage.
@@ -144,7 +144,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `rpo-tool`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-rpo-tool.jpg`
 
 1. Interactive recovery objective tool
@@ -154,7 +154,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `strategy`
 - **Explanation type:** tradeoff
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-strategy.jpg`
 
 1. Onsite Fast to access, but vulnerable to the same fire, flood, theft or ransomware incident.

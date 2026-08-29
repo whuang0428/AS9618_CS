@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 079 | Relational terminology, keys and relationships</title>
+    <title>AS9618 Lesson 079 | Flat-file databases vs relational databases</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Relational terminology, keys and relationships</h1>
+        <h1>Flat-file databases vs relational databases</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,43 +46,25 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Relational terminology, keys and relationships</h2>
+            <h2>File-based limitations and relational solutions</h2>
           </div>
           <div class="stage2-explanation">
-            <p>An entity is a real-world thing about which data is stored and is commonly represented by a table. A table contains records (tuples); each record describes one entity occurrence. A field (attribute) is one named property or column. These paired terms are related but should not be collapsed into one definition.</p>
-            <p>A candidate key is a minimal field or field set that uniquely identifies a record. One candidate key is selected as the primary key. A secondary key is a field used as an additional retrieval or ordering route and need not be unique; it is not another name for an unselected candidate key. A foreign key refers to a key in a related table. An index is a lookup structure built on one or more fields: it can speed retrieval but uses storage and must be maintained after changes.</p>
-            <p>Record and tuple are corresponding relational terms for one row; field and attribute are corresponding terms for one column.</p>
-            <p>A foreign key is an attribute in one table that refers to a primary/candidate key in another table. Referential integrity requires every non-null foreign-key value to match an existing referenced key.</p>
-            <p>A one-to-one relationship links one record on each side. A one-to-many relationship links one parent record to many child records. A many-to-many relationship is normally implemented through a linking entity/table that creates two one-to-many relationships. Referential integrity prevents orphan records: insert, update and delete operations may be rejected or handled by a defined cascade/null policy, but must not silently leave an invalid reference.</p>
-            <p>A relational database stores data in tables made of records and fields. A primary key uniquely identifies a record; a foreign key links to a primary key in another table and creates a relationship.</p>
-            <p>Indexing creates an additional lookup structure for one or more fields so matching records can be located more quickly. The index consumes storage and must be updated when indexed data change.</p>
+            <p>A file-based approach stores data in separate application files. The same fact may be repeated in several files or records, causing redundancy and wasted storage. Updating only some copies creates inconsistency; insertion and deletion can also lose or require unrelated facts. Separate files may use incompatible formats, isolate data, duplicate validation/security code and make shared querying, concurrent access, backup and recovery harder to manage.</p>
+            <p>A relational database addresses these limitations by separating entities into linked tables, storing shared facts once, identifying records with keys and enforcing relationships and constraints centrally. A DBMS supplies shared query processing, integrity, security, access rights and backup. These mechanisms reduce particular file-based risks; a relational design is not automatically smaller, simpler or error-free.</p>
+            <p>Relational databases address file-based duplication, inconsistency, isolation and access problems through related tables, keys, constraints and managed queries.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Keys for a student table / Delete a department / Use keys and an index</h3>
-            <p>In Student(StudentID, Email, TutorGroup), StudentID and Email may be candidate keys if both are unique and minimal; StudentID is selected as primary. TutorGroup can be a secondary key for retrieving all students in one group even though many records share the value. An index on TutorGroup can provide a faster lookup route. If Employee.DepartmentID refers to Department.DepartmentID, deleting a department with employees would break referential integrity unless deletion is rejected or an authorised cascading policy handles dependent rows. StudentID is the primary key of Student. DepartmentID is a foreign key linking to Department. An index on Surname can speed searches by surname without changing which field is the primary key.</p>
+            <h3>Worked example: Replace a repeated order file</h3>
+            <p>A flat Order file repeats CustomerName and Address in every order row. Split it into Customer(CustomerID, CustomerName, Address) and Order(OrderID, CustomerID, OrderDate). CustomerID links each order to one stored customer, so an address is updated once instead of in every order row.</p>
           </article>
         </section>
-
-        <!-- stage10-explanation:start referential -->
-        <section class="panel explanation-panel" id="explanation-referential" data-explains="referential" data-explanation-kind="mechanism" aria-labelledby="explanation-referential-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="referential">
-          <h2 class="explanation-sr-only" id="explanation-referential-title">Referential integrity</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-referential.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Referential integrity with a structured visual model." />
-            <figcaption class="explanation-sr-only">Referential integrity: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Referential integrity means a foreign key value must match an existing primary key value in the referenced table.</li><li><strong>Lesson fact:</strong> Valid Loan.StudentID = S0234 is valid if Student.StudentID = S0234 exists.</li><li><strong>Lesson fact:</strong> Invalid Loan.StudentID = S9999 is invalid if no student with that ID exists.</li><li><strong>Lesson fact:</strong> Why It prevents orphan records, such as a loan assigned to a non-existent student.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end referential -->
 
         <!-- stage10-explanation:start compare -->
         <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
@@ -100,74 +82,41 @@
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Relational terminology, keys and relationships: apply and assess</h2>
+            <h2>File-based limitations and relational solutions: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Compare a record/tuple from a field/attribute.</p>
-              <details><summary>Show answer</summary><p>A record/tuple is one complete row for an entity occurrence; a field/attribute is one named property or column.</p></details>
+              <p><strong>1.</strong> Why can repeated data create inconsistency?</p>
+              <details><summary>Show answer</summary><p>One copy may be changed while another remains out of date.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What makes a candidate key minimal?</p>
-              <details><summary>Show answer</summary><p>No field can be removed while retaining uniqueness.</p></details>
+              <p><strong>2.</strong> What is data isolation in a file-based system?</p>
+              <details><summary>Show answer</summary><p>Related data is kept in separate files or formats, making combined access and queries difficult.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Must a secondary key uniquely identify one record?</p>
-              <details><summary>Show answer</summary><p>No. It may retrieve a set of records sharing the same value.</p></details>
+              <p><strong>3.</strong> Which relational feature connects an order to its customer?</p>
+              <details><summary>Show answer</summary><p>A foreign key in Order referring to the Customer primary key.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Give one benefit and one cost of an index.</p>
-              <details><summary>Show answer</summary><p>It can speed lookup/ordering, but uses storage and must be updated when data changes.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Where is the referenced key stored?</p>
-              <details><summary>Show answer</summary><p>In the parent/referenced table.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> What is an orphan record?</p>
-              <details><summary>Show answer</summary><p>A child record whose foreign key has no matching parent key.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> How is a many-to-many relationship represented relationally?</p>
-              <details><summary>Show answer</summary><p>Use a linking table/entity containing foreign keys to both original entities.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>8.</strong> Identify one valid delete response.</p>
-              <details><summary>Show answer</summary><p>Reject the delete, cascade it, or set nullable foreign keys to null according to defined rules.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>9.</strong> What does a primary key do?</p>
-              <details><summary>Show answer</summary><p>Uniquely identifies each record.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>10.</strong> What does indexing improve?</p>
-              <details><summary>Show answer</summary><p>The speed of locating records by indexed field values.</p></details>
+              <p><strong>4.</strong> Why is 'relational databases are always simpler' not a valid benefit?</p>
+              <details><summary>Show answer</summary><p>Linked tables and DBMS administration add complexity; benefits must be tied to a file-based limitation.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>15 marks</span></div>
-            <p>For Student(StudentID, Email, TutorGroup), explain the roles of a candidate key, primary key, secondary key and index. Explain how a one-to-many relationship between Department and Employee is represented and protected. Explain primary key, foreign key and indexing for a Student table.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>A clinic repeats patient details in separate appointment, billing and treatment files. Explain three file-based limitations and a relational-database feature that addresses each one.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>candidate key is a minimal unique identifier, such as StudentID or unique Email</td><td>Do not describe a secondary key as an alternate candidate key or require it to be unique. Do not accept that foreign-key values must be unique in the child table. Do not describe an index as a replacement primary key.</td><td>1</td></tr>
-                  <tr><td>primary key is the candidate selected to identify each record</td><td></td><td>1</td></tr>
-                  <tr><td>secondary key is an additional retrieval field such as non-unique TutorGroup</td><td></td><td>1</td></tr>
-                  <tr><td>secondary key need not be unique</td><td></td><td>1</td></tr>
-                  <tr><td>index maps field values to record locations to speed access</td><td></td><td>1</td></tr>
-                  <tr><td>index requires storage and update maintenance</td><td></td><td>1</td></tr>
-                  <tr><td>one Department record may relate to many Employee records</td><td></td><td>1</td></tr>
-                  <tr><td>DepartmentID is the primary/candidate key in Department</td><td></td><td>1</td></tr>
-                  <tr><td>DepartmentID is a foreign key in Employee and may repeat</td><td></td><td>1</td></tr>
-                  <tr><td>each non-null foreign-key value must match an existing Department key</td><td></td><td>1</td></tr>
-                  <tr><td>referential integrity prevents orphan Employee records</td><td></td><td>1</td></tr>
-                  <tr><td>primary key</td><td></td><td>1</td></tr>
-                  <tr><td>foreign key/relationship</td><td></td><td>1</td></tr>
-                  <tr><td>indexing lookup benefit</td><td></td><td>1</td></tr>
-                  <tr><td>storage/update trade-off</td><td></td><td>1</td></tr>
+                  <tr><td>repeated patient facts cause redundancy or wasted storage</td><td>Do not award a generic claim such as 'relational is better' without a named limitation, mechanism and consequence.</td><td>1</td></tr>
+                  <tr><td>linked tables store a shared patient fact once</td><td></td><td>1</td></tr>
+                  <tr><td>separate copies can become inconsistent after partial updates</td><td></td><td>1</td></tr>
+                  <tr><td>central keys/constraints and one stored fact improve consistency</td><td></td><td>1</td></tr>
+                  <tr><td>isolated files/formats make combined retrieval or control difficult</td><td></td><td>1</td></tr>
+                  <tr><td>DBMS query, integrity, access-right or backup service addresses the named difficulty</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

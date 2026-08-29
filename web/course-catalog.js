@@ -5,7 +5,7 @@
   {
     "number": 1,
     "id": "001",
-    "title": "Binary and decimal magnitude prefixes",
+    "title": "Bits, bytes, nibbles and storage units",
     "paper": "Paper 1",
     "section": "Section 1",
     "unitId": "section-1",
@@ -14,7 +14,7 @@
   {
     "number": 2,
     "id": "002",
-    "title": "Integer conversion between binary and denary",
+    "title": "Binary place value and denary conversion",
     "paper": "Paper 1",
     "section": "Section 1",
     "unitId": "section-1",
@@ -23,7 +23,7 @@
   {
     "number": 3,
     "id": "003",
-    "title": "Hexadecimal as a base-16 representation",
+    "title": "Hexadecimal notation and binary grouping",
     "paper": "Paper 1",
     "section": "Section 1",
     "unitId": "section-1",
@@ -32,7 +32,7 @@
   {
     "number": 4,
     "id": "004",
-    "title": "Binary addition and fixed-width overflow",
+    "title": "Binary addition, carries and overflow",
     "paper": "Paper 1",
     "section": "Section 1",
     "unitId": "section-1",
@@ -41,7 +41,7 @@
   {
     "number": 5,
     "id": "005",
-    "title": "Signed representations and binary subtraction",
+    "title": "Signed binary: sign-and-magnitude, one’s complement and two’s complement",
     "paper": "Paper 1",
     "section": "Section 1",
     "unitId": "section-1",
@@ -50,7 +50,7 @@
   {
     "number": 6,
     "id": "006",
-    "title": "BCD and hexadecimal in practical systems",
+    "title": "Binary fractions and precision limits",
     "paper": "Paper 1",
     "section": "Section 1",
     "unitId": "section-1",
@@ -59,7 +59,7 @@
   {
     "number": 7,
     "id": "007",
-    "title": "Character sets and internal binary character data",
+    "title": "Character sets: ASCII, extended ASCII and Unicode",
     "paper": "Paper 1",
     "section": "Section 1",
     "unitId": "section-1",
@@ -68,7 +68,7 @@
   {
     "number": 8,
     "id": "008",
-    "title": "Bitmap file headers, image resolution and screen resolution",
+    "title": "Bitmap images: pixels, resolution and colour depth",
     "paper": "Paper 1",
     "section": "Section 1",
     "unitId": "section-1",
@@ -77,7 +77,7 @@
   {
     "number": 9,
     "id": "009",
-    "title": "Vector graphics and drawing lists",
+    "title": "Image file size calculations and metadata",
     "paper": "Paper 1",
     "section": "Section 1",
     "unitId": "section-1",
@@ -86,7 +86,7 @@
   {
     "number": 10,
     "id": "010",
-    "title": "Sound sampling, sampling resolution, accuracy and storage",
+    "title": "Digital sound: sampling rate, sampling resolution and duration",
     "paper": "Paper 1",
     "section": "Section 1",
     "unitId": "section-1",
@@ -104,7 +104,7 @@
   {
     "number": 12,
     "id": "012",
-    "title": "Compression methods for text, bitmap, vector and sound files",
+    "title": "Compression: lossless vs lossy",
     "paper": "Paper 1",
     "section": "Section 1",
     "unitId": "section-1",
@@ -140,7 +140,7 @@
   {
     "number": 16,
     "id": "016",
-    "title": "Network purpose and client/server models",
+    "title": "Network purposes, LAN, WAN and topologies",
     "paper": "Paper 1",
     "section": "Section 2",
     "unitId": "section-2",
@@ -149,7 +149,7 @@
   {
     "number": 17,
     "id": "017",
-    "title": "Bus, star, mesh and hybrid topologies",
+    "title": "Client-server and peer-to-peer models",
     "paper": "Paper 1",
     "section": "Section 2",
     "unitId": "section-2",
@@ -158,7 +158,7 @@
   {
     "number": 18,
     "id": "018",
-    "title": "Packet transmission between two hosts in each required topology",
+    "title": "Packet switching, routing and packet structure",
     "paper": "Paper 1",
     "section": "Section 2",
     "unitId": "section-2",
@@ -167,7 +167,7 @@
   {
     "number": 19,
     "id": "019",
-    "title": "Cloud, wired and wireless networking",
+    "title": "Protocols and layered communication",
     "paper": "Paper 1",
     "section": "Section 2",
     "unitId": "section-2",
@@ -176,7 +176,7 @@
   {
     "number": 20,
     "id": "020",
-    "title": "LAN hardware, Ethernet, streaming, the internet, IP and URL",
+    "title": "IP addresses, MAC addresses, DNS and URLs",
     "paper": "Paper 1",
     "section": "Section 2",
     "unitId": "section-2",
@@ -185,7 +185,7 @@
   {
     "number": 21,
     "id": "021",
-    "title": "LAN hardware and the router",
+    "title": "HTTP, HTTPS, FTP, SMTP, POP3 and IMAP in context",
     "paper": "Paper 1",
     "section": "Section 2",
     "unitId": "section-2",
@@ -194,7 +194,7 @@
   {
     "number": 22,
     "id": "022",
-    "title": "Ethernet collisions and CSMA/CD",
+    "title": "Wired and wireless transmission media",
     "paper": "Paper 1",
     "section": "Section 2",
     "unitId": "section-2",
@@ -203,7 +203,7 @@
   {
     "number": 23,
     "id": "023",
-    "title": "Bit streaming, bit rate and broadband",
+    "title": "Network hardware: switches, routers, access points and gateways",
     "paper": "Paper 1",
     "section": "Section 2",
     "unitId": "section-2",
@@ -212,7 +212,7 @@
   {
     "number": 24,
     "id": "024",
-    "title": "The internet and the World Wide Web",
+    "title": "Internet, intranet, extranet and cloud services",
     "paper": "Paper 1",
     "section": "Section 2",
     "unitId": "section-2",
@@ -221,7 +221,7 @@
   {
     "number": 25,
     "id": "025",
-    "title": "Internet connection hardware",
+    "title": "Network performance, latency, bandwidth and congestion",
     "paper": "Paper 1",
     "section": "Section 2",
     "unitId": "section-2",
@@ -230,7 +230,7 @@
   {
     "number": 26,
     "id": "026",
-    "title": "IP addressing, URL structure and DNS",
+    "title": "Section 2 review: explaining communication with precision",
     "paper": "Paper 1",
     "section": "Section 2",
     "unitId": "section-2",
@@ -239,7 +239,7 @@
   {
     "number": 27,
     "id": "027",
-    "title": "Why computer systems need input, output and storage",
+    "title": "Computer system overview: input, output, storage, processor and memory",
     "paper": "Paper 1",
     "section": "Section 3",
     "unitId": "section-3",
@@ -248,7 +248,7 @@
   {
     "number": 28,
     "id": "028",
-    "title": "Embedded systems: purpose, benefits and drawbacks",
+    "title": "Input devices and data capture",
     "paper": "Paper 1",
     "section": "Section 3",
     "unitId": "section-3",
@@ -257,7 +257,7 @@
   {
     "number": 29,
     "id": "029",
-    "title": "Microphone, touchscreen and VR headset operation",
+    "title": "Output devices and user feedback",
     "paper": "Paper 1",
     "section": "Section 3",
     "unitId": "section-3",
@@ -266,7 +266,7 @@
   {
     "number": 30,
     "id": "030",
-    "title": "Output, storage devices and primary memory",
+    "title": "Primary storage: RAM, ROM, cache and virtual memory",
     "paper": "Paper 1",
     "section": "Section 3",
     "unitId": "section-3",
@@ -275,7 +275,7 @@
   {
     "number": 31,
     "id": "031",
-    "title": "Monitoring, control, feedback and required sensors",
+    "title": "Secondary storage: magnetic, optical and solid-state media",
     "paper": "Paper 1",
     "section": "Section 3",
     "unitId": "section-3",
@@ -284,7 +284,7 @@
   {
     "number": 32,
     "id": "032",
-    "title": "Logic-gate symbols, functions and representation conversions",
+    "title": "Storage characteristics: capacity, speed, durability, portability and cost",
     "paper": "Paper 1",
     "section": "Section 3",
     "unitId": "section-3",
@@ -293,7 +293,7 @@
   {
     "number": 33,
     "id": "033",
-    "title": "Monitoring, control, feedback and required sensors",
+    "title": "Embedded systems and microcontrollers",
     "paper": "Paper 1",
     "section": "Section 3",
     "unitId": "section-3",
@@ -302,7 +302,7 @@
   {
     "number": 34,
     "id": "034",
-    "title": "Logic-gate symbols, functions and representation conversions",
+    "title": "Sensors, actuators and control systems",
     "paper": "Paper 1",
     "section": "Section 3",
     "unitId": "section-3",
@@ -365,7 +365,7 @@
   {
     "number": 41,
     "id": "041",
-    "title": "Von Neumann architecture, CPU components and registers",
+    "title": "CPU architecture: ALU, CU, registers, buses and clock",
     "paper": "Paper 1",
     "section": "Section 4",
     "unitId": "section-4",
@@ -374,7 +374,7 @@
   {
     "number": 42,
     "id": "042",
-    "title": "System buses, ports and processor performance",
+    "title": "The fetch-decode-execute cycle",
     "paper": "Paper 1",
     "section": "Section 4",
     "unitId": "section-4",
@@ -383,7 +383,7 @@
   {
     "number": 43,
     "id": "043",
-    "title": "Register-transfer notation for the fetch-decode-execute cycle",
+    "title": "Registers: PC, CIR, MAR, MDR, ACC, IX and status register",
     "paper": "Paper 1",
     "section": "Section 4",
     "unitId": "section-4",
@@ -392,7 +392,7 @@
   {
     "number": 44,
     "id": "044",
-    "title": "Interrupt causes, detection and handling",
+    "title": "System buses: address, data and control",
     "paper": "Paper 1",
     "section": "Section 4",
     "unitId": "section-4",
@@ -401,7 +401,7 @@
   {
     "number": 45,
     "id": "045",
-    "title": "Assembly language and machine code",
+    "title": "Instruction sets and machine code",
     "paper": "Paper 1",
     "section": "Section 4",
     "unitId": "section-4",
@@ -410,7 +410,7 @@
   {
     "number": 46,
     "id": "046",
-    "title": "Two-pass assembly, program tracing and the instruction set",
+    "title": "Assembly language basics and mnemonics",
     "paper": "Paper 1",
     "section": "Section 4",
     "unitId": "section-4",
@@ -419,7 +419,7 @@
   {
     "number": 47,
     "id": "047",
-    "title": "Addressing modes and address-sensitive instructions",
+    "title": "Addressing modes and operand interpretation",
     "paper": "Paper 1",
     "section": "Section 4",
     "unitId": "section-4",
@@ -428,7 +428,7 @@
   {
     "number": 48,
     "id": "048",
-    "title": "Section 4 semantic checkpoint",
+    "title": "Interrupts and interrupt service routines",
     "paper": "Paper 1",
     "section": "Section 4",
     "unitId": "section-4",
@@ -437,7 +437,7 @@
   {
     "number": 49,
     "id": "049",
-    "title": "Bit manipulation with masks and shifts",
+    "title": "Performance factors: cores, cache, clock speed and word length",
     "paper": "Paper 1",
     "section": "Section 4",
     "unitId": "section-4",
@@ -464,7 +464,7 @@
   {
     "number": 52,
     "id": "052",
-    "title": "Why an operating system is required and what it manages",
+    "title": "System software overview: operating systems, utility software and translators",
     "paper": "Paper 1",
     "section": "Section 5",
     "unitId": "section-5",
@@ -473,7 +473,7 @@
   {
     "number": 53,
     "id": "053",
-    "title": "Required utility software",
+    "title": "Operating system roles: process, memory, file and device management",
     "paper": "Paper 1",
     "section": "Section 5",
     "unitId": "section-5",
@@ -482,7 +482,7 @@
   {
     "number": 54,
     "id": "054",
-    "title": "Libraries and dynamically linked library files",
+    "title": "User interfaces: command line, graphical, menu-driven and natural language",
     "paper": "Paper 1",
     "section": "Section 5",
     "unitId": "section-5",
@@ -491,7 +491,7 @@
   {
     "number": 55,
     "id": "055",
-    "title": "Assembler, compiler and interpreter choices",
+    "title": "Utility software: backup, compression, encryption, defragmentation and antivirus",
     "paper": "Paper 1",
     "section": "Section 5",
     "unitId": "section-5",
@@ -500,7 +500,7 @@
   {
     "number": 56,
     "id": "056",
-    "title": "Java translation and required IDE features",
+    "title": "Compilers, interpreters and assemblers",
     "paper": "Paper 1",
     "section": "Section 5",
     "unitId": "section-5",
@@ -554,7 +554,7 @@
   {
     "number": 62,
     "id": "062",
-    "title": "Security, privacy and data integrity",
+    "title": "Security goals: confidentiality, integrity, availability and authenticity",
     "paper": "Paper 1",
     "section": "Section 6",
     "unitId": "section-6",
@@ -563,7 +563,7 @@
   {
     "number": 63,
     "id": "063",
-    "title": "Virus, spyware, anti-virus and anti-spyware",
+    "title": "Malware types and social engineering",
     "paper": "Paper 1",
     "section": "Section 6",
     "unitId": "section-6",
@@ -572,7 +572,7 @@
   {
     "number": 64,
     "id": "064",
-    "title": "Required internet threats and matching risk-reduction methods",
+    "title": "Hacking, phishing, pharming, and denial-of-service attacks",
     "paper": "Paper 1",
     "section": "Section 6",
     "unitId": "section-6",
@@ -581,7 +581,7 @@
   {
     "number": 65,
     "id": "065",
-    "title": "User accounts, passwords and biometric authentication",
+    "title": "Authentication: passwords, biometrics, tokens, and MFA",
     "paper": "Paper 1",
     "section": "Section 6",
     "unitId": "section-6",
@@ -590,7 +590,7 @@
   {
     "number": 66,
     "id": "066",
-    "title": "Access rights and encryption as data-security methods",
+    "title": "Access rights, permissions, and least privilege",
     "paper": "Paper 1",
     "section": "Section 6",
     "unitId": "section-6",
@@ -599,7 +599,7 @@
   {
     "number": 67,
     "id": "067",
-    "title": "Digital signatures and encryption",
+    "title": "Encryption, hashing, and digital certificates",
     "paper": "Paper 1",
     "section": "Section 6",
     "unitId": "section-6",
@@ -608,7 +608,7 @@
   {
     "number": 68,
     "id": "068",
-    "title": "Firewall protection from a stand-alone PC to a network",
+    "title": "Firewalls, proxies, and network monitoring",
     "paper": "Paper 1",
     "section": "Section 6",
     "unitId": "section-6",
@@ -617,7 +617,7 @@
   {
     "number": 69,
     "id": "069",
-    "title": "Complete validation and verification methods",
+    "title": "Data validation and verification",
     "paper": "Paper 1",
     "section": "Section 6",
     "unitId": "section-6",
@@ -644,7 +644,7 @@
   {
     "number": 72,
     "id": "072",
-    "title": "Professional ethics, professional bodies and ethical decisions",
+    "title": "Ethical issues in Computer Science decisions",
     "paper": "Paper 1",
     "section": "Section 7",
     "unitId": "section-7",
@@ -662,7 +662,7 @@
   {
     "number": 74,
     "id": "074",
-    "title": "Copyright legislation, FSF, OSI and licence permissions",
+    "title": "Intellectual property, copyright, patents, and licensing",
     "paper": "Paper 1",
     "section": "Section 7",
     "unitId": "section-7",
@@ -671,7 +671,7 @@
   {
     "number": 75,
     "id": "075",
-    "title": "Shareware and commercial licences",
+    "title": "Open source, proprietary software, and ownership trade-offs",
     "paper": "Paper 1",
     "section": "Section 7",
     "unitId": "section-7",
@@ -680,7 +680,7 @@
   {
     "number": 76,
     "id": "076",
-    "title": "AI applications and impact chains",
+    "title": "Environmental and social impacts of computing",
     "paper": "Paper 1",
     "section": "Section 7",
     "unitId": "section-7",
@@ -689,7 +689,7 @@
   {
     "number": 77,
     "id": "077",
-    "title": "Section 7 required-content checkpoint",
+    "title": "Section 7 review: balanced evaluation answers",
     "paper": "Paper 1",
     "section": "Section 7",
     "unitId": "section-7",
@@ -698,7 +698,7 @@
   {
     "number": 78,
     "id": "078",
-    "title": "File-based limitations and relational solutions",
+    "title": "Data, information, databases and DBMS roles",
     "paper": "Paper 1",
     "section": "Section 8",
     "unitId": "section-8",
@@ -707,7 +707,7 @@
   {
     "number": 79,
     "id": "079",
-    "title": "Relational terminology, keys and relationships",
+    "title": "Flat-file databases vs relational databases",
     "paper": "Paper 1",
     "section": "Section 8",
     "unitId": "section-8",
@@ -716,7 +716,7 @@
   {
     "number": 80,
     "id": "080",
-    "title": "E-R design, normalisation and DBMS features",
+    "title": "Tables, records, fields, data types and constraints",
     "paper": "Paper 1",
     "section": "Section 8",
     "unitId": "section-8",
@@ -725,7 +725,7 @@
   {
     "number": 81,
     "id": "081",
-    "title": "First, second and third normal form",
+    "title": "Primary keys, foreign keys and relationships",
     "paper": "Paper 1",
     "section": "Section 8",
     "unitId": "section-8",
@@ -734,7 +734,7 @@
   {
     "number": 82,
     "id": "082",
-    "title": "DBMS features and practical software tools",
+    "title": "Entity-relationship modelling",
     "paper": "Paper 1",
     "section": "Section 8",
     "unitId": "section-8",
@@ -743,7 +743,7 @@
   {
     "number": 83,
     "id": "083",
-    "title": "DDL, DML and SQL roles",
+    "title": "Normalisation: avoiding duplication and update problems",
     "paper": "Paper 1",
     "section": "Section 8",
     "unitId": "section-8",
@@ -752,7 +752,7 @@
   {
     "number": 84,
     "id": "084",
-    "title": "Read and write SQL statements by their semantics",
+    "title": "SQL SELECT, FROM, WHERE",
     "paper": "Paper 1",
     "section": "Section 8",
     "unitId": "section-8",
@@ -761,7 +761,7 @@
   {
     "number": 85,
     "id": "085",
-    "title": "DDL and two-table data queries",
+    "title": "SQL ORDER BY, aggregate functions and GROUP BY",
     "paper": "Paper 1",
     "section": "Section 8",
     "unitId": "section-8",
@@ -770,7 +770,7 @@
   {
     "number": 86,
     "id": "086",
-    "title": "Two-table INNER JOIN queries",
+    "title": "SQL joins using related tables",
     "paper": "Paper 1",
     "section": "Section 8",
     "unitId": "section-8",
@@ -779,7 +779,7 @@
   {
     "number": 87,
     "id": "087",
-    "title": "INSERT, DELETE and UPDATE",
+    "title": "SQL INSERT, UPDATE and DELETE",
     "paper": "Paper 1",
     "section": "Section 8",
     "unitId": "section-8",
@@ -797,7 +797,7 @@
   {
     "number": 89,
     "id": "089",
-    "title": "Section 8 required-content checkpoint",
+    "title": "Section 8 review: designing and querying relational data",
     "paper": "Paper 1",
     "section": "Section 8",
     "unitId": "section-8",
@@ -878,7 +878,7 @@
   {
     "number": 98,
     "id": "098",
-    "title": "Abstraction and decomposition into program modules",
+    "title": "Algorithmic thinking: inputs, outputs, and constraints",
     "paper": "Paper 2",
     "section": "Section 9",
     "unitId": "section-9",
@@ -887,7 +887,7 @@
   {
     "number": 99,
     "id": "099",
-    "title": "Algorithms, IPO solutions and identifier tables",
+    "title": "Decomposition and abstraction",
     "paper": "Paper 2",
     "section": "Section 9",
     "unitId": "section-9",
@@ -896,7 +896,7 @@
   {
     "number": 100,
     "id": "100",
-    "title": "Sequence, selection and iteration",
+    "title": "Sequence, selection, and iteration",
     "paper": "Paper 2",
     "section": "Section 9",
     "unitId": "section-9",
@@ -905,7 +905,7 @@
   {
     "number": 101,
     "id": "101",
-    "title": "Structured English, flowcharts and pseudocode conversion",
+    "title": "Flowcharts and pseudocode notation",
     "paper": "Paper 2",
     "section": "Section 9",
     "unitId": "section-9",
@@ -914,7 +914,7 @@
   {
     "number": 102,
     "id": "102",
-    "title": "Stepwise refinement from IPO design to modules",
+    "title": "Trace tables and dry runs",
     "paper": "Paper 2",
     "section": "Section 9",
     "unitId": "section-9",
@@ -923,7 +923,7 @@
   {
     "number": 103,
     "id": "103",
-    "title": "Logic statements define parts of an algorithm",
+    "title": "Validation algorithms and defensive input handling",
     "paper": "Paper 2",
     "section": "Section 9",
     "unitId": "section-9",
@@ -1004,7 +1004,7 @@
   {
     "number": 112,
     "id": "112",
-    "title": "Section 9 required-content checkpoint",
+    "title": "Section 9 review: from scenario to pseudocode",
     "paper": "Paper 2",
     "section": "Section 9",
     "unitId": "section-9",
@@ -1013,7 +1013,7 @@
   {
     "number": 113,
     "id": "113",
-    "title": "Select and use the official Cambridge data types",
+    "title": "Data types: integer, real, Boolean, char, string, date and user-defined types",
     "paper": "Paper 2",
     "section": "Section 10",
     "unitId": "section-10",
@@ -1022,7 +1022,7 @@
   {
     "number": 114,
     "id": "114",
-    "title": "Define, read and save record data",
+    "title": "Constants, variables and assignment",
     "paper": "Paper 2",
     "section": "Section 10",
     "unitId": "section-10",
@@ -1031,7 +1031,7 @@
   {
     "number": 115,
     "id": "115",
-    "title": "Array terminology, selection and one-dimensional pseudocode",
+    "title": "One-dimensional arrays",
     "paper": "Paper 2",
     "section": "Section 10",
     "unitId": "section-10",
@@ -1040,7 +1040,7 @@
   {
     "number": 116,
     "id": "116",
-    "title": "Select and write two-dimensional arrays",
+    "title": "Two-dimensional arrays",
     "paper": "Paper 2",
     "section": "Section 10",
     "unitId": "section-10",
@@ -1049,7 +1049,7 @@
   {
     "number": 117,
     "id": "117",
-    "title": "Array model required by search algorithms",
+    "title": "Array algorithms: traversal, update, search and count",
     "paper": "Paper 2",
     "section": "Section 10",
     "unitId": "section-10",
@@ -1058,7 +1058,7 @@
   {
     "number": 118,
     "id": "118",
-    "title": "Write linear-search and bubble-sort algorithms",
+    "title": "Records and composite data",
     "paper": "Paper 2",
     "section": "Section 10",
     "unitId": "section-10",
@@ -1067,7 +1067,7 @@
   {
     "number": 119,
     "id": "119",
-    "title": "Why files are needed and how text-file pseudocode works",
+    "title": "Arrays of records",
     "paper": "Paper 2",
     "section": "Section 10",
     "unitId": "section-10",
@@ -1076,7 +1076,7 @@
   {
     "number": 120,
     "id": "120",
-    "title": "Abstract data types and array-based operations",
+    "title": "Text files: reading, writing and appending",
     "paper": "Paper 2",
     "section": "Section 10",
     "unitId": "section-10",
@@ -1085,7 +1085,7 @@
   {
     "number": 121,
     "id": "121",
-    "title": "Choosing stack, queue or linked list",
+    "title": "CSV-style structured text files",
     "paper": "Paper 2",
     "section": "Section 10",
     "unitId": "section-10",
@@ -1130,7 +1130,7 @@
   {
     "number": 126,
     "id": "126",
-    "title": "Translate descriptions into Cambridge pseudocode",
+    "title": "Programming constructs: sequence, selection and iteration",
     "paper": "Paper 2",
     "section": "Section 11",
     "unitId": "section-11",
@@ -1139,7 +1139,7 @@
   {
     "number": 127,
     "id": "127",
-    "title": "Complete Cambridge pseudocode statements",
+    "title": "IF, CASE and nested selection",
     "paper": "Paper 2",
     "section": "Section 11",
     "unitId": "section-11",
@@ -1148,7 +1148,7 @@
   {
     "number": 128,
     "id": "128",
-    "title": "Use supplied built-in and library routines",
+    "title": "Count-controlled loops",
     "paper": "Paper 2",
     "section": "Section 11",
     "unitId": "section-11",
@@ -1157,7 +1157,7 @@
   {
     "number": 129,
     "id": "129",
-    "title": "Selection and loop structures",
+    "title": "Condition-controlled loops",
     "paper": "Paper 2",
     "section": "Section 11",
     "unitId": "section-11",
@@ -1166,7 +1166,7 @@
   {
     "number": 130,
     "id": "130",
-    "title": "Procedures, functions and their interfaces",
+    "title": "Procedures and functions",
     "paper": "Paper 2",
     "section": "Section 11",
     "unitId": "section-11",
@@ -1175,7 +1175,7 @@
   {
     "number": 131,
     "id": "131",
-    "title": "Pre-condition, post-condition and loop choice",
+    "title": "Parameters: by value and by reference",
     "paper": "Paper 2",
     "section": "Section 11",
     "unitId": "section-11",
@@ -1184,7 +1184,7 @@
   {
     "number": 132,
     "id": "132",
-    "title": "Procedures, functions and their interfaces",
+    "title": "Scope, lifetime, and local/global variables",
     "paper": "Paper 2",
     "section": "Section 11",
     "unitId": "section-11",
@@ -1193,7 +1193,7 @@
   {
     "number": 133,
     "id": "133",
-    "title": "Clear and efficient Cambridge pseudocode",
+    "title": "String handling and built-in functions",
     "paper": "Paper 2",
     "section": "Section 11",
     "unitId": "section-11",
@@ -1274,7 +1274,7 @@
   {
     "number": 142,
     "id": "142",
-    "title": "Lifecycle models, purpose and limitations",
+    "title": "Software development lifecycle models",
     "paper": "Paper 2",
     "section": "Section 12",
     "unitId": "section-12",
@@ -1283,7 +1283,7 @@
   {
     "number": 143,
     "id": "143",
-    "title": "Structure charts and the purpose of state-transition diagrams",
+    "title": "Requirements analysis and success criteria",
     "paper": "Paper 2",
     "section": "Section 12",
     "unitId": "section-12",
@@ -1292,7 +1292,7 @@
   {
     "number": 144,
     "id": "144",
-    "title": "Expose, locate and correct program errors",
+    "title": "Design documentation: algorithms, data dictionaries, and interfaces",
     "paper": "Paper 2",
     "section": "Section 12",
     "unitId": "section-12",
@@ -1301,7 +1301,7 @@
   {
     "number": 145,
     "id": "145",
-    "title": "Testing, maintenance and enhancement",
+    "title": "Testing, implementation, maintenance, and evaluation",
     "paper": "Paper 2",
     "section": "Section 12",
     "unitId": "section-12",
@@ -1310,7 +1310,7 @@
   {
     "number": 146,
     "id": "146",
-    "title": "Maintenance and enhancement after delivery",
+    "title": "Section 12 review: software development case study",
     "paper": "Paper 2",
     "section": "Section 12",
     "unitId": "section-12",

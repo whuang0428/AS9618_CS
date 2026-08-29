@@ -100,7 +100,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `build`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-build.jpg`
 
 1. Building output
@@ -119,7 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `model`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-model.jpg`
 
 1. Knowledge explanation
@@ -137,7 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `patterns`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-patterns.jpg`
 
 1. Core patterns
@@ -157,7 +157,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-pseudocode.jpg`
 
 1. MID(Word, Index, 1) returns a one-character STRING, so compare it with both upper-case and lower-case vowel strings.
@@ -169,7 +169,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `scanner`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-scanner.jpg`
 
 1. Interactive string scanner

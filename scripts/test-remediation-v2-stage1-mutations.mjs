@@ -61,7 +61,11 @@ const orderedContract = {
 expect(buildCurriculumSequenceModel(orderedContract, []).problems.length === 0, "ordered first-use fixture must pass");
 const invertedContract = structuredClone(orderedContract);
 invertedContract.requirements[0].teachingLessons = [3];
-expect(buildCurriculumSequenceModel(invertedContract, []).problems.some(({ type }) => type === "OFFICIAL_FIRST_USE_INVERSION"), "official first-use inversion escaped");
+const invertedModel = buildCurriculumSequenceModel(invertedContract, []);
+expect(invertedModel.officialOrderInversions.some(({ prerequisite, dependent }) => prerequisite === "S1.01" && dependent === "S1.02"), "official-order diagnostic inversion escaped");
+expect(!invertedModel.problems.some(({ type }) => type === "OFFICIAL_FIRST_USE_INVERSION"), "official taxonomy order was incorrectly treated as a pedagogical prerequisite");
+invertedContract.requirements[1].prerequisites = ["S1.01"];
+expect(buildCurriculumSequenceModel(invertedContract, []).problems.some(({ type }) => type === "PREREQUISITE_AFTER_DEPENDENT"), "declared prerequisite inversion escaped");
 
 const expectedHashes = new Map([["question:Q1", "a".repeat(64)]]);
 const approvedRow = ["question", "Q1", "lesson-001", "Approved", "IndependentlyReviewed", "audits/evidence.md:12", "a".repeat(64), "reviewer-2", "R1", "syllabus:page44;command-word table", "reviewed"];
@@ -95,4 +99,4 @@ if (failures.length) {
   for (const failure of failures) console.error(`- ${failure}`);
   process.exit(1);
 }
-console.log("Remediation v2 Stage 1 mutation tests passed: approval metadata, one's complement, processor type, bus width, function signature/type and official first-use mutations were rejected.");
+console.log("Remediation v2 Stage 1 mutation tests passed: approval metadata and critical semantics were rejected when corrupted; official-order diagnostics remained non-blocking while declared prerequisite inversions were rejected.");

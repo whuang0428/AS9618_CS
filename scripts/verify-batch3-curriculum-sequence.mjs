@@ -46,8 +46,10 @@ expect(!/\b(?:waterfall|iterative|RAD|rapid application)\b/i.test(questionText("
 includesAll(questionText("L142-Q2"), ["waterfall", "iterative", "RAD", "rapid prototyping", "time-boxing"], "L142-Q2");
 
 const arrayRequirement = requirements.get("S10.03");
-expect(arrayRequirement.teachingLessons[0] === 115, "S10.03 must be formally introduced with arrays before search and sort at L117");
+expect(Math.min(...arrayRequirement.teachingLessons) === 104, "S10.03 array terminology must be introduced no later than the L104 search/sort CORE lesson");
 expect(arrayRequirement.prerequisites.length === 0, "S10.03 has no additional official prerequisite");
+const l104Markdown = fs.readFileSync(path.join(root, "lessons", "104-linear-search-and-binary-search.md"), "utf8");
+includesAll(l104Markdown, ["array", "lower bound", "upper bound", "linear search", "binary search", "bubble sort"], "L104 array/search/sort introduction");
 const l115Markdown = fs.readFileSync(path.join(root, "lessons", "115-one-dimensional-arrays.md"), "utf8");
 const l115Html = fs.readFileSync(path.join(root, "web", "lesson-115", "index.html"), "utf8");
 includesAll(l115Markdown, ["array is a collection", "lower bound", "upper bound", "ARRAY[1:20] OF INTEGER"], "L115 array introduction");

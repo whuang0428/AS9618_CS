@@ -1,77 +1,63 @@
-# Lesson 080: E-R design, normalisation and DBMS features
+# Lesson 080: Tables, records, fields, data types and constraints
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** E-R design, normalisation and DBMS features
+**Focus:** Relational terminology, keys, relationships and indexing
 
 ### Direct explanation
 
-- An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.
-- To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.
-- 1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.
-- Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.
-- A file-based approach can repeat facts in separate files, create inconsistent copies and isolate related data. A Database Management System (DBMS) addresses these file-based limitations by providing data management, including a data dictionary of metadata; data modelling; a logical schema; data integrity; and data security. Security includes backup procedures and access rights assigned to individual users or groups.
-- A developer interface provides tools used to define structures and build database applications, forms or reports. A query processor interprets and checks a query, chooses how to carry it out, accesses the stored data and returns or modifies the specified records while the DBMS applies access and integrity rules.
+- An entity is a real-world thing about which data is stored and is commonly represented by a table. A table contains records (tuples); each record describes one entity occurrence. A field (attribute) is one named property or column. These paired terms are related but should not be collapsed into one definition.
+- A candidate key is a minimal field or field set that uniquely identifies a record. One candidate key is selected as the primary key. A secondary key is a field used as an additional retrieval or ordering route and need not be unique; it is not another name for an unselected candidate key. A foreign key refers to a key in a related table. An index is a lookup structure built on one or more fields: it can speed retrieval but uses storage and must be maintained after changes.
+- Record and tuple are corresponding relational terms for one row; field and attribute are corresponding terms for one column.
+- A foreign key is an attribute in one table that refers to a primary/candidate key in another table. Referential integrity requires every non-null foreign-key value to match an existing referenced key.
+- A one-to-one relationship links one record on each side. A one-to-many relationship links one parent record to many child records. A many-to-many relationship is normally implemented through a linking entity/table that creates two one-to-many relationships. Referential integrity prevents orphan records: insert, update and delete operations may be rejected or handled by a defined cascade/null policy, but must not silently leave an invalid reference.
 
 ### Worked example
 
-**Model students joining clubs / Order line data / Run a restricted query:** Draw Student(StudentID, Name) and Club(ClubID, ClubName). Because each student may join many clubs and each club may contain many students, add Membership(StudentID, ClubID, JoinDate) as a linking entity. The completed design has Student 1:M Membership and Club 1:M Membership. ORDER_LINE(OrderID, ProductID, ProductName, Quantity) has composite key OrderID+ProductID. ProductName depends only on ProductID, so split PRODUCT(ProductID, ProductName) and ORDER_LINE(OrderID, ProductID, Quantity) to reach 2NF for that dependency. A developer enters a SELECT statement through the developer interface. The query processor checks the statement and the user's access rights, works out an execution plan, retrieves the permitted rows and returns the result. The data dictionary supplies definitions such as field types, keys and constraints; it does not hold the ordinary user records.
+**Keys for a student table / Delete a department:** In Student(StudentID, Email, TutorGroup), StudentID and Email may be candidate keys if both are unique and minimal; StudentID is selected as primary. TutorGroup can be a secondary key for retrieving all students in one group even though many records share the value. An index on TutorGroup can provide a faster lookup route. If Employee.DepartmentID refers to Department.DepartmentID, deleting a department with employees would break referential integrity unless deletion is rejected or an authorised cascading policy handles dependent rows.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. What four kinds of information should an E-R diagram communicate here?
-   **Answer:** Entities, relevant attributes/keys, relationships and cardinality.
-2. What relationship exists between one Customer and many Orders?
-   **Answer:** One-to-many from Customer to Order.
-3. Why add Membership between Student and Club?
-   **Answer:** It resolves the many-to-many relationship into two one-to-many relationships.
-4. Why is matching field spelling not enough to draw a relationship?
-   **Answer:** The scenario/business rule must state or imply that the records are associated.
-5. What does 1NF remove?
-   **Answer:** Repeating groups and non-atomic/multiple values in one field.
-6. What dependency violates 2NF?
-   **Answer:** A non-key attribute depending on only part of a composite key.
-7. What dependency violates 3NF?
-   **Answer:** A non-key attribute depending on another non-key attribute.
-8. What five broad DBMS feature areas are required?
-   **Answer:** Data management including a data dictionary, data modelling, logical schema, data integrity, and data security including backup and access rights.
-9. What does a data dictionary store?
-   **Answer:** Metadata such as table, field, type, key and constraint definitions.
-10. What is the purpose of a developer interface?
-   **Answer:** To provide tools for defining structures or building database applications, forms and reports.
-11. What is the role of the query processor?
-   **Answer:** To interpret/check, plan and carry out database queries or data-maintenance statements.
-12. Which DBMS feature limits users or groups to permitted operations?
-   **Answer:** Access rights within data security.
+1. Compare a record/tuple from a field/attribute.
+   **Answer:** A record/tuple is one complete row for an entity occurrence; a field/attribute is one named property or column.
+2. What makes a candidate key minimal?
+   **Answer:** No field can be removed while retaining uniqueness.
+3. Must a secondary key uniquely identify one record?
+   **Answer:** No. It may retrieve a set of records sharing the same value.
+4. Give one benefit and one cost of an index.
+   **Answer:** It can speed lookup/ordering, but uses storage and must be updated when data changes.
+5. Where is the referenced key stored?
+   **Answer:** In the parent/referenced table.
+6. What is an orphan record?
+   **Answer:** A child record whose foreign key has no matching parent key.
+7. How is a many-to-many relationship represented relationally?
+   **Answer:** Use a linking table/entity containing foreign keys to both original entities.
+8. Identify one valid delete response.
+   **Answer:** Reject the delete, cascade it, or set nullable foreign keys to null according to defined rules.
 
 ### Exam-style question and MS
 
-**Question (16 marks):** A clinic stores Patients, Doctors and Appointments. Write an E-R design in words or a labelled diagram and state the two relationship cardinalities. Explain why CUSTOMER(CustomerID, Postcode, Town) may not be in 3NF when each postcode determines one town, and give a 3NF design. A school is introducing a relational DBMS. Explain four DBMS features and the distinct purposes of the developer interface and query processor.
+**Question (11 marks):** For Student(StudentID, Email, TutorGroup), explain the roles of a candidate key, primary key, secondary key and index. Explain how a one-to-many relationship between Department and Employee is represented and protected.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| identifies Patient, Doctor and Appointment as entities | Do not award a collection of unconnected entity boxes as a complete E-R design. Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship. Do not treat the database, data dictionary, developer interface and query processor as interchangeable names. | 1 |
-| gives a suitable identifier/key for each entity |  | 1 |
-| Patient has a one-to-many relationship with Appointment |  | 1 |
-| Doctor has a one-to-many relationship with Appointment |  | 1 |
-| Appointment carries the linking foreign keys / resolves the patient-doctor many-to-many history |  | 1 |
-| attributes and relationship directions are consistent with the scenario |  | 1 |
-| CustomerID determines Postcode and Postcode determines Town |  | 1 |
-| Town is transitively dependent on CustomerID / depends on non-key Postcode |  | 1 |
-| CUSTOMER(CustomerID, Postcode) |  | 1 |
-| POSTCODE(Postcode, Town), with Postcode linked as foreign key |  | 1 |
-| data management/data dictionary stores metadata about structure |  | 1 |
-| data modelling or logical schema represents the database design |  | 1 |
-| integrity rules maintain valid and consistent data |  | 1 |
-| security uses access rights and backup procedures |  | 1 |
-| developer interface supports defining structures or building database applications/forms/reports |  | 1 |
-| query processor interprets/checks and carries out queries or maintenance statements |  | 1 |
+| candidate key is a minimal unique identifier, such as StudentID or unique Email | Do not describe a secondary key as an alternate candidate key or require it to be unique. Do not accept that foreign-key values must be unique in the child table. | 1 |
+| primary key is the candidate selected to identify each record |  | 1 |
+| secondary key is an additional retrieval field such as non-unique TutorGroup |  | 1 |
+| secondary key need not be unique |  | 1 |
+| index maps field values to record locations to speed access |  | 1 |
+| index requires storage and update maintenance |  | 1 |
+| one Department record may relate to many Employee records |  | 1 |
+| DepartmentID is the primary/candidate key in Department |  | 1 |
+| DepartmentID is a foreign key in Employee and may repeat |  | 1 |
+| each non-null foreign-key value must match an existing Department key |  | 1 |
+| referential integrity prevents orphan Employee records |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 
@@ -189,23 +175,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 7. Lookup check Value must be from an allowed list. Example: Grade is A, B, C, D, E or U.
 8. Exam sentence:
 9. A constraint improves data integrity by preventing values that do not meet a rule, such as rejecting a mark outside 0 to 100.
-
-### What does a DBMS provide?
-
-- **Explains:** `dbms`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-dbms.jpg`
-
-1. A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data.
-2. Data management stores, organises, retrieves and updates data; maintains metadata in a data dictionary.
-3. Data modelling helps define entities, tables, fields and the logical schema of the database.
-4. Data integrity enforces rules so values are valid and relationships remain consistent.
-5. Data security uses access rights for individuals or groups; supports backup and recovery procedures.
-6. Developer interface provides tools for creating structures, forms, reports or database applications.
-7. Query processor interprets and carries out queries so users can retrieve or change data.
-8. Exam sentence:
-9. The DBMS manages the database by controlling data definition, access, integrity, security and queries; the database is the organised data itself.
 
 ### Designing fields properly
 

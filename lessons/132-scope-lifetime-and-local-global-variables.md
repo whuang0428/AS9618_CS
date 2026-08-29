@@ -1,4 +1,4 @@
-# Lesson 132: Procedures, functions and their interfaces
+# Lesson 132: Scope, lifetime, and local/global variables
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -80,7 +80,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-compare.jpg`
 
 1. Local variable
@@ -100,7 +100,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `global`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-global.jpg`
 
 1. Global variables
@@ -117,7 +117,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-java.jpg`
 
 1. Java support only
@@ -136,7 +136,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lifetime`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-lifetime.jpg`
 
 1. Lifetime
@@ -150,7 +150,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `local`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-local.jpg`
 
 1. Local variables
@@ -168,7 +168,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `scope`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-scope.jpg`
 
 1. Inside scope
@@ -185,7 +185,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `shadowing`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-shadowing.jpg`
 
 1. Declare a global Score and set it to 50.

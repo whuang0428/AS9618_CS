@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 019 | Cloud, wired and wireless networking</title>
+    <title>AS9618 Lesson 019 | Protocols and layered communication</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Cloud, wired and wireless networking</h1>
+        <h1>Protocols and layered communication</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -42,7 +42,7 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
         <!-- remediation-v2-optional:start -->
@@ -56,69 +56,49 @@
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Cloud, wired and wireless networking</h2>
+            <h2>Ethernet collisions and CSMA/CD</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Cloud computing provides storage, processing or software as a service using remote shared infrastructure reached through a network. A public cloud is offered over shared provider infrastructure; a private cloud is restricted to one organisation.</p>
-            <p>A public cloud may scale quickly and reduce local hardware management: these are possible benefits. A private cloud is dedicated to one organisation and can give greater control over access and configuration. Each benefit or drawback must link availability, control, cost or security to the stated scenario.</p>
-            <p>A wired network carries signals through a physical cable. It can provide stable, predictable links and avoids radio interference, but installation restricts movement and may require disruptive cabling. A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security. The implications must be tied to a given use, not reduced to 'wired is faster'.</p>
-            <p>Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference. Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.</p>
-            <p>Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.</p>
+            <p>CSMA/CD means Carrier Sense Multiple Access with Collision Detection. A station listens to the shared medium; if idle it transmits, while continuing to detect a collision.</p>
+            <p>After a collision, stations stop transmitting, send/recognise a jam signal, wait for different random backoff periods and retry. The random delay reduces the chance of another simultaneous attempt.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Choose a cloud model / Connect a school campus and a remote weather station</h3>
-            <p>A school storing non-sensitive public resources may use a public cloud for scalable access. A hospital may choose a private cloud for tighter organisational control of patient-data access. Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling between two buildings is impractical, and satellite for the remote station without local cable infrastructure. Each choice follows distance, mobility, interference, bandwidth, latency and cost.</p>
+            <h3>Worked example: Two stations sense an idle cable</h3>
+            <p>Both may begin before either signal reaches the other. They detect the collision, stop, wait different random periods and the station whose timer expires first retries.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Cloud, wired and wireless networking: apply and assess</h2>
+            <h2>Ethernet collisions and CSMA/CD: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Compare public from private cloud.</p>
-              <details><summary>Show answer</summary><p>Public cloud uses shared provider infrastructure; private cloud is dedicated or restricted to one organisation.</p></details>
+              <p><strong>1.</strong> What is sensed before Ethernet transmission?</p>
+              <details><summary>Show answer</summary><p>Whether the shared carrier/medium is idle.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> State one cloud-computing service.</p>
-              <details><summary>Show answer</summary><p>Remote storage, processing or hosted software.</p></details>
+              <p><strong>2.</strong> What happens immediately after a collision is detected?</p>
+              <details><summary>Show answer</summary><p>Transmission stops and a retry is scheduled after a random backoff.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Compare wired and wireless networks for fixed desktops and mobile tablets.</p>
-              <details><summary>Show answer</summary><p>Wired provides a stable physical link for fixed devices; wireless radio supports mobility but may suffer interference, obstacles and shared capacity.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Compare copper cable with fibre-optic cable.</p>
-              <details><summary>Show answer</summary><p>Copper uses electrical signals and may be cheaper; fibre uses light, supports higher bandwidth/longer distance and resists electromagnetic interference.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Compare WiFi radio waves, terrestrial microwave and satellite links.</p>
-              <details><summary>Show answer</summary><p>WiFi provides local wireless access; terrestrial microwave is directional and line-of-sight; satellite provides wide/remote coverage but commonly has greater latency.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> Suggest a medium for a remote location with no cable infrastructure.</p>
-              <details><summary>Show answer</summary><p>Satellite if wide remote coverage is required; justify the latency/cost/weather drawback.</p></details>
+              <p><strong>3.</strong> Why must the delay be random?</p>
+              <details><summary>Show answer</summary><p>Different delays reduce repeated simultaneous retransmission.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>9 marks</span></div>
-            <p>Compare public and private cloud for a medical organisation. Suggest transmission media for fixed classroom PCs, mobile tablets, an inter-building backbone and a remote field station.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Describe how CSMA/CD handles two devices attempting to transmit on a shared Ethernet medium.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>public cloud characteristic</td><td>Do not equate cloud computing with the internet itself. Do not accept unqualified 'wireless is less secure' or 'fibre is faster'; require a mechanism or scenario consequence.</td><td>1</td></tr>
-                  <tr><td>private cloud characteristic</td><td></td><td>1</td></tr>
-                  <tr><td>scenario-linked comparison</td><td></td><td>1</td></tr>
-                  <tr><td>justified choice</td><td></td><td>1</td></tr>
-                  <tr><td>copper cable for short fixed links with a valid cost/stability reason</td><td></td><td>1</td></tr>
-                  <tr><td>WiFi/radio waves for mobile devices with an interference/security implication</td><td></td><td>1</td></tr>
-                  <tr><td>fibre-optic cable for the high-bandwidth/longer inter-building link</td><td></td><td>1</td></tr>
-                  <tr><td>satellite for remote coverage without cable infrastructure</td><td></td><td>1</td></tr>
-                  <tr><td>at least one limitation is correctly linked to the chosen medium</td><td></td><td>1</td></tr>
+                  <tr><td>each device listens/senses the carrier before transmitting</td><td>Do not accept collision avoidance: CSMA/CD detects and responds to a collision after transmission has begun.</td><td>1</td></tr>
+                  <tr><td>transmits when the medium is idle</td><td></td><td>1</td></tr>
+                  <tr><td>detects a collision and stops transmission</td><td></td><td>1</td></tr>
+                  <tr><td>waits a random/backoff time before retrying</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

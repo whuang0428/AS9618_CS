@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 012 | Compression methods for text, bitmap, vector and sound files</title>
+    <title>AS9618 Lesson 012 | Compression: lossless vs lossy</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Compression methods for text, bitmap, vector and sound files</h1>
+        <h1>Compression: lossless vs lossy</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -43,24 +43,27 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Compression methods for text, bitmap, vector and sound files</h2>
+            <h2>Vector graphics and compression methods</h2>
           </div>
           <div class="stage2-explanation">
+            <p>Vector encoding stores a graphic as a drawing list of drawing objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.</p>
+            <p>Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.</p>
+            <p>For a given application, justify bitmap or vector storage by connecting the image content and required editing or scaling to the chosen representation.</p>
             <p>Compression represents a file using fewer bits. Lossless compression must reconstruct every original bit, so it is required where any change would alter meaning, such as program source or exact text. Lossy compression permanently discards selected detail and is suitable only when the resulting quality remains acceptable for the purpose.</p>
             <p>Text can be compressed losslessly by run-length encoding repeated characters or by replacing repeated words/strings with shorter dictionary references. Bitmap data can use run-length encoding when adjacent pixels repeat; lossy bitmap compression may reduce colour precision or discard fine spatial detail. RLE is effective only when the runs save more space than their symbol-count representation.</p>
             <p>A vector file stores drawing objects rather than pixels. It can be compressed losslessly by storing repeated shapes or properties once and referring to them, and by removing redundant object descriptions. Sound can use lossless pattern coding when exact samples are required, or lossy perceptual coding that removes less-audible sound information; reducing sample rate or sampling resolution also reduces data but changes the recording.</p>
             <p>Method choice depends on file type, repetition, required fidelity and use. A valid justification must connect the chosen method to what may or may not be discarded; naming 'lossy' or 'lossless' alone is not enough.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Choose methods for four files</h3>
-            <p>Compress repeated spaces in a text log with RLE or a dictionary without changing the characters; compress a flat-colour bitmap logo with pixel-value RLE; store one repeated vector shape once and reference it; use lossless sound compression for an evidential recording, but perceptual lossy coding may suit streamed music when smaller size is worth a controlled quality loss.</p>
+            <h3>Worked example: Store a red circle / Choose methods for four files</h3>
+            <p>A drawing-list entry could record object = circle, centre = (80, 60), radius = 20, fill = red and outline = black. Enlarging it changes the geometry before redrawing, not a grid of stored pixels. Compress repeated spaces in a text log with RLE or a dictionary without changing the characters; compress a flat-colour bitmap logo with pixel-value RLE; store one repeated vector shape once and reference it; use lossless sound compression for an evidential recording, but perceptual lossy coding may suit streamed music when smaller size is worth a controlled quality loss.</p>
           </article>
         </section>
 
@@ -80,36 +83,52 @@
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Compression methods for text, bitmap, vector and sound files: apply and assess</h2>
+            <h2>Vector graphics and compression methods: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Why must program source code use lossless compression?</p>
+              <p><strong>1.</strong> Identify two properties stored for a vector object.</p>
+              <details><summary>Show answer</summary><p>Any two of coordinates, dimensions, fill, line colour or line thickness.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Suggest vector or bitmap for a company logo that must appear on a pen and a billboard.</p>
+              <details><summary>Show answer</summary><p>Vector, because geometric objects can be scaled without pixelation.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is bitmap normally better for a photograph?</p>
+              <details><summary>Show answer</summary><p>A photograph contains complex per-pixel colour and texture that is inefficient to describe as drawing objects.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why must program source code use lossless compression?</p>
               <details><summary>Show answer</summary><p>Every character must be reconstructed exactly; a discarded or changed character can alter syntax or behaviour.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> When is RLE effective for a bitmap?</p>
+              <p><strong>5.</strong> When is RLE effective for a bitmap?</p>
               <details><summary>Show answer</summary><p>When many adjacent pixels have the same value, so symbol-count pairs use fewer bits than storing each pixel separately.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> How can repeated objects in a vector file be compressed?</p>
+              <p><strong>6.</strong> How can repeated objects in a vector file be compressed?</p>
               <details><summary>Show answer</summary><p>Store the repeated shape/properties once and use shorter references for each occurrence.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Give one lossy method for sound and its trade-off.</p>
+              <p><strong>7.</strong> Give one lossy method for sound and its trade-off.</p>
               <details><summary>Show answer</summary><p>Remove less-audible frequency/detail information, or reduce sample rate/resolution; the file is smaller but the discarded detail cannot be recovered.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>For each of text, bitmap, vector and sound data, describe one suitable compression method and state whether it preserves the original data exactly.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>10 marks</span></div>
+            <p>A designer creates a simple icon from circles and rectangles. Explain how it is stored as a vector graphic and give one advantage over a bitmap when resized. For each of text, bitmap, vector and sound data, describe one suitable compression method and state whether it preserves the original data exactly.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>text: lossless RLE or dictionary/token substitution with exact reconstruction</td><td>Do not award generic 'make the file smaller' statements without a method tied to the named media type.</td><td>1</td></tr>
+                  <tr><td>stored as a drawing list / list of objects</td><td>Do not accept 'vector has better quality' unless scalability or object-based storage is explained. Do not award generic 'make the file smaller' statements without a method tied to the named media type.</td><td>1</td></tr>
+                  <tr><td>stores object properties such as coordinates/dimensions/colour</td><td></td><td>1</td></tr>
+                  <tr><td>software redraws objects from the descriptions</td><td></td><td>1</td></tr>
+                  <tr><td>can be resized without pixelation / loss of shape quality</td><td></td><td>1</td></tr>
+                  <tr><td>text: lossless RLE or dictionary/token substitution with exact reconstruction</td><td></td><td>1</td></tr>
                   <tr><td>bitmap: RLE for repeated adjacent pixel values, or a valid lossy image method identified as non-exact</td><td></td><td>1</td></tr>
                   <tr><td>vector: stores repeated objects/properties once and uses references / removes redundant descriptions, losslessly</td><td></td><td>1</td></tr>
                   <tr><td>sound: lossless pattern coding for exact samples or perceptual lossy coding that removes less-audible detail</td><td></td><td>1</td></tr>

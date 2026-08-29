@@ -80,7 +80,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cleaner`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-110-cleaner.jpg`
 
 1. Interactive Java cleaner
@@ -91,7 +91,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `conversion`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-110-conversion.jpg`
 
 1. Preserve the algorithm's meaning before converting notation or syntax.
@@ -103,7 +103,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-110-java.jpg`
 
 1. Java braces, semicolons and increment operators are support syntax, not Cambridge pseudocode.
@@ -115,7 +115,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `notation`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-110-notation.jpg`
 
 1. Core notation
@@ -135,7 +135,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `readability`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-110-readability.jpg`
 
 1. Readability
@@ -155,7 +155,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `structure`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-110-structure.jpg`
 
 1. Block structure

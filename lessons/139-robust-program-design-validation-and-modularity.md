@@ -1,5 +1,44 @@
 # Lesson 139: Robust program design: validation and modularity
 
+<!-- remediation-v2-stage3-scope:start -->
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
+<!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Clear and efficient Cambridge pseudocode
+
+### Direct explanation
+
+- Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path. Efficient pseudocode avoids unnecessary repeated work while preserving correctness.
+- An improvement must be justified from the algorithm, such as combining repeated traversals or stopping a search when no later work is required. Fewer written lines alone do not prove efficiency.
+
+### Worked example
+
+**Combine two traversals:** One traversal of Marks can update both Total and PassCount. The Cambridge pseudocode remains clear because initialisation, loop bounds, selection and outputs are explicit.
+
+<!-- stage2-practice:start -->
+### Targeted practice and answers
+
+1. Does shorter code always mean more efficient code?
+   **Answer:** No; the amount of work and correctness matter.
+2. Identify one clarity feature.
+   **Answer:** Meaningful identifiers, indentation or complete constructs.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Write two full traversals as one clear and efficient Cambridge pseudocode traversal and justify the change.
+
+| Answer | Guidance | Marks |
+|---|---|---:|
+| clear Cambridge pseudocode | Do not credit an efficiency claim based only on line count. | 1 |
+| one correct traversal |  | 1 |
+| avoids repeated work |  | 1 |
+| valid efficiency justification |  | 1 |
+<!-- stage2-practice:end -->
+<!-- stage2-completion:end -->
+
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
 **Syllabus reference:** Syllabus Section 11
@@ -80,7 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `checks`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-checks.jpg`
 
 1. Validation check types
@@ -100,7 +139,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `integration`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-integration.jpg`
 
 1. IsValidMark returns TRUE only for marks from 0 to 100 inclusive.
@@ -108,11 +147,28 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Close the reusable function with ENDFUNCTION.
 4. Call the function instead of repeating the validation condition.
 
+### Java methods can model modularity, but Cambridge pseudocode remains the exam format
+
+- **Explains:** `java`
+- **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-java.jpg`
+
+1. Java support only
+2. Cambridge-style pseudocode
+3. FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
+4. RETURN Mark >= 0 AND Mark <= 100
+5. ENDFUNCTION
+6. Java support example only
+7. static boolean isValidMark(int mark) {
+8. return mark >= 0 && mark <= 100;
+9. Use Java to practise running code, but use Cambridge-style pseudocode when the exam asks for algorithm design.
+
 ### Modular design splits a solution into smaller named parts
 
 - **Explains:** `modularity`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-modularity.jpg`
 
 1. Modularity
@@ -127,7 +183,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `module-tool`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-module-tool.jpg`
 
 1. Module chooser
@@ -137,7 +193,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `parameters`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-parameters.jpg`
 
 1. GetValidMark inputs and validates a mark, then returns a valid INTEGER.
@@ -149,7 +205,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `robust`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-robust.jpg`
 
 1. Robust design
@@ -164,7 +220,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validation`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-validation.jpg`
 
 1. Place INPUT Mark inside REPEAT so every retry reads a new value.
@@ -176,7 +232,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validator`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-validator.jpg`
 
 1. Interactive validator

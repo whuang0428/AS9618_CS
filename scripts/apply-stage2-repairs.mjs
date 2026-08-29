@@ -15,31 +15,38 @@ const markdownEnd = "<!-- stage2-completion:end -->";
 // the exact first-teaching section.  Keep them here, beside the generator, so a
 // regeneration cannot silently recreate the omissions.
 const firstTeachingSupplements = new Map([
-  [2, [
+  ["S1.02", [
     "Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.",
   ]],
-  [4, [
+  ["S1.04", [
     "Binary subtraction applies to each positive or negative binary integer as well as binary addition; use the stated fixed width and signed representation when interpreting the result.",
   ]],
-  [29, [
+  ["S3.03", [
     "Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.",
   ]],
-  [63, [
+  ["S6.03", [
     "Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.",
   ]],
-  [69, [
+  ["S6.07", [
     "Data validation and data verification help protect data integrity by detecting or preventing many input, copying and transfer errors before inaccurate or corrupted data are accepted. They reduce these risks but do not prove that the original source is true or replace access control and backup.",
   ]],
-  [74, [
+  ["S7.05", [
     "The required licence categories include FSF and OSI open-source licences, shareware and commercial software. A justified licence choice links its permissions, restrictions and cost to the stated situation.",
   ]],
-  [117, [
+  ["S10.06", [
     "Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.",
   ]],
-  [120, [
+  ["S10.10", [
     "Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.",
   ]],
+  ["S12.04", [
+    "Program errors can be exposed by suitable test data and expected results, located with trace output or breakpoints, and corrected before the same tests are repeated to confirm the fix.",
+  ]],
 ]);
+
+const supplementsFor = (repair) => [...firstTeachingSupplements.entries()]
+  .filter(([requirementId]) => repair.rows.includes(requirementId))
+  .flatMap(([, supplements]) => supplements);
 
 function escapeHtml(value) {
   return value
@@ -50,7 +57,7 @@ function escapeHtml(value) {
 }
 
 function htmlFor(repair) {
-  const explanation = [...repair.explanation, ...(firstTeachingSupplements.get(repair.lesson) ?? [])];
+  const explanation = [...repair.explanation, ...supplementsFor(repair)];
   const paragraphs = explanation.map((item) => `            <p>${escapeHtml(item)}</p>`).join("\n");
   const practice = repair.practice.map((item, index) => `
             <article class="stage2-question">
@@ -101,7 +108,7 @@ ${marks}
 }
 
 function markdownFor(repair) {
-  const explanation = [...repair.explanation, ...(firstTeachingSupplements.get(repair.lesson) ?? [])]
+  const explanation = [...repair.explanation, ...supplementsFor(repair)]
     .map((item) => `- ${item}`).join("\n");
   const practice = repair.practice.map((item, index) => `${index + 1}. ${normaliseQuestionPrompt(item.q)}\n   **Answer:** ${item.a}`).join("\n");
   const marks = repair.marks.map((item, index) => `| ${item[1].replaceAll("|", "\\|")} | ${index === 0 ? repair.strict.replaceAll("|", "\\|") : ""} | 1 |`).join("\n");

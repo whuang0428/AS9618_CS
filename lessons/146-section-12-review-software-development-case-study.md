@@ -1,4 +1,4 @@
-# Lesson 146: Maintenance and enhancement after delivery
+# Lesson 146: Section 12 review: software development case study
 
 <!-- remediation-v2-stage3-scope:start -->
 > **Lesson sequence scope:** This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.

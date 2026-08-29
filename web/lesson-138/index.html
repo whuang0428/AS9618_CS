@@ -44,12 +44,121 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Debugging, error correction and program enhancement</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A syntax error breaks the language grammar and is normally exposed by a translator or an IDE's dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.</p>
+            <p>After an error is exposed, locate the responsible statement and identify the error type before changing it. Correct the cause, not only the observed output, then rerun the failing test and relevant regression tests. Avoid faults by using clear identifiers, modular design, validation, desk checking, peer walkthroughs and a planned set of normal, abnormal and extreme/boundary tests.</p>
+            <p>No single method proves that a program has no remaining faults. Translation can expose syntax faults but not every logic fault; testing can reveal failures for selected cases but cannot demonstrate correctness for every possible input.</p>
+            <p>A runtime error (run-time error) occurs during execution; identify its cause, use runtime diagnostics to locate it and correct the responsible code.</p>
+            <p>Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions. Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.</p>
+            <p>Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.</p>
+            <p>Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.</p>
+            <p>Program errors can be exposed by suitable test data and expected results, located with trace output or breakpoints, and corrected before the same tests are repeated to confirm the fix.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Correct three different faults / Add a Merit count without breaking PassCount</h3>
+            <p>A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection. Mark &gt; 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark &gt;= 50. Total / Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division. The existing program counts marks at least 50 in PassCount. Analysis shows one traversal already reads every mark, so declare and initialise MeritCount, add IF Marks[Index] &gt;= 70 THEN MeritCount &lt;- MeritCount + 1 ENDIF inside the same loop, and output both counters after the loop. Test 49, 50, 69 and 70 to cover unchanged pass behaviour and the new merit boundary.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start logic -->
+        <section class="panel explanation-panel" id="explanation-logic" data-explains="logic" data-explanation-kind="mechanism" aria-labelledby="explanation-logic-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="logic">
+          <h2 class="explanation-sr-only" id="explanation-logic-title">Logic errors make the program do the wrong thing</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-logic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Logic errors make the program do the wrong thing with a structured visual model." />
+            <figcaption class="explanation-sr-only">Logic errors make the program do the wrong thing: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.</li><li><strong>Lesson fact:</strong> Examples Using &lt; instead of &lt;= , wrong formula, wrong loop condition or off-by-one error.</li><li><strong>Lesson fact:</strong> Detection Usually found by testing, tracing or comparing actual output with expected output.</li><li><strong>Lesson fact:</strong> Common error A translator may not detect it because the instructions are legal.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end logic -->
+
+        <!-- stage10-explanation:start bug -->
+        <section class="panel explanation-panel" id="explanation-bug" data-explains="bug" data-explanation-kind="mechanism" aria-labelledby="explanation-bug-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bug">
+          <h2 class="explanation-sr-only" id="explanation-bug-title">Analyse and amend an existing program</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-bug.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Analyse and amend an existing program with a structured visual model." />
+            <figcaption class="explanation-sr-only">Analyse and amend an existing program: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Analyse the existing program's purpose, inputs, outputs, control flow and behaviour that must remain unchanged before editing it.</li><li><strong>Lesson fact:</strong> Amend declarations, initialisation, processing and output coherently to add the requested functionality rather than rewriting unrelated code.</li><li><strong>Lesson fact:</strong> Test the new path and rerun regression tests for the existing path; adding functionality is an enhancement, not merely correcting a fault.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end bug -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Debugging, error correction and program enhancement: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which method can expose a syntactically valid wrong boundary?</p>
+              <details><summary>Show answer</summary><p>A trace, dry run, walkthrough or selected boundary test can expose the wrong result.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Why is a translator insufficient for all logic errors?</p>
+              <details><summary>Show answer</summary><p>Logic errors can obey the language grammar, so translation may succeed even though the result is wrong.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What must happen after a correction?</p>
+              <details><summary>Show answer</summary><p>Rerun the failing test and relevant regression tests to check the correction and existing behaviour.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> What should be recorded before changing existing code?</p>
+              <details><summary>Show answer</summary><p>Its purpose, inputs, outputs, relevant control/data flow, assumptions and behaviour that must remain unchanged.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Why rerun old tests after adding a feature?</p>
+              <details><summary>Show answer</summary><p>Regression tests check that the amendment has not broken existing behaviour.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> How is an enhancement different from merely correcting a fault?</p>
+              <details><summary>Show answer</summary><p>An enhancement adds or improves required functionality; a correction restores behaviour that was already required.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>12 marks</span></div>
+            <p>For each fault, state its type, one way to expose or locate it, and the correction: a missing ENDIF; IF Mark &gt; 50 when 50 should pass; Average &lt;- Total / Count when Count can be zero. An existing program counts PassCount for Marks[1:30] where each mark is at least 50. Analyse where a new MeritCount for marks at least 70 should be added, write the amended declarations, initialisation, loop update and output, and name four boundary-focused test values.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>missing ENDIF identified as syntax error and translator/dynamic syntax check used</td><td>Do not accept changing the expected result to hide a program fault, or claim that successful translation proves the algorithm correct. Do not accept a rewrite that removes the existing pass count, changes its boundary, or tests only the new feature.</td><td>1</td></tr>
+                  <tr><td>adds the required ENDIF</td><td></td><td>1</td></tr>
+                  <tr><td>Mark &gt; 50 identified as logic error and boundary trace/test at 50 used</td><td></td><td>1</td></tr>
+                  <tr><td>changes the condition to Mark &gt;= 50 or equivalent</td><td></td><td>1</td></tr>
+                  <tr><td>division by zero identified as run-time error/risk and execution/test diagnostics used</td><td></td><td>1</td></tr>
+                  <tr><td>guards the division by checking Count or handles the zero case</td><td></td><td>1</td></tr>
+                  <tr><td>analysis identifies the existing traversal and output that must remain</td><td></td><td>1</td></tr>
+                  <tr><td>declares and initialises MeritCount without removing PassCount</td><td></td><td>1</td></tr>
+                  <tr><td>increments MeritCount inside the existing traversal when mark is at least 70</td><td></td><td>1</td></tr>
+                  <tr><td>preserves the existing pass condition at 50 and outputs both results after the loop</td><td></td><td>1</td></tr>
+                  <tr><td>uses 49 and 50 to regression-test the pass boundary</td><td></td><td>1</td></tr>
+                  <tr><td>uses 69 and 70 to test the new merit boundary</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-138">
           <div class="hero-copy">

@@ -7,6 +7,7 @@ import { coverageContract } from "./syllabus-coverage-contract.mjs";
 import { evaluateRequirement, normaliseText } from "./syllabus-coverage-evaluator.mjs";
 import { loadAllQuestions } from "./ms-review-utils.mjs";
 import { courseUnits, unitForLesson } from "./course-structure.mjs";
+import { lessonIdentities } from "./lesson-identity-contract.mjs";
 import { stage3CoreRepairs, stage3OptionalBaseLessons, stage3RequirementFirstUse } from "./remediation-v2-stage3-sequence-plan.mjs";
 import { stage3QuestionDependencyOverrides } from "./remediation-v2-stage3-question-repairs.mjs";
 
@@ -14,10 +15,26 @@ export const root = path.resolve(import.meta.dirname, "..");
 const decode = (value) => String(value).replace(/<[^>]+>/g, " ").replaceAll("&amp;", "&").replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&quot;", '"').replaceAll("&#39;", "'").replace(/\s+/g, " ").trim();
 const sectionNumber = (id) => Number(id.match(/^S(\d+)\./)?.[1]);
 const rowNumber = (id) => Number(id.match(/^S\d+\.(\d+)$/)?.[1]);
+const topicAlignmentContract = JSON.parse(fs.readFileSync(new URL("./lesson-topic-alignment-contract.json", import.meta.url), "utf8"));
+
+export function evaluateStage3TopicAlignment(repairs = stage3CoreRepairs) {
+  const problems = [];
+  const expected = new Map(topicAlignmentContract.lessons.map(({ lesson, requirementIds }) => [lesson, requirementIds]));
+  const actual = new Map(repairs.map(({ lesson, rows }) => [lesson, rows]));
+  if (topicAlignmentContract.schemaVersion !== 1 || expected.size !== topicAlignmentContract.lessons.length) {
+    return [{ id: "STAGE3-TOPIC-CONTRACT", detail: "topic-alignment contract is invalid or contains duplicate lessons" }];
+  }
+  for (const [lesson, requirementIds] of expected) {
+    if (JSON.stringify(actual.get(lesson) ?? null) !== JSON.stringify(requirementIds)) problems.push({ id: "STAGE3-TOPIC-ALIGNMENT", detail: `L${String(lesson).padStart(3, "0")} CORE requirements differ from the independent topic contract` });
+  }
+  for (const lesson of actual.keys()) if (!expected.has(lesson)) problems.push({ id: "STAGE3-TOPIC-ALIGNMENT", detail: `L${String(lesson).padStart(3, "0")} has an unreviewed CORE placement` });
+  return problems;
+}
 
 export function evaluateStage3Policy(contract = coverageContract, repairs = stage3CoreRepairs, questions = loadAllQuestions()) {
   const problems = [];
   const push = (id, detail) => problems.push({ id, detail });
+  problems.push(...evaluateStage3TopicAlignment(repairs));
   const firstUse = Object.fromEntries(contract.requirements.map((requirement) => [requirement.id, Math.min(...requirement.teachingLessons)]));
   if (contract.requirements.length !== 121) push("STAGE3-CONTRACT-COUNT", `expected 121 rows, found ${contract.requirements.length}`);
   if (Object.keys(stage3RequirementFirstUse).length !== 121) push("STAGE3-PLAN-COUNT", `expected 121 planned first-use rows, found ${Object.keys(stage3RequirementFirstUse).length}`);
@@ -32,12 +49,10 @@ export function evaluateStage3Policy(contract = coverageContract, repairs = stag
     if (evaluation.status !== "Complete") push("STAGE3-COVERAGE", `${requirement.id}: ${evaluation.messages.join("; ")}`);
   }
 
-  for (let section = 1; section <= 12; section += 1) {
-    const rows = contract.requirements.filter((item) => item.section === section);
-    for (let index = 1; index < rows.length; index += 1) {
-      if (firstUse[rows[index - 1].id] > firstUse[rows[index].id]) push("STAGE3-OFFICIAL-ORDER", `${rows[index - 1].id} follows ${rows[index].id}`);
-    }
-  }
+  // The syllabus numbering is a coverage taxonomy, not a required lesson-by-
+  // lesson teaching order. Actual prerequisite safety is checked below from the
+  // curriculum model and question dependencies; forcing row-number order was
+  // the mechanism that moved CORE blocks onto unrelated lesson identities.
   for (const repair of repairs) {
     const rows = repair.rows.filter((id) => sectionNumber(id) === sectionNumber(repair.rows[0]));
     for (let index = 1; index < rows.length; index += 1) if (rowNumber(rows[index - 1]) > rowNumber(rows[index])) push("STAGE3-INTRALESSON-ORDER", `L${repair.lesson} orders ${rows[index - 1]} after ${rows[index]}`);
@@ -117,16 +132,22 @@ export function evaluateStage3Repository() {
   for (const entry of questionRegister.entries.filter(({ beforeCoreViolations }) => beforeCoreViolations.length)) problems.push({ id: "STAGE3-QUESTION-BEFORE-CORE", detail: `${entry.questionId}: ${entry.beforeCoreViolations.join(", ")}` });
 
   const catalogSource = fs.readFileSync(path.join(root, "web", "course-catalog.js"), "utf8");
-  for (let lesson = 1; lesson <= 150; lesson += 1) {
-    const number = String(lesson).padStart(3, "0");
+  for (const identity of lessonIdentities) {
+    const { lesson, id: number, title: canonicalTitle, markdownFile: canonicalMarkdownFile } = identity;
     const unit = unitForLesson(lesson);
     const html = fs.readFileSync(path.join(root, "web", `lesson-${number}`, "index.html"), "utf8");
-    const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${number}-`) && name.endsWith(".md"));
+    const markdownNames = fs.readdirSync(path.join(root, "lessons")).filter((name) => name.startsWith(`${number}-`) && name.endsWith(".md"));
+    const markdownName = markdownNames[0];
+    if (markdownNames.length !== 1 || markdownName !== canonicalMarkdownFile) {
+      problems.push({ id: "STAGE3-FILE-IDENTITY", detail: `L${number} canonical Markdown filename drifted` });
+      continue;
+    }
     const markdown = fs.readFileSync(path.join(root, "lessons", markdownName), "utf8");
     const h1 = decode(html.match(/<h1>([\s\S]*?)<\/h1>/)?.[1] ?? "");
+    const documentTitle = decode(html.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? "");
     const mdTitle = markdown.match(/^# Lesson \d{3}: (.*)$/m)?.[1]?.trim() ?? "";
-    if (h1 !== mdTitle) problems.push({ id: "STAGE3-TITLE-IDENTITY", detail: `L${number} HTML h1 and Markdown title differ` });
-    if (!catalogSource.includes(`"id": "${number}"`) || !catalogSource.includes(`"title": ${JSON.stringify(h1)}`)) problems.push({ id: "STAGE3-CATALOG-IDENTITY", detail: `L${number} is missing or stale in course catalog` });
+    if (h1 !== canonicalTitle || mdTitle !== canonicalTitle || documentTitle !== `AS9618 Lesson ${number} | ${canonicalTitle}`) problems.push({ id: "STAGE3-TITLE-IDENTITY", detail: `L${number} title differs from the independent canonical identity` });
+    if (!catalogSource.includes(`"id": "${number}"`) || !catalogSource.includes(`"title": ${JSON.stringify(canonicalTitle)}`)) problems.push({ id: "STAGE3-CATALOG-IDENTITY", detail: `L${number} is missing or stale in course catalog` });
     if (!html.includes(`Paper ${unit.paper.endsWith("1") ? "1" : "2"}`) || !markdown.includes(`**Paper:** ${unit.paper}`)) problems.push({ id: "STAGE3-PAPER-IDENTITY", detail: `L${number} paper metadata disagrees with course unit` });
   }
   if (courseUnits.length !== 14 || courseUnits[0].range[0] !== 1 || courseUnits.at(-1).range[1] !== 150) problems.push({ id: "STAGE3-COURSE-MAP", detail: "course-unit ranges do not cover stable lessons 001-150" });

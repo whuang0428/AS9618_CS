@@ -1,50 +1,46 @@
-# Lesson 120: Abstract data types and array-based operations
+# Lesson 120: Text files: reading, writing and appending
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Abstract data types and array-based operations
+**Focus:** Why files are needed and how text-file pseudocode works
 
 ### Direct explanation
 
-- An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.
-- A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.
-- All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.
-- Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node's successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.
-- Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.
+- Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed. Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required. A file is not merely a larger array.
+- For a text file containing one or more lines, select the mode before processing: READ obtains existing data, WRITE creates or replaces output content, and APPEND adds after existing content. Every opened file must be closed after processing.
+- A complete read algorithm uses OPENFILE for READ, checks NOT EOF before READFILE, processes each line and then CLOSEFILE. WRITEFILE stores a line in a file opened for WRITE or APPEND. Reading after EOF or using WRITE when old content must remain are boundary errors.
 
 ### Worked example
 
-**Add, edit and delete without changing the ADT rule:** Push D adds D at the stack top and pop deletes the current top. Enqueue D adds at the queue rear and dequeue deletes from the front. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.
+**Copy selected lines between text files:** Open Results.txt FOR READ and Pass.txt FOR WRITE. While NOT EOF(Results.txt), READFILE the next Line; if it contains PASS, WRITEFILE it to Pass.txt. Close both files after the loop. Results remain available from storage, while Pass.txt is deliberately created as a new output file.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. Give the official definition of an ADT.
-   **Answer:** A collection of data and a set of operations on those data.
-2. How are stack and queue removal rules different?
-   **Answer:** Stack removes the most recently added item (LIFO); queue removes the earliest added item (FIFO).
-3. Which state is needed for an array-based linked list?
-   **Answer:** Data and Next storage, a Start index and normally a free-list index.
-4. Must candidates write pseudocode for stack, queue and linked-list operations?
-   **Answer:** No. They must be able to add, edit and delete data and describe array implementations, but operation pseudocode is not required by the syllabus.
+1. Why use a file instead of only an array?
+   **Answer:** A file persists after the program ends and can be reloaded in a later run.
+2. Which mode adds without replacing old lines?
+   **Answer:** APPEND.
+3. Why test NOT EOF before READFILE?
+   **Answer:** It prevents an attempt to read beyond the final available line.
 
 ### Exam-style question and MS
 
-**Question (6 marks):** For array implementations of a stack, queue and linked list, describe how data is added, edited and deleted while preserving each ADT's rule.
+**Question (6 marks):** Write Cambridge pseudocode to read every line from Input.txt, copy non-blank lines to Output.txt and close both files. Explain why the input data is stored in a file.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| stack push/pop uses the top position and stack pointer | Do not define an ADT as only an array, require ADT-operation pseudocode, or delete a linked-list node without repairing its links and free-list state. | 1 |
-| queue enqueue/dequeue uses rear and front in FIFO order |  | 1 |
-| linked-list add obtains a free index and changes links |  | 1 |
-| edit changes a stored data field without corrupting order or links |  | 1 |
-| linked-list delete bypasses the node and returns its index to the free list |  | 1 |
-| distinguishes conceptual operations from the non-required task of writing their pseudocode |  | 1 |
+| persistent/later-use need for the input file | Do not test EOF after an invalid read or claim that WRITE preserves existing output-file contents. | 1 |
+| opens Input.txt FOR READ |  | 1 |
+| opens Output.txt FOR WRITE |  | 1 |
+| loops WHILE NOT EOF before READFILE |  | 1 |
+| writes only non-blank lines inside a coherent IF |  | 1 |
+| closes both files after the loop |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 
@@ -143,19 +139,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
-### An ADT is data together with permitted operations
-
-- **Explains:** `adt-concept`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-concept.jpg`
-
-1. An abstract data type is a collection of data and a set of operations on those data.
-2. Stack, queue and linked list are examples whose permitted operations define their behaviour.
-3. The implementation may use arrays and indexes without changing the ADT's observable rules.
-- **Analogy:** A service counter defines allowed requests without exposing the storeroom layout.
-- **Boundary:** Using an array does not automatically make a structure a stack or queue.
-
 ### A text file stores characters, usually processed one line at a time
 
 - **Explains:** `concept`
@@ -173,19 +156,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 8. FOR WRITE
 9. add data to the end of an existing file
 10. FOR APPEND
-
-### Implement stack, queue and linked list using arrays
-
-- **Explains:** `implementation`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-implementation.jpg`
-
-1. An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.
-2. Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.
-3. Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation.
-- **Analogy:** Markers turn a row of storage boxes into a controlled service structure.
-- **Boundary:** Incorrect wrap-around or update order can overwrite live queue data.
 
 ### Open, process, close
 
@@ -248,19 +218,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 11. while (file.hasNextLine()) {
 12. String line = file.nextLine();
 
-### Why two ends create FIFO
-
-- **Explains:** `queue`
-- **Explanation type:** process
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-queue.jpg`
-
-1. Enqueue adds a new item at the rear.
-2. Dequeue removes the waiting item at the front.
-3. Earlier arrivals remain ahead of later arrivals.
-- **Analogy:** A single orderly waiting line serves the earliest arrival first.
-- **Boundary:** A priority queue follows a different removal rule and is not ordinary FIFO.
-
 ### Use EOF so the loop stops at the end of the file
 
 - **Explains:** `read`
@@ -302,19 +259,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 4. Mark = 72
 5. Name = Bea
 6. Mark = 64
-
-### Why one open end creates LIFO
-
-- **Explains:** `stack`
-- **Explanation type:** process
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-stack.jpg`
-
-1. Push adds the new item at the top position.
-2. Only the current top item is available to pop.
-3. The most recently pushed item therefore leaves first.
-- **Analogy:** Only the top plate of a pile can be removed safely.
-- **Boundary:** Accessing an older item requires removing items above it first.
 
 ### Write creates a new result; append adds to the existing story
 

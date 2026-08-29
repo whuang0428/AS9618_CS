@@ -54,6 +54,7 @@ if (fs.existsSync(stage6Path)) {
   browser.sourceSha256 = digest(fs.readFileSync(path.join(root, browser.source)));
   browser.refreshedFromCurrentEvidence = "audits/remediation-v2-stage6-browser-evidence.json#lesson-009";
   browser.currentViewportRecords = currentRecords.map(({ viewport, sourceHash, status }) => ({ viewport, sourceHash, status }));
+  browser.conclusion = "The rendered desktop and 390px page starts with the bitmap file-size and metadata CORE block, places Optional enrichment afterwards, has no horizontal overflow or console warning/error, and preserves the contents-menu jump to the CORE heading.";
   fs.writeFileSync(browserPath, `${JSON.stringify(browser, null, 2)}\n`);
 }
 console.log(`Refreshed ${refreshed} changed lesson-surface review hashes and the L009 current-browser source hash after zero-failure gates.`);

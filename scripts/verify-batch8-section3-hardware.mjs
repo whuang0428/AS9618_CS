@@ -56,15 +56,13 @@ for (const id of scopedRequirements) {
 
 const lessonChecks = [
   ["027", ["input is needed", "output is needed", "primary memory", "secondary storage", "removable storage"]],
-  ["028", ["embedded system", "dedicated task", "benefits", "drawbacks", "limited processing"]],
-  ["029", ["microphone", "analogue electrical signal", "adc", "capacitive touchscreen", "vr headset", "orientation sensors"]],
-  ["030", [
-    "laser printer", "charges a drum", "toner", "3d printer", "speaker", "output buffer", "temporarily",
-    "magnetic platters", "floating-gate cells", "optical drive", "reflected-light", "higher-power laser",
-    "ram is volatile", "rom is non-volatile", "sram", "dram", "prom", "eprom", "eeprom", "ultraviolet", "electrically",
-  ]],
-  ["031", ["monitoring system", "control system", "sensor", "actuator", "feedback", "temperature", "pressure", "infra-red", "sound sensor"]],
-  ["032", ["not, and, or, nand, nor and xor", "not has one input", "two inputs", "problem statement", "logic expression", "logic circuit", "truth table"]],
+  ["028", ["microphone", "analogue electrical signal", "adc", "capacitive touchscreen", "vr headset", "orientation sensors"]],
+  ["029", ["laser printer", "charges a drum", "toner", "3d printer", "speaker", "output buffer", "temporarily"]],
+  ["030", ["ram is volatile", "rom is non-volatile", "sram", "dram", "prom", "eprom", "eeprom", "ultraviolet", "electrically"]],
+  ["031", ["magnetic platters", "floating-gate cells", "optical drive", "reflected-light", "higher-power laser"]],
+  ["033", ["embedded system", "dedicated task", "benefit", "drawback", "limited processing"]],
+  ["034", ["monitoring system", "control system", "sensor", "actuator", "feedback", "temperature", "pressure", "infra-red", "sound sensor"]],
+  ["035", ["not, and, or, nand, nor and xor", "not has one input", "two inputs", "problem statement", "logic expression", "logic circuit", "truth table"]],
 ];
 
 for (const [lesson, terms] of lessonChecks) {

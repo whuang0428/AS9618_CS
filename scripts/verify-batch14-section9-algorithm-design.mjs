@@ -74,12 +74,11 @@ for (const id of scopedRequirements) {
 }
 
 const lessonChecks = [
-  ["098", ["abstraction", "abstract model", "decomposition", "program modules", "procedure", "function"]],
-  ["099", ["solution to a problem expressed as a sequence of defined steps", "input-process-output", "meaningful identifier", "identifier table", "pseudocode solution"]],
-  ["100", ["sequence", "selection", "iteration", "count-controlled", "condition-controlled"]],
+  ["098", ["solution to a problem expressed as a sequence of defined steps", "input-process-output", "meaningful identifier", "identifier table", "pseudocode solution"]],
+  ["099", ["abstraction", "abstract model", "decomposition", "program modules", "procedure", "function"]],
+  ["100", ["sequence", "selection", "iteration", "count-controlled", "condition-controlled", "A logic statement defines", "AND", "OR", "NOT", "inclusive"]],
   ["101", ["structured English", "flowchart", "pseudocode", "convert"]],
-  ["102", ["Stepwise refinement", "high-level algorithm", "input-process-output", "program modules", "implement"]],
-  ["103", ["Logic statements define parts of an algorithm", "AND", "OR", "NOT", "inclusive"]],
+  ["111", ["Stepwise refinement", "high-level algorithm", "input-process-output", "program modules", "implement"]],
   ["112", ["Section 9 required-content checkpoint", "sequence of defined steps", "abstract model", "structured English", "logic statements"]],
 ];
 for (const [lesson, terms] of lessonChecks) {
@@ -115,9 +114,9 @@ const visualHash = sha256(fs.readFileSync(path.join(root, visualPath)));
 const semanticRow = parseCsv(read("audits/stage10-semantic-review-register.csv")).find((row) => row.lesson === "111" && row.target_id === "analyser");
 expect(semanticRow?.sha256 === visualHash, "L111 semantic review register hash does not match the current image");
 expect(semanticRow?.pass1 === "Reviewed" && semanticRow?.pass2 === "Reviewed" && semanticRow?.status === "Approved", "L111 visual lacks two approved semantic review passes");
-const targetRow = parseCsv(read("audits/stage10-explanation-target-register.csv")).find((row) => row.lesson === "102" && row.target_id === "analyser");
-expect(targetRow?.delivery_role === "CORE" && targetRow?.classroom_activity === "TEACH", "L102 refinement visual is not CORE/TEACH");
-includesAll(`${targetRow?.title ?? ""} ${read("scripts/stage10-visual-repair-facts.json")}`, ["stepwise refinement", "high-level algorithm", "program modules", "procedures", "functions"], "L102 delivery and L111 source visual facts");
+const targetRow = parseCsv(read("audits/stage10-explanation-target-register.csv")).find((row) => row.lesson === "111" && row.target_id === "analyser");
+expect(targetRow?.delivery_role === "CORE" && targetRow?.classroom_activity === "TEACH", "L111 refinement visual is not CORE/TEACH");
+includesAll(`${targetRow?.title ?? ""} ${read("scripts/stage10-visual-repair-facts.json")}`, ["stepwise refinement", "high-level algorithm", "program modules", "procedures", "functions"], "L111 delivery and source visual facts");
 
 for (const [id, pattern] of [
   ["S9.01", /abstract model/gi], ["S9.02", /modules/gi], ["S9.03", /defined steps/gi],

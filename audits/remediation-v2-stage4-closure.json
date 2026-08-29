@@ -147,7 +147,7 @@
       "severity": "P0",
       "stage4Disposition": "Resolved",
       "closureEvidence": [
-        "83/83 CORE teaching pages place substantive CORE before Optional content; all 70 unique first-use pages are owned by declared requirements",
+        "95/95 CORE teaching pages place substantive CORE before Optional content; all 72 unique first-use pages are owned by declared requirements",
         "All declared first-teaching concept groups pass, including vector, representations, devices, security, licensing, algorithms and ADT scope"
       ],
       "nextStage": null

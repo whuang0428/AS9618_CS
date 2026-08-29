@@ -92,7 +92,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `calculator`
 - **Explanation type:** comparison
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-134-calculator.jpg`
 
 1. Interactive arithmetic calculator
@@ -104,7 +104,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `division`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-134-division.jpg`
 
 1. Integer division
@@ -121,7 +121,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-134-java.jpg`
 
 1. Java support only
@@ -137,7 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `mod`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-134-mod.jpg`
 
 1. Cambridge-style pseudocode
@@ -153,7 +153,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `operators`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-134-operators.jpg`
 
 1. Arithmetic operators
@@ -173,7 +173,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `patterns`
 - **Explanation type:** process
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-134-patterns.jpg`
 
 1. Common patterns
@@ -185,7 +185,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `precedence`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-134-precedence.jpg`
 
 1. Precedence
@@ -201,7 +201,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `relationship`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-134-relationship.jpg`
 
 1. Quotient and remainder relationship

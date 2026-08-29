@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 023 | Bit streaming, bit rate and broadband</title>
+    <title>AS9618 Lesson 023 | Network hardware: switches, routers, access points and gateways</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Bit streaming, bit rate and broadband</h1>
+        <h1>Network hardware: switches, routers, access points and gateways</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -39,12 +39,77 @@
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Required LAN and internet connection hardware</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A NIC/WNIC provides wired/wireless network access; a WAP connects wireless devices to a LAN; a switch forwards frames within a LAN; a bridge joins LAN segments; a repeater regenerates a weakened signal; a server provides shared services; cables carry wired signals.</p>
+            <p>A router connects different networks and forwards packets using destination IP addresses and routing information; for example, it connects a LAN to the internet. A router is not simply a device that 'provides WiFi', although one physical home unit may combine router and WAP functions.</p>
+            <p>A modem converts between the data representation used by a computer/network and the signalling required by an access link. Internet-supporting connections include the PSTN (Public Switched Telephone Network), a dedicated line that provides a permanent link, and a cell phone network (cellular phone network) that supplies radio access through mobile infrastructure.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Branch office connection</h3>
+            <p>Each desktop uses a NIC and cable to the switch; phones use a WNIC through the WAP. A server supplies shared files or authentication, a bridge may join LAN segments and a repeater is added only where a weakened signal needs regeneration. The router forwards packets to the ISP through a suitable modem and either the PSTN, a dedicated line or a cell phone network.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Required LAN and internet connection hardware: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which device regenerates a weakened signal?</p>
+              <details><summary>Show answer</summary><p>Repeater.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which component gives a laptop wireless network connectivity?</p>
+              <details><summary>Show answer</summary><p>WNIC; it connects through a WAP.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What distinct jobs do a bridge and a switch perform?</p>
+              <details><summary>Show answer</summary><p>A bridge joins LAN segments; a switch connects LAN devices and forwards frames to the appropriate port.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why might a business choose a dedicated line instead of the PSTN?</p>
+              <details><summary>Show answer</summary><p>It offers a permanent, predictable connection suited to continuous business traffic.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> When may a cell phone network support internet access?</p>
+              <details><summary>Show answer</summary><p>When a device or site uses cellular radio infrastructure instead of a fixed access line.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Describe the hardware path used when a wireless laptop accesses an internet server through a dedicated line.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>WNIC provides the laptop's wireless network interface</td><td>Do not merge NIC/WNIC, WAP, switch, router and modem roles; a combined physical box does not make the logical functions identical.</td><td>1</td></tr>
+                  <tr><td>WAP connects the laptop to the LAN and switch forwards the local frame</td><td></td><td>1</td></tr>
+                  <tr><td>router forwards packets between the LAN and internet/other networks</td><td></td><td>1</td></tr>
+                  <tr><td>modem/interface converts data for the access-link signalling</td><td></td><td>1</td></tr>
+                  <tr><td>dedicated line provides the permanent external connection</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-023">
           <div class="hero-copy">

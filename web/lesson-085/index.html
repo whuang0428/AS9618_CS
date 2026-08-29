@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 085 | DDL and two-table data queries</title>
+    <title>AS9618 Lesson 085 | SQL ORDER BY, aggregate functions and GROUP BY</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>DDL and two-table data queries</h1>
+        <h1>SQL ORDER BY, aggregate functions and GROUP BY</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -46,85 +46,58 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>DDL and two-table data queries</h2>
+            <h2>One- and two-table SELECT queries</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE. Field types include CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.</p>
-            <p>A PRIMARY KEY uniquely identifies a row. A FOREIGN KEY with REFERENCES links a field to a key in another table and supports referential integrity.</p>
-            <p>AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.</p>
-            <p>For Student(StudentID, StudentName) and Loan(StudentID, DueDate), SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID returns names only where matching rows exist. Add WHERE for a further row condition, not for the join relationship itself.</p>
-            <p>For the required at-most-two-table subset, queries can use ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG as well as SELECT, FROM and WHERE.</p>
+            <p>A query uses SELECT to name output fields and FROM to name one table or at most two related tables. WHERE filters rows, ORDER BY sorts the result and GROUP BY forms groups for aggregate functions such as SUM, COUNT and AVG.</p>
+            <p>For two tables, use INNER JOIN with ON to state how the related key fields match. The ON condition is separate from any WHERE filter applied after the tables are joined.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Define two related tables / List overdue borrowers</h3>
-            <p>CREATE DATABASE College; then CREATE TABLE Department and CREATE TABLE Student. Student uses INTEGER for StudentID, VARCHAR for Name, DATE for DateOfBirth, BOOLEAN for Active and a DepartmentID foreign key REFERENCES Department(DepartmentID). ALTER TABLE can modify the structure later. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate &lt; '2027-05-01'; uses two tables, one explicit join condition and one separate filter.</p>
+            <h3>Worked example: Count books by category and join departments</h3>
+            <p>SELECT Category, COUNT(*) FROM Book GROUP BY Category counts rows in each category. SELECT Employee.Name, Department.DepartmentName FROM Employee INNER JOIN Department ON Employee.DepartmentID = Department.DepartmentID returns fields from two related tables.</p>
           </article>
         </section>
-
-        <!-- stage10-explanation:start join -->
-        <section class="panel explanation-panel" id="explanation-join" data-explains="join" data-explanation-kind="mechanism" aria-labelledby="explanation-join-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="join">
-          <h2 class="explanation-sr-only" id="explanation-join-title">Two-table INNER JOIN with ON</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-join.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two-table INNER JOIN with ON with a structured visual model." />
-            <figcaption class="explanation-sr-only">Two-table INNER JOIN with ON: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> AS DML questions use at most two tables.</li><li><strong>Lesson fact:</strong> SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID uses an explicit two-table join.</li><li><strong>Lesson fact:</strong> ON states the matching key relationship between the tables.</li><li><strong>Lesson fact:</strong> WHERE adds a separate row filter after the join; it does not replace the required INNER JOIN syntax.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end join -->
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>DDL and two-table data queries: apply and assess</h2>
+            <h2>One- and two-table SELECT queries: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Identify four required SQL field types.</p>
-              <details><summary>Show answer</summary><p>Any four of CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.</p></details>
+              <p><strong>1.</strong> Which clauses filter and sort selected rows?</p>
+              <details><summary>Show answer</summary><p>WHERE filters rows; ORDER BY sorts the result.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Which clause declares the referenced table?</p>
-              <details><summary>Show answer</summary><p>REFERENCES.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which clause states how two joined tables match?</p>
+              <p><strong>2.</strong> Which clause states the relationship in an INNER JOIN?</p>
               <details><summary>Show answer</summary><p>ON.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> How many tables are required at most in the AS syllabus query?</p>
-              <details><summary>Show answer</summary><p>Two.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Why qualify Student.StudentID and Loan.StudentID?</p>
-              <details><summary>Show answer</summary><p>To identify which table supplies each otherwise identical field name.</p></details>
+              <p><strong>3.</strong> Identify three required aggregate functions.</p>
+              <details><summary>Show answer</summary><p>SUM, COUNT and AVG.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
-            <p>Write DDL to create a Student table with suitable data types, a primary key and one foreign key. Write an INNER JOIN query listing DepartmentName and EmployeeName from Department and Employee, matching their DepartmentID fields.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Write one grouped single-table query and one INNER JOIN query using at most two tables.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>CREATE TABLE and named fields</td><td>Do not award DML statements for a schema-definition task. Do not use a three-table query or replace the required INNER JOIN with comma-style FROM and a WHERE join.</td><td>1</td></tr>
-                  <tr><td>suitable required data types</td><td></td><td>1</td></tr>
-                  <tr><td>PRIMARY KEY</td><td></td><td>1</td></tr>
-                  <tr><td>FOREIGN KEY with REFERENCES</td><td></td><td>1</td></tr>
-                  <tr><td>SELECT includes DepartmentName and EmployeeName</td><td></td><td>1</td></tr>
-                  <tr><td>FROM Department</td><td></td><td>1</td></tr>
-                  <tr><td>INNER JOIN Employee</td><td></td><td>1</td></tr>
-                  <tr><td>ON Department.DepartmentID = Employee.DepartmentID</td><td></td><td>1</td></tr>
+                  <tr><td>SELECT and FROM</td><td>Do not omit ON from a two-table INNER JOIN or place an aggregate in WHERE.</td><td>1</td></tr>
+                  <tr><td>WHERE or ORDER BY</td><td></td><td>1</td></tr>
+                  <tr><td>GROUP BY with SUM, COUNT or AVG</td><td></td><td>1</td></tr>
+                  <tr><td>INNER JOIN</td><td></td><td>1</td></tr>
+                  <tr><td>ON relationship condition</td><td></td><td>1</td></tr>
+                  <tr><td>uses at most two tables</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

@@ -1,54 +1,45 @@
-# Lesson 085: DDL and two-table data queries
+# Lesson 085: SQL ORDER BY, aggregate functions and GROUP BY
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** DDL and two-table data queries
+**Focus:** One- and two-table SELECT queries
 
 ### Direct explanation
 
-- Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE. Field types include CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.
-- A PRIMARY KEY uniquely identifies a row. A FOREIGN KEY with REFERENCES links a field to a key in another table and supports referential integrity.
-- AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.
-- For Student(StudentID, StudentName) and Loan(StudentID, DueDate), SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID returns names only where matching rows exist. Add WHERE for a further row condition, not for the join relationship itself.
-- For the required at-most-two-table subset, queries can use ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG as well as SELECT, FROM and WHERE.
+- A query uses SELECT to name output fields and FROM to name one table or at most two related tables. WHERE filters rows, ORDER BY sorts the result and GROUP BY forms groups for aggregate functions such as SUM, COUNT and AVG.
+- For two tables, use INNER JOIN with ON to state how the related key fields match. The ON condition is separate from any WHERE filter applied after the tables are joined.
 
 ### Worked example
 
-**Define two related tables / List overdue borrowers:** CREATE DATABASE College; then CREATE TABLE Department and CREATE TABLE Student. Student uses INTEGER for StudentID, VARCHAR for Name, DATE for DateOfBirth, BOOLEAN for Active and a DepartmentID foreign key REFERENCES Department(DepartmentID). ALTER TABLE can modify the structure later. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate < '2027-05-01'; uses two tables, one explicit join condition and one separate filter.
+**Count books by category and join departments:** SELECT Category, COUNT(*) FROM Book GROUP BY Category counts rows in each category. SELECT Employee.Name, Department.DepartmentName FROM Employee INNER JOIN Department ON Employee.DepartmentID = Department.DepartmentID returns fields from two related tables.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. Identify four required SQL field types.
-   **Answer:** Any four of CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.
-2. Which clause declares the referenced table?
-   **Answer:** REFERENCES.
-3. Which clause states how two joined tables match?
+1. Which clauses filter and sort selected rows?
+   **Answer:** WHERE filters rows; ORDER BY sorts the result.
+2. Which clause states the relationship in an INNER JOIN?
    **Answer:** ON.
-4. How many tables are required at most in the AS syllabus query?
-   **Answer:** Two.
-5. Why qualify Student.StudentID and Loan.StudentID?
-   **Answer:** To identify which table supplies each otherwise identical field name.
+3. Identify three required aggregate functions.
+   **Answer:** SUM, COUNT and AVG.
 
 ### Exam-style question and MS
 
-**Question (8 marks):** Write DDL to create a Student table with suitable data types, a primary key and one foreign key. Write an INNER JOIN query listing DepartmentName and EmployeeName from Department and Employee, matching their DepartmentID fields.
+**Question (6 marks):** Write one grouped single-table query and one INNER JOIN query using at most two tables.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| CREATE TABLE and named fields | Do not award DML statements for a schema-definition task. Do not use a three-table query or replace the required INNER JOIN with comma-style FROM and a WHERE join. | 1 |
-| suitable required data types |  | 1 |
-| PRIMARY KEY |  | 1 |
-| FOREIGN KEY with REFERENCES |  | 1 |
-| SELECT includes DepartmentName and EmployeeName |  | 1 |
-| FROM Department |  | 1 |
-| INNER JOIN Employee |  | 1 |
-| ON Department.DepartmentID = Employee.DepartmentID |  | 1 |
+| SELECT and FROM | Do not omit ON from a two-table INNER JOIN or place an aggregate in WHERE. | 1 |
+| WHERE or ORDER BY |  | 1 |
+| GROUP BY with SUM, COUNT or AVG |  | 1 |
+| INNER JOIN |  | 1 |
+| ON relationship condition |  | 1 |
+| uses at most two tables |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 
@@ -146,18 +137,6 @@ Correction prompt: "State the correct term, then explain the relevant process or
 1. Use GROUP BY when the question asks for a summary for each category, each borrower, each course or each group.
 2. Pattern:
 3. SELECT Category, COUNT(*) FROM Book GROUP BY Category;
-
-### Two-table INNER JOIN with ON
-
-- **Explains:** `join`
-- **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-086-join.jpg`
-
-1. AS DML questions use at most two tables.
-2. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID uses an explicit two-table join.
-3. ON states the matching key relationship between the tables.
-4. WHERE adds a separate row filter after the join; it does not replace the required INNER JOIN syntax.
 
 ### ORDER BY sorts output rows
 

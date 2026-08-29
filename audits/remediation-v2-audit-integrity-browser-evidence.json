@@ -4,7 +4,7 @@
   "browser": "Codex in-app browser",
   "route": "http://127.0.0.1:8765/web/lesson-009/",
   "source": "web/lesson-009/index.html",
-  "sourceSha256": "95ac55604d4e4fa3644f36c7ea9651cb6227b59f1ff1eee6bf4b7d83a2eb1841",
+  "sourceSha256": "196949058dfcb89c1233698908d908fbb4507e92b613cac7292705cdba5c1c70",
   "pageIdentity": {
     "title": "AS9618 Lesson 009 | Vector graphics and drawing lists",
     "h1": "Vector graphics and drawing lists",
@@ -53,17 +53,17 @@
     "mobileResultingHash": "#stage2-completion",
     "mobileResultingCoreTop": 0
   },
-  "conclusion": "The rendered desktop and 390px page now starts with the formal vector CORE block, places Optional bitmap content afterwards, has no horizontal overflow or console warning/error, and preserves the contents-menu jump to the CORE heading.",
+  "conclusion": "The rendered desktop and 390px page starts with the bitmap file-size and metadata CORE block, places Optional enrichment afterwards, has no horizontal overflow or console warning/error, and preserves the contents-menu jump to the CORE heading.",
   "refreshedFromCurrentEvidence": "audits/remediation-v2-stage6-browser-evidence.json#lesson-009",
   "currentViewportRecords": [
     {
       "viewport": "1440x900",
-      "sourceHash": "793bf86e136ba1531207b11f0da4904c833ccc99391ef6955f9910a8cd5358f8",
+      "sourceHash": "fd955b9b49164ceb6a45f32c8e6297ba7104656e067d934331bf7d1f707a2ea6",
       "status": "Pass"
     },
     {
       "viewport": "390x844",
-      "sourceHash": "793bf86e136ba1531207b11f0da4904c833ccc99391ef6955f9910a8cd5358f8",
+      "sourceHash": "fd955b9b49164ceb6a45f32c8e6297ba7104656e067d934331bf7d1f707a2ea6",
       "status": "Pass"
     }
   ]

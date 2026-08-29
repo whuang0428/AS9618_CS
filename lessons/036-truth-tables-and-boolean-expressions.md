@@ -77,7 +77,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `expressions`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-036-expressions.jpg`
 
 1. Variables
@@ -93,7 +93,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `precedence`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-036-precedence.jpg`
 
 1. Brackets first For (A OR B) AND C, complete A OR B before the AND with C.
@@ -106,7 +106,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `table-method`
 - **Explanation type:** mechanism
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-036-table-method.jpg`
 
 1. 1. Count inputs n inputs produce 2^n rows. Two inputs give 4 rows; three inputs give 8 rows.

@@ -77,7 +77,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `methods`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-015-methods.jpg`
 
 1. Storage units
@@ -93,7 +93,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sprint`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-015-sprint.jpg`
 
 1. Timed section
@@ -111,7 +111,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `triage`
 - **Explanation type:** synthesis
-- **Delivery:** CORE / TEACH
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-015-triage.jpg`
 
 1. Number bases

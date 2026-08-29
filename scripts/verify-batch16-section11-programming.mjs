@@ -79,15 +79,14 @@ expect(containsGroup("Total <- 0. A procedure header declares an interface and e
 expect(containsGroup("Total <- 0. A procedure header declares an interface and each call supplies an argument.", ["argument"]), "coverage normalisation lost argument text after a Markdown assignment arrow");
 
 const lessonChecks = [
-  ["126", ["flowchart", "structured English", "pseudocode", "every branch", "Dry-run"]],
-  ["127", ["CONSTANT", "DECLARE", "assignment", "arithmetic", "logical", "INPUT", "OUTPUT"]],
-  ["128", ["built-in", "library routines", "provided", "string manipulation functions", "supplied", "position convention"]],
-  ["129", [
-    "IF", "ELSE", "nested", "CASE", "OTHERWISE", "ENDCASE", "count-controlled", "FOR", "TO", "NEXT",
-    "pre-condition", "post-condition", "WHILE", "REPEAT", "UNTIL", "justify",
-  ]],
+  ["126", ["CONSTANT", "DECLARE", "assignment", "arithmetic", "logical", "INPUT", "OUTPUT", "IF", "CASE", "FOR", "WHILE", "REPEAT"]],
+  ["127", ["IF", "ELSE", "nested", "CASE", "OTHERWISE", "ENDCASE"]],
+  ["128", ["count-controlled", "FOR", "TO", "NEXT", "justify"]],
+  ["129", ["pre-condition", "post-condition", "WHILE", "REPEAT", "UNTIL", "justify"]],
   ["130", ["procedure", "function", "BYREF", "BYVAL", "expression", "procedure header", "function header", "interface", "parameter", "argument", "return value"]],
-  ["133", ["clear", "efficient", "Cambridge", "pseudocode"]],
+  ["133", ["built-in", "library routines", "provided", "string manipulation functions", "supplied", "position convention"]],
+  ["139", ["clear", "efficient", "Cambridge", "pseudocode"]],
+  ["140", ["flowchart", "structured English", "pseudocode", "every branch", "Trace"]],
 ];
 for (const [lesson, terms] of lessonChecks) {
   const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));

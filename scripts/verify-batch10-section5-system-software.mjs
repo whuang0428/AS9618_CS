@@ -66,10 +66,10 @@ for (const id of scopedRequirements) {
 
 const lessonChecks = [
   ["052", ["operating system", "memory management", "file management", "security management", "hardware management", "process management"]],
-  ["053", ["disk formatter", "virus checker", "defragmenter", "disk contents analysis", "repair", "compression", "backup"]],
-  ["054", ["software under development", "existing code", "program libraries", "developer", "dynamically linked library", "DLL"]],
-  ["055", ["assembler", "assembly-language", "compiler", "interpreter", "advantages", "disadvantages"]],
-  ["056", ["Java in console mode", "partly compiled", "partly interpreted", "bytecode", "JVM", "context-sensitive prompts", "dynamic syntax", "prettyprint", "expand or collapse", "single stepping", "breakpoints", "variable", "expressions", "report window"]],
+  ["055", ["disk formatter", "virus checker", "defragmenter", "disk contents analysis", "repair", "compression", "backup"]],
+  ["058", ["software under development", "existing code", "program libraries", "developer", "dynamically linked library", "DLL"]],
+  ["056", ["assembler", "assembly-language", "compiler", "interpreter", "advantages", "disadvantages"]],
+  ["060", ["Java in console mode", "partly compiled", "partly interpreted", "bytecode", "JVM", "context-sensitive prompts", "dynamic syntax", "prettyprint", "expand or collapse", "single stepping", "breakpoints", "variable", "expressions", "report window"]],
 ];
 
 for (const [lesson, terms] of lessonChecks) {

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 028 | Embedded systems: purpose, benefits and drawbacks</title>
+    <title>AS9618 Lesson 028 | Input devices and data capture</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Embedded systems: purpose, benefits and drawbacks</h1>
+        <h1>Input devices and data capture</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -43,62 +43,57 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Embedded systems: purpose, benefits and drawbacks</h2>
+            <h2>Microphone, touchscreen and VR headset operation</h2>
           </div>
           <div class="stage2-explanation">
-            <p>An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.</p>
-            <p>Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.</p>
-            <p>An embedded system can have a benefit such as efficient dedicated operation and a drawback such as limited flexibility; both must be applied to the device.</p>
+            <p>A microphone diaphragm vibrates with sound; a transducer converts the movement into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in an electric field and calculates touch coordinates.</p>
+            <p>A VR headset displays a separate view to each eye and uses motion/orientation sensors to update the viewpoint. Low-latency tracking is needed so the displayed scene follows head movement.</p>
+            <p>Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Washing-machine controller</h3>
-            <p>A dedicated microcontroller can read sensors and control the motor and valves with low power use and predictable timing. Its limited interface is acceptable for wash programs, but it cannot readily run unrelated applications, and a controller failure can prevent the whole machine from operating.</p>
+            <h3>Worked example: Turn head in VR</h3>
+            <p>Gyroscope/accelerometer readings report orientation; the processor calculates a new camera view; displays present updated left/right images, creating stereoscopic depth.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Embedded systems: purpose, benefits and drawbacks: apply and assess</h2>
+            <h2>Microphone, touchscreen and VR headset operation: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What two features define an embedded system?</p>
-              <details><summary>Show answer</summary><p>It is built into a larger device and performs a dedicated task or closely related set of tasks.</p></details>
+              <p><strong>1.</strong> What converts a microphone's analogue signal into digital samples?</p>
+              <details><summary>Show answer</summary><p>An analogue-to-digital converter (ADC).</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Give one benefit of an embedded controller and explain its consequence.</p>
-              <details><summary>Show answer</summary><p>For example, low power use reduces energy or battery demand for the device.</p></details>
+              <p><strong>2.</strong> What does a capacitive touchscreen detect?</p>
+              <details><summary>Show answer</summary><p>A change in capacitance/electric field at a touch location.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Give one drawback of an embedded controller and explain its consequence.</p>
-              <details><summary>Show answer</summary><p>For example, limited resources make it difficult to add unrelated functions or run general-purpose software.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why can failure of an embedded controller be serious?</p>
-              <details><summary>Show answer</summary><p>The larger device may lose the function controlled by that computer or stop operating.</p></details>
+              <p><strong>3.</strong> Why does a VR headset track head movement?</p>
+              <details><summary>Show answer</summary><p>To update the displayed viewpoint to match the user's orientation.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>A battery-powered medical monitor uses an embedded controller. Explain two benefits and two drawbacks of this design in context.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Describe how a microphone captures sound for storage in a computer.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>benefit such as low power, compact size or predictable automatic operation</td><td>Do not award bare adjectives such as 'small' or 'cheap' without a device-specific consequence.</td><td>1</td></tr>
-                  <tr><td>first benefit linked to battery life, portability or continuous monitoring</td><td></td><td>1</td></tr>
-                  <tr><td>drawback such as limited resources/upgrading/interface or controller dependence</td><td></td><td>1</td></tr>
-                  <tr><td>first drawback linked to limited new functions or device failure</td><td></td><td>1</td></tr>
-                  <tr><td>second distinct benefit or drawback correctly developed</td><td></td><td>1</td></tr>
+                  <tr><td>sound waves vibrate a diaphragm</td><td>Do not accept that the microphone directly records binary without an analogue signal and conversion stage.</td><td>1</td></tr>
+                  <tr><td>transducer converts vibration to an analogue electrical signal</td><td></td><td>1</td></tr>
+                  <tr><td>ADC samples/measures the signal</td><td></td><td>1</td></tr>
+                  <tr><td>sample values are encoded/stored as binary</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

@@ -47,11 +47,11 @@
     "problemCount": 0,
     "officialSourceProblemCount": 0,
     "pedagogicalProblemCount": 0,
-    "coreTeachingPagesChecked": 83,
-    "uniqueFirstUsePagesChecked": 70
+    "coreTeachingPagesChecked": 95,
+    "uniqueFirstUsePagesChecked": 72
   },
   "renderedL009Evidence": {
-    "sourceSha256": "7049be71493b479eb24f214feadb41992b159be7a05029351dbd8c7c48c438b5",
+    "sourceSha256": "196949058dfcb89c1233698908d908fbb4507e92b613cac7292705cdba5c1c70",
     "desktopCoreDocumentRatio": 0.02357878672262495,
     "mobileCoreDocumentRatio": 0.03253820560536852,
     "desktopFirstRole": "CORE",
@@ -73,18 +73,5 @@
     "RV2-AUDIT-001",
     "RV2-AUDIT-002"
   ],
-  "remainingOpenIssues": [
-    {
-      "id": "RV2-CONT-001",
-      "severity": "P0"
-    },
-    {
-      "id": "RV2-PSEUDO-001",
-      "severity": "P0"
-    },
-    {
-      "id": "RV2-PSEUDO-002",
-      "severity": "P0"
-    }
-  ]
+  "remainingOpenIssues": []
 }

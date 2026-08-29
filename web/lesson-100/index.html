@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 100 | Sequence, selection and iteration</title>
+    <title>AS9618 Lesson 100 | Sequence, selection, and iteration</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
-        <h1>Sequence, selection and iteration</h1>
+        <h1>Sequence, selection, and iteration</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -47,29 +47,32 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Sequence, selection and iteration</h2>
+            <h2>Sequence, selection, iteration and logic statements</h2>
           </div>
           <div class="stage2-explanation">
             <p>Sequence executes defined steps once in order. Selection chooses one of two or more paths using a condition. Iteration repeats one or more steps using a count or a condition.</p>
             <p>A complete algorithm often combines the three constructs: use sequence to initialise and input, iteration to process repeated items, and selection inside the loop when each item needs a decision.</p>
             <p>Choose the construct from the required behaviour. A known number of repetitions suggests count-controlled iteration; a stopping rule based on data suggests condition-controlled iteration.</p>
+            <p>A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution. It combines comparisons such as =, &lt;, &lt;=, &gt;, &gt;= or &lt;&gt; with AND, OR or NOT when more than one condition is needed.</p>
+            <p>Construct a statement from the rule before choosing its branch: a valid mark from 0 to 100 inclusive is Mark &gt;= 0 AND Mark &lt;= 100. Interpret it by checking both comparisons; using OR would accept values outside the range.</p>
+            <p>Logic statements must preserve boundaries and intended truth conditions. Trace representative true, false and boundary values to expose reversed operators or incorrect connectors.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Count five passing marks</h3>
-            <p>Sequence sets PassCount to 0. A FOR loop iterates through five marks. Inside the loop, selection tests Mark &gt;= 50 and increments PassCount only on the true path. Sequence after the loop outputs PassCount.</p>
+            <h3>Worked example: Count five passing marks / Define a valid-age condition</h3>
+            <p>Sequence sets PassCount to 0. A FOR loop iterates through five marks. Inside the loop, selection tests Mark &gt;= 50 and increments PassCount only on the true path. Sequence after the loop outputs PassCount. For an accepted age from 11 to 18 inclusive, use Age &gt;= 11 AND Age &lt;= 18. At Age = 11 and Age = 18 the statement is TRUE; at Age = 10 or 19 it is FALSE. NOT(Age &gt;= 11 AND Age &lt;= 18) describes the invalid case.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Sequence, selection and iteration: apply and assess</h2>
+            <h2>Sequence, selection, iteration and logic statements: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
@@ -85,19 +88,36 @@
               <p><strong>3.</strong> Which construct processes ten supplied readings?</p>
               <details><summary>Show answer</summary><p>Iteration, normally a count-controlled loop because the number is known.</p></details>
             </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Complete the valid-mark statement for 0 to 100 inclusive.</p>
+              <details><summary>Show answer</summary><p>Mark &gt;= 0 AND Mark &lt;= 100.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Give the denary value of Found = FALSE OR Index &lt;= UpperBound.</p>
+              <details><summary>Show answer</summary><p>The statement is true when the target has not been found, or the index is still within the upper bound, or both.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> Why is Mark &gt;= 0 OR Mark &lt;= 100 incorrect for validation?</p>
+              <details><summary>Show answer</summary><p>Every number satisfies at least one side, so out-of-range values can be accepted.</p></details>
+            </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Develop a short algorithm that inputs ten marks and outputs how many are passes, labelling where sequence, selection and iteration are used.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>9 marks</span></div>
+            <p>Develop a short algorithm that inputs ten marks and outputs how many are passes, labelling where sequence, selection and iteration are used. Write and explain a logic statement that accepts an integer Temperature from -20 to 50 inclusive, then state its value for -21, -20, 50 and 51.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>sequence initialises the pass count</td><td>Do not award a construct name unless the stated algorithm uses it for the correct behaviour.</td><td>1</td></tr>
+                  <tr><td>sequence initialises the pass count</td><td>Do not award a construct name unless the stated algorithm uses it for the correct behaviour. Do not accept OR for a two-bound inclusive range or award outputs without a correctly constructed statement.</td><td>1</td></tr>
                   <tr><td>iteration processes exactly ten marks</td><td></td><td>1</td></tr>
                   <tr><td>selection tests each mark against the pass condition</td><td></td><td>1</td></tr>
                   <tr><td>sequence outputs the final count after the loop</td><td></td><td>1</td></tr>
+                  <tr><td>uses Temperature &gt;= -20</td><td></td><td>1</td></tr>
+                  <tr><td>uses AND Temperature &lt;= 50</td><td></td><td>1</td></tr>
+                  <tr><td>states FALSE for -21</td><td></td><td>1</td></tr>
+                  <tr><td>states TRUE for -20 and 50</td><td></td><td>1</td></tr>
+                  <tr><td>states FALSE for 51</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

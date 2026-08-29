@@ -9,7 +9,7 @@
   "visualObjectCount": 969,
   "rasterCount": 786,
   "stage10RasterCount": 783,
-  "highRiskCount": 919,
+  "highRiskCount": 918,
   "pending": 0,
   "records": [
     {
@@ -5859,46 +5859,6 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "031/explanation-sensors-img-1",
-      "lesson": "031",
-      "visualId": "explanation-sensors-img-1",
-      "sectionId": "explanation-sensors",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-034-sensors.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "03404a2a7717dc04be4cb8102f29dbd74aeee1ed79e17e8546293b6bf82ffd36",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 178495
-      },
-      "assetSha256": "03404a2a7717dc04be4cb8102f29dbd74aeee1ed79e17e8546293b6bf82ffd36",
-      "sectionHash": "ca80da0e1f409d21fdfdb4929c93b98276d09cf2b09f83bb075721ee095beea7",
-      "semanticHash": "c41d32a8e560c6ad836716b5ceb120358175bbaa07a3079c20b360eaa8a2cd68",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Required sensor types and applications with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "034/sensors",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
       "key": "031/explanation-purpose-img-1",
       "lesson": "031",
       "visualId": "explanation-purpose-img-1",
@@ -6120,46 +6080,6 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "032/explanation-gate-visual-img-1",
-      "lesson": "032",
-      "visualId": "explanation-gate-visual-img-1",
-      "sectionId": "explanation-gate-visual",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-035-gate-visual.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "4b6fcf25636f05476d798940d4eec2482d20e3d8cdc2d7619b76e89624ca5443",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 395063
-      },
-      "assetSha256": "4b6fcf25636f05476d798940d4eec2482d20e3d8cdc2d7619b76e89624ca5443",
-      "sectionHash": "49fbf43730085408929a9489ffd97e663ad89b5b1096127b6f191a5488dbe62d",
-      "semanticHash": "f56ac351f43da383220867f371e29d14b71dbe24ae0576d7f2788b9abb12f0f9",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Six symbols, six exact output rules with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "035/gate-visual",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
       "key": "032/explanation-criteria-img-1",
       "lesson": "032",
       "visualId": "explanation-criteria-img-1",
@@ -6179,10 +6099,9 @@
       "assetSha256": "57506028ddf3ae2802771a73230be63f368411a69744850c9dc0540b7631b8ed",
       "sectionHash": "767f16a798702435693c8ba43ce78a7d5e57b474d0e7a0c00409b51bf10a2549",
       "semanticHash": "8e3c2cb9a268a90483bfc81cc689a9efce046dcf8db9621450b8c63c9ea7022f",
-      "risk": "High",
+      "risk": "Standard",
       "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
+        "raster-load-alt"
       ],
       "accessibility": {
         "altPresent": true,
@@ -6196,7 +6115,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
+      "dedicatedAssertion": "NotRequired",
       "status": "PassedCurrentSource"
     },
     {
@@ -6219,10 +6138,9 @@
       "assetSha256": "78806bdce1e2c47c6cebef2450c92111596599aec32029dabe577c586d84b16a",
       "sectionHash": "99be91ff602c1630298683f3fb2ca5437e71be0cd7dd50ba201aa8e10ccc127d",
       "semanticHash": "969396c2673f959f802efb6ca59f30c5775bf7dc3ad1f20f118d54cda1ab2664",
-      "risk": "High",
+      "risk": "Standard",
       "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
+        "raster-load-alt"
       ],
       "accessibility": {
         "altPresent": true,
@@ -6236,7 +6154,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
+      "dedicatedAssertion": "NotRequired",
       "status": "PassedCurrentSource"
     },
     {
@@ -6259,10 +6177,9 @@
       "assetSha256": "f200b5a84f9a4563143737923f357a46234ac1c75800c9d942d122e3f567fbaa",
       "sectionHash": "cd4c09d133b43183378d540ef886437007d40246de7c409c1744ca63bc1c5db2",
       "semanticHash": "4663265f1ea9331892db86f50ade78fae0d92e80695c6e407c1b90b910ed60f4",
-      "risk": "High",
+      "risk": "Standard",
       "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
+        "raster-load-alt"
       ],
       "accessibility": {
         "altPresent": true,
@@ -6276,7 +6193,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
+      "dedicatedAssertion": "NotRequired",
       "status": "PassedCurrentSource"
     },
     {
@@ -6351,6 +6268,46 @@
       },
       "stage10Link": {
         "key": "033/microcontroller",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "034/explanation-sensors-img-1",
+      "lesson": "034",
+      "visualId": "explanation-sensors-img-1",
+      "sectionId": "explanation-sensors",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-034-sensors.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "03404a2a7717dc04be4cb8102f29dbd74aeee1ed79e17e8546293b6bf82ffd36",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 178495
+      },
+      "assetSha256": "03404a2a7717dc04be4cb8102f29dbd74aeee1ed79e17e8546293b6bf82ffd36",
+      "sectionHash": "ca80da0e1f409d21fdfdb4929c93b98276d09cf2b09f83bb075721ee095beea7",
+      "semanticHash": "c41d32a8e560c6ad836716b5ceb120358175bbaa07a3079c20b360eaa8a2cd68",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Required sensor types and applications with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "034/sensors",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -6517,6 +6474,46 @@
       },
       "stage10Link": {
         "key": "034/control",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "035/explanation-gate-visual-img-1",
+      "lesson": "035",
+      "visualId": "explanation-gate-visual-img-1",
+      "sectionId": "explanation-gate-visual",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-035-gate-visual.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "4b6fcf25636f05476d798940d4eec2482d20e3d8cdc2d7619b76e89624ca5443",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 395063
+      },
+      "assetSha256": "4b6fcf25636f05476d798940d4eec2482d20e3d8cdc2d7619b76e89624ca5443",
+      "sectionHash": "49fbf43730085408929a9489ffd97e663ad89b5b1096127b6f191a5488dbe62d",
+      "semanticHash": "f56ac351f43da383220867f371e29d14b71dbe24ae0576d7f2788b9abb12f0f9",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Six symbols, six exact output rules with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "035/gate-visual",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -7681,6 +7678,46 @@
       "status": "PassedCurrentSource"
     },
     {
+      "key": "042/explanation-processor-img-1",
+      "lesson": "042",
+      "visualId": "explanation-processor-img-1",
+      "sectionId": "explanation-processor",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-091-processor.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "e1f97530a6e6ac6c98f668c015216e90dcace93f6b6fd5d56d70f3f32bda3970",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 378610
+      },
+      "assetSha256": "e1f97530a6e6ac6c98f668c015216e90dcace93f6b6fd5d56d70f3f32bda3970",
+      "sectionHash": "aed8e2483ef6a7e0f9130c81648742a487b3ae1f0e7fbb7a3b79a1f8404dfc29",
+      "semanticHash": "18fcf383ce36461a4779989b83c085aff2bb4e8d4471565d72fd7f0b2476d260",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Registers and buses: the FDE cycle vocabulary with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "091/processor",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
       "key": "042/overview-div-1",
       "lesson": "042",
       "visualId": "overview-div-1",
@@ -8006,46 +8043,6 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "043/explanation-processor-img-1",
-      "lesson": "043",
-      "visualId": "explanation-processor-img-1",
-      "sectionId": "explanation-processor",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-091-processor.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "e1f97530a6e6ac6c98f668c015216e90dcace93f6b6fd5d56d70f3f32bda3970",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 378610
-      },
-      "assetSha256": "e1f97530a6e6ac6c98f668c015216e90dcace93f6b6fd5d56d70f3f32bda3970",
-      "sectionHash": "aed8e2483ef6a7e0f9130c81648742a487b3ae1f0e7fbb7a3b79a1f8404dfc29",
-      "semanticHash": "18fcf383ce36461a4779989b83c085aff2bb4e8d4471565d72fd7f0b2476d260",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Registers and buses: the FDE cycle vocabulary with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "091/processor",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
       "key": "043/explanation-acc-status-img-1",
       "lesson": "043",
       "visualId": "explanation-acc-status-img-1",
@@ -8157,46 +8154,6 @@
       },
       "stage10Link": {
         "key": "043/main-registers",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
-      "key": "044/explanation-width-img-1",
-      "lesson": "044",
-      "visualId": "explanation-width-img-1",
-      "sectionId": "explanation-width",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-044-width.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "18aa778b14c3e034e55baecf7fb73628eb13614c305e0f79c2ab969e1196b787",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 413267
-      },
-      "assetSha256": "18aa778b14c3e034e55baecf7fb73628eb13614c305e0f79c2ab969e1196b787",
-      "sectionHash": "5c555d38b259dad62217677243cec3233a9a0a4af6de269138afc5344897a590",
-      "semanticHash": "9a651bd23ced1eaffd4b070e634b360b04639313aac9dad4a3a5707d78fab3be",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Bus width and addressable locations with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "044/width",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -9006,25 +8963,25 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "049/explanation-shifts-img-1",
+      "key": "049/explanation-width-img-1",
       "lesson": "049",
-      "visualId": "explanation-shifts-img-1",
-      "sectionId": "explanation-shifts",
+      "visualId": "explanation-width-img-1",
+      "sectionId": "explanation-width",
       "tagName": "img",
       "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-050-shifts.jpg",
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-044-width.jpg",
         "exists": true,
         "decodes": true,
-        "sha256": "6718dcd7781e600e2adc4c2aeba7dc7c06f402ee769e2dbc5b3cef4585266ea7",
+        "sha256": "18aa778b14c3e034e55baecf7fb73628eb13614c305e0f79c2ab969e1196b787",
         "dimensions": {
           "height": 1024,
           "width": 1536
         },
-        "byteSize": 179539
+        "byteSize": 413267
       },
-      "assetSha256": "6718dcd7781e600e2adc4c2aeba7dc7c06f402ee769e2dbc5b3cef4585266ea7",
-      "sectionHash": "b1a5b924807384ec7ed584ae4b23255245f9dbb9eef8f034e279c4605e7cc30b",
-      "semanticHash": "af0528c08aa7a0457607808a4fe265d98f9be4e693095517ffd8bef6dc3327b9",
+      "assetSha256": "18aa778b14c3e034e55baecf7fb73628eb13614c305e0f79c2ab969e1196b787",
+      "sectionHash": "5c555d38b259dad62217677243cec3233a9a0a4af6de269138afc5344897a590",
+      "semanticHash": "9a651bd23ced1eaffd4b070e634b360b04639313aac9dad4a3a5707d78fab3be",
       "risk": "High",
       "assertionKinds": [
         "raster-load-alt",
@@ -9033,10 +8990,10 @@
       "accessibility": {
         "altPresent": true,
         "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Binary shifts: logical, arithmetic, cyclic through a cause-and-effect diagram."
+        "alt": "Academic knowledge-point infographic explaining Bus width and addressable locations with a structured visual model."
       },
       "stage10Link": {
-        "key": "050/shifts",
+        "key": "044/width",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -9277,6 +9234,46 @@
       },
       "stage10Link": {
         "key": "049/limits",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "050/explanation-shifts-img-1",
+      "lesson": "050",
+      "visualId": "explanation-shifts-img-1",
+      "sectionId": "explanation-shifts",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-050-shifts.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "6718dcd7781e600e2adc4c2aeba7dc7c06f402ee769e2dbc5b3cef4585266ea7",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 179539
+      },
+      "assetSha256": "6718dcd7781e600e2adc4c2aeba7dc7c06f402ee769e2dbc5b3cef4585266ea7",
+      "sectionHash": "b1a5b924807384ec7ed584ae4b23255245f9dbb9eef8f034e279c4605e7cc30b",
+      "semanticHash": "af0528c08aa7a0457607808a4fe265d98f9be4e693095517ffd8bef6dc3327b9",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Binary shifts: logical, arithmetic, cyclic through a cause-and-effect diagram."
+      },
+      "stage10Link": {
+        "key": "050/shifts",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -10271,46 +10268,6 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "054/explanation-libraries-img-1",
-      "lesson": "054",
-      "visualId": "explanation-libraries-img-1",
-      "sectionId": "explanation-libraries",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-058-libraries.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "9052c55da48e8cdba3fec8d63095766526f86ff2f4c35da990828cf14a4c9860",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 394709
-      },
-      "assetSha256": "9052c55da48e8cdba3fec8d63095766526f86ff2f4c35da990828cf14a4c9860",
-      "sectionHash": "8e6c08f854e8ec5630bdc5203fdbb6db99b0fdde29220716574356b7ca478f29",
-      "semanticHash": "f6ee4aa2e82bf8c92b9da147f43d7d4f08ed4ea558b24fd29d6602af5df10bdd",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Libraries provide reusable routines and modules with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "058/libraries",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
       "key": "054/explanation-concept-img-1",
       "lesson": "054",
       "visualId": "explanation-concept-img-1",
@@ -10330,10 +10287,9 @@
       "assetSha256": "e6d6f960f95d44c7cd4e8777c084d5e53504141086977416a93ba4ae04c0f36b",
       "sectionHash": "28425c2fb83e9c6f9e8e193f689ad151f1c33e619cd2a93bf461309165101562",
       "semanticHash": "82ab57aa5a193b6e6c11bc9f371c6cd0a6780ca915c4e8996b1524aa1e68b36e",
-      "risk": "High",
+      "risk": "Standard",
       "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
+        "raster-load-alt"
       ],
       "accessibility": {
         "altPresent": true,
@@ -10347,7 +10303,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
+      "dedicatedAssertion": "NotRequired",
       "status": "PassedCurrentSource"
     },
     {
@@ -10370,10 +10326,9 @@
       "assetSha256": "79e1b6841590f0237f666f1f411613379c77452047cd4ace734f27909d173e2e",
       "sectionHash": "60cb272f8174aafda7f8836a3c206b5bd3e4574fbba3af506acf8010993ed7bd",
       "semanticHash": "3a85797188116027efd3e0b5089afd8386ae4752c5124a3b1d5087dc45ad3ab9",
-      "risk": "High",
+      "risk": "Standard",
       "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
+        "raster-load-alt"
       ],
       "accessibility": {
         "altPresent": true,
@@ -10387,7 +10342,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
+      "dedicatedAssertion": "NotRequired",
       "status": "PassedCurrentSource"
     },
     {
@@ -10410,10 +10365,9 @@
       "assetSha256": "c36619d36495140f0a02715e91215fc288b132505d921020785575b00be40751",
       "sectionHash": "11106f1488fa7dc88fe160670b5ef3f11066bdb56dcfb07b06f78ca60d799339",
       "semanticHash": "7ed9103bee01f5beef80dded1df8d864fa032487e082cf9a78f2409499f7339b",
-      "risk": "High",
+      "risk": "Standard",
       "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
+        "raster-load-alt"
       ],
       "accessibility": {
         "altPresent": true,
@@ -10427,7 +10381,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
+      "dedicatedAssertion": "NotRequired",
       "status": "PassedCurrentSource"
     },
     {
@@ -10450,10 +10404,9 @@
       "assetSha256": "bd2ac296cb3fa3674a05381f4bd00b1ac33e84ea36cb0953c47f539fb02f8317",
       "sectionHash": "3aa18b09b99ab41280ccec3c9f45f03442c774ba207978584869c479283403c7",
       "semanticHash": "7f94fcbb51540e0ca9121b7079abf97984b222d816c8a2d7163eb5811c5fb9f5",
-      "risk": "High",
+      "risk": "Standard",
       "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
+        "raster-load-alt"
       ],
       "accessibility": {
         "altPresent": true,
@@ -10467,7 +10420,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
+      "dedicatedAssertion": "NotRequired",
       "status": "PassedCurrentSource"
     },
     {
@@ -10490,10 +10443,9 @@
       "assetSha256": "f1d59b82784bb08be1244e2f4c778871109c782612d34daf3c8b0ae95ed58f4c",
       "sectionHash": "1f3bef873f9d2d9451c27ab7a0e4b1fd2884c867355513bf55e6c6435a3cce82",
       "semanticHash": "8921448c2ab23d56e988b1872cc490d7bdded4cbb0eaa9d12ad91452494ff43d",
-      "risk": "High",
+      "risk": "Standard",
       "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
+        "raster-load-alt"
       ],
       "accessibility": {
         "altPresent": true,
@@ -10507,7 +10459,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
+      "dedicatedAssertion": "NotRequired",
       "status": "PassedCurrentSource"
     },
     {
@@ -10530,10 +10482,9 @@
       "assetSha256": "aabd7dccd473cdd803e4f7f0ca293a2d5ea899596b13e0d8f413c91d7e7dd9d9",
       "sectionHash": "4bafa9997985a62b6f1cd3b923bb8f44467ef85b376a49a342830fc8b7268cb3",
       "semanticHash": "870ccbc29fa83643b9f3ef4872790bacf32db8d9f7efff182356eb015f2fbeb1",
-      "risk": "High",
+      "risk": "Standard",
       "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
+        "raster-load-alt"
       ],
       "accessibility": {
         "altPresent": true,
@@ -10547,7 +10498,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
+      "dedicatedAssertion": "NotRequired",
       "status": "PassedCurrentSource"
     },
     {
@@ -11313,6 +11264,46 @@
       "status": "PassedCurrentSource"
     },
     {
+      "key": "058/explanation-libraries-img-1",
+      "lesson": "058",
+      "visualId": "explanation-libraries-img-1",
+      "sectionId": "explanation-libraries",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-058-libraries.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "9052c55da48e8cdba3fec8d63095766526f86ff2f4c35da990828cf14a4c9860",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 394709
+      },
+      "assetSha256": "9052c55da48e8cdba3fec8d63095766526f86ff2f4c35da990828cf14a4c9860",
+      "sectionHash": "8e6c08f854e8ec5630bdc5203fdbb6db99b0fdde29220716574356b7ca478f29",
+      "semanticHash": "f6ee4aa2e82bf8c92b9da147f43d7d4f08ed4ea558b24fd29d6602af5df10bdd",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Libraries provide reusable routines and modules with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "058/libraries",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
       "key": "058/explanation-concept-img-1",
       "lesson": "058",
       "visualId": "explanation-concept-img-1",
@@ -11722,9 +11713,10 @@
       "assetSha256": "",
       "sectionHash": "5c24cecfa7680df5d6b4a476e3f2781a073d43e09c6e57d48515ae5019ec5896",
       "semanticHash": "5a33be15480ffbe2f73e96fe594e26a988e9bfb3d8c62165b1673a427e6dfa03",
-      "risk": "Standard",
+      "risk": "High",
       "assertionKinds": [
-        "current-DOM-semantic-hash"
+        "current-DOM-semantic-hash",
+        "high-risk-source-contract"
       ],
       "accessibility": {
         "altPresent": true,
@@ -11733,7 +11725,7 @@
       "stage10Link": null,
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "NotRequired",
+      "dedicatedAssertion": "Passed",
       "status": "PassedCurrentSource"
     },
     {
@@ -11756,9 +11748,10 @@
       "assetSha256": "192f4cab9f85cf22f0baf16003b15a6c4616dd4816896e6c848e4da09236d253",
       "sectionHash": "5c1c473ab7fa770e082ee41092755d35281d18dc486a349e312bce327e300d25",
       "semanticHash": "c007424ed7e3b822197c351bfe1973fca45da15e80bcc1f662eff573aa8e6909",
-      "risk": "Standard",
+      "risk": "High",
       "assertionKinds": [
-        "raster-load-alt"
+        "raster-load-alt",
+        "high-risk-source-contract"
       ],
       "accessibility": {
         "altPresent": true,
@@ -11772,7 +11765,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "NotRequired",
+      "dedicatedAssertion": "Passed",
       "status": "PassedCurrentSource"
     },
     {
@@ -11795,9 +11788,10 @@
       "assetSha256": "298fdccebaf26a1bbe62e1a967ed5e7379af0ae563458dc1e269e1551e87eab1",
       "sectionHash": "215dac61ab6a2f006d9080a786b9b42e2e59004dd4d8bff7e5b4d65ebe90d731",
       "semanticHash": "e51c4a2dba0fb75433ef80b159cdb9a02af2208d6cdc8a11aca98a5e9f813da1",
-      "risk": "Standard",
+      "risk": "High",
       "assertionKinds": [
-        "raster-load-alt"
+        "raster-load-alt",
+        "high-risk-source-contract"
       ],
       "accessibility": {
         "altPresent": true,
@@ -11811,7 +11805,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "NotRequired",
+      "dedicatedAssertion": "Passed",
       "status": "PassedCurrentSource"
     },
     {
@@ -11834,9 +11828,10 @@
       "assetSha256": "9007aa0a18ff9a616991638a2d726a156d2b74507c9d19a9652196123939ae80",
       "sectionHash": "50ac02c7e29f42222bf33132666da7ac0f8b65f536378e573758f2f63a08809f",
       "semanticHash": "97ecf5f4dacfe49a2b4e52241ed25bc49d2c2c95b500d90c3787120673e1e83d",
-      "risk": "Standard",
+      "risk": "High",
       "assertionKinds": [
-        "raster-load-alt"
+        "raster-load-alt",
+        "high-risk-source-contract"
       ],
       "accessibility": {
         "altPresent": true,
@@ -11850,7 +11845,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "NotRequired",
+      "dedicatedAssertion": "Passed",
       "status": "PassedCurrentSource"
     },
     {
@@ -11873,9 +11868,10 @@
       "assetSha256": "87746f48340cad8fea37cc9ff65208f025398aaf4cf813df7ee9ff4d8889cb33",
       "sectionHash": "66499bbb77f85a6fe6ffb3ffe1b1646ba7797cf99f3472aeec5cbc6859eb5b89",
       "semanticHash": "58daa6cd975b563b037a02b7e02b6bb64cdcfe6c35bda433b9204ab02cf57947",
-      "risk": "Standard",
+      "risk": "High",
       "assertionKinds": [
-        "raster-load-alt"
+        "raster-load-alt",
+        "high-risk-source-contract"
       ],
       "accessibility": {
         "altPresent": true,
@@ -11889,7 +11885,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "NotRequired",
+      "dedicatedAssertion": "Passed",
       "status": "PassedCurrentSource"
     },
     {
@@ -11902,9 +11898,10 @@
       "assetSha256": "",
       "sectionHash": "7f881c24f1369f3284b7f16754a94a7063eee1c179de03dd2cb7ce9c28cdd93a",
       "semanticHash": "7ba63eed7148b956793a08f628b82a6f9212e7c8e3bc65a493904f0082716ae6",
-      "risk": "Standard",
+      "risk": "High",
       "assertionKinds": [
-        "current-DOM-semantic-hash"
+        "current-DOM-semantic-hash",
+        "high-risk-source-contract"
       ],
       "accessibility": {
         "altPresent": true,
@@ -11913,7 +11910,7 @@
       "stage10Link": null,
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "NotRequired",
+      "dedicatedAssertion": "Passed",
       "status": "PassedCurrentSource"
     },
     {
@@ -11936,9 +11933,10 @@
       "assetSha256": "fa338a01a7f1de07e2980d1c4275af2aa4962be51af2e9bc684f8513bb3d4aed",
       "sectionHash": "33507902a2758457b233b37628399ef857ead50c4f816fb55c072e3634175475",
       "semanticHash": "e61cc5d06d11a61a3f17fdaeb51022848acc3b30b555f5538c6cfdf2f285a34a",
-      "risk": "Standard",
+      "risk": "High",
       "assertionKinds": [
-        "raster-load-alt"
+        "raster-load-alt",
+        "high-risk-source-contract"
       ],
       "accessibility": {
         "altPresent": true,
@@ -11952,7 +11950,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "NotRequired",
+      "dedicatedAssertion": "Passed",
       "status": "PassedCurrentSource"
     },
     {
@@ -11975,9 +11973,10 @@
       "assetSha256": "2a89e1a2813d9a47d511506d7f75e682f09518be8a41cf08b3e42d36f59d1ad2",
       "sectionHash": "942ab63e4ae7edd35eede102831eec72f3b06a36e871bc267001b10c564fd980",
       "semanticHash": "ecb060a1f5196dd7544940d83b4107220df257d6dbbd4292c8274c403f97d546",
-      "risk": "Standard",
+      "risk": "High",
       "assertionKinds": [
-        "raster-load-alt"
+        "raster-load-alt",
+        "high-risk-source-contract"
       ],
       "accessibility": {
         "altPresent": true,
@@ -11991,7 +11990,7 @@
       },
       "calculations": [],
       "manualPixelReview": null,
-      "dedicatedAssertion": "NotRequired",
+      "dedicatedAssertion": "Passed",
       "status": "PassedCurrentSource"
     },
     {
@@ -16176,6 +16175,46 @@
       "status": "PassedCurrentSource"
     },
     {
+      "key": "078/explanation-dbms-img-1",
+      "lesson": "078",
+      "visualId": "explanation-dbms-img-1",
+      "sectionId": "explanation-dbms",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-078-dbms.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "d23e5ff712edf4021002075ef9f1d816702c8484182880e123e676d0f1c2eb0a",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 446554
+      },
+      "assetSha256": "d23e5ff712edf4021002075ef9f1d816702c8484182880e123e676d0f1c2eb0a",
+      "sectionHash": "59176216e3a1ff083afaba266aa6a39da04ac12122f6f5e9040c02e33ed32056",
+      "semanticHash": "f1cd6c34a034b11bd4512f3ccebc66bf7a02d2661d58dc04c344847d41745a6b",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining What does a DBMS provide? with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "078/dbms",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
       "key": "078/explanation-data-info-img-1",
       "lesson": "078",
       "visualId": "explanation-data-info-img-1",
@@ -16376,46 +16415,6 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "079/explanation-referential-img-1",
-      "lesson": "079",
-      "visualId": "explanation-referential-img-1",
-      "sectionId": "explanation-referential",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-081-referential.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "3d04428f7c2b27fe8b73dcb0cc1f85a0f74448277bcbacf9fc7316fdcf5dc95b",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 376898
-      },
-      "assetSha256": "3d04428f7c2b27fe8b73dcb0cc1f85a0f74448277bcbacf9fc7316fdcf5dc95b",
-      "sectionHash": "1cefb7aeced1b35f11a1b4b4a5f6fbc43ca82e2e5652ab0cc2eedaac99a849cc",
-      "semanticHash": "58303d78dc1765fb7ef23065dfccc991c904adf8bd48ad94676e7983d52a1147",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Referential integrity with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "081/referential",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
       "key": "079/explanation-compare-img-1",
       "lesson": "079",
       "visualId": "explanation-compare-img-1",
@@ -16592,46 +16591,6 @@
       },
       "stage10Link": {
         "key": "079/anomalies",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
-      "key": "080/explanation-dbms-img-1",
-      "lesson": "080",
-      "visualId": "explanation-dbms-img-1",
-      "sectionId": "explanation-dbms",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-078-dbms.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "d23e5ff712edf4021002075ef9f1d816702c8484182880e123e676d0f1c2eb0a",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 446554
-      },
-      "assetSha256": "d23e5ff712edf4021002075ef9f1d816702c8484182880e123e676d0f1c2eb0a",
-      "sectionHash": "59176216e3a1ff083afaba266aa6a39da04ac12122f6f5e9040c02e33ed32056",
-      "semanticHash": "f1cd6c34a034b11bd4512f3ccebc66bf7a02d2661d58dc04c344847d41745a6b",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining What does a DBMS provide? with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "078/dbms",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -17012,6 +16971,46 @@
       },
       "stage10Link": {
         "key": "080/checkpoint",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "081/explanation-referential-img-1",
+      "lesson": "081",
+      "visualId": "explanation-referential-img-1",
+      "sectionId": "explanation-referential",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-081-referential.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "3d04428f7c2b27fe8b73dcb0cc1f85a0f74448277bcbacf9fc7316fdcf5dc95b",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 376898
+      },
+      "assetSha256": "3d04428f7c2b27fe8b73dcb0cc1f85a0f74448277bcbacf9fc7316fdcf5dc95b",
+      "sectionHash": "1cefb7aeced1b35f11a1b4b4a5f6fbc43ca82e2e5652ab0cc2eedaac99a849cc",
+      "semanticHash": "58303d78dc1765fb7ef23065dfccc991c904adf8bd48ad94676e7983d52a1147",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Referential integrity with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "081/referential",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -17976,46 +17975,6 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "085/explanation-join-img-1",
-      "lesson": "085",
-      "visualId": "explanation-join-img-1",
-      "sectionId": "explanation-join",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-086-join.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "4aa3e5e2bf7e03194cf19991b899b90baa36ce283031152ee16e42537060c817",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 290689
-      },
-      "assetSha256": "4aa3e5e2bf7e03194cf19991b899b90baa36ce283031152ee16e42537060c817",
-      "sectionHash": "ec141f54ed6010388d98921259fd92b6bf1dc636dc23c6b24158bf7f87d4ea2f",
-      "semanticHash": "4589f4d94cf2212624b12fa61d49eb0cd34284fabe7ed7cd06417d90efc42e3c",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Two-table INNER JOIN with ON with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "086/join",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
       "key": "085/overview-div-1",
       "lesson": "085",
       "visualId": "overview-div-1",
@@ -18177,6 +18136,46 @@
       },
       "stage10Link": {
         "key": "085/groupby",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "086/explanation-join-img-1",
+      "lesson": "086",
+      "visualId": "explanation-join-img-1",
+      "sectionId": "explanation-join",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-086-join.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "4aa3e5e2bf7e03194cf19991b899b90baa36ce283031152ee16e42537060c817",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 290689
+      },
+      "assetSha256": "4aa3e5e2bf7e03194cf19991b899b90baa36ce283031152ee16e42537060c817",
+      "sectionHash": "ec141f54ed6010388d98921259fd92b6bf1dc636dc23c6b24158bf7f87d4ea2f",
+      "semanticHash": "4589f4d94cf2212624b12fa61d49eb0cd34284fabe7ed7cd06417d90efc42e3c",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Two-table INNER JOIN with ON with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "086/join",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -20746,6 +20745,46 @@
       "status": "PassedCurrentSource"
     },
     {
+      "key": "098/explanation-concept-img-1",
+      "lesson": "098",
+      "visualId": "explanation-concept-img-1",
+      "sectionId": "explanation-concept",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-098-concept.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "cb1983a6ad22dc5b477261264ef6fcfaba4614f21153dc31e346b282c78e79f4",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 156348
+      },
+      "assetSha256": "cb1983a6ad22dc5b477261264ef6fcfaba4614f21153dc31e346b282c78e79f4",
+      "sectionHash": "4d3ccdb8f288470eeda297bddf9c0ccd98c07df2cec64e360c2f8d599f07489d",
+      "semanticHash": "fcfb8746daa2bb6d4e1423aa07298757bb19c823b1429b169a010aa598279643",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining An algorithm is a solution expressed as defined steps with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "098/concept",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
       "key": "098/overview-div-1",
       "lesson": "098",
       "visualId": "overview-div-1",
@@ -20842,86 +20881,6 @@
       },
       "stage10Link": {
         "key": "098/constraints",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
-      "key": "099/explanation-ipoc-img-1",
-      "lesson": "099",
-      "visualId": "explanation-ipoc-img-1",
-      "sectionId": "explanation-ipoc",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-111-ipoc.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "67aeb005bb4fc3912b914d59ea62a697f586b25b4969cbbbe4a6df3c6135a4da",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 339464
-      },
-      "assetSha256": "67aeb005bb4fc3912b914d59ea62a697f586b25b4969cbbbe4a6df3c6135a4da",
-      "sectionHash": "396af499de8dc0d09569e62def90742d98901ab908ad95a39a532819e67ad822",
-      "semanticHash": "7cfbcb1d4198c539e390620d1339d0d53402e288895e5042782082a78354304b",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Turn paragraphs into a design table with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "111/ipoc",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
-      "key": "099/explanation-concept-img-1",
-      "lesson": "099",
-      "visualId": "explanation-concept-img-1",
-      "sectionId": "explanation-concept",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-098-concept.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "cb1983a6ad22dc5b477261264ef6fcfaba4614f21153dc31e346b282c78e79f4",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 156348
-      },
-      "assetSha256": "cb1983a6ad22dc5b477261264ef6fcfaba4614f21153dc31e346b282c78e79f4",
-      "sectionHash": "4d3ccdb8f288470eeda297bddf9c0ccd98c07df2cec64e360c2f8d599f07489d",
-      "semanticHash": "fcfb8746daa2bb6d4e1423aa07298757bb19c823b1429b169a010aa598279643",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining An algorithm is a solution expressed as defined steps with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "098/concept",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -21421,6 +21380,46 @@
       "status": "PassedCurrentSource"
     },
     {
+      "key": "101/explanation-equivalence-img-1",
+      "lesson": "101",
+      "visualId": "explanation-equivalence-img-1",
+      "sectionId": "explanation-equivalence",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-101-equivalence.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "5f939dd3cac18d3a2208e771cd49e0b0a60a9f04c2c9b2827dbad001c6c96594",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 165590
+      },
+      "assetSha256": "5f939dd3cac18d3a2208e771cd49e0b0a60a9f04c2c9b2827dbad001c6c96594",
+      "sectionHash": "a4d26994d203585beece45e3f661a248a16c3c2c1b07c6e9ec4de2df2ecda582",
+      "semanticHash": "31e375e93d656a5635e5604aca744537e304126c6c5383accde07cfcda9708ee",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining A diamond becomes IF...THEN...ELSE with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "101/equivalence",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
       "key": "101/overview-div-1",
       "lesson": "101",
       "visualId": "overview-div-1",
@@ -21597,46 +21596,6 @@
       },
       "stage10Link": {
         "key": "101/structure-tool",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
-      "key": "102/explanation-analyser-img-1",
-      "lesson": "102",
-      "visualId": "explanation-analyser-img-1",
-      "sectionId": "explanation-analyser",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-111-analyser.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "047e1c4bc3996d54c3d648e87dfecc0b53de055f538df2644602c6f68d509474",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 209019
-      },
-      "assetSha256": "047e1c4bc3996d54c3d648e87dfecc0b53de055f538df2644602c6f68d509474",
-      "sectionHash": "25bfc7fc81ac0f6eda855a4647b030ff4a45c5193a8b7a3b716a7dfb46b7045e",
-      "semanticHash": "8a345f52e506be7064014cf815db928d6bfecd10f47f04bf9a7a87187203bd8f",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Stepwise refinement turns a high-level algorithm into implementable modules with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "111/analyser",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -21871,46 +21830,6 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "103/explanation-equivalence-img-1",
-      "lesson": "103",
-      "visualId": "explanation-equivalence-img-1",
-      "sectionId": "explanation-equivalence",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-101-equivalence.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "5f939dd3cac18d3a2208e771cd49e0b0a60a9f04c2c9b2827dbad001c6c96594",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 165590
-      },
-      "assetSha256": "5f939dd3cac18d3a2208e771cd49e0b0a60a9f04c2c9b2827dbad001c6c96594",
-      "sectionHash": "a4d26994d203585beece45e3f661a248a16c3c2c1b07c6e9ec4de2df2ecda582",
-      "semanticHash": "31e375e93d656a5635e5604aca744537e304126c6c5383accde07cfcda9708ee",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining A diamond becomes IF...THEN...ELSE with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "101/equivalence",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
       "key": "103/overview-div-1",
       "lesson": "103",
       "visualId": "overview-div-1",
@@ -22136,6 +22055,46 @@
       "status": "PassedCurrentSource"
     },
     {
+      "key": "104/explanation-linear-img-1",
+      "lesson": "104",
+      "visualId": "explanation-linear-img-1",
+      "sectionId": "explanation-linear",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-104-linear.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "3a38ac64255cd7ffc87d3874c48574fe795b0ab70e971e1ce3410139bba4dec4",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 354622
+      },
+      "assetSha256": "3a38ac64255cd7ffc87d3874c48574fe795b0ab70e971e1ce3410139bba4dec4",
+      "sectionHash": "5a684bf4f5d86a7b3cb848872c696d8a0a45a4a498a9ed730792f20f7c16a1c7",
+      "semanticHash": "6425db68d15d4cecb598df0e2090732f22bfe008c40e00f8ccc09611de2de577",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Linear search checks each item in order with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "104/linear",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
       "key": "104/overview-div-1",
       "lesson": "104",
       "visualId": "overview-div-1",
@@ -22352,6 +22311,46 @@
       },
       "stage10Link": {
         "key": "104/binary-tool",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "105/explanation-bubble-img-1",
+      "lesson": "105",
+      "visualId": "explanation-bubble-img-1",
+      "sectionId": "explanation-bubble",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-105-bubble.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "801f53eb0922da02f494c9bbf01b85cc3836fce94170d3df5058d496c369565f",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 143563
+      },
+      "assetSha256": "801f53eb0922da02f494c9bbf01b85cc3836fce94170d3df5058d496c369565f",
+      "sectionHash": "feae8f3c9ad06a2ed51d7e98d5d094a5a89971780a601fbedf528f6db95cd00d",
+      "semanticHash": "3a4d083a5c74f3101ccada439e31bbe67887b81ae0b33101efb898b49974b875",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Why bubble sort repeats adjacent comparisons through a cause-and-effect diagram."
+      },
+      "stage10Link": {
+        "key": "105/bubble",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -23751,6 +23750,86 @@
       "status": "PassedCurrentSource"
     },
     {
+      "key": "111/explanation-ipoc-img-1",
+      "lesson": "111",
+      "visualId": "explanation-ipoc-img-1",
+      "sectionId": "explanation-ipoc",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-111-ipoc.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "67aeb005bb4fc3912b914d59ea62a697f586b25b4969cbbbe4a6df3c6135a4da",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 339464
+      },
+      "assetSha256": "67aeb005bb4fc3912b914d59ea62a697f586b25b4969cbbbe4a6df3c6135a4da",
+      "sectionHash": "396af499de8dc0d09569e62def90742d98901ab908ad95a39a532819e67ad822",
+      "semanticHash": "7cfbcb1d4198c539e390620d1339d0d53402e288895e5042782082a78354304b",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Turn paragraphs into a design table with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "111/ipoc",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "111/explanation-analyser-img-1",
+      "lesson": "111",
+      "visualId": "explanation-analyser-img-1",
+      "sectionId": "explanation-analyser",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-111-analyser.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "047e1c4bc3996d54c3d648e87dfecc0b53de055f538df2644602c6f68d509474",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 209019
+      },
+      "assetSha256": "047e1c4bc3996d54c3d648e87dfecc0b53de055f538df2644602c6f68d509474",
+      "sectionHash": "25bfc7fc81ac0f6eda855a4647b030ff4a45c5193a8b7a3b716a7dfb46b7045e",
+      "semanticHash": "8a345f52e506be7064014cf815db928d6bfecd10f47f04bf9a7a87187203bd8f",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Stepwise refinement turns a high-level algorithm into implementable modules with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "111/analyser",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
       "key": "111/overview-div-1",
       "lesson": "111",
       "visualId": "overview-div-1",
@@ -25061,46 +25140,6 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "117/explanation-linear-img-1",
-      "lesson": "117",
-      "visualId": "explanation-linear-img-1",
-      "sectionId": "explanation-linear",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-104-linear.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "3a38ac64255cd7ffc87d3874c48574fe795b0ab70e971e1ce3410139bba4dec4",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 354622
-      },
-      "assetSha256": "3a38ac64255cd7ffc87d3874c48574fe795b0ab70e971e1ce3410139bba4dec4",
-      "sectionHash": "5a684bf4f5d86a7b3cb848872c696d8a0a45a4a498a9ed730792f20f7c16a1c7",
-      "semanticHash": "6425db68d15d4cecb598df0e2090732f22bfe008c40e00f8ccc09611de2de577",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Linear search checks each item in order with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "104/linear",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
       "key": "117/overview-div-1",
       "lesson": "117",
       "visualId": "overview-div-1",
@@ -25437,46 +25476,6 @@
       },
       "stage10Link": {
         "key": "118/declare",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
-      "key": "118/explanation-bubble-img-1",
-      "lesson": "118",
-      "visualId": "explanation-bubble-img-1",
-      "sectionId": "explanation-bubble",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-105-bubble.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "801f53eb0922da02f494c9bbf01b85cc3836fce94170d3df5058d496c369565f",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 143563
-      },
-      "assetSha256": "801f53eb0922da02f494c9bbf01b85cc3836fce94170d3df5058d496c369565f",
-      "sectionHash": "feae8f3c9ad06a2ed51d7e98d5d094a5a89971780a601fbedf528f6db95cd00d",
-      "semanticHash": "3a4d083a5c74f3101ccada439e31bbe67887b81ae0b33101efb898b49974b875",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Why bubble sort repeats adjacent comparisons through a cause-and-effect diagram."
-      },
-      "stage10Link": {
-        "key": "105/bubble",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -26016,86 +26015,6 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "120/explanation-stack-img-1",
-      "lesson": "120",
-      "visualId": "explanation-stack-img-1",
-      "sectionId": "explanation-stack",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-122-stack.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "51958dacc695c355f049c92ee3d78947b50c4b668363096bd2bad9aba5428ec1",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 363671
-      },
-      "assetSha256": "51958dacc695c355f049c92ee3d78947b50c4b668363096bd2bad9aba5428ec1",
-      "sectionHash": "d59990d4c769a67d61959f82e0288434dd7ba0f843c7c82c42403f32ea6b9c03",
-      "semanticHash": "96ebc22999559438f7f47fc34b353d6349bd63c676ab31ebec722c3bc50cba89",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Why one open end creates LIFO through a cause-and-effect diagram."
-      },
-      "stage10Link": {
-        "key": "122/stack",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
-      "key": "120/explanation-queue-img-1",
-      "lesson": "120",
-      "visualId": "explanation-queue-img-1",
-      "sectionId": "explanation-queue",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-122-queue.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "ee4e49e73df2ea28b0d79144177a6122c81540c761a5d80ebd909b195de4cf2f",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 357038
-      },
-      "assetSha256": "ee4e49e73df2ea28b0d79144177a6122c81540c761a5d80ebd909b195de4cf2f",
-      "sectionHash": "7ce10c938c46654f770b528f726f1d1d20be507e6fdedad2948de5669dc6d4db",
-      "semanticHash": "33d65b85482d9b4825d3bb2dcce64be4af42ccff95b0d7d87a6fbbce39fb9591",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Why two ends create FIFO through a cause-and-effect diagram."
-      },
-      "stage10Link": {
-        "key": "122/queue",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
       "key": "120/explanation-pseudocode-img-1",
       "lesson": "120",
       "visualId": "explanation-pseudocode-img-1",
@@ -26127,86 +26046,6 @@
       },
       "stage10Link": {
         "key": "120/pseudocode",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
-      "key": "120/explanation-implementation-img-1",
-      "lesson": "120",
-      "visualId": "explanation-implementation-img-1",
-      "sectionId": "explanation-implementation",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-122-implementation.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "90eb3aab845f820138289664e61ee24ce3dcd94088fa2ee86834f572a4c77d76",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 164047
-      },
-      "assetSha256": "90eb3aab845f820138289664e61ee24ce3dcd94088fa2ee86834f572a4c77d76",
-      "sectionHash": "89bfe26360b4dfe529c2539b464b80fe2b95639b34305dc0644d7231ccb68af0",
-      "semanticHash": "5d5d5794180d9dec6d372dd13c71ec5dc40ffcbc6963d89fdedbe3d4f5a4dcf5",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Implement stack, queue and linked list using arrays through a cause-and-effect diagram."
-      },
-      "stage10Link": {
-        "key": "122/implementation",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
-      "key": "120/explanation-adt-concept-img-1",
-      "lesson": "120",
-      "visualId": "explanation-adt-concept-img-1",
-      "sectionId": "explanation-adt-concept",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-122-concept.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "343d4d1a598d46bcf9d8838c876a5eded5e5735e636ded92e2e33bc362c49bc9",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 151854
-      },
-      "assetSha256": "343d4d1a598d46bcf9d8838c876a5eded5e5735e636ded92e2e33bc362c49bc9",
-      "sectionHash": "6eed814c530afb09d2843618f3b3292aacc1ec9ba40bebd9bc8177705f560040",
-      "semanticHash": "bdb8d6b133de57da6fdc78088d09227abb67e24b2b30fe345548ea1110ebfe95",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining An ADT is data together with permitted operations through a cause-and-effect diagram."
-      },
-      "stage10Link": {
-        "key": "122/concept",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -26897,6 +26736,166 @@
       },
       "stage10Link": {
         "key": "121/validator",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "122/explanation-stack-img-1",
+      "lesson": "122",
+      "visualId": "explanation-stack-img-1",
+      "sectionId": "explanation-stack",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-122-stack.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "51958dacc695c355f049c92ee3d78947b50c4b668363096bd2bad9aba5428ec1",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 363671
+      },
+      "assetSha256": "51958dacc695c355f049c92ee3d78947b50c4b668363096bd2bad9aba5428ec1",
+      "sectionHash": "d59990d4c769a67d61959f82e0288434dd7ba0f843c7c82c42403f32ea6b9c03",
+      "semanticHash": "96ebc22999559438f7f47fc34b353d6349bd63c676ab31ebec722c3bc50cba89",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Why one open end creates LIFO through a cause-and-effect diagram."
+      },
+      "stage10Link": {
+        "key": "122/stack",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "122/explanation-queue-img-1",
+      "lesson": "122",
+      "visualId": "explanation-queue-img-1",
+      "sectionId": "explanation-queue",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-122-queue.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "ee4e49e73df2ea28b0d79144177a6122c81540c761a5d80ebd909b195de4cf2f",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 357038
+      },
+      "assetSha256": "ee4e49e73df2ea28b0d79144177a6122c81540c761a5d80ebd909b195de4cf2f",
+      "sectionHash": "7ce10c938c46654f770b528f726f1d1d20be507e6fdedad2948de5669dc6d4db",
+      "semanticHash": "33d65b85482d9b4825d3bb2dcce64be4af42ccff95b0d7d87a6fbbce39fb9591",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Why two ends create FIFO through a cause-and-effect diagram."
+      },
+      "stage10Link": {
+        "key": "122/queue",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "122/explanation-implementation-img-1",
+      "lesson": "122",
+      "visualId": "explanation-implementation-img-1",
+      "sectionId": "explanation-implementation",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-122-implementation.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "90eb3aab845f820138289664e61ee24ce3dcd94088fa2ee86834f572a4c77d76",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 164047
+      },
+      "assetSha256": "90eb3aab845f820138289664e61ee24ce3dcd94088fa2ee86834f572a4c77d76",
+      "sectionHash": "89bfe26360b4dfe529c2539b464b80fe2b95639b34305dc0644d7231ccb68af0",
+      "semanticHash": "5d5d5794180d9dec6d372dd13c71ec5dc40ffcbc6963d89fdedbe3d4f5a4dcf5",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Implement stack, queue and linked list using arrays through a cause-and-effect diagram."
+      },
+      "stage10Link": {
+        "key": "122/implementation",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "122/explanation-concept-img-1",
+      "lesson": "122",
+      "visualId": "explanation-concept-img-1",
+      "sectionId": "explanation-concept",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-122-concept.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "343d4d1a598d46bcf9d8838c876a5eded5e5735e636ded92e2e33bc362c49bc9",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 151854
+      },
+      "assetSha256": "343d4d1a598d46bcf9d8838c876a5eded5e5735e636ded92e2e33bc362c49bc9",
+      "sectionHash": "52d3efd1ed6d872f8ab8bd94ee654e27c5951c9770eed886f667ba36f74d5355",
+      "semanticHash": "bdb8d6b133de57da6fdc78088d09227abb67e24b2b30fe345548ea1110ebfe95",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining An ADT is data together with permitted operations through a cause-and-effect diagram."
+      },
+      "stage10Link": {
+        "key": "122/concept",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -28046,25 +28045,25 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "126/explanation-standard-img-1",
+      "key": "126/explanation-pseudocode-img-1",
       "lesson": "126",
-      "visualId": "explanation-standard-img-1",
-      "sectionId": "explanation-standard",
+      "visualId": "explanation-pseudocode-img-1",
+      "sectionId": "explanation-pseudocode",
       "tagName": "img",
       "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-140-standard.jpg",
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-114-pseudocode.jpg",
         "exists": true,
         "decodes": true,
-        "sha256": "999f9c28a0070d1dfd5dac66452a33a268570ce52ab5578a85475af35bb19077",
+        "sha256": "4a022be33e5cad2219261bf64299a666da254047f7185054179681db714c2896",
         "dimensions": {
           "height": 1024,
           "width": 1536
         },
-        "byteSize": 169845
+        "byteSize": 395762
       },
-      "assetSha256": "999f9c28a0070d1dfd5dac66452a33a268570ce52ab5578a85475af35bb19077",
-      "sectionHash": "e1db68977ec77f5251adfc1a2c445dd6e23c6a96344b04a6181a3083da1576b1",
-      "semanticHash": "3f56f347752b82215e2f1c10516e6d2319cd752649d4b15cb59845808d03e52c",
+      "assetSha256": "4a022be33e5cad2219261bf64299a666da254047f7185054179681db714c2896",
+      "sectionHash": "9dc0228079bbf3d8104cb7ee07a964eaa7f4d16f74efe9d661bee24cd3128bdb",
+      "semanticHash": "20855e396d8f3440fc696c1e3503fcc904f9ea5cb829f5fe13be1fbdb0e3f8c9",
       "risk": "High",
       "assertionKinds": [
         "raster-load-alt",
@@ -28073,10 +28072,10 @@
       "accessibility": {
         "altPresent": true,
         "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Translate a flowchart or structured English into pseudocode with a structured visual model."
+        "alt": "Academic knowledge-point infographic explaining The symbol changes, the update idea does not with a structured visual model."
       },
       "stage10Link": {
-        "key": "140/standard",
+        "key": "114/pseudocode",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -28351,25 +28350,25 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "127/explanation-pseudocode-img-1",
+      "key": "127/explanation-case-img-1",
       "lesson": "127",
-      "visualId": "explanation-pseudocode-img-1",
-      "sectionId": "explanation-pseudocode",
+      "visualId": "explanation-case-img-1",
+      "sectionId": "explanation-case",
       "tagName": "img",
       "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-114-pseudocode.jpg",
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-127-case.jpg",
         "exists": true,
         "decodes": true,
-        "sha256": "4a022be33e5cad2219261bf64299a666da254047f7185054179681db714c2896",
+        "sha256": "13cf0055126a4752540b930d4150102364c7d11f0b852c9e1d1290c7c67c2786",
         "dimensions": {
           "height": 1024,
           "width": 1536
         },
-        "byteSize": 395762
+        "byteSize": 163379
       },
-      "assetSha256": "4a022be33e5cad2219261bf64299a666da254047f7185054179681db714c2896",
-      "sectionHash": "9dc0228079bbf3d8104cb7ee07a964eaa7f4d16f74efe9d661bee24cd3128bdb",
-      "semanticHash": "20855e396d8f3440fc696c1e3503fcc904f9ea5cb829f5fe13be1fbdb0e3f8c9",
+      "assetSha256": "13cf0055126a4752540b930d4150102364c7d11f0b852c9e1d1290c7c67c2786",
+      "sectionHash": "448b86990c4decf35b7675a342fc5f673750b8976fc19fa79c2f7d7b054a6922",
+      "semanticHash": "cbed7a043ef1e33bce44e1bb7956d4a68b4e5bed93fd8993998361cf646494ff",
       "risk": "High",
       "assertionKinds": [
         "raster-load-alt",
@@ -28378,10 +28377,10 @@
       "accessibility": {
         "altPresent": true,
         "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining The symbol changes, the update idea does not with a structured visual model."
+        "alt": "Academic knowledge-point infographic explaining Use CASE for clear values of one expression with a structured visual model."
       },
       "stage10Link": {
-        "key": "114/pseudocode",
+        "key": "127/case",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -28616,6 +28615,46 @@
       "status": "PassedCurrentSource"
     },
     {
+      "key": "128/explanation-for-img-1",
+      "lesson": "128",
+      "visualId": "explanation-for-img-1",
+      "sectionId": "explanation-for",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-128-for.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "0ef620da6459ae733ed35f4d9a1ec1645de0da8a8d59eef92dca1ff8701d6df7",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 356837
+      },
+      "assetSha256": "0ef620da6459ae733ed35f4d9a1ec1645de0da8a8d59eef92dca1ff8701d6df7",
+      "sectionHash": "e4a03268058260c0bec845758d85b41e076d4a19e1d3c47cc327d60b970049e9",
+      "semanticHash": "bf8fe0a1284af2cea159770ab9c87c12d4cb9a8bc99553efac4af40d20520e6c",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining A FOR loop has a counter, a start value and an end value with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "128/for",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
       "key": "128/overview-div-1",
       "lesson": "128",
       "visualId": "overview-div-1",
@@ -28801,46 +28840,6 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "129/explanation-for-img-1",
-      "lesson": "129",
-      "visualId": "explanation-for-img-1",
-      "sectionId": "explanation-for",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-128-for.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "0ef620da6459ae733ed35f4d9a1ec1645de0da8a8d59eef92dca1ff8701d6df7",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 356837
-      },
-      "assetSha256": "0ef620da6459ae733ed35f4d9a1ec1645de0da8a8d59eef92dca1ff8701d6df7",
-      "sectionHash": "e4a03268058260c0bec845758d85b41e076d4a19e1d3c47cc327d60b970049e9",
-      "semanticHash": "bf8fe0a1284af2cea159770ab9c87c12d4cb9a8bc99553efac4af40d20520e6c",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining A FOR loop has a counter, a start value and an end value with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "128/for",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
       "key": "129/explanation-compare-img-1",
       "lesson": "129",
       "visualId": "explanation-compare-img-1",
@@ -28872,46 +28871,6 @@
       },
       "stage10Link": {
         "key": "129/compare",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
-      "key": "129/explanation-case-img-1",
-      "lesson": "129",
-      "visualId": "explanation-case-img-1",
-      "sectionId": "explanation-case",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-127-case.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "13cf0055126a4752540b930d4150102364c7d11f0b852c9e1d1290c7c67c2786",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 163379
-      },
-      "assetSha256": "13cf0055126a4752540b930d4150102364c7d11f0b852c9e1d1290c7c67c2786",
-      "sectionHash": "448b86990c4decf35b7675a342fc5f673750b8976fc19fa79c2f7d7b054a6922",
-      "semanticHash": "cbed7a043ef1e33bce44e1bb7956d4a68b4e5bed93fd8993998361cf646494ff",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Use CASE for clear values of one expression with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "127/case",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -30052,46 +30011,6 @@
       },
       "stage10Link": {
         "key": "133/substring",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
-      "key": "133/explanation-robust-java-img-1",
-      "lesson": "133",
-      "visualId": "explanation-robust-java-img-1",
-      "sectionId": "explanation-robust-java",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-139-java.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "f5a8fdef26683846fb30a2762a079fd268bddc20ccd716730a3709a5eaed3d84",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 412444
-      },
-      "assetSha256": "f5a8fdef26683846fb30a2762a079fd268bddc20ccd716730a3709a5eaed3d84",
-      "sectionHash": "5b872342d0ea852cd1f76e1e3afc80f9937d03a158a28ddec7568d7eb806583a",
-      "semanticHash": "c02e988fc7de52b34df1de8ac9e0dde6c91711ce70c6c5ed6f8729433d1bc58d",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Java methods can model modularity, but Cambridge pseudocode remains the exam format with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "139/java",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -31441,6 +31360,46 @@
       "status": "PassedCurrentSource"
     },
     {
+      "key": "137/explanation-boundary-img-1",
+      "lesson": "137",
+      "visualId": "explanation-boundary-img-1",
+      "sectionId": "explanation-boundary",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-137-boundary.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "b48c89432ef8606573327b77951e0780a09ec1fe5af5ce40885b88449f6092b7",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 424590
+      },
+      "assetSha256": "b48c89432ef8606573327b77951e0780a09ec1fe5af5ce40885b88449f6092b7",
+      "sectionHash": "789838e3c7835cc52c25d1a623bba6237a14247a8c21593392e3a56e3ec7740b",
+      "semanticHash": "133d9896448fd49c5e9c16b472f7b51b46365579f9fb79d2177b416821f8aaee",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Extreme or boundary data uses valid values at accepted limits with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "137/boundary",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
       "key": "137/overview-div-1",
       "lesson": "137",
       "visualId": "overview-div-1",
@@ -31706,6 +31665,86 @@
       "status": "PassedCurrentSource"
     },
     {
+      "key": "138/explanation-logic-img-1",
+      "lesson": "138",
+      "visualId": "explanation-logic-img-1",
+      "sectionId": "explanation-logic",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-059-logic.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "ef988e007251f1935575cd7143031f841824f2c3a94ebeb7e7dc5d677f5c620f",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 369203
+      },
+      "assetSha256": "ef988e007251f1935575cd7143031f841824f2c3a94ebeb7e7dc5d677f5c620f",
+      "sectionHash": "72ea836fcc4671e834441fb3f37a11c5b3ada467a9ae9f37ade65396b5a4e42f",
+      "semanticHash": "ee4aa880f70e53ca35276c46520901a6d38b528672c89cd0e03b12f3ac2d1fa5",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Logic errors make the program do the wrong thing with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "059/logic",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "138/explanation-bug-img-1",
+      "lesson": "138",
+      "visualId": "explanation-bug-img-1",
+      "sectionId": "explanation-bug",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-138-bug.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "1eecb2abfa32436af864a2f84576117dc697202ace416402b8a3e491d45045a2",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 162120
+      },
+      "assetSha256": "1eecb2abfa32436af864a2f84576117dc697202ace416402b8a3e491d45045a2",
+      "sectionHash": "a1809f70bd77703f7170758c1de718d99385870f3402a20425f8313e5557ca2e",
+      "semanticHash": "bb1844244e939aa5cef5ea9124c55d33cc1ba842fac2053da7cf9d42d8d5a7a5",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Analyse and amend an existing program with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "138/bug",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
       "key": "138/overview-div-1",
       "lesson": "138",
       "visualId": "overview-div-1",
@@ -31922,6 +31961,46 @@
       },
       "stage10Link": {
         "key": "138/java",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "139/explanation-java-img-1",
+      "lesson": "139",
+      "visualId": "explanation-java-img-1",
+      "sectionId": "explanation-java",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-139-java.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "f5a8fdef26683846fb30a2762a079fd268bddc20ccd716730a3709a5eaed3d84",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 412444
+      },
+      "assetSha256": "f5a8fdef26683846fb30a2762a079fd268bddc20ccd716730a3709a5eaed3d84",
+      "sectionHash": "41b190e5a571eafe985f7947467fd8776bf923974157397d42624954865f9a7a",
+      "semanticHash": "c02e988fc7de52b34df1de8ac9e0dde6c91711ce70c6c5ed6f8729433d1bc58d",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Java methods can model modularity, but Cambridge pseudocode remains the exam format with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "139/java",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -32267,6 +32346,46 @@
       },
       "stage10Link": {
         "key": "139/module-tool",
+        "status": "ApprovedCurrentPixels",
+        "actualPixelOcr": "Clear"
+      },
+      "calculations": [],
+      "manualPixelReview": null,
+      "dedicatedAssertion": "Passed",
+      "status": "PassedCurrentSource"
+    },
+    {
+      "key": "140/explanation-standard-img-1",
+      "lesson": "140",
+      "visualId": "explanation-standard-img-1",
+      "sectionId": "explanation-standard",
+      "tagName": "img",
+      "asset": {
+        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-140-standard.jpg",
+        "exists": true,
+        "decodes": true,
+        "sha256": "999f9c28a0070d1dfd5dac66452a33a268570ce52ab5578a85475af35bb19077",
+        "dimensions": {
+          "height": 1024,
+          "width": 1536
+        },
+        "byteSize": 169845
+      },
+      "assetSha256": "999f9c28a0070d1dfd5dac66452a33a268570ce52ab5578a85475af35bb19077",
+      "sectionHash": "e1db68977ec77f5251adfc1a2c445dd6e23c6a96344b04a6181a3083da1576b1",
+      "semanticHash": "3f56f347752b82215e2f1c10516e6d2319cd752649d4b15cb59845808d03e52c",
+      "risk": "High",
+      "assertionKinds": [
+        "raster-load-alt",
+        "high-risk-source-contract"
+      ],
+      "accessibility": {
+        "altPresent": true,
+        "transcriptAligned": true,
+        "alt": "Academic knowledge-point infographic explaining Translate a flowchart or structured English into pseudocode with a structured visual model."
+      },
+      "stage10Link": {
+        "key": "140/standard",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },
@@ -33721,46 +33840,6 @@
       "status": "PassedCurrentSource"
     },
     {
-      "key": "144/explanation-logic-img-1",
-      "lesson": "144",
-      "visualId": "explanation-logic-img-1",
-      "sectionId": "explanation-logic",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-059-logic.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "ef988e007251f1935575cd7143031f841824f2c3a94ebeb7e7dc5d677f5c620f",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 369203
-      },
-      "assetSha256": "ef988e007251f1935575cd7143031f841824f2c3a94ebeb7e7dc5d677f5c620f",
-      "sectionHash": "72ea836fcc4671e834441fb3f37a11c5b3ada467a9ae9f37ade65396b5a4e42f",
-      "semanticHash": "ee4aa880f70e53ca35276c46520901a6d38b528672c89cd0e03b12f3ac2d1fa5",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Logic errors make the program do the wrong thing with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "059/logic",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
       "key": "144/explanation-algorithms-img-1",
       "lesson": "144",
       "visualId": "explanation-algorithms-img-1",
@@ -34177,86 +34256,6 @@
       },
       "stage10Link": {
         "key": "145/changeover",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
-      "key": "145/explanation-bug-img-1",
-      "lesson": "145",
-      "visualId": "explanation-bug-img-1",
-      "sectionId": "explanation-bug",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-138-bug.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "1eecb2abfa32436af864a2f84576117dc697202ace416402b8a3e491d45045a2",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 162120
-      },
-      "assetSha256": "1eecb2abfa32436af864a2f84576117dc697202ace416402b8a3e491d45045a2",
-      "sectionHash": "a1809f70bd77703f7170758c1de718d99385870f3402a20425f8313e5557ca2e",
-      "semanticHash": "bb1844244e939aa5cef5ea9124c55d33cc1ba842fac2053da7cf9d42d8d5a7a5",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Analyse and amend an existing program with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "138/bug",
-        "status": "ApprovedCurrentPixels",
-        "actualPixelOcr": "Clear"
-      },
-      "calculations": [],
-      "manualPixelReview": null,
-      "dedicatedAssertion": "Passed",
-      "status": "PassedCurrentSource"
-    },
-    {
-      "key": "145/explanation-boundary-img-1",
-      "lesson": "145",
-      "visualId": "explanation-boundary-img-1",
-      "sectionId": "explanation-boundary",
-      "tagName": "img",
-      "asset": {
-        "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-137-boundary.jpg",
-        "exists": true,
-        "decodes": true,
-        "sha256": "b48c89432ef8606573327b77951e0780a09ec1fe5af5ce40885b88449f6092b7",
-        "dimensions": {
-          "height": 1024,
-          "width": 1536
-        },
-        "byteSize": 424590
-      },
-      "assetSha256": "b48c89432ef8606573327b77951e0780a09ec1fe5af5ce40885b88449f6092b7",
-      "sectionHash": "789838e3c7835cc52c25d1a623bba6237a14247a8c21593392e3a56e3ec7740b",
-      "semanticHash": "133d9896448fd49c5e9c16b472f7b51b46365579f9fb79d2177b416821f8aaee",
-      "risk": "High",
-      "assertionKinds": [
-        "raster-load-alt",
-        "high-risk-source-contract"
-      ],
-      "accessibility": {
-        "altPresent": true,
-        "transcriptAligned": true,
-        "alt": "Academic knowledge-point infographic explaining Extreme or boundary data uses valid values at accepted limits with a structured visual model."
-      },
-      "stage10Link": {
-        "key": "137/boundary",
         "status": "ApprovedCurrentPixels",
         "actualPixelOcr": "Clear"
       },

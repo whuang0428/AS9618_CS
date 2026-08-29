@@ -36,10 +36,87 @@
         <a href="#pipeline-extension">Pipelining extension</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <!-- remediation-v2-stage3-scope:start -->
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
+        <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Bit manipulation with masks and shifts</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A bitwise AND mask can test or clear selected bits; an OR mask can set selected bits; an XOR mask can toggle selected bits. These operations are used to monitor and control individual flags without changing unrelated bits.</p>
+            <p>LSL is a logical left shift and LSR is a logical right shift. Distinguish logical shifts from arithmetic shifts and cyclic shifts: a logical shift inserts zero, an arithmetic right shift preserves the sign bit, and a cyclic shift wraps the bit that leaves one end back to the other.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Test, set, clear and toggle one flag</h3>
+            <p>For Status = 10110100, an AND mask tests a selected bit, an OR mask sets it, an AND mask with a zero at that position clears it, and an XOR mask toggles it. LSL moves bits left; LSR moves them right and fills with zero.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start shifts -->
+        <section class="panel explanation-panel" id="explanation-shifts" data-explains="shifts" data-explanation-kind="comparison" aria-labelledby="explanation-shifts-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shifts">
+          <h2 class="explanation-sr-only" id="explanation-shifts-title">Binary shifts: logical, arithmetic, cyclic</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-shifts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Binary shifts: logical, arithmetic, cyclic through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Binary shifts: logical, arithmetic, cyclic: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Every shown input and stored result contains exactly eight bits.</li><li><strong>Reason:</strong> Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.</li><li><strong>Result:</strong> Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.</li><li><strong>Additional fact:</strong> Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.</li><li><strong>Additional fact:</strong> Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label.</li></ol>
+
+            <p><strong>Analogy:</strong> Three conveyor rules move the same row but handle the end position differently.</p>
+            <p><strong>Boundary:</strong> State the fixed width, direction and shift type before calculating.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end shifts -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Bit manipulation with masks and shifts: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which mask operation sets selected bits?</p>
+              <details><summary>Show answer</summary><p>Bitwise OR.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which operation toggles selected bits?</p>
+              <details><summary>Show answer</summary><p>Bitwise XOR.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What is inserted by a logical shift?</p>
+              <details><summary>Show answer</summary><p>Zero bits.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Explain how AND, OR and XOR masks test, clear, set and toggle control flags, then apply one LSL and one LSR.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>AND test/clear</td><td>Do not treat logical, arithmetic and cyclic shifts as identical.</td><td>1</td></tr>
+                  <tr><td>OR set</td><td></td><td>1</td></tr>
+                  <tr><td>XOR toggle</td><td></td><td>1</td></tr>
+                  <tr><td>correct LSL</td><td></td><td>1</td></tr>
+                  <tr><td>correct LSR</td><td></td><td>1</td></tr>
+                  <tr><td>monitor/control context</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
+<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 050 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
             <h2>Change one bit without disturbing the rest.</h2>
@@ -62,7 +139,7 @@
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Section 4.3 explicitly requires logical, arithmetic and cyclic shifts, plus bit masks used in monitoring and control.</p>
@@ -73,7 +150,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
+        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which operation sets bit 2 without clearing the other bits?</h2>
@@ -90,7 +167,7 @@
           </div>
         </section>
 
-        <section class="panel" id="masks" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="masks">
+        <section class="panel" id="masks" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title"><p class="eyebrow">Knowledge point 1</p><h2>AND, OR and XOR masks target selected bits</h2></div>
           <div class="hazard-table" role="table" aria-label="Bit-mask operations">
             <div class="table-row table-head" role="row"><div role="columnheader">Operation</div><div role="columnheader">Mask bit</div><div role="columnheader">Effect</div></div>
@@ -101,7 +178,7 @@
         </section>
 
         <!-- stage10-explanation:start masks -->
-        <section class="panel explanation-panel" id="explanation-masks" data-explains="masks" data-explanation-kind="mechanism" aria-labelledby="explanation-masks-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="masks">
+        <section class="panel explanation-panel" id="explanation-masks" data-explains="masks" data-explanation-kind="mechanism" aria-labelledby="explanation-masks-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <h2 class="explanation-sr-only" id="explanation-masks-title">Bit masks target selected positions</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-masks.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bit masks target selected positions through a cause-and-effect diagram." />
@@ -115,7 +192,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end masks -->
-        <section class="panel" id="shifts" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shifts">
+        <section class="panel" id="shifts" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title"><p class="eyebrow">Knowledge point 2</p><h2>Logical, arithmetic and cyclic shifts have different fill rules</h2></div>
           <div class="timing-grid">
             <article><strong>Logical</strong><span>Moves every bit left or right, inserts 0 into each empty position and discards the bit shifted out.</span></article>
@@ -127,7 +204,7 @@
           <div class="callout"><strong>Instruction forms:</strong> <code>LSL #n</code> shifts all bits in ACC logically left by <em>n</em> places and fills from the right with zeros. <code>LSR #n</code> shifts all bits in ACC logically right by <em>n</em> places and fills from the left with zeros. Bits shifted beyond the fixed width are discarded.</div>
         </section>
 
-        <section class="panel" id="device-bits" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="device-bits">
+        <section class="panel" id="device-bits" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title"><p class="eyebrow">Knowledge point 3</p><h2>Bit fields monitor and control a device</h2></div>
           <div class="compare-grid">
             <article><h3>Monitor a status flag</h3><p>If bit 3 means “door open”, AND the status byte with 00001000. A non-zero result means that flag is set.</p></article>
@@ -136,7 +213,7 @@
         </section>
 
         <!-- stage10-explanation:start device-bits -->
-        <section class="panel explanation-panel" id="explanation-device-bits" data-explains="device-bits" data-explanation-kind="process" aria-labelledby="explanation-device-bits-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="device-bits">
+        <section class="panel explanation-panel" id="explanation-device-bits" data-explains="device-bits" data-explanation-kind="process" aria-labelledby="explanation-device-bits-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <h2 class="explanation-sr-only" id="explanation-device-bits-title">Monitor and control a device register</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-device-bits.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Monitor and control a device register through a cause-and-effect diagram." />
@@ -150,7 +227,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end device-bits -->
-        <section class="panel" id="core-practice" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core-practice">
+        <section class="panel" id="core-practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title"><p class="eyebrow">Core practice</p><h2>Calculate, then explain the bit effect</h2></div>
           <ol class="practice-list">
             <li>Calculate 00110110 logical shift left by one place. <details><summary>Show answer</summary><p>01101100; 0 enters on the right and the leftmost bit is discarded.</p></details></li>
@@ -160,11 +237,11 @@
           </ol>
         </section>
 
-        <section class="panel" id="pipeline-extension" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pipeline-extension">
+        <section class="panel" id="pipeline-extension" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title"><p class="eyebrow">Extension: not an explicit AS 2027–2029 requirement</p><h2>Pipelining and factors that limit performance</h2><p>The remaining material is optional processor-performance enrichment after the required bit-manipulation lesson.</p></div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pipeline-extension">
+        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Pipelining overlaps instruction-cycle stages</h2>
@@ -191,7 +268,7 @@
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="concept">
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <h2 class="explanation-sr-only" id="explanation-concept-title">Pipelining overlaps instruction-cycle stages</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pipelining overlaps instruction-cycle stages with a structured visual model." />
@@ -203,7 +280,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pipeline-extension">
+        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Without and with pipelining</h2>
@@ -235,7 +312,7 @@
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="compare">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <h2 class="explanation-sr-only" id="explanation-compare-title">Without and with pipelining</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Without and with pipelining with a structured visual model." />
@@ -247,7 +324,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
-        <section class="panel" id="timing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pipeline-extension">
+        <section class="panel" id="timing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Throughput improves, but latency still exists</h2>
@@ -265,7 +342,7 @@
         </section>
 
         <!-- stage10-explanation:start timing -->
-        <section class="panel explanation-panel" id="explanation-timing" data-explains="timing" data-explanation-kind="mechanism" aria-labelledby="explanation-timing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="timing">
+        <section class="panel explanation-panel" id="explanation-timing" data-explains="timing" data-explanation-kind="mechanism" aria-labelledby="explanation-timing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <h2 class="explanation-sr-only" id="explanation-timing-title">Throughput improves, but latency still exists</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-timing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Throughput improves, but latency still exists with a structured visual model." />
@@ -277,7 +354,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end timing -->
-        <section class="panel" id="hazards" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pipeline-extension">
+        <section class="panel" id="hazards" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Pipeline hazards: why faster is not always simpler</h2>
@@ -307,7 +384,7 @@
         </section>
 
         <!-- stage10-explanation:start hazards -->
-        <section class="panel explanation-panel" id="explanation-hazards" data-explains="hazards" data-explanation-kind="mechanism" aria-labelledby="explanation-hazards-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="hazards">
+        <section class="panel explanation-panel" id="explanation-hazards" data-explains="hazards" data-explanation-kind="mechanism" aria-labelledby="explanation-hazards-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <h2 class="explanation-sr-only" id="explanation-hazards-title">Pipeline hazards: why faster is not always simpler</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-hazards.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pipeline hazards: why faster is not always simpler with a structured visual model." />
@@ -319,7 +396,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end hazards -->
-        <section class="panel" id="stalls" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="pipeline-extension">
+        <section class="panel" id="stalls" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Stalls and flushes reduce the ideal gain</h2>
@@ -345,7 +422,7 @@
         </section>
 
         <!-- stage10-explanation:start stalls -->
-        <section class="panel explanation-panel" id="explanation-stalls" data-explains="stalls" data-explanation-kind="mechanism" aria-labelledby="explanation-stalls-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="stalls">
+        <section class="panel explanation-panel" id="explanation-stalls" data-explains="stalls" data-explanation-kind="mechanism" aria-labelledby="explanation-stalls-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <h2 class="explanation-sr-only" id="explanation-stalls-title">Stalls and flushes reduce the ideal gain</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-stalls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Stalls and flushes reduce the ideal gain with a structured visual model." />
@@ -357,7 +434,7 @@
           </div>
         </section>
         <!-- stage10-explanation:end stalls -->
-        <section class="panel interactive" id="tool" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="bit-tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Bit-operation analyser</h2>
@@ -380,7 +457,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bit-examples">
+        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Trace masks, shifts and device bits</h2>
@@ -395,7 +472,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="bit-practice">
+        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title">
             <p class="eyebrow">5-minute quiz</p>
             <h2>Practice with instant checking</h2>
@@ -405,7 +482,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="bit-debug">
+        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the bit-manipulation explanation</h2>
@@ -413,7 +490,7 @@
           <div class="mistake-grid" id="mistakeList"></div>
         </section>
 
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="bit-assessment">
+        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable mark schemes</h2>
@@ -422,7 +499,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
+        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Choose the operation from the required bit effect</h2>

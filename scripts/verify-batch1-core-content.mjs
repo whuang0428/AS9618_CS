@@ -49,11 +49,11 @@ includesAll(compressionMd, compressionTerms, "L012 Markdown");
 includesAll(stage2Core(compressionHtml), compressionTerms, "L012 CORE HTML");
 includesAll(questionText("L012-Q5"), ["text", "bitmap", "vector", "sound", "RLE", "dictionary", "perceptual"], "L012-Q5");
 
-const cycleMd = read("lessons/043-registers-pc-cir-mar-mdr-acc-and-status-register.md");
-const cycleHtml = read("web/lesson-043/index.html");
+const cycleMd = read("lessons/042-the-fetch-decode-execute-cycle.md");
+const cycleHtml = read("web/lesson-042/index.html");
 const transfers = ["MAR <- PC", "MDR <- Memory[MAR]", "CIR <- MDR", "PC <- PC + 1", "ACC <- ACC + MDR"];
-includesAll(cycleMd, transfers, "L043 Markdown");
-includesAll(stage2Core(cycleHtml), transfers, "L043 CORE HTML");
+includesAll(cycleMd, transfers, "L042 Markdown");
+includesAll(stage2Core(cycleHtml), transfers, "L042 CORE HTML");
 includesAll(questionText("AQ045-Q2"), ["MAR <- PC", "CIR <- MDR"], "AQ045-Q2");
 
 const assemblyMd = read("lessons/046-assembly-language-basics-and-mnemonics.md");
@@ -81,8 +81,8 @@ const bitMd = lessonMarkdown(50);
 const bitHtml = read("web/lesson-050/index.html");
 includesAll(bitMd, ["AND mask", "OR mask", "XOR mask", "LSL #n", "LSR #n", "logical", "arithmetic", "cyclic", "monitoring", "control"], "L050 Markdown");
 includesAll(bitHtml, ["LSL #n", "LSR #n", "AND mask", "OR mask", "XOR mask", "logical", "arithmetic", "cyclic"], "L050 HTML");
-for (const id of ["tool", "examples", "practice", "debug", "exam"]) check(/data-delivery-role="CORE"/.test(sectionTag(bitHtml, id)), `L050 #${id} is not CORE`);
-for (const id of ["pipeline-extension", "concept", "compare", "timing", "hazards", "stalls"]) check(/data-delivery-role="OPTIONAL"/.test(sectionTag(bitHtml, id)), `L050 #${id} is not OPTIONAL`);
+check(/data-delivery-role="CORE"/.test(sectionTag(bitHtml, "stage2-completion")), "L050 #stage2-completion is not CORE");
+for (const id of ["pipeline-extension", "concept", "compare", "timing", "hazards", "stalls", "tool", "examples", "practice", "debug", "exam"]) check(/data-delivery-role="OPTIONAL"/.test(sectionTag(bitHtml, id)), `L050 #${id} is not OPTIONAL`);
 for (let index = 1; index <= 5; index += 1) {
   const text = questionText(`L050-Q${index}`);
   check(!/pipeline|throughput|latency|hazard|stall|flush/i.test(text), `L050-Q${index} still assesses pipelining`);

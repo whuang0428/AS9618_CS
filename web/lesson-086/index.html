@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 086 | Two-table INNER JOIN queries</title>
+    <title>AS9618 Lesson 086 | SQL joins using related tables</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Two-table INNER JOIN queries</h1>
+        <h1>SQL joins using related tables</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -41,12 +41,82 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
+
+<!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Two-table INNER JOIN queries</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.</p>
+            <p>For Student(StudentID, StudentName) and Loan(StudentID, DueDate), SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID returns names only where matching rows exist. Add WHERE for a further row condition, not for the join relationship itself.</p>
+            <p>For the required at-most-two-table subset, queries can use ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG as well as SELECT, FROM and WHERE.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: List overdue borrowers</h3>
+            <p>SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate &lt; '2027-05-01'; uses two tables, one explicit join condition and one separate filter.</p>
+          </article>
+        </section>
+
+        <!-- stage10-explanation:start join -->
+        <section class="panel explanation-panel" id="explanation-join" data-explains="join" data-explanation-kind="mechanism" aria-labelledby="explanation-join-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="join">
+          <h2 class="explanation-sr-only" id="explanation-join-title">Two-table INNER JOIN with ON</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-join.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two-table INNER JOIN with ON with a structured visual model." />
+            <figcaption class="explanation-sr-only">Two-table INNER JOIN with ON: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> AS DML questions use at most two tables.</li><li><strong>Lesson fact:</strong> SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID uses an explicit two-table join.</li><li><strong>Lesson fact:</strong> ON states the matching key relationship between the tables.</li><li><strong>Lesson fact:</strong> WHERE adds a separate row filter after the join; it does not replace the required INNER JOIN syntax.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end join -->
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Two-table INNER JOIN queries: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which clause states how two joined tables match?</p>
+              <details><summary>Show answer</summary><p>ON.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> How many tables are required at most in the AS syllabus query?</p>
+              <details><summary>Show answer</summary><p>Two.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why qualify Student.StudentID and Loan.StudentID?</p>
+              <details><summary>Show answer</summary><p>To identify which table supplies each otherwise identical field name.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Write an INNER JOIN query listing DepartmentName and EmployeeName from Department and Employee, matching their DepartmentID fields.</p>
+            <details>
+              <summary>Show MS</summary>
+              <table class="mark-scheme-table">
+                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
+                <tbody>
+                  <tr><td>SELECT includes DepartmentName and EmployeeName</td><td>Do not use a three-table query or replace the required INNER JOIN with comma-style FROM and a WHERE join.</td><td>1</td></tr>
+                  <tr><td>FROM Department</td><td></td><td>1</td></tr>
+                  <tr><td>INNER JOIN Employee</td><td></td><td>1</td></tr>
+                  <tr><td>ON Department.DepartmentID = Employee.DepartmentID</td><td></td><td>1</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
 
 <section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
           <div class="hero-copy">

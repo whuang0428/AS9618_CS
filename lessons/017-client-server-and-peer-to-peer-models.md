@@ -1,41 +1,47 @@
-# Lesson 017: Bus, star, mesh and hybrid topologies
+# Lesson 017: Client-server and peer-to-peer models
 
 <!-- remediation-v2-stage3-scope:start -->
-> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.
+> **Lesson sequence scope:** The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.
 <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
 ## Core syllabus content
 
-**Focus:** Bus, star, mesh and hybrid topologies
+**Focus:** Network models and thin/thick client designs
 
 ### Direct explanation
 
-- A topology describes the pattern of links between devices. In a bus topology devices share one backbone; in a star topology each device has a separate link to a central switch; in a mesh topology nodes have multiple interconnections; a hybrid topology combines two or more topology patterns.
-- Compare topologies using packet path, single points of failure, alternative routes, cabling, expansion and traffic. A topology name without a path or failure consequence is not a developed explanation.
+- In a client-server model, clients request services or resources and one or more servers provide them. Dedicated server roles can include authentication, file storage, web hosting and backup. Central management, consistent access control and central backup are benefits; server cost, specialist administration, dependence on the server and a possible central failure are drawbacks.
+- In a peer-to-peer model, each peer may request and provide resources directly. It can be inexpensive and simple for a small trusted group because no dedicated server is required, but distributed accounts, backups, security and availability become harder to control. A model choice must be justified from number of users, trust, management, availability, cost and the required shared services.
+- A thin client relies mainly on a server for processing and/or storage. A thick client performs more processing locally and normally stores more software or data on the client device. Thin clients simplify central updates and can use lower-specification hardware, but depend heavily on the server and network. Thick clients can continue more work when disconnected, but local installation, security and maintenance are distributed.
 
 ### Worked example
 
-**Compare failure paths:** After one end-device cable fails, only that device normally loses access in a star. If the central switch fails, every attached device loses access. A mesh can retain an alternative path after one link fails.
+**Choose a model and client type for a school examination room:** Use a client-server model so accounts, permissions, exam files and backups are controlled by servers. Thin clients support central software management and reduce local storage, but the school must provide resilient servers and networking because a failure can stop the room. Thick clients would reduce that dependence but distribute software and security maintenance.
 
 <!-- stage2-practice:start -->
 ### Targeted practice and answers
 
-1. Describe the path followed in a star topology.
-   **Answer:** A frame travels from the sender to the central switch and then to the destination.
-2. Why can a mesh be more resilient than a bus?
-   **Answer:** Its multiple links can provide an alternative route after one link fails.
+1. State the roles of a client and server.
+   **Answer:** A client requests a service or resource; a server provides and manages the service or resource.
+2. Give one benefit and one drawback of peer-to-peer networking.
+   **Answer:** Benefit: no dedicated server / low setup cost. Drawback: distributed security, backup and availability are harder to manage.
+3. Justify client-server for 600 managed school users.
+   **Answer:** Central accounts, permissions, storage, updates and backup suit many users, despite server cost and availability risk.
+4. Compare a thin client from a thick client.
+   **Answer:** A thin client depends mainly on server processing/storage; a thick client performs and stores more locally.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Compare star and mesh topologies for a hospital network and justify one choice.
+**Question (5 marks):** A call centre is choosing a client-server model with thin clients. Explain two benefits and two drawbacks of this combined choice.
 
 | Answer | Guidance | Marks |
 |---|---|---:|
-| accurate star path | Do not credit a topology name without an accurate connection pattern and consequence. | 1 |
-| accurate mesh path |  | 1 |
-| developed failure or cost comparison |  | 1 |
-| scenario-linked justification |  | 1 |
+| centralised accounts/software/update or data management | Do not award 'cheaper' unless the lower client specification or central administration explains why; do not confuse network model with topology. | 1 |
+| lower client hardware/storage requirement |  | 1 |
+| depends on network/server availability or performance |  | 1 |
+| server infrastructure, administration or central-failure cost |  | 1 |
+| develops at least one point in the call-centre context |  | 1 |
 <!-- stage2-practice:end -->
 <!-- stage2-completion:end -->
 

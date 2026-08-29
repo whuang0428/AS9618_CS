@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 029 | Microphone, touchscreen and VR headset operation</title>
+    <title>AS9618 Lesson 029 | Output devices and user feedback</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=9" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Microphone, touchscreen and VR headset operation</h1>
+        <h1>Output devices and user feedback</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -43,57 +43,62 @@
 
       <div class="lesson-content">
         <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
+        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
         <!-- remediation-v2-stage3-scope:end -->
 
 <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Core syllabus content</p>
-            <h2>Microphone, touchscreen and VR headset operation</h2>
+            <h2>Laser/3D printers, speakers and output buffers</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A microphone diaphragm vibrates with sound; a transducer converts the movement into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in an electric field and calculates touch coordinates.</p>
-            <p>A VR headset displays a separate view to each eye and uses motion/orientation sensors to update the viewpoint. Low-latency tracking is needed so the displayed scene follows head movement.</p>
+            <p>A laser printer charges a drum, a laser discharges selected points, toner adheres to the image, toner transfers to paper and heat/pressure fuse it. A 3D printer deposits or solidifies material layer by layer from a digital model.</p>
+            <p>A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.</p>
+            <p>A buffer temporarily holds data when producer and consumer operate at different speeds, reducing loss or interruption caused by the rate difference.</p>
             <p>Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Turn head in VR</h3>
-            <p>Gyroscope/accelerometer readings report orientation; the processor calculates a new camera view; displays present updated left/right images, creating stereoscopic depth.</p>
+            <h3>Worked example: Print a page</h3>
+            <p>The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages.</p>
           </article>
         </section>
         <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
           <div class="section-title">
             <p class="eyebrow">Core syllabus practice</p>
-            <h2>Microphone, touchscreen and VR headset operation: apply and assess</h2>
+            <h2>Laser/3D printers, speakers and output buffers: apply and assess</h2>
           </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What converts a microphone's analogue signal into digital samples?</p>
-              <details><summary>Show answer</summary><p>An analogue-to-digital converter (ADC).</p></details>
+              <p><strong>1.</strong> What permanently bonds toner to laser-printer paper?</p>
+              <details><summary>Show answer</summary><p>Heat and pressure in the fuser.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What does a capacitive touchscreen detect?</p>
-              <details><summary>Show answer</summary><p>A change in capacitance/electric field at a touch location.</p></details>
+              <p><strong>2.</strong> How does a 3D printer build an object?</p>
+              <details><summary>Show answer</summary><p>It deposits/solidifies successive layers.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why does a VR headset track head movement?</p>
-              <details><summary>Show answer</summary><p>To update the displayed viewpoint to match the user's orientation.</p></details>
+              <p><strong>3.</strong> How does a speaker produce sound from digital output?</p>
+              <details><summary>Show answer</summary><p>A DAC and amplifier drive a coil and cone; cone vibration produces pressure waves in the air.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why is a print buffer needed?</p>
+              <details><summary>Show answer</summary><p>It handles the speed difference and lets the producer continue while the printer consumes data.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Describe how a microphone captures sound for storage in a computer.</p>
+            <p>Explain why a buffer is used when a computer sends a large document to a laser printer.</p>
             <details>
               <summary>Show MS</summary>
               <table class="mark-scheme-table">
                 <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
                 <tbody>
-                  <tr><td>sound waves vibrate a diaphragm</td><td>Do not accept that the microphone directly records binary without an analogue signal and conversion stage.</td><td>1</td></tr>
-                  <tr><td>transducer converts vibration to an analogue electrical signal</td><td></td><td>1</td></tr>
-                  <tr><td>ADC samples/measures the signal</td><td></td><td>1</td></tr>
-                  <tr><td>sample values are encoded/stored as binary</td><td></td><td>1</td></tr>
+                  <tr><td>processor/computer and printer operate at different speeds</td><td>Do not accept 'the buffer makes the printer faster'; it manages transfer-rate differences.</td><td>1</td></tr>
+                  <tr><td>buffer temporarily stores print data</td><td></td><td>1</td></tr>
+                  <tr><td>printer reads data at its own rate</td><td></td><td>1</td></tr>
+                  <tr><td>computer/processor can continue other processing without waiting for the full print</td><td></td><td>1</td></tr>
                 </tbody>
               </table>
             </details>

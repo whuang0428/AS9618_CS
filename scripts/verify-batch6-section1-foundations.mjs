@@ -37,7 +37,7 @@ function sectionHtml(html, id) {
   return "";
 }
 
-const scopedRequirements = ["S1.01", "S1.02", "S1.03", "S1.04", "S1.05", "S1.06", "S1.07", "S1.09"];
+const scopedRequirements = ["S1.01", "S1.02", "S1.03", "S1.04", "S1.05", "S1.06", "S1.07", "S1.08", "S1.09"];
 for (const id of scopedRequirements) {
   const requirement = requirements.get(id);
   expect(Boolean(requirement), `${id}: contract row is missing`);
@@ -50,12 +50,12 @@ for (const id of scopedRequirements) {
 const checks = [
   ["001", ["kibi", "kilo", "mebi", "mega", "gibi", "giga", "tebi", "tera", "powers of 1024", "powers of 1000"]],
   ["002", ["integer conversion", "binary is base 2", "denary is base 10"]],
-  ["003", ["hexadecimal is base 16", "binary", "denary", "integer"]],
+  ["003", ["hexadecimal is base 16", "binary", "denary", "integer", "bcd", "digital clocks", "memory addresses"]],
   ["004", ["binary addition", "fixed-width overflow", "representable"]],
   ["005", ["one's-complement representation", "two's-complement representation", "binary subtraction", "negative"]],
-  ["006", ["bcd", "digital clocks", "hexadecimal", "memory addresses"]],
   ["007", ["ascii", "extended ascii", "unicode", "stored internally in binary", "not expected to memorise"]],
-  ["009", ["vector encoding", "drawing list", "drawing objects", "properties", "given application", "bitmap"]],
+  ["009", ["bitmap", "width in pixels", "height in pixels", "colour depth", "divide by 8", "metadata", "file header", "only when"]],
+  ["012", ["vector encoding", "drawing list", "drawing objects", "properties", "given application", "bitmap"]],
 ];
 for (const [lesson, terms] of checks) {
   const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));
@@ -72,6 +72,9 @@ includesAll(questionText("L001-Q2"), ["MB", "MiB", "different prefix systems"], 
 includesAll(questionText("L005-Q5"), ["18 - 27", "complement", "11110111", "-9"], "L005-Q5 subtraction assessment");
 includesAll(questionText("AQ010-Q1"), ["BCD", "digital clock", "four-bit"], "Quiz 10 BCD application assessment");
 includesAll(questionText("AQ010-Q2"), ["Unicode", "ASCII", "worldwide messaging"], "Quiz 10 character-set assessment");
+includesAll(questionText("AQ010-Q3"), ["bitmap", "colour depth", "bytes", "file header", "metadata"], "Quiz 10 bitmap pixel-data assessment");
+includesAll(questionText("AQ010-Q4"), ["pixel data", "54-byte header", "20,054 bytes", "metadata"], "Quiz 10 bitmap metadata assessment");
+includesAll(questionText("L009-Q5"), ["bitmap", "metadata", "17 KiB"], "L009 bitmap total-size assessment");
 includesAll(questionText("AQ015-Q4"), ["bitmap", "vector", "school logo", "without pixelation"], "Quiz 15 vector application assessment");
 
 const mutations = [
@@ -82,6 +85,7 @@ const mutations = [
   ["S1.05", /\boverflow\b/gi],
   ["S1.06", /\bdigital clocks?\b/gi],
   ["S1.07", /\bextended ASCII\b/gi],
+  ["S1.08", /\b(?:metadata|file header)\b/gi],
   ["S1.09", /\bdrawing list\b/gi],
 ];
 for (const [id, pattern] of mutations) {
@@ -116,4 +120,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log("Batch 6 verification passed: eight Section 1 requirements are Complete, five direct assessments are aligned and nine mutations are rejected.");
+console.log("Batch 6 verification passed: nine Section 1 requirements are Complete, bitmap/metadata and vector teaching are on their correct lesson identities, direct assessments are aligned and ten mutations are rejected.");

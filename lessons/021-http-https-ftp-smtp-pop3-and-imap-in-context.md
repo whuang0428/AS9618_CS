@@ -1,4 +1,4 @@
-# Lesson 021: LAN hardware and the router
+# Lesson 021: HTTP, HTTPS, FTP, SMTP, POP3 and IMAP in context
 
 <!-- remediation-v2-optional:start -->
 > **Optional enrichment:** HTTP, HTTPS, FTP, SMTP, POP3 and IMAP. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.
